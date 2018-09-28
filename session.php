@@ -13,6 +13,7 @@ function obterSessao($chave)
 
 function criarSessao($chave, $valor)
 {
+    session_id();
     $chave = sprintf("%s_%s", SESSION_PREFIX, $chave);
 
     $_SESSION[$chave] = $valor;
@@ -24,3 +25,4 @@ function excluirSessao($chave)
 {
     unset($_SESSION[sprintf('%s_%s', SESSION_PREFIX, $chave)]);
 }
+?>

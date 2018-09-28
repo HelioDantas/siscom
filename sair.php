@@ -1,7 +1,7 @@
 <?php
 require_once('session.php');
 
-excluirSessao('usuario_email');
+excluirSessao('usuario_matricula');
 
 header('Location: index.php');
 ?>

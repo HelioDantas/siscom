@@ -1,7 +1,7 @@
 <?php
 require_once('session.php');
 
-if (obterSessao('usuario_email') === null)
+if (obterSessao('usuario_matricula') === null)
 {
     header('Location: index.php');
 }

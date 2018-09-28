@@ -1,15 +1,15 @@
 <?php
-if (isset($_POST['email'], $_POST['password'])) {
+if (isset($_POST['matricula'], $_POST['senha'])) {
     require_once ("session.php");
     require_once ("database.php");
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $matricula = $_POST['matricula'];
+    $senha = $_POST['senha'];
 
-    if (ehUsuarioValido($email, $password)) {
-        $usuario = obterUsuario($email);
+    if (ehUsuarioValido($matricula, $senha)) {
+        $usuario = obterUsuario($matricula);
 
-        criarSessao('usuario_email', $usuario['email']);
+        criarSessao('usuario_matricula', $usuario['matricula']);
 
         header("Location: sistema.php");
     }

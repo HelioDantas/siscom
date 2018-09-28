@@ -9,12 +9,12 @@ function obterConexao()
     return new PDO(sprintf("mysql:host=%s;dbname=%s", DB_HOST, DB_NAME), DB_USER, DB_PASS);
 }
 
-function ehUsuarioValido(string $email, string $password)
+function ehUsuarioValido(string $matricula, string $password)
 {
     $db = obterConexao();
 
-    $statement = $db->prepare("SELECT * FROM usuario WHERE email = ?");
-    $statement->execute([$email]);
+    $statement = $db->prepare("SELECT * FROM usuario WHERE matricula = ?");
+    $statement->execute([$matricula]);
 
     $resultado = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -25,11 +25,11 @@ function ehUsuarioValido(string $email, string $password)
     return password_verify($password, $resultado['senha']);
 }
 
-function obterUsuario($email) {
+function obterUsuario($matricula) {
     $db = obterConexao();
 
-    $statement = $db->prepare("SELECT * FROM usuario WHERE email = ?");
-    $statement->execute([$email]);
+    $statement = $db->prepare("SELECT * FROM usuario WHERE matricula = ?");
+    $statement->execute([$matricula]);
 
     return $statement->fetch(PDO::FETCH_ASSOC);
 }
