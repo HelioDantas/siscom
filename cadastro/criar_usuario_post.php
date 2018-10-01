@@ -1,5 +1,5 @@
 <?php
-require_once('usuario.php');
+require_once('../classes/usuario.php');
 
 $user = new Usuario;
 
@@ -9,4 +9,4 @@ $user->setSenha($_POST['senha']);
 
 $user->inserir();
 
-header("location: index.php");
+header("location: ../index.php");

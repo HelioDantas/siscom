@@ -14,8 +14,8 @@ if (isset($_POST['matricula'], $_POST['senha'])) {
         header("Location: sistema.php");
     }
 
-    header("Location: index.php");
+    header("Location: index.php?login=0");
 } else {
-    header("Location: index.php");
+    header("Location: index.php?login=0");
 }
 ?>
