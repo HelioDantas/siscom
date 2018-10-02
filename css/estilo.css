@@ -21,10 +21,14 @@
     }
     .agoravai{
         text-align: center;
+       
     }
      .agoraVai{
         text-align: center;
-        margin-left:  23%;
+        color : red;
+        font-size: 15px;
+    
+
     }
     .login-form-2{
         padding: 5%;

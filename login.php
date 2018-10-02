@@ -8,6 +8,8 @@ if (isset($_POST['matricula'], $_POST['senha'])) {
 
     if (ehUsuarioValido($matricula, $senha)) {
         $usuario = obterUsuario($matricula);
+        session_start();
+        $_SESSION ["nome"]= $usuario["nome"];
 
         criarSessao('usuario_matricula', $usuario['matricula']);
 
