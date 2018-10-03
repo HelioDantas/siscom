@@ -1,13 +1,12 @@
 <?php
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', 'hl2468hl');
+define('DB_PASS', '');
 define('DB_NAME', 'login');
 
 function obterConexao()
 {
-    return new PDO("mysql:host=127.0.0.1;dbname=login", "root", "hl2468hl");
-    
+    return new PDO(sprintf("mysql:host=%s;dbname=%s", DB_HOST, DB_NAME), DB_USER, DB_PASS);
 }
 
 function ehUsuarioValido(string $matricula, string $password)

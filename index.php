@@ -13,14 +13,22 @@ if (obterSessao('usuario_matricula') !== null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login PHP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"  href="css/bootstrap.css" />
+    <link rel="stylesheet" t href="css/bootstrap.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/estilo.css">
     
 </head>
 <body>
-   
+    <div class = "container">
+        <div class = "row">
+         <?php
+        if (isset($_GET["login"]) && $_GET["login"] == 0) { ?>
+            <div class = "col-md-6 agoraVai">
+                <h6 class = "alert-danger form-control" > Usuario ou senha invalida</h6>
+            </div>
+         <?php  } ?>
+        </div>
     </div>
         <div class="container login-container">
              <div class="row">
@@ -41,12 +49,6 @@ if (obterSessao('usuario_matricula') !== null) {
                             <input type="submit" id="btn" class="btnSubmit" value="Login" />
                         </div>
                     </form>
-                    <?php
-        if (isset($_GET["login"]) && $_GET["login"] == 0) { ?>
-            <div class = "col s4 agoraVai">
-                <p class = "" > Usuario ou senha invalida</p>
-            </div>
-         <?php  } ?>
                         <div class="col s4">
                             <a href="#">Esqueceu a senha?</a>
                         </div>
