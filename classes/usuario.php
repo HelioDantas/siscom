@@ -7,6 +7,7 @@ Class Usuario
 private $nome;
 private $matricula;
 private $senha;
+private $email;
 
 
 public function inserir(){
@@ -16,6 +17,22 @@ public function inserir(){
     $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
     $mycon->exec($query);
 }
+
+public function getUsuarioForEmail($email)
+{
+    $db = obterConexao();
+
+    $statement = $db->prepare("SELECT * FROM raf_login WHERE email = ?");
+    $statement->execute([$email]);
+    $resultado = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if (!$resultado) {
+        return new Exception("Error! usuario não e valido", 1);
+        ;
+    }
+    return $resultado;
+}
+
 
 public function setNome($nome){
     $this->nome = $nome;
@@ -40,6 +57,16 @@ public function setSenha($senha){
 
 public function getSenha(){
     return $this->senha;
+}
+
+public function setEmail($email)
+{
+    $this->email = $email;
+}
+
+public function getEmail()
+{
+    return $this->email;
 }
 
 

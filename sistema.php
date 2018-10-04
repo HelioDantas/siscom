@@ -50,7 +50,8 @@ var todaysDate =(dayNr + " " + Month + " " + Year);
  
 
 document.write('  '+todaysDate);
-</script><span id="real-clock"></span> </p>
+</script></p>
+<a href="" ><span id="real-clock"></span> </a>
 
 
      <a class = "nav-link" href="sair.php">Sair</a>
