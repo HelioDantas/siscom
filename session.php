@@ -17,6 +17,7 @@ function criarSessao($chave, $valor)
     $chave = sprintf("%s_%s", SESSION_PREFIX, $chave);
 
     $_SESSION[$chave] = $valor;
+    
 
     return obterSessao($chave);
 }

@@ -3,7 +3,7 @@ session_start();
 require_once('session.php');
 
 
-if (obterSessao('usuario_matricula') === null) {
+if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado"])){
     header('Location: index.php');
 }
 ?>
@@ -14,11 +14,9 @@ if (obterSessao('usuario_matricula') === null) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet"  href="css/bootstrap.css" />
-    <style>
-    p{
-        color:white;
-    }
-    </style>
+    <style> p{color:white; }</style>    
+
+
     <title>Sistema</title>
 </head>
 <body>
@@ -50,10 +48,9 @@ var todaysDate =(dayNr + " " + Month + " " + Year);
 
  var time = now.getHours();    
  
- /// cookie-sessao
 
 document.write('  '+todaysDate);
-</script></p>
+</script><span id="real-clock"></span> </p>
 
 
      <a class = "nav-link" href="sair.php">Sair</a>
@@ -63,5 +60,12 @@ document.write('  '+todaysDate);
     
 
 <script src="js/bootstrap.min.js"></script>
+
+  <script>
+    setInterval(function () {
+        clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
+    }, 1000);
+     var clock = document.getElementById('real-clock');
+    </script>
 </body>
 </html>

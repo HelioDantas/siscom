@@ -13,7 +13,7 @@ public function inserir(){
 
     $mycon = obterConexao();
 
-    $query = "INSERT INTO  usuario (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
+    $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
     $mycon->exec($query);
 }
 

@@ -1,9 +1,11 @@
 <?php
 require_once('session.php');
 
-if (obterSessao('usuario_matricula') !== null) {
+if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"])) {
     header("Location: sistema.php");
 }
+date_default_timezone_set('America/Sao_Paulo');
+$date = date('d-m-y H:i:');
 ?>
 
 <!DOCTYPE html>
@@ -13,22 +15,13 @@ if (obterSessao('usuario_matricula') !== null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login PHP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" t href="css/bootstrap.css" />
+    <link rel="stylesheet"  href="css/bootstrap.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/estilo.css">
     
 </head>
 <body>
-    <div class = "container">
-        <div class = "row">
-         <?php
-        if (isset($_GET["login"]) && $_GET["login"] == 0) { ?>
-            <div class = "col-md-6 agoraVai">
-                <h6 class = "alert-danger form-control" > Usuario ou senha invalida</h6>
-            </div>
-         <?php  } ?>
-        </div>
     </div>
         <div class="container login-container">
              <div class="row">
@@ -38,18 +31,23 @@ if (obterSessao('usuario_matricula') !== null) {
                     <form action="login.php" method="post">
 
                         <div class="form-group">
-                            <input type="text" name="matricula" class="form-control" placeholder="Matricula" value="" />
+                            <input type="text" name="matricula" class="form-control is-valid"  placeholder="Matricula" value="" />
                         </div>
 
                         <div class="form-group">
-                            <input type="password" name="senha" class="form-control" placeholder="Senha" value="" />
+                            <input type="password" name="senha" class="form-control is-valid" require placeholder="Senha" value="" />
                         </div>
 
                         <div  class="agoravai">
                             <input type="submit" id="btn" class="btnSubmit" value="Login" />
                         </div>
                     </form>
-                        <div class="col s4">
+                    <?php
+                    if (isset($_GET["login"]) && $_GET["login"] == 0) { ?>
+                      <div class = "col s4 agoraVai">
+                     <p class = "" > Usuario ou senha invalida</p>
+                   </div>   <?php  } ?>
+                          <div class="col s4">
                             <a href="#">Esqueceu a senha?</a>
                         </div>
                         <div class="col s4">
