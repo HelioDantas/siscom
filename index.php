@@ -4,10 +4,8 @@ require_once('session.php');
 if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"])) {
     header("Location: sistema.php");
 }
-date_default_timezone_set('America/Sao_Paulo');
-$date = date('d-m-y H:i:');
-?>
 
+?>
 <!DOCTYPE html>
 <html>
 <head>

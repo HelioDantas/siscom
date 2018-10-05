@@ -1,5 +1,5 @@
 <?php
-require_once('database.php');
+require 'database.php';
 
 Class Usuario
 {
@@ -17,8 +17,9 @@ public function inserir(){
     $statement->execute([$this->matricula]);
     $resultado = $statement->fetch(PDO::FETCH_ASSOC);
     if (!$resultado) {
-         $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
-        $mycon->exec($query);
+        $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
+        $db->exec($query);
+        return true;
     }else{
         return false;
 

@@ -1,17 +1,18 @@
 <?php
 
-require_once('database.php');
+include 'database.php';
 require_once('classes/usuario.php');
 require_once('EnviaEmail.php');
 require_once('teste.php');
 require_once( 'gerarSenha.php');
 
+$U = new Usuario;
 
 
 if  (isset($_POST['rep_mail']))
 {
     $email = $_POST['rep_email'];
-    $user =  Usuario::getUsuarioForEmail($email);
+    $user = $U->getUsuarioForEmail($email);
     if(!empty($user))
     {
         $senha = fncGera_Senha(4, 1, 1, 0, 0);
