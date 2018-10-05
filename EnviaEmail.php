@@ -1,30 +1,39 @@
 <?php
 
-$getPost = filter_input_array(Imput_post);
+// inclui o autoloader do Composer
+require 'PHPMailer/PHPMailerAutoload.php';
+require 'PHPMailer/class.phpmailer.php';
+require 'PHPMailer/class.smtp.php';
+require 'recovery_senha.php';
+
+$Erro = null;
+$mail = new PHPMailer;
+
+function enviar($email , $mensagem)
+{
+$mail->Charset = "uft-8";
+$mail->SMTPDebug = 3;
+$mail->IsSMTP();
+$mail->Host = "localHost";
+$mail->SMTPAuth = true;
+$mail->Username = "siscon.one@gmail.com";
+$mail->Password = "mass2018";
+$mail->SMTPSecure = "tls";
+$mail->Port = 587;
+$mail->FromName = "SisCon";
+$mail->From = "siscon.one@gmail.com";
+$mail->aAddAddress($email);
+$mail->IsHTML(true);
+$mail->Subject($titulo.date("H:i")."-".date("d/m/y"));  // titulo do mensagem
+$mail->Body($mensagem);
 
 
-$Nome = $getPost["nome"];
-$email = $getPost["email"];
-
-include_once "";
-include_once  "  ";
-
-$Miler = new PHPMiler;
-$Miler->Charset = "uft-8";
-$Miler->SMTPDebug = 3;
-$Miler->isSMTP();
-$Miler->Host = "localHost";
-$Miler->SMTPAuth = true;
-$Miler->Username = "";
-$Miler->Password = "";
-$Miler->SMTPSecure = tls;
-$Miler->Port = 587;
-$Miler->FromName = "{$Nome}";
-$Miler->from = "";
-$Miler->addAddress();
-$Miler->isHTML(true);
-$Miler->Subject
-
-
+if(!$mail->Send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    $Erro =true;
+    exit;
+ }
+}
 
 ?>

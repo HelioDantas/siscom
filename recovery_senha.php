@@ -1,20 +1,24 @@
 <?php
 
 require_once('database.php');
-require_once('usuario');
-require_once('EnviaEmail');
+require_once('classes/usuario.php');
+require_once('EnviaEmail.php');
 require_once('teste.php');
+require_once( 'gerarSenha.php');
 
 
 
 if  (isset($_POST['rep_mail']))
 {
     $email = $_POST['rep_email'];
-    $user =  Usuario->getUsuarioForEmail($email);
+    $user =  Usuario::getUsuarioForEmail($email);
     if(!empty($user))
     {
-        $senha =gerarsenha01();
-        EnviaEmail0->mail($email,"Recuperação de Senha","olá ".$user['nome']." Sua nova senha é ".$senha."");
+        $senha = fncGera_Senha(4, 1, 1, 0, 0);
+        enviar($email,"Recuperação de Senha","olá ".$user['nome']." Sua nova senha é ".$senha."");
+        $novaSenha = password_hash($senha,1);
+
+        updateSenha($novaSenha,$user['id']);
     }
 
 
@@ -23,3 +27,5 @@ if  (isset($_POST['rep_mail']))
 
     // mandar mensagem que foi enviado com sucesso.
 }
+
+header('location: index.php');

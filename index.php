@@ -48,7 +48,7 @@ $date = date('d-m-y H:i:');
                      <p class = "" > Usuario ou senha invalida</p>
                    </div>   <?php  } ?>
                           <div class="col s4">
-                            <a href="#">Esqueceu a senha?</a>
+                            <a href="recuperar_senha.php">Esqueceu a senha?</a>
                         </div>
                         <div class="col s4">
                             <a href="cadastro/cadastro-form.php"><strong>cadastre-se</strong></a>
