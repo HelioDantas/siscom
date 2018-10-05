@@ -12,10 +12,18 @@ private $email;
 
 public function inserir(){
 
-    $mycon = obterConexao();
+    $db = obterConexao();
+    $statement  = $db->prepare("Select matricula from raf_login where matricula = ?");
+    $statement->execute([$this->matricula]);
+    $resultado = $statement->fetch(PDO::FETCH_ASSOC);
+    if (!$resultado) {
+         $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
+        $mycon->exec($query);
+    }else{
+        return false;
 
-    $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
-    $mycon->exec($query);
+    }
+
 }
 
 public function getUsuarioForEmail($email)

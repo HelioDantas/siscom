@@ -27,7 +27,11 @@
                 <div>
                     <label>Senha:</label>
                     <input type="password" class= "form-control"name="senha" id="senha">
-                </div>           
+                </div> 
+                 <?php if (isset($_GET["usuarioCadastrado"]) && $_GET["usuarioCadastrado"] == true) { ?>
+                      <div class = "col s4 agoraVai">
+                     <p class = "" > Usuario já cadastrado</p>
+                   </div>   <?php  } ?>          
 
                 <input type="submit" class= "form-control" value="salvar" />
                 </div>

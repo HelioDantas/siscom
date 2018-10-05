@@ -7,6 +7,10 @@ $user->setNome($_POST['nome']);
 $user->setMatricula($_POST['matricula']);
 $user->setSenha($_POST['senha']);
 
-$user->inserir();
-
+if ($user->inserir()){
 header("location: ../index.php");
+}else{
+
+header("location:../cadastro/cadastro-form.php?usuarioCadastrado=true");
+
+}
