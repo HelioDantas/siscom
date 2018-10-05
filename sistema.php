@@ -9,6 +9,7 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
     header('Location: index.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,51 +17,40 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet"  href="css/bootstrap.css" />
-    <style> p{color:white; }</style>    
+    <style> p{color:white; } span{color :black } a {padding-left : 1%}</style>    
 
 
     <title>Sistema</title>
 </head>
 <body>
-    <nav class = "navbar navbar-dark bg-dark">
-     <p  class = "nav-item">Sistema, página protegida.</p>
-     <p class = "nav-item">  Seja bem vindo<strong> <?php echo $_SESSION["nome"] ?></strong></p>
-     <a href="">
-<p><script language"javascript">
 
-var now = new Date();
-var mName = now.getMonth() +1 ;
-var dayNr = now.getDate();
-var yearNr=now.getYear();
-if(mName==1){Month = "Janeiro";}
-if(mName==2){Month = "Fevereiro";}
-if(mName==3){Month = "Março";}
-if(mName==4){Month = "Abril";}
-if(mName==5){Month = "Maio";}
-if(mName==6){Month = "Junho";}
-if(mName==7){Month = "Julho";}
-if(mName==8){Month = "Agosto";}
-if(mName==9){Month = "Setembro";}
-if(mName==10){Month = "Outubro";}
-if(mName==11){Month = "Novembro";}
-if(mName==12){Month = "Dezembro";}
-if(yearNr < 2000) {Year = 1900 + yearNr;}
-else {Year = yearNr;}
-var todaysDate =(dayNr + " " + Month + " " + Year);
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">Siscon</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
 
- var time = now.getHours();    
- 
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Convenios</a>
+                </li>
 
-document.write('  '+todaysDate);
-</script></p>
-<a href="" ><span id="real-clock"></span> </a>
-
-
-     <a class = "nav-link" href="sair.php">Sair</a>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Cadastro</a>
+                </li>
+            </ul>
+                
+                    <a class = "nav-item">  Seja bem vindo<strong> <?php echo $_SESSION["nome"] ?></strong></a>
+                    <a class = "nav-item"><script type = "text/javascript" src = "js/data.js"></script></a>
+                    <a class = "nav-tes" ><span id="real-clock"></span></a>
+                    <a class = "nav-link" href="sair.php">Sair</a>
+        </div>
     </nav>
 
-    
-    
 
 <script src="js/bootstrap.min.js"></script>
 
