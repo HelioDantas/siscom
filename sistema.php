@@ -11,16 +11,19 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/estilo.css">
     <link rel="stylesheet"  href="css/bootstrap.css" />
+    
     <style> p{color:white; } span{color :black } a {padding-left : 1%}</style>    
+    
 
 
-    <title>Sistema</title>
+    <title>Sistema Siscon</title>
 </head>
 <body>
 
@@ -32,7 +35,7 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
             <a class="navbar-brand" href="#">Siscon</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="sistema.php">Home <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item">

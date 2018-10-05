@@ -29,7 +29,7 @@
                     <input type="password" class= "form-control"name="senha" id="senha">
                 </div>           
 
-                <input type="submit" value="salvar" />
+                <input type="submit" class= "form-control" value="salvar" />
                 </div>
 
             </form>

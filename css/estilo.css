@@ -1,6 +1,6 @@
 
     body{
-        background-image: radial-gradient(#6db3ff,#2f8cef)
+        background-image: radial-gradient(#6db3ff,#2f8cef);
         }
     .login-container{
         margin-top: 5%;
