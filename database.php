@@ -35,3 +35,11 @@ function obterUsuario($matricula) {
 
     return $statement->fetch(PDO::FETCH_ASSOC);
 }
+
+function updateSenha($senha,$id)
+{
+$db = obterConexao();
+
+$statement =$db->prepare("UPDATE raf_login senha = ? WHERE id_user = ?");
+$statement ->execute([$senha],[$id]);
+}

@@ -1,5 +1,5 @@
 <?php
-require_once('../database.php');
+require_once('database.php');
 
 Class Usuario
 {
@@ -36,7 +36,7 @@ public function getUsuarioForEmail($email)
 
     if (!$resultado) {
         return new Exception("Error! usuario não e valido", 1);
-        ;
+        
     }
     return $resultado;
 }
