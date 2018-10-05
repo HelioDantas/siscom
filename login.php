@@ -12,7 +12,7 @@ if (isset($_POST['matricula'], $_POST['senha'])) {
         $_SESSION ["nome"]= $usuario["nome"];
 
         criarSessao('usuario_matricula', $usuario['matricula']);
-        setcookie("usuario_logado", $usuario["nome"], time() + 60);
+        setcookie("usuario_logado", $usuario["nome"], time() + 60 *60);
 
         header("Location: sistema.php");
     }
