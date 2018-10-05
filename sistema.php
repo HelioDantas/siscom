@@ -4,6 +4,8 @@ require_once('session.php');
 
 
 if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado"])){
+    excluirSessao('usuario_matricula');
+    setcookie("usuario_logado");
     header('Location: index.php');
 }
 ?>
