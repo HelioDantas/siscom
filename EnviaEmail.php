@@ -14,7 +14,7 @@ function enviar($email , $mensagem)
 $mail->Charset = "uft-8";
 $mail->SMTPDebug = 3;
 $mail->IsSMTP();
-$mail->Host = "wmysdes01v";
+$mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 $mail->Username = "siscon.one@gmail.com";
 $mail->Password = "mass2018";
