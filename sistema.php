@@ -32,7 +32,7 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Siscon</a>
+            <a class="navbar-brand" href="index.php"><h2>SisCon</h2></a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
                     <a class="nav-link" href="sistema.php">Home <span class="sr-only">(current)</span></a>
@@ -45,14 +45,14 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Cadastro</a>
                 </li>
-            </ul>
+              </ul>
                 
                     <a class = "nav-item">  Seja bem vindo<strong> <?php echo $_SESSION["nome"] ?></strong></a>
                     <a class = "nav-item"><script type = "text/javascript" src = "js/data.js"></script></a>
                     <a class = "nav-tes" ><span id="real-clock"></span></a>
                     <a class = "nav-link" href="sair.php">Sair</a>
-        </div>
-    </nav>
+            </div>
+          </nav>
 
 
 <script src="js/bootstrap.min.js"></script>

@@ -1,6 +1,6 @@
 
     body{
-        background-image: radial-gradient(#6db3ff,#2f8cef);
+        background-image: radial-gradient(#6db3ff,#00BFFF);
         }
     .login-container{
         margin-top: 5%;
@@ -11,23 +11,30 @@
             padding: 5%;
            /* box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); */
            box-shadow: 0 18px 46px 0 rgba(0, 0, 0, 0.4), 0 18px 46px 0 rgba(0, 0, 0, 0.19); 
-            background-color: #dae5f2;
+           /* background-color: #dae5f2;*/
+           background-color:#fafafa ;
             border-radius: 3%;
             
         } 
+
+        .real-clock{
+            padding-left : 1%;
+        }
+    
         .login-form-1 h3{
             text-align: center;
-            color: #333;
+            color: #2BBBAD;
         }
         .agoravai{
             text-align: center;
+             color: #2BBBAD;
            
         }
-         .agoraVai{
+         .msgErro{
             text-align: center;
             color : red;
             font-size: 15px;
-        
+            
     
         }
         .login-form-2{
@@ -50,11 +57,12 @@
             padding: 1.5%;
             border: none;
             cursor: pointer;
+            
         }
         .login-form-1 .btnSubmit{
             font-weight: 600;
             color: #fff;
-            background-color: #0062cc;
+            background-color:  #2BBBAD;;
     
         }
         .login-form-2 .btnSubmit{
@@ -71,4 +79,9 @@
             color: #0062cc;
             font-weight: 600;
             text-decoration: none;
+        }
+        .tttt{
+
+            margin-top: 11%;
+
         }

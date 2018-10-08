@@ -15,12 +15,36 @@
 </head>
 
 <body>
+	  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="index.php"><h2>SisCon</h2></a>
+            
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="sistema.php" disabled> <span class="sr-only"></span></a>
+                </li>
 
-	<div class="container">
-		<div class="row">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"></a>
+                </li>
+              </ul>
+                    <a class = "nav-item"><script type = "text/javascript" src = "js/data.js"></script></a>
+                    <a class = "nav-tes real-clock" ><span id="real-clock"></span></a>
+            </div>
+        </nav>
+
+	<div class="container tttt">
+		<div class="row "style ="padding:-20%;">
 			<div class="col-lg-6 offset-md-3 login-form-1">
 				<h3>SisCon</h3>
-				<center>
+				<center >
 					<small style="font-size: 16px;">Recuperar Senha</small>
 				</center>
 				<form action="recovery_senha.php" method="post">
@@ -30,7 +54,7 @@
 					</div>
 
 					<div class="agoravai">
-						<input type="submit" id="btn" class="btnSubmit" value="Login" />
+						<input type="submit" id="btn" class="btnSubmit" value="enviar" />
 					</div>
 				</form>
 			</div>

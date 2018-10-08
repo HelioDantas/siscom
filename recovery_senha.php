@@ -1,6 +1,6 @@
 <?php
 
-include 'database.php';
+
 require_once('classes/usuario.php');
 require_once('EnviaEmail.php');
 require_once('teste.php');

@@ -1,39 +1,90 @@
 <?php
+require_once '../../email/vendor/autoload.php';
+/**
+ * This example shows settings to use when sending via Google's Gmail servers.
+ * This uses traditional id & password authentication - look at the gmail_xoauth.phps
+ * example to see how to use XOAUTH2.
+ * The IMAP section shows how to save this message to the 'Sent Mail' folder using IMAP commands.
+ */
 
-// inclui o autoloader do Composer
-require 'PHPMailer/PHPMailerAutoload.php';
-require 'PHPMailer/class.phpmailer.php';
-require 'PHPMailer/class.smtp.php';
-require 'recovery_senha.php';
+//Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
 
-$Erro = null;
+function enviar($destinatrio ,$nome , $mensagem)
+{
+
+//Create a new PHPMailer instance
 $mail = new PHPMailer;
 
-function enviar($email , $mensagem)
-{
-$mail->Charset = "uft-8";
-$mail->SMTPDebug = 3;
-$mail->IsSMTP();
+//Tell PHPMailer to use SMTP
+$mail->isSMTP();
+
+//Enable SMTP debugging
+// 0 = off (for production use)
+// 1 = client messages
+// 2 = client and server messages
+$mail->SMTPDebug = 2;
+
+//set o servidor de email
 $mail->Host = 'smtp.gmail.com';
-$mail->SMTPAuth = true;
-$mail->Username = "siscon.one@gmail.com";
-$mail->Password = "mass2018";
-$mail->SMTPSecure = "tls";
+// use
+// $mail->Host = gethostbyname('smtp.gmail.com');
+// if your network does not support SMTP over IPv6
+
+//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
 $mail->Port = 587;
-$mail->FromName = "SisCon";
-$mail->From = "siscon.one@gmail.com";
-$mail->aAddAddress($email);
-$mail->IsHTML(true);
-$mail->Subject($titulo.date("H:i")."-".date("d/m/y"));  // titulo do mensagem
-$mail->Body($mensagem);
 
+//Set the encryption system to use - ssl (deprecated) or tls
+$mail->SMTPSecure = 'tls';
 
-if(!$mail->Send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-    $Erro =true;
-    exit;
- }
+//Whether to use SMTP authentication
+$mail->SMTPAuth = true;
+
+//Username to use for SMTP authentication - use full email address for gmail
+$mail->Username = "siscon.one@gmail.com";
+
+//Password to use for SMTP authentication
+$mail->Password = "";
+
+//Set who the message is to be sent from
+$mail->setFrom('siscon.one@gmail.com', 'SisCon one');
+
+//Set an alternative reply-to address
+//$mail->addReplyTo('replyto@example.com', 'First Last');
+
+//Set who the message is to be sent to
+$mail->addAddress($destinatrio,$nome);
+
+//Set the subject line
+$mail->Subject = 'Recuperação de senha';
+
+//Read an HTML message body from an external file, convert referenced images to embedded,
+//convert HTML into a basic plain-text alternative body
+$mail->msgHTML($mensagem);
+
+// caso o html falhe
+//Replace the plain text body with one created manually
+//$mail->AltBody = 'This is a plain-text message body';
+
+// add anexos
+//Attach an image file
+//$mail->addAttachment('images/phpmailer_mini.png');
+
+//send the message, check for errors
+if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+    echo "Message sent!";
+    //Section 2: IMAP
+    //Uncomment these to save your message in the 'Sent Mail' folder.
+    #if (save_mail($mail)) {
+    #    echo "Message saved!";
+    #}
+}
 }
 
-?>
+//Section 2: IMAP
+//IMAP commands requires the PHP IMAP Extension, found at: https://php.net/manual/en/imap.setup.php
+//Function to call which uses the PHP imap_*() functions to save messages: https://php.net/manual/en/book.imap.php
+//You can use imap_getmailboxes($imapStream, '/imap/ssl') to get a list of available folders or labels, this can
+//be useful if you are trying to get this working on a non-Gmail IMAP server.
