@@ -9,17 +9,19 @@ require_once( '../gerarSenha.php');
 $U = new Usuario;
 
 
-if  (isset($_POST['rep_mail']))
+if  (isset($_POST['rep_email']))
 {
     $email = $_POST['rep_email'];
     $user = $U->getUsuarioForEmail($email);
+    var_dump($email);
     if(!empty($user))
     {
-        $senha = fncGera_Senha(4, 1, 1, 0, 0);
-        enviar($email,"Recuperação de Senha","olá ".$user['nome']." Sua nova senha é ".$senha."");
+        //$senha = fncGera_Senha(4, 1, 1, 0, 0);
+        $senha = "123456";
+        enviar($email, "Recuperação de Senha", "olá ".$user['nome']." Sua nova senha é ".$senha);
         $novaSenha = password_hash($senha,1);
 
-        updateSenha($novaSenha,$user['id']);
+       $U->updateSenha($novaSenha, $user['id_user']);
     }
 
 

@@ -42,6 +42,13 @@ public function getUsuarioForEmail($email)
     return $resultado;
 }
 
+function updateSenha($senha,$id)
+{
+$db = obterConexao();
+
+$statement =$db->prepare("UPDATE raf_login set senha = ? WHERE id_user = ?");
+$statement ->execute([$senha,$id]);
+}
 
 public function setNome($nome){
     $this->nome = $nome;

@@ -1,5 +1,8 @@
 <?php
-require_once '../email/vendor/autoload.php';
+
+
+
+
 /**
  * This example shows settings to use when sending via Google's Gmail servers.
  * This uses traditional id & password authentication - look at the gmail_xoauth.phps
@@ -9,12 +12,15 @@ require_once '../email/vendor/autoload.php';
 
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
+use  PHPMailer\PHPMailer\Exception ;
+require_once '../email/vendor/autoload.php';
 
 function enviar($destinatrio ,$nome , $mensagem)
-{
 
+{
+    $mail = new PHPMailer(true);  
+try {
 //Create a new PHPMailer instance
-$mail = new PHPMailer;
 
 //Tell PHPMailer to use SMTP
 $mail->isSMTP();
@@ -44,7 +50,7 @@ $mail->SMTPAuth = true;
 $mail->Username = "siscon.one@gmail.com";
 
 //Password to use for SMTP authentication
-$mail->Password = "";
+$mail->Password = "mass2018";
 
 //Set who the message is to be sent from
 $mail->setFrom('siscon.one@gmail.com', 'SisCon one');
@@ -56,32 +62,37 @@ $mail->setFrom('siscon.one@gmail.com', 'SisCon one');
 $mail->addAddress($destinatrio,$nome);
 
 //Set the subject line
-$mail->Subject = 'Recuperação de senha';
+
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->msgHTML($mensagem);
+$mail->isHTML(true);
+$mail->Subject = 'Recuperação de senha';
+$mail->Body    = 'Este é o conteúdo da mensagem em <b>HTML!</b>';
+$mail->AltBody = 'Para visualizar essa mensagem acesse http://site.com.br/mail';
+//$mail->addAttachment('/tmp/image.jpg', 'nome.jpg');
 
-// caso o html falhe
-//Replace the plain text body with one created manually
-//$mail->AltBody = 'This is a plain-text message body';
 
 // add anexos
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');
 
 //send the message, check for errors
-if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-} else {
-    echo "Message sent!";
+$mail->send();
+ 
+
     //Section 2: IMAP
     //Uncomment these to save your message in the 'Sent Mail' folder.
     #if (save_mail($mail)) {
     #    echo "Message saved!";
     #}
+
+} catch (Exception $e) {
+    throw  $e; 
+    //'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
 }
+
 
 //Section 2: IMAP
 //IMAP commands requires the PHP IMAP Extension, found at: https://php.net/manual/en/imap.setup.php
