@@ -57,6 +57,7 @@
 						<input type="submit" id="btn" class="btnSubmit" value="enviar" />
 					</div>
 				</form>
+					<a href="../index.php" > voltar </a>
 			</div>
 
 <script>
