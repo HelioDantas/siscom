@@ -73,7 +73,7 @@ if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"
                      <p class = "" > Usuario ou senha invalida</p>
                     </div>   <?php  } ?>
                         <div class="col s4 agoravai">
-                            <a href="recuperar_senha.php">Esqueceu a senha?</a>
+                            <a href="recuperarSenha/recuperar_senha.php">Esqueceu a senha?</a>
                         </div>
                         <div class="col s4 agoravai">
                             <a href="cadastro/cadastro-form.php"><strong>cadastre-se</strong></a>

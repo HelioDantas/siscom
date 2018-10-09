@@ -1,10 +1,10 @@
 <?php
 
 
-require_once('classes/usuario.php');
-require_once('EnviaEmail.php');
-require_once('teste.php');
-require_once( 'gerarSenha.php');
+require_once('../classes/usuario.php');
+require_once('../EnviaEmail.php');
+require_once('../teste.php');
+require_once( '../gerarSenha.php');
 
 $U = new Usuario;
 
@@ -29,4 +29,4 @@ if  (isset($_POST['rep_mail']))
     // mandar mensagem que foi enviado com sucesso.
 }
 
-header('location: index.php');
+header('location: ../index.php');
