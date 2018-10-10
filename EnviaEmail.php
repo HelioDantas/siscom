@@ -13,7 +13,8 @@
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use  PHPMailer\PHPMailer\Exception ;
-require_once '../email/vendor/autoload.php';
+require_once 'email/vendor/autoload.php';
+//enviar("rafaelalvarenga46@gmail.com", "rafael", "<p> olá </p>");
 
 function enviar($destinatrio ,$nome , $mensagem)
 
@@ -29,7 +30,7 @@ $mail->isSMTP();
 // 0 = off (for production use)
 // 1 = client messages
 // 2 = client and server messages
-$mail->SMTPDebug = 2;
+//$mail->SMTPDebug = 2;
 
 //set o servidor de email
 $mail->Host = 'smtp.gmail.com';
@@ -66,9 +67,9 @@ $mail->addAddress($destinatrio,$nome);
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->isHTML(true);
-$mail->Subject = 'Recuperação de senha';
-$mail->Body    = 'Este é o conteúdo da mensagem em <b>HTML!</b>';
+//$mail->isHTML(true);
+$mail->Subject = 'Recovery the of password';
+$mail->Body    = 'Sua nova senha é <b>"'.$mensagem.'"!</b>';
 $mail->AltBody = 'Para visualizar essa mensagem acesse http://site.com.br/mail';
 //$mail->addAttachment('/tmp/image.jpg', 'nome.jpg');
 

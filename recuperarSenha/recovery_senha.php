@@ -16,9 +16,9 @@ if  (isset($_POST['rep_email']))
     var_dump($email);
     if(!empty($user))
     {
-        //$senha = fncGera_Senha(4, 1, 1, 0, 0);
-        $senha = "123456";
-        enviar($email, "Recuperação de Senha", "olá ".$user['nome']." Sua nova senha é ".$senha);
+        $senha = fncGera_Senha(4, 1, 1, 0, 0);
+     //   $senha = "123456";
+        enviar($email ,$user['nome'],$senha);
         $novaSenha = password_hash($senha,1);
 
        $U->updateSenha($novaSenha, $user['id_user']);

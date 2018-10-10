@@ -8,7 +8,7 @@ function obterConexao()
 {
 
     return new PDO(sprintf("mysql:host=%s;dbname=%s", DB_HOST, DB_NAME), DB_USER, DB_PASS);
-   // return new PDO("mysql:host=wmysdes01v;dbname=tresta,tresta,Mass55");
+   //return new PDO("mysql:host=wmysdes01v;dbname=tresta,tresta,Mass55");
 }
 
 function ehUsuarioValido(string $matricula, string $password)
