@@ -10,29 +10,32 @@
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/estilo.css">
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        
             <a class="navbar-brand" href="../index.php"><h2>SisCon</h2></a>
+             <div class = "container">
+                 
+             <div id="navbarTogglerDemo01">
+                  <ul class="nav justify-content-center">
             
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="sistema.php" disabled> <span class="sr-only"></span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#"></a>
-                </li>
-              </ul>
-                    <a class = "nav-item"><script type = "text/javascript" src = "../js/data.js"></script></a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><h3>Sistema de consultorio Medico </h3> </a>
+                    </li>
+                
+                </ul>
+                
+                </div>         
+        </div>
+                
+               
+       
+            <ul class = "navbar-nav ml-auto"> 
+                <li class = nav-item dropdown>    
+                    <a class = "nav-item"><script type = "text/javascript" src = "js/data.js"></script></a>
                     <a class = "nav-tes real-clock" ><span id="real-clock"></span></a>
-            </div>
+                </li>
+            </ul>
+           
         </nav>
 
     
