@@ -15,39 +15,47 @@
 </head>
 
 <body>
-	  <nav class="navbar navbar-expand-md navbar-light bg-light">
-        
-            <a class="navbar-brand" href="../index.php"><h2>SisCon</h2></a>
-             <div class = "container">
-                 
-             <div id="navbarTogglerDemo01">
-                  <ul class="nav justify-content-center">
-            
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#"><h3>Sistema de consultorio Medico </h3> </a>
-                    </li>
-                
-                </ul>
-                
-                </div>         
-        </div>
-                
-               
-       
-            <ul class = "navbar-nav ml-auto"> 
-                <li class = nav-item dropdown>    
-                    <a class = "nav-item"><script type = "text/javascript" src = "js/data.js"></script></a>
-                    <a class = "nav-tes real-clock" ><span id="real-clock"></span></a>
-                </li>
-            </ul>
-           
-        </nav>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+
+		<a class="navbar-brand" href="../index.php">
+			<h2>SisCon</h2>
+		</a>
+		<div class="container">
+
+			<div id="navbarTogglerDemo01">
+				<ul class="nav justify-content-center">
+
+					<li class="nav-item ">
+						<a class="nav-link" href="#">
+							<h3>Sistema de consultorio Medico </h3>
+						</a>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+
+
+
+		<ul class="navbar-nav ml-auto">
+			<li class=n av-item dropdown>
+				<a class="nav-item">
+					<script type="text/javascript" src="js/data.js"></script>
+				</a>
+				<a class="nav-tes real-clock">
+					<span id="real-clock"></span>
+				</a>
+			</li>
+		</ul>
+
+	</nav>
 
 	<div class="container tttt">
-		<div class="row "style ="padding:-20%;">
+		<div class="row " style="padding:-20%;">
 			<div class="col-lg-6 offset-md-3 login-form-1">
 				<h3>SisCon</h3>
-				<center >
+				<center>
 					<small style="font-size: 16px;">Recuperar Senha</small>
 				</center>
 				<form action="recovery_senha.php" method="post">
@@ -60,15 +68,15 @@
 						<input type="submit" id="btn" class="btnSubmit" value="enviar" />
 					</div>
 				</form>
-					<a href="../index.php" > voltar </a>
+				<a href="../index.php"> voltar </a>
 			</div>
 
-<script>
-    setInterval(function () {
-        clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
-    }, 1000);
-     var clock = document.getElementById('real-clock');
-    </script>
+			<script>
+				setInterval(function() {
+					clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
+				}, 1000);
+				var clock = document.getElementById('real-clock');
+			</script>
 </body>
 
 </html>
