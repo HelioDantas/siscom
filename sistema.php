@@ -19,33 +19,38 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
     <link rel="stylesheet" href="/css/estilo.css">
     <link rel="stylesheet"  href="css/bootstrap.css" />
     
-    <style> p{color:white; } span{color :black } a {padding-left : 1%}</style>    
+    <style> p{color:white; } span{color :black } a {padding-left : 0%}</style>    
     
-
+    <style> a{ color: #2BBBAD;}</style>
+    
 
     <title>Sistema Siscon</title>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.php"><h2>SisCon</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+         
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <a class="navbar-brand" href="index.php"><h2>SisCon</h2></a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="sistema.php">Home <span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Convenios</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Cadastro</a>
-                </li>
-              </ul>
+           
+            <div class = "container">
+                 
+             <div id="navbarTogglerDemo01">
+                  <ul class="nav justify-content-center">
+            
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><h3>Sistema de consultorio Medico </h3> </a>
+                    </li>
+                
+                    </ul>
+                
+                </div>         
+             </div>
+                
+              
                 
                     <a class = "nav-item">  Seja bem vindo<strong> <?php echo $_SESSION["nome"] ?></strong></a>
                     <a class = "nav-item"><script type = "text/javascript" src = "js/data.js"></script></a>
