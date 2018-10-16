@@ -19,7 +19,7 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
     <link rel="stylesheet" href="/css/estilo.css">
     <link rel="stylesheet"  href="css/bootstrap.css" />
     
-    <style> p{color:white; } span{color :black } a {padding-left : 0%}</style>    
+    <style> p{color:white; } span{color :black } </style>    
     
     <style> a{ color: #2BBBAD;}</style>
     
@@ -38,24 +38,20 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
            
             <div class = "container">
                  
-             <div id="navbarTogglerDemo01">
+             
                   <ul class="nav justify-content-center">
             
                     <li class="nav-item ">
                         <a class="nav-link" href="#"><h3>Sistema de consultorio Medico </h3> </a>
                     </li>
                 
-                    </ul>
-                
-                </div>         
+                    </ul>          
+                  
              </div>
-                
-              
-                
-                    <a class = "nav-item">  Seja bem vindo<strong> <?php echo $_SESSION["nome"] ?></strong></a>
-                    <a class = "nav-item"><script type = "text/javascript" src = "js/data.js"></script></a>
-                    <a class = "nav-tes" ><span id="real-clock"></span></a>
-                    <a class = "nav-link" href="sair.php">Sair</a>
+                    <a class = "nav-item layat">  Seja bem vindo<strong> <?php echo $_SESSION["nome"] ?></strong></a>
+                    <a class = "nav-item layat"><script type = "text/javascript" src = "js/data.js"></script></a>
+                    <a class = "nav-tes layat" ><span id="real-clock"></span></a>
+                    <a class = "nav-link layat" href="sair.php">Sair</a>
             </div>
           </nav>
 
