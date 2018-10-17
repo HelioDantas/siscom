@@ -49,7 +49,7 @@ if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"
 
 
 		<ul class="navbar-nav ml-auto">
-			<li class=n av-item dropdown>
+			<li class="nav-item dropdown">
 				<a class="nav-item">
 					<script type="text/javascript" src="js/data.js"></script>
 				</a>
@@ -115,6 +115,14 @@ if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"
         <a href="index.php"> SinCon</a>
         </div> 
     </footer>-->
+
+  <div class="foot">
+	<i>
+		<div align="center">&copy SisCon - Todos os direitos reservados     
+			</div>
+		</i>
+	</div>
+
 </body>
 
 </html>

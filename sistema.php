@@ -39,13 +39,10 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
 		}
 	</style>
 
-	
-
 	<title>Sistema Siscon</title>
 </head>
 
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="index.php">
 			<h2>SisCon</h2>
