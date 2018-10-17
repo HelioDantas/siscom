@@ -19,11 +19,8 @@ if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"
 	 crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/css/estilo.css">
-	<style>
-		a {
-			color: #2BBBAD;
-		}
-	</style>
+
+
 
 </head>
 
@@ -40,7 +37,7 @@ if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"
 
 					<li class="nav-item ">
 						<a class="nav-link" href="#">
-							<h3>Sistema de consultorio Medico </h3>
+							<h2 class = "b">Sistema de consultorio Médico </h2>
 						</a>
 					</li>
 

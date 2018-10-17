@@ -92,11 +92,7 @@
             text-align: center;
         }
        a{ color: #2BBBAD;}
-       h2{
-
-        color: #2BBBAD;
-
-       }
+     
       .layat {
 
         padding-left : 1%;
@@ -105,4 +101,8 @@
        .white{
 
            background: white;
+       }
+       .a{ color: #2BBBAD;}
+       .b{ color: black;
+       
        }

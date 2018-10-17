@@ -39,12 +39,7 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
 		}
 	</style>
 
-	<style>
-		a {
-			color: #2BBBAD;
-		}
-	</style>
-
+	
 
 	<title>Sistema Siscon</title>
 </head>
@@ -69,7 +64,7 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
 
 					<li class="nav-item ">
 						<a class="nav-link" href="#">
-							<h3>Sistema de consultorio Medico </h3>
+							<h2 class = "b">Sistema de consultorio Medico </h2>
 						</a>
 					</li>
 
@@ -92,26 +87,26 @@ if (obterSessao('usuario_matricula') === null || !isset($_COOKIE["usuario_logado
 	</nav>
 	<ul class="nav nav-tabs white">
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+			<a class="nav-link dropdown-toggle a" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="#">Pacientes</a>
-				<a class="dropdown-item" href="#">Funcionários</a>
-				<a class="dropdown-item" href="#">Convênios</a>
-				<a class="dropdown-item" href="#">Procedimentos</a>
-				<a class="dropdown-item" href="#">Laboratórios</a>
+				<a class="dropdown-item a" href="#">Pacientes</a>
+				<a class="dropdown-item a" href="#">Funcionários</a>
+				<a class="dropdown-item a" href="#">Convênios</a>
+				<a class="dropdown-item a" href="#">Procedimentos</a>
+				<a class="dropdown-item a" href="#">Laboratórios</a>
 		</li>
 
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Agenda</a>
+			<a class="nav-link dropdown-toggle a" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Agenda</a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="#">Pacientes</a>
 				<a class="dropdown-item" href="#">Eventos</a>
 		</li>
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registro Clínico</a>
+			<a class="nav-link dropdown-toggle a" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registro Clínico</a>
 		</li>
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Relatórios</a>
+			<a class="nav-link dropdown-toggle a" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Relatórios</a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="#">Valores</a>
 				<a class="dropdown-item" href="#">Convênios</a>
