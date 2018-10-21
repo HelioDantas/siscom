@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header h5{
+    margin-top: 2%;
+    margin-left:2%;
+    float: left;
+    font-size: 22px;
+}
+
+header h1{
+    text-align: center;
+    margin-top: 2%;
+}
+
+header span{
+    margin-top: 2%;
+    float: right;
+    padding-right: 3%;
+}
+
+nav{
+    margin-top:5%;
+}
+#navbarColor01{
+    color:blue;
+}
