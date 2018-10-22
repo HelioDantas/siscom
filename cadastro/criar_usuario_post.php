@@ -1,4 +1,5 @@
 <?php
+
 require_once('../classes/usuario.php');
 
 $user = new Usuario;

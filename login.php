@@ -1,13 +1,15 @@
 <?php
+
+use classes\Usuario;
 if (isset($_POST['matricula'], $_POST['senha'])) {
     require_once ("session.php");
-    require_once ("database.php");
+    //require_once ("classes/usuario.php");
 
     $matricula = $_POST['matricula'];
     $senha = $_POST['senha'];
 
-    if (ehUsuarioValido($matricula, $senha)) {
-        $usuario = obterUsuario($matricula);
+    if (Usuario::ehUsuarioValido($matricula, $senha)) {
+        $usuario = Usuario::obterUsuario($matricula);
         session_start();
         $_SESSION ["nome"]= $usuario["nome"];
 

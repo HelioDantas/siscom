@@ -1,91 +1,114 @@
 <?php
-require_once '../database.php';
-
+namespace classes;
+use database\database;
+  
 Class Usuario
 {
 
-private $nome;
-private $matricula;
-private $senha;
-private $email;
+    private $nome;
+    private $matricula;
+    private $senha;
+    private $email;
+    public function setNome($nome){
+        $this->nome = $nome;
+    }
+
+    public function getNome(){
+        return $this->nome;
+    }
 
 
-public function inserir(){
+    public function setMatricula($matricula){
+        $this->matricula = $matricula;
+    }
 
-    $db = obterConexao();
-    $statement  = $db->prepare("Select matricula from raf_login where matricula = ?");
-    $statement->execute([$this->matricula]);
-    $resultado = $statement->fetch(PDO::FETCH_ASSOC);
-    if (!$resultado) {
-        $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
-        $db->exec($query);
-        return true;
-    }else{
-        return false;
+    public function getMatricula(){
+        return $this->matricula;
+    }
+
+    public function setSenha($senha){
+        $this->senha = password_hash($senha,1);
+    }
+
+    public function getSenha(){
+        return $this->senha;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+
+    public function inserir(){
+
+        $db = database::obterConexao();
+        $statement  = $db->prepare("Select matricula from raf_login where matricula = ?");
+        $statement->execute([$this->matricula]);
+        $resultado = $statement->fetch(PDO::FETCH_ASSOC);
+        if (!$resultado) {
+            $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
+            $db->exec($query);
+            return true;
+        }else{
+            return false;
+
+        }
 
     }
 
-}
+    public function getUsuarioForEmail($email) {
+        $db = obterConexao();
 
-public function getUsuarioForEmail($email)
-{
-    $db = obterConexao();
+        $statement = $db->prepare("SELECT * FROM raf_login WHERE email = ?");
+        $statement->execute([$email]);
+        $resultado = $statement->fetch(PDO::FETCH_ASSOC);
 
-    $statement = $db->prepare("SELECT * FROM raf_login WHERE email = ?");
-    $statement->execute([$email]);
-    $resultado = $statement->fetch(PDO::FETCH_ASSOC);
-
-    if (!$resultado) {
-        return new Exception("Error! usuario não e valido", 1);
-        
+        if (!$resultado) {
+            return new Exception("Error! usuario não e valido", 1);
+            
+        }
+        return $resultado;
     }
-    return $resultado;
-}
 
-function updateSenha($senha,$id)
-{
-$db = obterConexao();
+    function updateSenha($senha,$id){
 
-$statement =$db->prepare("UPDATE raf_login set senha = ? WHERE id_user = ?");
-$statement ->execute([$senha,$id]);
-}
+        $db = obterConexao();
 
-public function setNome($nome){
-    $this->nome = $nome;
-}
+        $statement =$db->prepare("UPDATE raf_login senha = ? WHERE id_user = ?");
+        $statement ->execute([$senha],[$id]);
 
-public function getNome(){
-    return $this->nome;
-}
+    }
 
 
-public function setMatricula($matricula){
-    $this->matricula = $matricula;
-}
+    static function  obterUsuario($matricula){
+        $db = database::obterConexao();
 
-public function getMatricula(){
-    return $this->matricula;
-}
+        $statement = $db->prepare("SELECT * FROM raf_login WHERE matricula = ?");
+        $statement->execute([$matricula]);
 
-public function setSenha($senha){
-    $this->senha = password_hash($senha,1);
-}
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 
-public function getSenha(){
-    return $this->senha;
-}
+   static function  ehUsuarioValido(string $matricula, string $password){
+        $db = database::obterConexao();
 
-public function setEmail($email)
-{
-    $this->email = $email;
-}
+        $statement = $db->prepare("SELECT * FROM raf_login WHERE matricula = ?");
+        $statement->execute([$matricula]);
 
-public function getEmail()
-{
-    return $this->email;
-}
+        $resultado = $statement->fetch(PDO::FETCH_ASSOC);
 
+        if (!$resultado) {
+            return false;
+        }
 
+        return password_verify($password, $resultado['senha']);
+    }
 
 
 
