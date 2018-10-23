@@ -68,7 +68,7 @@ Class Usuario
     }
 
     public function getUsuarioForEmail($email) {
-        $db = obterConexao();
+        $db = database::obterConexao();
 
         $statement = $db->prepare("SELECT * FROM raf_login WHERE email = ?");
         $statement->execute([$email]);
@@ -83,7 +83,7 @@ Class Usuario
 
     function updateSenha($senha,$id){
 
-        $db = obterConexao();
+        $db = database::obterConexao();
 
         $statement =$db->prepare("UPDATE raf_login senha = ? WHERE id_user = ?");
         $statement ->execute([$senha],[$id]);

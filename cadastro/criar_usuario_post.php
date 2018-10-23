@@ -1,7 +1,7 @@
 <?php
 
 use classes\Usuario;
-require_once('../classes\Usuario.php');
+require_once('../classes/Usuario.php');
 
 
 $user = new Usuario;

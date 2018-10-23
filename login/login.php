@@ -10,7 +10,6 @@ if (isset($_POST['matricula'], $_POST['senha'])) {
 
     if (Usuario::ehUsuarioValido($matricula, $senha)) {
         $usuario = Usuario::obterUsuario($matricula);
-        echo $usuario->matricula;
         session_start();
         $_SESSION ["nome"]= $usuario["nome"];
 
