@@ -11,7 +11,17 @@
 
         <div class="container">
             <div class="row">
-                <h5>teste login</h5>
+                {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!}} @csrf
+                <div class="col s12 cm-6">
+                    <label for="Cpf"> Cpf</label>
+                    <input type="text" id="Cf" name="cpf">
+                </div>
+                <div class="col s12 cm-6">
+                    <label for="senha"> senha</label>
+                    <input type="password" id="senha" name="senha">
+                </div>
+                <input type="submit" value="entrar" >
+                {!! Form::close() !!}}
             </div>
         </div>
 </body>

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,29 +12,51 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 /**
  * Rotas para cadastro paciente
  * 
  */
 
-Route::get('/', function () {
-    return 'tela cade paciente';
-});
-
-
-Route::get('/pacientes' , 'PacienteController@listar');
-Route::get('/home', function(){
-    return view('sistema');
-});
-
-
-/**
- * Routes to login users
- * 
+/**         Rotas Relacionadas a autenticação
+ * ========================================================================================
+ *  Admin 
+ *  Usuario comuns .. secretaria e medico
  */
+
+/**     Rotas Admin
+ * =============================================================
+ */
+
+
+
+  /** Rota redirecionar quando autenticado */
+Route::get('/',['uses' => 'Controller@home'])->middleware('autorizador')->name('home');
+//Route::get('/home','Controller@home')->middleware('autorizador')->name('home');
+
+
+/** Rota redirecionar quando não autenticado */
+//Route::get('/', 'LoginController@formCad')->name('formulario');
+
+/** Rota para enviar as infos da requisição para autenticação no method login */
 Route::post('/login','LoginController@login');
-Route::get('/login','LoginController@form');
 
 
-Route::get('/cad' , 'LoginController@cad');
+//Route::get('/pacientes' , 'PacienteController@listar')->middleware('autorizador');
+
+
+
+
+
+/**=========================================================================== *
+ * Rotas ara autenticação,
+ * Definindo Rota "/login" como("as") 'user.login'
+ * direcionando pro metodo login em controller.
+ * =========================================================================== *
+ */
+Route::get('/login' , ['uses' => 'LoginController@formLogin']);
+Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
+
+
+
+
+//Route::get('/cad' , 'LoginController@cad');

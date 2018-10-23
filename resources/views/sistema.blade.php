@@ -23,7 +23,7 @@
             <h1>Sistema de Consultorio Medico</h1>
             <span>data</span>
             <span>hora</span>
-            <span>sessao expira</span>
+            <span style="color:red;">sessao expira em 5 minutos</span>
             <span>mensagem de bem vindo </span>
 		</header>
     </div>
