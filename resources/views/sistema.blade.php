@@ -68,7 +68,7 @@
             <h5>Siscon</h5>
             <h1>Sistema de Consultorio Medico</h1>
             <span>data</span>
-            <span>hora</span>
+            <span id="real-clock"></span>
             <span style="color:red;">sessao expira em 5 minutos</span>
             <span>mensagem de bem vindo </span>
 		</header>
@@ -152,7 +152,7 @@
                 <div class="modal-header">
                   <h5 class="modal-title">Sair</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">Ã—</span>
+                    <span aria-hidden="true">×</span>
                   </button>
                 </div>
                 <div class="modal-body">
@@ -174,7 +174,7 @@
                   </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted text-center">Â© 2018-2019</p>
+                <p class="mt-5 mb-3 text-muted text-center">© 2018-2019</p>
               </form>
           
                 </div>
@@ -198,9 +198,17 @@
         </div>
     </div>
 
-	<footer>Â© 2018-2019</footer>
+	<footer>© 2018-2019</footer>
   <!-- this template is made by silvan paul -->
   <script src="/js/app.js"></script>
+  
+  <script>
+		setInterval(function() {
+			clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
+		}, 1000);
+		var clock = document.getElementById('real-clock');
+	</script>
+  
   <script>
   $('ul.nav li.dropdown').hover(function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
