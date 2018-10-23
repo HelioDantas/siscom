@@ -1,5 +1,6 @@
 <?php
 namespace database;
+use PDO;
 
 define('DB_HOST', 'wmysdes01v');
 define('DB_USER', 'tresta');
@@ -9,7 +10,7 @@ class database{
 
 
 
-static function obterConexao(){
+ static function obterConexao(){
 
     return new PDO(sprintf("mysql:host=%s;dbname=%s", DB_HOST, DB_NAME), DB_USER, DB_PASS);
    //return new PDO("mysql:host=wmysdes01v;dbname=tresta,tresta,Mass55");

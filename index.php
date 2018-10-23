@@ -1,5 +1,5 @@
 <?php
-require_once('session.php');
+require_once('login/session.php');
 
 if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"])) {
     header("Location: sistema.php");
@@ -71,7 +71,7 @@ if (obterSessao('usuario_matricula') !== null && isset($_COOKIE["usuario_logado"
 						<strong>Login de Acesso</strong>
 					</small>
 				</center>
-				<form action="login.php" method="post">
+				<form action="login/login.php" method="post">
 
 					<div class="form-group">
 						<input type="text" name="matricula" class="form-control is-valid" placeholder="Matricula" value="" />

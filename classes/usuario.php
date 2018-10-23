@@ -1,7 +1,12 @@
 <?php
+
 namespace classes;
 use database\database;
-  
+use PDO;
+require_once "../database/database.php";
+use Exception;
+
+
 Class Usuario
 {
 
@@ -91,7 +96,7 @@ Class Usuario
 
         $statement = $db->prepare("SELECT * FROM raf_login WHERE matricula = ?");
         $statement->execute([$matricula]);
-
+                
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 

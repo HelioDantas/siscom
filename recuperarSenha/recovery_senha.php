@@ -1,7 +1,7 @@
 <?php
 
-
-require_once('../classes/usuario.php');
+use classes\Usuario;
+require_once('../classes/Usuario.php');
 require_once('../EnviaEmail.php');
 require_once('../teste.php');
 require_once( '../gerarSenha.php');
