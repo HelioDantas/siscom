@@ -14,6 +14,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
     <link rel="stylesheet" href="/css/app.css"> 
     <link rel="stylesheet" href="/css/home.css"> 
+    <style>
+      .dropbtn {
+          background-color: #4CAF50;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          
+      }
+      
+      .dropdown {
+          position: relative;
+          display: inline-block;
+      }
+      
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+          text-align: center;
+      }
+      
+      .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+
+      }
+      
+      .dropdown-content a:hover {background-color: #ddd;}
+      
+      .dropdown:hover .dropdown-content {display: block;}
+      
+      .dropdown:hover .dropbtn {background-color: #3e8e41;}
+      nav{
+       background-color:  #4CAF50;
+      }
+      ul li{
+        text-align: center;
+      }
+      
+      </style>
 </head>
 <body>
     <!-- header -->
@@ -39,33 +85,59 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto col-sm-3 col-md-3">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+              <div class="dropdown">
+                <button class="dropbtn">Cadastro</button>
+                <div class="dropdown-content">
+                  <a href="#">Paciente</a>
+                  <a href="#">Convenios</a>
+                  <a href="#">Medico</a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Convenios</a>
+              <div class="dropdown">
+                <button class="dropbtn">Convenios</button>
+                <div class="dropdown-content">
+                  <a href="#">Aceitos</a>
+                  <a href="#">Consultar</a>
+                  <a href="#"></a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Agenda</a>
+              <div class="dropdown">
+                <button class="dropbtn">Agenda</button>
+                <div class="dropdown-content">
+                  <a href="#">Adicionar</a>
+                  <a href="#">Adicionar</a>
+                  <a href="#">Adicionar</a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Medicos</a>
+              <div class="dropdown">
+                <button class="dropbtn">Medicos</button>
+                <div class="dropdown-content">
+                  <a href="#">Adicionar</a>
+                  <a href="#">Adicionar</a>
+                  <a href="#">Adicionar</a>
+                </div>
+              </div>
             </li>
 			<li class="nav-item">
-				<div class="dropdown show">
-				  <a class="btn nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					cadastro
-				  </a>
-
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="#">Pacientes</a>
-					<a class="dropdown-item" href="#">Convenios</a>
-					<a class="dropdown-item" href="#">Funcionarios</a>
-				  </div>
+        <div class="dropdown">
+          <button class="dropbtn">Pacientes</button>
+          <div class="dropdown-content">
+            <a href="#">Adicionar</a>
+            <a href="#">Adicionar</a>
+            <a href="#">Adicionar</a>
+          </div>
+        </div>
 				</div>
 			</li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-secondary my-2 my-sm-0 blue" type="button" data-toggle="modal" data-target="#loginModal">Sair</button>
+            <button class="btn btn-secondary my-2 my-sm-0 dodgerblue" type="button" data-toggle="modal" data-target="#loginModal">Sair</button>
           </form>
         </div>
     </nav>
@@ -129,5 +201,12 @@
 	<footer>© 2018-2019</footer>
   <!-- this template is made by silvan paul -->
   <script src="/js/app.js"></script>
+  <script>
+  $('ul.nav li.dropdown').hover(function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+}, function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+});
+  </script>
 </body>
 </html>

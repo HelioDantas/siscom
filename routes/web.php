@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/**
- * Rotas para cadastro paciente
- * 
- */
+Route::get('/' ,['uses' => 'Controller@dashboard']);
+
+//Route::get('/home' ,['uses' => 'Controller@dashbo'])
+
 
 /**         Rotas Relacionadas a autenticação
  * ========================================================================================
@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Session;
 
 
   /** Rota redirecionar quando autenticado */
-Route::get('/',['uses' => 'Controller@home'])->middleware('autorizador')->name('home');
+//Route::get('/',['uses' => 'Controller@home'])->middleware('autorizador')->name('home');
 //Route::get('/home','Controller@home')->middleware('autorizador')->name('home');
 
 
