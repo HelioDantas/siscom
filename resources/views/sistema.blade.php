@@ -68,7 +68,8 @@
             <h5>Siscon</h5>
             <h1>Sistema de Consultorio Medico</h1>
             <span>data</span>
-            <span id="real-clock"></span>
+            <span id='real-clock'></span>
+            <span>teste</span>
             <span style="color:red;">sessao expira em 5 minutos</span>
             <span>mensagem de bem vindo </span>
 		</header>
@@ -152,7 +153,7 @@
                 <div class="modal-header">
                   <h5 class="modal-title">Sair</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">ï¿½</span>
                   </button>
                 </div>
                 <div class="modal-body">
@@ -174,7 +175,7 @@
                   </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted text-center">© 2018-2019</p>
+                <p class="mt-5 mb-3 text-muted text-center">ï¿½ 2018-2019</p>
               </form>
           
                 </div>
@@ -198,7 +199,7 @@
         </div>
     </div>
 
-	<footer>© 2018-2019</footer>
+	<footer>ï¿½ 2018-2019</footer>
   <!-- this template is made by silvan paul -->
   <script src="/js/app.js"></script>
   
