@@ -11,7 +11,7 @@ Class Usuario
 {
 
     private $nome;
-    private $matricula;
+    private $Sis_funcionario_matricula;
     private $senha;
     private $email;
     public function setNome($nome){
@@ -23,12 +23,12 @@ Class Usuario
     }
 
 
-    public function setMatricula($matricula){
-        $this->matricula = $matricula;
+    public function setSis_funcionario_matricula($matricula){
+        $this->Sis_funcionario_matricula = $matricula;
     }
 
-    public function getMatricula(){
-        return $this->matricula;
+    public function getSis_funcionario_matricula(){
+        return $this->Sis_funcionario_matricula;
     }
 
     public function setSenha($senha){
@@ -53,11 +53,11 @@ Class Usuario
     public function inserir(){
 
         $db = database::obterConexao();
-        $statement  = $db->prepare("Select matricula from raf_login where matricula = ?");
-        $statement->execute([$this->matricula]);
+        $statement  = $db->prepare("Select Sis_funcionario_matricula from sis_usuario where Sis_funcionario_matricula = ?");
+        $statement->execute([$this->Sis_funcionario_matricula]);
         $resultado = $statement->fetch(PDO::FETCH_ASSOC);
         if (!$resultado) {
-            $query = "INSERT INTO  raf_login (nome,matricula,senha) VALUES('".$this->nome."','".$this->matricula."','".$this->senha."')";
+            $query = "INSERT INTO  sis_usuario (nome,Sis_funcionario_matricula,senha) VALUES('".$this->nome."','".$this->Sis_funcionario_matricula."','".$this->senha."')";
             $db->exec($query);
             return true;
         }else{
@@ -70,7 +70,7 @@ Class Usuario
     public function getUsuarioForEmail($email) {
         $db = database::obterConexao();
 
-        $statement = $db->prepare("SELECT * FROM raf_login WHERE email = ?");
+        $statement = $db->prepare("SELECT * FROM sis_usuario WHERE email = ?");
         $statement->execute([$email]);
         $resultado = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -85,25 +85,25 @@ Class Usuario
 
         $db = database::obterConexao();
 
-        $statement =$db->prepare("UPDATE raf_login senha = ? WHERE id_user = ?");
+        $statement =$db->prepare("UPDATE sis_usuario senha = ? WHERE idusuario = ?");
         $statement ->execute([$senha],[$id]);
 
     }
 
 
-    static function  obterUsuario($matricula){
+   public  function  obterUsuario($matricula){
         $db = database::obterConexao();
 
-        $statement = $db->prepare("SELECT * FROM raf_login WHERE matricula = ?");
+        $statement = $db->prepare("SELECT * FROM sis_usuario WHERE Sis_funcionario_matricula = ?");
         $statement->execute([$matricula]);
                 
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-   static function  ehUsuarioValido(string $matricula, string $password){
+   public function  ehUsuarioValido(string $matricula, string $password){
         $db = database::obterConexao();
 
-        $statement = $db->prepare("SELECT * FROM raf_login WHERE matricula = ?");
+        $statement = $db->prepare("SELECT * FROM sis_usuario WHERE Sis_funcionario_matricula = ?");
         $statement->execute([$matricula]);
 
         $resultado = $statement->fetch(PDO::FETCH_ASSOC);

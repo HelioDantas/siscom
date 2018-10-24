@@ -7,7 +7,7 @@ require_once('../classes/Usuario.php');
 $user = new Usuario;
 
 $user->setNome($_POST['nome']);
-$user->setMatricula($_POST['matricula']);
+$user->setSis_funcionario_matricula($_POST['matricula']);
 $user->setSenha($_POST['senha']);
 
 if ($user->inserir()){

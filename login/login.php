@@ -7,13 +7,13 @@ if (isset($_POST['matricula'], $_POST['senha'])) {
 
     $matricula = $_POST['matricula'];
     $senha = $_POST['senha'];
-
-    if (Usuario::ehUsuarioValido($matricula, $senha)) {
-        $usuario = Usuario::obterUsuario($matricula);
+    $user = new Usuario;
+    if ($user->ehUsuarioValido($matricula, $senha)) {
+        $usuario = $user->obterUsuario($matricula);
         session_start();
         $_SESSION ["nome"]= $usuario["nome"];
 
-        criarSessao('usuario_matricula', $usuario['matricula']);
+        criarSessao('usuario_matricula', $usuario['Sis_funcionario_matricula']);
         setcookie("usuario_logado", $usuario["nome"], time() + 60 *60);
 
         header("Location: ../sistema.php");
