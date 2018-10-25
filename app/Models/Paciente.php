@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paciente extends Model
 {
-    protected $table = 'pacientes';
+    protected $table = 'sis_paciente';
     public $timestamps = false;
 
     protected $fillable = array();
