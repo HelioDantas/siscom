@@ -1,66 +1,68 @@
-<?php 
-namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
-use App\Models\Paciente;
+<?php
 
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PacienteController extends Controller
 {
+    
+    public function index()  
+    {
+        //  listar pacientes.
 
-//public function __construct()
-//{
-    /**=========================================================================================* 
-     * vai verificar na camada middleware se o usuario atual tem permissao pra acessar
-     * esse recurso da aplicação ,
-     * e so usuarios autenticados e logados teram o acesso.
-     * =========================================================================================*
-     */
-  //  $this->middleware('autorizador');
-//}
-
-public function listar(){
-    $pacientes = Paciente::all();
-    return view('listarPacientes')->with('pacientes',$pacientes);
+        $pacientes = Paciente::all();
+        return view('listarPacientes')->with('pacientes',$pacientes);
     }
-    //return view('listarPacientes');
 
-public function mostrar(){
+    
+    public function create() 
+    {
+        //  form de um novo produto
+
+        return 'formulario para cadastrar um novo paciente';
+    }
+
+   
+    public function store(Request $request) 
+    {
+        //  recebe request , dos dados dos formularios
+
+        $req = 'dados' . $request->input('nome'); //passado no form
+        return reponse($req ,201);
+    }
+
+  
+    public function show($id) 
+    {
+        //  buscar porid
     $id = Request::route('id');
-    $produto = Produto::find($id);
-    return view('detalhes')->with('p', $produto);
+    $paciente = Paciente::find($id);
+    return view('detalhes')->with('paciente', $aciente);
+    }
+
+  
+    public function edit($id) 
+    {
+        //  editar
+        return 'forme edit paciente';
+    }
+
+    public function update(Request $request, $id)
+    {
+        //  atualizar
+        return 'retorna reponse com o estatus 200';
+    }
+
+   
+    public function destroy($id)
+    {
+        //  deletar
+
+        $produto = Produto::find($id);
+        $produto->delete();
+        return redirect()->action('PacienteController@listar');
+        //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
+    }
 }
-
-public function novo(){
-    return view('form'); //retorn formulario para um novo cadastro de cliente.
-}
-
-
-public function adicionar(){
-    $params = $request->all();
-    $paciente = new Paciente($params);
-    $paciente->save();
-    /**
-     * Produto::create(Request::all());  pode ser add assim tbm
-     * =============================================================
-     *                  Mais Usado e mais comum de se usar.
-     * $params = Request::all();     
-     * Produto::create($params);
-     * ============================================================
-     */
-    return redirect('/rota que deve ir depois de ser redirecionado')->withInput();
-}
-
-public function remove($id){
-    //$id = Request::route('id'); com parametro o laravel ja sabe que e ra buscar o id da requisição.
-    $produto = Produto::find($id);
-    $produto->delete();
-    return redirect()->action('PacienteController@listar');
-    //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
-}
-
-public function atualizar(){
-
-}
-
-}
-

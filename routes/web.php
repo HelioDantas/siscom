@@ -60,3 +60,24 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
 
 
 //Route::get('/cad' , 'LoginController@cad');
+
+
+/**             ROTAS REFENTE A CLIENTES - RAFAEL ALVARENGA
+ * ================================================================================*
+ * 
+ * 
+ * 
+ * 
+ * 
+ * =================================================================================*
+ */
+
+  
+
+
+//Route::prefix('pacientes')->group(function () {
+ //   Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
+//});
+
+
+Route::resource('/pacientes', 'PacienteController');  
