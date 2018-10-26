@@ -14,7 +14,7 @@
         margin-top:1.7rem; 
     }
     .endCentralizado > label{
-        color:red;
+        color:blue;
         text-aling:center;
         
     }
@@ -26,6 +26,9 @@
         margin-top:2rem;
         width:80rem;
     }
+    .naveg{
+        float: left;
+    }
 
 </style>
 @endsection
@@ -33,14 +36,18 @@
 
 @section('conteudo')
 
+        <h4 class="titulocadastro">Cadastro Paciente</h4>   
+@endsection
+@section('navegação')
 
-        <h4 class="titulocadastro">Cadastro Paciente</h4>
-    
+<span style="float:left;">butao salvar</span>
+<span>butao cancelar</span>
+<span>butao ...</span>
+<span></span>
+
 @endsection
 
-
 @section('tela')
-
 <div class="container">
 <form action="" method="post">
 

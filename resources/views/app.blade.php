@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="refresh" content="5">
+    <!--<meta http-equiv="refresh" content="5">-->
+    
     <!--<link rel="stylesheet" href="{{ 'css/app.css'}}"> 
     <link rel="stylesheet" href="{{'css/home.css'}}"> -->
+    
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
    <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}"> 
 
@@ -37,7 +39,6 @@
             </header>
         </div>
         <!-- end header -->
-    
     
         <!-- menu navbar -->
         <nav class="navbar navbar-expand-lg">
@@ -105,12 +106,12 @@
             </div>
         </nav>
         <!-- end navbar -->
-
+        
         @yield('conteudo')
     
-
+        @yield('navegação')
     
-        <div class="container-fluid corpo" style="background-color:red;">
+        <div class="container-fluid corpo" style="">
                 <div class="content">
                         @yield('tela')
                 <div class="col-md-10 text-center">
