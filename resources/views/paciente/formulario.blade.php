@@ -21,9 +21,23 @@
     .form-control{
         border-radius:10px 10px; 
     }
+    .titulocadastro{
+        margin:0 auto;
+        margin-top:2rem;
+        width:80rem;
+    }
 
 </style>
 @endsection
+
+
+@section('conteudo')
+
+
+        <h4 class="titulocadastro">Cadastro Paciente</h4>
+    
+@endsection
+
 
 @section('tela')
 

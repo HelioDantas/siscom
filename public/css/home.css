@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+body{
+background-color: #eceff1;
+}
 header .logo{
     margin-top: 2%;
     margin-left:2%;
@@ -11,15 +14,16 @@ header .logo{
     font-size: 2rem;
 }
 
+
 header h1{
     text-align: center;
-    margin-top: 2%;
+    margin-top: 2%; 
 }
 
 header span{
     margin-top: 2%;
     float: right;
-    padding-right: 3%;
+    padding-right: 3%; 
 }
 
 nav{

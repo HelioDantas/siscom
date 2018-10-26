@@ -12,21 +12,31 @@
 
     <title>SisCom</title>
     @yield('estilos')
+    <style>
+        .corpo{
+           margin-top:3rem;
+        }
+        
+    
+    </style>
 </head>
 <body>
         <!-- header -->
-        <div class="container-fluid header #eceff1">
+        <div class="container-fluid agoravai">
             <header style="color:#000000;">
+               <div class="agoravai">
                 <h2 class="logo"><strong>Siscon</strong></h2>
                 <h1>Sistema de Consultorio Medico</h1>
+                
                 <span id='real-clock'></span>
                 <span><script type="text/javascript" src="/js/data.js"></script></span>
                 <span style="color:red;">sessao expira em 5 minutos</span>
                 <span>mensagem de bem vindo </span>
+                
+                </div>
             </header>
         </div>
         <!-- end header -->
-        
     
     
         <!-- menu navbar -->
@@ -100,8 +110,8 @@
     
 
     
-        <div class="container-fluid">
-                <div class="content row">
+        <div class="container-fluid corpo" style="background-color:red;">
+                <div class="content">
                         @yield('tela')
                 <div class="col-md-10 text-center">
                
