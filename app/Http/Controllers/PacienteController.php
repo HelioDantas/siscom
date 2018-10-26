@@ -17,11 +17,11 @@ class PacienteController extends Controller
     }
 
     
-    public function create() 
+    public function novo() 
     {
         //  form de um novo produto
 
-        return 'formulario para cadastrar um novo paciente';
+        return view('paciente.cadastro');
     }
 
    

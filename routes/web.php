@@ -80,4 +80,5 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
 //});
 
 
-Route::resource('/pacientes', 'PacienteController');  
+//Route::resource('/pacientes', 'PacienteController');
+Route::view('/pacientes/cad' , 'paciente.formulario');

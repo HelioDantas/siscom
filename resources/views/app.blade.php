@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<link rel="stylesheet" href="{{ 'css/app.css'}}"> 
+    <link rel="stylesheet" href="{{'css/home.css'}}"> -->
+    <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
+   <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}"> 
+
+    <title>SisCom</title>
+    @yield('estilos')
+</head>
+<body>
+        <!-- header -->
+        <div class="container-fluid header #eceff1">
+            <header style="color:#000000;">
+                <h2 class="logo"><strong>Siscon</strong></h2>
+                <h1>Sistema de Consultorio Medico</h1>
+                <span id='real-clock'></span>
+                <span><script type="text/javascript" src="js/data.js"></script></span>
+                <span style="color:red;">sessao expira em 5 minutos</span>
+                <span>mensagem de bem vindo </span>
+            </header>
+        </div>
+        <!-- end header -->
+    
+    
+        <!-- menu navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarColor01">
+              <ul class="navbar-nav mr-auto col-sm-3 col-md-3">
+                <li class="nav-item active">
+                  <div class="dropdown">
+                    <button class="dropbtn">Cadastro</button>
+                    <div class="dropdown-content">
+                      <a href="pacientes/cad">Paciente</a>
+                      <a href="#">Convenios</a>
+                      <a href="#">Medico</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="dropdown">
+                    <button class="dropbtn">Convenios</button>
+                    <div class="dropdown-content">
+                      <a href="#">Aceitos</a>
+                      <a href="#">Consultar</a>
+                      <a href="#"></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="dropdown">
+                    <button class="dropbtn">Agenda</button>
+                    <div class="dropdown-content">
+                      <a href="#">Adicionar</a>
+                      <a href="#">Adicionar</a>
+                      <a href="#">Adicionar</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="dropdown">
+                    <button class="dropbtn">Medicos</button>
+                    <div class="dropdown-content">
+                      <a href="#">Adicionar</a>
+                      <a href="#">Adicionar</a>
+                      <a href="#">Adicionar</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+            <div class="dropdown">
+              <button class="dropbtn">Pacientes</button>
+              <div class="dropdown-content">
+                <a href="#">Adicionar</a>
+                <a href="#">Adicionar</a>
+                <a href="#">Adicionar</a>
+              </div>
+            </div>
+                    </div>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <button class="btn sair #26a69a" type="button"><strong>Sair</strong></button>
+              </form>
+            </div>
+        </nav>
+        <!-- end navbar -->
+        @yield('conteudo')
+    
+    
+        <div class="container-fluid">
+                <div class="content row">
+                        @yield('tela')
+                <div class="col-md-10 text-center">
+               
+              </div>
+                    
+                </div>
+            </div>
+  
+
+    
+    <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+		setInterval(function() {
+			clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
+		}, 1000);
+		var clock = document.getElementById('real-clock');
+	</script>
+    @yield('scripts')
+    <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script> 
+</body>
+</html>

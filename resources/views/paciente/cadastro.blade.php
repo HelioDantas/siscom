@@ -1,19 +1,24 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+@extends('app')
 
-<!DOCTYPE html>
-<head>
+@section('estilos')
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
 
+</style>
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+@endsection
+
+@section('conteudo')
     
-</head>
-<body>
 
 <form class="form-horizontal">
 <fieldset>
 <div class="panel panel-primary">
-    <div class="panel-heading">Cadastro de Cliente</div>
+    <div class="panel-heading">Cadastro de Paciente</div>
     
     <div class="panel-body">
 <div class="form-group">
@@ -424,6 +429,8 @@
 
 </fieldset>
 </form>
+@endsection
 
-</body>
-</html>
+@section('scripts')
+
+@endsection
