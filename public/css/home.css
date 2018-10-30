@@ -34,12 +34,16 @@ nav{
 }
 
 .dropbtn {
-    background-color: #eceff1;
+    background-color:#b2dfdb;
     color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     
+}
+
+.corpo{
+    background-color:#e0e0e0;
 }
 
 .dropdown {
@@ -72,7 +76,7 @@ nav{
 .dropdown:hover .dropbtn {background-color: #26a69a;}
 .sair:hover {background-color: #26a69a;}
 nav{
- background-color: #eceff1 ;
+ background-color: #b2dfdb ;
 }
 ul li{
   text-align: center;

@@ -29,6 +29,9 @@
     .naveg{
         float: left;
     }
+    .navegacao{
+        text-align:right ;
+    }
 
 </style>
 @endsection
@@ -40,10 +43,12 @@
 @endsection
 @section('navegação')
 
-<span style="float:left;">butao salvar</span>
-<span>butao cancelar</span>
-<span>butao ...</span>
-<span></span>
+<div class="form-group navegacao">
+        <div class="col-8">
+          <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+          <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+        </div>
+      </div>
 
 @endsection
 
@@ -180,6 +185,29 @@
 </div><!-- row endereco -->
     
 </fieldset><!--endereço-->
+
+<div class="row">
+
+    <div class="col-3">
+    <div class="form-group">
+    
+        <label for="selectbasic">Escolaridade <h11>*</h11></label>
+        
+       
+          <select required id="escolaridade" name="escolaridade" class="form-control">
+          <option value=""></option>
+            <option value="Analfabeto">Analfabeto</option>
+            <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+            <option value="Fundamental Completo">Fundamental Completo</option>
+            <option value="Médio Incompleto">Médio Incompleto</option>
+            <option value="Médio Completo">Médio Completo</option>
+            <option value="Superior Incompleto">Superior Incompleto</option>
+            <option value="Superior Completo">Superior Completo</option>
+          </select>
+       
+    </div>
+</div>
+
    
 </form>
 </div><!-- container -->

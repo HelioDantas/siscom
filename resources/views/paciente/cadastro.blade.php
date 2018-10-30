@@ -9,7 +9,7 @@
 }
 
 </style>
-<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+
 @endsection
 
 @section('conteudo')
@@ -415,7 +415,7 @@
 </div>
 
 <!-- Button (Double) -->
-<div class="form-group">
+<div class="form-group nevegacao">
   <label class="col-md-2 control-label" for="Cadastrar"></label>
   <div class="col-md-8">
     <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>

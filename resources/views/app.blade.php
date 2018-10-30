@@ -107,17 +107,16 @@
         </nav>
         <!-- end navbar -->
         
+      
+    
+       
         @yield('conteudo')
-    
-        @yield('navegação')
-    
-        <div class="container-fluid corpo" style="">
+        @yield('navegação')   
+        <div class="container corpo" style="">
+            
                 <div class="content">
-                        @yield('tela')
-                <div class="col-md-10 text-center">
-               
-              </div>
-                    
+                   
+                        @yield('tela')  
                 </div>
             </div>
   
