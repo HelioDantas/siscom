@@ -84,3 +84,7 @@ Route::prefix('pacientes')->group(function () {
 
 
 //Route::resource('/pacientes', 'PacienteController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
