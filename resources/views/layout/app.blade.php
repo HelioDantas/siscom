@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--<meta http-equiv="refresh" content="5">-->
     
     <!--<link rel="stylesheet" href="{{ 'css/app.css'}}"> 
@@ -33,7 +34,7 @@
                 <h1>Sistema de Consultorio Medico</h1>
                 
                 <span id='real-clock'></span>
-                <span><script type="text/javascript" src="/js/data.js"></script></span>
+                <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
                 <span style="color:red;">sessao expira em 5 minutos</span>
                 <span>mensagem de bem vindo </span>
                 
@@ -122,13 +123,14 @@
     
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
 		setInterval(function() {
 			clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
 		}, 1000);
 		var clock = document.getElementById('real-clock');
-	</script>
-    @yield('scripts')
+  </script>
     <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script> 
+    @yield('scripts')
 </body>
 </html>

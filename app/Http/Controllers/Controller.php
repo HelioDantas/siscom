@@ -19,7 +19,11 @@ class Controller extends BaseController
     } */
 
     public function dashboard(){
-        return View('sistema');
+        return View('layout.app');
+    }
+
+    public function login(){
+        return View('user.login2');
     }
 
     

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\PacienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +13,8 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/' ,['uses' => 'Controller@dashboard']);
+//Route::get('/' ,['uses' => 'Controller@dashboard']);
+Route::get('/' ,['uses' => 'Controller@login']);
 
 //Route::get('/home' ,['uses' => 'Controller@dashbo'])
 
@@ -75,7 +77,10 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
 Route::prefix('pacientes')->group(function () {
   Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
   Route::get('cad' , 'PacienteController@novo')->name('paciente.novo');
+  Route::get('index','PacienteController@indexjs')->name('paciente.js');
+  Route::get('json','PacienteController@indexjson')->name('paciente.json');
 });
+
 
 
 //Route::resource('/pacientes', 'PacienteController');

@@ -8,15 +8,22 @@ use App\Models\Paciente;
 
 class PacienteController extends Controller
 {
+    function indexjs(){
+        return view('paciente.indexjs');
+    }
+
+    function indexjson(){
+        return Paciente::paginate(5);
+    }
     
-    public function listar()  
+  /*  public function listar()  
     {
         //  listar pacientes.
 
         //$pacientes = Paciente::all();
         $pacientes = Paciente::paginate(5);
         return view('paciente.listarPacientes' , compact('pacientes'));
-    }
+    } */
 
     
     public function novo() 
