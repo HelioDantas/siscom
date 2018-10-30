@@ -72,13 +72,10 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
  * =================================================================================*
  */
 
-  
-
-
-//Route::prefix('pacientes')->group(function () {
- //   Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
-//});
+Route::prefix('pacientes')->group(function () {
+  Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
+  Route::get('cad' , 'PacienteController@novo')->name('paciente.novo');
+});
 
 
 //Route::resource('/pacientes', 'PacienteController');
-Route::view('/pacientes/cad' , 'paciente.formulario');

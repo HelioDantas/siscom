@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,9 @@
     
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
    <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}"> 
-
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    
     <title>SisCom</title>
     @yield('estilos')
     <style>
@@ -52,7 +54,7 @@
                   <div class="dropdown">
                     <button class="dropbtn">Cadastro</button>
                     <div class="dropdown-content">
-                      <a href="pacientes/cad">Paciente</a>
+                      <a href="{{route('paciente.novo')}}">Paciente</a>
                       <a href="#">Convenios</a>
                       <a href="#">Medico</a>
                     </div>
@@ -92,7 +94,7 @@
             <div class="dropdown">
               <button class="dropbtn">Pacientes</button>
               <div class="dropdown-content">
-                <a href="#">Adicionar</a>
+              <a href="{{route('paciente.listar')}}">lesta de pacientes</a>
                 <a href="#">Adicionar</a>
                 <a href="#">Adicionar</a>
               </div>

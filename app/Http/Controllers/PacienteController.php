@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Paciente;
 
 class PacienteController extends Controller
 {
     
-    public function index()  
+    public function listar()  
     {
         //  listar pacientes.
 
         $pacientes = Paciente::all();
-        return view('listarPacientes')->with('pacientes',$pacientes);
+        return view('paciente.listarPacientes')->with('pacientes',$pacientes);
     }
 
     
@@ -21,7 +22,7 @@ class PacienteController extends Controller
     {
         //  form de um novo produto
 
-        return view('paciente.cadastro');
+        return view('paciente.formulario');
     }
 
    
