@@ -53,7 +53,7 @@
 @endsection
 
 @section('tela')
-<div class="container">
+<div class="container corpo">
 <form action="" method="post">
 
     
@@ -128,6 +128,7 @@
         <strong>pesquisar</strong></button>
   </div><!-- col -->
 </div><!-- row-->
+<hr>
  <div class=" endCentralizado">
          <label class=" col-md-2 control-label" for="endereco">Endereço</label>
    </div>

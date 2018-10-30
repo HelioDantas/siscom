@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}"> 
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
     integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    
+
     <title>SisCom</title>
     @yield('estilos')
     <style>
@@ -114,12 +114,8 @@
        
         @yield('conteudo')
         @yield('navegação')   
-        <div class="container corpo" style="">
-            
-                <div class="content">
-                   
-                        @yield('tela')  
-                </div>
+        <div class="container" style="">
+                   @yield('tela') 
             </div>
   
 

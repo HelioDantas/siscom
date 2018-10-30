@@ -13,8 +13,9 @@ class PacienteController extends Controller
     {
         //  listar pacientes.
 
-        $pacientes = Paciente::all();
-        return view('paciente.listarPacientes')->with('pacientes',$pacientes);
+        //$pacientes = Paciente::all();
+        $pacientes = Paciente::paginate(5);
+        return view('paciente.listarPacientes' , compact('pacientes'));
     }
 
     
