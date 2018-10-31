@@ -104,7 +104,7 @@
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <button class="btn sair #26a69a" type="button"><strong>Sair</strong></button>
+                <a class="btn sair #26a69a" href="{{route('user.logout')}}" type="button"><strong>Sair</strong></a>
               </form>
             </div>
         </nav>

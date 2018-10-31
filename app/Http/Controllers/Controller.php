@@ -22,9 +22,7 @@ class Controller extends BaseController
         return View('layout.app');
     }
 
-    public function login(){
-        return View('user.login2');
-    }
+ 
 
     
 }

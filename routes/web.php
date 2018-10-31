@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PacienteController;
+use Illuminate\Support\Facades\Route;
+
+
+Auth::routes();
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +19,12 @@ use App\Http\Controllers\PacienteController;
 |
 */
 //Route::get('/' ,['uses' => 'Controller@dashboard']);
-Route::get('/' ,['uses' => 'Controller@login']);
+Route::get('/' ,'LoginController@login')->name('user.login');
+Route::post('/login' ,'LoginController@fazerlogin')->name('user.logar');
+Route::get('/sair' , 'LoginController@logout')->name('user.logout');
 
-//Route::get('/home' ,['uses' => 'Controller@dashbo'])
+Route::get('/dashboard' , 'Controller@dashboard')->name('dashboard');
+Route::post('/teste' ,'Controller@dashboard')->name('teste');
 
 
 /**         Rotas Relacionadas a autenticação
@@ -40,7 +48,7 @@ Route::get('/' ,['uses' => 'Controller@login']);
 //Route::get('/', 'LoginController@formCad')->name('formulario');
 
 /** Rota para enviar as infos da requisição para autenticação no method login */
-Route::post('/login','LoginController@login');
+//Route::post('/login','LoginController@login');
 
 
 //Route::get('/pacientes' , 'PacienteController@listar')->middleware('autorizador');
@@ -55,10 +63,7 @@ Route::post('/login','LoginController@login');
  * direcionando pro metodo login em controller.
  * =========================================================================== *
  */
-Route::get('/login' , ['uses' => 'LoginController@formLogin']);
-Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
-
-
+//Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
 
 
 //Route::get('/cad' , 'LoginController@cad');
@@ -82,9 +87,8 @@ Route::prefix('pacientes')->group(function () {
 });
 
 
-
 //Route::resource('/pacientes', 'PacienteController');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
