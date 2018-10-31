@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/' ,['uses' => 'Controller@dashboard']);
+Route::get('/' ,['uses' => 'Controller@dashboard'])->middleware('Autorizador');
 
 //Route::get('/home' ,['uses' => 'Controller@dashbo'])
 
 
 /**         Rotas Relacionadas a autenticação
  * ========================================================================================
- *  Admin 
+ *  Admin
  *  Usuario comuns .. secretaria e medico
  */
 
@@ -38,7 +38,8 @@ Route::get('/' ,['uses' => 'Controller@dashboard']);
 //Route::get('/', 'LoginController@formCad')->name('formulario');
 
 /** Rota para enviar as infos da requisição para autenticação no method login */
-Route::post('/login','LoginController@login');
+//Route::post('/login','LoginController@login');
+Route::get('/sair','LoginController@logout')->name('login.logout');
 
 
 //Route::get('/pacientes' , 'PacienteController@listar')->middleware('autorizador');
@@ -54,7 +55,7 @@ Route::post('/login','LoginController@login');
  * =========================================================================== *
  */
 Route::get('/login' , ['uses' => 'LoginController@formLogin']);
-Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
+Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login']);
 
 
 
@@ -64,22 +65,21 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'Controller@login']);
 
 /**             ROTAS REFENTE A CLIENTES - RAFAEL ALVARENGA
  * ================================================================================*
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
  * =================================================================================*
  */
 
 Route::prefix('pacientes')->group(function () {
-  Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
-  Route::get('cad' , 'PacienteController@novo')->name('paciente.novo');
+  Route::get('listar', 'PacienteController@listar')->name('paciente.listar')->middleware('Autorizador');
+  Route::get('cad' , 'PacienteController@novo')->name('paciente.novo')->middleware('Autorizador');
 });
 
 
 //Route::resource('/pacientes', 'PacienteController');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

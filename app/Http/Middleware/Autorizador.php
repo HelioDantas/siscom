@@ -13,7 +13,7 @@ class Autorizador
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->is('login') && \Auth::guest()) {
+        if (!$request->session()->exists('user')) {
             return redirect('/login');
         }
         return $next($request);

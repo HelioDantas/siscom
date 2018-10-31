@@ -35,7 +35,7 @@
                 <span id='real-clock'></span>
                 <span><script type="text/javascript" src="/js/data.js"></script></span>
                 <span style="color:red;">sessao expira em 5 minutos</span>
-                <span>mensagem de bem vindo </span>
+                <span>mensagem de bem vindo @php echo session("user"); @endphp </span>
                 
                 </div>
             </header>
@@ -103,7 +103,7 @@
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <button class="btn sair #26a69a" type="button"><strong>Sair</strong></button>
+                <a class="btn sair #26a69a" type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
               </form>
             </div>
         </nav>
