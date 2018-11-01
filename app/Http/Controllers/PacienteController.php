@@ -41,7 +41,7 @@ class PacienteController extends Controller
         //  buscar porid
     $id = Request::route('id');
     $paciente = Paciente::find($id);
-    return view('detalhes')->with('paciente', $aciente);
+    return view('detalhes')->with('paciente', $paciente);
     }
 
   

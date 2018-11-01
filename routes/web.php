@@ -83,3 +83,12 @@ Route::prefix('pacientes')->group(function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::prefix('atendente')->group(function(){
+
+  Route::get('cad', 'AtendenteController@novo')->name('atendente.novo')->middleware('Autorizador');
+
+
+
+});
