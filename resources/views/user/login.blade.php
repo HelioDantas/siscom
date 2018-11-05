@@ -39,7 +39,7 @@
                         <center><small style="font-size: 16px;color:#2BBBAD;"><strong>Login de Acesso</strong></small></center>
                         {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!} @csrf
                             <div class="form-group">
-                                <input type="text" name="cpf" class="form-control is-valid"  placeholder="Cpf" value="" />
+                                <input type="text" name="cpf" class="form-control is-valid"  placeholder="cpf" value="" />
                             </div>
 
                             <div class="form-group">

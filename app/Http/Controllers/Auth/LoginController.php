@@ -18,9 +18,9 @@ class LoginController extends Controller
 
    public function login(Request $request){
 
-     $credencias = $request->all('cpf', 'senha');
+     $credencias = $request->all('cpf', 'password');
     $user = User::buscar($credencias['cpf']);
-   if($user->senha == $credencias['senha']){
+   if($user->senha == $credencias['password']){
         $request->session()->put('user', $user->nome);
         return view("layout.app");
      } else {
@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         $request->session()->forget('user');
         return redirect()->action("LoginController@formLogin");
-       
+
    }
 
 
