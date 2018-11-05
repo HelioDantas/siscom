@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use DummyFullModelClass;
-use App\lain;
-use Request; // talvez de conflito e der remover o name espace e deixar apena o use Request
 use Auth;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -17,21 +14,28 @@ class LoginController extends Controller
    }
 
 
-   public function fazerlogin(){ //UserRequest $request
-    $credencias = Request::only('cpf ' , 'senha');
-    /**================================================================= *
-     * verifica se o usuario existe e faz login.
-     * para apenas verificar e existe pode-se utilizar o Auth::Validate.
-     * *================================================================= *
-     */
-    if (Auth::check($credencias)) {
-        return redirect('/dashboard')->intended('dashboard'); // intended retorna o usuario para a tela que ele estava tentando acessar antes de passar pelo middleware
-    }
-    return 'LoginController@login';
+   public function auth(Request $request)
+   {
+      // $credentials = $request->only('cpf', 'password');
+     // dd($request->all());
+
+       if (Auth::attempt([
+           'cpf' => $request->cpf,
+           'password' => $request->password,
+       ])) {
+           $user = Auth::user();
+           $id = Auth::id();
+           
+           Session::put('user_id', $id);
+
+           return redirect()->route('dashboard');
+       }
+
+       return back()->withInput();
    }
 
 
-   function logout(){
-       return Redirect('LoginController@login');
+   public function cad(){
+       return view('cadastro');
    }
 }

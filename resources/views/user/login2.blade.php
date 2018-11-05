@@ -37,14 +37,14 @@
                     <div class="col-md-6 offset-md-3 login-form-1">    
                         <h3>SisCon</h3>
                         <center><small style="font-size: 16px;color:#2BBBAD;"><strong>Login de Acesso</strong></small></center>
-                    <form action="{{route('teste')}}" method="post">
+                    <form action="{{route('user.logar')}}" method="post">
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="cpf" class="form-control is-valid"  placeholder="Cpf" value="" />
                             </div>
     
                             <div class="form-group">
-                                <input type="password" name="senha" class="form-control is-valid" require placeholder="Senha" value="" />
+                                <input type="password" name="password" class="form-control is-valid" require placeholder="Senha" value="" />
                             </div>
     
                             <div  class="agoravai">

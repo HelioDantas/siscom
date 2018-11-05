@@ -12,7 +12,9 @@ class User extends Model
 
     protected $fillable = array('nome','senha','cpf','email');
 
-    public function permissoes(){
-        return $this->hasMany(PermisssaoUsuario::class); // a ser implementado
+    public function getAuthPassword(){
+        return $this->senha;
     }
+
+   
 }

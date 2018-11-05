@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Paciente;
+use Illuminate\Support\Facades\DB;
 
 class PacienteController extends Controller
 {
@@ -16,14 +17,14 @@ class PacienteController extends Controller
         return Paciente::paginate(5);
     }
     
-  /*  public function listar()  
+    public function listar()  
     {
         //  listar pacientes.
 
         //$pacientes = Paciente::all();
         $pacientes = Paciente::paginate(5);
-        return view('paciente.listarPacientes' , compact('pacientes'));
-    } */
+        return view('paciente.listar' , compact('pacientes'));
+    } 
 
     
     public function novo() 
@@ -38,7 +39,7 @@ class PacienteController extends Controller
     {
         //  recebe request , dos dados dos formularios
 
-        $req = 'dados' . $request->input('nome'); //passado no form
+        $req = 'dados' . $request->input('nome'); // passado no form
         return reponse($req ,201);
     }
 
@@ -48,7 +49,7 @@ class PacienteController extends Controller
         //  buscar porid
     $id = Request::route('id');
     $paciente = Paciente::find($id);
-    return view('detalhes')->with('paciente', $aciente);
+    return view('detalhes')->with('paciente', $paciente);
     }
 
   
@@ -69,8 +70,12 @@ class PacienteController extends Controller
     {
         //  deletar
 
-        $produto = Produto::find($id);
-        $produto->delete();
+        $paciente = Paciente::find($id);
+       // $paciente = Paciente::find($prontuario);
+        $paciente->delete();
+       //Paciente::destroy($prontuario);
+
+       // DB::delete("delete from sis_paciente where prontuario = $prontuario");
         return redirect()->action('PacienteController@listar');
         //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
     }

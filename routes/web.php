@@ -6,7 +6,6 @@ use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
 
 
-Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +19,7 @@ Auth::routes();
 */
 //Route::get('/' ,['uses' => 'Controller@dashboard']);
 Route::get('/' ,'LoginController@login')->name('user.login');
-Route::post('/login' ,'LoginController@fazerlogin')->name('user.logar');
+Route::post('/login' ,'LoginController@auth')->name('user.logar');
 Route::get('/sair' , 'LoginController@logout')->name('user.logout');
 
 Route::get('/dashboard' , 'Controller@dashboard')->name('dashboard');
@@ -82,6 +81,8 @@ Route::post('/teste' ,'Controller@dashboard')->name('teste');
 Route::prefix('pacientes')->group(function () {
   Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
   Route::get('cad' , 'PacienteController@novo')->name('paciente.novo');
+  Route::get('editar' , 'PacienteController@edit')->name('paciente.editar');
+  Route::get('excluir/{id}' , 'PacienteController@destroy')->name('paciente.excluir');
   Route::get('index','PacienteController@indexjs')->name('paciente.js');
   Route::get('json','PacienteController@indexjson')->name('paciente.json');
 });

@@ -13,9 +13,11 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
+      
 
         return true;
     }
+  
 
     /**
      * Get the validation rules that apply to the request.
@@ -25,7 +27,6 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome'  => 'required|min:3',
             'cpf'   => 'riquired|max:20',
             'senha' => 'riquired|max:255',
             
