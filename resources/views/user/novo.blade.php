@@ -54,9 +54,9 @@
 
 @section('tela')
 
-<div class = "row">
-<form action="">
 
+<form action="">
+    <div class = "row">
 <div class="col-3">
 <div class="form-group">
   <label for="cpf">Cpf</label>
@@ -68,11 +68,11 @@
 <div class="col-2">
 <div class="form-group">
   <label for="senha">Senha</label>
-  <input type="password" name="senha" id="" class="form-control" placeholder="senha">
+  <input type="password" name="password" id="" class="form-control" placeholder="senha">
   <small id="senha" class="text-muted">Hl</small>
 </div>
 </div><!--col -->
-</form>
+
 
 <div class="col-2">
 <div class="form-group">
@@ -81,6 +81,7 @@
   <small id="dicaSenha" class="text-muted">Hl</small>
 </div>
 </div><!--col -->
-</form>
 </div>
+</form>
+
 @endsection

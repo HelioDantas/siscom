@@ -24,7 +24,7 @@ class User extends Model
     }
 
 
-    public function funcionario(){
+   public function funcionario(){
 
         return $this->hasOne('App\sis_funcionario', 'Sis_funcionario_matricula', 'matricula');
     }

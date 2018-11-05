@@ -19,8 +19,8 @@ class FuncionarioController extends Controller
         
         $sis_funcionario = sis_funcionario::create(Request::all());
         
-     //   return view('user.novo')->with('func', $sis_funcionario); 
-        return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
+       return view('user.novo')->with('func', $sis_funcionario); 
+       // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
 
 
