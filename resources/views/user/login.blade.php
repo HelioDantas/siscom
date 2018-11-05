@@ -1,28 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/app.css">
-    <title>Document</title>
-</head>
-<body>
 
-        <div class="container">
-            <div class="row">
-                {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!}} @csrf
-                <div class="col s12 cm-6">
-                    <label for="Cpf"> Cpf</label>
-                    <input type="text" id="Cf" name="cpf">
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login PHP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{'css/login.css'}}">
+        <link rel="stylesheet" href="{{'css/app.css'}}">
+
+        <style> a{ color: #2BBBAD;}
+        span{
+            float:right;
+        }
+        </style>
+
+    </head>
+
+    <body>
+
+        <header class="teste">
+            <div class="logo">
+                <h4><a class="navbar-brand" href="index.php">SisCon</a></h4>
+            </div>
+            <span><script type="text/javascript" src="js/data.js"></script></span>
+                <span id="real-clock"></span>
+                <div class="container">
+                    <h3>Sistema de Consultorio medico</h3>
+
                 </div>
-                <div class="col s12 cm-6">
-                    <label for="senha"> senha</label>
-                    <input type="password" id="senha" name="senha">
+
+        </header>
+
+
+            <div class="container login-container">
+                 <div class="row">
+                    <div class="col-md-6 offset-md-3 login-form-1">
+                        <h3>SisCon</h3>
+                        <center><small style="font-size: 16px;color:#2BBBAD;"><strong>Login de Acesso</strong></small></center>
+                        {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!} @csrf
+                            <div class="form-group">
+                                <input type="text" name="cpf" class="form-control is-valid"  placeholder="Cpf" value="" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control is-valid" require placeholder="Senha" value="" />
+                            </div>
+
+                            <div  class="agoravai">
+                                <input type="submit" id="btn" class="btnSubmit " value="Login" />
+                            </div>
+                            {!! Form::close() !!}
+
+                            <div class="col s4 agoravai">
+                                <a href="recuperar_senha.php">Esqueceu a senha?</a>
+                            </div>
+                            <div class="col s4 agoravai">
+                                <a href="cadastro/cadastro-form.php"><strong>cadastre-se</strong></a>
+                            </div>
                 </div>
-                <input type="submit" value="entrar" >
-                {!! Form::close() !!}}
             </div>
         </div>
-</body>
-</html>
+
+    </body>
+    </html>

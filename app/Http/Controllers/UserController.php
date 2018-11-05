@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    
+
     public function novo(){
 
         return view('user.novo');
     }
 
 
-    
+
+
 
 }

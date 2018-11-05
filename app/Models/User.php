@@ -31,5 +31,9 @@ class User extends Model
 
 
 
+    public function getAuthPassword(){
+        return $this->senha;
+    }
+
 
 }

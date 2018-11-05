@@ -60,7 +60,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
                 @foreach ($pacientes as $p)
                     
               <tr>
-                 <td>       {{$p->prontuario}}          </td>
+                 <td>       {{$p->id}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
                  <td>       {{$p->nome}}                </td>
                  <td>       {{$p->cpf}}                 </td>
@@ -82,8 +82,12 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
                  <td>       {{$p->email}}               </td>
                  <td>       {{$p->profissao}}           </td>
                  <td>       {{$p->status_2}}            </td>  -->
-                 <td><a href="#"><i class="fas fa-edit"></i></a> 
-                    <a href="#"><i class="fas fa-trash"></i></a></td> 
+                <td>
+                    <a href="pacientes/editar/ {{$p->id}}"><i class="fas fa-edit"></i></a> 
+                
+                    <a href="pacientes/excluir/ {{$p->id}}"><i class="fas fa-trash"></i></a>
+                </td>
+
               </tr>
               @endforeach
             </tbody>

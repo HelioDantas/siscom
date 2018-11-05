@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\PacienteController;
+use Illuminate\Support\Facades\Route;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,9 +17,13 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/' ,['uses' => 'Controller@dashboard'])->middleware('Autorizador');
 
-//Route::get('/home' ,['uses' => 'Controller@dashbo'])
+
+
+Route::get('/dashboard' , 'Controller@dashboard')->name('dashboard');
+Route::post('/teste' ,'Controller@dashboard')->name('teste');
 
 
 /**         Rotas Relacionadas a autenticação
@@ -59,7 +68,6 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
 
 
 
-
 //Route::get('/cad' , 'LoginController@cad');
 
 
@@ -73,14 +81,18 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  * =================================================================================*
  */
 
-Route::prefix('pacientes')->group(function () {
-  Route::get('listar', 'PacienteController@listar')->name('paciente.listar')->middleware('Autorizador');
-  Route::get('cad' , 'PacienteController@novo')->name('paciente.novo')->middleware('Autorizador');
+Route::prefix('pacientes')->middleware('Autorizador')->group(function () {
+  Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
+  Route::get('cad' , 'PacienteController@novo')->name('paciente.novo');
+  Route::get('editar' , 'PacienteController@edit')->name('paciente.editar');
+  Route::get('excluir/{id}' , 'PacienteController@destroy')->name('paciente.excluir');
+  Route::get('index','PacienteController@indexjs')->name('paciente.js');
+  Route::get('json','PacienteController@indexjson')->name('paciente.json');
+
 });
 
 
 //Route::resource('/pacientes', 'PacienteController');
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -102,3 +114,4 @@ Route::prefix('user')->group(function(){
 
 
 });
+

@@ -11,7 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        DB::table('sis_usuario')->insert([
+            'nome'  => 'rafael',
+            'Sis_funcionario_matricula'=> '87301',
+            'email' => 'rafael@gmail.com',
+            'cpf'   => '123456',
+            'senha' => password_hash('123',1),
+        ]);
+
+
+
+      /*  $faker = Faker\Factory::create();
         for ($i=0 ; $i < 80 ; $i++) { 
             App\Models\Paciente::create([
 
@@ -37,7 +47,7 @@ class DatabaseSeeder extends Seeder
                 'email'              =>       $faker->email,
                 'profissao'          =>       $faker->profissao,
                 'status_2'           =>       $faker->status_2,
-            ]); //   composer require fzaninotto/faker
+            ]); //   composer require fzaninotto/faker*/
         }
         /*DB::table('sis_paciente')->insert([
 
@@ -57,5 +67,5 @@ class DatabaseSeeder extends Seeder
             
         ]);*/
         // $this->call(UsersTableSeeder::class);
-       }
+       
 }
