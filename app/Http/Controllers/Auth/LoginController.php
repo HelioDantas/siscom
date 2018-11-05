@@ -52,4 +52,11 @@ class LoginController extends Controller
         return redirect()->action("LoginController@formLogin");
        
    }
+
+
+
+''
+
+
+
 }

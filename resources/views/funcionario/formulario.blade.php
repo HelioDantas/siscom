@@ -39,7 +39,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro Atendente</h4>   
+        <h4 class="titulocadastro">Cadastro Funcionario</h4>   
 @endsection
 @section('navegação')
 
@@ -187,6 +187,8 @@
     
 </fieldset><!--endereço-->
 
+<fieldset class="form-group">
+    <legend aling="center">Endereço</legend>
 <div class="row">
 
     <div class="col-3">
@@ -207,9 +209,29 @@
           </select>
        
     </div>
+</div> 
+</div>
+<div class = "row">
+     <div class="col-3">
+    <div class="form-group">
+    
+        <label for="selectbasic">Sexo <h11>*</h11></label>
+        
+       
+          <select required id="sexo" name="sexo" class="form-control">
+          <option value=""></option>
+            <option value="M">Masculino</option>
+            <option value="F">Fundamental Incompleto</option>
+            <option value="I">Fundamental Completo</option>
+            <option value="N">Médio Incompleto</option>
+           
+      
+          </select>
+
 </div>
 
-   
+
+</fieldset>
 </form>
 </div><!-- container -->
 @endsection

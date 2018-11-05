@@ -22,4 +22,14 @@ class User extends Model
     public function permissoes(){
         return $this->hasMany(PermisssaoUsuario::class); // a ser implementado
     }
+
+
+    public function funcionario(){
+
+        return $this->hasOne('App\sis_funcionario', 'Sis_funcionario_matricula', 'matricula');
+    }
+
+
+
+
 }

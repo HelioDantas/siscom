@@ -85,9 +85,19 @@ Route::prefix('pacientes')->group(function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::prefix('atendente')->group(function(){
+Route::prefix('funcionario')->group(function(){
 
-  Route::get('cad', 'AtendenteController@novo')->name('atendente.novo')->middleware('Autorizador');
+  Route::get('cad', 'FuncionarioController@novo')->name('funcionario.novo')->middleware('Autorizador');
+
+
+
+});
+
+
+
+Route::prefix('user')->group(function(){
+
+  Route::get('novo', 'UserController@novo')->name('user.novo')->middleware('Autorizador');
 
 
 

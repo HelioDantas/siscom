@@ -57,7 +57,7 @@
                       <a href="{{route('paciente.novo')}}">Paciente</a>
                       <a href="#">Convenios</a>
                       <a href="#">Medico</a>
-                      <a href="{{route('atendente.novo')}}">Atendente</a>
+                      <a href="{{route('funcionario.novo')}}">Funcionario</a>
                     </div>
                   </div>
                 </li>
