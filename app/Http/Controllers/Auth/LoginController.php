@@ -20,7 +20,9 @@ class LoginController extends Controller
 
      $credencias = $request->all('cpf', 'password');
     $user = User::buscar($credencias['cpf']);
-   if($user->senha == $credencias['password']){
+    if ($user == null)
+     return view('user.login');
+     else if($user->senha == $credencias['password']){
         $request->session()->put('user', $user->nome);
         return view("layout.app");
      } else {
@@ -29,7 +31,7 @@ class LoginController extends Controller
 
 
    }
-
+ 
     /**================================================================= *
      * verifica se o usuario existe e faz login.
      * para apenas verificar e existe pode-se utilizar o Auth::Validate.

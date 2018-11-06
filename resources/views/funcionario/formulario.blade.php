@@ -43,18 +43,21 @@
 @endsection
 @section('navegação')
 
-<div class="form-group navegacao">
+
+@endsection
+
+@section('tela')
+<div class="container corpo">
+    <form action="create" method="post">
+    @csrf
+
+        <div class="form-group navegacao">
         <div class="col-8">
           <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
           <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
         </div>
       </div>
 
-@endsection
-
-@section('tela')
-<div class="container corpo">
-    <form action="" method="post">
             <fieldset class="form-group">
                     <legend aling="center">Dados Pessoais</legend>
     <div class="row">
@@ -159,9 +162,11 @@
 
             <div class="col-3">
                     <div class="form-group">
-                      <label for="">Profissão*</label>
-                      <input type="text" name="prof" id="" class="form-control" placeholder="prof" value="Brasileiro">
-                      <small id="prof" class="text-muted">informe o seu pais de origem</small>
+                      <label for="profissao">Profissão</label>
+                      <select required id="profissao" name="profissao" id="" class="form-control" >
+                      <option value="A">Atendente</option>
+                      <option value="M">Medico</option>
+                      </select>
                     </div>
             </div><!--col nacionalidade -->
 

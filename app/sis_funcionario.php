@@ -10,7 +10,7 @@ class sis_funcionario extends Model
     protected $table = "sis_funcionario";
     public $timestamps = false;
 
-    protected $fillable = array('matricula', 'nome', 'cpf', 'identidade');
+    protected $fillable = array('matricula', 'nome', 'cpf', 'identidade', 'profissao' );
 
 
 
