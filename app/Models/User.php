@@ -26,7 +26,7 @@ class User extends Model
 
    public function funcionario(){
 
-        return $this->hasOne('App\sis_funcionario', 'Sis_funcionario_matricula', 'matricula');
+        return $this->belongsTo('App\sis_funcionario', 'Sis_funcionario_matricula', 'matricula');
     }
 
 
