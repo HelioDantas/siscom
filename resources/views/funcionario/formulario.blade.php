@@ -131,7 +131,7 @@
 
 
                       <select required id="escolaridade" name="escolaridade" class="form-control">
-                      <option value=""></option>
+                     
                         <option value="Analfabeto">Analfabeto</option>
                         <option value="Fundamental Incompleto">Fundamental Incompleto</option>
                         <option value="Fundamental Completo">Fundamental Completo</option>
