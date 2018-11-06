@@ -162,11 +162,9 @@
 
             <div class="col-3">
                     <div class="form-group">
-                      <label for="profissao">Profissão</label>
-                      <select required id="profissao" name="profissao" id="" class="form-control" >
-                      <option value="A">Atendente</option>
-                      <option value="M">Medico</option>
-                      </select>
+                      <label for="">Profissão*</label>
+                      <input type="text" name="prof" id="" class="form-control" placeholder="prof" value="Brasileiro">
+                      <small id="prof" class="text-muted">informe o seu pais de origem</small>
                     </div>
             </div><!--col nacionalidade -->
 

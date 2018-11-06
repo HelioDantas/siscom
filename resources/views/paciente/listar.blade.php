@@ -83,9 +83,9 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
                  <td>       {{$p->profissao}}           </td>
                  <td>       {{$p->status_2}}            </td>  -->
                 <td>
-                    <a href="pacientes/editar/ {{$p->id}}"><i class="fas fa-edit"></i></a> 
+                    <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
                 
-                    <a href="pacientes/excluir/ {{$p->id}}"><i class="fas fa-trash"></i></a>
+                    <a href="excluir/{{$p->id}}"><i class="fas fa-trash"></i></a>
                 </td>
 
               </tr>

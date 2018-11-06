@@ -44,18 +44,26 @@
 
 @section('navegação')
 
-<div class="form-group navegacao">
-        <div class="col-8">
-          <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
-          <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
-        </div>
-      </div>
+
 
 @endsection
 
 @section('tela')
 <div class="container corpo">
-<form action="" method="post">
+        {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}} @csrf
+
+        <!--Espeficica o tipo de envio (verbo http)
+    <input type="hidden" name="_method" value="PUT">
+    //Ou
+    {{ method_field('PUT') }}-->
+
+        <div class="form-group navegacao">
+                <div class="col-8">
+                  <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+                  <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+                </div>
+              </div>
+
         <fieldset class="form-group">
                 <legend aling="center">Dados Pessoais</legend>
 <div class="row">
@@ -283,7 +291,7 @@
             </div> <!-- col Email -->
 
    
-</form>
+{!! Form::close() !!}}
 </div><!-- container -->
 
 @endsection

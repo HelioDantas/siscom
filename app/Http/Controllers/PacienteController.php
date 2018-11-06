@@ -9,13 +9,25 @@ use Illuminate\Support\Facades\DB;
 
 class PacienteController extends Controller
 {
+
     function indexjs(){
         return view('paciente.indexjs');
     }
 
+
     function indexjson(){
         return Paciente::paginate(5);
     }
+
+
+    public function show($id) 
+    {
+
+    $id = Request::route('id');
+    $paciente = Paciente::find($id);
+    return view('detalhes')->with('paciente', $paciente);
+    }
+
     
     public function listar()  
     {
@@ -24,14 +36,48 @@ class PacienteController extends Controller
         //$pacientes = Paciente::all();
         $pacientes = Paciente::paginate(5);
         return view('paciente.listar' , compact('pacientes'));
+        //testando
     } 
 
     
     public function novo() 
     {
-        //  form de um novo produto
+        //  form de um novo paciente
 
         return view('paciente.formulario');
+    }
+
+    public function create(Request $request){
+        
+        $sis_funcionario = sis_funcionario::create($request->all());
+        return var_dump($sis_funcionario);
+        
+       return view('user.novo')->with('func', $sis_funcionario); 
+       // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
+
+
+    }
+
+    public function edit( $id) 
+    {
+        //  form para editar infos de um paciente
+       $p = Paciente::find($id);
+
+        return view('paciente.editar')->with('p' , $p);
+    }
+   
+
+    public function update(Request $request, $id)
+    {
+        //  atualizar
+
+        $paciente = Paciente::find($id);
+
+        if (isset($paciente)) {
+        $request->nome == $paciente->nome;
+        $paciente->save();
+        }
+        return redirect()->route('paciente.listar')->response($paciente , 200);
     }
 
    
@@ -42,29 +88,6 @@ class PacienteController extends Controller
         $req = 'dados' . $request->input('nome'); // passado no form
         return reponse($req ,201);
     }
-
-  
-    public function show($id) 
-    {
-        //  buscar porid
-    $id = Request::route('id');
-    $paciente = Paciente::find($id);
-    return view('detalhes')->with('paciente', $paciente);
-    }
-
-  
-    public function edit($id) 
-    {
-        //  editar
-        return 'forme edit paciente';
-    }
-
-    public function update(Request $request, $id)
-    {
-        //  atualizar
-        return 'retorna reponse com o estatus 200';
-    }
-
    
     public function destroy($id)
     {

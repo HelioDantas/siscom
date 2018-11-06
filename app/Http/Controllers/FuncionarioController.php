@@ -18,20 +18,13 @@ class FuncionarioController extends Controller
     public function create(Request $request){
         
         $sis_funcionario = sis_funcionario::create($request->all());
-      //  return var_dump($sis_funcionario);
-        if($sis_funcionario->profissao == "A")
-            return view('user.novo')->with('func', $sis_funcionario);
-        return view('layout.app'); 
+        return var_dump($sis_funcionario);
+        
+       return view('user.novo')->with('func', $sis_funcionario); 
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
 
 
     }
-
-
-    
-
-
-
 
 }

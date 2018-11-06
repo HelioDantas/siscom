@@ -96,7 +96,7 @@
             <div class="dropdown">
               <button class="dropbtn">Pacientes</button>
               <div class="dropdown-content">
-              <a href="{{route('paciente.listar')}}">lesta de pacientes</a>
+              <a href="{{route('paciente.listar')}}">lista de pacientes</a>
                 <a href="#">Adicionar</a>
                 <a href="#">Adicionar</a>
               </div>
