@@ -69,15 +69,15 @@
 <div class="col-3">
 <div class="form-group">
   <label for="nome">Nome*</label>
-  <input type="text" name="nome" id="" class="form-control" placeholder="nome"  @if(!empty($p)) value = {{$p->nome}} @else value = "" @endif>
-  <small id="nome" class="text-muted">Nome Completo</small>
+  <input type="text" name="nome" id="nome" class="form-control" placeholder="nome"  @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
+  <small id="nome" >Nome Completo</small>
 </div>
 </div><!--col nome -->
 
 <div class="col-2">
 <div class="form-group">
   <label for="cpf">Cpf*</label>
-  <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId"  @if(!empty($p)) value = {{$p->cpf}} @else value = "" @endif>
+  <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId"  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
   <small id="cpf" class="text-muted">cpf</small>
 </div>
 </div><!--col cpf -->
@@ -94,7 +94,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
-  <input type="date" name="dataNascimento" id="dtNascimento"  @if(!empty($p)) value = {{$p->dataDeNascimento}} @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+  <input type="date" name="dataNascimento" id="dtNascimento"  @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
   <small id="dtNascimento" class="data">Data obrigatoria</small>
 </div>
 </div><!--col dt Nascimento-->
@@ -103,7 +103,7 @@
         <div class="form-group">
         
             <label for="selectbasic">Sexo <h11>*</h11></label>
-              <select required id="genero" name="genero" class="form-control"  @if(!empty($p)) value = {{$p->sexo}} @else value = "" @endif>
+              <select required id="genero" name="genero" class="form-control"  @if(!empty($p)) value = "{{$p->sexo}}" @else value = "" @endif>
                     @if(!empty($p))
                     @php
                         switch ($p->sexo) {
