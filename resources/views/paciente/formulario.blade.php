@@ -291,3 +291,14 @@
 </div><!-- container -->
 
 @endsection
+
+@section('scripts')
+    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+              $(':button').click(function() {
+                  location.reload();
+              });
+        });       
+     </script>
+@endsection

@@ -56,7 +56,7 @@
 <div class="form-group navegacao">
         <div class="col-8">
           <button id="Cadastrar" name="Cadastrar" class="btn btn-info" type="Submit">Salvar</button>
-          <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+        <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>
         </div>
       </div>
 
@@ -357,4 +357,15 @@
 {!! Form::close() !!}
 </div><!-- container -->
 
+@endsection
+
+@section('scripts')
+    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+              $(':button').click(function() {
+                  location.reload();
+              });
+        });       
+     </script>
 @endsection

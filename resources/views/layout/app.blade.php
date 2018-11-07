@@ -125,6 +125,7 @@
 
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
     <script>
 		setInterval(function() {
@@ -132,7 +133,7 @@
 		}, 1000);
 		var clock = document.getElementById('real-clock');
   </script>
-    <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    
     @yield('scripts')
 </body>
 </html>
