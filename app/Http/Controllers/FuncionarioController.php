@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\sis_funcionario;
+use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,10 +17,10 @@ class FuncionarioController extends Controller
 
     public function create(Request $request){
         
-        $sis_funcionario = sis_funcionario::create($request->all());
+        $Funcionario = Funcionario::create($request->all());
       //  return var_dump($sis_funcionario);
-        if($sis_funcionario->profissao == "A")
-            return view('user.novo')->with('func', $sis_funcionario);
+        if($Funcionario->profissao == "A")
+            return view('user.novo')->with('func', $Funcionario);
         return view('layout.app'); 
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class sis_funcionario extends Model
+class Funcionario extends Model
 {
-
+    
     protected $table = "sis_funcionario";
     public $timestamps = false;
 
@@ -17,6 +17,4 @@ class sis_funcionario extends Model
         return $this->hasOne('App\Models\User', 'matricula', 'Sis_funcionario_matricula');
 
     }
-
-
 }
