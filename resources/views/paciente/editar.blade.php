@@ -360,7 +360,7 @@
 @endsection
 
 @section('scripts')
-    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html-->
+    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html  o funcao e ativada pelo (type="buttao)-->
     <script type="text/javascript">
         $(document).ready(function() {
               $(':button').click(function() {
