@@ -8,7 +8,6 @@ use Illuminate\Http\Request; // talvez de conflito e der remover o name espace e
 //use Auth;
 use App\Models\User;
 use UserRequest;
-
 class LoginController extends Controller
 {
    public function formlogin(){
@@ -16,7 +15,7 @@ class LoginController extends Controller
    }
 
 
-   public function login(Request $request){
+   public function login(UserRequest $request){
 
      $credencias = $request->all('cpf', 'password');
     $user = User::buscar($credencias['cpf']);

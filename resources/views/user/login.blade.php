@@ -39,7 +39,12 @@
                         <center><small style="font-size: 16px;color:#2BBBAD;"><strong>Login de Acesso</strong></small></center>
                         {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!} @csrf
                             <div class="form-group">
-                                <input type="text" name="cpf" class="form-control is-valid"  placeholder="cpf" value="" />
+                            <input type="text" name="cpf" class="form-control {{$erros->has('cpf') ? 'is-valid' : '' }}"  placeholder="cpf" value="" />
+                            @if ($erros->has('cpf.exists'))
+                            <div class="invalid-tooltip">
+                                {{$erros->fist('cpf.exists')}}
+                              </div>
+                            @endif
                             </div>
 
                             <div class="form-group">
