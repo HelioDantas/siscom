@@ -52,14 +52,9 @@
 <div class="container corpo">
         {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}} @csrf
 
-        <!--Espeficica o tipo de envio (verbo http)
-    <input type="hidden" name="_method" value="PUT">
-    //Ou
-    {{ method_field('PUT') }}-->
-
         <div class="form-group navegacao">
                 <div class="col-8">
-                  <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+                  <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
                   <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
                 </div>
               </div>
