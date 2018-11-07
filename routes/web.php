@@ -86,7 +86,7 @@ Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
   Route::get('listar'      ,  'PacienteController@listar')->name(   'paciente.listar' );
   Route::get('novo'        ,  'PacienteController@novo')->name(     'paciente.novo');
   Route::post('create'     ,  'PacienteController@create')->name(   'paciente.create' );
-  Route::get('editar/{id}'     ,  'PacienteController@edit')->name(     'paciente.editar' );
+  Route::get('editar/{id}' ,  'PacienteController@edit')->name(     'paciente.editar' );
   Route::put('update/{id}' ,  'PacienteController@update')->name(   'paciente.update' );
   Route::get('excluir/{id}',  'PacienteController@destroy')->name(  'paciente.excluir');
   Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );

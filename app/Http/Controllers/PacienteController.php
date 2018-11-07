@@ -52,7 +52,7 @@ class PacienteController extends Controller
         //$paciente = $request->all();
         //return dd($paciente);
         $paciente = Paciente::create($request->all());
-        return  redirect()->route('paciente.listar')->response($paciente , 201);
+        return  redirect()->route('paciente.listar');
         
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
@@ -73,12 +73,8 @@ class PacienteController extends Controller
         //  atualizar
 
         $paciente = Paciente::find($id);
-
-        if (isset($paciente)) {
-        $request->nome == $paciente->nome;
-        $paciente->save();
-        }
-        return redirect()->route('paciente.listar')->response($paciente , 200);
+        $paciente->update($request->all());
+        return redirect()->route('paciente.listar');
     }
 
    

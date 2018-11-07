@@ -55,7 +55,7 @@
 {{ method_field('PUT') }}
 <div class="form-group navegacao">
         <div class="col-8">
-          <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+          <button id="Cadastrar" name="Cadastrar" class="btn btn-info" type="Submit">Salvar</button>
           <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
         </div>
       </div>
@@ -94,7 +94,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
-  <input type="date" name="dataNascimento" id="dtNascimento"  @if(!empty($p)) value = {{$p->dataNascimento}} @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+  <input type="date" name="dataNascimento" id="dtNascimento"  @if(!empty($p)) value = {{$p->dataDeNascimento}} @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
   <small id="dtNascimento" class="data">Data obrigatoria</small>
 </div>
 </div><!--col dt Nascimento-->
@@ -104,6 +104,27 @@
         
             <label for="selectbasic">Sexo <h11>*</h11></label>
               <select required id="genero" name="genero" class="form-control"  @if(!empty($p)) value = {{$p->sexo}} @else value = "" @endif>
+                    @if(!empty($p))
+                    @php
+                        switch ($p->sexo) {
+                            case 'M':
+                                $nome = 'Masculino';
+                                break;
+                            case 'F':
+                                $nome = 'Feminino';
+                                break;
+                            case 'N':
+                                $nome = 'Não declarado';
+                                break;
+                            case 'I':
+                                $nome = 'Indefinido';
+                                break;    
+                        }
+                    @endphp
+                    <option value={{$p->sexo}}>{{$nome}}</option>
+                @else
+                    <option value=""></option>
+                @endif
               <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
                 <option value="N">Não declarado</option>
@@ -117,8 +138,30 @@
         <div class="form-group">
         
             <label for="selectbasic">Etnia <h11>*</h11></label>
-              <select required id="etnia" name="etnia" class="form-control"  @if(!empty($p)) value = {{$p->etnia}} @else value = "" @endif>
-              <option value="B">Branco</option>
+              <select required id="etnia" name="etnia" class="form-control">
+                @if(!empty($p))
+                    @php
+                        switch ($p->etnia) {
+                            case 'B':
+                                $nome = 'Branco';
+                                break;
+                            case 'P':
+                                $nome = 'Pardo';
+                                break;
+                            case 'N':
+                                $nome = 'Negro';
+                                break;
+                            case 'I':
+                                $nome = 'Indigenas';
+                                break;    
+                        }
+                    @endphp
+                    <option value={{$p->etnia}}>{{$nome}}</option>
+                @else
+                    <option value=""></option>
+                @endif
+
+                <option value="B">Branco</option>
                 <option value="P">Pardo</option>
                 <option value="N">Negro</option>
                 <option value="I">Indigenas</option>
@@ -131,15 +174,38 @@
             <div class="form-group">
             
                 <label for="selectbasic">Escolaridade <h11>*</h11></label>
-                
-               
-                  <select required id="escolaridade" name="escolaridade" class="form-control"  @if(!empty($p)) value = {{$p->escolaridade}} @else value = "" @endif>
+        
+                  <select required id="escolaridade" name="escolaridade" class="form-control">
+                        @if(!empty($p))
+                        @php
+                        switch ($p->escolaridade) {
+                            case 'Fundamental Incompleto':
+                                $nome = 'Fundamental Incompleto';
+                                break;
+                            case 'Fundamental Completo':
+                                $nome = 'Fundamental Completo';
+                                break;
+                            case 'Medio Incompleto':
+                                $nome = 'Medio Incompleto';
+                                break;
+                            case 'Medio Completo':
+                                $nome = 'Medio Completo';
+                                break;
+                            case 'Superior Incompleto':
+                                $nome = 'Superior Incompleto';
+                                break; 
+                            case 'Superior Completo':
+                                $nome = 'Superior Completo';
+                                break;     
+                        }
+                        @endphp
+                        <option value="{{$p->escolaridade}}">{{$nome}}</option>
+                         @endif
                   <option value=""></option>
-                    <option value="Analfabeto">Analfabeto</option>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
                     <option value="Fundamental Completo">Fundamental Completo</option>
-                    <option value="Médio Incompleto">Médio Incompleto</option>
-                    <option value="Médio Completo">Médio Completo</option>
+                    <option value="Medio Incompleto">Médio Incompleto</option>
+                    <option value="Medio Completo">Médio Completo</option>
                     <option value="Superior Incompleto">Superior Incompleto</option>
                     <option value="Superior Completo">Superior Completo</option>
                   </select>
@@ -150,7 +216,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Nacionalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  @if(!empty($p)) value = {{$p->nacionalidade}} @else value = "" @endif class="form-control" placeholder="nacionalidade" value="Brasileiro">
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro"  @if(!empty($p)) value = {{$p->nacionalidade}} @else value = "" @endif>
                   <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
                 </div>
         </div><!--col nacionalidade -->
@@ -158,7 +224,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Naturalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  @if(!empty($p)) value = {{$p->naturalidade}} @else value = "" @endif class="form-control" placeholder="naturalidade" value="">
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = {{$p->naturalidade}} @else value = "" @endif>
                   <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
                 </div>
         </div><!--col naturalidade -->
@@ -196,7 +262,7 @@
                 <div class="col-3">
                     <div class="form-group">
                            <label for="cep">Cep</label>
-                           <input type="search" class="form-control input-md" id="cep"  @if(!empty($p)) value = {{$p->cep}} @else value = "" @endif placeholder="Apenas numeros" maxlength="8" pattern="[0-9+$]">
+                           <input type="search" class="form-control input-md" id="cep"  placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"  @if(!empty($p)) value = {{$p->cep}} @else value = "" @endif>
                         </div>
                     </div><!-- col cep -->
                       
@@ -210,7 +276,7 @@
                   <span>Rua</span>
                       <div class="input-group">
                           
-                          <input type="text" name="rua"  @if(!empty($p)) value = {{$p->rua}} @else value = "" @endif class="form-control" id="rua"><!--  readonly="readonly" -->
+                          <input type="text" name="rua"  class="form-control" id="rua"  @if(!empty($p)) value = {{$p->rua}} @else value = "" @endif><!--  readonly="readonly" -->
                   
                   </div>
               </div><!-- col rua-->
@@ -219,7 +285,7 @@
                 <span >Nº <h11>*</h11></span>
                 <div class="input-group">
                  
-                  <input id="numero" name="numero" class="form-control"  @if(!empty($p)) value = {{$p->numero}} @else value = "" @endif placeholder="" required=""  type="text">
+                  <input id="numero" name="numero" class="form-control" placeholder="" required=""  type="text"  @if(!empty($p)) value = {{$p->numero}} @else value = "" @endif >
                 </div> 
                
               </div> <!-- col bumero-->
@@ -239,7 +305,7 @@
                <span>Cidade</span>
                 <div class="input-group">
                   
-                  <input id="cidade" name="cidade"  placeholder=""  @if(!empty($p)) value = {{$p->cidade}} @else value = "" @endif required=""  class="form-control" type="text"><!--  readonly="readonly" -->
+                  <input id="cidade" name="cidade"  placeholder=""  required=""  class="form-control" type="text"  @if(!empty($p)) value = {{$p->cidade}} @else value = "" @endif><!--  readonly="readonly" -->
                 </div>
             </div><!-- col cidade -->
             
@@ -247,7 +313,7 @@
                 <span>Estado</span>
                 <div class="input-group">
                   
-                  <input id="estado" name="estado"  placeholder=""  @if(!empty($p)) value = {{$p->estado}} @else value = "" @endif required=""  class="form-control"type="text"> <!--  readonly="readonly" -->
+                  <input id="estado" name="estado"  placeholder=""  required=""  class="form-control"type="text"  @if(!empty($p)) value = {{$p->estado}} @else value = "" @endif> <!--  readonly="readonly" -->
                 </div>
                 </div>
                 
@@ -264,16 +330,16 @@
     <div class="col-3">
             <div class="form-group">
                 <label for="telefone">Telefone <h11>*</h11></label>
-                    <input id="telefone" name="telefone" class="form-control"  @if(!empty($p)) value = {{$p->telefone}} @else value = "" @endif placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                    OnKeyPress="formatar('## #####-####', this)">
+                    <input id="telefone" name="telefone" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                    OnKeyPress="formatar('## #####-####', this)"  @if(!empty($p)) value = {{$p->telefone}} @else value = "" @endif>
             </div>
         </div>  <!-- col Telefone-->
 
         <div class="col-3">
                 <div class="form-group">
                     <label for="celular">Celular <h11>*</h11></label>
-                        <input id="celular" name="celular" class="form-control"   @if(!empty($p)) value = {{$p->celular}} @else value = "" @endif placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                        OnKeyPress="formatar('## #####-####', this)">
+                        <input id="celular" name="celular" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                        OnKeyPress="formatar('## #####-####', this)"   @if(!empty($p)) value = {{$p->celular}} @else value = "" @endif>
                 </div>
             </div>  <!-- col Telefone-->
             
@@ -281,7 +347,7 @@
         <div class="col-4">
             <div class="form-group">
                    <label for="exampleFormControlInput2">Email address</label>
-                   <input type="email" class="form-control"  @if(!empty($p)) value = {{$p->email}} @else value = "" @endif id="exampleFormControlInput2" placeholder="name@example.com">
+                   <input type="email" class="form-control"  id="exampleFormControlInput2" placeholder="name@example.com"  @if(!empty($p)) value = {{$p->email}} @else value = "" @endif>
             </div>
             
             
