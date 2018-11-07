@@ -49,10 +49,11 @@ class PacienteController extends Controller
 
     public function create(Request $request){
         
-        $sis_funcionario = sis_funcionario::create($request->all());
-        return var_dump($sis_funcionario);
+        //$paciente = $request->all();
+        //return dd($paciente);
+        $paciente = Paciente::create($request->all());
+        return  redirect()->route('paciente.listar')->response($paciente , 201);
         
-       return view('user.novo')->with('func', $sis_funcionario); 
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
 
