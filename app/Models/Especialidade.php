@@ -8,4 +8,8 @@ class Especialidade extends Model
 {
     protected $table = 'sis_especialidade';
     public $timestamps = false;
+
+
+
+    
 }

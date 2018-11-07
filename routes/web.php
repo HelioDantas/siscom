@@ -109,10 +109,11 @@ Route::prefix('funcionario')->group(function(){
 
 
 
-Route::prefix('user')->group(function(){
 
-  Route::get('novo', 'UserController@novo')->name('user.novo')->middleware('Autorizador');
-   Route::post('create', 'UserController@create')->name('user.create')->middleware('Autorizador');
+Route::prefix('user')->middleware('Autorizador')->group(function(){
+
+  Route::get('novo', 'UserController@novo')->name('user.novo');
+   Route::post('create', 'UserController@create')->name('user.create');;
 
 
 });

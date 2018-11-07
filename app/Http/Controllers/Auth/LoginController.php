@@ -22,7 +22,7 @@ class LoginController extends Controller
     $user = User::buscar($credencias['cpf']);
     if ($user == null)
      return view('user.login');
-     else if($user->senha == $credencias['password']){
+     else if(password_verify($credencias['password'], $user->senha)){
         $request->session()->put('user', $user->nome);
         return view("layout.app");
      } else {
