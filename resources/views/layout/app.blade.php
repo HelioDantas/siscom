@@ -56,7 +56,7 @@
                     <button class="dropbtn">Cadastro</button>
                     <div class="dropdown-content">
                       <a href="{{route('paciente.novo')}}">Paciente</a>
-                      <a href="#">Convenios</a>
+                      <a href="{{route('convenio.novo')}}">Convenios</a>
                       <a href="#">Medico</a>
                       <a href="{{route('funcionario.novo')}}">Funcionario</a>
                     </div>
@@ -66,9 +66,6 @@
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
-                      <a href="#">Aceitos</a>
-                      <a href="#">Consultar</a>
-                      <a href="#"></a>
                     </div>
                   </div>
                 </li>

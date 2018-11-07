@@ -117,3 +117,9 @@ Route::prefix('user')->group(function(){
 
 });
 
+Route::prefix ('convenio')->group(function(){
+
+  Route::get('cad','ConvenioControl@novo')->name('convenio.novo')->middleware('Autorizador');
+  Route::post('create','ConvenioControl@create')->name('convenio.create')->middleware('Autorizador');
+});
+
