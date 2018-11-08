@@ -40,10 +40,17 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
       <table class="table table-hover" id="tabelaPacientes">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Sobrenome</th>
-            <th scope="col">Email</th>
+                <th s>prontuario      </th>
+                <th >nome            </th>
+                <th >cpf             </th>
+                <th >identidade      </th>
+                <th >dataDeNascimento</th>
+                <th >sexo            </th>
+                <th >etnia           </th>
+                <th >nacionalidade   </th>
+                <th >naturalidade    </th>
+                <th >escolaridade    </th>
+                <th scope="col">opções</th>
           </tr>
         </thead>
         <tbody>

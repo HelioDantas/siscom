@@ -209,11 +209,15 @@
     '<td>'+paciente.cpf             +'</td>'+
     '<td>'+paciente.identidade      +'</td>'+
     '<td>'+paciente.dataDeNascimento+'</td>'+
+    '<td>'+
+        '<a href="editar/'+paciente.id+'"><i class="fas fa-edit"></i></a>'+ 
+        '<a href="excluir/'+paciente.id+'"><i class="fas fa-trash"></i></a>'+
+    '</td>'
     '</tr>';
   }
 
   function montarTabela(data) {
-      $("#tabelaClientes>tbody>tr").remove();
+      $("#tabelaPacientes>tbody>tr").remove();
       for(i=0;i<data.data.length;i++) {
           $("#tabelaPacientes>tbody").append(
               montarLinha(data.data[i])
