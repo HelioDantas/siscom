@@ -18,8 +18,13 @@ class ConvenioControl extends Controller
             $sis_convenio = Convenio::create($request->all());
      
             return view('layout.app'); 
-       // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
-} 
 
+      {
 
+        public function alterar(Request $request){
+        
+            $sis_convenio = Convenio::alterar($request->all());
+     
+            return view('layout.app'); 
+    } 
 }

@@ -66,6 +66,10 @@
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
+                     <div class="dropdown-content">
+                      <a href="{{route('cad.novo')}}">Cadastrar</a>
+                      <a href="{{route('pesquisar.novo')}}">Pesquisar</a>
+                      <a href="{{route('alterar.novo')}}">Alterar</a>
                     </div>
                   </div>
                 </li>
