@@ -42,17 +42,16 @@ class FuncionarioController extends Controller
     public function Medicocreate(Request $request){
        //return var_dump ($request->all());
         $Funcionario = Funcionario::create($request->all());
-       // $medico = new Medico();
+        $medico = new Medico();
      
-        /* $valor= $request->all('crm');
+         $valor= $request->all('crm');
         $medico->crm = $valor['crm'];
-        $medico->Sis_funcionario_matricula = ($Funcionario->id);*/
-        $request["Sis_funcionario_matricula"] = $Funcionario->id;
-      // return  var_dump($Funcionario->id); 
-        $medico = Medico::create($request->all());
+        $medico->Sis_funcionario_matricula = ($Funcionario->id);
+        $medico->save();
         $medico = Medico::find($Funcionario->id);
 
-       // return var_dump($medico);
+
+    
        $especialidade = $request->only('$especialidade');
       // return  var_dump($medico->Sis_funcionario_matricula);  
      //   $medico->id = ($Funcionario->id);
