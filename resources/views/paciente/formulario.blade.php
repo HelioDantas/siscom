@@ -44,18 +44,22 @@
 
 @section('navegação')
 
-<div class="form-group navegacao">
-        <div class="col-8">
-          <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
-          <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
-        </div>
-      </div>
+
 
 @endsection
 
 @section('tela')
 <div class="container corpo">
-<form action="" method="post">
+        {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}}
+         @csrf
+
+        <div class="form-group navegacao">
+                <div class="col-8">
+                  <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
+                  <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+                </div>
+              </div>
+
         <fieldset class="form-group">
                 <legend aling="center">Dados Pessoais</legend>
 <div class="row">
@@ -73,7 +77,8 @@
 <div class="col-2">
 <div class="form-group">
   <label for="cpf">Cpf*</label>
-  <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId">
+  <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Cpf" aria-describedby="" pattern="\d{11}"  maxlength="12">
+  <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">-->
   <small id="cpf" class="text-muted">cpf</small>
 </div>
 </div><!--col cpf -->
@@ -89,7 +94,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
-  <input type="date" name="dataNascimento" id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+  <input type="date" name="dataDeNascimento" id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
   <small id="dtNascimento" class="data">Data obrigatoria</small>
 </div>
 </div><!--col dt Nascimento-->
@@ -98,7 +103,7 @@
         <div class="form-group">
         
             <label for="selectbasic">Sexo <h11>*</h11></label>
-              <select required id="genero" name="genero" class="form-control">
+              <select required id="genero" name="sexo" class="form-control">
               <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
                 <option value="N">Não declarado</option>
@@ -130,7 +135,6 @@
                
                   <select required id="escolaridade" name="escolaridade" class="form-control">
                   <option value=""></option>
-                    <option value="Analfabeto">Analfabeto</option>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
                     <option value="Fundamental Completo">Fundamental Completo</option>
                     <option value="Médio Incompleto">Médio Incompleto</option>
@@ -153,7 +157,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Naturalidade*</label>
-                  <input type="text" name="nacionalidade" id="" class="form-control" placeholder="naturalidade" value="">
+                  <input type="text" name="naturalidade" id="" class="form-control" placeholder="naturalidade" value="">
                   <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
                 </div>
         </div><!--col naturalidade -->
@@ -161,7 +165,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Profissão*</label>
-                  <input type="text" name="prof" id="" class="form-control" placeholder="prof" value="Brasileiro">
+                  <input type="text" name="profissao" id="" class="form-control" placeholder="prof" value="">
                   <small id="prof" class="text-muted">informe o seu pais de origem</small>
                 </div>
         </div><!--col nacionalidade -->
@@ -170,7 +174,7 @@
                 <div class="form-group">
                 
                     <label for="selectbasic">Status <h11>*</h11></label>
-                      <select required id="status_2" name="status_id" class="form-control">
+                      <select required id="status" name="status" class="form-control">
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>
@@ -191,7 +195,7 @@
                 <div class="col-3">
                     <div class="form-group">
                            <label for="cep">Cep</label>
-                           <input type="search" class="form-control input-md" id="cep" placeholder="Apenas numeros" maxlength="8" pattern="[0-9+$]">
+                           <input type="search" class="form-control input-md" name="cep" id="cep" placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"> 
                         </div>
                     </div><!-- col cep -->
                       
@@ -276,14 +280,25 @@
         <div class="col-4">
             <div class="form-group">
                    <label for="exampleFormControlInput2">Email address</label>
-                   <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+                   <input type="email"  name="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
             </div>
             
             
             </div> <!-- col Email -->
 
    
-</form>
+{!! Form::close() !!}}
 </div><!-- container -->
 
+@endsection
+
+@section('scripts')
+    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+              $(':button').click(function() {
+                  location.reload();
+              });
+        });       
+     </script>
 @endsection

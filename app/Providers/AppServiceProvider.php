@@ -14,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::component('paciente.cadastro', 'formCad');
+        Blade::component('components.mensagens.tolltipValid','valid');
+        Blade::component('components.mensagens.tolltipInValid','invalid');
     }
 
     /**

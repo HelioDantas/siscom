@@ -81,14 +81,16 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  * =================================================================================*
  */
 
-Route::prefix('pacientes')->middleware('Autorizador')->group(function () {
-  Route::get('listar', 'PacienteController@listar')->name('paciente.listar');
-  Route::get('cad' , 'PacienteController@novo')->name('paciente.novo');
-  Route::get('editar' , 'PacienteController@edit')->name('paciente.editar');
-  Route::get('excluir/{id}' , 'PacienteController@destroy')->name('paciente.excluir');
-  Route::get('index','PacienteController@indexjs')->name('paciente.js');
-  Route::get('json','PacienteController@indexjson')->name('paciente.json');
 
+Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
+  Route::get('listar'      ,  'PacienteController@listar')->name(   'paciente.listar' );
+  Route::get('novo'        ,  'PacienteController@novo')->name(     'paciente.novo');
+  Route::post('create'     ,  'PacienteController@create')->name(   'paciente.create' );
+  Route::get('editar/{id}' ,  'PacienteController@edit')->name(     'paciente.editar' );
+  Route::put('update/{id}' ,  'PacienteController@update')->name(   'paciente.update' );
+  Route::get('excluir/{id}',  'PacienteController@destroy')->name(  'paciente.excluir');
+  Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
+  Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json'   );
 });
 
 
@@ -117,9 +119,9 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 
 Route::prefix('user')->middleware('Autorizador')->group(function(){
-
-  Route::get('novo', 'UserController@novo')->name('user.novo');
+   Route::get('novo', 'UserController@novo')->name('user.novo');
    Route::post('create', 'UserController@create')->name('user.create');;
+
 
 
 });

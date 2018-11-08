@@ -50,7 +50,7 @@
 @section('tela')
 
 
- {!! Form::open(['route' => 'user.create','method ' => 'post',]) !!} @csrf
+<form action="" method ="post">
     <div class="form-group navegacao">
         <div class="col-8">
           <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
@@ -61,9 +61,9 @@
     <div class = "row">
     <div  class = "col-3">
         <div class = "form-group">
-        <label for="Sis_funcionario_matricula">Matricula</label>
-         <input type="text" name="Sis_funcionario_matricula" id="Sis_funcionario_matricula" class="form-control"   @if(isset($func)) value = {{$func->id}} @else value = "" @endif>
-     <small id="Sis_funcionario_matricula" class="text-muted">Hl</small>
+        <label for="matricula">Matricula</label>
+         <input type="text" name="matricula" id="" class="form-control"   @if(isset($func)) value = {{$func->matricula}} @else value = "" @endif>
+     <small id="matricula" class="text-muted">Hl</small>
     
         </div>
      </div>
@@ -78,7 +78,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="senha">Senha</label>
-  <input type="password" name="senha" id = 'senha' class="form-control" placeholder="senha">
+  <input type="password" name="password" id="" class="form-control" placeholder="senha">
   <small id="senha" class="text-muted">Hl</small>
 </div>
 </div><!--col -->
@@ -87,15 +87,11 @@
 <div class="col-2">
 <div class="form-group">
   <label for="dicaSenha">Dica</label>
-  <small id="dicaSenha" class="text-muted">Hl</small>
-  <input type="text" name="dicaSenha" id="" class="form-control" placeholder="dica da senha">
+  <input type="text" name="senha" id="" class="form-control" placeholder="dica da senha">
   <small id="dicaSenha" class="text-muted">Hl</small>
 </div>
 </div><!--col -->
 </div>
-
-
-<!--<input type="checkbox" name="vehicle1" value="Bike"> -->
-{!! Form::close() !!}
+</form>
 
 @endsection

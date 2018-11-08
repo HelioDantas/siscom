@@ -27,9 +27,19 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'cpf'   => 'riquired|max:20',
+            'cpf'   => 'riquired|max:20|exists:Usuario,cpf',
             'senha' => 'riquired|max:255',
             
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'cpf.exists'    => ('Esse Usuario não existe'),
+            'cpf.max'       => ('CPF Inválido.'),
+            'cpf.min'       => ('CPF Inválido.'),
+           
         ];
     }
 

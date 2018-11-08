@@ -9,5 +9,26 @@ class Paciente extends Model
     protected $table = 'sis_paciente';
     public $timestamps = false;
 
-    protected $fillable = array();
+    protected $fillable = array(
+        'nome',
+        'cpf',
+        'identidade',
+        'dataDeNascimento',
+        'sexo',
+        'etnia',
+        'nacionalidade',
+        'naturalidade',
+        'escolaridade',
+        'rua',
+        'numero',
+        'bairro',
+        'cep',
+        'cidade',
+        'estado',
+        'telefone',
+        'celular',
+        'email',
+        'profissao',
+        'status',
+    );
 }
