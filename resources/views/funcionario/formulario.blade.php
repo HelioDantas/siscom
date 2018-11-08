@@ -165,7 +165,6 @@
                       <label for="profissao">Profissão</label>
                       <select required id="profissao" name="profissao" id="" class="form-control" >
                       <option value="A">Atendente</option>
-                      <option value="M">Medico</option>
                       </select>
                     </div>
             </div><!--col nacionalidade -->
