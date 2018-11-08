@@ -11,7 +11,7 @@ class PacienteController extends Controller
 {
 
     function indexjs(){
-        return view('paciente.indexjs');
+        return view('paciente.index');
     }
 
 
