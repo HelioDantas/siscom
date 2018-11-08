@@ -17,7 +17,10 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
 
 @section('navegação')
 
-        
+    <div class="col-2">
+    <label for="filtrar-tabela">Buscar</label>
+    <input type="text" name="filtro" id="filtrar-tabela">    
+    </div>    
 @endsection
 
 
@@ -62,7 +65,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
               <tr>
                  <td>       {{$p->id}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
-                 <td>       {{$p->nome}}                </td>
+                 <td class="info-nome">       {{$p->nome}}                </td>
                  <td>       {{$p->cpf}}                 </td>
                  <td>       {{$p->identidade}}          </td>
                  <td>       {{$p->dataDeNascimento}}    </td>
@@ -102,4 +105,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
     
 
 
+    @endsection
+    @section('scripts')
+    <script  href="{{ asset('js/filtro.js') }}" type="text/javascript"></script>
     @endsection

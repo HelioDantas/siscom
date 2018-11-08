@@ -15,7 +15,7 @@ class LoginController extends Controller
    }
 
 
-   public function login(UserRequest $request){
+   public function login(Request $request){
 
      $credencias = $request->all('cpf', 'password');
     $user = User::buscar($credencias['cpf']);

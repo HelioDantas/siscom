@@ -126,14 +126,24 @@
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
+     <script>
+     $(function(){
+    carregarPacientes(1);
+});
 
+function carregarPacientes(pagina){
+    $.get('./json',{page:pagina }, function(resp){
+        console.log(resp);
+        });
+
+}
+     </script>
     <script>
 		setInterval(function() {
 			clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
 		}, 1000);
 		var clock = document.getElementById('real-clock');
   </script>
-    
-    @yield('scripts')
+   
 </body>
 </html>
