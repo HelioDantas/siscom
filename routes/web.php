@@ -100,14 +100,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('funcionario')->group(function(){
 
   Route::get('cad', 'FuncionarioController@novo')->name('funcionario.novo')->middleware('Autorizador');
+   Route::get('medico/cad', 'FuncionarioController@novoM')->name('medico.novo')->middleware('Autorizador');
   Route::post('create', 'FuncionarioController@create')->name('funcionario.create')->middleware('Autorizador');
-
+    Route::post('medico/create', 'FuncionarioController@Medicocreate')->name('medico.create');;
 
 
 
 });
 
+/*Route::prefix('medico')->middleware('Autorizador')->group(function(){
 
+Route::post('create', 'FuncionarioController@create')->name('user.create');;
+
+
+})*/
 
 
 Route::prefix('user')->middleware('Autorizador')->group(function(){

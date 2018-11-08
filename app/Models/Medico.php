@@ -9,15 +9,20 @@ class Medico extends Model
     protected $table = 'sis_medico';
     public $timestamps = false;
 
+     
+    protected $primaryKey = 'Sis_funcionario_matricula';
+    
+    protected $fillable = array('Sis_funcionario_matricula','crm');
+
     public function especialidade(){
 
-      return  $this->belongsToMany("App/Especialidade", 'sis_medico_tem_especialidade','Sis_medico_funcionario_matricula', 'Sis_especialidade_id');
+      return  $this->belongsToMany("App\Models\Especialidade", 'sis_medico_tem_especialidade','Sis_medico_funcionario_matricula', 'Sis_especialidade_id');
     }
 
 
     public function funcionario(){
 
-        return $this->belongsTo("App/Models/Funcionario", 'Sis_funcionario_matricula', 'matricula');
+        return $this->belongsTo("App\Models\Funcionario", 'Sis_funcionario_matricula', 'matricula');
 
     }
 
