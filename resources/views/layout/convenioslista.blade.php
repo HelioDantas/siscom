@@ -151,7 +151,7 @@
   
   function getPreviousItem(data) {
       i = data.current_page-1;
-      if (data.current_page == 1) 
+      if (data.current_page == 1)
           s = '<li class="page-item disabled">';
       else
           s = '<li class="page-item">';
