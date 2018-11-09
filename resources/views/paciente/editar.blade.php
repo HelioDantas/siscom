@@ -185,40 +185,7 @@
         
                   <select required id="escolaridade" name="escolaridade" class="form-control">
                         @if(!empty($p->escolaridade))
-
-                        @switch($p->escolaridade)
-                        @case('Fundamental Incompleto')
-                           
-                            @php $tipo = 'Fundamental Incompleto' ; @endphp
-                            @break
-
-                        @case( 'Fundamental Completo')
-                        
-                            @php $tipo = 'Fundamental Completo' ; @endphp
-                            @break
-                        @case('Medio Incompleto')
-                           
-                            @php $tipo = 'Medio Incompleto' ; @endphp
-                            @break
-
-                        @case('Medio Completo')
-                            
-                            @php $tipo = 'Medio Completo' ; @endphp
-                            @break
-                        @case('Superior Incompleto')
-                           
-                            @php $tipo = 'Superior Incompleto' ; @endphp
-                            @break
-
-                        @case('Superior Completo')
-                            
-                            @php $tipo = 'Superior Completo' ; @endphp
-                            @break
-
-                        @default
-                            
-                        @endswitch
-                        <option value="{{$p->escolaridade}}">{{$tipo}}</option>
+                        <option value="{{$p->escolaridade}}">{{$p->escolaridade}}</option>
                          @endif
                   <option value=""></option>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
