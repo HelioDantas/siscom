@@ -26,6 +26,11 @@ class UserController extends Controller
 
     }
 
-
+public function alterar(Request $request){
+        
+        $User = User::alterar($request->all());
+     //   return var_dump($sis_funcionario);
+        
+       return view('layout.app');
 
 }

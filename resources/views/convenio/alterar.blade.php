@@ -79,9 +79,247 @@
   <label for="cpf">Nome do convênio </label>
   <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId"  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
   <small id="cpf" class="text-muted">Inserir nome do convênio</small>
-    </div>
-   </div>
-  </div>              
+</div>
+</div><!--col cpf -->
+
+<div class="col-2">
+        <div class="form-group">
+          <label for="cpf">RG*</label>
+          <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade"
+            @if(!empty($p)) value = {{$p->identidade}} @else value = "" @endif>
+          <small id="identidade" class="text-muted">identidade</small>
+        </div>
+        </div><!--col cpf -->
+
+<div class="col-2">
+<div class="form-group">
+  <label for="data">Data Nascimento</label>
+  <input type="date" name="dataNascimento" id="dtNascimento"  @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+  <small id="dtNascimento" class="data">Data obrigatoria</small>
+</div>
+</div><!--col dt Nascimento-->
+
+<div class="col-2">
+        <div class="form-group">
+        
+            <label for="selectbasic">Sexo <h11>*</h11></label>
+              <select required id="genero" name="genero" class="form-control"  @if(!empty($p)) value = "{{$p->sexo}}" @else value = "" @endif>
+                    @if(!empty($p))
+                    @php
+                        switch ($p->sexo) {
+                            case 'M':
+                                $nome = 'Masculino';
+                                break;
+                            case 'F':
+                                $nome = 'Feminino';
+                                break;
+                            case 'N':
+                                $nome = 'Não declarado';
+                                break;
+                            case 'I':
+                                $nome = 'Indefinido';
+                                break;    
+                        }
+                    @endphp
+                    <option value={{$p->sexo}}>{{$nome}}</option>
+                @else
+                    <option value=""></option>
+                @endif
+              <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+                <option value="N">Não declarado</option>
+                <option value="I">Indefinido</option>
+              </select>
+           
+        </div>
+</div><!--col genero-->
+
+<div class="col-2">
+        <div class="form-group">
+        
+            <label for="selectbasic">Etnia <h11>*</h11></label>
+              <select required id="etnia" name="etnia" class="form-control">
+                @if(!empty($p))
+                    @php
+                        switch ($p->etnia) {
+                            case 'B':
+                                $nome = 'Branco';
+                                break;
+                            case 'P':
+                                $nome = 'Pardo';
+                                break;
+                            case 'N':
+                                $nome = 'Negro';
+                                break;
+                            case 'I':
+                                $nome = 'Indigenas';
+                                break;    
+                        }
+                    @endphp
+                    <option value={{$p->etnia}}>{{$nome}}</option>
+                @else
+                    <option value=""></option>
+                @endif
+
+                <option value="B">Branco</option>
+                <option value="P">Pardo</option>
+                <option value="N">Negro</option>
+                <option value="I">Indigenas</option>
+              </select>
+           
+        </div>
+    </div><!--  etinia-->
+
+    <div class="col-3">
+            <div class="form-group">
+            
+                <label for="selectbasic">Escolaridade <h11>*</h11></label>
+        
+                  <select required id="escolaridade" name="escolaridade" class="form-control">
+                        @if(!empty($p))
+                        @php
+                        switch ($p->escolaridade) {
+                            case 'Fundamental Incompleto':
+                                $nome = 'Fundamental Incompleto';
+                                break;
+                            case 'Fundamental Completo':
+                                $nome = 'Fundamental Completo';
+                                break;
+                            case 'Medio Incompleto':
+                                $nome = 'Medio Incompleto';
+                                break;
+                            case 'Medio Completo':
+                                $nome = 'Medio Completo';
+                                break;
+                            case 'Superior Incompleto':
+                                $nome = 'Superior Incompleto';
+                                break; 
+                            case 'Superior Completo':
+                                $nome = 'Superior Completo';
+                                break;     
+                        }
+                        @endphp
+                        <option value="{{$p->escolaridade}}">{{$nome}}</option>
+                         @endif
+                  <option value=""></option>
+                    <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+                    <option value="Fundamental Completo">Fundamental Completo</option>
+                    <option value="Medio Incompleto">Médio Incompleto</option>
+                    <option value="Medio Completo">Médio Completo</option>
+                    <option value="Superior Incompleto">Superior Incompleto</option>
+                    <option value="Superior Completo">Superior Completo</option>
+                  </select>
+               
+            </div>
+        </div>
+
+        <div class="col-3">
+                <div class="form-group">
+                  <label for="">Nacionalidade*</label>
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro"  @if(!empty($p)) value = {{$p->nacionalidade}} @else value = "" @endif>
+                  <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
+                </div>
+        </div><!--col nacionalidade -->
+
+        <div class="col-3">
+                <div class="form-group">
+                  <label for="">Naturalidade*</label>
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = {{$p->naturalidade}} @else value = "" @endif>
+                  <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
+                </div>
+        </div><!--col naturalidade -->
+
+        <div class="col-3">
+                <div class="form-group">
+                  <label for="">Profissão*</label>
+                  <input type="text" name="prof" id="" class="form-control"  placeholder="prof" value="Brasileiro"  @if(!empty($p)) value = {{$p->profissao}} @else value = "" @endif>
+                  <small id="prof" class="text-muted">informe o seu pais de origem</small>
+                </div>
+        </div><!--col nacionalidade -->
+
+        <div class="col-2">
+                <div class="form-group">
+                
+                    <label for="selectbasic">Status <h11>*</h11></label>
+                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = {{$p->Status_2}} @else value = "" @endif>
+                      <option value="A">Ativo</option>
+                        <option value="I">Inativo</option>
+                      </select>
+                   
+                </div>
+            </div><!--  etinia-->
+
+           
+</div><!-- row -->
+</fieldset><!--Dados pessoas-->
+<hr>
+
+
+        <fieldset class="form-group">
+                <legend aling="center">Endereço</legend>
+            
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                           <label for="cep">Cep</label>
+                           <input type="search" class="form-control input-md" id="cep"  placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"  @if(!empty($p)) value = {{$p->cep}} @else value = "" @endif>
+                        </div>
+                    </div><!-- col cep -->
+                      
+                      <div class="col-2">
+                           <button type="button" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
+                            <strong>pesquisar</strong></button>
+                      </div><!-- col CEP -->
+                    
+                    
+                 <div class="col">
+                  <span>Rua</span>
+                      <div class="input-group">
+                          
+                          <input type="text" name="rua"  class="form-control" id="rua"  @if(!empty($p)) value = {{$p->rua}} @else value = "" @endif><!--  readonly="readonly" -->
+                  
+                  </div>
+              </div><!-- col rua-->
+               
+               <div class="col-2">
+                <span >Nº <h11>*</h11></span>
+                <div class="input-group">
+                 
+                  <input id="numero" name="numero" class="form-control" placeholder="" required=""  type="text"  @if(!empty($p)) value = {{$p->numero}} @else value = "" @endif >
+                </div> 
+               
+              </div> <!-- col bumero-->
+              
+              
+              <div class="col-3">
+            
+               <span>Bairro</span>
+                <div class="input-group">
+                  
+                  <input id="bairro" name="bairro"  placeholder="bairro"  required="" class="form-control"type="text" @if(!empty($p)) value = {{$p->bairro}} @else value = "" @endif ><!--  readonly="readonly" -->
+                </div>
+            
+                </div><!-- col bairro-->
+                
+            <div class="col-4">
+               <span>Cidade</span>
+                <div class="input-group">
+                  
+                  <input id="cidade" name="cidade"  placeholder=""  required=""  class="form-control" type="text"  @if(!empty($p)) value = {{$p->cidade}} @else value = "" @endif><!--  readonly="readonly" -->
+                </div>
+            </div><!-- col cidade -->
+            
+                <div class="col-2">
+                <span>Estado</span>
+                <div class="input-group">
+                  
+                  <input id="estado" name="estado"  placeholder=""  required=""  class="form-control"type="text"  @if(!empty($p)) value = {{$p->estado}} @else value = "" @endif> <!--  readonly="readonly" -->
+                </div>
+                </div>
+                
+             
+    </div><!-- row endereco -->
+                
 </fieldset><!--endereço-->
 <hr>
 
