@@ -50,7 +50,7 @@
 
 @section('tela')
 <div class="container corpo">
-        {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}}
+        {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}
          @csrf
 
         <div class="form-group navegacao">
@@ -289,7 +289,7 @@
             </div> <!-- col Email -->
 
    
-{!! Form::close() !!}}
+{!! Form::close() !!}
 </div><!-- container -->
 
 @endsection

@@ -35,7 +35,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
             <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
-                <th s>prontuario      </th>
+                <th s>matricula     </th>
                 <th >nome            </th>
                 <th >cpf             </th>
                 <th >identidade      </th>
@@ -63,7 +63,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                 @foreach ($Funcionarios as $p)
                     
               <tr>
-                 <td>       {{$p->id}}          </td>
+                 <td>       {{$p->matricula}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
                  <td class="info-nome">       {{$p->nome}}                </td>
                  <td>       {{$p->cpf}}                 </td>
