@@ -82,7 +82,7 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  */
 
 
-Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
+Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')-
   Route::get('listar'      ,  'PacienteController@listar')->name(   'paciente.listar' );
   Route::get('novo'        ,  'PacienteController@novo')->name(     'paciente.novo');
   Route::post('create'     ,  'PacienteController@create')->name(   'paciente.create' );
@@ -102,9 +102,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('funcionario')->group(function(){
 
   Route::get('cad', 'FuncionarioController@novo')->name('funcionario.novo')->middleware('Autorizador');
-   Route::get('medico/cad', 'FuncionarioController@novoM')->name('medico.novo')->middleware('Autorizador');
+   Route::get('listar'      ,  'FuncionarioController@listar')->name(   'funcionario.listar' );
+  
   Route::post('create', 'FuncionarioController@create')->name('funcionario.create')->middleware('Autorizador');
-    Route::post('medico/create', 'FuncionarioController@Medicocreate')->name('medico.create');;
+    Route::post('medico/create', 'FuncionarioController@Medicocreate')->name('medico.create');
+     Route::get('medico/cad', 'FuncionarioController@novoM')->name('medico.novo')->middleware('Autorizador');
 
 
 

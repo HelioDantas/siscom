@@ -31,7 +31,7 @@ class FuncionarioController extends Controller
             return view('user.novo')->with('func', $Funcionario);
 
     }
-
+   
 
     public function Medicocreate(Request $request){
        //return var_dump ($request->all());
@@ -58,6 +58,14 @@ class FuncionarioController extends Controller
         return view('user.novo')->with('func', $Funcionario);
 
     }
+
+      public function listar()  
+    {
+      
+        $Funcionarios = Funcionario::paginate(5);
+        return view('funcionario.listar' , compact('Funcionarios'));
+       
+    } 
 
 
 

@@ -93,16 +93,26 @@
                   </div>
                 </li>
                 <li class="nav-item">
-            <div class="dropdown">
-              <button class="dropbtn">Pacientes</button>
-              <div class="dropdown-content">
-              <a href="{{route('paciente.listar')}}">lista de pacientes</a>
-                <a href="#">Adicionar</a>
-                <a href="#">Adicionar</a>
-              </div>
-            </div>
+                  <div class="dropdown">
+                    <button class="dropbtn">Pacientes</button>
+                    <div class="dropdown-content">
+                    <a href="{{route('paciente.listar')}}">lista de pacientes</a>
+                      <a href="#">Adicionar</a>
+                      <a href="#">Adicionar</a>
                     </div>
+                  </div>
                 </li>
+                 <li class="nav-item">
+                  <div class="dropdown">
+                    <button class="dropbtn">Funcionarios</button>
+                    <div class="dropdown-content">
+                    <a href="{{route('funcionario.listar')}}">lista de funcionarios</a>
+                      <a href="#">Adicionar</a>
+                      <a href="#">Adicionar</a>
+                    </div>
+                  </div>
+                </li>
+
               </ul>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn sair #26a69a" type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>

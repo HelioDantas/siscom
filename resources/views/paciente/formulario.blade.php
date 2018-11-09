@@ -77,8 +77,8 @@
 <div class="col-2">
 <div class="form-group">
   <label for="cpf">Cpf*</label>
-  <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Cpf" aria-describedby="" pattern="\d{11}"  maxlength="12">
-  <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">-->
+  <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12">
+  <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">   pattern="/d{11}"  -->
   <small id="cpf" class="text-muted">cpf</small>
 </div>
 </div><!--col cpf -->
@@ -134,7 +134,6 @@
                 
                
                   <select required id="escolaridade" name="escolaridade" class="form-control">
-                  <option value=""></option>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
                     <option value="Fundamental Completo">Fundamental Completo</option>
                     <option value="Médio Incompleto">Médio Incompleto</option>

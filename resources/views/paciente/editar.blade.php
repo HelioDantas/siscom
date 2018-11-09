@@ -103,12 +103,12 @@
         <div class="form-group">
         
             <label for="selectbasic">Sexo <h11>*</h11></label>
-              <select required id="genero" name="genero" class="form-control"  @if(!empty($p)) value = "{{$p->sexo}}" @else value = "" @endif>
+              <select required id="genero" name="genero" class="form-control" >
                     @if(!empty($p))
                     @php
                         switch ($p->sexo) {
                             case 'M':
-                                $nome = 'Masculino';
+                                {{$nome}} = 'Masculino';
                                 break;
                             case 'F':
                                 $nome = 'Feminino';
@@ -121,7 +121,7 @@
                                 break;    
                         }
                     @endphp
-                    <option value={{$p->sexo}}>{{$nome}}</option>
+                    <option value = {{$p->sexo}}> {{$nome}}</option>
                 @else
                     <option value=""></option>
                 @endif

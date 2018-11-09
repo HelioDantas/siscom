@@ -39,7 +39,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro Funcionario</h4>
+        <h4 class="titulocadastro">Cadastro Medico</h4>
 @endsection
 @section('navegação')
 
@@ -59,7 +59,7 @@
       </div>
 
             <fieldset class="form-group">
-                    <legend aling="center">Cadastro Medico</legend>
+                    <legend aling="center">Dados Pessoais</legend>
     <div class="row">
 
     <div class="col-3">
