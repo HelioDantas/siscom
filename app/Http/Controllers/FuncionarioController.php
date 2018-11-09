@@ -72,6 +72,23 @@ class FuncionarioController extends Controller
 
     }
 
+      public function edit( $id) 
+    {
+        //  form para editar infos de um paciente
+       $p = Funcionario::find($id);
 
+        return view('funcionario.editar')->with('p' , $p);
+    }
+
+    
+    public function update(Request $request, $id)
+    {
+       
+
+        $Funcionario = Funcionario::find($id);
+
+        $Funcionario->update($request->all());
+        return redirect()->route('funcionario.listar');
+    }
 
 }

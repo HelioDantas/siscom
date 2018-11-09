@@ -105,6 +105,8 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function(){
    Route::get('listar'      ,  'FuncionarioController@listar')->name(   'funcionario.listar' );
    Route::get('excluir/{id}',  'FuncionarioController@destroy')->name(  'funcionario.excluir');
     Route::post('create', 'FuncionarioController@create')->name('funcionario.create')->middleware('Autorizador');
+     Route::get('editar/{id}' ,  'FuncionarioController@edit')->name(     'funcionario.editar' );
+     Route::put('update/{id}' ,  'FuncionarioController@update')->name('funcionario.update' );
     
     Route::post('medico/create', 'FuncionarioController@Medicocreate')->name('medico.create');
      Route::get('medico/cad', 'FuncionarioController@novoM')->name('medico.novo')->middleware('Autorizador');

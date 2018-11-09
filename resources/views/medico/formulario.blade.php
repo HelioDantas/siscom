@@ -283,6 +283,10 @@
 
                 </div> <!-- col Email -->
 
+                 </fieldset><!--endereço-->
+                 <hr>
+    <fieldset class="form-group">
+            <legend aling="center">Dados profissionais</legend>
   
 
     <div class="col-3">
@@ -292,20 +296,22 @@
       <small id="crm" class="text-muted">Nome Completo</small>
     </div>
     </div><!--col nome -->
-'   <div class="col-3">
-   <div class="form-group">
+
+'    <div class="col-3">
+            <div class="form-group">
  
    
     @foreach($especi as $e)
-    <div class="checkbox">
-    <input name = "$especialidade[]" type="checkbox" value= {{$e->id}}> {{$e->nome}}
-    </div>
+    
+         <div class="checkbox">
+            <input name = "$especialidade[]" type="checkbox" value= {{$e->id}}> {{$e->nome}}
+        </div>
 
     @endforeach
+             </div>
       </div>
 
-
-
+    </fieldset><!--endereço-->
 
       {!! Form::close() !!}
     </div><!-- container -->
