@@ -11,6 +11,7 @@
 @section('conteudo')
 <div class="jumbotron">
 TESTANDO: <span style="color:red;">visualização e paginação do dados do paciente</span>
+
 </div>
 @endsection
 
