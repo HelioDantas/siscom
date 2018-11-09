@@ -39,7 +39,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
                 <th >nome            </th>
                 <th >cpf             </th>
                 <th >identidade      </th>
-                <th >dataDeNascimento</th>
+                <th >Nascimento</th>
                 <th >sexo            </th>
                 <th >etnia           </th>
                 <th >nacionalidade   </th>

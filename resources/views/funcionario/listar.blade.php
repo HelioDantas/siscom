@@ -39,9 +39,8 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                 <th >nome            </th>
                 <th >cpf             </th>
                 <th >identidade      </th>
-                <th >dataDeNascimento</th>
+                <th >Nascimento</th>
                 <th >sexo            </th>
-                <th >etnia           </th>
                 <th >nacionalidade   </th>
                 <th >naturalidade    </th>
                 <th >escolaridade    </th>
@@ -53,10 +52,10 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                 <th scope="col">estado          </th>
                 <th scope="col">telefone        </th>
                 <th scope="col">celular         </th>
-                <th scope="col">email           </th>
-                <th scope="col">profissao       </th>
-                <th scope="col">status_2        </th>   -->
-                <th scope="col">opções    </th>
+                <th scope="col">email           </th>-->
+                <th >profissao       </th>
+                <th >status        </th>   
+                <th scope="col">opções</th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +69,6 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                  <td>       {{$p->identidade}}          </td>
                  <td>       {{$p->dataDeNascimento}}    </td>
                  <td>       {{$p->sexo}}                </td>
-                 <td>       {{$p->etnia}}               </td>
                  <td>       {{$p->nacionalidade}}       </td>
                  <td>       {{$p->naturalidade}}        </td>
                  <td>       {{$p->escolaridade}}        </td>
@@ -82,9 +80,9 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                  <td>       {{$p->estado}}              </td>
                  <td>       {{$p->telefone}}            </td>
                  <td>       {{$p->celular}}             </td>
-                 <td>       {{$p->email}}               </td>
+                 <td>       {{$p->email}}               </td>-->
                  <td>       {{$p->profissao}}           </td>
-                 <td>       {{$p->status_2}}            </td>  -->
+                 <td>       {{$p->status}}            </td>  
                 <td>
                     <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
                 
