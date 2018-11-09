@@ -39,7 +39,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro de Convênio</h4>
+        <h4 class="titulocadastro">Cadastrar Convênio</h4>
 @endsection
 @section('navegação')
 
@@ -131,13 +131,10 @@
                           </select>
                     </div>
                 </div>
-
-                
-
     </div>
     </fieldset>
     <hr>
     </form>
-    </div><!-- container -->
+    </div>
 
     @endsection

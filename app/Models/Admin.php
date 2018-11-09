@@ -15,7 +15,7 @@ Class Admin extends Authenticable
      * o que pode ser populado em massa 
      */
     protected $fillable = [
-        'nome','email','senha',
+        'cnpj','nome','banco','agencia','conta','status',
     ];
 
 
