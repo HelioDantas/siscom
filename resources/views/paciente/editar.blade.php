@@ -103,28 +103,30 @@
         <div class="form-group">
         
             <label for="selectbasic">Sexo <h11>*</h11></label>
-              <select required id="genero" name="genero" class="form-control" >
-                    @if(!empty($p))
-                    @php
-                        switch ($p->sexo) {
-                            case 'M':
-                                {{$nome}} = 'Masculino';
-                                break;
-                            case 'F':
-                                $nome = 'Feminino';
-                                break;
-                            case 'N':
-                                $nome = 'Não declarado';
-                                break;
-                            case 'I':
-                                $nome = 'Indefinido';
-                                break;    
-                        }
-                    @endphp
-                    <option value = {{$p->sexo}}> {{$nome}}</option>
-                @else
+              <select required id="sexo" name="sexo" class="form-control" >
+                 @if(!empty($p->sexo))
+
+                    @switch($p->sexo)
+                    @case('M')
+                        @php $tipo = 'Masculino' ; @endphp
+                        @break
+    
+                    @case( 'F')
+                        @php $tipo = 'Feminino' ; @endphp
+                        @break
+                    @case( 'N')
+                        @php $tipo = 'Não declarado' ; @endphp
+                        @break
+                    @case( 'I')
+                        @php $tipo = 'Indefinido' ; @endphp
+                        @break
+    
+                    @endswitch
+
+                    <option value={{$p->sexo}}>{{$tipo}}</option>
+                    @else
                     <option value=""></option>
-                @endif
+                @endif  
               <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
                 <option value="N">Não declarado</option>
@@ -139,24 +141,30 @@
         
             <label for="selectbasic">Etnia <h11>*</h11></label>
               <select required id="etnia" name="etnia" class="form-control">
-                @if(!empty($p))
-                    @php
-                        switch ($p->etnia) {
-                            case 'B':
-                                $nome = 'Branco';
-                                break;
-                            case 'P':
-                                $nome = 'Pardo';
-                                break;
-                            case 'N':
-                                $nome = 'Negro';
-                                break;
-                            case 'I':
-                                $nome = 'Indigenas';
-                                break;    
-                        }
-                    @endphp
-                    <option value={{$p->etnia}}>{{$nome}}</option>
+                @if(!empty($p->etnia))
+                                        
+                @switch($p->etnia)
+                @case('B')
+                    
+                    @php $tipo = 'Branco' ; @endphp
+                    @break
+
+                @case( 'P')
+                    
+                    @php $tipo = 'Pardo' ; @endphp
+                    @break
+                @case( 'N')
+                    
+                    @php $tipo = 'Negro' ; @endphp
+                    @break
+
+                @case( 'I')
+                   
+                    @php $tipo = 'Indigenas' ; @endphp
+                    @break
+
+                @endswitch
+                    <option value= {{$p->etnia}}>{{$tipo}}</option>
                 @else
                     <option value=""></option>
                 @endif
@@ -176,30 +184,41 @@
                 <label for="selectbasic">Escolaridade <h11>*</h11></label>
         
                   <select required id="escolaridade" name="escolaridade" class="form-control">
-                        @if(!empty($p))
-                        @php
-                        switch ($p->escolaridade) {
-                            case 'Fundamental Incompleto':
-                                $nome = 'Fundamental Incompleto';
-                                break;
-                            case 'Fundamental Completo':
-                                $nome = 'Fundamental Completo';
-                                break;
-                            case 'Medio Incompleto':
-                                $nome = 'Medio Incompleto';
-                                break;
-                            case 'Medio Completo':
-                                $nome = 'Medio Completo';
-                                break;
-                            case 'Superior Incompleto':
-                                $nome = 'Superior Incompleto';
-                                break; 
-                            case 'Superior Completo':
-                                $nome = 'Superior Completo';
-                                break;     
-                        }
-                        @endphp
-                        <option value="{{$p->escolaridade}}">{{$nome}}</option>
+                        @if(!empty($p->escolaridade))
+
+                        @switch($p->escolaridade)
+                        @case('Fundamental Incompleto')
+                           
+                            @php $tipo = 'Fundamental Incompleto' ; @endphp
+                            @break
+
+                        @case( 'Fundamental Completo')
+                        
+                            @php $tipo = 'Fundamental Completo' ; @endphp
+                            @break
+                        @case('Medio Incompleto')
+                           
+                            @php $tipo = 'Medio Incompleto' ; @endphp
+                            @break
+
+                        @case('Medio Completo')
+                            
+                            @php $tipo = 'Medio Completo' ; @endphp
+                            @break
+                        @case('Superior Incompleto')
+                           
+                            @php $tipo = 'Superior Incompleto' ; @endphp
+                            @break
+
+                        @case('Superior Completo')
+                            
+                            @php $tipo = 'Superior Completo' ; @endphp
+                            @break
+
+                        @default
+                            
+                        @endswitch
+                        <option value="{{$p->escolaridade}}">{{$tipo}}</option>
                          @endif
                   <option value=""></option>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
