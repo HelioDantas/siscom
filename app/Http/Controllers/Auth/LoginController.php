@@ -19,10 +19,13 @@ class LoginController extends Controller
 
      $credencias = $request->all('cpf', 'password');
     $user = User::buscar($credencias['cpf']);
+    $user = User::find($user->id);
+   // return dd($user);
+
     if ($user == null)
      return view('user.login');
      else if(password_verify($credencias['password'], $user->senha)){
-        $request->session()->put('user', $user->nome);
+        $request->session()->put('user', $user->funcionario->nome);
         return view("layout.app");
      } else {
          return view('user.login');

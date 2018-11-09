@@ -35,13 +35,12 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
             <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
-                <th s>prontuario      </th>
+                <th s>matricula     </th>
                 <th >nome            </th>
                 <th >cpf             </th>
                 <th >identidade      </th>
-                <th >dataDeNascimento</th>
+                <th >Nascimento</th>
                 <th >sexo            </th>
-                <th >etnia           </th>
                 <th >nacionalidade   </th>
                 <th >naturalidade    </th>
                 <th >escolaridade    </th>
@@ -53,24 +52,23 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                 <th scope="col">estado          </th>
                 <th scope="col">telefone        </th>
                 <th scope="col">celular         </th>
-                <th scope="col">email           </th>
-                <th scope="col">profissao       </th>
-                <th scope="col">status_2        </th>   -->
-                <th scope="col">opções    </th>
+                <th scope="col">email           </th>-->
+                <th >profissao       </th>
+                <th >status        </th>   
+                <th scope="col">opções</th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($Funcionarios as $p)
                     
               <tr>
-                 <td>       {{$p->id}}          </td>
+                 <td>       {{$p->matricula}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
                  <td class="info-nome">       {{$p->nome}}                </td>
                  <td>       {{$p->cpf}}                 </td>
                  <td>       {{$p->identidade}}          </td>
                  <td>       {{$p->dataDeNascimento}}    </td>
                  <td>       {{$p->sexo}}                </td>
-                 <td>       {{$p->etnia}}               </td>
                  <td>       {{$p->nacionalidade}}       </td>
                  <td>       {{$p->naturalidade}}        </td>
                  <td>       {{$p->escolaridade}}        </td>
@@ -82,9 +80,9 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                  <td>       {{$p->estado}}              </td>
                  <td>       {{$p->telefone}}            </td>
                  <td>       {{$p->celular}}             </td>
-                 <td>       {{$p->email}}               </td>
+                 <td>       {{$p->email}}               </td>-->
                  <td>       {{$p->profissao}}           </td>
-                 <td>       {{$p->status_2}}            </td>  -->
+                 <td>       {{$p->status}}            </td>  
                 <td>
                     <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
                 

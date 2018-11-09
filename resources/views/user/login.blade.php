@@ -20,7 +20,7 @@
 
         <header class="teste">
             <div class="logo">
-                <h4><a class="navbar-brand" href="index.php">SisCon</a></h4>
+                <h4><a class="navbar-brand" href="{{route('dashboard')}}">SisCon</a></h4>
             </div>
             <span><script type="text/javascript" src="js/data.js"></script></span>
                 <span id="real-clock"></span>
@@ -54,9 +54,7 @@
                             <div class="col s4 agoravai">
                                 <a href="recuperar_senha.php">Esqueceu a senha?</a>
                             </div>
-                            <div class="col s4 agoravai">
-                                <a href="cadastro/cadastro-form.php"><strong>cadastre-se</strong></a>
-                            </div>
+                            
                 </div>
             </div>
         </div>

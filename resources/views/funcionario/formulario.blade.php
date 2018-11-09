@@ -91,8 +91,8 @@
     <div class="col-2">
     <div class="form-group">
       <label for="data">Data Nascimento</label>
-      <input type="date" name="dataNascimento" id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
-      <small id="dtNascimento" class="data">Data obrigatoria</small>
+      <input type="date" name="dataDeNascimento" id="dataDeNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+      <small id="dataDeNascimento" class="data">Data obrigatoria</small>
     </div>
     </div><!--col dt Nascimento-->
 
@@ -100,7 +100,7 @@
             <div class="form-group">
 
                 <label for="selectbasic">Sexo <h11>*</h11></label>
-                  <select required id="genero" name="genero" class="form-control">
+                  <select required id="genero" name="sexo" class="form-control">
                   <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
                     <option value="N">Não declarado</option>
@@ -194,7 +194,7 @@
                     <div class="col-3">
                         <div class="form-group">
                                <label for="cep">Cep</label>
-                               <input type="search" class="form-control input-md" id="cep" placeholder="Apenas numeros" maxlength="8" pattern="[0-9+$]">
+                               <input type="search" class="form-control input-md" name="cep" id="cep" placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"> 
                             </div>
                         </div><!-- col cep -->
 
@@ -237,7 +237,7 @@
                     </div>
                 </div><!-- col cidade -->
 
-                    <div class="col-1">
+                    <div class="col-2">
                     <span>Estado</span>
                     <div class="input-group">
 
