@@ -36,7 +36,7 @@
                 <span id='real-clock'></span>
                 <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
                 <span style="color:red;">sessao expira em 5 minutos</span>
-                <span>mensagem de bem vindo @php echo session("user"); @endphp </span>
+                <span> bem vindo @php echo session("user"); @endphp </span>
 
                 </div>
             </header>

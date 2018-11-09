@@ -104,7 +104,7 @@
         
             <label for="selectbasic">Sexo <h11>*</h11></label>
               <select required id="sexo" name="sexo" class="form-control" >
-                 @if(!empty($p->sexo))
+               {{-- @if(!empty($p))
 
                     @switch($p->sexo)
                     @case('M')
@@ -123,10 +123,28 @@
     
                     @endswitch
 
-                    <option value={{$p->sexo}}>{{$tipo}}</option>
-                    @else
-                    <option value=""></option>
-                @endif  
+                    <option value= "{{$p->sexo}}">@php $tipo @endphp</option>
+
+                @endif --}}
+                @if(!empty($p))
+                @php
+                    switch ($p->sexo) {
+                        case 'M':
+                         $tipo = 'Masculino' ;
+                            break;
+                        case 'F':
+                            $tipo = 'Feminino';
+                            break;
+                        case 'N':
+                            $tipo = 'Não declarado';
+                            break;
+                        case 'I':
+                            $tipo = 'Indefinido';
+                            break;    
+                    }
+                @endphp
+                <option value={{$p->sexo}}>@php $tipo @endphp</option>
+            @else
               <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
                 <option value="N">Não declarado</option>
@@ -141,7 +159,7 @@
         
             <label for="selectbasic">Etnia <h11>*</h11></label>
               <select required id="etnia" name="etnia" class="form-control">
-                @if(!empty($p->etnia))
+                @if(!empty($p))
                                         
                 @switch($p->etnia)
                 @case('B')
@@ -164,7 +182,7 @@
                     @break
 
                 @endswitch
-                    <option value= {{$p->etnia}}>{{$tipo}}</option>
+                    <option value= {{$p->etnia}}>@php $tipo @endphp</option>
                 @else
                     <option value=""></option>
                 @endif
@@ -218,7 +236,7 @@
                         @default
                             
                         @endswitch
-                        <option value="{{$p->escolaridade}}">{{$tipo}}</option>
+                        <option value="{{$p->escolaridade}}">@php $tipo @endphp</option>
                          @endif
                   <option value=""></option>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
