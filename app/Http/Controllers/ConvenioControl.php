@@ -19,12 +19,23 @@ class ConvenioControl extends Controller
      
             return view('layout.app'); 
 
-      {
+    }
 
-        public function alterar(Request $request){
-        
-            $sis_convenio = Convenio::alterar($request->all());
-     
-            return view('layout.app'); 
-    } 
+         public function update(Request $request, $id)
+    {
+    
+
+        $convenio = Convenio::find($id);
+        $convenio->update($request->all());
+        return redirect()->route('convenio.');
+    }
+
 }
+
+ /*public function update(Request $request, $id)
+    {
+    
+
+       $convenio = Convenio::find($id);
+        $convenio->update($request->all());
+        return redirect()->route('convenio.');

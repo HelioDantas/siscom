@@ -17,20 +17,8 @@ class UserController extends Controller
       public function create(Request $request){
         
         $User = User::create($request->all());
-     //   return var_dump($sis_funcionario);
-        
-       return view('layout.app');
-       // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
-
-
-
+        return view('layout.app');
+       
     }
-
-public function alterar(Request $request){
-        
-        $User = User::alterar($request->all());
-     //   return var_dump($sis_funcionario);
-        
-       return view('layout.app');
 
 }
