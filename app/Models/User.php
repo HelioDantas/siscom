@@ -16,7 +16,8 @@ class User extends Model
 
     public static function buscar($cpf){
 
-     return DB::table('sis_usuario')->where('cpf', $cpf)->first();
+   return  DB::table('sis_usuario')->where('cpf', $cpf)->first();
+        //return $this->whereKey($cpf)->first('cpf');
     }
 
     public function permissoes(){
@@ -26,7 +27,7 @@ class User extends Model
 
    public function funcionario(){
 
-        return $this->belongsTo('App\sis_funcionario', 'Sis_funcionario_matricula', 'matricula');
+        return $this->belongsTo('App\Models\Funcionario', 'Sis_funcionario_matricula', 'matricula');
     }
 
 
