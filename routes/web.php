@@ -18,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/' ,['uses' => 'Controller@dashboard'])->middleware('Autorizador');
+Route::get('/' ,['uses' => 'Controller@dashboard'])->name('dashboard')->middleware('Autorizador');
 
 
 
-Route::get('/dashboard' , 'Controller@dashboard')->name('dashboard');
+//Route::get('/dashboard' , 'Controller@dashboard')->name('dashboard');
 Route::post('/teste' ,'Controller@dashboard')->name('teste');
 
 
