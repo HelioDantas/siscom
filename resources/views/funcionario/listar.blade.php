@@ -88,7 +88,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
                 <td>
                     <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
                 
-                    <a href="excluir/{{$p->id}}"><i class="fas fa-trash"></i></a>
+                    <a href="excluir/{{$p->matricula}}"><i class="fas fa-trash"></i></a>
                 </td>
 
               </tr>

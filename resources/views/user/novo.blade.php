@@ -50,7 +50,7 @@
 @section('tela')
 
 
-<form action="" method ="post">
+{!! Form::open(['route' => 'user.create','method ' => 'post',]) !!} @csrf
     <div class="form-group navegacao">
         <div class="col-8">
           <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
@@ -62,8 +62,8 @@
     <div  class = "col-3">
         <div class = "form-group">
         <label for="matricula">Matricula</label>
-         <input type="text" name="matricula" id="" class="form-control"   @if(isset($func)) value = {{$func->matricula}} @else value = "" @endif>
-     <small id="matricula" class="text-muted">Hl</small>
+         <input type="text" name="Sis_funcionario_matricula" id="" class="form-control"   @if(isset($func)) value = {{$func->matricula}} @else value = "" @endif>
+     <small id="Sis_funcionario_matricula" class="text-muted">Hl</small>
     
         </div>
      </div>
@@ -92,6 +92,6 @@
 </div>
 </div><!--col -->
 </div>
-</form>
+{!! Form::close() !!}
 
 @endsection

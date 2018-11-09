@@ -9,6 +9,7 @@ class Funcionario extends Model
     
     protected $table = "sis_funcionario";
     public $timestamps = false;
+     protected $primaryKey = 'matricula';
 
     protected $fillable = array('matricula', 'nome', 'cpf', 'identidade', 'profissao' );
 

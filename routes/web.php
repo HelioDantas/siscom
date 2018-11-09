@@ -99,14 +99,16 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::prefix('funcionario')->group(function(){
+Route::prefix('funcionario')->middleware('Autorizador')->group(function(){
 
   Route::get('cad', 'FuncionarioController@novo')->name('funcionario.novo')->middleware('Autorizador');
    Route::get('listar'      ,  'FuncionarioController@listar')->name(   'funcionario.listar' );
-  
-  Route::post('create', 'FuncionarioController@create')->name('funcionario.create')->middleware('Autorizador');
+   Route::get('excluir/{id}',  'FuncionarioController@destroy')->name(  'funcionario.excluir');
+    Route::post('create', 'FuncionarioController@create')->name('funcionario.create')->middleware('Autorizador');
+    
     Route::post('medico/create', 'FuncionarioController@Medicocreate')->name('medico.create');
      Route::get('medico/cad', 'FuncionarioController@novoM')->name('medico.novo')->middleware('Autorizador');
+     Route::get('excluir/{id}',  'FuncionarioController@destroy')->name(  'funcionario.excluir');
 
 
 

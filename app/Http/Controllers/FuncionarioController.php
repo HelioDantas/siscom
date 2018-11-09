@@ -40,33 +40,37 @@ class FuncionarioController extends Controller
      
         $valor= $request->all('crm');
         $medico->crm = $valor['crm'];
-        $medico->Sis_funcionario_matricula = ($Funcionario->id);
+        $medico->Sis_funcionario_matricula = ($Funcionario->matricula);
         $medico->save();
-        $medico = Medico::find($Funcionario->id);
+        $medico = Medico::find($Funcionario->matricula);
         $especialidade = $request->only('$especialidade');
-        
-        foreach ( $especialidade as $e => $id) {
-              
-              foreach ($id as $key) {
-                  
-                  $medico->especialidade()->attach($key);
-              }
-            
-        }
-       
-        
-        return view('user.novo')->with('func', $Funcionario);
+        if($especialidade != null)
+            foreach ($especialidade as $e => $id) {
+                foreach ($id as $key) {    
+                    $medico->especialidade()->attach($key);
+                }    
+            }        
+                return view('user.novo')->with('func', $Funcionario);
 
     }
 
-      public function listar()  
-    {
+      public function listar(){
       
         $Funcionarios = Funcionario::paginate(5);
         return view('funcionario.listar' , compact('Funcionarios'));
        
     } 
 
+         public function destroy ($id){
+
+        $Funcionario = Funcionario::find($id);
+        $Funcionario->delete();
+        return redirect()->action('FuncionarioController@listar');
+
+
+
+
+    }
 
 
 

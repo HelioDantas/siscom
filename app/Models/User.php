@@ -12,7 +12,7 @@ class User extends Model
 
     public $timestamps = false;
 
-    protected $fillable = array('nome','senha','cpf','email');
+    protected $fillable = array('nome','senha','cpf','email', 'Sis_funcionario_matricula');
 
     public static function buscar($cpf){
 
