@@ -59,7 +59,7 @@ class FuncionarioController extends Controller
         $Funcionarios = Funcionario::paginate(5);
         return view('funcionario.listar' , compact('Funcionarios'));
        
-    } 
+      } 
 
          public function destroy ($id){
 

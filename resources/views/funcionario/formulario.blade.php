@@ -131,8 +131,6 @@
 
 
                       <select required id="escolaridade" name="escolaridade" class="form-control">
-                     
-                        <option value="Analfabeto">Analfabeto</option>
                         <option value="Fundamental Incompleto">Fundamental Incompleto</option>
                         <option value="Fundamental Completo">Fundamental Completo</option>
                         <option value="Médio Incompleto">Médio Incompleto</option>
@@ -175,7 +173,7 @@
                     <div class="form-group">
 
                         <label for="selectbasic">Status <h11>*</h11></label>
-                          <select required id="status_2" name="status_id" class="form-control">
+                          <select required id="status" name="status" class="form-control">
                           <option value="A">Ativo</option>
                             <option value="I">Inativo</option>
                           </select>
@@ -209,16 +207,13 @@
                      <div class="col">
                       <span>Rua</span>
                           <div class="input-group">
-
-                              <input type="text" name="rua" class="form-control" id="rua" readonly="readonly">
-
+                              <input type="text" name="rua" class="form-control" id="rua" >
                       </div>
                   </div><!-- col rua-->
 
                    <div class="col-2">
                     <span >Nº <h11>*</h11></span>
                     <div class="input-group">
-
                       <input id="numero" name="numero" class="form-control"placeholder="" required=""  type="text">
                     </div>
 
@@ -229,8 +224,7 @@
 
                    <span>Bairro</span>
                     <div class="input-group">
-
-                      <input id="bairro" name="bairro" placeholder="" required="" readonly="readonly" class="form-control"type="text">
+                      <input id="bairro" name="bairro" placeholder="" required=""  class="form-control"type="text">
                     </div>
 
                     </div><!-- col bairro-->
@@ -239,7 +233,7 @@
                    <span>Cidade</span>
                     <div class="input-group">
 
-                      <input id="cidade" name="cidade"  placeholder="" required=""  readonly="readonly"class="form-control" type="text">
+                      <input id="cidade" name="cidade"  placeholder="" required=""  class="form-control" type="text">
                     </div>
                 </div><!-- col cidade -->
 
@@ -247,7 +241,12 @@
                     <span>Estado</span>
                     <div class="input-group">
 
-                      <input id="estado" name="estado"  placeholder="" required=""  readonly="readonly" class="form-control"type="text">
+                      <select id="estado" name="estado"  placeholder="" required=""   class="form-control"type="text">
+                       <option value="Rio de Janeiro">Rio de Janeiro</option>
+                       <option value="São Paulo">São Paulo</option>
+                       <option value="Minas Gerais">Minas Gerais</option>
+                       <option value="Espírito Santo">Espírito Santo</option>
+                       </select>
                     </div>
                     </div>
 

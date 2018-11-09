@@ -11,7 +11,28 @@ class Funcionario extends Model
     public $timestamps = false;
      protected $primaryKey = 'matricula';
 
-    protected $fillable = array('matricula', 'nome', 'cpf', 'identidade', 'profissao' );
+    protected $fillable = array(
+        'matricula',
+        'nome',
+        'cpf',
+        'identidade',
+        'dataDeNascimento',
+        'sexo',
+        'etnia',
+        'nacionalidade',
+        'naturalidade',
+        'escolaridade',
+        'rua',
+        'numero',
+        'bairro',
+        'cep',
+        'cidade',
+        'estado',
+        'telefone',
+        'celular',
+        'email',
+        'profissao',
+        'status',);
 
     public function user(){
 
