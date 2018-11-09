@@ -39,7 +39,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Atualizar Dados do Paciente</h4>   
+<h4 class="titulocadastro">Atualizar Dados de <strong>{{$p->nome}}</strong></h4>   
 @endsection
 
 @section('navegação')
