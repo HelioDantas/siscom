@@ -194,7 +194,7 @@
                     <div class="col-3">
                         <div class="form-group">
                                <label for="cep">Cep</label>
-                               <input type="search" class="form-control input-md" name="cep" id="cep" placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"> 
+                               <input type="text" class="form-control input-md" name="cep" id="cep" placeholder="Apenas numeros" maxlength="15"  > 
                             </div>
                         </div><!-- col cep -->
 

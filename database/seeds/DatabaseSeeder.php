@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('sis_usuario')->insert([
             'nome'  => 'rafael',
-            'Sis_funcionario_matricula'=> '87301',
             'email' => 'rafael@gmail.com',
             'cpf'   => '123456',
             'senha' => password_hash('123',1),
