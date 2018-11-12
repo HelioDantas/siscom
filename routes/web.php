@@ -118,7 +118,7 @@ Route::prefix('user')->middleware('Autorizador')->group(function () {
   Route::post('create', 'UserController@create')->name('user.create');;
 
 
-
+});
 
 
   Route::prefix('convenio')->middleware('Autorizador')->group(function () {
