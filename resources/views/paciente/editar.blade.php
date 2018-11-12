@@ -56,7 +56,7 @@
 <div class="form-group navegacao">
         <div class="col-8">
           <button id="Cadastrar" name="Cadastrar" class="btn btn-info" type="Submit">Salvar</button>
-        <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>
+          <a  class="btn btn-outline-danger"   href="{{route('paciente.novo')}}" role="button">Cancelar</a>
         </div>
       </div>
 
@@ -66,7 +66,7 @@
 
 
 
-<div class="col-3">
+<div class="col-4">
 <div class="form-group">
   <label for="nome">Nome*</label>
   <input type="text" name="nome" id="nome" class="form-control" placeholder="nome"  @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
@@ -199,7 +199,7 @@
             </div>
         </div>
 
-        <div class="col-3">
+        <div class="col-2">
                 <div class="form-group">
                   <label for="">Nacionalidade*</label>
                   <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro"  @if(!empty($p)) value = {{$p->nacionalidade}} @else value = "" @endif>
@@ -346,12 +346,5 @@
 @endsection
 
 @section('scripts')
-    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html  o funcao e ativada pelo (type="buttao)-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-              $(':button').click(function() {
-                  location.reload();
-              });
-        });       
-     </script>
+
 @endsection

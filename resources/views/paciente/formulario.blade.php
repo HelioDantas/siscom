@@ -59,8 +59,10 @@
         <div class="form-group navegacao">
                 <div class="col-8">
                   <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
-                  <button id="pesquisar" class="btn btn-secondary"><a  href="{{route('paciente.listar')}}">Pesquisar</a> </button>
-                  <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+                  <a  class="btn btn-outline-secondary"   href="{{route('paciente.listar')}}" role="button">Pesquisar</a>
+                  <a  class="btn btn-outline-danger"  href="{{route('paciente.novo')}}" role="button">Cancelar</a>
+
+                  <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
               </div>
 
@@ -70,10 +72,10 @@
 
 
 
-<div class="col-3">
+<div class="col-4">
 <div class="form-group">
   <label for="nome">Nome*</label>
-  <input type="text" name="nome" id="" class="form-control" placeholder="nome">
+  <input type="text" name="nome" id="nome" required maxlength="60" class="form-control" placeholder="nome">
   <small id="nome" class="text-muted">Nome Completo</small>
 </div>
 </div><!--col nome -->
@@ -81,7 +83,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="cpf">Cpf*</label>
-  <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12">
+  <input type="text" name="cpf" id="cpf"  required class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12">
   <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">   pattern="/d{11}"  -->
   <small id="cpf" class="text-muted">cpf</small>
 </div>
@@ -90,7 +92,7 @@
 <div class="col-2">
         <div class="form-group">
           <label for="cpf">RG*</label>
-          <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade">
+          <input type="text" name="identidade" id="identidade"  required class="form-control" placeholder="identidade" aria-describedby="identidade">
           <small id="identidade" class="text-muted">identidade</small>
         </div>
         </div><!--col cpf -->
@@ -98,7 +100,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
-  <input type="date" name="dataDeNascimento" id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+  <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
   <small id="dtNascimento" class="data">Data obrigatoria</small>
 </div>
 </div><!--col dt Nascimento-->
@@ -135,15 +137,13 @@
             <div class="form-group">
             
                 <label for="selectbasic">Escolaridade <h11>*</h11></label>
-                
-               
                   <select required id="escolaridade" name="escolaridade" class="form-control">
-                    <option value="Fundamental Incompleto">Fundamental Incompleto</option>
-                    <option value="Fundamental Completo">Fundamental Completo</option>
+                    <option value="Superior Completo">Superior Completo</option>
+                    <option value="Superior Incompleto">Superior Incompleto</option>
                     <option value="Médio Incompleto">Médio Incompleto</option>
                     <option value="Médio Completo">Médio Completo</option>
-                    <option value="Superior Incompleto">Superior Incompleto</option>
-                    <option value="Superior Completo">Superior Completo</option>
+                    <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+                    <option value="Fundamental Completo">Fundamental Completo</option>
                   </select>
                
             </div>
@@ -152,7 +152,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Nacionalidade*</label>
-                  <input type="text" name="nacionalidade" id="" class="form-control" placeholder="nacionalidade" value="Brasileiro">
+                  <input type="text" name="nacionalidade"  required id="" class="form-control" placeholder="nacionalidade" value="Brasileiro">
                   <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
                 </div>
         </div><!--col nacionalidade -->
@@ -160,7 +160,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Naturalidade*</label>
-                  <input type="text" name="naturalidade" id="" class="form-control" placeholder="naturalidade" value="">
+                  <input type="text" name="naturalidade"  required id="" class="form-control" placeholder="naturalidade" value="">
                   <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
                 </div>
         </div><!--col naturalidade -->
@@ -198,21 +198,21 @@
                     <div class="col-3">
                         <div class="form-group">
                                <label for="cep">Cep</label>
-                               <input type="text" class="form-control input-md" name="cep" id="cep"
+                               <input type="text"  required class="form-control input-md" name="cep" id="cep"
                                 placeholder="Apenas numeros" maxlength="15" > 
                             </div>
                         </div><!-- col cep -->
 
                           <div class="col-2">
-                               <button type="button" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
+                               <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
                                 <strong>pesquisar</strong></button>
                           </div><!-- col CEP -->
 
 
-                     <div class="col">
+                     <div class="col-3">
                       <span>Rua</span>
                           <div class="input-group">
-                              <input type="text" name="rua" class="form-control" id="rua" >
+                              <input type="text" name="rua" maxlength="40" required class="form-control" id="rua" >
                       </div>
                   </div><!-- col rua-->
 
@@ -229,7 +229,7 @@
 
                    <span>Bairro</span>
                     <div class="input-group">
-                      <input id="bairro" name="bairro" placeholder="" required=""  class="form-control"type="text">
+                      <input id="bairro" name="bairro"  required maxlength="15" placeholder="" required=""  class="form-control"type="text">
                     </div>
 
                     </div><!-- col bairro-->
@@ -238,7 +238,7 @@
                    <span>Cidade</span>
                     <div class="input-group">
 
-                      <input id="cidade" name="cidade"  placeholder="" required=""  class="form-control" type="text">
+                      <input id="cidade" name="cidade"  required maxlength="15" placeholder="" required=""  class="form-control" type="text">
                     </div>
                 </div><!-- col cidade -->
 
@@ -246,12 +246,37 @@
                     <span>Estado</span>
                     <div class="input-group">
 
-                      <select id="estado" name="estado"  placeholder="" required=""   class="form-control"type="text">
-                       <option value="Rio de Janeiro">Rio de Janeiro</option>
-                       <option value="São Paulo">São Paulo</option>
-                       <option value="Minas Gerais">Minas Gerais</option>
-                       <option value="Espírito Santo">Espírito Santo</option>
-                       </select>
+                      <select id="estado" name="estado"  placeholder="" required   class="form-control"type="text">
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                            <option value="ES">Estrangeiro</option>
+                        </select>
+                      
                     </div>
                     </div>
 
@@ -314,14 +339,7 @@
 @endsection
 
 @section('scripts')
-    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-              $(':button').click(function() {
-                  location.reload();
-              });
-        });       
-     </script>
+   
 
 <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
 @endsection
