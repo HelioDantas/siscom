@@ -61,7 +61,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
             <tbody>
                 @foreach ($Funcionarios as $p)
                     
-              <tr>
+              <tr class="Filter-nome">
                  <td>       {{$p->matricula}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
                  <td class="info-nome">       {{$p->nome}}                </td>
@@ -105,5 +105,5 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
 
     @endsection
     @section('scripts')
-    <script  href="{{ asset('js/filtro.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
     @endsection

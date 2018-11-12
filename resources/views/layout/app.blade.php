@@ -143,34 +143,7 @@
 		}, 1000);
 		var clock = document.getElementById('real-clock');
   </script>
-
-
-
-<!-- busca endereço pelo cep -->
-  <script>
-  
-  $(document).ready(function(){
-$("#cep").blur(function(){
-    var cep = $('#cep').val() || '';
-
-    if (!cep) {
-        return
-    }
-
-    var url = 'http://viacep.com.br/ws/' + cep+ '/json';
-    $.getJSON(url,function(data){
-        if("error" in data){
-            return
-        }
-
-        $('#rua').val(data.logradouro);
-        $('#bairro').val(data.bairro);
-        $('#cidade').val(data.localidade);
-        $('#estado').val(data.uf);
-    });
-})    
-});
-  </script>
    
+   @yield('scripts')
 </body>
 </html>
