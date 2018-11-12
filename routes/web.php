@@ -106,7 +106,7 @@ Route::prefix('funcionario')->group(function () { //->middleware('Autorizador')-
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::post('create'        , 'FuncionarioController@create')->name(      'funcionario.create'    );
   Route::get('editar/{id}'    , 'FuncionarioController@edit')->name(        'funcionario.editar'    );
-  Route::put('update/{id}'    , 'FuncionarioController@update')->name('     funcionario.update'     );
+  Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'     );
   Route::post('medico/create' , 'FuncionarioController@Medicocreate')->name('medico.create'         );
   Route::get('medico/cad'     , 'FuncionarioController@novoM')->name(       'medico.novo'           );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
@@ -121,6 +121,19 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 
 })*/
+
+  Route::prefix('convenio')->group(function () {
+
+  Route::get('listaconvenio', 'ConvenioControl@listaconvenio')->name('convenio.listaconvenio' );
+  Route::get('novo'        ,  'ConvenioControl@novo')->name(        'convenio.novo');
+  Route::post('create'     ,  'ConvenioControl@create')->name(      'convenio.create' );
+  #Route::get('pesquisar/{id}','ConvenioControl@alterar')->name(     'convenio.pesquisar' );
+  #Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
+  Route::get('alterar/{id}' , 'ConvenioControl@alterar')->name(     'convenio.alterar' );
+  Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
+  /*Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
+  Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json');*/
+});
 
 
 Route::prefix('user')->middleware('Autorizador')->group(function () {

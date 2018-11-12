@@ -66,9 +66,9 @@
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
-                      <a href="#">Aceitos</a>
-                      <a href="#">Consultar</a>
-                      <a href="#"></a>
+                       <a href="{{route('convenio.novo')}}">Cadastrar</a>
+                      <a href="">Pesquisar</a>
+                      <a href="{{route('convenio.alterar')}}">Alterar</a>
                     </div>
                   </div>
                 </li>
