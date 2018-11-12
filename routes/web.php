@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', ['uses' => 'Controller@dashboard'])->name('dashboard');//->middleware('Autorizador');
+Route::get('/', ['uses' => 'Controller@dashboard'])->middleware('Autorizador')->name('dashboard');//
 
 
 
@@ -49,6 +50,7 @@ Route::post('/teste', 'Controller@dashboard')->name('teste');
 /** Rota para enviar as infos da requisição para autenticação no method login */
 //Route::post('/login','LoginController@login');
 Route::get('/sair', 'LoginController@logout')->name('login.logout');
+Route::get('/recovery' , 'UserController@recoveryForm')->name('recovery_senha');
 
 
 //Route::get('/pacientes' , 'PacienteController@listar')->middleware('autorizador');
@@ -82,7 +84,7 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  */
 
 
-Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
+Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')
   Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
   Route::get('novo'         , 'PacienteController@novo')->name(     'paciente.novo'   );
   Route::post('create'      , 'PacienteController@create')->name(   'paciente.create' );
@@ -99,7 +101,7 @@ Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::prefix('funcionario')->group(function () { //->middleware('Autorizador')->
+Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
   Route::get('cad'            , 'FuncionarioController@novo')->name(        'funcionario.novo'      );
   Route::get('listar'         , 'FuncionarioController@listar')->name(      'funcionario.listar'    );

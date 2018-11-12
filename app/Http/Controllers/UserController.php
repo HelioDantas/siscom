@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class UserController extends Controller
 {
 
@@ -26,6 +27,24 @@ class UserController extends Controller
 
 
 
+      }
+
+      public function recoveryForm(){
+        
+        return view('user.recovery');
+      }
+
+      public function recovery(Request $request){
+
+        $user = User::buscar($request['email']);
+        if (isset($user)) {
+          // gerar nova senha , inserir no db e enviar nova senha para o usuario.
+
+
+
+        }else{
+          return redirect()->back();
+        }
       }
 
 
