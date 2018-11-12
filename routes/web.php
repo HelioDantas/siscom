@@ -122,15 +122,15 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 })*/
 
-  Route::prefix('convenio')->group(function () {
+  Route::prefix('convenio')->middleware('Autorizador')->group(function () {
 
-  Route::get('listaconvenio', 'ConvenioControl@listaconvenio')->name('convenio.listaconvenio' );
-  Route::get('novo'        ,  'ConvenioControl@novo')->name(        'convenio.novo');
-  Route::post('create'     ,  'ConvenioControl@create')->name(      'convenio.create' );
+  Route::get('listaconvenio', 'ConvenioController@listaconvenio')->name('convenio.listaconvenio' );
+  Route::get('novo'        ,  'ConvenioController@novo')->name(        'convenio.novo');
+  Route::post('create'     ,  'ConvenioController@create')->name(      'convenio.create' );
   #Route::get('pesquisar/{id}','ConvenioControl@alterar')->name(     'convenio.pesquisar' );
   #Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
-  Route::get('alterar/{id}' , 'ConvenioControl@alterar')->name(     'convenio.alterar' );
-  Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
+  Route::get('alterar' , 'ConvenioController@alterar')->name(     'convenio.alterar' );
+  Route::put('update/{id}' ,  'ConvenioController@update')->name(      'convenio.update' );
   /*Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
   Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json');*/
 });
