@@ -82,7 +82,7 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  */
 
 
-Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
+Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')-
   Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
   Route::get('novo'         , 'PacienteController@novo')->name(     'paciente.novo'   );
   Route::post('create'      , 'PacienteController@create')->name(   'paciente.create' );
@@ -99,14 +99,14 @@ Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::prefix('funcionario')->group(function () { //->middleware('Autorizador')->
+Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
   Route::get('cad'            , 'FuncionarioController@novo')->name(        'funcionario.novo'      );
   Route::get('listar'         , 'FuncionarioController@listar')->name(      'funcionario.listar'    );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::post('create'        , 'FuncionarioController@create')->name(      'funcionario.create'    );
   Route::get('editar/{id}'    , 'FuncionarioController@edit')->name(        'funcionario.editar'    );
-  Route::put('update/{id}'    , 'FuncionarioController@update')->name('     funcionario.update'     );
+  Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'     );
   Route::post('medico/create' , 'FuncionarioController@Medicocreate')->name('medico.create'         );
   Route::get('medico/cad'     , 'FuncionarioController@novoM')->name(       'medico.novo'           );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );

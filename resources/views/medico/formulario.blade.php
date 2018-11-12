@@ -185,14 +185,14 @@
     <hr>
 
 
-            <fieldset class="form-group">
+             <fieldset class="form-group">
                     <legend aling="center">Endereço</legend>
 
                 <div class="row">
                     <div class="col-3">
                         <div class="form-group">
                                <label for="cep">Cep</label>
-                               <input type="search" class="form-control input-md" id="cep" placeholder="Apenas numeros" maxlength="8" pattern="[0-9+$]">
+                               <input type="text" class="form-control input-md" name="cep" id="cep" placeholder="Apenas numeros" maxlength="15"  > 
                             </div>
                         </div><!-- col cep -->
 
@@ -205,16 +205,13 @@
                      <div class="col">
                       <span>Rua</span>
                           <div class="input-group">
-
-                              <input type="text" name="rua" class="form-control" id="rua" readonly="readonly">
-
+                              <input type="text" name="rua" class="form-control" id="rua" >
                       </div>
                   </div><!-- col rua-->
 
                    <div class="col-2">
                     <span >Nº <h11>*</h11></span>
                     <div class="input-group">
-
                       <input id="numero" name="numero" class="form-control"placeholder="" required=""  type="text">
                     </div>
 
@@ -225,8 +222,7 @@
 
                    <span>Bairro</span>
                     <div class="input-group">
-
-                      <input id="bairro" name="bairro" placeholder="" required="" readonly="readonly" class="form-control"type="text">
+                      <input id="bairro" name="bairro" placeholder="" required=""  class="form-control"type="text">
                     </div>
 
                     </div><!-- col bairro-->
@@ -235,15 +231,20 @@
                    <span>Cidade</span>
                     <div class="input-group">
 
-                      <input id="cidade" name="cidade"  placeholder="" required=""  readonly="readonly"class="form-control" type="text">
+                      <input id="cidade" name="cidade"  placeholder="" required=""  class="form-control" type="text">
                     </div>
                 </div><!-- col cidade -->
 
-                    <div class="col-1">
+                    <div class="col-2">
                     <span>Estado</span>
                     <div class="input-group">
 
-                      <input id="estado" name="estado"  placeholder="" required=""  readonly="readonly" class="form-control"type="text">
+                      <select id="estado" name="estado"  placeholder="" required=""   class="form-control"type="text">
+                       <option value="Rio de Janeiro">Rio de Janeiro</option>
+                       <option value="São Paulo">São Paulo</option>
+                       <option value="Minas Gerais">Minas Gerais</option>
+                       <option value="Espírito Santo">Espírito Santo</option>
+                       </select>
                     </div>
                     </div>
 
