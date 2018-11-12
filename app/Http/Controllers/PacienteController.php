@@ -16,7 +16,8 @@ class PacienteController extends Controller
 
 
     function indexjson(){
-        return Paciente::paginate(5);
+
+        return Paciente::paginate(10);
     }
 
 
@@ -33,8 +34,8 @@ class PacienteController extends Controller
     {
         //  listar pacientes.
 
-        //$pacientes = Paciente::all();
-        $pacientes = Paciente::paginate(5);
+        //$pacientes = Paciente::where('nome', $nome)->get();
+        $pacientes = Paciente::paginate(10);
         return view('paciente.listar' , compact('pacientes'));
         //testando
     } 

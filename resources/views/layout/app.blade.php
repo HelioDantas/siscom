@@ -92,6 +92,7 @@
                     </div>
                   </div>
                 </li>
+                <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Pacientes</button>
@@ -101,7 +102,7 @@
                       <a href="#">Adicionar</a>
                     </div>
                   </div>
-                </li>
+                </li> -->
                  <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Funcionarios</button>

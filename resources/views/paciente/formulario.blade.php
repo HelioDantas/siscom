@@ -32,6 +32,9 @@
     .navegacao{
         text-align:right ;
     }
+    a{
+        color: white;
+    }
 
 </style>
 @endsection
@@ -56,6 +59,7 @@
         <div class="form-group navegacao">
                 <div class="col-8">
                   <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
+                  <button id="pesquisar" class="btn btn-secondary"><a  href="{{route('paciente.listar')}}">Pesquisar</a> </button>
                   <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
                 </div>
               </div>
@@ -289,7 +293,21 @@
             
             </div> <!-- col Email -->
 
-   
+        </fieldset><!--endereço-->
+
+            <fieldset class="form-group">
+                <legend aling="center">Convenio</legend>
+        <div class="row"><!-- convenio -->
+        
+            <div class="col-3">
+                    <div class="form-group">
+                        <label for="plano"> Plano<h11>*</h11></label>
+                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            OnKeyPress="formatar('## #####-####', this)">
+                    </div>
+                </div>  <!-- col Plano-->
+        </fieldset><!--endereço-->
+
 {!! Form::close() !!}
 </div><!-- container -->
 
