@@ -63,7 +63,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
                  <td>       {{$p->conta}}         </td>
                  <td>       {{$p->status}}        </td>
           
-                    <a href="alterar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
+                    <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
             
                 </td>
 

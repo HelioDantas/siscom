@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Convenio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class ConvenioController extends Controller
 {
@@ -20,7 +21,7 @@ class ConvenioController extends Controller
         public function update(Request $request, $id){
             $convenio = Convenio::find($id);
             $convenio->update($request->all());
-                return redirect()->route('convenio.listaconvenio');
+                return redirect()->route('convenio.tipodeconvenio');
 
 
         }
