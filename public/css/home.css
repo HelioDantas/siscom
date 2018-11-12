@@ -81,3 +81,10 @@ nav{
 ul li{
   text-align: center;
 }
+
+
+
+/* js lista */
+.invisivel{
+    display: none;
+}

@@ -318,3 +318,7 @@
     </div><!-- container -->
 
     @endsection
+    @section('scripts')
+    <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
+
+    @endsection
