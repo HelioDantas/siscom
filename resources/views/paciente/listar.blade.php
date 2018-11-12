@@ -63,10 +63,10 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
             <tbody>
                 @foreach ($pacientes as $p)
                     
-              <tr>
+              <tr class="Filter-nome">
                  <td>       {{$p->id}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
-                 <td class="info-nome">       {{$p->nome}}                </td>
+                 <td class="info-nome">       {{$p->nome}}             </td>
                  <td>       {{$p->cpf}}                 </td>
                  <td>       {{$p->identidade}}          </td>
                  <td>       {{$p->dataDeNascimento}}    </td>
@@ -107,6 +107,9 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
 
 
     @endsection
+
+
     @section('scripts')
-    <script  href="{{ asset('js/filtro.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
+    
     @endsection
