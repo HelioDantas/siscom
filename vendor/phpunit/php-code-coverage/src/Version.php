@@ -22,6 +22,7 @@ final class Version
     {
         if (self::$version === null) {
             $version       = new VersionId('6.1.4', \dirname(__DIR__));
+
             self::$version = $version->getVersion();
         }
 

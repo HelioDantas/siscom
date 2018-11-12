@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ConvenioControl;
 
 
 /*
@@ -24,6 +24,8 @@ Route::get('/', ['uses' => 'Controller@dashboard'])->name('dashboard');//->middl
 
 //Route::get('/dashboard' , 'Controller@dashboard')->name('dashboard');
 Route::post('/teste', 'Controller@dashboard')->name('teste');
+
+
 
 
 /**         Rotas Relacionadas a autenticação
@@ -54,9 +56,6 @@ Route::get('/sair', 'LoginController@logout')->name('login.logout');
 //Route::get('/pacientes' , 'PacienteController@listar')->middleware('autorizador');
 
 
-
-
-
 /**=========================================================================== *
  * Rotas ara autenticação,
  * Definindo Rota "/login" como("as") 'user.login'
@@ -71,15 +70,6 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
 //Route::get('/cad' , 'LoginController@cad');
 
 
-/**             ROTAS REFENTE A CLIENTES - RAFAEL ALVARENGA
- * ================================================================================*
- *
- *
- *
- *
- *
- * =================================================================================*
- */
 
 
 Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
@@ -128,6 +118,20 @@ Route::prefix('user')->middleware('Autorizador')->group(function () {
   Route::post('create', 'UserController@create')->name('user.create');;
 
 
+
+
+
+  Route::prefix('convenio')->middleware('Autorizador')->group(function () {
+
+  Route::get('listaconvenio', 'ConvenioControl@listaconvenio')->name('convenio.listaconvenio' );
+  Route::get('novo'        ,  'ConvenioControl@novo')->name(        'convenio.novo');
+  Route::post('create'     ,  'ConvenioControl@create')->name(      'convenio.create' );
+  #Route::get('pesquisar/{id}','ConvenioControl@alterar')->name(     'convenio.pesquisar' );
+  #Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
+  Route::get('alterar/{id}' , 'ConvenioControl@alterar')->name(     'convenio.alterar' );
+  Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
+  /*Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
+  Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json');*/
 
 });
 

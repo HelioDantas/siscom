@@ -2,6 +2,7 @@
 
 All notable changes of the php-code-coverage 6.1 release series are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [6.1.4] - 2018-10-31
 
 ### Fixed
@@ -20,6 +21,8 @@ All notable changes of the php-code-coverage 6.1 release series are documented i
 
 * Fixed [#645](https://github.com/sebastianbergmann/php-code-coverage/pull/645): Crash that can occur when php-token-stream parses invalid files
 
+=======
+>>>>>>> lrv3.2
 ## [6.1.1] - 2018-10-18
 
 ### Changed
@@ -33,9 +36,12 @@ All notable changes of the php-code-coverage 6.1 release series are documented i
 * Class names are now abbreviated (unqualified name shown, fully qualified name shown on hover) in the file view of the HTML report
 * Update HTML report to Bootstrap 4
 
+<<<<<<< HEAD
 [6.1.4]: https://github.com/sebastianbergmann/php-code-coverage/compare/6.1.3...6.1.4
 [6.1.3]: https://github.com/sebastianbergmann/php-code-coverage/compare/6.1.2...6.1.3
 [6.1.2]: https://github.com/sebastianbergmann/php-code-coverage/compare/6.1.1...6.1.2
+=======
+>>>>>>> lrv3.2
 [6.1.1]: https://github.com/sebastianbergmann/php-code-coverage/compare/6.1.0...6.1.1
 [6.1.0]: https://github.com/sebastianbergmann/php-code-coverage/compare/6.0...6.1.0
 

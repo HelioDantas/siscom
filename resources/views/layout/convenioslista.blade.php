@@ -36,7 +36,7 @@
                 <span id='real-clock'></span>
                 <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
                 <span style="color:red;">sessao expira em 5 minutos</span>
-                <span>Bem vindo @php echo session("user"); @endphp </span>
+                <span>mensagem de bem vindo @php echo session("user"); @endphp </span>
 
                 </div>
             </header>
@@ -55,12 +55,10 @@
                   <div class="dropdown">
                     <button class="dropbtn">Cadastro</button>
                     <div class="dropdown-content">
-
                       <a href="{{route('paciente.novo')}}">Paciente</a>
                       <a href="#">Convenios</a>
-                      <a href="{{route('medico.novo')}}">Medico</a>
+                      <a href="#">Medico</a>
                       <a href="{{route('funcionario.novo')}}">Funcionario</a>
-
                     </div>
                   </div>
                 </li>
@@ -68,10 +66,9 @@
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
-                     <div class="dropdown-content">
-                      <a href="{{route('convenio.novo')}}">Cadastrar</a>
-                      <a href="">Pesquisar</a>
-                      <a href="{{route('convenio.alterar')}}">Alterar</a>
+                      <a href="#">Aceitos</a>
+                      <a href="#">Consultar</a>
+                      <a href="#"></a>
                     </div>
                   </div>
                 </li>
@@ -96,28 +93,16 @@
                   </div>
                 </li>
                 <li class="nav-item">
-
-                  <div class="dropdown">
-                    <button class="dropbtn">Pacientes</button>
-                    <div class="dropdown-content">
-                    <a href="{{route('paciente.listar')}}">lista de pacientes</a>
-                      <a href="#">Adicionar</a>
-                      <a href="#">Adicionar</a>
-
+            <div class="dropdown">
+              <button class="dropbtn">Pacientes</button>
+              <div class="dropdown-content">
+              <a href="{{route('paciente.listar')}}">lista de pacientes</a>
+                <a href="#">Adicionar</a>
+                <a href="#">Adicionar</a>
+              </div>
+            </div>
                     </div>
-                  </div>
                 </li>
-                 <li class="nav-item">
-                  <div class="dropdown">
-                    <button class="dropbtn">Funcionarios</button>
-                    <div class="dropdown-content">
-                    <a href="{{route('funcionario.listar')}}">lista de funcionarios</a>
-                      <a href="#">Adicionar</a>
-                      <a href="#">Adicionar</a>
-                    </div>
-                  </div>
-                </li>
-
               </ul>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn sair #26a69a" type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
@@ -148,34 +133,115 @@
 		}, 1000);
 		var clock = document.getElementById('real-clock');
   </script>
-
-
-
-<!-- busca endereço pelo cep -->
-  <script>
-  
-  $(document).ready(function(){
-$("#cep").blur(function(){
-    var cep = $('#cep').val() || '';
-
-    if (!cep) {
-        return
-    }
-
-    var url = 'http://viacep.com.br/ws/' + cep+ '/json';
-    $.getJSON(url,function(data){
-        if("error" in data){
-            return
-        }
-
-        $('#rua').val(data.logradouro);
-        $('#bairro').val(data.bairro);
-        $('#cidade').val(data.localidade);
-        $('#estado').val(data.uf);
-    });
-})    
-});
-  </script>
    
+
+<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+  
+  function getNextItem(data) {
+      i = data.current_page+1;
+      if (data.current_page == data.last_page) 
+          s = '<li class="page-item disabled">';
+      else
+          s = '<li class="page-item">';
+      s += '<a class="page-link" ' + 'pagina="'+i+'" ' + ' href="javascript:void(0);">Próximo</a></li>';
+      return s;
+  }
+  
+  function getPreviousItem(data) {
+      i = data.current_page-1;
+      if (data.current_page == 1)
+          s = '<li class="page-item disabled">';
+      else
+          s = '<li class="page-item">';
+      s += '<a class="page-link" ' + 'pagina="'+i+'" ' + ' href="javascript:void(0);">Anterior</a></li>';
+      return s;
+  }
+  
+  function getItem(data, i) {
+      if (data.current_page == i) 
+          s = '<li class="page-item active">';
+      else
+          s = '<li class="page-item">';
+      s += '<a class="page-link" ' + 'pagina="'+i+'" ' + ' href="javascript:void(0);">' + i + '</a></li>';
+      return s;
+  }
+
+  function montarPaginator(data) {
+      
+      $("#paginationNav>ul>li").remove();
+
+      $("#paginationNav>ul").append(
+          getPreviousItem(data)
+      );
+      // for (i=1;i<=data.last_page;i++) {
+      //     $("#paginationNav>ul").append(
+      //         getItem(data,i)
+      //     );
+      // }
+      
+      n = 10;
+      
+      if (data.current_page - n/2 <= 1)
+          inicio = 1;
+      else if (data.last_page - data.current_page < n)
+          inicio = data.last_page - n + 1;
+      else 
+          inicio = data.current_page - n/2;
+      
+      fim = inicio + n-1;
+
+      for (i=inicio;i<=fim;i++) {
+          $("#paginationNav>ul").append(
+              getItem(data,i)
+          );
+      }
+      $("#paginationNav>ul").append(
+          getNextItem(data)
+      );
+  }
+  
+  function montarLinha(paciente) {
+    return '<tr>'+
+    '<td>' +paciente.id     + '</td>'+
+    '<td>'+paciente.nome            +'</td>'+
+    '<td>'+paciente.cpf             +'</td>'+
+    '<td>'+paciente.identidade      +'</td>'+
+    '<td>'+paciente.dataDeNascimento+'</td>'+
+    '</tr>';
+  }
+
+  function montarTabela(data) {
+      $("#tabelaClientes>tbody>tr").remove();
+      for(i=0;i<data.data.length;i++) {
+          $("#tabelaPacientes>tbody").append(
+              montarLinha(data.data[i])
+          );
+      }
+  }
+
+  function carregarPacientes(pagina) {
+      $.get('./json',{page: pagina}, function(resp) {
+          console.log(resp);
+          console.log(resp.data.length);
+          montarTabela(resp);
+          montarPaginator(resp);
+          $("#paginationNav>ul>li>a").click(function(){
+              // console.log($(this).attr('pagina') );
+              carregarPacientes($(this).attr('pagina'));
+          })
+          $("#cardtitle").html( "Exibindo " + resp.per_page + 
+              " pacientes de " + resp.total + 
+              " (" + resp.from + " a " + resp.to +  ")" );
+      }); 
+  }
+
+  $(function(){
+      carregarPacientes(1);
+  });
+
+</script>
+
 </body>
 </html>

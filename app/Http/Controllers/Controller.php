@@ -21,5 +21,10 @@ class Controller extends BaseController
     public function dashboard(){
         return View('layout.app');
     }
+   public function update(Request $request, $id)
+    {
 
-}
+        $convenio = Convenio::find($id);
+        $convenio-> update($request->all());
+        return redirect()->route('convenio.listaconvenio');
+}}
