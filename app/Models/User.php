@@ -20,6 +20,12 @@ class User extends Model
         //return $this->whereKey($cpf)->first('cpf');
     }
 
+    public static function buscarByEmail($email){
+
+        return  DB::table('sis_usuario')->where('email', $email)->first();
+             
+         }
+
     public function permissoes(){
         return $this->hasMany(PermisssaoUsuario::class); // a ser implementado
     }
