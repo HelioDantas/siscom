@@ -7,45 +7,35 @@
     }
     .FilterRow{
         margin-top: 1rem;
-    justify-content: center !important;
+        justify-content:flex-end !important;
         
+        width: 83.7%;
+       
         
     }
 </style>
 @endsection
 
 @section('conteudo')
-
-    <div class="row FilterRow">
-        <div class="col-2">
-                <div class="form-group">
-                
-                    <label for="selectbasic">Buscar por</label>
-                      <select required  id="buscarPor" name="busca" class="form-control">
-                        <option value=".cpf">Cpf</option>
-                        <option value=".nome" selected >nome</option>
-                        <option value=".telefone">telefone</option>
-                        <option value=".prontuario">prontuario</option>
-                      </select>
-                   
-                </div>
-                
-        </div>
+<div class="row FilterRow">
         <div class="col-3">
-                <label for="filtrar-tabela">Buscar</label>
-                <input type="text" name="filtro"  class="form-control" id="filtrar-tabela">    
-                </div>
-                </div>
+                <div class="form-group">
+                        <form class="FilterRow" action="buscar" method="post">
+                                @csrf
+                            <label for="basic-url">Busque por:</label>
+                           <input class="btn-text-top form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
+                           <button class="btn-buscar-top" type="submit"></button>
+                       </form>
 
-
+                </div>
+        </div>
+</div>
+   
 @endsection
 
 
 @section('navegação')
-
-
-
-       
+      
 @endsection
 
 
@@ -85,7 +75,9 @@
               </tr>
             </thead>
             <tbody>
+                @php $cont = 0; @endphp
                 @foreach ($pacientes as $p)
+                @php $cont = $cont + 1; @endphp
                     
               <tr class="Filter">
                  <td class="prontuario">       {{$p->id}}          </td>
@@ -122,8 +114,11 @@
           </table>
 
           <div class="card-footer">
-              
-           <span> {{$pacientes->links()}}</span>
+            @if($cont==4)
+                <p></p>
+              @else
+                {!!$pacientes->links()!!}
+            @endif
           </div>
     </div>
 
