@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Models;
 
 class Convenio extends Model
 {
     
-     protected $table = "sis_convenio";
+    protected $table = "sis_convenio";
     
     public $timestamps = false;
 
-    protected $fillable = array('cnpj', 'nome', 'adesao', 'banco', 'agencia','conta','status' );    
+    protected $primarykey='sis_convenio_cnpj';
 
+    protected $fillable = array('cnpj', 'nome', 'adesao', 'banco', 'agencia','conta','status'
+    
+    );
 }
+    

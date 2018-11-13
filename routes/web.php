@@ -131,7 +131,7 @@ Route::prefix('convenio')->middleware('Autorizador')->group(function () { //->mi
   Route::get('cad'            , 'ConvenioController@novo')->name(        'convenio.novo'      );
   Route::get('listar'         , 'ConvenioController@listar')->name(      'convenio.listar'    );
   Route::post('create'        , 'ConvenioController@create')->name(      'convenio.create'    );
-  Route::get('editar/{id}'    , 'ConvenioController@edit')->name(        'convenio.editar'    );
+  Route::get('editar/{id}'    , 'ConvenioController@editar')->name(        'convenio.editar'    );
   Route::put('update/{id}'    , 'ConvenioController@update')->name(      'convenio.update'     );
 
 
