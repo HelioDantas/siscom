@@ -94,5 +94,6 @@ ul li{
 
 /* js lista */
 .invisivel{
+    background: red;
     display: none;
 }
