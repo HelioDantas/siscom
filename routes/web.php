@@ -94,6 +94,8 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
   Route::get('excluir/{id}' , 'PacienteController@destroy')->name(  'paciente.excluir');
   Route::get('index'        , 'PacienteController@indexjs')->name(  'paciente.js'     );
   Route::get('json'         , 'PacienteController@indexjson')->name('paciente.json'   );
+  Route::any('buscar'   , 'PacienteController@buscar')->name(     'funcionario.buscar'   );
+
 });
 
 

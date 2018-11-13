@@ -28,7 +28,7 @@
 <body>
         <!-- header -->
         <div class="container-fluid agoravai">
-            <header style="color:#000000;">
+            <header > <!-- style="color:#000000;" -->
                <div class="agoravai">
                 <h2 class="logo"><strong>Siscon</strong></h2>
                 <h1>Sistema de Consultorio Medico</h1>

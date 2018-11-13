@@ -5,7 +5,7 @@
 }
 
 body{
-background-color:#eeeeee;
+background-color:#eeeeee; /* #2196f3 */
 }
 header .logo{
     margin-top: 2%;
@@ -34,7 +34,7 @@ nav{
 }
 
 .dropbtn {
-    background-color:#b2dfdb;
+    background-color:#e0e0e0;
     color: black;
     padding: 16px;
     font-size: 16px;
@@ -56,6 +56,7 @@ nav{
 .dropdown {
     position: relative;
     display: inline-block;
+    
 }
 
 .dropdown-content {
@@ -83,7 +84,7 @@ nav{
 .dropdown:hover .dropbtn {background-color: #26a69a;}
 .sair:hover {background-color: #26a69a;}
 nav{
- background-color: #b2dfdb ;
+ background-color:#e0e0e0 ;
 }
 ul li{
   text-align: center;

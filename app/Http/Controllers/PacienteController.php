@@ -40,6 +40,16 @@ class PacienteController extends Controller
         //testando
     } 
 
+    public function buscar(Request $request){
+        $buscar = $request->input('search');
+        $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
+        ->orWhere('cpf', 'like', '%'.$buscar.'%')
+        ->orWhere('id', 'like', '%'.$buscar.'%')
+        ->paginate(10);
+        return view('paciente.listar' , compact('pacientes'));
+       
+      } 
+
     
     public function novo() 
     {
