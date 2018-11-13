@@ -249,10 +249,32 @@
                 </div>
         </div><!--col naturalidade -->
 
-        <div class="col-3">
-                <div class="form-group">
-                  <label for="">Profissão*</label>
-                  <input type="text" name="prof" id="" class="form-control"  placeholder="prof" value="Brasileiro"  @if(!empty($p)) value = {{$p->profissao}} @else value = "" @endif>
+            <div class="col-3">
+                    <div class="form-group">
+                      <label for="profissao">Profissão</label>
+                      <select required id="prof" name="profissao"  class="form-control">
+                      
+                  @if(!empty($p->profissao))
+
+                        @switch($p->profissao)
+                        @case('M')
+                           
+                            @php $tipo = 'Medico' ; @endphp
+                            @break
+
+                        @case( 'A')
+                        
+                            @php $tipo = 'Atendente ; @endphp
+                            @break
+                            @default
+                            
+                            @endswitch
+                            <option value="{{$p->profissao}}">{{$tipo}}</option>
+                             @endif
+                    <option value="M">Medico</option>
+                      <option selected value="A">Atendente</option>ileiro">
+                    </select>
+
                   <small id="prof" class="text-muted">informe o seu pais de origem</small>
                 </div>
         </div><!--col nacionalidade -->
@@ -261,7 +283,7 @@
                 <div class="form-group">
                 
                     <label for="selectbasic">Status <h11>*</h11></label>
-                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = {{$p->Status_2}} @else value = "" @endif>
+                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = {{$p->Status}} @else value = "" @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>
@@ -272,7 +294,7 @@
              <div class="col-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
-                <input type="text" name="crm" id="" class="form-control " placeholder="crm">
+                <input type="text" name="crm" id="" class="form-control " placeholder="crm" @if(!empty($p)) value = {{$p->medico->crm}} @else value = "" @endif>
                 <small id="crm" class="text-muted">CRM</small>
                 </div>
                 </div><!--col nome -->
