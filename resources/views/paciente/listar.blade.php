@@ -5,23 +5,47 @@
     span{
         text-align: center;
     }
+    .FilterRow{
+        margin-top: 1rem;
+    justify-content: center !important;
+        
+        
+    }
 </style>
 @endsection
 
 @section('conteudo')
-<div class="jumbotron">
-TESTANDO: <span style="color:red;">visualização e paginação do dados do paciente</span>
 
-</div>
+    <div class="row FilterRow">
+        <div class="col-2">
+                <div class="form-group">
+                
+                    <label for="selectbasic">Buscar por</label>
+                      <select required  id="buscarPor" name="busca" class="form-control">
+                        <option value=".cpf">Cpf</option>
+                        <option value=".nome" selected >nome</option>
+                        <option value=".telefone">telefone</option>
+                        <option value=".prontuario">prontuario</option>
+                      </select>
+                   
+                </div>
+                
+        </div>
+        <div class="col-3">
+                <label for="filtrar-tabela">Buscar</label>
+                <input type="text" name="filtro"  class="form-control" id="filtrar-tabela">    
+                </div>
+                </div>
+
+
 @endsection
 
 
 @section('navegação')
 
-    <div class="col-2">
-    <label for="filtrar-tabela">Buscar</label>
-    <input type="text" name="filtro" id="filtrar-tabela">    
-    </div>    
+
+
+       
 @endsection
 
 
@@ -63,11 +87,11 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
             <tbody>
                 @foreach ($pacientes as $p)
                     
-              <tr class="Filter-nome">
-                 <td>       {{$p->id}}          </td>
+              <tr class="Filter">
+                 <td class="prontuario">       {{$p->id}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
-                 <td class="info-nome">       {{$p->nome}}             </td>
-                 <td>       {{$p->cpf}}                 </td>
+                 <td class="nome">       {{$p->nome}}             </td>
+                 <td class="cpf">       {{$p->cpf}}                 </td>
                  <td>       {{$p->identidade}}          </td>
                  <td>       {{$p->dataDeNascimento}}    </td>
                  <td>       {{$p->sexo}}                </td>
@@ -98,6 +122,7 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados do paci
           </table>
 
           <div class="card-footer">
+              
            <span> {{$pacientes->links()}}</span>
           </div>
     </div>

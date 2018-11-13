@@ -5,7 +5,7 @@
 }
 
 body{
-background-color: #eceff1;
+background-color:#eeeeee;
 }
 header .logo{
     margin-top: 2%;
@@ -43,7 +43,14 @@ nav{
 }
 
 .corpo{
-    background-color: #eeeeee;
+  
+    background-color: N/A;
+    border-radius:0.5%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-border-radius:0.5%;
+    -moz-border-radius:0.5%;
+    -ms-border-radius:0.5%;
+    -o-border-radius:0.5%;
 }
 
 .dropdown {
@@ -86,5 +93,6 @@ ul li{
 
 /* js lista */
 .invisivel{
+    background: red;
     display: none;
 }

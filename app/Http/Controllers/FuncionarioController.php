@@ -61,6 +61,17 @@ class FuncionarioController extends Controller
        
       } 
 
+
+       public function buscar(Request $request){
+        $buscar = $request->input('search');
+        $Funcionarios = Funcionario::where('nome', 'like', '%'.$buscar.'%')
+        ->orWhere('cpf', 'like', '%'.$buscar.'%')
+        ->orWhere('matricula', 'like', '%'.$buscar.'%')
+        ->paginate(5);
+        return view('funcionario.listar' , compact('Funcionarios'));
+       
+      } 
+
          public function destroy ($id){
 
         $Funcionario = Funcionario::find($id);

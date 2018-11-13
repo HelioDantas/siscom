@@ -52,7 +52,7 @@
                             {!! Form::close() !!}
 
                             <div class="col s4 agoravai">
-                                <a href="recuperar_senha.php">Esqueceu a senha?</a>
+                                <a href="{{route('recovery_senha')}}">Esqueceu a senha?</a>
                             </div>
                             
                 </div>

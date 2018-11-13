@@ -15,12 +15,19 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
 @endsection
 
 
+
+
+
 @section('navegação')
 
-    <div class="col-2">
-    <label for="filtrar-tabela">Buscar</label>
-    <input type="text" name="filtro" id="filtrar-tabela">    
-    </div>    
+      
+
+                                 <form class="form-busca-site" action="buscar" method="post">
+                                         @csrf
+									<input class="btn-text-top" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
+									<button class="btn-buscar-top" type="submit"></button>
+								</form>
+
 @endsection
 
 
@@ -59,8 +66,9 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
               </tr>
             </thead>
             <tbody>
+            @php $cont = 0; @endphp
                 @foreach ($Funcionarios as $p)
-                    
+                       @php $cont = $cont + 1; @endphp
               <tr class="Filter-nome">
                  <td>       {{$p->matricula}}          </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
@@ -95,7 +103,11 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
           </table>
 
           <div class="card-footer">
-           <span> {{$Funcionarios->links()}}</span>
+             @if($cont==4)
+                <p></p>
+              @else
+                {!!$Funcionarios->links()!!}
+            @endif
           </div>
     </div>
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', ['uses' => 'Controller@dashboard'])->name('dashboard');//->middleware('Autorizador');
+Route::get('/', ['uses' => 'Controller@dashboard'])->middleware('Autorizador')->name('dashboard');//
 
 
 
@@ -49,6 +50,7 @@ Route::post('/teste', 'Controller@dashboard')->name('teste');
 /** Rota para enviar as infos da requisição para autenticação no method login */
 //Route::post('/login','LoginController@login');
 Route::get('/sair', 'LoginController@logout')->name('login.logout');
+Route::get('/recovery' , 'UserController@recoveryForm')->name('recovery_senha');
 
 
 //Route::get('/pacientes' , 'PacienteController@listar')->middleware('autorizador');
@@ -81,8 +83,10 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  * =================================================================================*
  */
 
+
 Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')-
-  Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
+  Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name(      'paciente.listar'    );
+  //Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
   Route::get('novo'         , 'PacienteController@novo')->name(     'paciente.novo'   );
   Route::post('create'      , 'PacienteController@create')->name(   'paciente.create' );
   Route::get('editar/{id}'  , 'PacienteController@edit')->name(     'paciente.editar' );
@@ -109,6 +113,7 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
   Route::post('medico/create' , 'FuncionarioController@Medicocreate')->name('medico.create'         );
   Route::get('medico/cad'     , 'FuncionarioController@novoM')->name(       'medico.novo'           );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
+  Route::any('buscar'   , 'FuncionarioController@buscar')->name(     'funcionario.buscar'   );
 
 
 

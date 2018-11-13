@@ -51,12 +51,15 @@
     <form action="create" method="post">
     @csrf
 
-        <div class="form-group navegacao">
-        <div class="col-8">
-          <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
-          <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
-        </div>
-      </div>
+      <div class="form-group navegacao">
+                <div class="col-8">
+                  <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
+                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}" role="button">Pesquisar</a>
+                  <a  class="btn btn-outline-danger"  href="{{route('funcionario.novo')}}" role="button">Cancelar</a>
+
+                  <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
+                </div>
+              </div>
 
             <fieldset class="form-group">
                     <legend aling="center">Dados Pessoais</legend>
@@ -199,7 +202,7 @@
                         </div><!-- col cep -->
 
                           <div class="col-2">
-                               <button type="button" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
+                               <button type="submit" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
                                 <strong>pesquisar</strong></button>
                           </div><!-- col CEP -->
 
@@ -294,5 +297,5 @@
 
     @section('scripts')
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
-
+        
     @endsection
