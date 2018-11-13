@@ -161,8 +161,10 @@
             <div class="col-3">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
-                      <select required id="profissao" name="profissao" id="" class="form-control" >
+                      <select required id="prof" name="profissao"  class="form-control">
                       <option value="M">Medico</option>
+                      <option selected value="A">Atendente</option>
+                     
                       </select>
                     </div>
             </div><!--col nacionalidade -->
@@ -178,8 +180,39 @@
 
                     </div>
                 </div><!--  etinia-->
+                <div class="col-3 Fill invisivel">
+                <div class="form-group">
+                <label for="crm">CRM</label>
+                <input type="text" name="crm" id="" class="form-control " placeholder="crm">
+                <small id="crm" class="text-muted">CRM</small>
+                </div>
+                </div><!--col nome -->
 
 
+                <div class="col-3 Fill invisivel">
+                    <div class="form-group">
+                      <label for="especialidade" >Especialidade 1</label>
+                      <select required id="especialidade" name="especialidade1" id="" class="form-control" >
+                          <option value=""></option>
+                          @foreach($especi as $e)
+                                <option value="{{$e->id}}">{{$e->nome}}</option>
+                         @endforeach
+                      </select>
+                    </div>
+             </div>
+
+
+                   <div class="col-3 Fill invisivel">
+                    <div class="form-group teste">
+                      <label for="especialidade2">Especialidade 2</label>
+                      <select required id="especialidade2" name="especialidade2" id="" class="form-control" >
+                          <option value=""></option>
+                          @foreach($especi as $e)
+                                <option value="{{$e->id}}">{{$e->nome}}</option>
+                         @endforeach
+                      </select>
+                    </div>
+            </div>
     </div><!-- row -->
     </fieldset><!--Dados pessoas-->
     <hr>
@@ -286,39 +319,12 @@
 
                  </fieldset><!--endereço-->
                  <hr>
-    <fieldset class="form-group">
-            <legend aling="center">Dados profissionais</legend>
   
-
-    <div class="col-3">
-    <div class="form-group">
-      <label for="crm">CRM</label>
-      <input type="text" name="crm" id="" class="form-control" placeholder="crm">
-      <small id="crm" class="text-muted">Nome Completo</small>
-    </div>
-    </div><!--col nome -->
-
-'    <div class="col-3">
-            <div class="form-group">
- 
-   
-    @foreach($especi as $e)
-    
-         <div class="checkbox">
-            <input name = "$especialidade[]" type="checkbox" value= {{$e->id}}> {{$e->nome}}
-        </div>
-
-    @endforeach
-             </div>
-      </div>
-
-    </fieldset><!--endereço-->
-
       {!! Form::close() !!}
     </div><!-- container -->
 
     @endsection
     @section('scripts')
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
     @endsection
