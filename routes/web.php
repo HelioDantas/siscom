@@ -85,7 +85,8 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
 
 
 Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')-
-  Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
+  Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name(      'paciente.listar'    );
+  //Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
   Route::get('novo'         , 'PacienteController@novo')->name(     'paciente.novo'   );
   Route::post('create'      , 'PacienteController@create')->name(   'paciente.create' );
   Route::get('editar/{id}'  , 'PacienteController@edit')->name(     'paciente.editar' );

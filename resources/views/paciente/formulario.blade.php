@@ -31,6 +31,7 @@
     }
     .navegacao{
         text-align:right ;
+        float: right;
         margin-top: 1.3rem;
     }
     a{
@@ -40,15 +41,24 @@
         text-align: center;
         margin-top: 1.5rem;
     }
+    .dadosForm{
+        margin-top: 1rem;
+    }
    
 
 </style>
+  <!--tolltips -->
+  <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+    </script>
 @endsection
 
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro | Paciente</h4>   
+        <h4 class="titulocadastro">Cadastro <strong>| Paciente  </strong></h4>   
 @endsection
 
 @section('navegação')
@@ -63,25 +73,25 @@
          @csrf
 
         <div class="form-group navegacao">
-                <div class="col-8">
-                  <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
-                  <a  class="btn btn-outline-secondary"   href="{{route('paciente.listar')}}" role="button">Pesquisar</a>
-                  <a  class="btn btn-outline-danger"  href="{{route('paciente.novo')}}" role="button">Cancelar</a>
+                <div class="col">
+                  <button id="Cadastrar"  class="btn btn-outline-success" type="Submit"  data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></button>
+                  <a  class="btn btn-outline-secondary"   href="{{route('paciente.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
+                  <a  class="btn btn-outline-danger"  href="{{route('paciente.novo')}}"   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
 
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
-              </div>
+            </div>
 
-        <fieldset class="form-group">
+        <fieldset class="form-group dadosForm">
                 <legend aling="center">Dados Pessoais</legend>
 <div class="row">
 
 
 
-<div class="col-4">
+<div class="col-5">
 <div class="form-group">
   <label for="nome">Nome*</label>
-  <input type="text" name="nome" id="nome" required maxlength="60" class="form-control" placeholder="nome">
+  <input type="text" name="nome" id="nome"  maxlength="60" class="form-control" placeholder="nome" required>
   <small id="nome" class="text-muted">Nome Completo</small>
 </div>
 </div><!--col nome -->
@@ -89,7 +99,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="cpf">Cpf*</label>
-  <input type="text" name="cpf" id="cpf"  required class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12">
+  <input type="text" name="cpf" id="cpf"   class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12" required>
   <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">   pattern="/d{11}"  -->
   <small id="cpf" class="text-muted">cpf</small>
 </div>
@@ -348,4 +358,6 @@
    
 
 <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/tolltips.js') }}"></script>
+
 @endsection

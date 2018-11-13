@@ -199,7 +199,7 @@
                         </div><!-- col cep -->
 
                           <div class="col-2">
-                               <button type="button" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
+                               <button type="submit" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
                                 <strong>pesquisar</strong></button>
                           </div><!-- col CEP -->
 

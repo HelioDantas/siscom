@@ -122,6 +122,7 @@
           </table>
 
           <div class="card-footer">
+              
            <span> {{$pacientes->links()}}</span>
           </div>
     </div>

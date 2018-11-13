@@ -144,6 +144,8 @@
 		}, 1000);
 		var clock = document.getElementById('real-clock');
   </script>
+
+
    
    @yield('scripts')
 </body>
