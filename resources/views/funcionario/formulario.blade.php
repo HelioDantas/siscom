@@ -39,7 +39,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro Funcionario</h4>
+        <h4 class="titulocadastro">Cadastro Medico</h4>
 @endsection
 @section('navegação')
 
@@ -47,10 +47,11 @@
 @endsection
 
 @section('tela')
+ 
 <div class="container corpo">
-    <form action="create" method="post">
-    @csrf
+    {!! Form::open(['route' => 'funcionario.create','method ' => 'post',]) !!} @csrf
 
+        
       <div class="form-group navegacao">
                 <div class="col-8">
                   <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
@@ -64,8 +65,6 @@
             <fieldset class="form-group">
                     <legend aling="center">Dados Pessoais</legend>
     <div class="row">
-
-
 
     <div class="col-3">
     <div class="form-group">
@@ -94,8 +93,8 @@
     <div class="col-2">
     <div class="form-group">
       <label for="data">Data Nascimento</label>
-      <input type="date" name="dataDeNascimento" id="dataDeNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
-      <small id="dataDeNascimento" class="data">Data obrigatoria</small>
+      <input type="date" name="dataNascimento" id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+      <small id="dtNascimento" class="data">Data obrigatoria</small>
     </div>
     </div><!--col dt Nascimento-->
 
@@ -103,7 +102,7 @@
             <div class="form-group">
 
                 <label for="selectbasic">Sexo <h11>*</h11></label>
-                  <select required id="genero" name="sexo" class="form-control">
+                  <select required id="genero" name="genero" class="form-control">
                   <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
                     <option value="N">Não declarado</option>
@@ -134,6 +133,8 @@
 
 
                       <select required id="escolaridade" name="escolaridade" class="form-control">
+                     
+                        <option value="Analfabeto">Analfabeto</option>
                         <option value="Fundamental Incompleto">Fundamental Incompleto</option>
                         <option value="Fundamental Completo">Fundamental Completo</option>
                         <option value="Médio Incompleto">Médio Incompleto</option>
@@ -163,12 +164,12 @@
 
             <div class="col-3">
                     <div class="form-group">
-
                       <label for="profissao">Profissão</label>
-                      <select required id="profissao" name="profissao" id="" class="form-control" >
-                      <option value="A">Atendente</option>
+                      <select required id="prof" name="profissao"  class="form-control">
+                      <option value="M">Medico</option>
+                      <option selected value="A">Atendente</option>
+                     
                       </select>
-                
                     </div>
             </div><!--col nacionalidade -->
 
@@ -176,21 +177,52 @@
                     <div class="form-group">
 
                         <label for="selectbasic">Status <h11>*</h11></label>
-                          <select required id="status" name="status" class="form-control">
+                          <select required id="status_2" name="status_id" class="form-control">
                           <option value="A">Ativo</option>
                             <option value="I">Inativo</option>
                           </select>
 
                     </div>
                 </div><!--  etinia-->
+                <div class="col-3 Fill invisivel">
+                <div class="form-group">
+                <label for="crm">CRM</label>
+                <input type="text" name="crm" id="" class="form-control " placeholder="crm">
+                <small id="crm" class="text-muted">CRM</small>
+                </div>
+                </div><!--col nome -->
 
 
+                <div class="col-3 Fill invisivel">
+                    <div class="form-group">
+                      <label for="especialidade" >Especialidade 1</label>
+                      <select required id="especialidade" name="especialidade1" id="" class="form-control" >
+                          <option value=""></option>
+                          @foreach($especi as $e)
+                                <option value="{{$e->id}}">{{$e->nome}}</option>
+                         @endforeach
+                      </select>
+                    </div>
+             </div>
+
+
+                   <div class="col-3 Fill invisivel">
+                    <div class="form-group teste">
+                      <label for="especialidade2">Especialidade 2</label>
+                      <select required id="especialidade2" name="especialidade2" id="" class="form-control" >
+                          <option value=""></option>
+                          @foreach($especi as $e)
+                                <option value="{{$e->id}}">{{$e->nome}}</option>
+                         @endforeach
+                      </select>
+                    </div>
+            </div>
     </div><!-- row -->
     </fieldset><!--Dados pessoas-->
     <hr>
 
 
-            <fieldset class="form-group">
+             <fieldset class="form-group">
                     <legend aling="center">Endereço</legend>
 
                 <div class="row">
@@ -202,7 +234,7 @@
                         </div><!-- col cep -->
 
                           <div class="col-2">
-                               <button type="submit" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
+                               <button type="button" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
                                 <strong>pesquisar</strong></button>
                           </div><!-- col CEP -->
 
@@ -289,13 +321,14 @@
 
                 </div> <!-- col Email -->
 
-
-    </form>
+                 </fieldset><!--endereço-->
+                 <hr>
+  
+      {!! Form::close() !!}
     </div><!-- container -->
 
     @endsection
-
     @section('scripts')
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
-        
+    <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
     @endsection

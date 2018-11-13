@@ -30,12 +30,14 @@ class FuncionarioController extends Controller
         if($Funcionario->profissao == "A")
             return view('user.novo')->with('func', $Funcionario);
 
+        else if($Funcionario->profissao == "M")
+            return redirect()->route('funcionario.Medicocreate')->with('func' $Funcionario);
+
     }
    
 
     public function Medicocreate(Request $request){
        //return var_dump ($request->all());
-        $Funcionario = Funcionario::create($request->all());
         $medico = new Medico();
      
         $valor= $request->all('crm');
@@ -43,14 +45,12 @@ class FuncionarioController extends Controller
         $medico->Sis_funcionario_matricula = ($Funcionario->matricula);
         $medico->save();
         $medico = Medico::find($Funcionario->matricula);
-        $especialidade = $request->only('$especialidade');
-        if($especialidade != null)
-            foreach ($especialidade as $e => $id) {
-                foreach ($id as $key) {    
-                    $medico->especialidade()->attach($key);
-                }    
-            }        
-                return view('user.novo')->with('func', $Funcionario);
+        $especialidade1 = $request->only('especialidade1');
+        $especialidade2 = $request->only('especialidade2');
+        $medico->especialidade()->attach($especialidade2);
+        $medico->especialidade()->attach($especialidade1);
+        
+        return view('user.novo')->with('func', $Funcionario);
 
     }
 
