@@ -113,6 +113,7 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
   Route::post('medico/create' , 'FuncionarioController@Medicocreate')->name('medico.create'         );
   Route::get('medico/cad'     , 'FuncionarioController@novoM')->name(       'medico.novo'           );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
+  Route::any('buscar'   , 'FuncionarioController@buscar')->name(     'funcionario.buscar'   );
 
 
 
