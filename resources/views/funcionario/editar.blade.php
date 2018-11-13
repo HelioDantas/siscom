@@ -269,7 +269,39 @@
                 </div>
             </div><!--  etinia-->
 
-           
+             <div class="col-3 Fill invisivel">
+                <div class="form-group">
+                <label for="crm">CRM</label>
+                <input type="text" name="crm" id="" class="form-control " placeholder="crm">
+                <small id="crm" class="text-muted">CRM</small>
+                </div>
+                </div><!--col nome -->
+
+
+                <div class="col-3 Fill invisivel">
+                    <div class="form-group">
+                      <label for="especialidade" >Especialidade 1</label>
+                      <select required id="especialidade" name="especialidade1" id="" class="form-control" >
+                          <option value=""></option>
+                          @foreach($especi as $e)
+                                <option value="{{$e->id}}">{{$e->nome}}</option>
+                         @endforeach
+                      </select>
+                    </div>
+             </div>
+
+
+                   <div class="col-3 Fill invisivel">
+                    <div class="form-group teste">
+                      <label for="especialidade2">Especialidade 2</label>
+                      <select required id="especialidade2" name="especialidade2" id="" class="form-control" >
+                          <option value=""></option>
+                          @foreach($especi as $e)
+                                <option value="{{$e->id}}">{{$e->nome}}</option>
+                         @endforeach
+                      </select>
+                    </div>
+            </div>
 </div><!-- row -->
 </fieldset><!--Dados pessoas-->
 <hr>

@@ -13,7 +13,7 @@ class FuncionarioController extends Controller
       public function novo(){
         //  form de um novo produto
 
-        return view('funcionario.formulario');
+        return view('funcionario.formulario')->with('especi', Especialidade::all());;
     }
 
      public function novoM(){
@@ -27,12 +27,14 @@ class FuncionarioController extends Controller
     public function create(Request $request){
         $Funcionario = Funcionario::create($request->all());
       //  return var_dump($sis_funcionario);
-        if($Funcionario->profissao == "A")
+        if($Funcionario->profissao == "A"){
             return view('user.novo')->with('func', $Funcionario);
 
-        else if($Funcionario->profissao == "M")
-            return redirect()->route('funcionario.Medicocreate')->with('func' $Funcionario);
+        }else{
+         if($Funcionario->profissao == "M")
+            return redirect()->route('funcionario.Medicocreate', compact('Funcionario'));
 
+        }  
     }
    
 
@@ -49,7 +51,7 @@ class FuncionarioController extends Controller
         $especialidade2 = $request->only('especialidade2');
         $medico->especialidade()->attach($especialidade2);
         $medico->especialidade()->attach($especialidade1);
-        
+
         return view('user.novo')->with('func', $Funcionario);
 
     }
