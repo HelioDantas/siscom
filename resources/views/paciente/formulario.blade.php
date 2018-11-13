@@ -31,10 +31,16 @@
     }
     .navegacao{
         text-align:right ;
+        margin-top: 1.3rem;
     }
     a{
         color: white;
     }
+    .titulocadastro{
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+   
 
 </style>
 @endsection
@@ -42,7 +48,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro Paciente</h4>   
+        <h4 class="titulocadastro">Cadastro | Paciente</h4>   
 @endsection
 
 @section('navegação')
