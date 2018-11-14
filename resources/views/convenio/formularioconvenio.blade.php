@@ -56,8 +56,7 @@
         <div class="form-group navegacao">
         <div class="col-16">
           <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
-          <button id="Pesquisar" name="Pesquisar" class="btn btn-secondary" type="Reset">Pesquisar</button>
-           <button id="Cancelar" name="Cancelar" class="btn btn-primary" type="Reset">Alterar</button>
+        
         </div>
       </div>
 
@@ -72,7 +71,7 @@
         <br><br>
           <label for="nome">CNPJ</label>
              <input type="text" name="cnpj" id="" class="form-control" placeholder="CNPJ">
-             <small id="nome" class="text-muted">Inserir nome do Convênio</small>
+             <small id="nome" class="text-muted">Inserir número do cnpj</small>
     </div>
     </div>
 

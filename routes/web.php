@@ -109,11 +109,11 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::post('create'        , 'FuncionarioController@create')->name(      'funcionario.create'    );
   Route::get('editar/{id}'    , 'FuncionarioController@edit')->name(        'funcionario.editar'    );
-  Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'     );
+  Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'    );
   Route::post('medico/create' , 'FuncionarioController@Medicocreate')->name('medico.create'         );
   Route::get('medico/cad'     , 'FuncionarioController@novoM')->name(       'medico.novo'           );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
-  Route::any('buscar'   , 'FuncionarioController@buscar')->name(     'funcionario.buscar'   );
+  Route::any('buscar'         , 'FuncionarioController@buscar')->name(     'funcionario.buscar'   );
 
 
 
@@ -128,12 +128,11 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 Route::prefix('convenio')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
-  Route::get('cad'            , 'ConvenioController@novo')->name(        'convenio.novo'      );
+  Route::get('cad'            , 'ConvenioController@novo'  )->name(        'convenio.novo'      );
   Route::get('listar'         , 'ConvenioController@listar')->name(      'convenio.listar'    );
   Route::post('create'        , 'ConvenioController@create')->name(      'convenio.create'    );
-  Route::get('editar/{id}'    , 'ConvenioController@editar')->name(        'convenio.editar'    );
-  Route::put('update/{id}'    , 'ConvenioController@update')->name(      'convenio.update'     );
-
+  Route::get('editar'         , 'ConvenioController@editar')->name(      'convenio.editar'    );
+  Route::put('update/{id}'    , 'ConvenioController@update')->name(      'convenio.update'    );
 
 
 });
