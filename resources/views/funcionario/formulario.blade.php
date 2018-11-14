@@ -2,8 +2,8 @@
 
 @section('estilos')
 <style>
-    .btn{
-
+     .btn{
+        
     }
     .pesquisar{
         margin-top:1.7rem;
@@ -11,15 +11,15 @@
     .seletorSexo{
         margin-top: 2rem;
         padding-right: 1.5rem;
-        margin-top:1.7rem;
+        margin-top:1.7rem; 
     }
     .endCentralizado > label{
         color:blue;
         text-aling:center;
-
+        
     }
     .form-control{
-        border-radius:10px 10px;
+        border-radius:10px 10px; 
     }
     .titulocadastro{
         margin:0 auto;
@@ -31,7 +31,20 @@
     }
     .navegacao{
         text-align:right ;
+        float: right;
+        margin-top: 1.3rem;
     }
+    a{
+        color: white;
+    }
+    .titulocadastro{
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+    .dadosForm{
+        margin-top: 1rem;
+    }
+   
 
 </style>
 @endsection
@@ -39,7 +52,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro Medico</h4>
+          <h4 class="titulocadastro">Cadastro <strong>| Funcionario  </strong></h4>   
 @endsection
 @section('navegação')
 
@@ -51,16 +64,15 @@
 <div class="container corpo">
     {!! Form::open(['route' => 'funcionario.create','method ' => 'post',]) !!} @csrf
 
-        
-      <div class="form-group navegacao">
-                <div class="col-8">
-                  <button id="Cadastrar"  class="btn btn-success" type="Submit">Cadastrar</button>
-                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}" role="button">Pesquisar</a>
-                  <a  class="btn btn-outline-danger"  href="{{route('funcionario.novo')}}" role="button">Cancelar</a>
+  <div class="form-group navegacao">
+                <div class="col">
+                  <button id="Cadastrar"  class="btn btn-outline-success" type="Submit"  data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></button>
+                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
+                  <a  class="btn btn-outline-danger"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
 
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
-              </div>
+            </div>
 
             <fieldset class="form-group">
                     <legend aling="center">Dados Pessoais</legend>
@@ -93,7 +105,7 @@
     <div class="col-2">
     <div class="form-group">
       <label for="data">Data Nascimento</label>
-      <input type="date" name="dataNascimento" id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+      <input type="date" name="dataDeNascimento" id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
       <small id="dtNascimento" class="data">Data obrigatoria</small>
     </div>
     </div><!--col dt Nascimento-->
@@ -102,7 +114,7 @@
             <div class="form-group">
 
                 <label for="selectbasic">Sexo <h11>*</h11></label>
-                  <select required id="genero" name="genero" class="form-control">
+                  <select required id="sexo" name="sexo" class="form-control">
                   <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
                     <option value="N">Não declarado</option>
@@ -134,13 +146,12 @@
 
                       <select required id="escolaridade" name="escolaridade" class="form-control">
                      
-                        <option value="Analfabeto">Analfabeto</option>
-                        <option value="Fundamental Incompleto">Fundamental Incompleto</option>
-                        <option value="Fundamental Completo">Fundamental Completo</option>
-                        <option value="Médio Incompleto">Médio Incompleto</option>
-                        <option value="Médio Completo">Médio Completo</option>
-                        <option value="Superior Incompleto">Superior Incompleto</option>
                         <option value="Superior Completo">Superior Completo</option>
+                    <option value="Superior Incompleto">Superior Incompleto</option>
+                    <option value="Médio Incompleto">Médio Incompleto</option>
+                    <option value="Médio Completo">Médio Completo</option>
+                    <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+                    <option value="Fundamental Completo">Fundamental Completo</option>
                       </select>
 
                 </div>
@@ -177,7 +188,7 @@
                     <div class="form-group">
 
                         <label for="selectbasic">Status <h11>*</h11></label>
-                          <select required id="status_2" name="status_id" class="form-control">
+                          <select required id="status_2" name="status" class="form-control">
                           <option value="A">Ativo</option>
                             <option value="I">Inativo</option>
                           </select>
@@ -196,7 +207,7 @@
                 <div class="col-3 Fill invisivel">
                     <div class="form-group">
                       <label for="especialidade" >Especialidade 1</label>
-                      <select required id="especialidade" name="especialidade1" id="" class="form-control" >
+                      <select  id="especialidade" name="especialidade1" id="" class="form-control" >
                           <option value=""></option>
                           @foreach($especi as $e)
                                 <option value="{{$e->id}}">{{$e->nome}}</option>
@@ -209,7 +220,7 @@
                    <div class="col-3 Fill invisivel">
                     <div class="form-group teste">
                       <label for="especialidade2">Especialidade 2</label>
-                      <select required id="especialidade2" name="especialidade2" id="" class="form-control" >
+                      <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
                           <option value=""></option>
                           @foreach($especi as $e)
                                 <option value="{{$e->id}}">{{$e->nome}}</option>

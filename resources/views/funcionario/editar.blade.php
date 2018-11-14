@@ -87,7 +87,7 @@
         <div class="form-group">
           <label for="cpf">RG*</label>
           <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade"
-            @if(!empty($p)) value = {{$p->identidade}} @else value = "" @endif>
+            @if(!empty($p)) value = "{{$p->identidade}}" @else value = "" @endif>
           <small id="identidade" class="text-muted">identidade</small>
         </div>
         </div><!--col cpf -->
@@ -124,7 +124,7 @@
     
                     @endswitch
 
-                    <option value={{$p->sexo}}>{{$tipo}}</option>
+                    <option value="{{$p->sexo}}">{{$tipo}}</option>
                     @else
                     <option value=""></option>
                 @endif  
@@ -165,7 +165,7 @@
                     @break
 
                 @endswitch
-                    <option value= {{$p->etnia}}>{{$tipo}}</option>
+                    <option value= "{{$p->etnia}}">{{$tipo}}</option>
                 @else
                     <option value=""></option>
                 @endif
@@ -216,7 +216,7 @@
                             @php $tipo = 'Superior Completo' ; @endphp
                             @break
 
-                        @default
+           
                             
                         @endswitch
                         <option value="{{$p->escolaridade}}">{{$tipo}}</option>
@@ -236,7 +236,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Nacionalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro"  @if(!empty($p)) value = {{$p->nacionalidade}} @else value = "" @endif>
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro"  @if(!empty($p)) value = "{{$p->nacionalidade}}" @else value = "" @endif>
                   <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
                 </div>
         </div><!--col nacionalidade -->
@@ -244,7 +244,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Naturalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = {{$p->naturalidade}} @else value = "" @endif>
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif>
                   <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
                 </div>
         </div><!--col naturalidade -->
@@ -266,13 +266,16 @@
                         
                             @php $tipo = 'Atendente ; @endphp
                             @break
-                            @default
+                          
                             
                             @endswitch
-                            <option value="{{$p->profissao}}">{{$tipo}}</option>
-                             @endif
+
+                            <option value= "{{$p->profissao}}">{{$tipo}}</option>
+                              @else
+                    <option value=""></option>
+                      @endif
                     <option value="M">Medico</option>
-                      <option selected value="A">Atendente</option>ileiro">
+                      <option selected value="A">Atendente</option>
                     </select>
 
                   <small id="prof" class="text-muted">informe o seu pais de origem</small>
@@ -283,7 +286,7 @@
                 <div class="form-group">
                 
                     <label for="selectbasic">Status <h11>*</h11></label>
-                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = {{$p->Status}} @else value = "" @endif>
+                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = "{{$p->Status}}" @else value = "" @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>
@@ -294,7 +297,7 @@
              <div class="col-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
-                <input type="text" name="crm" id="" class="form-control " placeholder="crm" @if(!empty($p)) value = {{$p->medico->crm}} @else value = "" @endif>
+                <input type="text" name="crm" id="" class="form-control " placeholder="crm" @if(!empty($p)) value = "{{$p->medico->crm}}" @else value = "" @endif>
                 <small id="crm" class="text-muted">CRM</small>
                 </div>
                 </div><!--col nome -->
@@ -336,7 +339,7 @@
                 <div class="col-3">
                     <div class="form-group">
                            <label for="cep">Cep</label>
-                           <input type="search" class="form-control input-md" id="cep"  placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"  @if(!empty($p)) value = {{$p->cep}} @else value = "" @endif>
+                           <input type="search" class="form-control input-md" id="cep"  placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"  @if(!empty($p)) value = "{{$p->cep}}" @else value = "" @endif>
                         </div>
                     </div><!-- col cep -->
                       
@@ -350,7 +353,7 @@
                   <span>Rua</span>
                       <div class="input-group">
                           
-                          <input type="text" name="rua"  class="form-control" id="rua"  @if(!empty($p)) value = {{$p->rua}} @else value = "" @endif><!--  readonly="readonly" -->
+                          <input type="text" name="rua"  class="form-control" id="rua"  @if(!empty($p)) value = "{{$p->rua}}" @else value = "" @endif><!--  readonly="readonly" -->
                   
                   </div>
               </div><!-- col rua-->
@@ -359,7 +362,7 @@
                 <span >Nº <h11>*</h11></span>
                 <div class="input-group">
                  
-                  <input id="numero" name="numero" class="form-control" placeholder="" required=""  type="text"  @if(!empty($p)) value = {{$p->numero}} @else value = "" @endif >
+                  <input id="numero" name="numero" class="form-control" placeholder="" required=""  type="text"  @if(!empty($p)) value = "{{$p->numero}}" @else value = "" @endif >
                 </div> 
                
               </div> <!-- col bumero-->
@@ -370,7 +373,7 @@
                <span>Bairro</span>
                 <div class="input-group">
                   
-                  <input id="bairro" name="bairro"  placeholder="bairro"  required="" class="form-control"type="text" @if(!empty($p)) value = {{$p->bairro}} @else value = "" @endif ><!--  readonly="readonly" -->
+                  <input id="bairro" name="bairro"  placeholder="bairro"  required="" class="form-control"type="text" @if(!empty($p)) value = "{{$p->bairro}}" @else value = "" @endif > <!--  readonly="readonly" -->
                 </div>
             
                 </div><!-- col bairro-->
@@ -379,7 +382,7 @@
                <span>Cidade</span>
                 <div class="input-group">
                   
-                  <input id="cidade" name="cidade"  placeholder=""  required=""  class="form-control" type="text"  @if(!empty($p)) value = {{$p->cidade}} @else value = "" @endif><!--  readonly="readonly" -->
+                  <input id="cidade" name="cidade"  placeholder=""  required=""  class="form-control" type="text"  @if(!empty($p)) value = "{{$p->cidade}}" @else value = "" @endif><!--  readonly="readonly" -->
                 </div>
             </div><!-- col cidade -->
             
@@ -387,7 +390,7 @@
                 <span>Estado</span>
                 <div class="input-group">
                   
-                  <input id="estado" name="estado"  placeholder=""  required=""  class="form-control"type="text"  @if(!empty($p)) value = {{$p->estado}} @else value = "" @endif> <!--  readonly="readonly" -->
+                  <input id="estado" name="estado"  placeholder=""  required=""  class="form-control"type="text"  @if(!empty($p)) value = "{{$p->estado}}" @else value = "" @endif> <!--  readonly="readonly" -->
                 </div>
                 </div>
                 
@@ -401,11 +404,11 @@
         <legend aling="center">Contato</legend>
 <div class="row"><!-- contato -->
 
-    <div class="col-3">
+       <div class="col-3">
             <div class="form-group">
                 <label for="telefone">Telefone <h11>*</h11></label>
                     <input id="telefone" name="telefone" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                    OnKeyPress="formatar('## #####-####', this)"  @if(!empty($p)) value = {{$p->telefone}} @else value = "" @endif>
+                    OnKeyPress="formatar('## #####-####', this)"  @if(!empty($p)) value = "{{$p->telefone}}" @else value = "" @endif>
             </div>
         </div>  <!-- col Telefone-->
 
@@ -413,7 +416,7 @@
                 <div class="form-group">
                     <label for="celular">Celular <h11>*</h11></label>
                         <input id="celular" name="celular" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                        OnKeyPress="formatar('## #####-####', this)"   @if(!empty($p)) value = {{$p->celular}} @else value = "" @endif>
+                        OnKeyPress="formatar('## #####-####', this)"   @if(!empty($p)) value = "{{$p->celular}}" @else value = "" @endif>
                 </div>
             </div>  <!-- col Telefone-->
             
@@ -421,11 +424,9 @@
         <div class="col-4">
             <div class="form-group">
                    <label for="exampleFormControlInput2">Email address</label>
-                   <input type="email" class="form-control" name ="email" id="exampleFormControlInput2" placeholder="name@example.com"  @if(!empty($p)) value = {{$p->email}} @else value = "" @endif>
+                   <input type="email" class="form-control"  id="exampleFormControlInput2" placeholder="name@example.com"  @if(!empty($p)) value = "{{$p->email}}" @else value = "" @endif>
             </div>
-            
-            
-            </div> <!-- col Email -->
+            </div>
 
    
 {!! Form::close() !!}
