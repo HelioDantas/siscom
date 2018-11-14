@@ -244,7 +244,7 @@
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Naturalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif>
+                  <input type="text" name="naturalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif>
                   <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
                 </div>
         </div><!--col naturalidade -->
