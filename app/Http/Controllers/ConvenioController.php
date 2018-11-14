@@ -25,4 +25,11 @@ class ConvenioController extends Controller
 
 
         }
+        public function find (Request $request, $id){
+            $convenio = Convenio::find($id);
+            $convenio->update($request->all());
+                return redirect()->route('convenio.listar');
+
+       
+        }
 }
