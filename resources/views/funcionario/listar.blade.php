@@ -5,6 +5,12 @@
     span{
         text-align: center;
     }
+    .FilterRow{
+    margin-top: 1rem;
+        justify-content:flex-end !important;
+        
+        width: 83.7%;
+    }
 </style>
 @endsection
 
@@ -20,13 +26,19 @@ TESTANDO: <span style="color:red;">visualização e paginação do dados dos fun
 
 @section('navegação')
 
-      
+     <div class="row FilterRow">
+        <div class="col-3">
+                <div class="form-group">
+                        <form class="FilterRow" action="buscar" method="post">
+                                @csrf
+                            <label for="basic-url">Busque por:</label>
+                           <input class="btn-text-top form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
+                           <button class="btn-buscar-top" type="submit"></button>
+                       </form>
 
-                                 <form class="form-busca-site" action="buscar" method="post">
-                                         @csrf
-									<input class="btn-text-top" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
-									<button class="btn-buscar-top" type="submit"></button>
-								</form>
+                </div>
+        </div>
+</div>
 
 @endsection
 

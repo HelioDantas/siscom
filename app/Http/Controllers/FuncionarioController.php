@@ -13,7 +13,7 @@ class FuncionarioController extends Controller
       public function novo(){
         //  form de um novo produto
 
-        return view('funcionario.formulario');
+        return view('funcionario.formulario')->with('especi', Especialidade::all());;
     }
 
      public function novoM(){
@@ -27,30 +27,45 @@ class FuncionarioController extends Controller
     public function create(Request $request){
         $Funcionario = Funcionario::create($request->all());
       //  return var_dump($sis_funcionario);
-        if($Funcionario->profissao == "A")
+        if($Funcionario->profissao == "A"){
             return view('user.novo')->with('func', $Funcionario);
 
+        }else{
+           
+         if($Funcionario->profissao == "M"){
+            $medico = new Medico();
+            $valor= $request->all('crm');
+            $medico->crm = $valor['crm'];
+            $medico->Sis_funcionario_matricula = $Funcionario->matricula;
+            $medico->save();
+            $medico = Medico::find($Funcionario->matricula);
+            $especialidade1 = $request->only('especialidade1');
+            $especialidade2 = $request->only('especialidade2');
+            $medico->especialidade()->attach($especialidade2);
+            $medico->especialidade()->attach($especialidade1);
+
+          return view('user.novo')->with('func', $Funcionario);
+         }      
+        }  
     }
    
 
-    public function Medicocreate(Request $request){
-       //return var_dump ($request->all());
-        $Funcionario = Funcionario::create($request->all());
+    public function Medicocreate(Request $request , $id){
+        
+        return dd($request->all());
         $medico = new Medico();
      
-        $valor= $request->all('crm');
+      return dd(  $valor= $request->all('crm', 'matricula'));
         $medico->crm = $valor['crm'];
-        $medico->Sis_funcionario_matricula = ($Funcionario->matricula);
+        $medico->Sis_funcionario_matricula =$valor['matricula'];
         $medico->save();
         $medico = Medico::find($Funcionario->matricula);
-        $especialidade = $request->only('$especialidade');
-        if($especialidade != null)
-            foreach ($especialidade as $e => $id) {
-                foreach ($id as $key) {    
-                    $medico->especialidade()->attach($key);
-                }    
-            }        
-                return view('user.novo')->with('func', $Funcionario);
+        $especialidade1 = $request->only('especialidade1');
+        $especialidade2 = $request->only('especialidade2');
+        $medico->especialidade()->attach($especialidade2);
+        $medico->especialidade()->attach($especialidade1);
+
+        return view('user.novo')->with('func', $Funcionario);
 
     }
 
