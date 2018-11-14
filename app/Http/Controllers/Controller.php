@@ -19,7 +19,7 @@ class Controller extends BaseController
     } */
 
     public function dashboard(){
-        return View('layout.app');
+        return View('dashboard');
     }
 
 }

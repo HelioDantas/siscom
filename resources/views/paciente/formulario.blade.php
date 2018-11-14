@@ -40,10 +40,16 @@
     .titulocadastro{
         text-align: center;
         margin-top: 1.5rem;
+        width: 80%;
     }
     .dadosForm{
         margin-top: 1rem;
     }
+
+    legend{
+        margin-top: 1rem;
+    }
+    
    
 
 </style>
@@ -58,7 +64,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro <strong>| Paciente  </strong></h4>   
+           
 @endsection
 
 @section('navegação')
@@ -69,9 +75,10 @@
 
 @section('tela')
 <div class="container corpo">
+            <h3 class="titulocadastro">Cadastro <strong>| Paciente  </strong></h3>
         {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}
          @csrf
-
+            
         <div class="form-group navegacao">
                 <div class="col">
                   <button id="Cadastrar"  class="btn btn-outline-success" type="Submit"  data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></button>
@@ -82,13 +89,14 @@
                 </div>
             </div>
 
-        <fieldset class="form-group dadosForm">
-                <legend aling="center">Dados Pessoais</legend>
+<fieldset class="form-group dadosForm">
+    <legend aling="center">Dados Pessoais</legend>
+        
 <div class="row">
 
 
 
-<div class="col-5">
+<div class="col-6">
 <div class="form-group">
   <label for="nome">Nome*</label>
   <input type="text" name="nome" id="nome"  maxlength="60" class="form-control" placeholder="nome" required>
@@ -105,14 +113,23 @@
 </div>
 </div><!--col cpf -->
 
-<div class="col-2">
+<div class="col-3">
         <div class="form-group">
           <label for="cpf">RG*</label>
-          <input type="text" name="identidade" id="identidade"  required class="form-control" placeholder="identidade" aria-describedby="identidade">
+          <input type="text" name="identidade" id="identidade"  maxlength="12" required class="form-control" placeholder="identidade" aria-describedby="identidade">
           <small id="identidade" class="text-muted">identidade</small>
         </div>
         </div><!--col cpf -->
-
+</div>
+<div class="row"><!-- dados pessoas -->
+        <div class="col-2">
+            <div class="form-group">
+              <label for="cpf">Orgão Emissor*</label>
+              <input type="text" name="orgEmissor" id="org Emissor"  required class="form-control" placeholder="identidade" aria-describedby="identidade">
+              <small id="orgEmissor" class="text-muted">Org.Emissor</small>
+            </div>
+            </div><!--col cpf -->
+    
 <div class="col-2">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
@@ -344,6 +361,54 @@
                     <div class="form-group">
                         <label for="plano"> Plano<h11>*</h11></label>
                             <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            OnKeyPress="formatar('## #####-####', this)">
+                    </div>
+                </div>  <!-- col Plano-->
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="plano">Convenio<h11>*</h11></label>
+                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            OnKeyPress="formatar('## #####-####', this)">
+                    </div>
+                </div>  <!-- col Plano-->
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="plano">Tipo Convenio<h11>*</h11></label>
+                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            OnKeyPress="formatar('## #####-####', this)">
+                    </div>
+                </div>  <!-- col Plano-->
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="plano">Indicação</label>
+                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            OnKeyPress="formatar('## #####-####', this)">
+                    </div>
+                </div>  <!-- col Plano-->
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="plano">Carteira<h11>*</h11></label>
+                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            OnKeyPress="formatar('## #####-####', this)">
+                    </div>
+                </div>  <!-- col Plano-->
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="plano">Situação<h11>*</h11></label>
+                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            OnKeyPress="formatar('## #####-####', this)">
+                    </div>
+                </div>  <!-- col Plano-->
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="plano">Validade<h11>*</h11></label>
+                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                             OnKeyPress="formatar('## #####-####', this)">
                     </div>
                 </div>  <!-- col Plano-->

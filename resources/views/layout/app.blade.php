@@ -30,12 +30,12 @@
         <div class="container-fluid agoravai">
             <header > <!-- style="color:#000000;" -->
                <div class="agoravai">
-                <h2 class="logo"><strong>Siscon</strong></h2>
+                
                 <h1>Sistema de Consultorio Medico</h1>
-
+                <h2 class="logo"><strong>Siscon</strong></h2>
                 <span id='real-clock'></span>
                 <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
-                <span style="color:red;">sessao expira em 5 minutos</span>
+                <span style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
                 <span>Bem vindo @php echo session("user"); @endphp </span>
 
                 </div>
@@ -116,7 +116,7 @@
 
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <a class="btn sair #26a69a" type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
+                <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 
               </form>
             </div>

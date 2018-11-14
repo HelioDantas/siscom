@@ -102,6 +102,7 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
 //Route::resource('/pacientes', 'PacienteController');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::View('/agoravai' , 'dashboard');
 
 
 Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
