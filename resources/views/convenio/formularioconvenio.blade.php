@@ -126,8 +126,8 @@
             <br>
             <label for="selectbasic">Status <h11></h11></label>
                 <select required id="status" name="status" class="form-control">
-                    <option value="A">Ativo</option>
-                        <option value="I">Inativo</option>
+                    <option value="ATIVO">Ativo</option>
+                        <option value="INATIVO">Inativo</option>
                           </select>
                     </div>
                 </div>
