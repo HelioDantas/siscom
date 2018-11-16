@@ -5,46 +5,43 @@
     span{
         text-align: center;
     }
-    .FilterRow{
-        margin-top: 1rem;
-        justify-content:flex-end !important;
+    form{
         
-        width: 83.7%;
-       
-        
+     float: right;
     }
+    .container-fluid{
+        margin-top: 1rem;
+    }
+    .btn{
+        float:right;
+    }
+   
 </style>
 @endsection
 
 @section('conteudo')
-<div class="row FilterRow">
-        <div class="col-3">
-                <div class="form-group">
-                        <form class="FilterRow" action="buscar" method="post">
-                                @csrf
-                            <label for="basic-url">Busque por:</label>
-                           <input class="btn-text-top form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
-                           <button class="btn-buscar-top" type="submit"></button>
-                       </form>
 
-                </div>
-        </div>
-</div>
    
 @endsection
 
 
 @section('navegação')
-      
+ 
 @endsection
 
 
 
 @section('tela')
-    
+<a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
+
+<div class="container-fluid col-lg-10">
 <div class="card text-center mb-3">
     <div class="card-header">
-            <h3 class="titulopacientes">Pacientes Cadastrados</h3>
+           <h3 class="titulopacientes">Pacientes Cadastrados</h3>
+           <form action="buscar" method="post">
+                @csrf
+           <input class=" form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
+        </form>
     </div>
     <div class="card-body">
             <table class="table table-hover">
@@ -123,7 +120,8 @@
     </div>
 
 </div>
-    
+</div>
+   <hr> 
 
 
     @endsection
