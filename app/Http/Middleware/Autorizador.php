@@ -12,10 +12,18 @@ class Autorizador
      *
      */
     public function handle($request, Closure $next)
+
     {
-        if (!$request->session()->exists('user')) {
-            return redirect('/login');
+
+        if ($request->session()->exists('user') ) {
+            if($request->is('/login')){
+                return redirect('dashboard');
+            }else{
+            return $next($request);
+
+            }
         }
-        return $next($request);
+        return redirect('/login');
     }
+
 }
