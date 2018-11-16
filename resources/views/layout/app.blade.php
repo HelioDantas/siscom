@@ -131,9 +131,9 @@
 
         @yield('conteudo')
         @yield('navegação')
-        <div class="container" style="">
-                   @yield('tela')
-            </div>
+        
+        @yield('tela')
+         
 
 
 

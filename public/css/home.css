@@ -5,9 +5,9 @@
 }
 
 body{
- /*background-color:#eeeeee; /* #2196f3 
-background-image: radial-gradient(#6db3ff,#00BFFF);*/
-background-image: linear-gradient(to top ,rgba(129,212,250), rgba(0,191,255));
+ background-color:#fafafa; /* #2196f3 */
+/*background-image: radial-gradient(#6db3ff,#00BFFF);*/
+/*background-image: linear-gradient(to top ,rgba(129,212,250), rgba(0,191,255));*/
 
 }
 header .logo{
@@ -37,7 +37,7 @@ nav{
 }
 
 .dropbtn {
-    background-color:#fafafa;
+    background-color:#00BFFF;
     color: black;
     padding: 16px;
     font-size: 16px;
@@ -46,8 +46,9 @@ nav{
 }
 
 .corpo{
+
     padding-top: 1rem;
-    width: 160%;
+    justify-content:center;
     background-color:#fafafa;
     border-radius:0.5%;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
@@ -56,6 +57,19 @@ nav{
     -ms-border-radius:0.5%;
     -o-border-radius:0.5%;
 }
+.corpo-paciente{
+    padding: 1rem;
+    padding-top: 1rem;
+    
+    background-color:#fafafa;
+    border-radius:0.5%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-border-radius:0.5%;
+    -moz-border-radius:0.5%;
+    -ms-border-radius:0.5%;
+    -o-border-radius:0.5%;
+}
+
 
 .dropdown {
     position: relative;
@@ -88,7 +102,7 @@ nav{
 .dropdown:hover .dropbtn {background-color: #2BBBAD;}
 .sair:hover {background-color: #2BBBAD;}
 nav{
- background-color:#fafafa ;
+ background-color:#00BFFF ;
 }
 ul li{
   text-align: center;
