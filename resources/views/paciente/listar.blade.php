@@ -34,7 +34,7 @@
 @section('tela')
 <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
 
-<div class="container-fluid col-lg-10">
+<div class="container-fluid col-lg-12">
 <div class="card text-center mb-3">
     <div class="card-header">
            <h3 class="titulopacientes">Pacientes Cadastrados</h3>

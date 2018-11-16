@@ -260,9 +260,9 @@
             </div><!--  etinia-->
 
                 
-</div><!-- row -->
 
-<div class="row"><!-- contatoi-->
+
+
     <div class="col-2">
             <div class="form-group">
                     <label for="telefone">Telefone <h11>*</h11></label>
