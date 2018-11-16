@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Convenio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TipoConvenio;
 
 class ConvenioController extends Controller
 {
@@ -13,6 +14,7 @@ class ConvenioController extends Controller
 
         public function create(Request $request){
             $sis_convenio = Convenio::create($request->all());
+          
             return view('layout.app'); 
 
        }
