@@ -49,7 +49,7 @@ Route::post('/teste', 'Controller@dashboard')->name('teste');
 
 /** Rota para enviar as infos da requisição para autenticação no method login */
 //Route::post('/login','LoginController@login');
-Route::get('/sair', 'LoginController@logout')->name('login.logout');
+Route::get('/sair', 'LoginController@logout')->middleware('Autorizador')->name('login.logout');
 Route::get('/recovery' , 'UserController@recoveryForm')->name('recovery_senha');
 
 

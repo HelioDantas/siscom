@@ -16,22 +16,38 @@ class LoginController extends Controller
 
 
    public function login(Request $request){
-
+    $mensagem;
     $credencias = $request->all('cpf', 'password');
     $user = User::buscar($credencias['cpf']);
     if ($user == null){
-        return view('user.login');
+        $mensagem =  "Cpf invalido";
+        return view('user.login')->with("mensagem",  $mensagem);
     }
     $user = User::find($user->id);
    // return dd($user);
 
-    if ($user == null)
-     return view('user.login');
-     else if(password_verify($credencias['password'], $user->senha)){
-        $request->session()->put('user', $user->funcionario->nome);
-        return view("layout.app");
-     } else {
-         return view('user.login');
+    if ($user == null){
+
+        $mensagem =  "Cpf invalido";
+        return view('user.login')->with("mensagem",  $mensagem);
+    }
+     if($user->funcionario->status == "A"){ 
+
+        if(password_verify($credencias['password'], $user->senha)){
+            $request->session()->put('user', $user->funcionario->nome);
+            return view("layout.app");
+        }else{
+            $mensagem =  "Senha Invalida";
+            return view('user.login')->with("mensagem",  $mensagem);
+
+        }
+
+        }else{
+
+            $mensagem =  "Usuario não está ativo";
+            return view('user.login')->with("mensagem",  $mensagem);
+        
+        }
 
 
 
@@ -46,7 +62,7 @@ class LoginController extends Controller
         return redirect('/home');//->intended('/home'); // intended retorna o usuario para a tela que ele estava tentando acessar antes de passar pelo middleware
     }
     return 'LoginController@formCad';*/
-   }
+   
 
 
    public function cad(){

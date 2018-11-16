@@ -20,6 +20,7 @@
     }
     .form-control{
         border-radius:10px 10px; 
+       
     }
     .titulocadastro{
         margin:0 auto;
@@ -48,8 +49,8 @@
    
 
    .corpo{
-       width:50rem;
-
+       width:40rem;
+        border-radius:10px 10px; 
 
    }
 
@@ -82,7 +83,7 @@
 <fieldset class="form-group">
                     <legend aling="center">Dados do Usuario</legend>
     <div class = "row">
-    <div  class = "col-3">
+    <div  class = "col-4">
         <div class = "form-group">
         <label for="matricula">Matricula</label>
          <input type="text" name="Sis_funcionario_matricula" id="" class="form-control"   @if(isset($func)) value = {{$func->matricula}} @else value = "" @endif>
@@ -90,7 +91,7 @@
     
         </div>
      </div>
-<div class="col-3">
+<div class="col-4">
 <div class="form-group">
   <label for="cpf">Cpf</label>
   <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf"   @if(isset($func)) value = {{$func->cpf}} @else value = "" @endif>
@@ -98,7 +99,7 @@
 </div>
 </div><!--col -->
 
-<div class="col-2">
+<div class="col-4">
 <div class="form-group">
   <label for="senha">Senha</label>
   <input type="password" name="password" id="" class="form-control" placeholder="senha">
@@ -107,7 +108,7 @@
 </div><!--col -->
 
 
-<div class="col-2">
+<div class="col-4">
 <div class="form-group">
   <label for="dicaSenha">Dica</label>
   <input type="text" name="senha" id="" class="form-control" placeholder="dica da senha">
