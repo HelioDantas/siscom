@@ -2,7 +2,7 @@
 
 @section('estilos')
 <style>
-    .btn{
+  .btn{
         
     }
     .pesquisar{
@@ -31,7 +31,27 @@
     }
     .navegacao{
         text-align:right ;
+        float: right;
+        margin-top: 1.3rem;
     }
+    a{
+        color: white;
+    }
+     .titulocadastro{
+        text-align: center;
+        margin-top: 1.5rem;
+        width: 80%;
+    }
+    .dadosForm{
+        margin-top: 1rem;
+    }
+   
+
+   .corpo{
+       width:50rem;
+
+
+   }
 
 </style>
 @endsection
@@ -39,7 +59,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro Usuario</h4>   
+        
 @endsection
 @section('navegação')
 
@@ -49,15 +69,18 @@
 
 @section('tela')
 
-
+<div class="container corpo">
+       <h3 class="titulocadastro">Cadastro <strong>| Usuario  </strong></h3>
 {!! Form::open(['route' => 'user.create','method ' => 'post',]) !!} @csrf
     <div class="form-group navegacao">
-        <div class="col-8">
-          <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
-          <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+        <div class="col">
+          <button id="Cadastrar"  class="btn btn-outline-success" type="Submit"  data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></button>
+          <a  id = "recon"class="btn btn-outline-danger"  href="{{route('user.novo')}}"   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
         </div>
       </div>
 
+<fieldset class="form-group">
+                    <legend aling="center">Dados do Usuario</legend>
     <div class = "row">
     <div  class = "col-3">
         <div class = "form-group">
@@ -93,5 +116,5 @@
 </div><!--col -->
 </div>
 {!! Form::close() !!}
-
+</div>
 @endsection
