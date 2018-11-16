@@ -9,7 +9,10 @@
 
     <!--<link rel="stylesheet" href="{{ 'css/app.css'}}">
     <link rel="stylesheet" href="{{'css/home.css'}}"> -->
-
+     
+    <script type="text/javascript" src="jquery.mask.min.js"></script>
+    <script src="{{ URL::to('js/jquery.js')}}" type="text/javascript"></script> 
+    <script src="{{ URL::to('js/inputmask-plugin.js')}}" type="text/javascript"></script>
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
    <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
