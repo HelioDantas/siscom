@@ -11,7 +11,7 @@ body{
 
 }
 header .logo{
-    margin-top: 2%;
+ 
     margin-left:2%;
     float: left;
     font-size: 2rem;
@@ -20,17 +20,17 @@ header .logo{
 
 header h1{
     text-align: center;
-    margin-top: 2%; 
+    margin: 00.1%; 
 }
 
 header span{
-    margin-top: 2%;
+ 
     float: right;
     padding-right: 3%; 
 }
 
 nav{
-    margin-top:5%;
+    margin-top:3%;
 }
 #navbarColor01{
     color:blue;

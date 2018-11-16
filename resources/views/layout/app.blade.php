@@ -30,9 +30,9 @@
 </head>
 <body>
         <!-- header -->
-        <div class="container-fluid agoravai">
+        
             <header > <!-- style="color:#000000;" -->
-               <div class="agoravai">
+               <div class="">
                 
                 <h1>Sistema de Consultorio Medico</h1>
                 <h2 class="logo"><strong>Siscon</strong></h2>
@@ -43,7 +43,7 @@
 
                 </div>
             </header>
-        </div>
+ 
         <!-- end header -->
 
         <!-- menu navbar -->
@@ -131,14 +131,16 @@
 
         @yield('conteudo')
         @yield('navegação')
-        
-        @yield('tela')
-         
+        <div class="container col-lg-10" style="">
+                   @yield('tela')
+            </div>
 
 
 
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/"></script>
+    
     <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
      
     <script>
