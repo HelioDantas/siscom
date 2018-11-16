@@ -1,0 +1,189 @@
+body{
+	color:black;
+	font-family:  'Arial Narrow', Arial, sans-serif;
+   
+	text-align: left;
+	padding: 0;	
+	margin-right: 0;
+	margin-left: 0;
+	padding-right: 0;
+	width: 100%;
+	border: 0;
+	left: 0;
+	
+	background:radial-gradient(#b3e6f9, #33b8ea);
+
+
+}
+.sacola	{
+
+background-repeat:	no-repeat;
+background-position:	top	right;
+background-image:	url(../img/sacola.png);
+			font-size: 14px;
+			padding-right: 35px;
+			text-align:	right;
+			width: 140px;
+            padding-top: 8px;
+					position:	absolute;
+			top: 0;
+			right: 0;
+			color:black;
+    background-color:aliceblue;
+	}
+
+.menu-opcoes ul	{
+			font-size: 15px;
+            
+	}
+.menu-opcoes a	{
+				color: #003366;
+	}
+body	{
+			color: #333333;
+			font-family: "Lucida	Sans	Unicode",	"Lucida	Grande",	sans-serif;
+	}
+ul li	{
+				display:	inline;
+
+}
+.menu-opcoes ul li	{
+			display:	inline;
+			margin-left: 60px;
+			
+	}
+
+.container	{
+			margin: 0;
+			width: 150%;
+			height: 150%;
+			margin-right: 0;
+
+		
+	}
+.logotipo	{
+				position:	relative;
+				top: 20px;
+				left: 50px;
+}
+.quadrado	{
+				background-color:	green;
+				height: 200px;
+				width: 200px;
+}
+.absoluto	{
+				position:	absolute;
+				top: 20px;
+				right: 30px;
+}
+.relativo	{
+				position:	relative;
+}
+header	{
+			position:	relative;
+	}
+.menu-opcoes	{
+			position:	absolute;
+			bottom: 0;
+			right: 0;
+	}
+	figure{
+    padding: 15px;
+    margin: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: ghostwhite;
+    border: 2px solid gray;
+    text-align: center;
+    
+
+}
+figcaption{
+    font-style: italic;
+    margin-top: 10px;
+    margin: 40px;
+}
+
+
+.busca,
+.menu-departamentos	{
+				float:	left;
+}
+.busca,
+.menu-departamentos	{
+				float:	left;
+}
+.menu-departamentos	{
+				clear:	left;
+}
+.menu-departamentos	{
+				text-transform:	uppercase;
+}
+.item-menu	{
+				text-decoration:	none;
+}
+.busca,
+.menu-departamentos	{
+			background-color: #DCDCDC;
+			font-weight:	bold;
+			text-transform:	uppercase;
+			margin-right: 10px;
+			width: 230px;
+	}
+.busca h2,
+.busca form,
+.menu-departamentos h2	{
+			margin: 10px;
+	}
+.menu-departamentos li	{
+			background-color:	white;
+			margin-bottom: 1px;
+			padding: 5px 10px;
+	}
+.menu-departamentos a	{
+			color: #333333;
+			text-decoration:	none;
+	}
+.busca,
+.menu-departamentos	{
+					float:	left;
+	}
+.menu-departamentos	{
+					clear:	left;
+	}
+
+	.form{
+
+				margin-top: 10px; 
+				padding-left: 190px;
+				padding-top: 10px;
+				margin-left: 600px;
+				text-align: center;
+			background-color:aliceblue;
+			border-radius: 10px;
+			box-shadow:  3px 3px 30px 5px #333333;
+				
+				
+	}
+.logo{
+	background: #DCDCDC;
+	margin-left: 0;
+	padding-left: 0;
+
+	width: 100px;
+
+
+}
+.login{
+	padding-right: 50px;
+	margin-left: 600px;
+	margin-top: 80px;
+	text-align: center;
+	background-color:aliceblue;
+	border-radius: 10px;
+				
+}
+.barra{
+
+	margin-left: 100px;
+}
