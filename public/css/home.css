@@ -46,8 +46,9 @@ nav{
 }
 
 .corpo{
+
     padding-top: 1rem;
-    width: 160%;
+    justify-content:center;
     background-color:#fafafa;
     border-radius:0.5%;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
@@ -56,6 +57,19 @@ nav{
     -ms-border-radius:0.5%;
     -o-border-radius:0.5%;
 }
+.corpo-paciente{
+    padding: 1rem;
+    padding-top: 1rem;
+    
+    background-color:#fafafa;
+    border-radius:0.5%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-border-radius:0.5%;
+    -moz-border-radius:0.5%;
+    -ms-border-radius:0.5%;
+    -o-border-radius:0.5%;
+}
+
 
 .dropdown {
     position: relative;
