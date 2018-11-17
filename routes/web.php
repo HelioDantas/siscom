@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Paciente;
 
 
 
@@ -150,4 +151,6 @@ Route::prefix('user')->middleware('Autorizador')->group(function () {
 
 
 });
-
+Route::get('/testeRelacionamento',function(){
+  return dd(Paciente::where('id', '=', 150));
+});

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
+use App\Models\TipoConvenio;
+use App\Models\Convenio;
 
 class PacienteController extends Controller
 {
@@ -40,6 +42,7 @@ class PacienteController extends Controller
         //testando
     } 
 
+    // filtro da tabela listar
     public function buscar(Request $request){
         $buscar = $request->input('search');
         $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
@@ -54,8 +57,16 @@ class PacienteController extends Controller
     public function novo() 
     {
         //  form de um novo paciente
-
-        return view('paciente.formulario');
+        $convenio = Convenio::all();
+        foreach ($convenio as $c) {
+            $tipo = $c->tipoConvenios();
+            var_dump($tipo);
+        }
+        
+            //dd($convenio->tipoConvenios);
+        
+        
+        return view('paciente.formulario' ,compact('convenio','tipoConvenio'));
     }
 
     public function create(Request $request){

@@ -11,6 +11,13 @@ class Convenio extends Model
     
     public $timestamps = false;
 
-    protected $fillable = array('cnpj', 'nome', 'adesao', 'banco', 'agencia','conta','status' );    
+    protected $fillable = array('cnpj', 'nome', 'adesao', 'banco', 'agencia','conta','status' ); 
+    
+
+    public function tipoConvenios(){
+
+     return  $this->hasMany("App\Models\TipoConvenio");
+
+    }
 
 }

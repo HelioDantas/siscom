@@ -31,4 +31,10 @@ class Paciente extends Model
         'profissao',
         'status',
     );
+
+
+    public function tipoConvenio()
+    {
+        return $this->hasOne('App\TipoConvenio');
+    }
 }
