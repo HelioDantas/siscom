@@ -15,9 +15,7 @@
 @endsection
 
 @section('conteudo')
-<div class="jumbotron">
-TESTANDO: <span style="color:red;">visualização e paginação do dados dos funcionarios</span>
-</div>
+
 @endsection
 
 

@@ -64,13 +64,12 @@
         {!! Form::open(['route' => ['paciente.update', $p->id],'method ' => 'post',]) !!}
          @csrf
         {{ method_field('PUT') }}
-
-              <div class="form-group navegacao">
-                    <div class="col">
-                            <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
-                            <a  class="btn btn-outline-danger"  href="{{route('paciente.listar')}}"  data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
-                    </div>
+        <div class="form-group navegacao">
+                <div class="col-8">
+                  <button id="Cadastrar" name="Cadastrar" class="btn btn-info" type="Submit">Salvar</button>
+                  <a  class="btn btn-outline-danger"   href="{{route('paciente.novo')}}" role="button">Cancelar</a>
                 </div>
+              </div>
               
               <h4 class="titulocadastro">Atualizar Dados de <strong>{{$p->nome}}</strong></h4>   
         
@@ -122,6 +121,10 @@
   <small id="dtNascimento" class="data">Data obrigatoria</small>
 </div>
 </div><!--col dt Nascimento-->
+
+</div><!-- row dados pessoas 1-->
+
+
 
 <div class="col-2">
         <div class="form-group">
@@ -260,9 +263,9 @@
             </div><!--  etinia-->
 
                 
+</div><!-- row -->
 
-
-
+<div class="row"><!-- contatoi-->
     <div class="col-2">
             <div class="form-group">
                     <label for="telefone">Telefone <h11>*</h11></label>

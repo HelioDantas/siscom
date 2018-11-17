@@ -15,7 +15,7 @@
 
 @section('conteudo')
 <div class="container dashboard">
-    b4-carou
+
 </div>
 
 

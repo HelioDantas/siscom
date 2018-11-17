@@ -9,7 +9,10 @@
 
     <!--<link rel="stylesheet" href="{{ 'css/app.css'}}">
     <link rel="stylesheet" href="{{'css/home.css'}}"> -->
-
+     
+    <script type="text/javascript" src="jquery.mask.min.js"></script>
+    <script src="{{ URL::to('js/jquery.js')}}" type="text/javascript"></script> 
+    <script src="{{ URL::to('js/inputmask-plugin.js')}}" type="text/javascript"></script>
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
    <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
@@ -27,9 +30,9 @@
 </head>
 <body>
         <!-- header -->
-        <div class="container-fluid agoravai">
+        
             <header > <!-- style="color:#000000;" -->
-               <div class="agoravai">
+               <div class="">
                 
                 <h1>Sistema de Consultorio Medico</h1>
                 <h2 class="logo"><strong>Siscon</strong></h2>
@@ -40,7 +43,7 @@
 
                 </div>
             </header>
-        </div>
+ 
         <!-- end header -->
 
         <!-- menu navbar -->
@@ -128,7 +131,7 @@
 
         @yield('conteudo')
         @yield('navegação')
-        <div class="container" style="">
+        <div class="container col-lg-10" style="">
                    @yield('tela')
             </div>
 
@@ -136,6 +139,8 @@
 
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/"></script>
+    
     <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
      
     <script>

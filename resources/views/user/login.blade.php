@@ -38,6 +38,10 @@
                         <h3>SisCon</h3>
                         <center><small style="font-size: 16px;color:#2BBBAD;"><strong>Login de Acesso</strong></small></center>
                         {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!} @csrf
+
+                         @if(!empty($mensagem))
+                         <p class = "msgErro">  {{$mensagem}} </p>
+                          @endif
                             <div class="form-group">
                             <input type="text" name="cpf" class="form-control"  placeholder="cpf" value="" />
                             </div>
