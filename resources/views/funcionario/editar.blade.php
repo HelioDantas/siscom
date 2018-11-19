@@ -308,7 +308,7 @@
                 <div class="form-group">
                 
                     <label for="selectbasic">Status </label>
-                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = "{{$p->Status}}" @else value = "" @endif>
+                      <select required id="status" name="status" class="form-control"  @if(!empty($p)) value = "{{$p->Status}}" @else value = "" @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>

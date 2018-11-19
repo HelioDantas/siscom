@@ -11,6 +11,7 @@
         <style> a{ color: #2BBBAD;}
         span{
             float:right;
+            padding-left: 1rem;
         }
         </style>
 
@@ -22,8 +23,12 @@
             <div class="logo">
                 <h4><a class="navbar-brand" href="{{route('dashboard')}}">SisCon</a></h4>
             </div>
+
+            <span id="real-clock"></span>
+
             <span><script type="text/javascript" src="js/data.js"></script></span>
-                <span id="real-clock"></span>
+
+                
                 <div class="container">
                     <h3>Sistema de Consultorio medico</h3>
 
@@ -62,6 +67,14 @@
                 </div>
             </div>
         </div>
+
+
+ <script>
+		setInterval(function() {
+			clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
+		}, 1000);
+		var clock = document.getElementById('real-clock');
+  </script>
 
     </body>
     </html>
