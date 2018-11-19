@@ -8,6 +8,7 @@ use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 use App\Models\TipoConvenio;
 use App\Models\Convenio;
+use App\Models\PacienteHasConvenio;
 
 class PacienteController extends Controller
 {
@@ -58,12 +59,13 @@ class PacienteController extends Controller
     {
         //  form de um novo paciente
         $convenio = Convenio::all();
-    
+
+        
         
             //dd($convenio->tipoConvenios);
         
         
-        return view('paciente.formulario' ,compact('convenio','tipoConvenio'));
+        return view('paciente.formulario' ,compact('convenio','tipo'));
     }
 
     public function create(Request $request){
@@ -71,6 +73,13 @@ class PacienteController extends Controller
         //$paciente = $request->all();
         //return dd($paciente);
         $paciente = Paciente::create($request->all());
+       /* dd($paciente->id);
+
+        $pacienteHasConvenio = PacienteHasConvenio::create(, $request->only([
+            'carteira',
+            'indicacao',
+            'situacao',
+        ]));*/
         return  redirect()->route('paciente.listar');
         
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
