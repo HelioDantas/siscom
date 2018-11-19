@@ -130,6 +130,47 @@
 
 <div class="row">
 
+    <div class="col-2">
+        <div class="form-group">
+          <label for="">Nacionalidade*</label>
+          <input type="text" name="nacionalidade"  required id="nacionalidade" class="form-control" placeholder="nacionalidade" value="Brasileiro">
+          <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
+        </div>
+</div><!--col nacionalidade -->
+
+<div class="col-2">
+        <div class="form-group">
+          <label for="">Naturalidade*</label>
+          <input type="text" name="naturalidade"  required id="naturalidade" class="form-control" placeholder="naturalidade" value="">
+          <small id="naturalidade" class="text-muted">cidade ou estado de nascimento</small>
+        </div>
+</div><!--col naturalidade -->
+
+<div class="col-2">
+    <div class="form-group">
+    
+        <label for="selectbasic">Escolaridade <h11>*</h11></label>
+          <select required id="escolaridade" name="escolaridade" class="form-control">
+            <option value="Superior Completo">Superior Completo</option>
+            <option value="Superior Incompleto">Superior Incompleto</option>
+            <option value="Médio Incompleto">Médio Incompleto</option>
+            <option value="Médio Completo">Médio Completo</option>
+            <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+            <option value="Fundamental Completo">Fundamental Completo</option>
+          </select>
+       
+    </div>
+</div>
+
+
+
+<div class="col-2">
+        <div class="form-group">
+          <label for="">Profissão*</label>
+          <input type="text" name="profissao" id="" class="form-control" placeholder="prof" value="">
+          <small id="prof" class="text-muted">informe o seu pais de origem</small>
+        </div>
+</div><!--col nacionalidade -->
 
 <div class="col">
         <div class="form-group">
@@ -159,47 +200,9 @@
         </div>
     </div><!--  etinia-->
 
-    <div class="col-2">
-            <div class="form-group">
-            
-                <label for="selectbasic">Escolaridade <h11>*</h11></label>
-                  <select required id="escolaridade" name="escolaridade" class="form-control">
-                    <option value="Superior Completo">Superior Completo</option>
-                    <option value="Superior Incompleto">Superior Incompleto</option>
-                    <option value="Médio Incompleto">Médio Incompleto</option>
-                    <option value="Médio Completo">Médio Completo</option>
-                    <option value="Fundamental Incompleto">Fundamental Incompleto</option>
-                    <option value="Fundamental Completo">Fundamental Completo</option>
-                  </select>
-               
-            </div>
-        </div>
+    
 
-        <div class="col-2.5">
-                <div class="form-group">
-                  <label for="">Nacionalidade*</label>
-                  <input type="text" name="nacionalidade"  required id="nacionalidade" class="form-control" placeholder="nacionalidade" value="Brasileiro">
-                  <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
-                </div>
-        </div><!--col nacionalidade -->
-
-        <div class="col-2">
-                <div class="form-group">
-                  <label for="">Naturalidade*</label>
-                  <input type="text" name="naturalidade"  required id="naturalidade" class="form-control" placeholder="naturalidade" value="">
-                  <small id="naturalidade" class="text-muted">cidade ou estado de nascimento</small>
-                </div>
-        </div><!--col naturalidade -->
-
-        <div class="col-2">
-                <div class="form-group">
-                  <label for="">Profissão*</label>
-                  <input type="text" name="profissao" id="" class="form-control" placeholder="prof" value="">
-                  <small id="prof" class="text-muted">informe o seu pais de origem</small>
-                </div>
-        </div><!--col nacionalidade -->
-
-        <div class="col-1">
+        <div class="col">
                 <div class="form-group">
                 
                     <label for="selectbasic">Status <h11>*</h11></label>
@@ -301,37 +304,8 @@
                     <span>Estado</span>
                     <div class="input-group">
 
-                      <select id="estado" name="estado"  placeholder="" required   class="form-control"type="text">
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                            <option value="ES">Estrangeiro</option>
-                        </select>
-                      
+                        <input id="uf" name="estado"  required maxlength="2" placeholder=""  class="form-control" type="text">
+
                     </div>
                 </div>
 
@@ -347,58 +321,62 @@
                 <legend aling="center">Convenio</legend>
         <div class="row"><!-- convenio -->
 
-
-                <div class="form-group teste">
+                <div class="col">
+                <div class="form-group">
                     <label for="convenio">Convenio</label>
                     <select  id="convenio" name="convenio" id="" class="form-control" >
                         <option value=""></option>
                         @foreach($convenio as $c)
                               <option value="{{$c->cnpj}}">{{$c->nome}}</option>
+                              @php $c  @endphp
                         @endforeach
                     </select>
                   </div>
-
-                  <div class="form-group teste">
+                </div>
+                <div class="col">
+                  <div class="form-group">
                     <label for="TipoConvenio">Tipo Convenio</label>
                     <select  id="TipoConvenio" name="TipoConvenio" id="" class="form-control" >
                         <option value=""></option>
-                        @foreach($tipoConvenio as $tc)
+                        @foreach($tipo as $tc)
                               <option value="{{$tc->convenio_id}}">{{$tc->nome}}</option>
                         @endforeach
                     </select>
                   </div>
+                </div>
 
-                <div class="col">
+                <div class="col-2">
                     <div class="form-group">
                         <label for="plano">Indicação</label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
+                            <input id="telefone" name="telefone" class="form-control"  require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                           >
                     </div>
                 </div>  <!-- col Plano-->
 
-                <div class="col">
+                <div class="col-2">
                     <div class="form-group">
                         <label for="plano">Carteira<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
+                            <input id="telefone" name="telefone" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                           >
                     </div>
                 </div>  <!-- col Plano-->
 
-                <div class="col">
+                <div class="col-2">
                     <div class="form-group">
                         <label for="plano">Situação<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
+                            <input id="telefone" name="telefone" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                          >
                     </div>
                 </div>  <!-- col Plano-->
 
-                <div class="col">
+                <!--<div class="col">
                     <div class="form-group">
                         <label for="plano">Validade<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
+                            <input id="telefone" name="telefone" class="form-control" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            >
                     </div>
-                </div>  <!-- col Plano-->
+                </div>  col Plano-->
+
         </fieldset><!--endereço-->
 
 {!! Form::close() !!}

@@ -10,13 +10,14 @@ class Convenio extends Model
      protected $table = "sis_convenio";
     
     public $timestamps = false;
+    protected $primaryKey = "cnpj";
 
     protected $fillable = array('cnpj', 'nome', 'adesao', 'banco', 'agencia','conta','status' ); 
     
 
     public function tipoConvenios(){
 
-     return  $this->hasMany("App\Models\TipoConvenio");
+     return  $this->hasMany("App\Models\TipoConvenio", 'convenio_id', 'cnpj' );
 
     }
 

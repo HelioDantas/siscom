@@ -59,14 +59,19 @@ class PacienteController extends Controller
         //  form de um novo paciente
         $convenio = Convenio::all();
         foreach ($convenio as $c) {
-            $tipo = $c->tipoConvenios();
-            var_dump($tipo);
+            $tipo = $c->tipoConvenios()->get();
+            
+          /*  foreach($tipo as $tp){
+                dd($tp);
+            }*/
+            
         }
+        
         
             //dd($convenio->tipoConvenios);
         
         
-        return view('paciente.formulario' ,compact('convenio','tipoConvenio'));
+        return view('paciente.formulario' ,compact('convenio','tipo'));
     }
 
     public function create(Request $request){
