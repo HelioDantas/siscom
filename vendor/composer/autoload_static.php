@@ -383,6 +383,7 @@ class ComposerStaticInit5499485b143d74246a478586449b0745
         'App\\Models\\Funcionario' => __DIR__ . '/../..' . '/app/Models/Funcionario.php',
         'App\\Models\\Medico' => __DIR__ . '/../..' . '/app/Models/Medico.php',
         'App\\Models\\Paciente' => __DIR__ . '/../..' . '/app/Models/Paciente.php',
+        'App\\Models\\TipoConvenio' => __DIR__ . '/../..' . '/app/Models/TipoConvenio.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

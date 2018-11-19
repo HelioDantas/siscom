@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 use Auth;
+use autenthicatesUsers;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
+
 {
    public function login(){
+
        return view('user.login2');
    }
 
