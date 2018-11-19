@@ -32,7 +32,7 @@
 
 
 @section('tela')
-<a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
+<!--<a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>-->
 
 <div class="container-fluid col-lg-12">
 <div class="card text-center mb-3">
