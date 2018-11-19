@@ -59,10 +59,11 @@ class PacienteController extends Controller
     {
         //  form de um novo paciente
         $convenio = Convenio::all();
-
-        
-        
-            //dd($convenio->tipoConvenios);
+         //dd($convenio->tipoConvenios);
+         $tipo = TipoConvenio::all();
+         
+         
+       
         
         
         return view('paciente.formulario' ,compact('convenio','tipo'));
