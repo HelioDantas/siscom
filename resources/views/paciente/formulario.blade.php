@@ -348,7 +348,7 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label for="plano">Indicação</label>
-                            <input id="telefone" name="telefone" class="form-control"  require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                            >
                     </div>
                 </div>  <!-- col Plano-->
@@ -356,18 +356,23 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label for="plano">Carteira<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                            >
                     </div>
                 </div>  <!-- col Plano-->
 
-                <div class="col-2">
+                <div class="col">
                     <div class="form-group">
-                        <label for="plano">Situação<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                          >
+                    
+                        <label for="selectbasic">Status <h11>*</h11></label>
+                          <select required id="status" name="situacao" class="form-control">
+                          <option value="A">Ativo</option>
+                            <option value="I">Inativo</option>
+                          </select>
+                       
                     </div>
-                </div>  <!-- col Plano-->
+                </div><!--  etinia-->
+    
 
                 <!--<div class="col">
                     <div class="form-group">
