@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Paciente;
 
 
 
@@ -84,7 +85,7 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  */
 
 
-Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')-
+Route::prefix('pacientes')->group(function () { //->middleware('Autorizador')-
   Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name(      'paciente.listar'    );
   //Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
   Route::get('novo'         , 'PacienteController@novo')->name(     'paciente.novo'   );
@@ -150,4 +151,6 @@ Route::prefix('user')->middleware('Autorizador')->group(function () {
 
 
 });
-
+Route::get('/testeRelacionamento',function(){
+  return dd(Paciente::where('id', '=', 150));
+});

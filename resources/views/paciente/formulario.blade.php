@@ -347,29 +347,26 @@
                 <legend aling="center">Convenio</legend>
         <div class="row"><!-- convenio -->
 
-            <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Convenio<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
-        
-            <div class="col">
-                    <div class="form-group">
-                        <label for="plano"> Plano<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Tipo Convenio<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
+                <div class="form-group teste">
+                    <label for="convenio">Convenio</label>
+                    <select  id="convenio" name="convenio" id="" class="form-control" >
+                        <option value=""></option>
+                        @foreach($convenio as $c)
+                              <option value="{{$c->cnpj}}">{{$c->nome}}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group teste">
+                    <label for="TipoConvenio">Tipo Convenio</label>
+                    <select  id="TipoConvenio" name="TipoConvenio" id="" class="form-control" >
+                        <option value=""></option>
+                        @foreach($tipoConvenio as $tc)
+                              <option value="{{$tc->convenio_id}}">{{$tc->nome}}</option>
+                        @endforeach
+                    </select>
+                  </div>
 
                 <div class="col">
                     <div class="form-group">
