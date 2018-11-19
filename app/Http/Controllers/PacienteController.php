@@ -59,14 +59,7 @@ class PacienteController extends Controller
     {
         //  form de um novo paciente
         $convenio = Convenio::all();
-        foreach ($convenio as $c) {
-            $tipo = $c->tipoConvenios()->get();
-            
-          /*  foreach($tipo as $tp){
-                dd($tp);
-            }*/
-            
-        }
+
         
         
             //dd($convenio->tipoConvenios);

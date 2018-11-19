@@ -2,7 +2,7 @@
 
 @section('estilos')
 <style>
-    .btn{
+        .btn{
         
     }
     .pesquisar{
@@ -31,7 +31,25 @@
     }
     .navegacao{
         text-align:right ;
+        float: right;
+       
     }
+    a{
+        color: white;
+    }
+    .titulocadastro{
+        text-align: center;
+        margin-top: 1.5rem;
+        width: 80%;
+    }
+    .dadosForm{
+        margin-top: 1rem;
+    }
+
+    legend{
+        margin-top: 1rem;
+    }
+
 
 </style>
 @endsection
@@ -39,7 +57,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Atualizar Dados do {{$p->nome}}</h4>   
+         
 @endsection
 
 @section('navegação')
@@ -48,18 +66,22 @@
 @endsection
 
 @section('tela')
-
-<div class="container corpo">
+<hr>
+<div class="container-fluid col-lg-10 corpo-paciente">
 {!! Form::open(['route' => ['funcionario.update', $p->matricula],'method ' => 'post',]) !!}
 
  @csrf
 {{ method_field('PUT') }}
+
 <div class="form-group navegacao">
-        <div class="col-8">
-          <button id="Cadastrar" class="btn btn-info" type="Submit">Salvar</button>
-        <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>
-        </div>
-      </div>
+                    <div class="col">
+                            <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
+                            <a  class="btn btn-outline-secondary"  href="{{route('funcionario.listar')}}"  data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
+                    </div>
+                </div>
+
+      <h4 class="titulocadastro">Atualizar Dados do {{$p->nome}}</h4>  
+
 
         <fieldset class="form-group">
                 <legend aling="center">Dados Pessoais</legend> 
@@ -67,17 +89,17 @@
 
 
 
-<div class="col-3">
+<div class="col-5">
 <div class="form-group">
-  <label for="nome">Nome*</label>
-  <input type="text" name="nome" id="nome" class="form-control" placeholder="nome"  @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
-  <small id="nome" >Nome Completo</small>
+  <label for="nome">Nome</label>
+  <input type="text" name="nome" id="nome" class="form-control" placeholder="nome" maxlength="70"  @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
+
 </div>
 </div><!--col nome -->
 
 <div class="col-2">
 <div class="form-group">
-  <label for="cpf">Cpf*</label>
+  <label for="cpf">Cpf</label>
   <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId"  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
   <small id="cpf" class="text-muted">cpf</small>
 </div>
@@ -85,25 +107,25 @@
 
 <div class="col-2">
         <div class="form-group">
-          <label for="cpf">RG*</label>
-          <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade"
+          <label for="cpf">RG</label>
+          <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade" maxlength="15"
             @if(!empty($p)) value = "{{$p->identidade}}" @else value = "" @endif>
-          <small id="identidade" class="text-muted">identidade</small>
+        
         </div>
         </div><!--col cpf -->
 
 <div class="col-2">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
-  <input type="date" name="dataDeNascimento" id="dtNascimento"  @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
-  <small id="dtNascimento" class="data">Data obrigatoria</small>
+  <input type="date" name="dataDeNascimento" id="dtNascimento" maxlength="13" @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+  
 </div>
 </div><!--col dt Nascimento-->
 
 <div class="col-2">
         <div class="form-group">
         
-            <label for="selectbasic">Sexo <h11>*</h11></label>
+            <label for="selectbasic">Sexo </label>
               <select required id="sexo" name="sexo" class="form-control" >
                  @if(!empty($p->sexo))
 
@@ -140,7 +162,7 @@
 <div class="col-2">
         <div class="form-group">
         
-            <label for="selectbasic">Etnia <h11>*</h11></label>
+            <label for="selectbasic">Etnia </label>
               <select required id="etnia" name="etnia" class="form-control">
                 @if(!empty($p->etnia))
                                         
@@ -179,10 +201,10 @@
         </div>
     </div><!--  etinia-->
 
-    <div class="col-3">
+    <div class="col-2">
             <div class="form-group">
             
-                <label for="selectbasic">Escolaridade <h11>*</h11></label>
+                <label for="selectbasic">Escolaridade</label>
         
                   <select required id="escolaridade" name="escolaridade" class="form-control">
                         @if(!empty($p->escolaridade))
@@ -233,23 +255,23 @@
             </div>
         </div>
 
-        <div class="col-3">
+        <div class="col-2">
                 <div class="form-group">
-                  <label for="">Nacionalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro"  @if(!empty($p)) value = "{{$p->nacionalidade}}" @else value = "" @endif>
-                  <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
+                  <label for="">Nacionalidade</label>
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro" maxlength="50"  @if(!empty($p)) value = "{{$p->nacionalidade}}" @else value = "" @endif>
+       
                 </div>
         </div><!--col nacionalidade -->
 
-        <div class="col-3">
+        <div class="col-2">
                 <div class="form-group">
-                  <label for="">Naturalidade*</label>
-                  <input type="text" name="naturalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif>
-                  <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
+                  <label for="">Naturalidade</label>
+                  <input type="text" name="naturalidade" id=""  class="form-control" placeholder="naturalidade"  maxlength="50"@if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif>
+              
                 </div>
         </div><!--col naturalidade -->
 
-            <div class="col-3">
+            <div class="col-2">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
                       <select required id="prof" name="profissao"  class="form-control">
@@ -278,15 +300,15 @@
                       <option selected value="A">Atendente</option>
                     </select>
 
-                  <small id="prof" class="text-muted">informe o seu pais de origem</small>
+             
                 </div>
         </div><!--col nacionalidade -->
 
         <div class="col-2">
                 <div class="form-group">
                 
-                    <label for="selectbasic">Status <h11>*</h11></label>
-                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = "{{$p->Status}}" @else value = "" @endif>
+                    <label for="selectbasic">Status </label>
+                      <select required id="status" name="status" class="form-control"  @if(!empty($p)) value = "{{$p->Status}}" @else value = "" @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>
@@ -331,16 +353,16 @@
                   <span>Rua</span>
                       <div class="input-group">
                           
-                          <input type="text" name="rua"  class="form-control" id="rua"  @if(!empty($p)) value = "{{$p->rua}}" @else value = "" @endif><!--  readonly="readonly" -->
+                          <input type="text" name="rua"  class="form-control" id="rua" maxlength="30" @if(!empty($p)) value = "{{$p->rua}}" @else value = "" @endif><!--  readonly="readonly" -->
                   
                   </div>
               </div><!-- col rua-->
                
                <div class="col-2">
-                <span >Nº <h11>*</h11></span>
+                <span >Nº </span>
                 <div class="input-group">
                  
-                  <input id="numero" name="numero" class="form-control" placeholder="" required=""  type="text"  @if(!empty($p)) value = "{{$p->numero}}" @else value = "" @endif >
+                  <input id="numero" name="numero" class="form-control" placeholder="" required="" maxlength="13" type="text"  @if(!empty($p)) value = "{{$p->numero}}" @else value = "" @endif >
                 </div> 
                
               </div> <!-- col bumero-->
@@ -351,7 +373,7 @@
                <span>Bairro</span>
                 <div class="input-group">
                   
-                  <input id="bairro" name="bairro"  placeholder="bairro"  required="" class="form-control"type="text" @if(!empty($p)) value = "{{$p->bairro}}" @else value = "" @endif > <!--  readonly="readonly" -->
+                  <input id="bairro" name="bairro"  placeholder="bairro"  required="" class="form-control"type="text" maxlength="50" @if(!empty($p)) value = "{{$p->bairro}}" @else value = "" @endif > <!--  readonly="readonly" -->
                 </div>
             
                 </div><!-- col bairro-->
@@ -360,7 +382,7 @@
                <span>Cidade</span>
                 <div class="input-group">
                   
-                  <input id="cidade" name="cidade"  placeholder=""  required=""  class="form-control" type="text"  @if(!empty($p)) value = "{{$p->cidade}}" @else value = "" @endif><!--  readonly="readonly" -->
+                  <input id="cidade" name="cidade"  placeholder=""  required=""  class="form-control" type="text" maxlength="30"  @if(!empty($p)) value = "{{$p->cidade}}" @else value = "" @endif><!--  readonly="readonly" -->
                 </div>
             </div><!-- col cidade -->
             
@@ -368,7 +390,7 @@
                 <span>Estado</span>
                 <div class="input-group">
                   
-                  <input id="estado" name="estado"  placeholder=""  required=""  class="form-control"type="text"  @if(!empty($p)) value = "{{$p->estado}}" @else value = "" @endif> <!--  readonly="readonly" -->
+                  <input id="estado" name="estado"  placeholder=""  required=""  class="form-control"type="text" maxlength="30" @if(!empty($p)) value = "{{$p->estado}}" @else value = "" @endif> <!--  readonly="readonly" -->
                 </div>
                 </div>
                 
@@ -384,7 +406,7 @@
 
        <div class="col-3">
             <div class="form-group">
-                <label for="telefone">Telefone <h11>*</h11></label>
+                <label for="telefone">Telefone </label>
                     <input id="telefone" name="telefone" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                     OnKeyPress="formatar('## #####-####', this)"  @if(!empty($p)) value = "{{$p->telefone}}" @else value = "" @endif>
             </div>
@@ -392,7 +414,7 @@
 
         <div class="col-3">
                 <div class="form-group">
-                    <label for="celular">Celular <h11>*</h11></label>
+                    <label for="celular">Celular</label>
                         <input id="celular" name="celular" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                         OnKeyPress="formatar('## #####-####', this)"   @if(!empty($p)) value = "{{$p->celular}}" @else value = "" @endif>
                 </div>

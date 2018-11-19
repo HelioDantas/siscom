@@ -40,6 +40,8 @@
            <h3 class="titulopacientes">Pacientes Cadastrados</h3>
            <form action="buscar" method="post">
                 @csrf
+            <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
+            <a  id = "recon"class="btn btn-outline-success"  href="{{route('paciente.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
            <input class=" form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
         </form>
     </div>
