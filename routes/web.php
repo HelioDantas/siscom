@@ -128,9 +128,12 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 Route::prefix('convenio')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
-  Route::get('cad'            , 'ConvenioController@novo'  )->name(      'convenio.novo'      );
+  Route::get('cad'            , 'ConvenioController@novo'  )->name(        'convenio.novo'      );
   Route::get('listar'         , 'ConvenioController@listar')->name(      'convenio.listar'    );
   Route::post('create'        , 'ConvenioController@create')->name(      'convenio.create'    );
-  Route::get('edit'           , 'ConvenioController@editar')->name(      'convenio.editar'    );
+  Route::get('editar'         , 'ConvenioController@editar')->name(      'convenio.editar'    );
   Route::put('update/{id}'    , 'ConvenioController@update')->name(      'convenio.update'    );
-  Route::get('/paginacao'     , 'ConvenioController@paginacao')->name    ('convenio.paginacao'); });
+
+
+});
+
