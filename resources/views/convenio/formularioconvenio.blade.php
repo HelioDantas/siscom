@@ -50,14 +50,13 @@
 
 
 <div class="container corpo">
-    <form action="create" method="post">
+    {!! Form::open(['route' => 'convenio.create','method ' => 'post',]) !!}
     @csrf
 
         <div class="form-group navegacao">
         <div class="col-16">
           <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
-          <button id="Pesquisar" name="Pesquisar" class="btn btn-secondary" type="Reset">Pesquisar</button>
-           <button id="Cancelar" name="Cancelar" class="btn btn-primary" type="Reset">Alterar</button>
+        
         </div>
       </div>
 
@@ -72,7 +71,7 @@
         <br><br>
           <label for="nome">CNPJ</label>
              <input type="text" name="cnpj" id="" class="form-control" placeholder="CNPJ">
-             <small id="nome" class="text-muted">Inserir nome do Convênio</small>
+             <small id="nome" class="text-muted">Inserir número do cnpj</small>
     </div>
     </div>
 
@@ -89,7 +88,7 @@
     <div class="form-group">
         <br><br>
         <label for="nome">Adesão</label>
-      <input type="text" name="adesao" id="" class="form-control" placeholder="data adesão">
+      <input type="date" name="adesao" id="" class="form-control" placeholder="data adesão">
       <small id="nome" class="text-muted">Inserir data de adesão</small>
     </div>
     </div>
@@ -138,6 +137,6 @@
     </fieldset>
     <hr>
     </form>
-    </div><!-- container -->
+    </div>
 
     @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TipoConvenio;
 
+
 class ConvenioController extends Controller
 {
       public function novo(){
@@ -22,8 +23,15 @@ class ConvenioController extends Controller
         public function update(Request $request, $id){
             $convenio = Convenio::find($id);
             $convenio->update($request->all());
-                return redirect()->route('convenio.listaconvenio');
+                return redirect()->route('convenio.editar');
 
 
+        }
+        public function find (Request $request, $id){
+            $convenio = Convenio::find($id);
+            $convenio->update($request->all());
+                return redirect()->route('convenio.listar');
+
+       
         }
 }
