@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 use App\Models\Convenio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\TipoConvenio;
+use App\Models\Convenio;
 
 
 class ConvenioController extends Controller
-{
+{   
+    private $convenios;
+
+    public function _construtor(Convenio $convenios){
+        $this->Convenio = $convenios;
+
+    }
+
+
       public function novo(){
             return view ('convenio.formularioconvenio');
         }
@@ -32,6 +40,15 @@ class ConvenioController extends Controller
             $convenio->update($request->all());
                 return redirect()->route('convenio.listar');
 
-       
+        }
+
+        function insert(Request$req){
+            $cnpj = $req->input('cnpj');
+            $nome = $req->input('nome');
+            $banco = $req->input('banco');
+            $agencia = $req->input('agencia');
+            $conta = $req->input('conta');
+            $status = $req->input('status');
+            
         }
 }

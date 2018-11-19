@@ -129,6 +129,8 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 })*/
 
+Route::get('/Controller/convenio/teste','Controller\ConvenioController@teste');
+
 Route::prefix('convenio')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
   Route::get('cad'            , 'ConvenioController@novo'  )->name(        'convenio.novo'      );
