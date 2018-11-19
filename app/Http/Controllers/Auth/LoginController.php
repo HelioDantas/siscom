@@ -10,7 +10,9 @@ use App\Models\User;
 use UserRequest;
 class LoginController extends Controller
 {
-   public function formlogin(){
+   public function formlogin(Request $request){
+       if($request->session()->exists('user'))
+            return redirect()->route('dashboard');
        return view('user.login');
    }
 
