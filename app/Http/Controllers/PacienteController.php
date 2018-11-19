@@ -93,7 +93,11 @@ class PacienteController extends Controller
         //  form para editar infos de um paciente
        $p = Paciente::find($id);
 
-        return view('paciente.editar')->with('p' , $p);
+       $convenio = Convenio::all();
+       //dd($convenio->tipoConvenios);
+       $tipo = TipoConvenio::all();
+
+        return view('paciente.editar' , compact('p','convenio','tipo'));
     }
    
 

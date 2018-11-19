@@ -390,66 +390,73 @@
 </fieldset><!--endereço-->
 <hr>
 
-            <fieldset class="form-group">
-                <legend aling="center">Convenio</legend>
-        <div class="row"><!-- convenio -->
-
-            <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Convenio<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
         
-            <div class="col">
-                    <div class="form-group">
-                        <label for="plano"> Plano<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
+<fieldset class="form-group">
+    <legend aling="center">Convenio</legend>
+<div class="row"><!-- convenio -->
 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Tipo Convenio<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
+    <div class="col">
+    <div class="form-group">
+        <label for="convenio">Convenio</label>
+        <select  id="convenio" name="convenio" id="" class="form-control" >
+            
+            @foreach($convenio as $c)
+                  <option value="{{$c->cnpj}}">{{$c->nome}}</option>
+                  @php $c  @endphp
+            @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="TipoConvenio">Tipo Convenio</label>
+        <select  id="TipoConvenio" name="TipoConvenio" id="" class="form-control" >
+            
+            @foreach($tipo as $tc)
+                  <option value="{{$tc->convenio_id}}">{{$tc->nome}}</option>
+            @endforeach
+        </select>
+      </div>
+    </div>
 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Indicação</label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
+    <div class="col-2">
+        <div class="form-group">
+            <label for="plano">Indicação</label>
+                <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+               >
+        </div>
+    </div>  <!-- col Plano-->
 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Carteira<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
+    <div class="col-2">
+        <div class="form-group">
+            <label for="plano">Carteira<h11>*</h11></label>
+                <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+               >
+        </div>
+    </div>  <!-- col Plano-->
 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Situação<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
+    <div class="col">
+        <div class="form-group">
+        
+            <label for="selectbasic">Status <h11>*</h11></label>
+              <select required id="status" name="situacao" class="form-control">
+              <option value="A">Ativo</option>
+                <option value="I">Inativo</option>
+              </select>
+           
+        </div>
+    </div><!--  etinia-->
 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="plano">Validade<h11>*</h11></label>
-                            <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)">
-                    </div>
-                </div>  <!-- col Plano-->
-        </fieldset><!--endereço-->
+
+    <!--<div class="col">
+        <div class="form-group">
+            <label for="plano">Validade<h11>*</h11></label>
+                <input id="telefone" name="telefone" class="form-control" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                >
+        </div>
+    </div>  col Plano-->
+
+</fieldset><!--endereço-->
 
 {!! Form::close() !!}
 

@@ -88,7 +88,6 @@
 <div class="form-group">
   <label for="nome">Nome*</label>
   <input type="text" name="nome" id="nome"  maxlength="65" class="form-control" placeholder="nome" required>
-  <small id="nome" class="text-muted">Nome Completo</small>
 </div>
 </div><!--col nome -->
 
@@ -97,30 +96,26 @@
   <label for="cpf">Cpf*</label>
   <input type="text" name="cpf" id="cpf"   class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12" required>
   <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">   pattern="/d{11}"  -->
-  <small id="cpf" class="text-muted">cpf</small>
 </div>
 </div><!--col cpf -->
 
 <div class="col-2">
         <div class="form-group">
           <label for="cpf">RG*</label>
-          <input type="text" name="identidade" id="identidade"  maxlength="12" required class="form-control" placeholder="identidade" aria-describedby="identidade">
-          <small id="identidade" class="text-muted">identidade</small>
+          <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control" placeholder="identidade" aria-describedby="identidade">
         </div>
         </div><!--col cpf -->
         <div class="col">
             <div class="form-group">
               <label for="cpf">Orgão Emissor*</label>
               <input type="text" name="orgEmissor" id="org Emissor"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
-              <small id="orgEmissor" class="text-muted">Org.Emissor</small>
             </div>
             </div><!--col cpf -->
     
 <div class="col">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
-  <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
-  <small id="dtNascimento" class="data">Data obrigatoria</small>
+  <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control" placeholder="" >
 </div>
 </div><!--col dt Nascimento-->
 
@@ -134,7 +129,6 @@
         <div class="form-group">
           <label for="">Nacionalidade*</label>
           <input type="text" name="nacionalidade"  required id="nacionalidade" class="form-control" placeholder="nacionalidade" value="Brasileiro">
-          <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
         </div>
 </div><!--col nacionalidade -->
 
@@ -142,7 +136,6 @@
         <div class="form-group">
           <label for="">Naturalidade*</label>
           <input type="text" name="naturalidade"  required id="naturalidade" class="form-control" placeholder="naturalidade" value="">
-          <small id="naturalidade" class="text-muted">cidade ou estado de nascimento</small>
         </div>
 </div><!--col naturalidade -->
 
@@ -221,16 +214,16 @@
     <div class="col-2">
             <div class="form-group">
                 <label for="telefone">Telefone <h11>*</h11></label>
-                    <input id="telefone" name="telefone" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                    OnKeyPress="formatar('## #####-####', this)">
+                    <input id="telefone" name="telefone" class="form-control" required="" type="text" maxlength="13" 
+                    >
             </div>
         </div>  <!-- col Telefone-->
 
         <div class="col-2">
                 <div class="form-group">
                     <label for="celular">Celular <h11>*</h11></label>
-                        <input id="celular" name="celular" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                        OnKeyPress="formatar('## #####-####', this)">
+                        <input id="celular" name="celular" class="form-control" required="" type="text" maxlength="13" 
+                       >
                 </div>
             </div>  <!-- col Telefone-->
             
