@@ -10,12 +10,20 @@ body{
 /*background-image: linear-gradient(to top ,rgba(129,212,250), rgba(0,191,255));*/
 
 }
-header .logo{
- 
-    margin-left:2%;
+header .logodASH a{
+    justify-content:center;
+
+    margin-left:1%;
     float: left;
+    color: black;
     font-size: 2rem;
 }
+header .centroName h3{
+   -ms-text-justify: auto;
+    color: black;
+    font-size: 2rem;
+}
+
 
 
 header h1{

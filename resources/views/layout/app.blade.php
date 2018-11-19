@@ -26,7 +26,7 @@
         .corpo{
            margin-top:3rem;
         }
-
+  
 
     </style>
 </head>
@@ -34,14 +34,22 @@
         <!-- header -->
         
             <header > <!-- style="color:#000000;" -->
-               <div class="">
-                
-                <h1>Sistema de Consultorio Medico</h1>
-                <h2 class="logo"><strong>Siscon</strong></h2>
-                <span id='real-clock'></span>
-                <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
-                <span style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
-                <span>Bem vindo @php echo session("user"); @endphp </span>
+    
+                  <div class="logodASH">
+                      <h4><a class="navbar-brand" href="{{route('dashboard')}}">SisCon</a></h4>
+                      <div class="container centroName">
+                      <h3>Sistema de Consultorio medico</h3>
+                    </div>
+                  </div>
+
+                    <span id="real-clock"></span>
+                    <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
+                    <span style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
+                    <span>Bem vindo @php echo session("user"); @endphp </span>
+                        
+                       
+        
+               
 
                 </div>
             </header>
