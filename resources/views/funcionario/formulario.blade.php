@@ -165,7 +165,7 @@
             <div class="col-2">
                     <div class="form-group">
                       <label for="">Naturalidade</label>
-                      <input type="text" name="nacionalidade" id="" class="form-control" placeholder="naturalidade" value=""   maxlength="50">
+                      <input type="text" name="naturalidade" id="" class="form-control" placeholder="naturalidade" value=""   maxlength="50">
                     </div>
             </div><!--col naturalidade -->
 
