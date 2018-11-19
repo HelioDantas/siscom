@@ -87,7 +87,7 @@
     <div class="col-2">
     <div class="form-group">
       <label for="cpf">CPF</label>
-      <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId" maxlength="15">
+      <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Cpf" aria-describedby="helpId" maxlength="15">
 
     </div>
     </div><!--col cpf -->
@@ -95,7 +95,7 @@
     <div class="col-2">
             <div class="form-group">
               <label for="cpf">RG</label>
-              <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade" maxlength="15">
+              <input type="text" name="identidade" id="RG" class="form-control" placeholder="identidade" aria-describedby="identidade" maxlength="15">
  
             </div>
             </div><!--col cpf -->
@@ -365,7 +365,7 @@
     @endsection
     @section('scripts')
     <script type="text/javascript" src="{{ asset('js/mascara.js') }}"></script>
-     <script type="text/javascript" src="{{ asset('js/mascara1.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
     @endsection
