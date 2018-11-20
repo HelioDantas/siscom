@@ -112,7 +112,7 @@
             </div>
             </div><!--col cpf -->
     
-<div class="col">
+<div class="col-2">
 <div class="form-group">
   <label for="data">Data Nascimento</label>
   <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control" placeholder="" >

@@ -10,28 +10,43 @@ body{
 /*background-image: linear-gradient(to top ,rgba(129,212,250), rgba(0,191,255));*/
 
 }
-header .logo{
- 
-    margin-left:2%;
+
+
+header #containerLogoDataHoraH3 > .data{
+    padding-right:0.5%;
+    float:right;
+}
+header#containerLogoDataHoraH3 > .data, #real-clock{
+    float:right;
+}
+header  #containerLogoDataHoraH3 > h3{
+  text-align: center;
+  padding-right:-1%;
+
+}
+header   > #containerSessaoEMsgBemVindo {
+    margin-top: -0.5rem;
+    
+   text-align: center;
+   
+ }
+
+  #msgBemVindo {
+    text-align:left;
+}
+ #sessao {
+    float:right;
+}
+
+
+
+header .container-fluid > .logo{
     float: left;
-    font-size: 2rem;
+   padding-left:0.7%;
+   font-size: 20px;
 }
 
 
-header h1{
-    text-align: center;
-    margin: 00.1%; 
-}
-
-header span{
- 
-    float: right;
-    padding-right: 3%; 
-}
-
-nav{
-    margin-top:3%;
-}
 #navbarColor01{
     color:blue;
 }

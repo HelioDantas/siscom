@@ -34,22 +34,25 @@
         <!-- header -->
         
             <header > <!-- style="color:#000000;" -->
-               <div class="">
-                
-                <h1>Sistema de Consultorio Medico</h1>
-                <h2 class="logo"><strong>Siscon</strong></h2>
+              <div class="container-fluid" id="containerLogoDataHoraH3">
+                <span class="logo"><strong>Siscon</strong></span>
                 <span id='real-clock'></span>
-                <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
-                <span style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
-                <span>Bem vindo @php echo session("user"); @endphp </span>
+                <span class="data"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
+                <h3>Sistema de Consultorio Medico</h3>
+                
+              </div>
 
-                </div>
+                <div class="container-fluid " id="containerSessaoEMsgBemVindo">
+                <span id="msgBemVindo">Bem vindo @php echo session("user"); @endphp </span>
+                <span  id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
+              </div>
+                
             </header>
  
         <!-- end header -->
 
         <!-- menu navbar -->
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-sm">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
