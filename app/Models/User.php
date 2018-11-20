@@ -4,10 +4,15 @@ namespace App\Models;
 use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticable;
 
-class User extends Model
+class User extends Authenticable
 {
+
+
+    use Notifiable;
+
     protected $table = 'sis_usuario';
 
     public $timestamps = false;
@@ -23,7 +28,7 @@ class User extends Model
     public static function buscarByEmail($email){
 
         return  DB::table('sis_usuario')->where('email', $email)->first();
-             
+
          }
 
     public function permissoes(){

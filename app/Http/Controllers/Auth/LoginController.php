@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 namespace App\Http\Controllers;
 use Validator;
 use DummyFullModelClass;
@@ -33,7 +33,7 @@ class LoginController extends Controller
         $mensagem =  "Cpf invalido";
         return view('user.login')->with("mensagem",  $mensagem);
     }
-     if($user->funcionario->status == "A"){ 
+     if($user->funcionario->status == "A"){
 
         if(password_verify($credencias['password'], $user->senha)){
             $request->session()->put('user', $user->funcionario->nome);
@@ -48,7 +48,7 @@ class LoginController extends Controller
 
             $mensagem =  "Usuario não está ativo";
             return view('user.login')->with("mensagem",  $mensagem);
-        
+
         }
 
 
@@ -64,7 +64,7 @@ class LoginController extends Controller
         return redirect('/home');//->intended('/home'); // intended retorna o usuario para a tela que ele estava tentando acessar antes de passar pelo middleware
     }
     return 'LoginController@formCad';*/
-   
+
 
 
    public function cad(){
@@ -73,15 +73,30 @@ class LoginController extends Controller
 
     public function logout(Request $request){
 
-        $request->session()->forget('user');
+        $request->session()->flush();
         return redirect()->action("LoginController@formLogin");
 
    }
 
 
 
+   public function username()
+   {
+       return 'cpf';
+   }
 
 
+
+
+   public function authenticate(Request $request)
+   {
+       $credentials = $request->only('email', 'password');
+
+       if (Auth::attempt($credentials)) {
+           // Authentication passed...
+           return redirect()->intended('dashboard');
+       }
+   }
 
 
 }
