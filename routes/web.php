@@ -113,8 +113,9 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::post('create'        , 'FuncionarioController@create')->name(      'funcionario.create'    );
   Route::get('editar/{id}'    , 'FuncionarioController@edit')->name(        'funcionario.editar'    );
-  Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'     );
-  Route::any('medico/create/{id}' , 'FuncionarioController@Medicocreate')->name('medico.create'         );
+  Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'    );
+  Route::get('buscarCpf'      , 'FuncionarioController@buscarCpf')->name(   'funcionario.buscarCpf' );
+  Route::any('medico/create/{id}' , 'FuncionarioController@Medicocreate')->name('medico.create'     );
   Route::get('medico/cad'     , 'FuncionarioController@novoM')->name(       'medico.novo'           );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::any('buscar'   , 'FuncionarioController@buscar')->name(     'funcionario.buscar'   );
