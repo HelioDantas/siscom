@@ -87,13 +87,13 @@
 <div class="col-4">
 <div class="form-group">
   <label for="nome">Nome*</label>
-  <input type="text" name="nome" id="nome"  maxlength="65" class="form-control" placeholder="nome" required>
+  <input type="text" name="nome" id="nome"  maxlength="45" class="form-control" placeholder="nome" required>
 </div>
 </div><!--col nome -->
 
 <div class="col-2">
 <div class="form-group">
-  <label for="cpf">Cpf*</label>
+  <label for="cpf">Cpf*<label>
   <input type="text" name="cpf" id="cpf"   class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12" required>
   <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">   pattern="/d{11}"  -->
 </div>
@@ -101,14 +101,14 @@
 
 <div class="col-2">
         <div class="form-group">
-          <label for="cpf">RG*</label>
+          <label for="cpf">RG</label>
           <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control" placeholder="identidade" aria-describedby="identidade">
         </div>
         </div><!--col cpf -->
         <div class="col">
             <div class="form-group">
-              <label for="cpf">Orgão Emissor*</label>
-              <input type="text" name="orgEmissor" id="org Emissor"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
+              <label for="cpf">Orgão Emissor</label>
+              <input type="text" name="orgEmissor" id="org Emissor" maxlength="15"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
             </div>
             </div><!--col cpf -->
     
@@ -127,22 +127,22 @@
 
     <div class="col-2">
         <div class="form-group">
-          <label for="">Nacionalidade*</label>
-          <input type="text" name="nacionalidade"  required id="nacionalidade" class="form-control" placeholder="nacionalidade" value="Brasileiro">
+          <label for="">Nacionalidade</label>
+          <input type="text" name="nacionalidade" maxlength="15" required id="nacionalidade" class="form-control" placeholder="nacionalidade" value="Brasileiro">
         </div>
 </div><!--col nacionalidade -->
 
 <div class="col-2">
         <div class="form-group">
-          <label for="">Naturalidade*</label>
-          <input type="text" name="naturalidade"  required id="naturalidade" class="form-control" placeholder="naturalidade" value="">
+          <label for="">Naturalidade</label>
+          <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control" placeholder="naturalidade" value="">
         </div>
 </div><!--col naturalidade -->
 
 <div class="col-2">
     <div class="form-group">
     
-        <label for="selectbasic">Escolaridade <h11>*</h11></label>
+        <label for="selectbasic">Escolaridade </label>
           <select required id="escolaridade" name="escolaridade" class="form-control">
             <option value="Superior Completo">Superior Completo</option>
             <option value="Superior Incompleto">Superior Incompleto</option>
@@ -159,9 +159,9 @@
 
 <div class="col-2">
         <div class="form-group">
-          <label for="">Profissão*</label>
+          <label for="">Profissão</label>
           <input type="text" name="profissao" id="" class="form-control" placeholder="prof" value="">
-          <small id="prof" class="text-muted">informe o seu pais de origem</small>
+       
         </div>
 </div><!--col nacionalidade -->
 
@@ -182,7 +182,7 @@
 <div class="col">
         <div class="form-group">
         
-            <label for="selectbasic">Etnia <h11>*</h11></label>
+            <label for="selectbasic">Etnia </label>
               <select required id="etnia" name="etnia" class="form-control">
               <option value="B">Branco</option>
                 <option value="P">Pardo</option>
@@ -198,7 +198,7 @@
         <div class="col">
                 <div class="form-group">
                 
-                    <label for="selectbasic">Status <h11>*</h11></label>
+                    <label for="selectbasic">Status </label>
                       <select required id="status" name="status" class="form-control">
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
@@ -213,7 +213,7 @@
 <div class="row"><!-- contatoi-->
     <div class="col-2">
             <div class="form-group">
-                <label for="telefone">Telefone <h11>*</h11></label>
+                <label for="telefone">Telefone </label>
                     <input id="telefone" name="telefone" class="form-control" required="" type="text" maxlength="13" 
                     >
             </div>
@@ -221,7 +221,7 @@
 
         <div class="col-2">
                 <div class="form-group">
-                    <label for="celular">Celular <h11>*</h11></label>
+                    <label for="celular">Celular </label>
                         <input id="celular" name="celular" class="form-control" required="" type="text" maxlength="13" 
                        >
                 </div>
