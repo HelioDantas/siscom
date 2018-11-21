@@ -5,6 +5,7 @@ use App\Models\Convenio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TipoConvenio;
+use Symfony\Component\HttpFoundation\Response;
 
 class ConvenioController extends Controller
 {
@@ -26,4 +27,13 @@ class ConvenioController extends Controller
 
 
         }
+
+        function getTipoConvenio($convenio_id)
+        {
+            $convenio = Convenio::find($convenio_id);
+            $planos = $convenio->planos()->getQuery()->get(['id','nome']);
+            
+            return Response::json($planos);
+        }
+
 }

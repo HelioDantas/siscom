@@ -33,6 +33,8 @@ return array(
     'App\\Models\\Funcionario' => $baseDir . '/app/Models/Funcionario.php',
     'App\\Models\\Medico' => $baseDir . '/app/Models/Medico.php',
     'App\\Models\\Paciente' => $baseDir . '/app/Models/Paciente.php',
+    'App\\Models\\PacienteHasConvenio' => $baseDir . '/app/Models/PacienteHasConvenio.php',
+    'App\\Models\\TipoConvenio' => $baseDir . '/app/Models/TipoConvenio.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

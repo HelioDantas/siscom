@@ -316,25 +316,15 @@
 
                 <div class="col">
                 <div class="form-group">
-                    <label for="convenio">Convenio</label>
-                    <select  id="convenio" name="convenio" id="" class="form-control" >
-                        <option value=""></option>
-                        @foreach($convenio as $c)
-                              <option value="{{$c->cnpj}}">{{$c->nome}}</option>
-                              @php $c  @endphp
-                        @endforeach
-                    </select>
+                    {!! Form::label('convenio', 'Convenios:') !!}
+                    {!! Form::select('convenio', $convenios) !!}
+
                   </div>
                 </div>
                 <div class="col">
                   <div class="form-group">
-                    <label for="TipoConvenio">Tipo Convenio</label>
-                    <select  id="TipoConvenio" name="TipoConvenio" id="" class="form-control" >
-                        <option value=""></option>
-                        @foreach($tipo as $tc)
-                              <option value="{{$tc->convenio_id}}">{{$tc->nome}}</option>
-                        @endforeach
-                    </select>
+                    {!! Form::label('plano', 'Planos:') !!}
+                    {!! Form::select('plano', []) !!}
                   </div>
                 </div>
 
@@ -378,6 +368,6 @@
    
 
 <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/tolltips.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
 
 @endsection

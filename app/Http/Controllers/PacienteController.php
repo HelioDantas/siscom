@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TipoConvenio;
 use App\Models\Convenio;
 use App\Models\PacienteHasConvenio;
+use App\Models\Plano;
 
 class PacienteController extends Controller
 {
@@ -58,15 +59,11 @@ class PacienteController extends Controller
     public function novo() 
     {
         //  form de um novo paciente
-        $convenio = Convenio::all();
+        $convenios = Convenio::all();
          //dd($convenio->tipoConvenios);
-         $tipo = TipoConvenio::all();
-         
-         
-       
+
         
-        
-        return view('paciente.formulario' ,compact('convenio','tipo'));
+        return view('paciente.formulario' ,compact('convenios'));
     }
 
     public function create(Request $request){
@@ -95,9 +92,9 @@ class PacienteController extends Controller
 
        $convenio = Convenio::all();
        //dd($convenio->tipoConvenios);
-       $tipo = TipoConvenio::all();
+       $plano = Plano::all();
 
-        return view('paciente.editar' , compact('p','convenio','tipo'));
+        return view('paciente.editar' , compact('p','convenio','plano'));
     }
    
 

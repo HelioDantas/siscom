@@ -15,9 +15,9 @@ class Convenio extends Model
     protected $fillable = array('cnpj', 'nome', 'adesao', 'banco', 'agencia','conta','status' ); 
     
 
-    public function tipoConvenios(){
+    public function planos(){
 
-     return  $this->hasMany("App\Models\TipoConvenio", 'convenio_id', 'cnpj' );
+     return  $this->hasMany("App\Models\Plano", 'convenio_id', 'cnpj' );
 
     }
 
