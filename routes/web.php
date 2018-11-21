@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\ControllersConvenioController;
 
 
 
@@ -65,7 +66,7 @@ Route::get('/recovery' , 'UserController@recoveryForm')->name('recovery_senha');
  * direcionando pro metodo login em controller.
  * =========================================================================== *
  */
-Route::get('/login', ['uses' => 'LoginController@formLogin']);
+Route::get('/login', ['user' => 'LoginController@formLogin']);
 Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login']);
 
 
@@ -126,19 +127,12 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
 
 Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
+})*/  Route::prefix('convenio')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
-})*/
-
-Route::get('/Controller/convenio/teste','Controller\ConvenioController@teste');
-
-Route::prefix('convenio')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
-
-  Route::get('cad'            , 'ConvenioController@novo'  )->name(        'convenio.novo'      );
-  Route::get('listar'         , 'ConvenioController@listar')->name(      'convenio.listar'    );
-  Route::post('create'        , 'ConvenioController@create')->name(      'convenio.create'    );
-  Route::get('editar'         , 'ConvenioController@editar')->name(      'convenio.editar'    );
-  Route::put('update/{id}'    , 'ConvenioController@update')->name(      'convenio.update'    );
-
-
-});
-
+  Route::resource('convenio','ConvenioController');
+  Route::get ('cad'     , 'ConvenioController@novo'  )->name(  'convenio.novo'    );
+  Route::get ('list'    , 'ConvenioController@listar')->name(  'convenio.listar'  );
+  Route::get('pesq'     , 'ConvenioController@pesq'  )->name(  'convenio.pesq'    );
+  Route::post('create'  , 'ConvenioController@create')->name(  'convenio.create'  );
+  Route::get ('editar'  , 'ConvenioController@editar')->name(  'convenio.editar'  );
+  Route::put ('update'  , 'ConvenioController@update')->name(  'convenio.update'  );});

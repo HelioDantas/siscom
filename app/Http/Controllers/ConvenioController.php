@@ -1,54 +1,96 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Convenio;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Convenio;
 
+class ConvenioController1 extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-class ConvenioController extends Controller
-{   
-    private $convenios;
-
-    public function _construtor(Convenio $convenios){
-        $this->Convenio = $convenios;
-
-    }
-
-
-      public function novo(){
+    public function novo(){
             return view ('convenio.formularioconvenio');
         }
 
-        public function create(Request $request){
-            $sis_convenio = Convenio::create($request->all());
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $sis_convenio = Convenio::create($request->all());
           
-            return view('layout.app'); 
+        return view('layout.app');
+    }
 
-       }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function list($id)
+    {
+        $convenio = Convenio::list($id);
+        $convenio ->listar($request->all());
+        return redirect()->route('convenio.listar');
+    }
 
-        public function update(Request $request, $id){
-            $convenio = Convenio::find($id);
-            $convenio->update($request->all());
-                return redirect()->route('convenio.editar');
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+   
+    public function edit($id)
+    {
+        $convenio = Convenio::edit($id);
+        $convenio ->editar($request->all());
+        return redirect()->route('convenio.editar');
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
 
+    public function pesq($id)
+    {
+        $convenio = Convenio::pesq($id);
+        $convenio ->pesquisar($request->all());
+        return redirect()->route('convenio.pesquisar');
+    }
 
-        }
-        public function find (Request $request, $id){
-            $convenio = Convenio::find($id);
-            $convenio->update($request->all());
-                return redirect()->route('convenio.listar');
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $convenio = Convenio::find($id);
+        $convenio->update($request->all());
+            return redirect()->route('convenio.editar');
+    }
 
-        }
-
-        function insert(Request$req){
-            $cnpj = $req->input('cnpj');
-            $nome = $req->input('nome');
-            $banco = $req->input('banco');
-            $agencia = $req->input('agencia');
-            $conta = $req->input('conta');
-            $status = $req->input('status');
-            
-        }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
