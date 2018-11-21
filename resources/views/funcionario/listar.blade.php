@@ -108,7 +108,7 @@
                 <td>
                     <a href="editar/{{$p->matricula}}"><i class="fas fa-edit"></i></a> 
                 
-                    <a href="excluir/{{$p->matricula}}"><i class="fas fa-trash"></i></a>
+                    <a id = "excluir" href="excluir/{{$p->matricula}}"><i  class="fas fa-trash"></i></a>
                 </td>
 
               </tr>

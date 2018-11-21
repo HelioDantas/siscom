@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoConvenio extends Model
+class Plano extends Model
 {
     //
     protected $table = "sis_tipo_convenio";

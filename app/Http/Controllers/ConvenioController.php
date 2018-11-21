@@ -5,6 +5,7 @@ use App\Models\Convenio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TipoConvenio;
+use Symfony\Component\HttpFoundation\Response;
 
 class ConvenioController extends Controller
 {
@@ -27,11 +28,13 @@ class ConvenioController extends Controller
 
         }
 
-        public function ajax(Request $request){
-            $convenio = Convenio::find($request['busca']);
-            $tipos = $convenio->tipoConvenios()->get();
-            dd(tipos);
-            return $tipos;
 
+        function getTipoConvenio($convenio_id)
+        {
+            $convenio = Convenio::find($convenio_id);
+            $planos = $convenio->planos()->getQuery()->get(['id','nome']);
+            
+            return Response::json($planos);
         }
+
 }

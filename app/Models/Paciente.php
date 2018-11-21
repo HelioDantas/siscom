@@ -33,9 +33,9 @@ class Paciente extends Model
     );
 
 
-    public function tipoConvenio()
+    public function plano()
     {
-        return $this->hasOne('App\TipoConvenio');
+        return $this->hasOne('App\Models\Plano');
     }
 
     

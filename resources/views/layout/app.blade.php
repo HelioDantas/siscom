@@ -26,7 +26,7 @@
         .corpo{
            margin-top:3rem;
         }
-
+  
 
     </style>
 </head>
@@ -34,6 +34,7 @@
         <!-- header -->
         
             <header > <!-- style="color:#000000;" -->
+
               <div class="container-fluid" id="containerLogoDataHoraH3">
                 <span class="logo"><strong>Siscon</strong></span>
                 <span id='real-clock'></span>
@@ -41,6 +42,7 @@
                 <h3>Sistema de Consultorio Medico</h3>
                 
               </div>
+
 
                 <div class="container-fluid " id="containerSessaoEMsgBemVindo">
                 <span id="msgBemVindo">Bem vindo @php echo session("user"); @endphp </span>
@@ -143,11 +145,13 @@
 
 
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     
-    <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    
     <script type="text/javascript" src="{{ asset('js/mascara.js') }}"></script>
 
     <script>

@@ -87,6 +87,15 @@ class FuncionarioController extends Controller
        
       } 
 
+
+        public function buscarCpf(Request $request,  $buscar){
+        $Funcionarios = Funcionario::where('cpf', '=', $buscar);
+        return view('funcionario.formulario' , compact('Funcionarios'));
+       
+      } 
+
+
+
          public function destroy ($id){
 
         $Funcionario = Funcionario::find($id);

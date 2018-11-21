@@ -1,39 +1,16 @@
   			$(document).ready(function(){
                 
-                $('#recon').click(function(){
+                $('#excluir').click(function(){
                                 var x;
                                 var r=confirm("Tem certeza que deseja resetar esse cadastro?");
                                 if (r==true)
                                 {
-                                x= window.location = "{{route('funcionario.novo')}}" ;
+                                x= window.location = "{{route('excluir/{{$p->matricula}}')}}" ;
                                 }
                                 
                                 });
 			
-                $('#celular').click(function(){
-                    $("#celular").mask("(99) 99999-9999");
-                                
-                            
-                });
-		
-                jQuery(function($){
-				
-                    $("#id").mask("99.999.999-9");
-                    $("#cep").mask("99999-999");
-                   
-                    $("#celular").mask("(99) 99999-9999");
-                    $("#telefone").mask("(99) 9999-9999");
-                    $("#cpf").mask("999.999.999-99");
-                   
-                    $("#dataCadastro").mask("99/99/9999");
-                    $("#dataNasc").mask("/99/9999");
-                    $("#emissao").mask("99/99/9999");
-                    $("#validade").mask("99/99/9999");
-                    $("#ultConsulta").mask("99/99/9999");
-				
-			
-			    });
-			
+            
 
 
 		});
