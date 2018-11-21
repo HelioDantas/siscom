@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
+
+    Route::post('editar/buscaAjax'    , 'ConvenioController@ajax')->name(        'paciente.ajax'    );
+  
+  });
+

@@ -15,7 +15,7 @@
     }
     .endCentralizado > label{
         color:blue;
-        text-aling:center;
+        text-align: center;
         
     }
     .form-control{

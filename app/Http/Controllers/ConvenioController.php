@@ -26,4 +26,12 @@ class ConvenioController extends Controller
 
 
         }
+
+        public function ajax(Request $request){
+            $convenio = Convenio::find($request['busca']);
+            $tipos = $convenio->tipoConvenios()->get();
+            dd(tipos);
+            return $tipos;
+
+        }
 }
