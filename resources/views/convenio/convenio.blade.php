@@ -49,6 +49,7 @@
 @section('tela')
 
 
+
 <div class="container corpo">
     <form action="create" method="post">
     @csrf
@@ -130,5 +131,7 @@
     <hr>
     </form>
     </div>
+
+{{ $brands->appends(['id' => isset($filter_id) ? $filter_id : ''])->links() }}
 
     @endsection

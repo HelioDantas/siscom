@@ -66,7 +66,7 @@ Route::get('/recovery' , 'UserController@recoveryForm')->name('recovery_senha');
  * direcionando pro metodo login em controller.
  * =========================================================================== *
  */
-Route::get('/login', ['user' => 'LoginController@formLogin']);
+Route::get('/login', ['uses' => 'LoginController@formLogin']);
 Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login']);
 
 
@@ -114,7 +114,7 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
   Route::post('create'        , 'FuncionarioController@create')->name(      'funcionario.create'    );
   Route::get('editar/{id}'    , 'FuncionarioController@edit')->name(        'funcionario.editar'    );
   Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'     );
-  Route::any('medico/create/{id}' , 'FuncionarioController@Medicocreate')->name('medico.create'         );
+  Route::any('medico/create/{id}' , 'FuncionarioController@Medicocreate')->name('medico.create'      );
   Route::get('medico/cad'     , 'FuncionarioController@novoM')->name(       'medico.novo'           );
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::any('buscar'         , 'FuncionarioController@buscar')->name(     'funcionario.buscar'   );
@@ -129,10 +129,18 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 })*/  Route::prefix('convenio')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
-  Route::resource('convenio','ConvenioController');
-  Route::get ('cad'     , 'ConvenioController@novo'  )->name(  'convenio.novo'    );
-  Route::get ('list'    , 'ConvenioController@listar')->name(  'convenio.listar'  );
-  Route::get('pesq'     , 'ConvenioController@pesq'  )->name(  'convenio.pesq'    );
-  Route::post('create'  , 'ConvenioController@create')->name(  'convenio.create'  );
-  Route::get ('editar'  , 'ConvenioController@editar')->name(  'convenio.editar'  );
-  Route::put ('update'  , 'ConvenioController@update')->name(  'convenio.update'  );});
+
+  Route::resource('/convenio','ConvenioController');
+
+  Route::group(['namespace'=>'MoveController'], function(){
+
+  Route::get ('cad'         ,'ConvenioController@novo'  )->name( 'convenio.novo'  );
+  Route::get ('list'        ,'MoveController@listar'    )->name( 'convenio.listar');
+  Route::get ('pesq'        ,'MoveController@pesq'      )->name( 'convenio.pesq'  );
+  Route::post('create'      ,'ConvenioController@create')->name( 'convenio.create');
+  Route::get ('editar/{id}' ,'MoveController@editar'    )->name( 'convenio.editar');
+  Route::put ('update/{id}' ,'MoveController@update'    )->name( 'convenio.update'); 
+
+ 
+    });
+  });
