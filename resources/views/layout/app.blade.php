@@ -26,8 +26,11 @@
         .corpo{
            margin-top:3rem;
         }
-  
+        span{
+          margin-right:1rem;
 
+        }
+        
     </style>
 </head>
 <body>
@@ -41,13 +44,7 @@
                 <span class="data"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
                 <h3>Sistema de Consultorio Medico</h3>
                 
-              </div>
-
-
-                <div class="container-fluid " id="containerSessaoEMsgBemVindo">
-                <span id="msgBemVindo">Bem vindo @php echo session("user"); @endphp </span>
-                <span  id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
-              </div>
+            
                 
             </header>
  
@@ -66,8 +63,8 @@
                     <button class="dropbtn">Cadastro</button>
                     <div class="dropdown-content">
                       <a href="{{route('paciente.novo')}}">Paciente</a>
-                      <a href="#">Convenios</a>
-                      <a href="{{route('medico.novo')}}">Medico</a>
+                      <a href="{{route('convenio.novo')}}">Convenios</a>
+                      
                       <a href="{{route('funcionario.novo')}}">Funcionario</a>
                     </div>
                   </div>
@@ -125,6 +122,9 @@
                 </li>
 
               </ul>
+              <span class="navbar-text" id="msgBemVindo">Bem vindo @php echo session("user"); @endphp </span>
+
+                <span class="navbar-text" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 

@@ -210,10 +210,10 @@
                 </div>  <!-- col Telefone-->
 
 
-            <div class="col-4">
+            <div class="col-3">
                 <div class="form-group">
-                       <label for="exampleFormControlInput2">Email address</label>
-                       <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+                       <label for="email">Email address</label>
+                       <input type="email" class="form-control" id="email"name = "email" placeholder="name@example.com">
                 </div>
 
 
@@ -330,8 +330,7 @@
 
     @endsection
     @section('scripts')
-
-
+<script type="text/javascript" src="{{ asset('js/validaEmail.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
     @endsection
