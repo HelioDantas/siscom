@@ -102,9 +102,9 @@
       {{--           <td>       {{$p->profissao}}           </td>  --}}
                  <td>       {{$p->status}}            </td>  
                 <td>
-                    <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
+                    <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="alguma({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>  
                 
-                    <a href="excluir/{{$p->id}}"><i class="fas fa-trash"></i></a>
+                    <a class="btn btn-outline-primary" href="editar/{{$p->id}}"  title="editar"><i class="fas fa-edit"></i></a> 
                 </td>
 
               </tr>
@@ -114,7 +114,9 @@
 
           <div class="card-footer">
             @if($cont==4)
+
                 <p></p>  
+
             @endif
             {!!$pacientes->links()!!}
           </div>
@@ -130,5 +132,5 @@
 
     @section('scripts')
 <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
-    
+ <script type="text/javascript" src="{{ asset('js/confirmacaoDeExclusao.js') }}"></script>   
     @endsection
