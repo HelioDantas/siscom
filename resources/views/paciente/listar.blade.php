@@ -6,8 +6,12 @@
         text-align: center;
     }
     form{
-        
+      
      float: right;
+    
+    }
+    .titulopacientes{
+      display:ruby-base-container;
     }
     .container-fluid{
         margin-top: 1rem;
@@ -37,11 +41,12 @@
 <div class="container-fluid col-lg-12">
 <div class="card text-center mb-3">
     <div class="card-header">
-           <h3 class="titulopacientes">Pacientes Cadastrados</h3>
+            <h3 class="titulopacientes">Pacientes Cadastrados</h3>
+
+            <a  class="btn btn-outline-danger recon"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
+            <a  class="btn btn-outline-success recon"  href="{{route('paciente.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
            <form action="buscar" method="post">
                 @csrf
-            <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
-            <a  id = "recon"class="btn btn-outline-success"  href="{{route('paciente.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
            <input class=" form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
         </form>
     </div>

@@ -65,10 +65,10 @@
                   <div class="dropdown">
                     <button class="dropbtn">Cadastro</button>
                     <div class="dropdown-content">
-                      <a href="{{route('paciente.novo')}}">Paciente</a>
+                      <a href="{{route('paciente.listar')}}">Paciente</a>
                       <a href="#">Convenios</a>
                       <a href="{{route('medico.novo')}}">Medico</a>
-                      <a href="{{route('funcionario.novo')}}">Funcionario</a>
+                      <a href="{{route('funcionario.listar')}}">Funcionario</a>
                     </div>
                   </div>
                 </li>
@@ -86,9 +86,7 @@
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
                     <div class="dropdown-content">
-                      <a href="#">Adicionar</a>
-                      <a href="#">Adicionar</a>
-                      <a href="#">Adicionar</a>
+                     
                     </div>
                   </div>
                 </li>
@@ -96,9 +94,7 @@
                   <div class="dropdown">
                     <button class="dropbtn">Medicos</button>
                     <div class="dropdown-content">
-                      <a href="#">Adicionar</a>
-                      <a href="#">Adicionar</a>
-                      <a href="#">Adicionar</a>
+                     
                     </div>
                   </div>
                 </li>
