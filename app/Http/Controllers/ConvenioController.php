@@ -18,6 +18,10 @@ class ConvenioController extends Controller
             return view ('convenio.formularioconvenio');
         }
 
+         public function editar(){
+            return view ('convenio.formeditConv');
+        }
+
     /**
      * Show the form for creating a new resource.
      *
