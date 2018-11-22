@@ -15,6 +15,11 @@
     .btn{
         float:right;
     }
+
+    h3{
+	display:inline-table;
+    margin-left: 15rem;
+    }
 </style>
 @endsection
 
@@ -43,11 +48,11 @@
     <div class="card-header">
 
            <h3 class="titulopacientes">Funcionario Cadastrados</h3>
-           
+            <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
+            <a  class="btn btn-outline-success recon"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
            <form action="buscar" method="post">
                 @csrf
-            <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
-            <a  id = "recon"class="btn btn-outline-success"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
+           
            <input class=" form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
           
         </form>
