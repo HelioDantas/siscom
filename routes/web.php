@@ -142,7 +142,7 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
   Route::get ('list'        ,'MoveController@listar'    )->name( 'convenio.listar');
   Route::get ('pesq'        ,'MoveController@pesq'      )->name( 'convenio.pesq'  );
   Route::post('create'      ,'ConvenioController@create')->name( 'convenio.create');
-  //Route::get ('/formeditConv/editar/{id}' ,'ConvenioController@editar'    )->name( 'convenio.editar');
+  Route::get ('editar/{id}' ,'ConvenioController@editar')->name( 'convenio.editar');
   Route::put ('update/{id}' ,'MoveController@update'    )->name( 'convenio.update'); 
   
 

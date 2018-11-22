@@ -39,7 +39,7 @@
 
 @section('conteudo')
 
-        <h4 class="titulocadastro">Cadastro de Convênio</h4>
+        <h4 class="tituloedita">Alterar Convênio</h4>
 @endsection
 @section('navegação')
 
@@ -55,7 +55,7 @@
 
         <div class="form-group navegacao">
         <div class="col-16">
-          <button id="Cadastrar" name="Editar" class="btn btn-success" type="Submit">Editar</button>
+          <button id="editar" name="Editar" class="btn btn-success" type="Submit">Editar</button>
         
         </div>
       </div>
