@@ -35,7 +35,9 @@ class Paciente extends Model
 
     public function plano()
     {
-        return $this->hasOne('App\Models\Plano');
+        return  $this->belongsToMany('App\Models\Plano', 'sis_paciente_tem_plano','paciente_id', 'plano_id');
+
+      
     }
 
     

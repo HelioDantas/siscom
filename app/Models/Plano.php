@@ -29,7 +29,7 @@ class Plano extends Model
 
     public function pacientes(){
 
-        return  $this->belongsToMany("App\Models\Paciente", 'sis_paciente_tem_convenio','tipoconvenio_id', 'paciente_id');
+        return  $this->belongsToMany("App\Models\Paciente", 'sis_paciente_tem_plano','plano_id', 'paciente_id');
    
        }
 }
