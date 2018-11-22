@@ -126,7 +126,7 @@ class PacienteController extends Controller
        //Paciente::destroy($prontuario);
 
        // DB::delete("delete from sis_paciente where prontuario = $prontuario");
-        return redirect()->action('PacienteController@listar');
+        return back();
         //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
     }
 }
