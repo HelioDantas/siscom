@@ -12,6 +12,8 @@ class PacienteHasConvenio extends Model
 
     
     protected $fillable = array(
+        'paciente_id',
+        'plano_id',
         'carteira',
         'indicacao',
         'situacao',

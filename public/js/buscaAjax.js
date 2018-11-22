@@ -1,11 +1,12 @@
-$('select[name=convenio]').change(function(){
+$('#convenio').change(function(){
     var convenio_id = this.value;
-    
-    $.get('/novo/get-planos/' +convenio_id , function(planos){
-        alert("opa");
-        $('select[name=TipoConvenio]').empty();
-        $.each(planos, function(key,value){
-            $('select[name=TipoConvenio]').append('<option value=' + value.id + '>' + value.nome + '</option>')
+    console.log(convenio_id);
+
+    $.getJSON('/novo/get-planos/' +convenio_id , function(planosA){
+        p = planosA;
+        $('select[name=plano]').empty();
+        $.each(p, function(key,value){
+            $('select[name=plano]').append('<option value=' + value.id + '>' + value.nome + '</option>')
         })
     })
 })

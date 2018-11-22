@@ -28,12 +28,13 @@ class ConvenioController extends Controller
 
         }
 
-        function getTipoConvenio($convenio_id)
+        function getPlano($convenio_id)
         {
             $convenio = Convenio::find($convenio_id);
-            $planos = $convenio->planos()->getQuery()->get(['id','nome']);
+            $planos = $convenio->planos()->get(['id','nome']);
+           
             
-            return Response::json($planos);
+            return json_encode($planos);
         }
 
 }

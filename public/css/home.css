@@ -20,7 +20,7 @@ header .logodASH a{
     font-size: 2rem;
 }
 header .centroName h3{
-   -ms-text-justify: auto;
+   text-justify: auto;
     color: black;
     font-size: 2rem;
 }

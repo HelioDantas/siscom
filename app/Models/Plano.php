@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plano extends Model
 {
     //
-    protected $table = "sis_tipo_convenio";
+    protected $table = "sis_plano";
     public $timestamps = false;
 
 

@@ -100,7 +100,8 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
 });
 
 
-Route::get('novo/get-planos/{convenio_id}', 'ConvenioController@getTipoConvenio');
+Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
+
 
 
 //Route::resource('/pacientes', 'PacienteController');

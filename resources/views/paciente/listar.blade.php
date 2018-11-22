@@ -114,10 +114,9 @@
 
           <div class="card-footer">
             @if($cont==4)
-                <p></p>
-              @else
-                {!!$pacientes->links()!!}
+                <p></p>  
             @endif
+            {!!$pacientes->links()!!}
           </div>
     </div>
 

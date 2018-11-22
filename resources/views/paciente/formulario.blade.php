@@ -144,7 +144,7 @@
         </div>
 </div><!--col naturalidade -->
 
-<div class="col-2">
+<div class="col-3">
     <div class="form-group">
     
         <label for="selectbasic">Escolaridade </label>
@@ -173,7 +173,7 @@
         </div>
 </div><!--col nacionalidade -->
 
-<div class="col">
+<div class="col-2">
         <div class="form-group">
         
             <label for="selectbasic">Sexo <h11>*</h11></label>
@@ -186,8 +186,10 @@
            
         </div>
 </div><!--col genero-->
+</div><!-- row -->
+<div class="row">
 
-<div class="col">
+<div class="col-2">
         <div class="form-group">
         
             <label for="selectbasic">Etnia </label>
@@ -201,9 +203,8 @@
         </div>
     </div><!--  etinia-->
 
-    
 
-        <div class="col">
+        <div class="col-2">
                 <div class="form-group">
                 
                     <label for="selectbasic">Status </label>
@@ -215,10 +216,6 @@
                 </div>
             </div><!--  etinia-->
 
-                
-</div><!-- row -->
-
-<div class="row"><!-- contatoi-->
     <div class="col-2">
             <div class="form-group">
                 <label for="telefone">Telefone </label>
@@ -322,17 +319,24 @@
                 <legend aling="center">Convenio</legend>
         <div class="row"><!-- convenio -->
 
-                <div class="col">
+                <div class="col-3">
                 <div class="form-group">
-                    {!! Form::label('convenio', 'Convenios:') !!}
-                    {!! Form::select('convenio', $convenios) !!}
+
+                <label for="convenio">Convenio</label>
+                   <select name="convenio" id="convenio" class="form-control">
+                    @foreach ($convenios as $c)
+                   <option value="{{$c->cnpj}}">{{$c->nome}}</option>
+                    @endforeach
+                   </select>
 
                   </div>
                 </div>
                 <div class="col">
                   <div class="form-group">
-                    {!! Form::label('plano', 'Planos:') !!}
-                    {!! Form::select('plano', []) !!}
+                   <label for="planos">Planos</label>
+                   <select name="plano" id="plano" class="form-control">
+                        
+                   </select>
                   </div>
                 </div>
 

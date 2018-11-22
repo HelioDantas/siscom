@@ -60,10 +60,11 @@ class PacienteController extends Controller
     {
         //  form de um novo paciente
         $convenios = Convenio::all();
+        $planos = Plano::all();
          //dd($convenio->tipoConvenios);
 
         
-        return view('paciente.formulario' ,compact('convenios'));
+        return view('paciente.formulario' ,compact('convenios','planos'));
     }
 
     public function create(Request $request){
@@ -71,6 +72,7 @@ class PacienteController extends Controller
         //$paciente = $request->all();
         //return dd($paciente);
         $paciente = Paciente::create($request->all());
+        $planoPaciene = PacienteHasConvenio
        /* dd($paciente->id);
 
         $pacienteHasConvenio = PacienteHasConvenio::create(, $request->only([
