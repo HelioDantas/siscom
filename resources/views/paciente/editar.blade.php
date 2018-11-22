@@ -402,7 +402,7 @@
             
             @foreach($convenio as $c)
                   <option value="{{$c->cnpj}}">{{$c->nome}}</option>
-                  @php $c  @endphp
+                  @php $tc = $c->tipoConvenios()->get();  @endphp
             @endforeach
         </select>
       </div>
@@ -410,11 +410,14 @@
     <div class="col">
       <div class="form-group">
         <label for="TipoConvenio">Tipo Convenio</label>
-        <select  id="TipoConvenio" name="TipoConvenio" id="" class="form-control" >
+        <select  id="tipoConvenio" name="TipoConvenio" id="" class="form-control" >
             
-            @foreach($tipo as $tc)
-                  <option value="{{$tc->convenio_id}}">{{$tc->nome}}</option>
-            @endforeach
+           @if (isset($tc))
+           @foreach($tc as $t)
+           <option value="{{$t->convenio_id}}">{{$t->nome}}</option>
+           @endforeach
+           @endif
+          
         </select>
       </div>
     </div>
@@ -469,6 +472,6 @@
    
 
 <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/tolltips.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
 
 @endsection

@@ -15,7 +15,7 @@
     }
     .endCentralizado > label{
         color:blue;
-        text-aling:center;
+        text-align: center;
         
     }
     .form-control{
@@ -323,7 +323,7 @@
                 <div class="form-group">
 
                 <label for="convenio">Convenio</label>
-                   <select name="convenio" id="convenio" class="form-control">
+                   <select name="convenio_id" id="convenio" class="form-control">
                     @foreach ($convenios as $c)
                    <option value="{{$c->cnpj}}">{{$c->nome}}</option>
                     @endforeach

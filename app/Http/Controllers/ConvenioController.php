@@ -28,7 +28,9 @@ class ConvenioController extends Controller
 
         }
 
+
         function getPlano($convenio_id)
+
         {
             $convenio = Convenio::find($convenio_id);
             $planos = $convenio->planos()->get(['id','nome']);

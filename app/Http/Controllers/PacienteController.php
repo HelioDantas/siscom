@@ -72,7 +72,11 @@ class PacienteController extends Controller
         //$paciente = $request->all();
         //return dd($paciente);
         $paciente = Paciente::create($request->all());
-        $planoPaciene = PacienteHasConvenio
+        $planoPaciene = PacienteHasConvenio::create($request->only([
+            'convenio_id',
+            'paciente_id',
+            'status',
+        ]));
        /* dd($paciente->id);
 
         $pacienteHasConvenio = PacienteHasConvenio::create(, $request->only([
@@ -80,7 +84,7 @@ class PacienteController extends Controller
             'indicacao',
             'situacao',
         ]));*/
-        return  redirect()->route('paciente.listar');
+        return redirect()->route('paciente.listar');
         
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
