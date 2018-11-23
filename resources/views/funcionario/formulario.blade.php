@@ -79,7 +79,7 @@
     <div class="col-5">
     <div class="form-group">
       <label for="nome">Nome</label>
-      <input type="text" name="nome" id="" class="form-control" placeholder="nome"   maxlength="70">
+      <input type="text" name="nome" id="" class="form-control" placeholder="nome"   maxlength="40">
 
     </div>
     </div><!--col nome -->
@@ -87,7 +87,7 @@
     <div class="col-2">
     <div class="form-group">
       <label for="cpf">CPF</label>
-      <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Cpf" aria-describedby="helpId" maxlength="15">
+      <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Cpf" aria-describedby="helpId" maxlength="14">
 
     </div>
     </div><!--col cpf -->
@@ -95,7 +95,7 @@
     <div class="col-2">
             <div class="form-group">
               <label for="cpf">RG</label>
-              <input type="text" name="identidade" id="RG" class="form-control" placeholder="identidade" aria-describedby="identidade" maxlength="15">
+              <input type="text" name="identidade" id="RG" class="form-control" placeholder="identidade" aria-describedby="identidade" maxlength="13">
  
             </div>
             </div><!--col cpf -->
@@ -191,6 +191,33 @@
 
                     </div>
                 </div><!--  etinia-->
+
+
+                   <div class="col-3">
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                        <input id="telefone" name="telefone" class="form-control" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                       >
+                </div>
+            </div>  <!-- col Telefone-->
+
+            <div class="col-3">
+                    <div class="form-group">
+                        <label for="celular">Celular</label>
+                            <input id="celular" name="celular" class="form-control"  required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                                >
+                    </div>
+                </div>  <!-- col Telefone-->
+
+
+            <div class="col-3">
+                <div class="form-group">
+                       <label for="email">Email address</label>
+                       <input type="email" class="form-control" id="email"name = "email" placeholder="name@example.com">
+                </div>
+
+
+                </div> <!-- col Email -->
                 <div class="col-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
@@ -296,46 +323,14 @@
   
     <hr>
 
-    <fieldset class="form-group">
-            <legend aling="center">Contato</legend>
-    <div class="row"><!-- contato -->
-
-        <div class="col-3">
-                <div class="form-group">
-                    <label for="telefone">Telefone</label>
-                        <input id="telefone" name="telefone" class="form-control" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                       >
-                </div>
-            </div>  <!-- col Telefone-->
-
-            <div class="col-3">
-                    <div class="form-group">
-                        <label for="celular">Celular</label>
-                            <input id="celular" name="celular" class="form-control"  required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                                >
-                    </div>
-                </div>  <!-- col Telefone-->
-
-
-            <div class="col-4">
-                <div class="form-group">
-                       <label for="exampleFormControlInput2">Email address</label>
-                       <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
-                </div>
-
-
-                </div> <!-- col Email -->
-
-                 </fieldset><!--endereço-->
-                 <hr>
+    
   
       {!! Form::close() !!}
     </div><!-- container -->
 
     @endsection
     @section('scripts')
-
-
+<script type="text/javascript" src="{{ asset('js/validaEmail.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
     @endsection

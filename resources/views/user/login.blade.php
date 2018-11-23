@@ -48,11 +48,11 @@
                          <p class = "msgErro">  {{$mensagem}} </p>
                           @endif
                             <div class="form-group">
-                            <input type="text" name="cpf" class="form-control"  placeholder="cpf" value="" />
+                            <input type="text" id = "cpf" name="cpf" class="form-control"  placeholder="cpf" value="" />
                             </div>
 
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control is-valid" require placeholder="Senha" value="" />
+                                <input type="password" name="password" class="form-control is-valid" require placeholder="Senha" value="" maxlength = 30 />
                             </div>
 
                             <div  class="agoravai">
@@ -67,14 +67,22 @@
                 </div>
             </div>
         </div>
-
-
+    <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
  <script>
 		setInterval(function() {
 			clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
 		}, 1000);
 		var clock = document.getElementById('real-clock');
   </script>
+<script>
+    jQuery(function($){ 
 
+    $("#cpf").mask("999.999.999-99");
+
+
+    });
+</script>
     </body>
     </html>

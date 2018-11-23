@@ -148,7 +148,9 @@ ul li{
     display: none;
 }
 
-.recon{
-    display: inline;
-    
-}
+
+.titulopacientes{
+	display:inline-table;
+    margin-left: 15rem;
+    }
+
