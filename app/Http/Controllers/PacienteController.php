@@ -69,22 +69,18 @@ class PacienteController extends Controller
 
     public function create(PacienteRequest $request){
         
-        //$paciente = $request->all();
-        //return dd($paciente);
         $paciente = Paciente::create($request->all());
-        $planoPaciene = PacienteHasConvenio::create($request->only([
-            'convenio_id',
-            'paciente_id',
-            'status',
-        ]));
-       /* dd($paciente->id);
+        
+        $planoPaciene = PacienteHasConvenio::create([
+            'plano_id' => $request['plano_id'],
+            'indicacao'  => $request['indicacao'],
+            'carteira'  => $request['carteira'],
+            'situacao'  => $request['situacao'],
+            'paciente_id'  =>$paciente->id,
+        ]);
+     
+         return redirect()->route('paciente.listar')->withInput();
 
-        $pacienteHasConvenio = PacienteHasConvenio::create(, $request->only([
-            'carteira',
-            'indicacao',
-            'situacao',
-        ]));*/
-        return redirect()->route('paciente.listar')->withInput();
         
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
@@ -95,12 +91,21 @@ class PacienteController extends Controller
     {
         //  form para editar infos de um paciente
        $p = Paciente::find($id);
-      dd($p->plano());
-        $associ = PacienteHasConvenio::where('paciente_id', $p->id );
+       $plano = $p->planos()->where('situacao','ATIVO')->first();
+       if ( !$plano == null) {
+        $phc = PacienteHasConvenio::where('paciente_id','=',$id,'and','plano_id','=',$plano->convenio_id )->first();
+        $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+       } else {
+           $plano =null; $phc =null; $convenio =null; 
+       }
        
-      
+       //$phc = PacienteHasConvenio::where('paciente_id','=',$id,'and','plano_id','=',$plano->convenio_id )->first();
 
-        return view('paciente.editar' , compact('p','convenio','plano'));
+       //$convenioIsNull = (Convenio::where('cnpj', $plano->convenio_id)->first()) ?  $convenio = $convenioIsNull : $convenio = '' ;
+      // $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+      
+       $convenios = Convenio::all();
+        return view('paciente.editar' , compact('p','convenio','convenios','plano','phc'));
     }
    
 
@@ -109,7 +114,25 @@ class PacienteController extends Controller
         //  atualizar
 
         $paciente = Paciente::find($id);
+        $planosPaciente = $paciente->planos()->where('situacao','ATIVO')->get();
+        if (!$planosPaciente == null) {
+            $pacientePlano = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->get();
+            foreach ($planosPaciente as $pp) {
+                PacienteHasConvenio::update(['situacao'=>'INATIVO'])->get();
+               }
+        } 
+       // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
         $paciente->update($request->all());
+        $pacientePlano->update([
+            'plano_id'   => $request['plano_id'],
+            'indicacao'  => $request['indicacao'],
+            'carteira'   => $request['carteira'],
+            'situacao'   => $request['situacao'],
+        ]);
+
+
+
+
         return redirect()->route('paciente.listar');
     }
 

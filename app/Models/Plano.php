@@ -13,7 +13,7 @@ class Plano extends Model
 
     protected $fillable = array(
         'paciente_id',
-        'convenio_id',
+        'plano_id',
         'carteira',
         'indicacao',
         'situacao',

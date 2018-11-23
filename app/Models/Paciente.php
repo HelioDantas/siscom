@@ -13,6 +13,7 @@ class Paciente extends Model
         'nome',
         'cpf',
         'identidade',
+        'org_emissor',
         'dataDeNascimento',
         'sexo',
         'etnia',
@@ -33,7 +34,7 @@ class Paciente extends Model
     );
 
 
-    public function plano()
+    public function planos()
     {
         return  $this->belongsToMany('App\Models\Plano', 'sis_paciente_tem_plano','paciente_id', 'plano_id');
 

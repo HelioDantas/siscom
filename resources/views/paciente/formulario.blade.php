@@ -100,6 +100,7 @@
 </div><!--col nome -->
 
 <div class="col-2">
+
     <div class="form-group">
         <label for="cpf">Cpf<label>
         <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required>
@@ -110,11 +111,17 @@
                 </div>
             @endif
     </div>
+
 </div><!--col cpf -->
 
     <div class="col-2">
         <div class="form-group">
+
+          <label for="cpf">RG</label>
+          <input type="text" name="identidade" id="RG"  maxlength="15" required class="form-control" placeholder="identidade" aria-describedby="identidade">
+
             <label for="cpf">RG</label>
+
             <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade">
 
         @if($errors->has('identidade'))
@@ -122,12 +129,14 @@
                 {{$errors->first('identidade')}}
                 </div>
             @endif
+
         </div>
     </div><!--col cpf -->
 
     <div class="col-2">
         <div class="form-group">
             <label for="cpf">Orgão Emissor</label>
+
             <input type="text" name="orgEmissor" id="org Emissor" maxlength="15"  required class="form-control {{$errors->has('orgEmissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby="identidade">
                  @if($errors->has('orgEmissor'))
      <div class="invalid-feedback">
@@ -136,6 +145,7 @@
         @endif
        
        
+
         </div>
     </div><!--col cpf -->
     
@@ -470,7 +480,11 @@
                 <div class="col">
                   <div class="form-group">
                    <label for="planos">Planos</label>
+<<<<<<< HEAD
+                   <select name="plano_id" id="plano" class="form-control">
+=======
                    <select name="plano" id="plano" class="form-control {{$errors->has('plano') ? 'is-invalid': '' }}">
+>>>>>>> 7243772aa7699785822e61bfbb4b695e0e754561
                         
                    </select>
                  
