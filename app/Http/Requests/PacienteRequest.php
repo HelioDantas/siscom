@@ -13,7 +13,7 @@ class PacienteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,25 +24,25 @@ class PacienteRequest extends FormRequest
     public function rules()
     {
         return [
-        'nome'                  => 'required',
-        'cpf'                   => 'required|min:11|max:14',
-        'identidade'            => 'nullable|max:14',
-        'dataDeNascimento'      => 'nullable',
+        'nome'                  => 'required|max:10',
+        'cpf'                   => 'required|min:14|max:15',
+        'identidade'            => 'nullable|min:11|max:12',    
+        'dataDeNascimento'      => 'nullable|date',
         'sexo'                  => 'nullable',
         'etnia'                 => 'nullable',
-        'nacionalidade'         => 'nullable',
-        'naturalidade'          => 'nullable',
+        'nacionalidade'         => 'nullable|max:16',
+        'naturalidade'          => 'nullable|max:16',
         'escolaridade'          => 'nullable',
-        'rua'                   => 'nullable',
-        'numero'                => 'nullable',
-        'bairro'                => 'nullable',
-        'cep'                   => 'nullable',
-        'cidade'                => 'required',
-        'estado'                => 'required',
-        'telefone'              => 'nullable|max:15',
-        'celular'               => 'required|max:15',
+        'rua'                   => 'nullable|max:40',
+        'numero'                => 'nullable|max:6|numeric',
+        'bairro'                => 'nullable|max:15',
+        'cep'                   => 'nullable|max:15',
+        'cidade'                => 'required|max:15',
+        'estado'                => 'required|max:15',
+        'telefone'              => 'nullable|max:13',
+        'celular'               => 'required|max:13',
         'email'                 => 'required|email',
-        'profissao'             => 'nullable',
+        'profissao'             => 'nullable|max:14',
         'status'                => 'required',
         ];
     }
