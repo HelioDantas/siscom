@@ -116,7 +116,7 @@
 
     <div class="col-2">
         <div class="form-group">
-
+            <label for="RG">RG<label>
             <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade">
 
         @if($errors->has('identidade'))
