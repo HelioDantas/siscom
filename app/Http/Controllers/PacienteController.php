@@ -120,12 +120,12 @@ class PacienteController extends Controller
                 PacienteHasConvenio::update(['situacao'=>'INATIVO'])->get();
                }
 
-               $pacientePlano->update([
+               PacienteHasConvenio::create([
+                'paciente_id' => $paciente->id,
                 'plano_id'   => $request['plano_id'],
                 'indicacao'  => $request['indicacao'],
                 'carteira'   => $request['carteira'],
-                'situacao'   => $request['situacao'],
-            ]);
+               ]);
         } 
        // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
         $paciente->update($request->all());
