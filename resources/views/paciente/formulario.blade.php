@@ -88,7 +88,8 @@
 <div class="col-4">
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="45" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required>
+        <input type="text" name="nome" id="nome"  maxlength="45" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required  
+         value =   {{old('nome')}}>
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
@@ -313,8 +314,6 @@
        
                 </div>
             </div>  <!-- col Telefone-->
-            
-        
         
             <div class="col-3">
                 <div class="form-group">
