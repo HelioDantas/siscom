@@ -7,10 +7,11 @@
 					var filtro = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 					 if(filtro.test(email) || email == "")
 					 {
-                         
-				   return true;
+                          $("#email").removeClass("is-invalid");
+				   	return true;
 					 } else {
-                         alert("Email Invalido", "Por favor, digite um email valido");
+						 
+						 $("#email").addClass("is-invalid");
 					
 					 }
 				  

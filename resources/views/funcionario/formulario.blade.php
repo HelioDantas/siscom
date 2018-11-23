@@ -215,8 +215,11 @@
                 <div class="form-group">
                        <label for="email">Email address</label>
                        <input type="email" class="form-control" id="email"name = "email" placeholder="name@example.com">
+                        <div class="invalid-feedback">
+                      Email invalido
+             </div>
                 </div>
-
+                
 
                 </div> <!-- col Email -->
                 <div class="col-3 Fill invisivel">

@@ -10,7 +10,7 @@ use App\Models\TipoConvenio;
 use App\Models\Convenio;
 use App\Models\PacienteHasConvenio;
 use App\Models\Plano;
-
+use App\Http\Requests\PacienteRequest;
 class PacienteController extends Controller
 {
 
@@ -67,7 +67,7 @@ class PacienteController extends Controller
         return view('paciente.formulario' ,compact('convenios','planos'));
     }
 
-    public function create(Request $request){
+    public function create(PacienteRequest $request){
         
         $paciente = Paciente::create($request->all());
         
