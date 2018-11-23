@@ -112,23 +112,26 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
     {
         //  atualizar
-
+        //dd($request);
         $paciente = Paciente::find($id);
         $planosPaciente = $paciente->planos()->where('situacao','ATIVO')->get();
         if (!$planosPaciente == null) {
-            $pacientePlano = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->get();
-            foreach ($planosPaciente as $pp) {
-                PacienteHasConvenio::update(['situacao'=>'INATIVO'])->get();
-               }
+            $planosAtivos = PacienteHasConvenio::where('paciente_id', '=', $id)->where('situacao','=','ATIVO' )->get();
+            if (!empty($planosAtivos)) {
+                foreach ($planosAtivos as $pa) {
+                    $pa->update(['situacao'=>'INATIVO'])->get();
+                   }
+            }
+               PacienteHasConvenio::updateOrCreate([
+                'paciente_id' => $paciente->id,
+                'plano_id'   => $request['plano_id'],
+                'indicacao'  => $request['indicacao'],
+                'carteira'   => $request['carteira'],
+               ]);
         } 
        // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
         $paciente->update($request->all());
-        $pacientePlano->update([
-            'plano_id'   => $request['plano_id'],
-            'indicacao'  => $request['indicacao'],
-            'carteira'   => $request['carteira'],
-            'situacao'   => $request['situacao'],
-        ]);
+        
 
 
 

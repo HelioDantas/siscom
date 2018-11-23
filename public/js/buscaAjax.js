@@ -4,9 +4,9 @@ $('#convenio').change(function(){
 
     $.getJSON('/novo/get-planos/' +convenio_id , function(planosA){
         p = planosA;
-        $('select[id=plano]').empty();
+        $('select[id=plano_id]').empty();
         $.each(p, function(key,value){
-            $('select[id=plano]').append('<option value=' + value.id + '>' + value.nome + '</option>')
+            $('select[id=plano_id]').append('<option value=' + value.id + '>' + value.nome + '</option>')
         })
     })
 })
