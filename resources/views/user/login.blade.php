@@ -44,9 +44,10 @@
                         <center><small style="font-size: 16px;color:#2BBBAD;"><strong>Login de Acesso</strong></small></center>
                         {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!} @csrf
 
-                         @if(!empty($mensagem))
-                         <p class = "msgErro">  {{$mensagem}} </p>
-                          @endif
+                       
+                          @if (session('mensagem'))
+                           <p class = "msgErro">   {{ session('mensagem') }} </p>
+                              @endif
                             <div class="form-group">
                             <input type="text" id = "cpf" name="cpf" class="form-control"  placeholder="cpf" value="" />
                             </div>

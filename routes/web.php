@@ -66,7 +66,7 @@ Route::get('/recovery' , 'UserController@recoveryForm')->name('recovery_senha');
  * direcionando pro metodo login em controller.
  * =========================================================================== *
  */
-Route::get('/login', ['uses' => 'LoginController@formLogin']);
+Route::get('/login', ['uses' => 'LoginController@formLogin'])->name('user.login');
 Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login']);
 
 

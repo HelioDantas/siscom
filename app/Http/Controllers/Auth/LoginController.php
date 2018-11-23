@@ -23,7 +23,7 @@ class LoginController extends Controller
     $user = User::buscar($credencias['cpf']);
     if ($user == null){
         $mensagem =  "Cpf invalido";
-        return view('user.login')->with("mensagem",  $mensagem);
+        return redirect('/login')->with("mensagem",  $mensagem);
     }
     $user = User::find($user->id);
    // return dd($user);
@@ -31,7 +31,7 @@ class LoginController extends Controller
     if ($user == null){
 
         $mensagem =  "Cpf invalido";
-        return view('user.login')->with("mensagem",  $mensagem);
+        return redirect('/login')->with("mensagem",  $mensagem);
     }
      if($user->funcionario->status == "A"){
 
@@ -40,14 +40,14 @@ class LoginController extends Controller
             return view("layout.app");
         }else{
             $mensagem =  "Senha Invalida";
-            return view('user.login')->with("mensagem",  $mensagem);
+            return redirect('/login')->with("mensagem",  $mensagem);
 
         }
 
         }else{
 
             $mensagem =  "Usuario não está ativo";
-            return view('user.login')->with("mensagem",  $mensagem);
+            return redirect('/login')->with("mensagem",  $mensagem);
 
         }
 

@@ -58,15 +58,15 @@
             <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
-                <th s>matricula     </th>
-                <th >nome            </th>
-                <th >cpf             </th>
-                <th >identidade      </th>
-                <th >Nascimento</th>
-                <th >sexo            </th>
-                <th >nacionalidade   </th>
-                <th >naturalidade    </th>
-                <th >escolaridade    </th>
+                <th scope="col">matricula     </th>
+                <th scope="col">nome            </th>
+                <th scope="col">cpf             </th>
+                <th scope="col">identidade      </th>
+                <th scope="col">Nascimento</th>
+                <th scope="col">sexo            </th>
+                <th scope="col">nacionalidade   </th>
+                <th scope="col">naturalidade    </th>
+                <th scope="col">escolaridade    </th>
     <!--        <th scope="col">rua             </th>
                 <th scope="col">numero          </th>
                 <th scope="col">bairro          </th>
@@ -76,8 +76,8 @@
                 <th scope="col">telefone        </th>
                 <th scope="col">celular         </th>
                 <th scope="col">email           </th>-->
-                <th >profissao       </th>
-                <th >status        </th>   
+                <th scope="col">profissao       </th>
+                <th scope="col">status        </th>   
                 <th scope="col">opções</th>
               </tr>
             </thead>
@@ -85,8 +85,8 @@
             @php $cont = 0; @endphp
                 @foreach ($Funcionarios as $p)
                        @php $cont = $cont + 1; @endphp
-              <tr class="Filter-nome">
-                 <td>       {{$p->matricula}}          </td>
+              <tr >
+                  <th scope="row">     {{$p->matricula}}        </th>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
                  <td class="info-nome">       {{$p->nome}}                </td>
                  <td>       {{$p->cpf}}                 </td>
@@ -111,8 +111,6 @@
                 
 
                 <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="alguma({{$p->matricula}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>  
-                    
-              
                  <a class="btn btn-outline-primary" href="editar/{{$p->matricula}}"  title="editar"><i class="fas fa-edit"></i></a> 
                 </td>
 
@@ -132,7 +130,11 @@
     </div>
 
 </div>
-    
+    @if(old('cpf'))
+
+       <a class="alert alert-success" >Funcionario cadastrado!!</a>
+
+    @endif
 
 
     @endsection
