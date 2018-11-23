@@ -11,8 +11,7 @@
 				   return true;
 					 } else {
                          alert("Email Invalido", "Por favor, digite um email valido");
-						$("#freeow").freeow("Email Invalido", "Por favor, digite um email valido", {classes: ["smokey", "error"],});
-					   return false;
+					
 					 }
 				  
 			   });

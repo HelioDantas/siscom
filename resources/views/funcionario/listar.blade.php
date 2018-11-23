@@ -47,11 +47,10 @@
            <h3 class="titulopacientes">Funcionario Cadastrados</h3>
             <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
             <a  class="btn btn-outline-success recon"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
-           <form action="buscar" method="post">
+          <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
                 @csrf
-           
-           <input class=" form-control" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
-          
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
     <div class="card-body">
