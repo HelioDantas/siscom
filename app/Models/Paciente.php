@@ -13,6 +13,7 @@ class Paciente extends Model
         'nome',
         'cpf',
         'identidade',
+        'org_emissor',
         'dataDeNascimento',
         'sexo',
         'etnia',

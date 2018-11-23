@@ -86,43 +86,48 @@
 
 
 <div class="col-4">
-<div class="form-group">
-  <label for="nome">Nome*</label>
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome"  maxlength="45" class="form-control" placeholder="nome" required>
 
-  <input type="text" name="nome" id="nome"  maxlength="45" class="form-control" placeholder="nome" required>
-
-</div>
+    </div>
 </div><!--col nome -->
 
 <div class="col-2">
+
 <div class="form-group">
   <label for="cpf">Cpf*<label>
   <input type="text" name="cpf" id="cpf"   class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="15" required>
   <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">   pattern="/d{11}"  -->
 </div>
+
 </div><!--col cpf -->
 
-<div class="col-2">
+    <div class="col-2">
         <div class="form-group">
+
           <label for="cpf">RG</label>
           <input type="text" name="identidade" id="RG"  maxlength="15" required class="form-control" placeholder="identidade" aria-describedby="identidade">
+
+            <label for="cpf">RG</label>
+            <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control" placeholder="identidade" aria-describedby="identidade">
+
         </div>
-        </div><!--col cpf -->
-        <div class="col-2">
-            <div class="form-group">
+    </div><!--col cpf -->
 
-              <label for="cpf">Orgão Emissor</label>
-              <input type="text" name="orgEmissor" id="org Emissor" maxlength="15"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
-
-            </div>
-            </div><!--col cpf -->
+    <div class="col-2">
+        <div class="form-group">
+            <label for="cpf">Orgão Emissor</label>
+            <input type="text" name="org_emissor" id="org Emissor" maxlength="15"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
+        </div>
+    </div><!--col cpf -->
     
 <div class="col-2">
-<div class="form-group">
-  <label for="data">Data Nascimento</label>
-  <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control" placeholder="" >
-</div>
-</div><!--col dt Nascimento-->
+    <div class="form-group">
+        <label for="data">Data Nascimento</label>
+        <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control" placeholder="" >
+    </div>
+ </div><!--col dt Nascimento-->
 
 </div><!-- row dados pessoas 1-->
 
@@ -168,7 +173,7 @@
 <div class="col-2">
         <div class="form-group">
 
-          <label for="">Profissão*</label>
+          <label for="">Profissão</label>
           <input type="text" name="profissao" maxlength="14" id="" masL class="form-control" placeholder="prof" value="">
     
 
@@ -178,7 +183,7 @@
 <div class="col-2">
         <div class="form-group">
         
-            <label for="selectbasic">Sexo <h11>*</h11></label>
+            <label for="selectbasic">Sexo </label>
               <select required id="genero" name="sexo" class="form-control">
               <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
@@ -354,7 +359,7 @@
 
                 <div class="col-2">
                     <div class="form-group">
-                        <label for="plano">Carteira<h11>*</h11></label>
+                        <label for="plano">Carteira</label>
                             <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                            >
                     </div>

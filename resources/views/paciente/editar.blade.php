@@ -113,7 +113,7 @@
         <div class="col">
             <div class="form-group">
               <label for="cpf">Orgão Emissor*</label>
-              <input type="text" name="orgEmissor" id="org Emissor"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
+              <input type="text" name="org_emissor" id="org Emissor"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
               <small id="orgEmissor" class="text-muted">Org.Emissor</small>
             </div>
             </div><!--col cpf -->
@@ -402,8 +402,10 @@
     <div class="form-group">
         <label for="convenio">Convenio</label>
         <select  id="convenio" name="convenio" id="" class="form-control" >
+            @if (! $convenio == null)
 
             <option value="{{$convenio->cnpj}}" selected >{{$convenio->nome}}</option>
+            @endif
             @foreach($convenios as $c)
                   <option value="{{$c->cnpj}}">{{$c->nome}}</option>
             @endforeach
@@ -415,9 +417,9 @@
             <div class="col">
                     <div class="form-group">
                      <label for="planos">Planos</label>
-                     <select name="plano" id="plano" class="form-control">
-                        <option value="{{$plano->id}}" selected >{{$plano->nome}}</option>
-
+                     <select name="plano_id" id="plano" class="form-control">
+                         @if (! $plano ==null) <option value="{{$plano->id}}" selected >{{$plano->nome}}</option> @endif
+        
                      </select>
                     </div>
                   </div>
@@ -427,30 +429,17 @@
     <div class="col-2">
         <div class="form-group">
             <label for="plano">Indicação</label>
-                <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-               >
+                <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="13" @if($phc != null) value = {{$phc->indicacao}} @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
 
     <div class="col-2">
         <div class="form-group">
             <label for="plano">Carteira<h11>*</h11></label>
-                <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-               >
+                <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="13" @if($phc != null)) value = {{$phc->carteira}} @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
 
-    <div class="col">
-        <div class="form-group">
-        
-            <label for="selectbasic">Status <h11>*</h11></label>
-              <select required id="status" name="situacao" class="form-control">
-              <option value="A">Ativo</option>
-                <option value="I">Inativo</option>
-              </select>
-           
-        </div>
-    </div><!--  etinia-->
 
 
     <!--<div class="col">

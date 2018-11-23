@@ -9,9 +9,14 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
 
-    public function novo(){
+    public function novo(Request $request){
+      if ($request->is('funcionario/create')) {
+           return view('user.novo');
 
-        return view('user.novo');
+        }
+        else
+        return '<h1>Acesso indevido </h1>';
+
     }
 
 
@@ -22,7 +27,7 @@ class UserController extends Controller
         $User = User::Create($request->all());
      //   return var_dump($sis_funcionario);
         
-       return view('funcionario.lista')->withInput();
+       return redirect()->route('funcionario.listar')->withInput();
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
 
