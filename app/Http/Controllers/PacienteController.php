@@ -84,7 +84,7 @@ class PacienteController extends Controller
             'indicacao',
             'situacao',
         ]));*/
-        return redirect()->route('paciente.listar');
+        return redirect()->route('paciente.listar')->withInput();
         
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 

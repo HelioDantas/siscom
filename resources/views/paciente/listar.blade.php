@@ -135,7 +135,11 @@
 </div>
 </div>
    <hr> 
-
+    @if(old('cpf'))
+        <div class = "row">
+             <a class="alert alert-success" >Funcionario cadastrado!!</a>
+       </div>
+    @endif
 
     @endsection
 
