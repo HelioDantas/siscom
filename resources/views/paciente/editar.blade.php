@@ -402,8 +402,7 @@
     <div class="form-group">
         <label for="convenio">Convenio</label>
         <select  id="convenio" name="convenio" id="" class="form-control" >
-            @if (! $convenio == null)
-
+            @if (!$convenio == null)
             <option value="{{$convenio->cnpj}}" selected >{{$convenio->nome}}</option>
             @endif
             @foreach($convenios as $c)
@@ -418,7 +417,7 @@
                     <div class="form-group">
                      <label for="planos">Planos</label>
                      <select name="plano_id" id="plano_id" class="form-control">
-                         @if (! $plano == null) 
+                         @if (!$plano == null) 
                          <option value="{{$plano->id}}" selected > {{$plano->nome}}</option>
                           @endif
         
