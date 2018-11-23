@@ -97,7 +97,7 @@
 <div class="col-2">
 <div class="form-group">
   <label for="cpf">Cpf*<label>
-  <input type="text" name="cpf" id="cpf"   class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="12" required>
+  <input type="text" name="cpf" id="cpf"   class="form-control" placeholder="Cpf" aria-describedby=""   maxlength="15" required>
   <!--<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">   pattern="/d{11}"  -->
 </div>
 </div><!--col cpf -->
@@ -105,7 +105,7 @@
 <div class="col-2">
         <div class="form-group">
           <label for="cpf">RG</label>
-          <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control" placeholder="identidade" aria-describedby="identidade">
+          <input type="text" name="identidade" id="RG"  maxlength="15" required class="form-control" placeholder="identidade" aria-describedby="identidade">
         </div>
         </div><!--col cpf -->
         <div class="col-2">
@@ -338,7 +338,7 @@
                 <div class="col">
                   <div class="form-group">
                    <label for="planos">Planos</label>
-                   <select name="plano" id="plano" class="form-control">
+                   <select name="plano_id" id="plano" class="form-control">
                         
                    </select>
                   </div>

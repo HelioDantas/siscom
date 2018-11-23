@@ -65,6 +65,8 @@
          @csrf
         {{ method_field('PUT') }}
 
+        <input type="hidden" name="paciente_id" value="{{$p->id}}">
+
               <div class="form-group navegacao">
                     <div class="col">
                             <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
@@ -400,26 +402,25 @@
     <div class="form-group">
         <label for="convenio">Convenio</label>
         <select  id="convenio" name="convenio" id="" class="form-control" >
-            
-            @foreach($convenio as $c)
+
+            <option value="{{$convenio->cnpj}}" selected >{{$convenio->nome}}</option>
+            @foreach($convenios as $c)
                   <option value="{{$c->cnpj}}">{{$c->nome}}</option>
-                  @php $tc = $c->tipoConvenios()->get();  @endphp
             @endforeach
         </select>
       </div>
     </div>
     <div class="col">
       <div class="form-group">
-        <label for="TipoConvenio">Tipo Convenio</label>
-        <select  id="tipoConvenio" name="TipoConvenio" id="" class="form-control" >
-            
-           @if (isset($tc))
-           @foreach($tc as $t)
-           <option value="{{$t->convenio_id}}">{{$t->nome}}</option>
-           @endforeach
-           @endif
-          
-        </select>
+            <div class="col">
+                    <div class="form-group">
+                     <label for="planos">Planos</label>
+                     <select name="plano" id="plano" class="form-control">
+                        <option value="{{$plano->id}}" selected >{{$plano->nome}}</option>
+
+                     </select>
+                    </div>
+                  </div>
       </div>
     </div>
 

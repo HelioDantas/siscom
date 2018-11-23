@@ -69,21 +69,16 @@ class PacienteController extends Controller
 
     public function create(Request $request){
         
-        //$paciente = $request->all();
-        //return dd($paciente);
         $paciente = Paciente::create($request->all());
-        $planoPaciene = PacienteHasConvenio::create($request->only([
-            'convenio_id',
-            'paciente_id',
-            'status',
-        ]));
-       /* dd($paciente->id);
-
-        $pacienteHasConvenio = PacienteHasConvenio::create(, $request->only([
-            'carteira',
-            'indicacao',
-            'situacao',
-        ]));*/
+        
+        $planoPaciene = PacienteHasConvenio::create([
+            'plano_id' => $request['plano_id'],
+            'indicacao'  => $request['indicacao'],
+            'carteira'  => $request['carteira'],
+            'situacao'  => $request['situacao'],
+            'paciente_id'  =>$paciente->id,
+        ]);
+     
         return redirect()->route('paciente.listar');
         
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
@@ -95,12 +90,10 @@ class PacienteController extends Controller
     {
         //  form para editar infos de um paciente
        $p = Paciente::find($id);
-      dd($p->plano());
-        $associ = PacienteHasConvenio::where('paciente_id', $p->id );
-       
-      
-
-        return view('paciente.editar' , compact('p','convenio','plano'));
+       $plano = $p->planos()->where('situacao','ATIVO')->first();
+       $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+       $convenios = Convenio::all();
+        return view('paciente.editar' , compact('p','convenio','convenios','plano'));
     }
    
 
