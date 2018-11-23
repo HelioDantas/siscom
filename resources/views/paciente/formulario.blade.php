@@ -88,7 +88,8 @@
 <div class="col-4">
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="45" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required>
+        <input type="text" name="nome" id="nome"  maxlength="45" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required  
+         value =   {{old('nome')}}>
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
@@ -115,11 +116,6 @@
 
     <div class="col-2">
         <div class="form-group">
-
-          <label for="cpf">RG</label>
-          <input type="text" name="identidade" id="RG"  maxlength="15" required class="form-control" placeholder="identidade" aria-describedby="identidade">
-
-            <label for="cpf">RG</label>
 
             <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade">
 
@@ -323,8 +319,6 @@
        
                 </div>
             </div>  <!-- col Telefone-->
-            
-        
         
             <div class="col-3">
                 <div class="form-group">
@@ -481,11 +475,10 @@
                 <div class="col">
                   <div class="form-group">
                    <label for="planos">Planos</label>
-<<<<<<< HEAD
-                   <select name="plano_id" id="plano" class="form-control">
-=======
-                   <select name="plano" id="plano" class="form-control {{$errors->has('plano') ? 'is-invalid': '' }}">
->>>>>>> 7243772aa7699785822e61bfbb4b695e0e754561
+
+                   <select name="plano_id" id="plano_id" class="form-control {{$errors->has('plano') ? 'is-invalid': '' }}">
+
+
                         
                    </select>
                  
