@@ -16,6 +16,7 @@
     .endCentralizado > label{
         color:blue;
         text-align: center;
+       
         
     }
     .form-control{
@@ -324,6 +325,7 @@
 
                 <label for="convenio">Convenio</label>
                    <select name="convenio_id" id="convenio" class="form-control">
+                        <option value="" selected></option>
                     @foreach ($convenios as $c)
                    <option value="{{$c->cnpj}}">{{$c->nome}}</option>
                     @endforeach

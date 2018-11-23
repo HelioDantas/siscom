@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PacienteHasConvenio extends Model
 {
-    protected $table = 'sis_paciente_tem_convenio';
+    protected $table = 'sis_paciente_tem_plano';
     public $timestamps = false;
 
 
