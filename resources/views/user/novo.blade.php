@@ -86,7 +86,7 @@
     <div  class = "col-4">
         <div class = "form-group">
         <label for="matricula">Matricula</label>
-         <input type="text" name="Sis_funcionario_matricula" id="" class="form-control"   @if(isset($func)) value = {{$func->matricula}} @else value = "" @endif>
+         <input type="text" name="Sis_funcionario_matricula" id="" class="form-control"   @if(isset($func)) value = {{$func->matricula}} @else value = "" @endif readonly>
      <small id="Sis_funcionario_matricula" class="text-muted">Hl</small>
     
         </div>
@@ -94,7 +94,7 @@
 <div class="col-4">
 <div class="form-group">
   <label for="cpf">Cpf</label>
-  <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf"   @if(isset($func)) value = {{$func->cpf}} @else value = "" @endif>
+  <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf"   @if(isset($func)) value = {{$func->cpf}} @else value = "" @endif readonly>
   <small id="cpf" class="text-muted">Hl</small>
 </div>
 </div><!--col -->
