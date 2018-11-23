@@ -417,8 +417,10 @@
             <div class="col">
                     <div class="form-group">
                      <label for="planos">Planos</label>
-                     <select name="plano_id" id="plano" class="form-control">
-                         @if (! $plano ==null) <option value="{{$plano->id}}" selected >{{$plano->nome}}</option> @endif
+                     <select name="plano_id" id="plano_id" class="form-control">
+                         @if (! $plano == null) 
+                         <option value="{{$plano->id}}" selected > {{$plano->nome}}</option>
+                          @endif
         
                      </select>
                     </div>
