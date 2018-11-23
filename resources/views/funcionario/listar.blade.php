@@ -16,10 +16,7 @@
         float:right;
     }
 
-    h3{
-	display:inline-table;
-    margin-left: 15rem;
-    }
+    
 </style>
 @endsection
 
