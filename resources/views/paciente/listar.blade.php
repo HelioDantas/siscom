@@ -39,8 +39,10 @@
 <div class="card text-center mb-3">
     <div class="card-header">
            <h3 class="titulopacientes">Pacientes Cadastrados</h3>
+            <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
            <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
              <a  id = "recon"class="btn btn-outline-success"  href="{{route('paciente.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
+            
            <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
                 @csrf
             <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
