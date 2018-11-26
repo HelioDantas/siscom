@@ -107,7 +107,7 @@
     <div class = "col-md-2 mb-3">
 
         <div class="form-group">
-            <label for="cpf">Cpf<label>
+            <label for="cpf">Cpf</label>
             <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
             value =   {{old('cpf')}}>
 
@@ -122,7 +122,7 @@
 
 
         <div class="form-group col-md-2 mb-3">
-            <label for="RG">RG<label>
+            <label for="RG">RG</label>
             <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control{{ $errors->has('identidade') ? 'is-invalid': ''  }}" placeholder="identidade" aria-describedby="identidade"
             value =   {{old('identidade')}}>
 
@@ -374,14 +374,16 @@
                             </div>
 
                         </div><!-- col cep -->
-                        <div class="col-md mb-3">
+                        
 
+                                 
+                                <div class="form-group">
+                                     <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
+                                    <strong>pesquisar</strong></button>
+                                 </div>
+                              
 
-                               <button type="button" class="btn btn-outline-success pesquisar "  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
-                                <strong>pesquisar</strong></button>
-
-
-                        </div><!-- col CEP -->
+                        
 
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
@@ -448,7 +450,7 @@
                     </div>
                 </div><!-- col cidade -->
 
-                    <div class="col-md-2 mb-3">
+                    <div class="col-md-1 mb-3">
                     <span>Estado</span>
                     <div class="input-group">
 

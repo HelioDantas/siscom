@@ -70,15 +70,11 @@ class PacienteController extends Controller
     public function create(PacienteRequest $request){
         
         $paciente = Paciente::create($request->all());
-        
-        $planoPaciene = PacienteHasConvenio::create([
-            'plano_id' => $request['plano_id'],
-            'indicacao'  => $request['indicacao'],
-            'carteira'  => $request['carteira'],
-            'situacao'  => $request['situacao'],
-            'paciente_id'  =>$paciente->id,
-        ]);
-     
+        $paciente->planos()->attach($request['plano_id'], 
+        [ 'indicacao'  => $request['indicacao'],
+            'carteira'  => $request['carteira']]);
+
+       
          return redirect()->route('paciente.listar')->withInput();
 
         
@@ -113,24 +109,20 @@ class PacienteController extends Controller
     {
         //  atualizar
         //dd($request);
-        $paciente = Paciente::find($id);
-        $planosPaciente = $paciente->planos()->where('situacao','ATIVO')->get();
-        if (!$planosPaciente == null) {
-            $planosAtivos = PacienteHasConvenio::where('paciente_id', '=', $id)->where('situacao','=','ATIVO' )->get();
-            if (!empty($planosAtivos)) {
-                foreach ($planosAtivos as $pa) {
-                    $pa->update(['situacao'=>'INATIVO'])->get();
-                   }
-            }
+       $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->get();
+
+       Paciente::find($id)->planos()->updateExistingPivot($paciente[0]->pivot['plano_id'], ['situacao'=>'INATIVO']);
+
+
                PacienteHasConvenio::updateOrCreate([
                 'paciente_id' => $paciente->id,
                 'plano_id'   => $request['plano_id'],
                 'indicacao'  => $request['indicacao'],
-                'carteira'   => $request['carteira'],
+                'carteira'   => $request['carteira']
                ]);
-        } 
+        
        // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
-        $paciente->update($request->all());
+        Paciente::update($request->all());
         
 
 
