@@ -18,7 +18,6 @@ class PacienteHasConvenio extends Model
         'indicacao',
         'situacao',
         'updated_at',
-        'created_at',
     );
 
 

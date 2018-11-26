@@ -69,13 +69,17 @@ class PacienteController extends Controller
 
     public function create(PacienteRequest $request){
         
-        $paciente = Paciente::create($request->all());
+        $paciente = Paciente::updateOrCreate($request->except([
+        'convenio_id',
+        'plano_id',
+        'indicacao',
+        'carteira',
+        '_token']));
         
-        $planoPaciene = PacienteHasConvenio::create([
+        $planoPaciene = PacienteHasConvenio::where('paciente_id',$paciente->id)->updateOrCreate([
             'plano_id' => $request['plano_id'],
             'indicacao'  => $request['indicacao'],
             'carteira'  => $request['carteira'],
-            'situacao'  => $request['situacao'],
             'paciente_id'  =>$paciente->id,
         ]);
      
@@ -122,8 +126,8 @@ class PacienteController extends Controller
             if (!empty($planosAtivos)) {
                 foreach ($planosAtivos as $pa) {
                     //dd($pa);
-                    //$pa->update(['situacao'=>'INATIVO']);
-                    PacienteHasConvenio::where('paciente_id', '=', $pa->id)->update(['situacao'=>'INATIVO']);
+                    $pa->update(['situacao'=>'INATIVO']);
+                    //PacienteHasConvenio::where('paciente_id', '=', $pa->id)->update(['situacao'=>'INATIVO']);
 
                    }
             }

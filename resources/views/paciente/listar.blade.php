@@ -70,7 +70,8 @@
        
     </div>
     <div class="card-body">
-            <table class="table table-hover table-responsive-lg">
+            <div class="table-responsive">
+            <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
                 <th scope="row" >prontuario      </th>
@@ -134,6 +135,7 @@
               </tr>
               @endforeach
             </tbody>
+        </div>
           </table>
 
           <div class="card-footer">

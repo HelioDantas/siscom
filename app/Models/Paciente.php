@@ -10,6 +10,7 @@ class Paciente extends Model
     public $timestamps = false;
 
     protected $fillable = array(
+        '_token',
         'nome',
         'cpf',
         'identidade',
