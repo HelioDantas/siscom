@@ -68,14 +68,26 @@ class PacienteController extends Controller
     }
 
     public function create(PacienteRequest $request){
-        
-        $paciente = Paciente::updateOrCreate($request->except([
+
+        $paciente = Paciente::where('cpf',$request['cpf'])->firstOrNew($request->except([
+            'convenio_id',
+            'plano_id',
+            'indicacao',
+            'carteira',
+            '_token']));
+
+        $paciente->save();
+
+
+        /*$paciente = Paciente::updateOrCreate($request->except([
         'convenio_id',
         'plano_id',
         'indicacao',
         'carteira',
-        '_token']));
-        
+        '_token'])); */
+     
+       
+       
         $planoPaciene = PacienteHasConvenio::where('paciente_id',$paciente->id)->updateOrCreate([
             'plano_id' => $request['plano_id'],
             'indicacao'  => $request['indicacao'],
@@ -123,7 +135,7 @@ class PacienteController extends Controller
         if (!$planosPaciente == null) {
             //dd($request['paciente_id']);
             $planosAtivos = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->orWhere('situacao','=','NULL')->update(['situacao'=>'INATIVO']);
-            
+
                PacienteHasConvenio::updateOrCreate([
                 'paciente_id' => $paciente->id,
                 'plano_id'   => $request['plano_id'],
