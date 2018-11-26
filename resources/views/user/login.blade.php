@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{'css/login.css'}}">
         <link rel="stylesheet" href="{{'css/app.css'}}">
 
-        <style> a{ color: #2BBBAD;}
+        <style> a{ color: black;}
         span{
             float:right;
             padding-left: 1rem;
@@ -28,7 +28,7 @@
 
             <span><script type="text/javascript" src="js/data.js"></script></span>
 
-                
+
                 <div class="container">
                     <h3>Sistema de Consultorio medico</h3>
 
@@ -44,7 +44,7 @@
                         <center><small style="font-size: 16px;color:#2BBBAD;"><strong>Login de Acesso</strong></small></center>
                         {!! Form::open(['route' => 'user.login','method ' => 'post',]) !!} @csrf
 
-                       
+
                           @if (session('mensagem'))
                            <p class = "msgErro">   {{ session('mensagem') }} </p>
                               @endif
@@ -64,7 +64,7 @@
                             <div class="col s4 agoravai">
                                 <a href="{{route('recovery_senha')}}">Esqueceu a senha?</a>
                             </div>
-                            
+
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
 		var clock = document.getElementById('real-clock');
   </script>
 <script>
-    jQuery(function($){ 
+    jQuery(function($){
 
     $("#cpf").mask("999.999.999-99");
 

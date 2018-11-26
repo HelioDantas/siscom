@@ -9,11 +9,11 @@
 
     <!--<link rel="stylesheet" href="{{ 'css/app.css'}}">
     <link rel="stylesheet" href="{{'css/home.css'}}"> -->
-     
-  
+
+
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   
+
 
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
@@ -30,33 +30,33 @@
           margin-right:1rem;
 
         }
-        
+
     </style>
 </head>
 <body>
         <!-- header -->
-        
+
             <header > <!-- style="color:#000000;" -->
 
               <div class="container-fluid" id="containerLogoDataHoraH3">
-                <span class="logo"><strong>Siscon</strong></span>
-                <span id='real-clock'></span>
-                <span class="data"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
-                <h3>Sistema de Consultorio Medico</h3>
-                
-            
-                
+                    <span class="logo mb-0"><strong>Siscon</strong></span>
+                    <span  class="mb-0"id='real-clock'></span>
+                    <span class="data mb-0"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
+                    <h3>Sistema de Consultorio Medico</h3>
+
+                <div>
+
             </header>
- 
+
         <!-- end header -->
 
         <!-- menu navbar -->
-        <nav class="navbar navbar-expand-sm">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><i class="fas fa-align-justify"></i></span>
+                      </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto col-sm-3 col-md-3">
                 <li class="nav-item active">
                   <div class="dropdown">
@@ -85,7 +85,7 @@
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
                     <div class="dropdown-content">
-                     
+
                     </div>
                   </div>
                 </li>
@@ -93,7 +93,7 @@
                   <div class="dropdown">
                     <button class="dropbtn">Medicos</button>
                     <div class="dropdown-content">
-                     
+
                     </div>
                   </div>
                 </li>
@@ -120,6 +120,7 @@
                 </li>
 
               </ul>
+            </div>
               <span class="navbar-text" id="msgBemVindo">Bem vindo @php echo session("user"); @endphp </span>
 
                 <span class="navbar-text" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
@@ -127,7 +128,7 @@
                 <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 
               </form>
-            </div>
+
         </nav>
         <!-- end navbar -->
 
@@ -148,8 +149,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-    
-    
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/mascara.js') }}"></script>
 
     <script>
@@ -160,7 +161,7 @@
   </script>
 
 
-   
+
    @yield('scripts')
 </body>
 </html>
