@@ -142,6 +142,12 @@ class PacienteController extends Controller
                 'indicacao'  => $request['indicacao'],
                 'carteira'   => $request['carteira'],
                ]);
+        }
+        else if ($planosPaciente){
+         PacienteHasConvenio::where('paciente_id', '=', $paciente->id)
+         ->where('plano_id','=', $request['plano_id'])
+         ->orWhere('carteira','=',$request['carteira'])->update(['situacao'=> 'ATIVO']);
+
         } 
        // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
         $paciente->update($request->except([
