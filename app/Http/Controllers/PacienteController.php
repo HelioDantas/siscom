@@ -115,11 +115,16 @@ class PacienteController extends Controller
         //dd($request);
         $paciente = Paciente::find($id);
         $planosPaciente = $paciente->planos()->where('situacao','ATIVO')->get();
+       // dd($planosPaciente);
         if (!$planosPaciente == null) {
-            $planosAtivos = PacienteHasConvenio::where('paciente_id', '=', $id)->where('situacao','=','ATIVO' )->get();
+            //dd($request['paciente_id']);
+            $planosAtivos = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->orWhere('situacao','=','NULL')->get();
             if (!empty($planosAtivos)) {
                 foreach ($planosAtivos as $pa) {
-                    $pa->update(['situacao'=>'INATIVO'])->get();
+                    //dd($pa);
+                    //$pa->update(['situacao'=>'INATIVO']);
+                    PacienteHasConvenio::where('paciente_id', '=', $pa->id)->update(['situacao'=>'INATIVO']);
+
                    }
             }
                PacienteHasConvenio::updateOrCreate([
@@ -132,10 +137,6 @@ class PacienteController extends Controller
        // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
         $paciente->update($request->all());
         
-
-
-
-
         return redirect()->route('paciente.listar');
     }
 
