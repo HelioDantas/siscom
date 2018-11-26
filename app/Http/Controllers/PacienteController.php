@@ -107,23 +107,36 @@ class PacienteController extends Controller
 
     public function update(Request $request, $id)
     {
-        //  atualizar
-        //dd($request);
-       $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->get();
+   
+        $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->get();
+       
+        if($paciente[0]->pivot['plano_id'] == $request['plano_id']){
+            Paciente::find($id)->planos()->updateExistingPivot($paciente[0]->pivot['plano_id'], 
+                [
+                    'paciente_id'   => $id,
+                    'indicacao'  => $request['indicacao'],
+                    'carteira'   => $request['carteira'],
+                    'situacao'  =>  'ATIVO'
+                                        ]);
+       
+         }else{
+             Paciente::find($id)->planos()->updateExistingPivot($paciente[0]->pivot['plano_id'], ['situacao'=>'INATIVO']);
 
-       Paciente::find($id)->planos()->updateExistingPivot($paciente[0]->pivot['plano_id'], ['situacao'=>'INATIVO']);
+             Paciente::find($id)->planos()->attach($request['plano_id'], 
+                [ 
+                    'indicacao'  => $request['indicacao'],
+                    'carteira'  => $request['carteira']
+                                                            ]);
+
+         }
+         
+         
 
 
-               PacienteHasConvenio::updateOrCreate([
-                'paciente_id' => $paciente->id,
-                'plano_id'   => $request['plano_id'],
-                'indicacao'  => $request['indicacao'],
-                'carteira'   => $request['carteira']
-               ]);
-        
-       // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
-        Paciente::update($request->all());
-        
+            // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+            $paciente = Paciente::find($id);
+            $paciente->update($request->all());
+
 
 
 
