@@ -111,8 +111,7 @@
             <label for="cpf">Cpf</label>
             <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
 
-            <label for="cpf">Cpf<label>
-            <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" maxlength="13" required
+           
 
             value =   {{old('cpf')}}>
 
