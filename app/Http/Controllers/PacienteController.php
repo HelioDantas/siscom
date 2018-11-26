@@ -126,8 +126,8 @@ class PacienteController extends Controller
             if (!empty($planosAtivos)) {
                 foreach ($planosAtivos as $pa) {
                     //dd($pa);
-                    $pa->update(['situacao'=>'INATIVO']);
-                    //PacienteHasConvenio::where('paciente_id', '=', $pa->id)->update(['situacao'=>'INATIVO']);
+                   // $pa->update(['situacao'=>'INATIVO']);
+                    PacienteHasConvenio::where('paciente_id', '=', $pa->id)->update(['situacao'=>'INATIVO']);
 
                    }
             }
@@ -139,7 +139,12 @@ class PacienteController extends Controller
                ]);
         } 
        // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
-        $paciente->update($request->all());
+        $paciente->update($request->except([
+            'convenio_id',
+            'plano_id',
+            'indicacao',
+            'carteira',
+            '_token']));
         
         return redirect()->route('paciente.listar');
     }
