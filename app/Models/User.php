@@ -21,7 +21,7 @@ class User extends Authenticable
 
     public static function buscar($cpf){
 
-   return  DB::table('sis_usuario')->where('cpf', $cpf)->first();
+   return  User::where('cpf', $cpf)->first();
         //return $this->whereKey($cpf)->first('cpf');
     }
 

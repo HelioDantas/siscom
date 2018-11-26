@@ -20,6 +20,12 @@
         float:right;
     }
 
+    .btm{
+         margin-top: 0.5rem;
+        float:left;
+    }
+
+
    
 </style>
 @endsection
@@ -38,16 +44,19 @@
 
 @section('tela')
 <!--<a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>-->
-
+   
 <div class="container-fluid col-lg-12">
 <div class="card text-center mb-3">
-    <div class="card-header">
-              @if(old('nome'))
 
-              <a class="alert alert-success" >Paciente {{old('nome')}} cadastrado!!</a>
-          
-    
-    @endif
+
+    <div class="card-header">
+            @if(old('nome'))
+            <div class = " btm">
+              <a class = "alert alert-success" >Paciente cadastrado!!</a>
+            </div>
+          @endif
+
+
            <h3 class="titulopacientes">Pacientes Cadastrados</h3>
             <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
            <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
@@ -58,7 +67,7 @@
             <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
-        
+       
     </div>
     <div class="card-body">
             <table class="table table-hover table-responsive-lg">
