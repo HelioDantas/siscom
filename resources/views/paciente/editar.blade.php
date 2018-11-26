@@ -113,8 +113,8 @@
         <div class="col">
             <div class="form-group">
               <label for="cpf">Orgão Emissor*</label>
-              <input type="text" name="org_emissor" id="org Emissor"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
-              <small id="orgEmissor" class="text-muted">Org.Emissor</small>
+              <input type="text" name="org_emissor" id="org_emissor"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
+              <small id="org_emissor" class="text-muted">Org.Emissor</small>
             </div>
             </div><!--col cpf -->
     

@@ -68,6 +68,7 @@ class PacienteController extends Controller
     }
 
     public function create(PacienteRequest $request){
+
         
         $paciente = Paciente::create($request->all());
         $paciente->planos()->attach($request['plano_id'], 
@@ -75,6 +76,7 @@ class PacienteController extends Controller
             'carteira'  => $request['carteira']]);
 
        
+
          return redirect()->route('paciente.listar')->withInput();
 
         
@@ -87,9 +89,9 @@ class PacienteController extends Controller
     {
         //  form para editar infos de um paciente
        $p = Paciente::find($id);
-       $plano = $p->planos()->where('situacao','ATIVO')->first();
+      $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
-        $phc = PacienteHasConvenio::where('paciente_id','=',$id,'and','plano_id','=',$plano->convenio_id )->first();
+        $phc = $plano->pivot;
         $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
        } else {
            $plano =null; $phc =null; $convenio =null; 
@@ -107,6 +109,7 @@ class PacienteController extends Controller
 
     public function update(Request $request, $id)
     {
+
    
         $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->get();
        
@@ -141,6 +144,32 @@ class PacienteController extends Controller
 
 
 
+/*
+        //  atualizar
+        //dd($request);
+        $paciente = Paciente::find($id);
+        $planosPaciente = $paciente->planos()->where('situacao','ATIVO')->get();
+       // dd($planosPaciente);
+        if (!$planosPaciente == null) {
+            //dd($request['paciente_id']);
+            $planosAtivos = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->orWhere('situacao','=','NULL')->update(['situacao'=>'INATIVO']);
+
+               PacienteHasConvenio::updateOrCreate([
+                'paciente_id' => $paciente->id,
+                'plano_id'   => $request['plano_id'],
+                'indicacao'  => $request['indicacao'],
+                'carteira'   => $request['carteira'],
+               ]);
+        } 
+       // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+        $paciente->update($request->except([
+            'convenio_id',
+            'plano_id',
+            'indicacao',
+            'carteira',
+            '_token']));
+        
+*/
         return redirect()->route('paciente.listar');
     }
 

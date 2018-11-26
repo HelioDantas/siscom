@@ -70,27 +70,28 @@
        
     </div>
     <div class="card-body">
+            <div class="table-responsive">
             <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
-                <th >prontuario      </th>
-                <th >nome            </th>
-                <th >cpf             </th>
-                <th >identidade      </th>
-                <th >Nascimento</th>
-                <th >sexo            </th>
-     {{--       <th >etnia           </th>      --}}
-                <th >nacionalidade   </th>
-    {{--        <th >naturalidade    </th>   
-                <th >escolaridade    </th>--}}
+                <th scope="row" >prontuario      </th>
+                <th scope="col">nome            </th>
+                <th scope="col">cpf             </th>
+                <th >identidade      </th> 
+                <th scope="col">Nascimento</th>
+         {{--       <th >sexo            </th> --}}
+         {{--   <th >etnia           </th>   --}}    
+                <th scope="col">nacionalidade   </th>
+            <th scope="col" >naturalidade    </th>   
+                <th scope="col">escolaridade    </th>
     <!--        <th scope="col">rua             </th>
                 <th scope="col">numero          </th>
                 <th scope="col">bairro          </th>
                 <th scope="col">cep             </th>
                 <th scope="col">cidade          </th>
                 <th scope="col">estado          </th>
-                <th scope="col">telefone        </th>
-                <th scope="col">celular         </th>-->
+                <th scope="col">telefone        </th>-->
+                <th scope="col">celular         </th>
                 <th scope="col">email           </th> 
        {{--          <th scope="col">profissao       </th> --}}
                 <th scope="col">status        </th>  
@@ -109,19 +110,19 @@
                  <td class="cpf">       {{$p->cpf}}                 </td>
                  <td>       {{$p->identidade}}          </td>
                  <td>       {{$p->dataDeNascimento}}    </td>
-                 <td>       {{$p->sexo}}                </td>
-  {{--            <td>       {{$p->etnia}}               </td>   --}}
+       {{--          <td>       {{$p->sexo}}                </td>
+              <td>       {{$p->etnia}}               </td>   --}}
                  <td>       {{$p->nacionalidade}}       </td>
-    {{--              <td>       {{$p->naturalidade}}        </td> 
-                 <td>       {{$p->escolaridade}}        </td>  --}}
+                  <td>       {{$p->naturalidade}}        </td> 
+                 <td>       {{$p->escolaridade}}        </td>  
     <!--         <td>       {{$p->rua}}                 </td>
                  <td>       {{$p->numero}}              </td>
                  <td>       {{$p->bairro}}              </td>
                  <td>       {{$p->cep}}                 </td>
                  <td>       {{$p->cidade}}              </td>
                  <td>       {{$p->estado}}              </td>
-                 <td>       {{$p->telefone}}            </td>
-                 <td>       {{$p->celular}}             </td>-->
+                 <td>       {{$p->telefone}}            </td>-->
+                 <td>       {{$p->celular}}             </td>
                  <td>       {{$p->email}}               </td> 
       {{--           <td>       {{$p->profissao}}           </td>  --}}
                  <td>       {{$p->status}}            </td>  
@@ -134,6 +135,7 @@
               </tr>
               @endforeach
             </tbody>
+        </div>
           </table>
 
           <div class="card-footer">

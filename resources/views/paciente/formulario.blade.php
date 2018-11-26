@@ -107,8 +107,13 @@
     <div class = "col-md-2 mb-3">
 
         <div class="form-group">
+
             <label for="cpf">Cpf</label>
             <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
+
+            <label for="cpf">Cpf<label>
+            <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" maxlength="13" required
+
             value =   {{old('cpf')}}>
 
                 @if($errors->has('cpf'))
@@ -122,27 +127,13 @@
 
 
         <div class="form-group col-md-2 mb-3">
-            <label for="RG">RG</label>
-            <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control{{ $errors->has('identidade') ? 'is-invalid': ''  }}" placeholder="identidade" aria-describedby="identidade"
-            value =   {{old('identidade')}}>
-
-            @if($errors->has('identidade'))
-                <div class="invalid-feedback">
-                    {{$errors->first('identidade')}}
-                    </div>
-            @endif
-
-        </div>
-
-
-        <div class="form-group col-md-2 mb-3">
             <label for="orgEmissor">Orgão Emissor</label>
 
-            <input type="text" name="orgEmissor" id="org Emissor" maxlength="15"  required class="form-control {{$errors->has('orgEmissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby="identidade"
-            value =   {{old('orgEmissor')}}>
-                 @if($errors->has('orgEmissor'))
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby="identidade"
+            value =   {{old('org_emissor')}}>
+                 @if($errors->has('org_emissor'))
             <div class="invalid-feedback">
-                {{$errors->first('orgEmissor')}}
+                {{$errors->first('org_emissor')}}
             </div>
                 @endif
 
