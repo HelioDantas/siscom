@@ -24,20 +24,32 @@ class MedicoController extends Controller
              ->where('sis_medico_tem_plano.status', 'ATIVO')->pluck('id');
 
            $planos = Plano::whereNotIn('id', $dd)
-           
+       
            
             
            ->paginate(10);
+               $medico = $id;
            return view('medico.planos', compact('medico', 'planos'));
 
    }
 
 
-    public function planoCreate(Request $request){
+    public function planoCreate(Request $request,  $id, $medico_id){
+      //  return dd($request);
+     
+       $medico =  Medico::find($medico_id);
 
+       if( $medico->planos()->where('plano_id', $id)->get()){
+            Medico::find($medico_id)->planos()->updateExistingPivot($id, ['status'=>'ATIVO']);
+         //   $medico->planos()->where('plano_id', $id)->update('status', 'ATIVO');
+       }else{
+            $medico->planos()->attach($id,
+            ['status'=>'ATIVO']
+            );
 
+         }       
+        return redirect()->route('medico.planoNovo', ['id' => $medico]);
 
-   }
-
+    }
 
 }

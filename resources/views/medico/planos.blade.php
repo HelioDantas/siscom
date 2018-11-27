@@ -82,16 +82,13 @@
                  <td class="prontuario">{{$p->convenio->nome}}</td>
                   <td class="cpf">{{$p->id}}</td>
                  <td class="nome">{{$p->nome}} </td>
-                
+           
               
                 <td>
-                       {!! Form::open(['route' => 'medico.planoCreate','method ' => 'post',]) !!} @csrf
 
-
-                       <imput type = "hidden"   name = "id" value = {{$p->id }} > </imput>
-                        <a class="btn btn-outline-primary"  type = "submit"  title="adicionar novo plano"><i class="fas fa-plus-circle"></i></a> 
-
-                       {!! Form::close() !!}
+                 <a id="excluir"name = "excluir" class="btn btn-outline-primary" type="button" href="{{route('medico.planoCreate',['id' => $p->id,'medico_id'=>$medico])}}"
+                      data-toggle="tooltip" data-placement="top" title="adicionar novo plano"><i class="fas fa-plus-circle"></i></a>  
+                
                 </td>
 
               </tr>
