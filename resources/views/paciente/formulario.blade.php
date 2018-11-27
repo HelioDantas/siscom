@@ -162,7 +162,7 @@
     <div class="col-md-2 mb-3">
         <div class="form-group">
             <label for="dataDeNascimento">Data Nascimento</label>
-            <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}" placeholder=""
+            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="2017-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
             value =   {{old('dataDeNascimento')}}>
 
                 @if($errors->has('dataDeNascimento'))
