@@ -441,7 +441,19 @@
         </div>
     </div>  <!-- col Plano-->
 
+   <div class="col-md-2 mb-3">
+                <div class="form-group">
 
+                    <label for="situacao">Situacao</label>
+                      <select required id="situacao" name="situacao" class="form-control {{$errors->has('situacao') ? 'is-invalid': '' }}"@if($phc != null)) value = {{$phc->situacao}} @else value = "" @endif >>
+                      <option value="ATIVO">Ativo</option>
+                        <option value="INATIVO">Inativo</option>
+                      </select>
+                             @if($errors->has('situacao'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('situacao')}}
+                        </div>
+                        @endif
 
     <!--<div class="col">
         <div class="form-group">

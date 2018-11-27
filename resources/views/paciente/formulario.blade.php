@@ -54,7 +54,7 @@
 
         margin:0;
     }
-
+  
 
 </style>
 
@@ -68,7 +68,8 @@
 
         {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}
         @csrf
-        <div class="form-group">
+      
+        <div class="form-group ">
         <div class="form-group navegacao ttt">
                 <div class="col">
                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
@@ -79,7 +80,7 @@
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
             </div>
-
+         
 
             <h3 class="titulocadastro">Cadastro <strong>| Paciente  </strong></h3>
         </div>
@@ -111,7 +112,7 @@
             <label for="cpf">Cpf</label>
             <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
 
-           
+            
 
             value =   {{old('cpf')}}>
 
@@ -535,7 +536,19 @@
                                                 </div>
                   </div>  <!-- col Plano-->
 
+                    <div class="col-md-2 mb-3">
+                <div class="form-group">
 
+                    <label for="situacao">Situacao</label>
+                      <select required id="situacao" name="situacao" class="form-control {{$errors->has('situacao') ? 'is-invalid': '' }}"value =   {{old('situacao')}}>
+                      <option value="ATIVO">Ativo</option>
+                        <option value="INATIVO">Inativo</option>
+                      </select>
+                             @if($errors->has('situacao'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('situacao')}}
+                        </div>
+                        @endif
 
 
                 <!--<div class="col-md-2 mb-3">

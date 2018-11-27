@@ -120,7 +120,7 @@ class PacienteController extends Controller
                     'paciente_id'   => $id,
                     'indicacao'  => $request['indicacao'],
                     'carteira'   => $request['carteira'],
-                    'situacao'  =>  'ATIVO'
+                    'situacao'  =>  $request['situacao']
                                             ]);
        
          }else{
