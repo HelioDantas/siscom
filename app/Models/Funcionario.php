@@ -36,13 +36,13 @@ class Funcionario extends Model
 
     public function user(){
 
-        return $this->hasOne('App\Models\User', 'matricula', 'Sis_funcionario_matricula');
+        return $this->hasOne('App\Models\User', 'Sis_funcionario_matricula', 'matricula');
 
     }
 
     public function medico(){
 
-        return $this->hasOne('App\Models\Medico', 'matricula', 'Sis_funcionario_matricula');
+        return $this->hasOne('App\Models\Medico', 'Sis_funcionario_matricula', 'matricula');
 
     }
 }

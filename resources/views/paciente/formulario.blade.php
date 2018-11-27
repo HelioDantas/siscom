@@ -125,11 +125,28 @@
     </div>
 
 
+   <div class="col-md-2 mb-3">
+            <div class="form-group">
+              <label for="cpf">RG</label>
+              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
+ 
+               value =   {{old('identidade')}}>
+
+                @if($errors->has('identidade'))
+                <div class="invalid-feedback">
+                    {{$errors->first('identidade')}}
+                    </div>
+                @endif
+ 
+              
+            </div>
+            </div><!--col cpf -->
+
 
         <div class="form-group col-md-2 mb-3">
             <label for="orgEmissor">Orgão Emissor</label>
 
-            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby="identidade"
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
             value =   {{old('org_emissor')}}>
                  @if($errors->has('org_emissor'))
             <div class="invalid-feedback">

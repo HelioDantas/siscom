@@ -429,19 +429,64 @@
             </div>
             </div>
 
-   
+            </fieldset><!--endereço-->
+  @if($p->medico)
+            <hr>
+<div class="col-4">
+     <button  class="btn btn-secondary"  data-toggle="collapse" type = "button" data-target="#demo">Planos</button>
+    
+ </div>
+        <div id="demo" class="collapse">
+      
+            
+            <div class="form-group navegacao">
+                   <div class="col">
+         <a  class="btn btn-outline-success recon"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="novo"><i class="fas fa-plus-circle"></i></a>
+           </div>
+        
+             </div>  
+                <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="row" >Convenio</th>
+                    <th scope="col">Plano</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Opção</th>
+                    
+              </tr>
+            </thead>
+            <tbody>
+              
+                @php $cont = 0; @endphp
+                @foreach ($p->medico->planos as $plano)
+                @php $cont = $cont + 1; @endphp
+                    
+              <tr class="Filter">
+              <th scope="row">{{$plano->convenio->nome}}</th>
+        
+                 <td class="">{{$plano->nome}} </td>
+                 <td class="">{{$plano->pivot->status}}</td>
+                
+                <td>
+                    <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="alguma({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>  
+
+                </td>
+
+              </tr>
+              @endforeach
+            
+            </tbody>
+      
+          </table>
+
+         
+    </div>
+      @endif
 {!! Form::close() !!}
 </div><!-- container -->
 
 @endsection
 
 @section('scripts')
-    <!-- recarregando a pagina pelo butao cancelar nos modelos de formularios html  o funcao e ativada pelo (type="buttao)-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-              $(':button').click(function() {
-                  location.reload();
-              });
-        });       
-     </script>
+   
 @endsection

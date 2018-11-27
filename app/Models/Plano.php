@@ -23,7 +23,7 @@ class Plano extends Model
 
 
        public function convenio(){
-        return $this->belongsTo('App\Models\Convenio', 'cnpj');
+        return $this->belongsTo('App\Models\Convenio','convenio_id', 'cnpj' );
     
 
     }
