@@ -11,7 +11,9 @@
     
     }
     .titulopacientes{
-      display:ruby-base-container;
+       margin-left: 17rem;
+      text-align: center;
+      float:left;
     }
     .container-fluid{
         margin-top: 1rem;
@@ -50,23 +52,12 @@
 
 
     <div class="card-header">
-            @if(old('nome'))
-            <div class = " btm">
-              <a class = "alert alert-success" >Planos do medico!!</a>
-            </div>
-          @endif
+       
+              <h3 class="titulopacientes">Planos</h3>
+        
 
 
-           <h3 class="titulopacientes">Pacientes Cadastrados</h3>
-            <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
-           <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
-             <a  id = "recon"class="btn btn-outline-success"  href="{{route('paciente.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
-            
-           <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
-                @csrf
-            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+
        
     </div>
     <div class="card-body">
@@ -75,26 +66,32 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="row" >Convenio</th>
+                     <th scope="col">id</th>
                 <th scope="col">Plano</th>
-                <th scope="col">Status</th>
-                <th >identidade </th> 
-                <th scope="col">Nascimento</th>
+                <th scope="col">Opção</th>
+         
+               
               </tr>
             </thead>
             <tbody>
-                @php $cont = 0; @endphp
-                @foreach ($pacientes as $p)
-                @php $cont = $cont + 1; @endphp
-                    
+            
+                @foreach ($planos as $p)
+
+               
               <tr class="Filter">
-                 <td class="prontuario">{{$p->id}}</td>
-                 <td class="nome">{{$p->nome} </td>
-                 <td class="cpf">{{$p->cpf}}</td>
-                 <td> {{$p->identidade}}</td>
-                <td>
-                    <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="alguma({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>  
+                 <td class="prontuario">{{$p->convenio->nome}}</td>
+                  <td class="cpf">{{$p->id}}</td>
+                 <td class="nome">{{$p->nome}} </td>
                 
-                    <a class="btn btn-outline-primary" href="editar/{{$p->id}}"  title="editar"><i class="fas fa-edit"></i></a> 
+              
+                <td>
+                       {!! Form::open(['route' => 'medico.planoCreate','method ' => 'post',]) !!} @csrf
+
+
+                       <imput type = "hidden"   name = "id" value = {{$p->id }} > </imput>
+                        <a class="btn btn-outline-primary"  type = "submit"  title="adicionar novo plano"><i class="fas fa-plus-circle"></i></a> 
+
+                       {!! Form::close() !!}
                 </td>
 
               </tr>
@@ -104,12 +101,12 @@
           </table>
 
           <div class="card-footer">
-            @if($cont==9)
+        
 
                 <p></p>  
 
-            @endif
-            {!!$pacientes->links()!!}
+    
+            {!!$planos->links()!!}
           </div>
     </div>
 
@@ -125,3 +122,10 @@
 <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
  <script type="text/javascript" src="{{ asset('js/confirmacaoDeExclusao.js') }}"></script>   
     @endsection
+
+
+
+
+
+
+

@@ -50,6 +50,14 @@
         margin-top: 1rem;
     }
 
+    .tamanho{
+
+        width: 200%;
+        
+    }
+    .modal-dialog{
+  width: 500000px;
+}
 
 </style>
 @endsection
@@ -441,8 +449,26 @@
             
             <div class="form-group navegacao">
                    <div class="col">
-         <a  class="btn btn-outline-success recon"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="novo"><i class="fas fa-plus-circle"></i></a>
-           </div>
+         <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video"   data-toggle="tooltip" data-placement="top" title="adcionar novo plano"><i class="fas fa-plus-circle"></i></a>
+          
+            
+              <div class="modal fade  "id="modal-video" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg "role="document">      
+                    
+                        <div class="modal-content ">
+                            <div class="modal-header">
+                                <button type="button" class="close"  onClick="history.go(0)"  data-dismiss="modal" aria-hidden="true">close <i class="fa fa-times"></i></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <iframe type="text/html" width="100%" height="100%" src="{{route('medico.planoNovo', ['id'=>$p->matricula])}}" frameborder="0" allowfullscreen=""></iframe>
+                                
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
         
              </div>  
                 <table class="table table-hover">
