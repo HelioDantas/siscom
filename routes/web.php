@@ -110,6 +110,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::View('/agoravai' , 'dashboard');
 
 
+  Route::prefix('medico')->middleware('Autorizador')->group(function () {
+  Route::get('novo', 'UserController@novo')->name('medico.plano');
+  Route::any('desativar_plano/{id}&&{plano_id}', 'MedicoController@desativar_plano')->name('medico.desativar_plano');
+
+
 Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
   Route::get('cad'            , 'FuncionarioController@novo')->name(        'funcionario.novo'      );
@@ -124,6 +129,11 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::any('buscar'   , 'FuncionarioController@buscar')->name(     'funcionario.buscar'   );
 
+
+
+
+
+});
 
 
 });

@@ -458,7 +458,7 @@
             <tbody>
               
                 @php $cont = 0; @endphp
-                @foreach ($p->medico->planos as $plano)
+                @foreach ($p->medico->planos()->where('sis_medico_tem_plano.status', 'ATIVO')->get() as $plano)
                 @php $cont = $cont + 1; @endphp
                     
               <tr class="Filter">
@@ -468,7 +468,9 @@
                  <td class="">{{$plano->pivot->status}}</td>
                 
                 <td>
-                    <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="alguma({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>  
+        
+                    <a id="excluir"name = "excluir" class="btn btn-outline-danger" type="button" href="{{route('medico.desativar_plano',['id' => $p->matricula,'plano_id'=>$plano->id ])}}"
+                      data-toggle="tooltip" data-placement="top" title="Desativar"><i class="fas fa-trash"></i></a>  
 
                 </td>
 

@@ -9,7 +9,12 @@ class MedicoController extends Controller
 {
     
    
-    
+    public function desativar_plano(Request $request, $id, $plano_id){
+        
+        Medico::find($id)->planos()->updateExistingPivot($plano_id, ['status'=>'INATIVO']);
+
+        return back();
+   }
 
 
 
