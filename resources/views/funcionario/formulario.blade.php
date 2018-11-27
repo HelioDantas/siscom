@@ -349,7 +349,7 @@
             <th scope="row" >Convenio</th>
             <th scope="col">Plano</th>
             <th scope="col">Status</th>
-            <th scope="col">Atender/th>
+            <th scope="col">Atender</th>
 
       </tr>
     </thead>
@@ -367,7 +367,7 @@
 
         <td>
             <div class="checkbox">
-s
+
                     <input name = "$p[]" type="checkbox" value= {{$plano->id }}
                      </div>
 
