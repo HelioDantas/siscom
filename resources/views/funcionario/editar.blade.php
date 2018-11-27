@@ -301,12 +301,11 @@
                             
                             @endswitch
 
-                            <option value= "{{$p->profissao}}">{{$tipo}}</option>
+                            <option selected value= "{{$p->profissao}}">{{$tipo}}</option>
                               @else
-                    <option value=""></option>
+               
                       @endif
-                    <option value="M">Medico</option>
-                      <option selected value="A">Atendente</option>
+                    
                     </select>
 
              
@@ -441,7 +440,7 @@
   @if($p->medico)
             <hr>
 <div class="col-4">
-     <button  class="btn btn-secondary"  data-toggle="collapse" type = "button" data-target="#demo">Planos</button>
+     <button  class="btn btn-secondary"  data-toggle="collapse" type = "button" data-target="#demo" @if(old('email')) aria-expanded="true" @endif >Planos</button>
     
  </div>
         <div id="demo" class="collapse">
