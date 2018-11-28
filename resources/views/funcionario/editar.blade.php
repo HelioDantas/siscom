@@ -594,13 +594,14 @@
               <div class="modal fade  "id="modal-video" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg "role="document">
 
-                        <div class="modal-content ">
+                        <div class="modal-content "   height = "5000rem">
                             <div class="modal-header">
+                             
                                 <button type="button" class="close"  onClick="history.go(0)"  data-dismiss="modal" aria-hidden="true">close <i class="fa fa-times"></i></button>
                             </div>
                             <div class="modal-body">
                               <div class="row">
-                                <iframe type="text/html" width="100%" height="100%" src="{{route('medico.planoNovo', ['id'=>$p->matricula])}}" frameborder="0" allowfullscreen=""></iframe>
+                                <iframe type="text/html" width="5000rem" height="650rem" src="{{route('medico.planoNovo', ['id'=>$p->matricula])}}" frameborder="0" allowfullscreen=""></iframe>
 
                                     </div>
                             </div>
