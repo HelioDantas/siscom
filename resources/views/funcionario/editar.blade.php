@@ -396,7 +396,7 @@
                      @if(!empty($p)) value = "{{$p->telefone}}" @else value = {{old('telefone')}} @endif>
 
                       @if($errors->has('telefone'))
-                <div class="invalid-feedback">
+                             <div class="invalid-feedback">
                     {{$errors->first('telefone')}}
                     </div>
                     @endif
@@ -457,10 +457,12 @@
                 <div class="form-group">
                   <label for="especialidade" >Especialidade 1</label>
                   <select  id="especialidade" name="especialidade1" class="form-control"  >
-                    <option value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
-
+                      @if (!empty($s))
+                        <option   value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
+                      @endif
+                      <option value=""selected >selecione</option>
                       @foreach($especialidades as $e)
-                            <option value="{{$e->id}}">{{$e->nome}}</option>
+                            <option  value="{{$e->id}}">{{$e->nome}}</option>
                      @endforeach
                   </select>
                 </div>
@@ -471,7 +473,10 @@
                 <div class="form-group teste">
                   <label for="especialidade2">Especialidade 2</label>
                   <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
-                    <option value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
+                        @if (!empty($s))
+                        <option   value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
+                      @endif
+                      <option value=""selected ></option>
                       @foreach($especialidades as $e)
                       <option value="{{$e->id}}">{{$e->nome}}</option>
                @endforeach
