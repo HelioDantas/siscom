@@ -80,10 +80,8 @@
 @section('tela')
 <hr>
 <div class="container-fluid col-lg-10 corpo-paciente">
-{!! Form::open(['route' => ['funcionario.update', $p->matricula],'method ' => 'post',]) !!}
 
- @csrf
-{{ method_field('PUT') }}
+
 
 
      <div class="form-group ">
@@ -614,7 +612,7 @@
 
     </div>
       @endif
-{!! Form::close() !!}
+
 </div><!-- container -->
 
 @endsection
