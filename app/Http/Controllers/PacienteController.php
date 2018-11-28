@@ -25,7 +25,7 @@ class PacienteController extends Controller
     }
 
 
-    public function show($id) 
+    public function shown($id) 
     {
 
     $id = Request::route('id');
@@ -205,5 +205,24 @@ class PacienteController extends Controller
        // DB::delete("delete from sis_paciente where prontuario = $prontuario");
         return back();
         //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
+    }
+
+         public function show($id)
+    {
+      
+      $p = Paciente::find($id);
+      $plano = $p->planos()->where('situacao','ATIVO')->first();
+       if ( !$plano == null) {
+        $phc = $plano->pivot;
+        $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+       } else {
+           $plano =null; $phc =null; $convenio =null; 
+       }
+       
+
+      
+       $convenios = Convenio::all();
+        return view('paciente.show' , compact('p','convenio','convenios','plano','phc'));
+
     }
 }

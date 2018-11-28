@@ -130,6 +130,7 @@
                     <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="alguma({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>  
                 
                     <a class="btn btn-outline-primary" href="editar/{{$p->id}}"  title="editar"><i class="fas fa-edit"></i></a> 
+                      <a class="btn btn-outline-secondar" href="show/{{$p->id}}"  title="visualizar"> <i class="fas fa-eye "></i></a> 
                 </td>
 
               </tr>
