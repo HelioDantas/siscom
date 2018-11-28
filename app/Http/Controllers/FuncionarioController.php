@@ -8,6 +8,7 @@ use App\Models\Plano;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class FuncionarioController extends Controller
 {
@@ -108,8 +109,20 @@ class FuncionarioController extends Controller
         //  form para editar infos de um paciente
          $p = Funcionario::find($id);
 
+        $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula',$p->matricula)->get();
 
-        return view('funcionario.editar')->with('p' , $p);
+
+        foreach ($m as $m->Sis_especialidade_id => $espec) {
+            $tt = $espec->Sis_especialidade_id;
+           $s[] = Especialidade::find($tt);
+          
+        }
+        $s1 = $s[0];
+        $s2 = $s[1];
+       $especialidades = Especialidade::all();
+      
+        //dd($m);
+        return view('funcionario.editar', compact('p','s','especialidades'));
     }
 
 

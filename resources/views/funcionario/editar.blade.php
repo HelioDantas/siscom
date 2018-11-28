@@ -330,7 +330,33 @@
 
                 <small id="crm" class="text-muted">CRM</small>
                 </div>
-                </div><!--col nome -->
+            </div><!--col nome -->
+
+            <div class="col-3 ">
+                <div class="form-group">
+                  <label for="especialidade" >Especialidade 1</label>
+                  <select  id="especialidade" name="especialidade1" class="form-control"  >
+                    <option value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
+
+                      @foreach($especialidades as $e)
+                            <option value="{{$e->id}}">{{$e->nome}}</option>
+                     @endforeach
+                  </select>
+                </div>
+         </div>
+
+
+               <div class="col-3 ">
+                <div class="form-group teste">
+                  <label for="especialidade2">Especialidade 2</label>
+                  <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
+                    <option value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
+                      @foreach($especialidades as $e)
+                      <option value="{{$e->id}}">{{$e->nome}}</option>
+               @endforeach
+                  </select>
+                </div>
+        </div>
 
 
 
