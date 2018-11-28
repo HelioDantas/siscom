@@ -170,7 +170,7 @@
         <div class="form-group">
             <label for="dataDeNascimento">Data Nascimento</label>
             <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-             @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = {{old('dataDeNascimento')}}@endif>
+             @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = {{old('dataDeNascimento')}} @endif>
 
                 @if($errors->has('dataDeNascimento'))
         <div class="invalid-feedback">
@@ -434,7 +434,7 @@
                         <div class="invalid-feedback">
                         Email invalido
                         </div>
-                                </div>
+                         </div>
 
 
             </div> <!-- col Email -->
@@ -445,9 +445,9 @@
                 <input type="text" name="crm" id="" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
                   @if(!empty($p)) value = "{{$p->crm}}" @else value =  {{old('crm')}}  @endif>
            
-                      @if($errors->has('email'))
+                      @if($errors->has('crm'))
                     <div class="invalid-feedback">
-                        {{$errors->first('email')}}
+                        {{$errors->first('crm')}}
                         </div>
                         @endif
                 </div>
@@ -469,7 +469,7 @@
                          <div class="form-group">
                                <label for="cep">Cep</label>
                                <input type="text"  required class="form-control input-md {{$errors->has('cep') ? 'is-invalid': '' }}" name="cep" id="cep"
-                                placeholder="Apenas numeros" maxlength="15"  @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('cep')}}  @endif>
+                                placeholder="Apenas numeros" maxlength="15"  @if(!empty($p)) value = "{{$p->cep}}" @else value =  {{old('cep')}}  @endif>
                                       @if($errors->has('cep'))
                             <div class="invalid-feedback">
                                 {{$errors->first('cep')}}
