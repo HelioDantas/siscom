@@ -109,9 +109,6 @@
 
             <label for="cpf">Cpf</label>
             <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
-
-            
-
             value =   {{old('cpf')}}>
 
                 @if($errors->has('cpf'))
@@ -177,7 +174,7 @@
 
 
 
-<div class="row">
+<div class="row"> <!--naciolidade-->
 
     <div class="col-md-2 mb-3">
         <div class="form-group">

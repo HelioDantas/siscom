@@ -101,9 +101,9 @@
       <h4 class="titulocadastro">Atualizar Dados do {{$p->nome}}</h4>
 
 
-        <fieldset class="form-group">
+        <fieldset class="form-group dadosForm">
                 <legend aling="center">Dados Pessoais</legend>
-<div class="row">
+<div class="row"><!-- dados pessoas -->
 
   <div class="form-group col-md-4 mb-3">
         <label for="nome">Nome</label>
@@ -117,13 +117,6 @@
         @endif
     </div>
 
-<div class="col-2">
-<div class="form-group">
-  <label for="cpf">Cpf</label>
-  <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId"  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
-  <small id="cpf" class="text-muted">cpf</small>
-</div>
-</div><!--col cpf -->
 
     <div class = "col-md-2 mb-3">
 
@@ -162,7 +155,7 @@
             <label for="orgEmissor">Orgão Emissor</label>
 
             <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
-            value =   {{old('org_emissor')}}>
+           @if(!empty($p)) value = "{{$p->identidade}}" @else value = {{old('org_emissor')}} @endif>
                  @if($errors->has('org_emissor'))
             <div class="invalid-feedback">
                 {{$errors->first('org_emissor')}}
@@ -188,14 +181,12 @@
 
         </div>
     </div><!--col dt Nascimento-->
+</div><!-- row dados pessoas 1-->
 
-        <div class="col-2">
-                <div class="form-group">
-                  <label for="">Nacionalidade</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro" maxlength="50"  @if(!empty($p)) value = "{{$p->nacionalidade}}" @else value = "" @endif>
 
-                </div>
-        </div><!--col nacionalidade -->
+
+<div class="row"> <!--naciolidade-->
+    
             <div class="col-md-2 mb-3">
         <div class="form-group">
           <label for="nacionalidade">Nacionalidade</label>
@@ -226,16 +217,16 @@
             </div>
     </div><!--col naturalidade -->
 
-         <div class="col-3">
+         <div class="col-md-3 mb-3">
             <div class="form-group">
             
-                <label for="selectbasic">Escolaridade <h11>*</h11></label>
+                <label for="selectbasic">Escolaridade </label>
         
-                  <select required id="escolaridade" name="escolaridade" class="form-control">
+                  <select required id="escolaridade" name="escolaridade" class="form-control {{ $errors->has('escolaridade') ? 'is-invalid': ''  }}">
                         @if(!empty($p->escolaridade))
                         <option value="{{$p->escolaridade}}">{{$p->escolaridade}}</option>
                          @endif
-                  <option value=""></option>
+                  <option value = {{old('escolaridade')}}></option>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
                     <option value="Fundamental Completo">Fundamental Completo</option>
                     <option value="Medio Incompleto">Médio Incompleto</option>
@@ -243,13 +234,19 @@
                     <option value="Superior Incompleto">Superior Incompleto</option>
                     <option value="Superior Completo">Superior Completo</option>
                   </select>
-               
+                @if($errors->has('escolaridade'))
+             <div class="invalid-feedback">
+              {{$errors->first('escolaridade')}}
+            </div>
+            @endif
             </div>
         </div>
-            <div class="col-2">
+
+    
+            <div class="col-md-2 mb-3">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
-                      <select required id="prof" name="profissao"  class="form-control">
+                      <select required id="prof" name="profissao"  class="form-control {{$errors->has('profissao') ? 'is-invalid': '' }}" value =   {{old('profissao')}}>
 
                   @if(!empty($p->profissao))
 
@@ -274,17 +271,21 @@
 
                     </select>
 
-
+                            @if($errors->has('profissao'))
+                <div class="invalid-feedback">
+                    {{$errors->first('profissao')}}
+                    </div>
+                     @endif
                 </div>
-        </div><!--col nacionalidade -->
+        </div><!--col profissao -->
 
+        
 
+    <div class="col-md-2 mb-3">
+            <div class="form-group">
 
-<div class="col-2">
-        <div class="form-group">
-
-            <label for="selectbasic">Sexo </label>
-              <select required id="sexo" name="sexo" class="form-control" >
+                <label for="selectbasic">Sexo </label>
+                <select required id="genero" name="sexo" class="form-control {{ $errors->has('sexo') ? 'is-invalid': ''  }}"value =   {{old('sexo')}}>
                  @if(!empty($p->sexo))
 
                     @switch($p->sexo)
@@ -313,15 +314,22 @@
                 <option value="N">Não declarado</option>
                 <option value="I">Indefinido</option>
               </select>
-
+         @if($errors->has('sexo'))
+        <div class="invalid-feedback">
+            {{$errors->first('sexo')}}
+            </div>
+            @endif
         </div>
 </div><!--col genero-->
+      </div><!-- row -->
+    <div class="row">
 
-<div class="col-2">
-        <div class="form-group">
+    <div class="col-md-2 mb-3">
+            <div class="form-group">
 
-            <label for="selectbasic">Etnia </label>
-              <select required id="etnia" name="etnia" class="form-control">
+                <label for="selectbasic">Etnia </label>
+                <select required id="etnia" name="etnia" class="form-control {{$errors->has('etnia') ? 'is-invalid': '' }}"
+                        value =   {{old('etnia')}}>
                 @if(!empty($p->etnia))
 
                 @switch($p->etnia)
@@ -355,23 +363,81 @@
                 <option value="N">Negro</option>
                 <option value="I">Indigenas</option>
               </select>
-
+                 @if($errors->has('etnia'))
+        <div class="invalid-feedback">
+            {{$errors->first('etnia')}}
+            </div>
+            @endif
         </div>
     </div><!--  etinia-->
 
     
-
-        <div class="col-2">
+                  <div class="col-md-2 mb-3">
                 <div class="form-group">
 
                     <label for="selectbasic">Status </label>
-                      <select required id="status" name="status" class="form-control"  @if(!empty($p)) value = "{{$p->Status}}" @else value = "" @endif>
+                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p)) 
+                      value = "{{$p->Status}}" @else value =   {{old('status')}} @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>
+                             @if($errors->has('status'))
+                             <div class="invalid-feedback">
+                                {{$errors->first('status')}}
+                            </div>
+                            @endif
 
                 </div>
             </div><!--  etinia-->
+            <div class="col-md-2 mb-3">
+            <div class="form-group">
+                <label for="telefone">Telefone </label>
+                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                     @if(!empty($p)) value = "{{$p->telefone}}" @else value = {{old('telefone')}} @endif>
+
+                      @if($errors->has('telefone'))
+                <div class="invalid-feedback">
+                    {{$errors->first('telefone')}}
+                    </div>
+                    @endif
+
+
+            </div>
+        </div>  <!-- col Telefone-->
+
+        <div class="col-md-2 mb-3">
+                <div class="form-group">
+                    <label for="celular">Celular </label>
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                      @if(!empty($p)) value = "{{$p->celular}}" @else value = {{old('celular')}}  @endif>
+
+                            @if($errors->has('celular'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('celular')}}
+                            </div>
+                            @endif        
+
+                </div>
+            </div>  <!-- col Telefone-->
+
+            <div class="col-md-3 mb-3">
+                <div class="form-group">
+                       <label for="email">Email address</label>
+                       <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
+                      @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif>  
+
+                      @if($errors->has('email'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('email')}}
+                        </div>
+                        @endif
+                        <div class="invalid-feedback">
+                        Email invalido
+                        </div>
+                                </div>
+
+
+            </div> <!-- col Email -->
 
              <div class="col-3 Fill invisivel">
                 <div class="form-group">
@@ -388,104 +454,122 @@
 </fieldset><!--Dados pessoas-->
 <hr>
 
+   <fieldset class="form-group ">
+                    <legend class = "ttt" aling="center">Endereço</legend>
 
-        <fieldset class="form-group">
-                <legend aling="center">Endereço</legend>
+                <div class="row">
+                    <div class="col-md-2 mb-3 ">
+                         <div class="form-group">
+                               <label for="cep">Cep</label>
+                               <input type="text"  required class="form-control input-md {{$errors->has('cep') ? 'is-invalid': '' }}" name="cep" id="cep"
+                                placeholder="Apenas numeros" maxlength="15"  @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('cep')}}  @endif>
+                                      @if($errors->has('cep'))
+                            <div class="invalid-feedback">
+                                {{$errors->first('cep')}}
+                                </div>
+                                @endif
 
-            <div class="row">
-                <div class="col-3">
-                    <div class="form-group">
-                           <label for="cep">Cep</label>
-                           <input type="search" class="form-control input-md" id="cep"  placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"  @if(!empty($p)) value = "{{$p->cep}}" @else value = "" @endif>
-                        </div>
-                    </div><!-- col cep -->
+                            </div>
 
-                      <div class="col-2">
-                           <button type="button" class="btn btn-outline-success pesquisar"  onclick="pesquisacep(cep.value)">
-                            <strong>pesquisar</strong></button>
-                      </div><!-- col CEP -->
+                        </div><!-- col cep -->
+  
+                                <div class="form-group">
+                                     <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
+                                    <strong>pesquisar</strong></button>
+                                 </div>
+                              
+
+                        
+
+                     <div class="col-md-3 mb-3">
+                      <span>Rua</span>
+                          <div class="input-group">
+                              <input type="text" name="rua" maxlength="40" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
+                              @if(!empty($p)) value = "{{$p->rua}}" @else value =  {{old('rua')}}  @endif}>
+
+                                @if($errors->has('rua'))
+                                    <div class="invalid-feedback">
+                                    {{$errors->first('rua')}}
+                                    </div>
+                                @endif
+
+                      </div>
+                  </div><!-- col rua-->
+
+                   <div class="col-md-1 mb-3">
+                    <span >Nº </span>
+                    <div class="input-group">
+                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required=""  type="text"
+                       @if(!empty($p)) value = "{{$p->numero}}" @else value =  {{old('numero')}}  @endif>
+
+                             @if($errors->has('numero'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('numero')}}
+                            </div>
+                            @endif
+
+                    </div>
+
+                  </div> <!-- col bumero-->
 
 
-                 <div class="col">
-                  <span>Rua</span>
-                      <div class="input-group">
+                  <div class="col-md-2 mb-3">
 
-                          <input type="text" name="rua"  class="form-control" id="rua" maxlength="30" @if(!empty($p)) value = "{{$p->rua}}" @else value = "" @endif><!--  readonly="readonly" -->
+                   <span>Bairro</span>
+                    <div class="input-group">
+                      <input id="bairro" name="bairro"  required maxlength="15" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
+                      @if(!empty($p)) value = "{{$p->bairro}}" @else value =  {{old('bairro')}}  @endif>
 
-                  </div>
-              </div><!-- col rua-->
+                              @if($errors->has('bairro'))
+     <div class="invalid-feedback">
+         {{$errors->first('bairro')}}
+        </div>
+        @endif
 
-               <div class="col-2">
-                <span >Nº </span>
-                <div class="input-group">
+                    </div>
 
-                  <input id="numero" name="numero" class="form-control" placeholder="" required="" maxlength="13" type="text"  @if(!empty($p)) value = "{{$p->numero}}" @else value = "" @endif >
+                    </div><!-- col bairro-->
+
+                <div class="col-md-2 mb-3">
+                   <span>Cidade</span>
+                    <div class="input-group">
+
+                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
+                      @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif>
+
+                               @if($errors->has('cidade'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('cidade')}}
+                            </div>
+                            @endif
+
+                    </div>
+                </div><!-- col cidade -->
+
+                    <div class="col-md-1 mb-3">
+                    <span>Estado</span>
+                    <div class="input-group">
+
+                        <input id="uf" name="estado"  required maxlength="2" placeholder=""  class="form-control {{$errors->has('estado') ? 'is-invalid': '' }}" type="text"
+                         @if(!empty($p)) value = "{{$p->estado}}" @else value =  {{old('estado')}}  @endif>
+                                       @if($errors->has('estado'))
+     <div class="invalid-feedback">
+         {{$errors->first('estado')}}
+        </div>
+        @endif
+
+                    </div>
                 </div>
 
-              </div> <!-- col bumero-->
 
 
-              <div class="col-3">
+        </div><!-- row endereco -->
 
-               <span>Bairro</span>
-                <div class="input-group">
-
-                  <input id="bairro" name="bairro"  placeholder="bairro"  required="" class="form-control"type="text" maxlength="50" @if(!empty($p)) value = "{{$p->bairro}}" @else value = "" @endif > <!--  readonly="readonly" -->
-                </div>
-
-                </div><!-- col bairro-->
-
-            <div class="col-4">
-               <span>Cidade</span>
-                <div class="input-group">
-
-                  <input id="cidade" name="cidade"  placeholder=""  required=""  class="form-control" type="text" maxlength="30"  @if(!empty($p)) value = "{{$p->cidade}}" @else value = "" @endif><!--  readonly="readonly" -->
-                </div>
-            </div><!-- col cidade -->
-
-                <div class="col-2">
-                <span>Estado</span>
-                <div class="input-group">
-
-                  <input id="estado" name="estado"  placeholder=""  required=""  class="form-control"type="text" maxlength="30" @if(!empty($p)) value = "{{$p->estado}}" @else value = "" @endif> <!--  readonly="readonly" -->
-                </div>
-                </div>
+    </fieldset><!--endereço-->
 
 
-    </div><!-- row endereco -->
-
-</fieldset><!--endereço-->
-<hr>
-
-<fieldset class="form-group">
-        <legend aling="center">Contato</legend>
-<div class="row"><!-- contato -->
-
-       <div class="col-3">
-            <div class="form-group">
-                <label for="telefone">Telefone </label>
-                    <input id="telefone" name="telefone" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                    OnKeyPress="formatar('## #####-####', this)"  @if(!empty($p)) value = "{{$p->telefone}}" @else value = "" @endif>
-            </div>
-        </div>  <!-- col Telefone-->
-
-        <div class="col-3">
-                <div class="form-group">
-                    <label for="celular">Celular</label>
-                        <input id="celular" name="celular" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                        OnKeyPress="formatar('## #####-####', this)"   @if(!empty($p)) value = "{{$p->celular}}" @else value = "" @endif>
-                </div>
-            </div>  <!-- col Telefone-->
 
 
-        <div class="col-4">
-            <div class="form-group">
-                   <label for="exampleFormControlInput2">Email address</label>
-                   <input type="email" class="form-control"  id="exampleFormControlInput2" placeholder="name@example.com"  @if(!empty($p)) value = "{{$p->email}}" @else value = "" @endif>
-            </div>
-            </div>
-
-            </fieldset><!--endereço-->
   @if($p->medico)
             <hr>
 <div class="col-4">
