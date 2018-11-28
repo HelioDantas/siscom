@@ -364,9 +364,7 @@
                             </div>
 
                         </div><!-- col cep -->
-                        
-
-                                 
+  
                                 <div class="form-group">
                                      <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
                                     <strong>pesquisar</strong></button>
