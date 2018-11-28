@@ -2,7 +2,7 @@
 
 @section('estilos')
 <style>
-        .btn{
+  .btn{
 
     }
     .pesquisar{
@@ -15,7 +15,8 @@
     }
     .endCentralizado > label{
         color:blue;
-        text-aling:center;
+        text-align: center;
+
 
     }
     .form-control{
@@ -49,7 +50,10 @@
     legend{
         margin-top: 1rem;
     }
+    .ttt{
 
+        margin:0;
+    }
     .tamanho{
 
         width: 200%;
@@ -81,14 +85,18 @@
  @csrf
 {{ method_field('PUT') }}
 
-<div class="form-group navegacao">
-                    <div class="col">
-                            <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
-                            <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
-                            <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
-                            <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
-                    </div>
+
+     <div class="form-group ">
+        <div class="form-group navegacao ttt">
+                <div class="col">
+                  <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
+                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
+                  <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
+                  <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+
+                  <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
+            </div>
 
       <h4 class="titulocadastro">Atualizar Dados do {{$p->nome}}</h4>
 
@@ -97,15 +105,17 @@
                 <legend aling="center">Dados Pessoais</legend>
 <div class="row">
 
+  <div class="form-group col-md-4 mb-3">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome"  maxlength="43" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        @if(!empty($p)) value = "{{$p->nome}}" @else value = {{old('nome')}} @endif>
 
-
-<div class="col-5">
-<div class="form-group">
-  <label for="nome">Nome</label>
-  <input type="text" name="nome" id="nome" class="form-control" placeholder="nome" maxlength="70"  @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
-
-</div>
-</div><!--col nome -->
+        @if($errors->has('nome'))
+            <div class="invalid-feedback">
+                {{$errors->first('nome')}}
+                </div>
+        @endif
+    </div>
 
 <div class="col-2">
 <div class="form-group">
@@ -115,22 +125,160 @@
 </div>
 </div><!--col cpf -->
 
-<div class="col-2">
+    <div class = "col-md-2 mb-3">
+
         <div class="form-group">
-          <label for="cpf">RG</label>
-          <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade" maxlength="15"
-            @if(!empty($p)) value = "{{$p->identidade}}" @else value = "" @endif>
+
+            <label for="cpf">Cpf</label>
+            <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
+            @if(!empty($p)) value = "{{$p->cpf}}" @else value = {{old('cpf')}} @endif>
+
+                @if($errors->has('cpf'))
+                <div class="invalid-feedback">
+                    {{$errors->first('cpf')}}
+                    </div>
+                @endif
+        </div>
+    </div>
+
+        
+   <div class="col-md-2 mb-3">
+            <div class="form-group">
+              <label for="cpf">RG</label>
+              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
+               @if(!empty($p)) value = "{{$p->identidade}}" @else value = {{old('identidade')}} @endif>
+
+                @if($errors->has('identidade'))
+                <div class="invalid-feedback">
+                    {{$errors->first('identidade')}}
+                    </div>
+                @endif
+ 
+              
+            </div>
+            </div><!--col cpf -->
+
+                <div class="form-group col-md-2 mb-3">
+            <label for="orgEmissor">Orgão Emissor</label>
+
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
+            value =   {{old('org_emissor')}}>
+                 @if($errors->has('org_emissor'))
+            <div class="invalid-feedback">
+                {{$errors->first('org_emissor')}}
+            </div>
+                @endif
+
+
 
         </div>
-        </div><!--col cpf -->
 
-<div class="col-2">
-<div class="form-group">
-  <label for="data">Data Nascimento</label>
-  <input type="date" name="dataDeNascimento" id="dtNascimento" maxlength="13" @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
+    <div class="col-md-2 mb-3">
+        <div class="form-group">
+            <label for="dataDeNascimento">Data Nascimento</label>
+            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+             @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = {{old('dataDeNascimento')}}@endif>
 
-</div>
-</div><!--col dt Nascimento-->
+                @if($errors->has('dataDeNascimento'))
+        <div class="invalid-feedback">
+            {{$errors->first('dataDeNascimento')}}
+            </div>
+            @endif
+
+
+        </div>
+    </div><!--col dt Nascimento-->
+
+        <div class="col-2">
+                <div class="form-group">
+                  <label for="">Nacionalidade</label>
+                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro" maxlength="50"  @if(!empty($p)) value = "{{$p->nacionalidade}}" @else value = "" @endif>
+
+                </div>
+        </div><!--col nacionalidade -->
+            <div class="col-md-2 mb-3">
+        <div class="form-group">
+          <label for="nacionalidade">Nacionalidade</label>
+          <input type="text" name="nacionalidade" maxlength="15" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro"
+        @if(!empty($p)) value = "{{$p->nacionalidade}}" @else value ={{old('orgEmissor')}}  @endif>
+           @if($errors->has('nacionalidade'))
+            <div class="invalid-feedback">
+                {{$errors->first('nacionalidade')}}
+            </div>
+          @endif
+
+        </div>
+    </div><!--col nacionalidade -->
+
+        
+         <div class="col-md-2 mb-3">
+            <div class="form-group">
+
+            <label for="naturalidade">Naturalidade</label>
+            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" 
+            placeholder="naturalidade"@if(!empty($p)) value = "{{$p->naturalidade}}" @else value =  {{old('naturalidade')}} @endif>
+            @if($errors->has('naturalidade'))
+                <div class="invalid-feedback">
+                    {{$errors->first('naturalidade')}}
+                 </div>
+            @endif
+
+            </div>
+    </div><!--col naturalidade -->
+
+         <div class="col-3">
+            <div class="form-group">
+            
+                <label for="selectbasic">Escolaridade <h11>*</h11></label>
+        
+                  <select required id="escolaridade" name="escolaridade" class="form-control">
+                        @if(!empty($p->escolaridade))
+                        <option value="{{$p->escolaridade}}">{{$p->escolaridade}}</option>
+                         @endif
+                  <option value=""></option>
+                    <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+                    <option value="Fundamental Completo">Fundamental Completo</option>
+                    <option value="Medio Incompleto">Médio Incompleto</option>
+                    <option value="Medio Completo">Médio Completo</option>
+                    <option value="Superior Incompleto">Superior Incompleto</option>
+                    <option value="Superior Completo">Superior Completo</option>
+                  </select>
+               
+            </div>
+        </div>
+            <div class="col-2">
+                    <div class="form-group">
+                      <label for="profissao">Profissão</label>
+                      <select required id="prof" name="profissao"  class="form-control">
+
+                  @if(!empty($p->profissao))
+
+                        @switch($p->profissao)
+                        @case('M')
+
+                            @php $tipo = 'Medico' ; @endphp
+                            @break
+                                
+                        @case( 'A')
+
+                            @php $tipo = 'Atendente' ; @endphp
+                            @break
+
+
+                            @endswitch
+
+                            <option selected value= "{{$p->profissao}}">{{$tipo}}</option>
+                              @else
+
+                      @endif
+
+                    </select>
+
+
+                </div>
+        </div><!--col nacionalidade -->
+
+
 
 <div class="col-2">
         <div class="form-group">
@@ -211,107 +359,7 @@
         </div>
     </div><!--  etinia-->
 
-    <div class="col-2">
-            <div class="form-group">
-
-                <label for="selectbasic">Escolaridade</label>
-
-                  <select required id="escolaridade" name="escolaridade" class="form-control">
-                        @if(!empty($p->escolaridade))
-
-                        @switch($p->escolaridade)
-                        @case('Fundamental Incompleto')
-
-                            @php $tipo = 'Fundamental Incompleto' ; @endphp
-                            @break
-
-                        @case( 'Fundamental Completo')
-
-                            @php $tipo = 'Fundamental Completo' ; @endphp
-                            @break
-                        @case('Medio Incompleto')
-
-                            @php $tipo = 'Medio Incompleto' ; @endphp
-                            @break
-
-                        @case('Medio Completo')
-
-                            @php $tipo = 'Medio Completo' ; @endphp
-                            @break
-                        @case('Superior Incompleto')
-
-                            @php $tipo = 'Superior Incompleto' ; @endphp
-                            @break
-
-                        @case('Superior Completo')
-
-                            @php $tipo = 'Superior Completo' ; @endphp
-                            @break
-
-
-
-                        @endswitch
-                        <option value="{{$p->escolaridade}}">{{$tipo}}</option>
-                         @endif
-                  <option value=""></option>
-                    <option value="Fundamental Incompleto">Fundamental Incompleto</option>
-                    <option value="Fundamental Completo">Fundamental Completo</option>
-                    <option value="Medio Incompleto">Médio Incompleto</option>
-                    <option value="Medio Completo">Médio Completo</option>
-                    <option value="Superior Incompleto">Superior Incompleto</option>
-                    <option value="Superior Completo">Superior Completo</option>
-                  </select>
-
-            </div>
-        </div>
-
-        <div class="col-2">
-                <div class="form-group">
-                  <label for="">Nacionalidade</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro" maxlength="50"  @if(!empty($p)) value = "{{$p->nacionalidade}}" @else value = "" @endif>
-
-                </div>
-        </div><!--col nacionalidade -->
-
-        <div class="col-2">
-                <div class="form-group">
-                  <label for="">Naturalidade</label>
-                  <input type="text" name="naturalidade" id=""  class="form-control" placeholder="naturalidade"  maxlength="50"@if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif>
-
-                </div>
-        </div><!--col naturalidade -->
-
-            <div class="col-2">
-                    <div class="form-group">
-                      <label for="profissao">Profissão</label>
-                      <select required id="prof" name="profissao"  class="form-control">
-
-                  @if(!empty($p->profissao))
-
-                        @switch($p->profissao)
-                        @case('M')
-
-                            @php $tipo = 'Medico' ; @endphp
-                            @break
-
-                        @case( 'A')
-
-                            @php $tipo = 'Atendente' ; @endphp
-                            @break
-
-
-                            @endswitch
-
-                            <option selected value= "{{$p->profissao}}">{{$tipo}}</option>
-                              @else
-
-                      @endif
-
-                    </select>
-
-
-                </div>
-        </div><!--col nacionalidade -->
+    
 
         <div class="col-2">
                 <div class="form-group">
