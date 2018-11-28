@@ -11,6 +11,7 @@ use App\Models\Convenio;
 use App\Models\PacienteHasConvenio;
 use App\Models\Plano;
 use App\Http\Requests\PacienteRequest;
+use Str;
 class PacienteController extends Controller
 {
 
@@ -70,9 +71,27 @@ class PacienteController extends Controller
     public function create(PacienteRequest $request){
 
         
-        $paciente = Paciente::create($request->all());
+        $paciente = Paciente::create([
+        'nome'              =>  mb_strtolower($request['nome']),
+        'org_emissor'        =>  mb_strtolower($request['org_emissor']),
+        'nacionalidade'      =>  mb_strtolower($request['nacionalidade']),
+        'naturalidade'      =>  mb_strtolower($request['naturalidade']),
+        'rua'               =>  mb_strtolower($request['rua']),
+        'bairro'            =>  mb_strtolower($request['bairro']),
+        'cidade'            =>  mb_strtolower($request['cidade']),
+        'email'             =>  mb_strtolower($request['email']),
+        'profissao'         =>  mb_strtolower($request['profissao']),
+        'estado'            =>  mb_strtolower($request['estado']),
+        'cpf'               => $request['cpf'],
+        'sexo'              => $request['sexo'],
+        'etnia'             => $request['etnia'],
+        'identidade'        => $request['identidade'],
+        'dataDeNascimento'  => $request['dataDeNascimento'],
+        'escolaridade'      => $request['escolaridade'],
+        'cep'               => $request['cep'],
+        ]);
         $paciente->planos()->attach($request['plano_id'], 
-        [ 'indicacao'  => $request['indicacao'],
+        [ 'indicacao'  =>  mb_strtolower($request['indicacao']),
             'carteira'  => $request['carteira']]);
 
        
