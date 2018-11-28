@@ -46,6 +46,9 @@
 <!--<a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>-->
    
 <div class="container-fluid col-lg-12">
+
+      
+    
 <div class="card text-center mb-3">
 
 
@@ -127,10 +130,67 @@
       {{--           <td>       {{$p->profissao}}           </td>  --}}
                  <td>       {{$p->status}}            </td>  
                 <td>
-                    <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="alguma({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>  
-                
+                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-trash"></i></button>
+                          <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Exclusão</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Deseja Excluir esse paciente?
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="algum({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir">excluir</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                   {{-- <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="Submit" onclick ="algum({{$p->id}})"  data-toggle="tooltip" data-placement="top" title="excluir"><i class="fas fa-trash"></i></button>--}} 
                     <a class="btn btn-outline-primary" href="editar/{{$p->id}}"  title="editar"><i class="fas fa-edit"></i></a> 
                       <a class="btn btn-outline-secondar" href="show/{{$p->id}}"  title="visualizar"> <i class="fas fa-eye "></i></a> 
+
+                {{-- -  <!-- Large modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                
+                                    <div class="col">
+                                        <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                    <div class="col">
+                                            <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                    <div class="col">
+                                            <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                    <div class="col">
+                                            <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                    <div class="col">
+                                            <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                    <div class="col">
+                                            <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                    <div class="col">
+                                            <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                    <div class="col">
+                                            <span>nome : {{ $p->nome }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </div> --}}
+
+                        
                 </td>
 
               </tr>

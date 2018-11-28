@@ -137,7 +137,7 @@ class FuncionarioController extends Controller
            $s[] = Especialidade::find($tt);
           
         }
-  
+
        $especialidades = Especialidade::all();
       
         //dd($m);

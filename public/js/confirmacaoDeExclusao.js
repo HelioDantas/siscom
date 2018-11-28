@@ -6,3 +6,7 @@
          alert('ufaaa, quase deletou o usuario errado.');
         }    
     }
+    function algum(id) {
+            location.href = 'excluir/'+ id;   
+        }
+    
