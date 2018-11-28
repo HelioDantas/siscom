@@ -104,7 +104,7 @@
                 @php $cont = $cont + 1; @endphp
                     
               <tr class="Filter">
-                 <td class="prontuario">       {{$p->id}}          </td>
+                 <td class="prontuario">    <strong>   {{$p->id}}    </strong>      </td>
   <!--           <td>       {{$p->DataCadastro}}        </td>  -->
                  <td class="nome">       {{$p->nome}}             </td>
                  <td class="cpf">       {{$p->cpf}}                 </td>

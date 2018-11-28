@@ -37,18 +37,18 @@ class MedicoController extends Controller
     public function planoCreate(Request $request,  $id, $medico_id){
       //  return dd($request);
      
-       $medico =  Medico::find($medico_id);
-
-       if( $medico->planos()->where('plano_id', $id)->get()){
+       
+       $dd = Medico::find($medico_id)->planos()->where('plano_id', $id)->get();
+       if(sizeof($dd) > 0){
             Medico::find($medico_id)->planos()->updateExistingPivot($id, ['status'=>'ATIVO']);
          //   $medico->planos()->where('plano_id', $id)->update('status', 'ATIVO');
        }else{
-            $medico->planos()->attach($id,
+            Medico::find($medico_id)->planos()->attach($id,
             ['status'=>'ATIVO']
             );
 
          }       
-        return redirect()->route('medico.planoNovo', ['id' => $medico]);
+        return redirect()->route('medico.planoNovo', ['id' => $medico_id]);
 
     }
 
