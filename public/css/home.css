@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+ background-color:white; /* #2196f3 */
+/*background-image: radial-gradient(#6db3ff,#00BFFF);*/
+/*background-image: linear-gradient(to top ,rgba(129,212,250), rgba(0,191,255));*/
+
+}
+
+
+header .logodASH a{
+    justify-content:center;
+
+    margin-left:1%;
+    float: left;
+    color: black;
+    font-size: 2rem;
+}
+header .centroName h3{
+   text-justify: auto;
+    color: black;
+    font-size: 2rem;
+}
+
+
+
+
+
+header #containerLogoDataHoraH3 > .data{
+    padding-right:0.5%;
+    float:right;
+}
+header#containerLogoDataHoraH3 > .data, #real-clock{
+    float:right;
+}
+header  #containerLogoDataHoraH3 > h3{
+  text-align: center;
+  padding-right:-1%;
+
+}
+header   > #containerSessaoEMsgBemVindo {
+    margin-top: -0.5rem;
+    
+   text-align: center;
+   
+ }
+
+  #msgBemVindo {
+    text-align:left;
+}
+ #sessao {
+    float:right;
+}
+
+
+
+header .container-fluid > .logo{
+    float: left;
+   padding-left:0.7%;
+   font-size: 20px;
+}
+
+
+#navbarColor01{
+    color:blue;
+}
+
+.dropbtn {
+    background-color:#00BFFF;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    
+}
+
+.corpo{
+
+    padding-top: 1rem;
+    justify-content:center;
+    background-color:#fafafa;
+    border-radius:0.5%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-border-radius:0.5%;
+    -moz-border-radius:0.5%;
+    -ms-border-radius:0.5%;
+    -o-border-radius:0.5%;
+}
+.corpo-paciente{
+    padding: 1rem;
+    padding-top: 1rem;
+    
+    background-color:#fafafa;
+    border-radius:0.5%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-border-radius:0.5%;
+    -moz-border-radius:0.5%;
+    -ms-border-radius:0.5%;
+    -o-border-radius:0.5%;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fafafa;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #2BBBAD;}
+.sair:hover {background-color: #2BBBAD;}
+nav{
+ background-color:#00BFFF ;
+}
+ul li{
+  text-align: center;
+}
+
+
+
+/* js lista */
+.invisivel{
+    display: none;
+}
+
+
+.titulopacientes{
+	display:inline-table;
+    margin-left: 15rem;
+    }
+
