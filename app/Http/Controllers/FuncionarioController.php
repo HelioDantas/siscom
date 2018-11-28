@@ -5,7 +5,7 @@ use App\Models\Funcionario;
 use App\Models\Medico;
 use App\Models\Especialidade;
 use App\Models\Plano;
-
+use App\Http\Requests\FuncionarioRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -28,7 +28,7 @@ class FuncionarioController extends Controller
 
 
 
-    public function create(Request $request){
+    public function create(FuncionarioRequest $request){
 
         $Funcionario = Funcionario::create($request->all());
       //  return var_dump($sis_funcionario);
@@ -126,7 +126,7 @@ class FuncionarioController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(FuncionarioRequest $request, $id)
     {
 
 
@@ -134,6 +134,16 @@ class FuncionarioController extends Controller
 
         $Funcionario->update($request->all());
         return redirect()->route('funcionario.listar');
+    }
+
+
+        public function show( $id)
+    {
+        //  form para editar infos de um paciente
+         $p = Funcionario::find($id);
+
+
+        return view('funcionario.show')->with('p' , $p);
     }
 
 }

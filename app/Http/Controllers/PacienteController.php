@@ -73,8 +73,8 @@ class PacienteController extends Controller
         
         $paciente = Paciente::create([
         'nome'              =>  mb_strtolower($request['nome']),
-        'org_emissor'        =>  mb_strtolower($request['org_emissor']),
-        'nacionalidade'      =>  mb_strtolower($request['nacionalidade']),
+        'org_emissor'       =>  mb_strtolower($request['org_emissor']),
+        'nacionalidade'     =>  mb_strtolower($request['nacionalidade']),
         'naturalidade'      =>  mb_strtolower($request['naturalidade']),
         'rua'               =>  mb_strtolower($request['rua']),
         'bairro'            =>  mb_strtolower($request['bairro']),
