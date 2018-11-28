@@ -515,5 +515,6 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript" src="{{ asset('js/especialidades.js') }}"></script>
 
 @endsection
