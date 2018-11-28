@@ -110,6 +110,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::View('/agoravai' , 'dashboard');
 
 
+  Route::prefix('medico')->middleware('Autorizador')->group(function () {
+    Route::get('novo/{id}', 'MedicoController@planoNovo')->name('medico.planoNovo');
+    Route::any('create/{id}&&{medico_id}', 'MedicoController@planoCreate')->name('medico.planoCreate');
+    Route::any('desativar_plano/{id}&&{plano_id}', 'MedicoController@desativar_plano')->name('medico.desativar_plano');
+
+});
 Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
   Route::get('cad'            , 'FuncionarioController@novo')->name(        'funcionario.novo'      );
@@ -126,7 +132,12 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
 
 
 
+
+
 });
+
+
+
 
 /*Route::prefix('medico')->middleware('Autorizador')->group(function(){
 

@@ -3,7 +3,7 @@
 @section('estilos')
 <style>
    .btn{
-        
+
     }
     .pesquisar{
         margin-top:1.7rem;
@@ -11,15 +11,15 @@
     .seletorSexo{
         margin-top: 2rem;
         padding-right: 1.5rem;
-        margin-top:1.7rem; 
+        margin-top:1.7rem;
     }
     .endCentralizado > label{
         color:blue;
         text-aling:center;
-        
+
     }
     .form-control{
-        border-radius:10px 10px; 
+        border-radius:10px 10px;
     }
     .titulocadastro{
         margin:0 auto;
@@ -32,7 +32,7 @@
     .navegacao{
         text-align:right ;
         float: right;
-       
+
     }
     a{
         color: white;
@@ -64,7 +64,7 @@
 
   <div class="form-group navegacao">
                 <div class="col">
-                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button> 
+                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
                   <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
                  <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
                   <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
@@ -97,7 +97,7 @@
             <div class="form-group">
               <label for="cpf">RG</label>
               <input type="text" name="identidade" id="RG" class="form-control" placeholder="identidade" aria-describedby="identidade" maxlength="13">
- 
+
             </div>
             </div><!--col cpf -->
 
@@ -143,7 +143,7 @@
 
 
                       <select required id="escolaridade" name="escolaridade" class="form-control">
-                     
+
                         <option value="Superior Completo">Superior Completo</option>
                     <option value="Superior Incompleto">Superior Incompleto</option>
                     <option value="Médio Incompleto">Médio Incompleto</option>
@@ -159,7 +159,7 @@
                     <div class="form-group">
                       <label for="">Nacionalidade</label>
                       <input type="text" name="nacionalidade" id="" class="form-control" placeholder="nacionalidade" value="Brasileiro"   maxlength="50">
-                
+
                     </div>
             </div><!--col nacionalidade -->
 
@@ -176,7 +176,7 @@
                       <select required id="prof" name="profissao"  class="form-control">
                       <option value="M">Medico</option>
                       <option selected value="A">Atendente</option>
-                     
+
                       </select>
                     </div>
             </div><!--col nacionalidade -->
@@ -219,7 +219,7 @@
                       Email invalido
              </div>
                 </div>
-                
+
 
                 </div> <!-- col Email -->
                 <div class="col-3 Fill invisivel">
@@ -262,14 +262,14 @@
 
              <fieldset class="form-group">
         <legend aling="center">Endereço</legend>
-         
-   
-      
+
+
+
                 <div class="row">
                     <div class="col-3">
                         <div class="form-group">
                                <label for="cep">Cep</label>
-                               <input type="text" class="form-control input-md" name="cep" id="cep" placeholder="Apenas numeros" maxlength="15"  > 
+                               <input type="text" class="form-control input-md" name="cep" id="cep" placeholder="Apenas numeros" maxlength="15"  >
                             </div>
                         </div><!-- col cep -->
 
@@ -322,13 +322,71 @@
 
 
         </div><!-- row endereco -->
-  
-    </fieldset><!--endereço-->
-  
-    <hr>
 
-    
-  
+    </fieldset><!--endereço-->
+
+
+    <hr>
+<div class="col-4">
+<button  class="btn btn-secondary Fill invisivel"  data-toggle="collapse" type = "button" data-target="#demo" @if(old('email')) aria-expanded="true" @endif >Planos</button>
+
+</div>
+<div id="demo" class="collapse">
+
+
+    <div class="form-group navegacao">
+           <div class="col">
+ <a  class="btn btn-outline-success recon Fill invisivel"  data-toggle="modal" href="#modal-video"   data-toggle="tooltip" data-placement="top" title="adcionar novo plano"><i class="fas fa-plus-circle"></i></a>
+
+
+
+    </div>
+
+     </div>
+        <table class="table table-hover Fill invisivel">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="row" >Convenio</th>
+            <th scope="col">Plano</th>
+            <th scope="col">Status</th>
+            <th scope="col">Atender</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+        @php $cont = 0; @endphp
+        @foreach ($planos as $plano)
+        @php $cont = $cont + 1; @endphp
+
+      <tr class="Filter">
+      <th scope="row">{{$plano->convenio->nome}}</th>
+
+         <td class="">{{$plano->nome}} </td>
+         <td class="">{{$plano->status}}</td>
+
+        <td>
+            <div class="checkbox">
+
+                    <input name = "$p[]" type="checkbox" value= {{$plano->id }}
+                     </div>
+
+
+        </td>
+
+      </tr>
+      @endforeach
+
+    </tbody>
+
+  </table>
+
+
+</div>
+
+
+
+
       {!! Form::close() !!}
     </div><!-- container -->
 
