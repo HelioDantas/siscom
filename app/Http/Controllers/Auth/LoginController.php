@@ -36,7 +36,7 @@ class LoginController extends Controller
      if($user->funcionario->status == "A"){
 
         if(password_verify($credencias['password'], $user->senha)){
-            $request->session()->put('user', $user->funcionario->nome);
+            $request->session()->put('user', $user);
             return view("layout.app");
         }else{
             $mensagem =  "Senha Invalida";

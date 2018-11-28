@@ -121,7 +121,7 @@
 
               </ul>
             </div>
-              <span class="navbar-text" id="msgBemVindo">Bem vindo @php echo session("user"); @endphp </span>
+              <span class="navbar-text" id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
 
                 <span class="navbar-text" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
               <form class="form-inline my-2 my-lg-0">
