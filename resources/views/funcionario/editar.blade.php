@@ -246,7 +246,7 @@
             <div class="col-md-2 mb-3">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
-                      <select required id="prof" name="profissao"  class="form-control {{$errors->has('profissao') ? 'is-invalid': '' }}" value =   {{old('profissao')}}>
+                      <select required id="prof" name="profissao"  class="form-control {{$errors->has('profissao') ? 'is-invalid': '' }}">
 
                   @if(!empty($p->profissao))
 
@@ -439,15 +439,22 @@
 
             </div> <!-- col Email -->
 
-             <div class="col-3 Fill invisivel">
+             <div class="col-md-3 mb-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
-
-                <small id="crm" class="text-muted">CRM</small>
+                <input type="text" name="crm" id="" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
+                  @if(!empty($p)) value = "{{$p->crm}}" @else value =  {{old('crm')}}  @endif>
+           
+                      @if($errors->has('email'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('email')}}
+                        </div>
+                        @endif
                 </div>
                 </div><!--col nome -->
 
 
+          
 
 
 </div><!-- row -->
@@ -648,5 +655,7 @@
 @endsection
 
 @section('scripts')
-
+    <script type="text/javascript" src="{{ asset('js/validaEmail.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
 @endsection

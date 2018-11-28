@@ -363,7 +363,7 @@
                 <div class="form-group">
                 <label for="crm">CRM</label>
                 <input type="text" name="crm" id="" class="form-control " placeholder="crm"  maxlength="15">
-                <small id="crm" class="text-muted">CRM</small>
+               
                 </div>
                 </div><!--col nome -->
 
