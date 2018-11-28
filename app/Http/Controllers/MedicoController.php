@@ -17,6 +17,16 @@ class MedicoController extends Controller
 
         return back();
    }
+
+   function getEspecialidade($espec_id)
+
+   {
+       $especialidades = DB::table('sis_especialidade')->select('id','nome')->where('id','!=',$espec_id)->get();
+      // dd($especialidades);
+      
+       
+       return json_encode( $especialidades);
+   }
   
       public function planoNovo(Request $request, $id){
              

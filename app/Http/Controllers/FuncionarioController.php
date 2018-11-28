@@ -8,6 +8,7 @@ use App\Models\Plano;
 use App\Http\Requests\FuncionarioRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class FuncionarioController extends Controller
 {
@@ -29,7 +30,27 @@ class FuncionarioController extends Controller
 
     public function create(FuncionarioRequest $request){
 
-        $Funcionario = Funcionario::create($request->all());
+        $Funcionario = Funcionario::create([
+            'nome'              =>  mb_strtolower($request['nome']),
+            'nacionalidade'     =>  mb_strtolower($request['nacionalidade']),
+            'naturalidade'      =>  mb_strtolower($request['naturalidade']),
+            'rua'               =>  mb_strtolower($request['rua']),
+            'bairro'            =>  mb_strtolower($request['bairro']),
+            'cidade'            =>  mb_strtolower($request['cidade']),
+            'email'             =>  mb_strtolower($request['email']),
+            'estado'            =>  mb_strtolower($request['estado']),
+            'matricula'         => $request['matricula'],
+            'cpf'               => $request['cpf'],
+            'sexo'              => $request['sexo'],
+            'etnia'             => $request['etnia'],
+            'identidade'        => $request['identidade'],
+            'dataDeNascimento'  => $request['dataDeNascimento'],
+            'escolaridade'      => $request['escolaridade'],
+            'celular'           => $request['celular'],
+            'profissao'         => $request['profissao'],
+            'telefone'          => $request['telefone'],
+            'cep'               => $request['cep'],
+            ]);
       //  return var_dump($sis_funcionario);
         if($Funcionario->profissao == "A"){
             return view('user.novo')->with('func', $Funcionario);
@@ -108,8 +129,20 @@ class FuncionarioController extends Controller
         //  form para editar infos de um paciente
          $p = Funcionario::find($id);
 
+        $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula',$p->matricula)->get();
 
-        return view('funcionario.editar')->with('p' , $p);
+
+        foreach ($m as $m->Sis_especialidade_id => $espec) {
+            $tt = $espec->Sis_especialidade_id;
+           $s[] = Especialidade::find($tt);
+          
+        }
+        $s1 = $s[0];
+        $s2 = $s[1];
+       $especialidades = Especialidade::all();
+      
+        //dd($m);
+        return view('funcionario.editar', compact('p','s','especialidades'));
     }
 
 

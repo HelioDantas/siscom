@@ -371,7 +371,7 @@
                 <div class="col-md-3 mb-3 Fill invisivel">
                     <div class="form-group">
                       <label for="especialidade" >Especialidade 1</label>
-                      <select  id="especialidade" name="especialidade1" id="" class="form-control" >
+                      <select  id="especialidade" name="especialidade1" class="form-control" >
                           <option value=""></option>
                           @foreach($especi as $e)
                                 <option value="{{$e->id}}">{{$e->nome}}</option>
@@ -385,10 +385,8 @@
                     <div class="form-group teste">
                       <label for="especialidade2">Especialidade 2</label>
                       <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
-                          <option value=""></option>
-                          @foreach($especi as $e)
-                                <option value="{{$e->id}}">{{$e->nome}}</option>
-                         @endforeach
+                          <option value="" selected>Selecione</option>
+                         
                       </select>
                     </div>
             </div>
@@ -580,4 +578,6 @@
 <script type="text/javascript" src="{{ asset('js/validaEmail.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/especialidades.js') }}"></script>
+
     @endsection

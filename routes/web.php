@@ -91,6 +91,8 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
 
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
+Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
+
 
 
 
