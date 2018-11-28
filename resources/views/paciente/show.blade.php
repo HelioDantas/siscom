@@ -577,7 +577,46 @@
 </fieldset><!--endereço-->
 
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="container-fluid">
+                @foreach ($p->planos()->get()  as $pp)
+                    @if (!empty($pp))
+                   
+                   
+                        <div class="row">
+                            <div class="col">
+                                <span>conv : {{ $pp->convenio->nome}} </span>
+                            </div>
+                            <div class="col">
+                                    <span>s : {{ $pp->nome }}</span>
+                            </div>
+                            <div class="col">
+                                    <span>nome : {{ $p->nome }}</span>
+                            </div>
+                            <div class="col">
+                                    <span>nome : {{ $p->nome }}</span>
+                            </div>
+                            <div class="col">
+                                    <span>nome : {{ $p->nome }}</span>
+                            </div>
+                            <div class="col">
+                                    <span>nome : {{ $p->nome }}</span>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+
+                    </div>
+
+            </div>
+    </div>
+</div>
+</div>
 </div><!-- container -->
 
 
