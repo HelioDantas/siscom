@@ -131,28 +131,20 @@ class PacienteController extends Controller
         //dd($request);
         $paciente = Paciente::find($id);
         $ativos = $paciente->planos()->where('situacao','ATIVO')->get();
-        $inativos = $paciente->planos()->where('situacao','INATIVO')->get();
-
-       // dd($planosPaciente);
+       
         if (!$ativos == null) { // se houver ativos
-            //dd($request['paciente_id']);
+            
             PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->orWhere('situacao','=','NULL')->update(['situacao'=>'INATIVO']);
 
                PacienteHasConvenio::updateOrCreate([
                 'paciente_id' => $paciente->id,
                 'plano_id'   => $request['plano_id'],
                 'indicacao'  => $request['indicacao'],
-                'carteira'   => $request['carteira'],
+              //  'carteira'   => $request['carteira'],
                 'situacao' => 'ATIVO',
                ]);
         }
-    /* if (!$inativos == null){
-        $inativo = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)
-         ->where('plano_id','=', $request['plano_id'])
-         ->Where('carteira','=',$request['carteira'])->update(['situacao'=> 'ATIVO']);
-            
-        } */
-       // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+  
         $paciente->update($request->except([
             'convenio_id',
             'plano_id',
