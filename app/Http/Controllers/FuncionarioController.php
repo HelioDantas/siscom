@@ -5,7 +5,7 @@ use App\Models\Funcionario;
 use App\Models\Medico;
 use App\Models\Especialidade;
 use App\Models\Plano;
-
+use App\Http\Requests\FuncionarioRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,7 +27,7 @@ class FuncionarioController extends Controller
 
 
 
-    public function create(Request $request){
+    public function create(FuncionarioRequest $request){
 
         $Funcionario = Funcionario::create($request->all());
       //  return var_dump($sis_funcionario);
@@ -113,7 +113,7 @@ class FuncionarioController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(FuncionarioRequest $request, $id)
     {
 
 
