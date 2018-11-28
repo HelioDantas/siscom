@@ -123,4 +123,14 @@ class FuncionarioController extends Controller
         return redirect()->route('funcionario.listar');
     }
 
+
+        public function show( $id)
+    {
+        //  form para editar infos de um paciente
+         $p = Funcionario::find($id);
+
+
+        return view('funcionario.show')->with('p' , $p);
+    }
+
 }
