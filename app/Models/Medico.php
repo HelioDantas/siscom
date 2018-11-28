@@ -26,4 +26,12 @@ class Medico extends Model
 
     }
 
+
+    public function planos(){
+
+        return  $this->belongsToMany("App\Models\Plano", 'sis_medico_tem_plano','medico_id', 'plano_id')->withPivot('status');
+    }
+
+
+
 }

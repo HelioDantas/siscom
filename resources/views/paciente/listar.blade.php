@@ -139,7 +139,7 @@
           </table>
 
           <div class="card-footer">
-            @if($cont==4)
+            @if($cont==9)
 
                 <p></p>  
 

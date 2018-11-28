@@ -8,9 +8,9 @@ class Paciente extends Model
 {
     protected $table = 'sis_paciente';
     public $timestamps = false;
-
+    
     protected $fillable = array(
-        '_token',
+        
         'nome',
         'cpf',
         'identidade',
@@ -37,7 +37,7 @@ class Paciente extends Model
 
     public function planos()
     {
-        return  $this->belongsToMany('App\Models\Plano', 'sis_paciente_tem_plano','paciente_id', 'plano_id');
+        return  $this->belongsToMany('App\Models\Plano', 'sis_paciente_tem_plano','paciente_id', 'plano_id')->withPivot('indicacao', 'situacao', 'carteira')->withTimestamps();
 
       
     }

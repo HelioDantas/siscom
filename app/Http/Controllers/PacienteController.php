@@ -69,32 +69,14 @@ class PacienteController extends Controller
 
     public function create(PacienteRequest $request){
 
-        $paciente = Paciente::where('cpf',$request['cpf'])->firstOrNew($request->except([
-            'convenio_id',
-            'plano_id',
-            'indicacao',
-            'carteira',
-            '_token']));
+        
+        $paciente = Paciente::create($request->all());
+        $paciente->planos()->attach($request['plano_id'], 
+        [ 'indicacao'  => $request['indicacao'],
+            'carteira'  => $request['carteira']]);
 
-        $paciente->save();
-
-
-        /*$paciente = Paciente::updateOrCreate($request->except([
-        'convenio_id',
-        'plano_id',
-        'indicacao',
-        'carteira',
-        '_token'])); */
-     
        
-       
-        $planoPaciene = PacienteHasConvenio::where('paciente_id',$paciente->id)->updateOrCreate([
-            'plano_id' => $request['plano_id'],
-            'indicacao'  => $request['indicacao'],
-            'carteira'  => $request['carteira'],
-            'paciente_id'  =>$paciente->id,
-        ]);
-     
+
          return redirect()->route('paciente.listar')->withInput();
 
         
@@ -107,9 +89,9 @@ class PacienteController extends Controller
     {
         //  form para editar infos de um paciente
        $p = Paciente::find($id);
-       $plano = $p->planos()->where('situacao','ATIVO')->first();
+      $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
-        $phc = PacienteHasConvenio::where('paciente_id','=',$id,'and','plano_id','=',$plano->convenio_id )->first();
+        $phc = $plano->pivot;
         $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
        } else {
            $plano =null; $phc =null; $convenio =null; 
@@ -127,6 +109,44 @@ class PacienteController extends Controller
 
     public function update(Request $request, $id)
     {
+
+
+   
+     $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->first();
+       
+        if($paciente !=null && $paciente->pivot['plano_id'] == $request['plano_id']){
+       Paciente::find($id)->planos()->where('situacao', 'ATIVO')->update(
+                [
+                    'paciente_id'   => $id,
+                    'indicacao'  => $request['indicacao'],
+                    'carteira'   => $request['carteira'],
+                    'situacao'  =>  $request['situacao']
+                                            ]);
+       
+         }else{
+             if($paciente != null)
+                Paciente::find($id)->planos()->updateExistingPivot($paciente->pivot['plano_id'], ['situacao'=>'INATIVO']);
+
+             Paciente::find($id)->planos()->attach($request['plano_id'], 
+                [ 
+                    'indicacao'  => $request['indicacao'],
+                    'carteira'  => $request['carteira']
+                                                            ]);
+
+         }
+         
+         
+
+
+            // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+            $paciente = Paciente::find($id);
+            $paciente->update($request->all());
+
+
+
+
+
+/*
         //  atualizar
         //dd($request);
         $paciente = Paciente::find($id);
@@ -144,7 +164,15 @@ class PacienteController extends Controller
                 'situacao' => 'ATIVO',
                ]);
         }
-  
+
+    /* if (!$inativos == null){
+        $inativo = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)
+         ->where('plano_id','=', $request['plano_id'])
+         ->Where('carteira','=',$request['carteira'])->update(['situacao'=> 'ATIVO']);
+            
+        } 
+       // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+
         $paciente->update($request->except([
             'convenio_id',
             'plano_id',
@@ -152,6 +180,7 @@ class PacienteController extends Controller
             'carteira',
             '_token']));
         
+*/
         return redirect()->route('paciente.listar');
     }
 

@@ -54,7 +54,7 @@
 
         margin:0;
     }
-
+  
 
 </style>
 
@@ -68,7 +68,8 @@
 
         {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}
         @csrf
-        <div class="form-group">
+      
+        <div class="form-group ">
         <div class="form-group navegacao ttt">
                 <div class="col">
                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
@@ -79,7 +80,7 @@
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
             </div>
-
+         
 
             <h3 class="titulocadastro">Cadastro <strong>| Paciente  </strong></h3>
         </div>
@@ -107,8 +108,12 @@
     <div class = "col-md-2 mb-3">
 
         <div class="form-group">
-            <label for="cpf">Cpf<label>
-            <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" maxlength="13" required
+
+            <label for="cpf">Cpf</label>
+            <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
+
+            
+
             value =   {{old('cpf')}}>
 
                 @if($errors->has('cpf'))
@@ -120,24 +125,28 @@
     </div>
 
 
+   <div class="col-md-2 mb-3">
+            <div class="form-group">
+              <label for="cpf">RG</label>
+              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
+ 
+               value =   {{old('identidade')}}>
 
-        <div class="form-group col-md-2 mb-3">
-            <label for="RG">RG<label>
-            <input type="text" name="identidade" id="RG"  maxlength="12" required class="form-control{{ $errors->has('identidade') ? 'is-invalid': ''  }}" placeholder="identidade"
-            value =   {{old('identidade')}}>
-
-            @if($errors->has('identidade'))
+                @if($errors->has('identidade'))
                 <div class="invalid-feedback">
                     {{$errors->first('identidade')}}
                     </div>
-            @endif
+                @endif
+ 
+              
+            </div>
+            </div><!--col cpf -->
 
-        </div>
 
         <div class="form-group col-md-2 mb-3">
             <label for="orgEmissor">Orgão Emissor</label>
 
-            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby="identidade"
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
             value =   {{old('org_emissor')}}>
                  @if($errors->has('org_emissor'))
             <div class="invalid-feedback">
@@ -153,7 +162,7 @@
     <div class="col-md-2 mb-3">
         <div class="form-group">
             <label for="dataDeNascimento">Data Nascimento</label>
-            <input type="date" name="dataDeNascimento"  required  id="dtNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}" placeholder=""
+            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="2017-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
             value =   {{old('dataDeNascimento')}}>
 
                 @if($errors->has('dataDeNascimento'))
@@ -373,14 +382,14 @@
                             </div>
 
                         </div><!-- col cep -->
-                        <div class="col-md mb-3">
+  
+                                <div class="form-group">
+                                     <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
+                                    <strong>pesquisar</strong></button>
+                                 </div>
+                              
 
-
-                               <button type="button" class="btn btn-outline-success pesquisar "  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
-                                <strong>pesquisar</strong></button>
-
-
-                        </div><!-- col CEP -->
+                        
 
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
@@ -447,7 +456,7 @@
                     </div>
                 </div><!-- col cidade -->
 
-                    <div class="col-md-2 mb-3">
+                    <div class="col-md-1 mb-3">
                     <span>Estado</span>
                     <div class="input-group">
 
@@ -542,7 +551,19 @@
                                                 </div>
                   </div>  <!-- col Plano-->
 
+                    <div class="col-md-2 mb-3">
+                <div class="form-group">
 
+                    <label for="situacao">Situacao</label>
+                      <select required id="situacao" name="situacao" class="form-control {{$errors->has('situacao') ? 'is-invalid': '' }}"value =   {{old('situacao')}}>
+                      <option value="ATIVO">Ativo</option>
+                        <option value="INATIVO">Inativo</option>
+                      </select>
+                             @if($errors->has('situacao'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('situacao')}}
+                        </div>
+                        @endif
 
 
                 <!--<div class="col-md-2 mb-3">
