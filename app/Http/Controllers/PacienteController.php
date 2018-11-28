@@ -69,7 +69,6 @@ class PacienteController extends Controller
     }
 
     public function create(PacienteRequest $request){
-
         
         $paciente = Paciente::create([
         'nome'              =>  mb_strtolower($request['nome']),
@@ -89,7 +88,8 @@ class PacienteController extends Controller
         'dataDeNascimento'  => $request['dataDeNascimento'],
         'escolaridade'      => $request['escolaridade'],
         'cep'               => $request['cep'],
-        ]);
+        ]); 
+        
         $paciente->planos()->attach($request['plano_id'], 
         [ 'indicacao'  =>  mb_strtolower($request['indicacao']),
             'carteira'  => $request['carteira']]);
