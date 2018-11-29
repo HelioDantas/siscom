@@ -11,6 +11,7 @@ use App\Models\Convenio;
 use App\Models\PacienteHasConvenio;
 use App\Models\Plano;
 use App\Http\Requests\PacienteRequest;
+use Str;
 class PacienteController extends Controller
 {
 
@@ -25,7 +26,7 @@ class PacienteController extends Controller
     }
 
 
-    public function show($id) 
+    public function shown($id) 
     {
 
     $id = Request::route('id');
@@ -68,11 +69,29 @@ class PacienteController extends Controller
     }
 
     public function create(PacienteRequest $request){
-
         
-        $paciente = Paciente::create($request->all());
+        $paciente = Paciente::create([
+        'nome'              =>  mb_strtolower($request['nome']),
+        'org_emissor'       =>  mb_strtolower($request['org_emissor']),
+        'nacionalidade'     =>  mb_strtolower($request['nacionalidade']),
+        'naturalidade'      =>  mb_strtolower($request['naturalidade']),
+        'rua'               =>  mb_strtolower($request['rua']),
+        'bairro'            =>  mb_strtolower($request['bairro']),
+        'cidade'            =>  mb_strtolower($request['cidade']),
+        'email'             =>  mb_strtolower($request['email']),
+        'profissao'         =>  mb_strtolower($request['profissao']),
+        'estado'            =>  mb_strtolower($request['estado']),
+        'cpf'               => $request['cpf'],
+        'sexo'              => $request['sexo'],
+        'etnia'             => $request['etnia'],
+        'identidade'        => $request['identidade'],
+        'dataDeNascimento'  => $request['dataDeNascimento'],
+        'escolaridade'      => $request['escolaridade'],
+        'cep'               => $request['cep'],
+        ]); 
+        
         $paciente->planos()->attach($request['plano_id'], 
-        [ 'indicacao'  => $request['indicacao'],
+        [ 'indicacao'  =>  mb_strtolower($request['indicacao']),
             'carteira'  => $request['carteira']]);
 
        
@@ -151,21 +170,20 @@ class PacienteController extends Controller
         //dd($request);
         $paciente = Paciente::find($id);
         $ativos = $paciente->planos()->where('situacao','ATIVO')->get();
-        $inativos = $paciente->planos()->where('situacao','INATIVO')->get();
-
-       // dd($planosPaciente);
+       
         if (!$ativos == null) { // se houver ativos
-            //dd($request['paciente_id']);
+            
             PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->orWhere('situacao','=','NULL')->update(['situacao'=>'INATIVO']);
 
                PacienteHasConvenio::updateOrCreate([
                 'paciente_id' => $paciente->id,
                 'plano_id'   => $request['plano_id'],
                 'indicacao'  => $request['indicacao'],
-                'carteira'   => $request['carteira'],
+              //  'carteira'   => $request['carteira'],
                 'situacao' => 'ATIVO',
                ]);
         }
+
     /* if (!$inativos == null){
         $inativo = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)
          ->where('plano_id','=', $request['plano_id'])
@@ -173,6 +191,7 @@ class PacienteController extends Controller
             
         } 
        // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+
         $paciente->update($request->except([
             'convenio_id',
             'plano_id',
@@ -205,5 +224,24 @@ class PacienteController extends Controller
        // DB::delete("delete from sis_paciente where prontuario = $prontuario");
         return back();
         //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
+    }
+
+         public function show($id)
+    {
+      
+      $p = Paciente::find($id);
+      $plano = $p->planos()->where('situacao','ATIVO')->first();
+       if ( !$plano == null) {
+        $phc = $plano->pivot;
+        $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+       } else {
+           $plano =null; $phc =null; $convenio =null; 
+       }
+       
+
+      
+       $convenios = Convenio::all();
+        return view('paciente.show' , compact('p','convenio','convenios','plano','phc'));
+
     }
 }

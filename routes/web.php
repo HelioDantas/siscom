@@ -39,17 +39,6 @@ Route::post('/teste', 'Controller@dashboard')->name('teste');
  */
 
 
-
-/** Rota redirecionar quando autenticado */
-//Route::get('/',['uses' => 'Controller@home'])->middleware('autorizador')->name('home');
-//Route::get('/home','Controller@home')->middleware('autorizador')->name('home');
-
-
-/** Rota redirecionar quando não autenticado */
-//Route::get('/', 'LoginController@formCad')->name('formulario');
-
-/** Rota para enviar as infos da requisição para autenticação no method login */
-//Route::post('/login','LoginController@login');
 Route::get('/sair', 'LoginController@logout')->middleware('Autorizador')->name('login.logout');
 Route::get('/recovery' , 'UserController@recoveryForm')->name('recovery_senha');
 
@@ -91,6 +80,7 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
   Route::get('novo'         , 'PacienteController@novo')->name(     'paciente.novo'   );
   Route::post('create'      , 'PacienteController@create')->name(   'paciente.create' );
   Route::get('editar/{id}'  , 'PacienteController@edit')->name(     'paciente.editar' );
+   Route::get('show/{id}'    , 'PacienteController@show')->name(        'paciente.show'    );
   Route::put('update/{id}'  , 'PacienteController@update')->name(   'paciente.update' );
   Route::get('excluir/{id}' , 'PacienteController@destroy')->name(  'paciente.excluir');
   Route::get('index'        , 'PacienteController@indexjs')->name(  'paciente.js'     );
@@ -101,6 +91,8 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
 
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
+Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
+
 
 
 
@@ -123,6 +115,7 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
   Route::get('excluir/{id}'   , 'FuncionarioController@destroy')->name(     'funcionario.excluir'   );
   Route::post('create'        , 'FuncionarioController@create')->name(      'funcionario.create'    );
   Route::get('editar/{id}'    , 'FuncionarioController@edit')->name(        'funcionario.editar'    );
+    Route::get('show/{id}'    , 'FuncionarioController@show')->name(        'funcionario.show'    );
   Route::put('update/{id}'    , 'FuncionarioController@update')->name(      'funcionario.update'    );
   Route::get('buscarCpf'      , 'FuncionarioController@buscarCpf')->name(   'funcionario.buscarCpf' );
   Route::any('medico/create/{id}' , 'FuncionarioController@Medicocreate')->name('medico.create'     );

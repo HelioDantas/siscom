@@ -94,7 +94,7 @@
 
     <div class="form-group col-md-4 mb-3">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="45" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        <input type="text" name="nome" id="nome"  maxlength="43" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         value =   {{old('nome')}}>
 
         @if($errors->has('nome'))
@@ -162,7 +162,7 @@
     <div class="col-md-2 mb-3">
         <div class="form-group">
             <label for="dataDeNascimento">Data Nascimento</label>
-            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="2017-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
             value =   {{old('dataDeNascimento')}}>
 
                 @if($errors->has('dataDeNascimento'))
