@@ -13,7 +13,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Model\User' => 'App\Policies\UserPolicy',
+        'App\Model\Funcionario' => 'App\Policies\FuncionarioPolicy',
     ];
 
     /**
@@ -25,6 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('edit', 'App\Policies\User@FuncionarioPolicy');
     }
+    
 }
