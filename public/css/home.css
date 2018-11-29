@@ -27,7 +27,7 @@ header .centroName h3{
 }
 
 
-
+input {text-transform:lowercase;}
 
 
 header #containerLogoDataHoraH3 > .data{

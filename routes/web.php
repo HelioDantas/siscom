@@ -87,8 +87,12 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
   Route::get('json'         , 'PacienteController@indexjson')->name('paciente.json'   );
   Route::any('buscar'       , 'PacienteController@buscar')->name(     'funcionario.buscar'   );
 
+
 });
 
+
+
+Route::get('editarteste/{id}'  , 'PacienteController@edit')->name(     'paciente.editar' );
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
 Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');

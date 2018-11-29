@@ -24,7 +24,9 @@ class PacienteRequest extends FormRequest
     public function rules()
     {
         return [
+
         'nome'                  => 'required|min:3|max:54',
+
         'cpf'                   => 'required|min:14|max:15',
         'identidade'            => 'nullable|min:11|max:12',    
         'dataDeNascimento'      => 'nullable|date',

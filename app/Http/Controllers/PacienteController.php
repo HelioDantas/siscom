@@ -12,6 +12,7 @@ use App\Models\PacienteHasConvenio;
 use App\Models\Plano;
 use App\Http\Requests\PacienteRequest;
 use Str;
+use App\Http\Controllers\PermissionController;
 class PacienteController extends Controller
 {
 
@@ -55,9 +56,10 @@ class PacienteController extends Controller
       } 
 
     
-    public function novo() 
+    public function novo(Request $request) 
     {
         //  form de um novo paciente
+         PermissionController::pnovo( $request);
         $convenios = Convenio::all();
         $planos = Plano::all();
          //dd($convenio->tipoConvenios);
@@ -67,7 +69,7 @@ class PacienteController extends Controller
     }
 
     public function create(PacienteRequest $request){
-        
+         PermissionController::pcreate( $request);
         $paciente = Paciente::create([
         'nome'              =>  mb_strtolower($request['nome']),
         'org_emissor'       =>  mb_strtolower($request['org_emissor']),
@@ -101,10 +103,14 @@ class PacienteController extends Controller
 
 
     }
-
-    public function edit( $id) 
+    public function edit(Request $request,  $id)
     {
-        //  form para editar infos de um paciente
+        //  form para editar infos de um funcionario
+        $tt =PermissionController::pedit( $request);
+
+        if($tt == 0){
+            return
+        }
        $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
@@ -124,9 +130,11 @@ class PacienteController extends Controller
     }
    
 
-    public function update(Request $request, $id)
+ 
+    public function update(PacienteRequest $request, $id)
     {
 
+        PermissionController::pupdate( $request);
 
    
      $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->first();
@@ -210,10 +218,10 @@ class PacienteController extends Controller
         return reponse($req ,201);
     }
    
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //  deletar
-
+         PermissionController::pdestroy( $request);
         $paciente = Paciente::find($id);
        // $paciente = Paciente::find($prontuario);
         $paciente->delete();
@@ -224,8 +232,10 @@ class PacienteController extends Controller
         //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
     }
 
-         public function show($id)
+        public function show(Request $request, $id)
     {
+        //  form para editar infos de um paciente
+        PermissionController::pshow( $request);
       
       $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();

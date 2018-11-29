@@ -164,7 +164,7 @@
 								 data-placement="top" title="excluir">
 									<i class="fas fa-trash"></i>
 								</button>--}}
-								<a class="btn btn-outline-primary" href="editar/{{$p->id}}" title="editar">
+								<button class="btn btn-outline-primary" id="editAjax"  title="editar">kkk</button>
 									<i class="fas fa-edit"></i>
 								</a>
 								<a class="btn btn-outline-secondar" href="show/{{$p->id}}" title="visualizar">
@@ -183,13 +183,38 @@
 
 				<p></p>
 
-				@endif {!!$pacientes->links()!!}
+				@endif {!!$pacientes->links()!!} 
 			</div>
 		</div>
 
 	</div>
 </div>
-<hr> @endsection @section('scripts')
+<hr>
+<div class="modal fade" id="tempermissao" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenterTitle">permissao</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Deseja Excluir 
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					 
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+ @endsection
+ @section('scripts')
 <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('js/confirmacaoDeExclusao.js') }}"></script>
 @endsection

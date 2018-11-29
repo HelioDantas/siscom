@@ -8,28 +8,29 @@ use App\Models\Plano;
 use App\Http\Requests\FuncionarioRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PermissionController;
 use DB;
-
 class FuncionarioController extends Controller
 {
     //
-      public function novo(){
+ 
+
+      public function novo(Request $request){
         //  form de um novo produto
+        PermissionController::novo( $request);
         $especi = Especialidade::all();
+       
         $planos =  Plano::where('status', 'ATIVO')->get();
         return view('funcionario.formulario', compact('especi','planos'  ));
     }
 
-     public function novoM(){
-        //  form de um novo produto
 
-        return view('medico.formulario');
-    }
 
 
 
     public function create(FuncionarioRequest $request){
 
+          PermissionController::create( $request);
         $Funcionario = Funcionario::create([
             'nome'              =>  mb_strtolower($request['nome']),
             'nacionalidade'     =>  mb_strtolower($request['nacionalidade']),
@@ -79,12 +80,7 @@ class FuncionarioController extends Controller
     }
 
 
-    public function Medicocreate(Request $request , $id){
 
-
-        return view('user.novo')->with('func', $Funcionario);
-
-    }
 
       public function listar(){
 
@@ -112,8 +108,8 @@ class FuncionarioController extends Controller
 
 
 
-         public function destroy ($id){
-
+         public function destroy (Request $request, $id){
+        PermissionController::destroy( $request);
         $Funcionario = Funcionario::find($id);
         $Funcionario->delete();
         return back();
@@ -123,11 +119,12 @@ class FuncionarioController extends Controller
 
     }
 
-      public function edit( $id)
+      public function edit(Request $request,  $id)
     {
-        //  form para editar infos de um paciente
+        //  form para editar infos de um funcionario
+         PermissionController::edit( $request);
          $p = Funcionario::find($id);
-
+           
         $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula',$p->matricula)->get();
 
 
@@ -147,6 +144,7 @@ class FuncionarioController extends Controller
     public function update(FuncionarioRequest $request, $id)
     {
 
+        PermissionController::update( $request);
 
         $Funcionario = Funcionario::find($id);
 
@@ -154,9 +152,10 @@ class FuncionarioController extends Controller
         return redirect()->route('funcionario.listar');
     }
 
-        public function show( $id)
+        public function show(Request $request, $id)
     {
         //  form para editar infos de um paciente
+        PermissionController::show( $request);
          $p = Funcionario::find($id);
 
 

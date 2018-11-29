@@ -10,3 +10,16 @@ $('#convenio').change(function(){
         })
     })
 })
+
+
+$('#editAjax').click(function(){
+    var dado = this.value;
+    console.log(dado);
+
+    $.getJSON('/editar' +dado , function(planosA){
+        p = dado;
+       if(p = 0){
+        $('#tempermissao').modal('show');
+       }
+    })
+})

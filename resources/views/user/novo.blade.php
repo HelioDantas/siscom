@@ -116,6 +116,9 @@
 </div>
 </div><!--col -->
 </div>
+
+
+
 {!! Form::close() !!}
 </div>
 @endsection
