@@ -577,46 +577,64 @@
 </fieldset><!--endereço-->
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Planos Do paciente</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-body">
             <div class="container-fluid">
-                @foreach ($p->planos()->get()  as $pp)
-                    @if (!empty($pp))
+                <h3 class="aling-center"> Historico de convenios </h3>
+              
                    
-                   
-                        <div class="row">
-                            <div class="col">
-                                <span>conv : {{ $pp->convenio->nome}} </span>
-                            </div>
-                            <div class="col">
-                                    <span>s : {{ $pp->nome }}</span>
-                            </div>
-                            <div class="col">
-                                    <span>nome : {{ $p->nome }}</span>
-                            </div>
-                            <div class="col">
-                                    <span>nome : {{ $p->nome }}</span>
-                            </div>
-                            <div class="col">
-                                    <span>nome : {{ $p->nome }}</span>
-                            </div>
-                            <div class="col">
-                                    <span>nome : {{ $p->nome }}</span>
-                            </div>
-                        </div>
-                        @endif
-                        @endforeach
+                    
+                     <table class="table table-responsive table-hover">
+                         <thead>
+                             <tr>
+                             <th>convenio</th>
+                             <th>plano</th>
+                             <th>carteira</th>
+                             <th>indicação</th>
+                             <th>situação</th>
+                             <th>data de Adesao</th>
+                             <th>data de Encerramento</th>
+                           
+                            </tr>
+                         </thead>
+                         <tbody>
+                        @foreach ($p->planos()->where('situacao','INATIVO')->get()  as $pp)
+                        @if (!empty($pp))
+                             <tr>
+                                 <td>{{ $pp->convenio->nome }}</td>
+                                 <td>{{ $pp->nome }}</td>
+                                 <td>{{ $pp->pivot->carteira }}</td>
+                                 <td>{{ $pp->pivot->indicacao }}</td>
+                                 <td>{{ $pp->pivot->situacao }}</td>
+                                 <td>{{ $pp->pivot->created_at }}</td>
+                                 <td>{{ $pp->pivot->updated_at }}</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                             </tr>
+                            @else
+                            <tr>
+                            <td> Esse paciente ainda nao possui um historico de convenios e planos cadastrados </td>
+                        </tr>
+                             @endif
+                         @endforeach
+                         </tbody>
+                     </table>
+                        
+                     
+                       
+                    
 
                     </div>
 
             </div>
     </div>
 </div>
-</div>
+
 </div><!-- container -->
 
 

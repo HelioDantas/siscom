@@ -31,8 +31,8 @@ class User extends Authenticable
 
          }
 
-    public function permissoes(){
-        return $this->hasMany(PermisssaoUsuario::class); // a ser implementado
+    public function permission(){
+              return  $this->belongsToMany("App\Models\Permission", 'sis_usuario_tem_permissao','usuario_id', 'permissao_id');
     }
 
 

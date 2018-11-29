@@ -18,4 +18,13 @@ class UserPolicy
     {
         //
     }
+
+    public function editir(?User $user, Post $post){
+        return $user->id === $post->user_id;
+    
+
+
+
+    }
+
 }

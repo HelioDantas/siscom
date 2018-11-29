@@ -453,7 +453,7 @@
                 </div>
             </div><!--col nome -->
 
-            <div class="col-3 ">
+            <div class="col-md-3 mb-3 Fill invisivel">
                 <div class="form-group">
                   <label for="especialidade" >Especialidade 1</label>
                   <select  id="especialidade" name="especialidade1" class="form-control"  >
@@ -469,7 +469,7 @@
          </div>
 
 
-               <div class="col-3 ">
+               <div class="col-md-3 mb-3 Fill invisivel">
                 <div class="form-group teste">
                   <label for="especialidade2">Especialidade 2</label>
                   <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
