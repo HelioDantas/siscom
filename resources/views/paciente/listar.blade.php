@@ -86,7 +86,7 @@
          {{--   <th >etnia           </th>   --}}    
                 <th scope="col">nacionalidade   </th>
             <th scope="col" >naturalidade    </th>   
-                <th scope="col">escolaridade    </th>
+     {{--            <th scope="col">escolaridade    </th> --}}
     <!--        <th scope="col">rua             </th>
                 <th scope="col">numero          </th>
                 <th scope="col">bairro          </th>
@@ -117,7 +117,7 @@
               <td>       {{$p->etnia}}               </td>   --}}
                  <td>       {{$p->nacionalidade}}       </td>
                   <td>       {{$p->naturalidade}}        </td> 
-                 <td>       {{$p->escolaridade}}        </td>  
+          {{--        <td>       {{$p->escolaridade}}        </td>  --}}
     <!--         <td>       {{$p->rua}}                 </td>
                  <td>       {{$p->numero}}              </td>
                  <td>       {{$p->bairro}}              </td>
