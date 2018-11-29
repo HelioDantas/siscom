@@ -584,7 +584,7 @@
     <div class="modal-content">
         <div class="modal-body">
             <div class="container-fluid">
-                <h3 class="aling-center"> Historico de convenios </h3>
+                <h3 class="justify-content-center"> Historico de convenios </h3>
               
                    
                     

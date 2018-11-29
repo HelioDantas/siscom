@@ -84,7 +84,7 @@
                 <th scope="col">Nascimento</th>
          {{--       <th >sexo            </th> --}}
          {{--   <th >etnia           </th>   --}}    
-                <th scope="col">nacionalidade   </th>
+         {{--       <th scope="col">nacionalidade   </th>--}}
             <th scope="col" >naturalidade    </th>   
      {{--            <th scope="col">escolaridade    </th> --}}
     <!--        <th scope="col">rua             </th>
@@ -92,8 +92,8 @@
                 <th scope="col">bairro          </th>
                 <th scope="col">cep             </th>
                 <th scope="col">cidade          </th>
-                <th scope="col">estado          </th>
-                <th scope="col">telefone        </th>-->
+                <th scope="col">estado          </th>-->
+                <th scope="col">telefone        </th>
                 <th scope="col">celular         </th>
                 <th scope="col">email           </th> 
        {{--          <th scope="col">profissao       </th> --}}
@@ -115,7 +115,7 @@
                  <td>       {{$p->dataDeNascimento}}    </td>
        {{--          <td>       {{$p->sexo}}                </td>
               <td>       {{$p->etnia}}               </td>   --}}
-                 <td>       {{$p->nacionalidade}}       </td>
+        {{--         <td>       {{$p->nacionalidade}}       </td> --}}
                   <td>       {{$p->naturalidade}}        </td> 
           {{--        <td>       {{$p->escolaridade}}        </td>  --}}
     <!--         <td>       {{$p->rua}}                 </td>
@@ -123,8 +123,8 @@
                  <td>       {{$p->bairro}}              </td>
                  <td>       {{$p->cep}}                 </td>
                  <td>       {{$p->cidade}}              </td>
-                 <td>       {{$p->estado}}              </td>
-                 <td>       {{$p->telefone}}            </td>-->
+                 <td>       {{$p->estado}}              </td>-->
+                 <td>       {{$p->telefone}}            </td>
                  <td>       {{$p->celular}}             </td>
                  <td>       {{$p->email}}               </td> 
       {{--           <td>       {{$p->profissao}}           </td>  --}}
