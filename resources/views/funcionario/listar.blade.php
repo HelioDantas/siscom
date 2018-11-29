@@ -50,6 +50,13 @@
             <a  class="btn btn-outline-success recon"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
           <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
                 @csrf
+                <select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
+                        <option value="" selected>Selecione</option>
+                        <option value="nome">nome</option>
+                        <option value="id">prontuario</option>
+                        <option value="telefone">telefone</option>
+                        <option value="cpf">cpf</option>
+                    </select>
             <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>

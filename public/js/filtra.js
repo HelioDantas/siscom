@@ -1,3 +1,22 @@
+/*
+$('#tipobusca').change(function(){
+    var tipo = this.value;
+    console.log(tipo);
+
+    $.getJSON('/busca/tipo/' +tipo , function(dados){
+        d = dados;
+        $('select[id=plano_id]').empty();
+        $.each(d, function(key,value){
+            $('select[id=plano_id]').append('<option value=' + value.id + '>' + value.nome + '</option>')
+        })
+    })
+})*/
+
+
+
+
+
+
 var tt = document.getElementById("#buscarPor");
 console.log(tt);
 //var opt = select.getElementsByTagName('option');

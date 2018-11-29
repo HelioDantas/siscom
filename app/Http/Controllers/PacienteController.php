@@ -40,18 +40,16 @@ class PacienteController extends Controller
         //  listar pacientes.
 
         //$pacientes = Paciente::where('nome', $nome)->get();
-        $pacientes = Paciente::paginate(10);
+        $pacientes = Paciente::orderBy('nome')->paginate(10);
         return view('paciente.listar' , compact('pacientes'));
         //testando
     } 
 
     // filtro da tabela listar
     public function buscar(Request $request){
+        $tipo = $request['tipobusca'];
         $buscar = $request->input('search');
-        $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
-        ->orWhere('cpf', 'like', '%'.$buscar.'%')
-        ->orWhere('id', 'like', '%'.$buscar.'%')
-        ->paginate(10);
+        $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
         return view('paciente.listar' , compact('pacientes'));
        
       } 
