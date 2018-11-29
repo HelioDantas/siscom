@@ -45,7 +45,7 @@ class FuncionarioController extends Controller
             $medico = Medico::find($Funcionario->matricula);
             $especialidade1 = $request->only('especialidade1');
             $especialidade2 = $request->only('especialidade2');
-            $medico->especialidade()->attach(2);
+            $medico->especialidade()->attach($especialidade2);
             $medico->especialidade()->attach($especialidade1);
             $planos = $request->only('$p');
             foreach( $planos as $id){
