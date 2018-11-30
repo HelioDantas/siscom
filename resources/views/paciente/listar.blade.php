@@ -149,25 +149,21 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												Deseja Excluir esse paciente?
+												<p id="permissaoEditarPaciente"> Deseja Excluir esse paciente? <p>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button id="excluir" name="excluir" class="btn btn-outline-danger" type="Submit" onclick="algum({{$p->id}})" data-toggle="tooltip"
+												<button id="excluir" name="excluir" class="btn btn-outline-danger" type="Submit" onclick="permissaoExcluir({{$p->id}})" data-toggle="tooltip"
 												 data-placement="top" title="excluir">excluir</button>
 											</div>
 										</div>
 									</div>
 								</div>
-								{{--
-								<button id="excluir" name="excluir" class="btn btn-outline-danger" type="Submit" onclick="algum({{$p->id}})" data-toggle="tooltip"
-								 data-placement="top" title="excluir">
-									<i class="fas fa-trash"></i>
-								</button>--}}
-								<button class="btn btn-outline-primary" id="editAjax"  title="editar">kkk</button>
-									<i class="fas fa-edit"></i>
+								
+								<button class="btn btn-outline-primary" id="editAjax" onclick="permissaoEditar({{$p->id}})" title="editar">	<i class="fas fa-edit"></i></button>
+								
 								</a>
-								<a class="btn btn-outline-secondar" href="show/{{$p->id}}" title="visualizar">
+								<a class="btn btn-outline-secondar" onclick="permissaoShow({{$p->id}})" title="visualizar">
 									<i class="fas fa-eye "></i>
 								</a>
 							</td>
@@ -190,26 +186,6 @@
 	</div>
 </div>
 <hr>
-<div class="modal fade" id="tempermissao" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalCenterTitle">permissao</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					Deseja Excluir 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					 
-				</div>
-			</div>
-		</div>
-	</div>
-
 
  @endsection
  @section('scripts')

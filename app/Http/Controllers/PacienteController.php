@@ -73,6 +73,12 @@ class PacienteController extends Controller
     {
         //  form de um novo paciente
          PermissionController::pnovo( $request);
+         if($tt == 0){
+            
+            return json_encode(0);
+            //return 0;
+
+        }
         $convenios = Convenio::all();
         $planos = Plano::all();
          //dd($convenio->tipoConvenios);
@@ -121,7 +127,13 @@ class PacienteController extends Controller
         //  form para editar infos de um funcionario
         $tt =PermissionController::pedit( $request);
 
-     
+        if($tt == 0){
+            
+            return json_encode(0);
+            //return 0;
+
+        }
+
        $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
@@ -145,8 +157,14 @@ class PacienteController extends Controller
     public function update(PacienteRequest $request, $id)
     {
 
-        PermissionController::pupdate( $request);
+        $tt = PermissionController::pupdate( $request);
 
+        if($tt == 0){
+            
+            return json_encode(0);
+            //return 0;
+
+        }
    
      $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->first();
        
@@ -232,21 +250,47 @@ class PacienteController extends Controller
     public function destroy(Request $request, $id)
     {
         //  deletar
-         PermissionController::pdestroy( $request);
-        $paciente = Paciente::find($id);
-       // $paciente = Paciente::find($prontuario);
-        $paciente->delete();
-       //Paciente::destroy($prontuario);
+        $tt = PermissionController::pdestroy( $request);
+         if($tt == 0){
+            
+            return json_encode(0);
+            //return 0;
 
-       // DB::delete("delete from sis_paciente where prontuario = $prontuario");
-        return back();
-        //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
+        }
+
+            $paciente = Paciente::find($id);
+           // dd( $paciente = Paciente::find($id));
+
+            //dd($paciente);
+
+           DB::table('sis_paciente')->where('id',$id)->delete();
+            //dd($paciente);
+            // $paciente = Paciente::find($prontuario);
+           
+            //$paciente->delete();
+            
+            
+            //Paciente::destroy($prontuario);
+     
+            // DB::delete("delete from sis_paciente where prontuario = $prontuario");
+            //Paciente::where('id', $id)->delete();
+             return redirect()->back();
+             //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
+        
+     
     }
 
         public function show(Request $request, $id)
     {
         //  form para editar infos de um paciente
-        PermissionController::pshow( $request);
+       $tt = PermissionController::pshow( $request);
+
+        if($tt == 0){
+            
+            return json_encode(0);
+            //return 0;
+
+        }
       
       $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();

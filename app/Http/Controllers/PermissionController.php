@@ -122,7 +122,7 @@ class PermissionController extends Controller
             if( !$request->session()->get("user")->permission()->where('permissao_id', 8)->get()->isEmpty())
                 return true;
      
-              abort(403,'Não autorizado');
+                return 0;
 
     }
 
@@ -133,7 +133,7 @@ class PermissionController extends Controller
             if( (!$request->session()->get("user")->permission()->where('permissao_id', 9)->get()->isEmpty()))
                 return true;
      
-              abort(403,'Não autorizado');
+                return 0;
 
          }
 
@@ -145,7 +145,7 @@ class PermissionController extends Controller
             if( (!$request->session()->get("user")->permission()->where('permissao_id', 10)->get()->isEmpty()))
                 return true;
      
-              abort(403,'Não autorizado');
+                return 0;
 
          }
 
@@ -156,7 +156,7 @@ class PermissionController extends Controller
             if( (!$request->session()->get("user")->permission()->where('permissao_id', 11)->get()->isEmpty()))
                 return true;
      
-              abort(403,'Não autorizado');
+                return 0;
 
             }
 
