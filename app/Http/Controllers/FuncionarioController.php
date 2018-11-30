@@ -84,8 +84,8 @@ class FuncionarioController extends Controller
 
       public function listar(){
 
-        $Funcionarios = Funcionario::paginate(5);
-        return view('funcionario.listar' , compact('Funcionarios'));
+        $funcionarios = Funcionario::paginate(5);
+        return view('funcionario.listar' , compact('funcionarios'));
 
       }
 
