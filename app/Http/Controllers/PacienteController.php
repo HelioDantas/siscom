@@ -261,13 +261,13 @@ class PacienteController extends Controller
             $paciente = Paciente::find($id);
            // dd( $paciente = Paciente::find($id));
 
-            dd($paciente);
+            //dd($paciente);
 
-           
+           DB::table('sis_paciente')->where('id',$id)->delete();
             //dd($paciente);
             // $paciente = Paciente::find($prontuario);
            
-            $paciente->delete();
+            //$paciente->delete();
             
             
             //Paciente::destroy($prontuario);
