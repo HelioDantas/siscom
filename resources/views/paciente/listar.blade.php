@@ -153,17 +153,17 @@
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button id="excluir" name="excluir" class="btn btn-outline-danger" type="Submit" onclick="permissaoExcluir({{$p->id}})" data-toggle="tooltip"
+												<button id="excluir" name="excluir" class="btn btn-outline-danger" type="Submit" onclick="algum({{$p->id}})" data-toggle="tooltip"
 												 data-placement="top" title="excluir">excluir</button>
 											</div>
 										</div>
 									</div>
 								</div>
 								
-								<button class="btn btn-outline-primary" id="editAjax" onclick="permissaoEditar({{$p->id}})" title="editar">	<i class="fas fa-edit"></i></button>
-								
+		
+								<a class="btn btn-outline-primary" href="editar/{{$p->id}}" title="visualizar"><i class="fas fa-edit"></i>
 								</a>
-								<a class="btn btn-outline-secondar" onclick="permissaoShow({{$p->id}})" title="visualizar">
+								<a class="btn btn-outline-secondar" href="show/{{$p->id}}" title="visualizar">
 									<i class="fas fa-eye "></i>
 								</a>
 							</td>

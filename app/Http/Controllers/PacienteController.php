@@ -251,23 +251,12 @@ class PacienteController extends Controller
     {
         //  deletar
         $tt = PermissionController::pdestroy( $request);
-         if($tt == 0){
-            
-            return json_encode(0);
-            //return 0;
-
-        }
+    
 
             $paciente = Paciente::find($id);
            // dd( $paciente = Paciente::find($id));
 
-            //dd($paciente);
-
-           DB::table('sis_paciente')->where('id',$id)->delete();
-            //dd($paciente);
-            // $paciente = Paciente::find($prontuario);
-           
-            //$paciente->delete();
+        $paciente->delete();
             
             
             //Paciente::destroy($prontuario);
