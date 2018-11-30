@@ -61,7 +61,7 @@ class FuncionarioController extends Controller
             }catch(\Exception $e){
 
                   
-             return back()->with('Mensagem para o usuário');
+             return redirect()->back()->with("cpfJaCadastrdo",  $request['cpf']);
 
             }
    

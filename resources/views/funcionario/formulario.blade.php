@@ -66,6 +66,30 @@
 <div class="container-fluid col-lg-10 corpo-paciente">
     
     {!! Form::open(['route' => 'funcionario.create','method ' => 'post',]) !!} @csrf
+    @if (session('cpfJaCadastrdo'))
+   
+
+    <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Clouse</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger ">
+            o cpf {{ session('cpfJaCadastrdo') }} já consta cadastrado!!
+            </div>
+
+          </div>
+          <div class="modal-footer">
+           
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+@endif
+    
 
      <div class="form-group ">
         <div class="form-group navegacao ttt">
@@ -97,7 +121,7 @@
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
-                {{$errors->first('nome')}}
+             {$errors->first('nome')}} 
                 </div>
         @endif
     </div>
