@@ -48,10 +48,23 @@ class PacienteController extends Controller
 
     // filtro da tabela listar
     public function buscar(Request $request){
-        $tipo = $request['tipobusca'];
+         $tipo = $request['tipobusca'];
         $buscar = $request->input('search');
-        $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
-        return view('paciente.listar' , compact('pacientes'));
+        if($tipo == null){
+               $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
+                ->orWhere('cpf', 'like', '%'.$buscar.'%')
+                ->orWhere('id', 'like', '%'.$buscar.'%')
+                ->paginate(10);
+             
+
+
+        }else{
+             $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+    
+
+        } 
+
+            return view('paciente.listar' , compact('pacientes'));
        
       } 
 
@@ -108,9 +121,7 @@ class PacienteController extends Controller
         //  form para editar infos de um funcionario
         $tt =PermissionController::pedit( $request);
 
-        if($tt == 0){
-            return
-        }
+     
        $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {

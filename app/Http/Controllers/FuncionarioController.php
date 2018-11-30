@@ -92,10 +92,22 @@ class FuncionarioController extends Controller
 
        public function buscar(Request $request){
         $tipo = $request['tipobusca'];
-        $buscar = $request->input('search');
-        $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+        $buscar = $request->input('search'); 
+         if($tipo == null){
+               $funcionarios = Funcionario::where('nome', 'like', '%'.$buscar.'%')
+                ->orWhere('cpf', 'like', '%'.$buscar.'%')
+                ->orWhere('matricula', 'like', '%'.$buscar.'%')
+                ->paginate(10);
+             
+
+
+        }else{
+             $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+    
+
+        } 
         
-        return view('funcionario.listar' , compact('Funcionarios'));
+        return view('funcionario.listar' , compact('funcionarios'));
 
       }
 
