@@ -457,7 +457,7 @@
                 <div class="form-group">
                   <label for="especialidade" >Especialidade 1</label>
                   <select  id="especialidade" name="especialidade1" class="form-control"  >
-                      @if (!empty($s))
+                      @if (!empty($s[0]))
                         <option   value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
                       @endif
                       <option value="">Não possui</option>
@@ -473,7 +473,7 @@
                 <div class="form-group teste">
                   <label for="especialidade2">Especialidade 2</label>
                   <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
-                        @if (!empty($s))
+                        @if (!empty($s[1]))
                         <option   value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
                       @endif
                         <option value="">Não possui</option>

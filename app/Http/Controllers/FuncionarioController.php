@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Database\QueryException;
 namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use App\Models\Medico;
@@ -31,7 +31,11 @@ class FuncionarioController extends Controller
     public function create(FuncionarioRequest $request){
  
           PermissionController::create( $request);
-        $Funcionario = Funcionario::create([
+
+
+          try{
+            
+               $Funcionario = Funcionario::create([
             'nome'              =>  mb_strtolower($request['nome']),
             'nacionalidade'     =>  mb_strtolower($request['nacionalidade']),
             'naturalidade'      =>  mb_strtolower($request['naturalidade']),
@@ -52,6 +56,16 @@ class FuncionarioController extends Controller
             'telefone'          => $request['telefone'],
             'cep'               => $request['cep'],
             ]);
+
+
+            }catch(\Exception $e){
+
+                  
+             return back()->with('Mensagem para o usuário');
+
+            }
+   
+     
       //  return var_dump($sis_funcionario);
         if($Funcionario->profissao == "A"){
             return view('user.novo')->with('func', $Funcionario);
@@ -162,14 +176,17 @@ class FuncionarioController extends Controller
         PermissionController::update( $request);
 
         $Funcionario = Funcionario::find($id);
-
+         $especialidade1 = true;
+          $especialidade2 = true;
         $Funcionario->update($request->all());
-        if($Funcionario->profissao == 'M')
+        if($Funcionario->profissao == 'M'){
             $Funcionario->medico->update( $request->only('crm'));
-            $especialidade[] = $request->only('especialidade1')['especialidade1'] == null ?  $especialidade[] = $request->only('especialidade1')['especialidade1']: "ff";
-            $especialidade[] = $request->only('especialidade2')['especialidade2'] == null ?  $especialidade[] = $request->only('especialidade2')['especialidade2']: "ff";
+            $request->only('especialidade1')['especialidade1'] != null ?  $especialidade[] = $request->only('especialidade1')['especialidade1']:  $especialidade1 = null;
+            $request->only('especialidade2')['especialidade2'] != null ?  $especialidade[] = $request->only('especialidade2')['especialidade2']:  $especialidade2 = null;
     
-            $medico->especialidade()->attach($especialidade2);
+           $especialidade1 == null && $especialidade2 == null?  $Funcionario->medico->especialidade()->detach(): $Funcionario->medico->especialidade()->sync($especialidade);
+        }
+       
         return redirect()->route('funcionario.listar');
     }
 

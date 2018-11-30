@@ -372,7 +372,7 @@
                     <div class="form-group">
                       <label for="especialidade" >Especialidade 1</label>
                       <select  id="especialidade" name="especialidade1" class="form-control" >
-                          <option value=""></option>
+                          <option value="">Não possui</option>
                           @foreach($especi as $e)
                                 <option value="{{$e->id}}">{{$e->nome}}</option>
                          @endforeach
@@ -385,7 +385,7 @@
                     <div class="form-group teste">
                       <label for="especialidade2">Especialidade 2</label>
                       <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
-                          <option value="" selected>Selecione</option>
+                          <option value="" selected>Não possui</option>
                          
                       </select>
                     </div>
