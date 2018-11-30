@@ -90,7 +90,7 @@
             </thead>
             <tbody>
             @php $cont = 0; @endphp
-                @foreach ($Funcionarios as $p)
+                @foreach ($funcionarios as $p)
                        @php $cont = $cont + 1; @endphp
               <tr >
                   <th scope="row">     {{$p->matricula}}        </th>
@@ -150,12 +150,12 @@
           </table>
 
           <div class="card-footer">
-             @if($cont==4)
+             @if($cont==9)
                 <p></p>
              
                 
             @endif
-            {!!$Funcionarios->links()!!}
+            {!!$funcionarios->links()!!}
           </div>
     </div>
 

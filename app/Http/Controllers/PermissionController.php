@@ -17,7 +17,22 @@ class PermissionController extends Controller
             if(!$request->session()->get("user")->permission()->where('permissao_id', 1)->get()->isEmpty())
                 return true;
      
-              abort(403,'Não autozizado');
+               return 0;
+            
+
+
+
+    }
+
+
+   public static function update(Request $request)
+    {
+        //  form para editar infos de um funcionario
+  
+            if(!$request->session()->get("user")->permission()->where('permissao_id', 2)->get()->isEmpty())
+                return true;
+     
+               return 0;
             
 
 
@@ -31,7 +46,7 @@ class PermissionController extends Controller
             if( !$request->session()->get("user")->permission()->where('permissao_id', 3)->get()->isEmpty())
                 return true;
      
-              abort(403,'Não autorizado');
+               return 0;
 
     }
 
@@ -42,7 +57,7 @@ class PermissionController extends Controller
             if( (!$request->session()->get("user")->permission()->where('permissao_id', 4)->get()->isEmpty()))
                 return true;
      
-              abort(403,'Não autorizado');
+               return 0;
 
          }
 
@@ -54,7 +69,7 @@ class PermissionController extends Controller
             if( (!$request->session()->get("user")->permission()->where('permissao_id', 5)->get()->isEmpty()))
                 return true;
      
-              abort(403,'Não autorizado');
+               return 0;
 
          }
 
@@ -65,7 +80,7 @@ class PermissionController extends Controller
             if( (!$request->session()->get("user")->permission()->where('permissao_id', 6)->get()->isEmpty()))
                 return true;
      
-              abort(403,'Não autorizado');
+               return 0;
 
             }
 
@@ -84,6 +99,21 @@ class PermissionController extends Controller
 
 
     }
+    
+   public static function pupdate(Request $request)
+    {
+        //  form para editar infos de um funcionario
+  
+            if(!$request->session()->get("user")->permission()->where('permissao_id', 8)->get()->isEmpty())
+                return true;
+     
+               return 0;
+            
+
+
+
+    }
+
 
        public static function pnovo(Request $request)
         {

@@ -159,7 +159,7 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 Route::prefix('user')->middleware('Autorizador')->group(function () {
   Route::get('novo', 'UserController@novo')->name('user.novo');
-  Route::post('create', 'UserController@create')->name('user.create');;
+  Route::post('create', 'UserController@create')->name('user.create');
 
 
 
@@ -167,3 +167,9 @@ Route::prefix('user')->middleware('Autorizador')->group(function () {
 Route::get('/testeRelacionamento',function(){
   return dd(Paciente::where('id', '=', 150));
 });
+
+
+
+Route::get('/erro' , function(){
+  return abort(403,'Não autozizado');
+})->name('erro');

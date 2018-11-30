@@ -48,10 +48,23 @@ class PacienteController extends Controller
 
     // filtro da tabela listar
     public function buscar(Request $request){
-        $tipo = $request['tipobusca'];
+         $tipo = $request['tipobusca'];
         $buscar = $request->input('search');
-        $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
-        return view('paciente.listar' , compact('pacientes'));
+        if($tipo == null){
+               $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
+                ->orWhere('cpf', 'like', '%'.$buscar.'%')
+                ->orWhere('id', 'like', '%'.$buscar.'%')
+                ->paginate(10);
+             
+
+
+        }else{
+             $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+    
+
+        } 
+
+            return view('paciente.listar' , compact('pacientes'));
        
       } 
 
@@ -243,17 +256,27 @@ class PacienteController extends Controller
             return json_encode(0);
             //return 0;
 
-        }else{
+        }
+
             $paciente = Paciente::find($id);
+           // dd( $paciente = Paciente::find($id));
+
             dd($paciente);
+
+           
+            //dd($paciente);
             // $paciente = Paciente::find($prontuario);
-             $paciente->delete();
+           
+            $paciente->delete();
+            
+            
             //Paciente::destroy($prontuario);
      
             // DB::delete("delete from sis_paciente where prontuario = $prontuario");
-             return back();
+            //Paciente::where('id', $id)->delete();
+             return redirect()->back();
              //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
-        }
+        
      
     }
 
