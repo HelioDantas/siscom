@@ -87,8 +87,12 @@ Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->m
   Route::get('json'         , 'PacienteController@indexjson')->name('paciente.json'   );
   Route::any('buscar'       , 'PacienteController@buscar')->name(     'funcionario.buscar'   );
 
+
 });
 
+
+
+Route::get('editarteste/{id}'  , 'PacienteController@edit')->name(     'paciente.editar' );
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
 Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
@@ -155,7 +159,7 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 Route::prefix('user')->middleware('Autorizador')->group(function () {
   Route::get('novo', 'UserController@novo')->name('user.novo');
-  Route::post('create', 'UserController@create')->name('user.create');;
+  Route::post('create', 'UserController@create')->name('user.create');
 
 
 
@@ -163,3 +167,9 @@ Route::prefix('user')->middleware('Autorizador')->group(function () {
 Route::get('/testeRelacionamento',function(){
   return dd(Paciente::where('id', '=', 150));
 });
+
+
+
+Route::get('/erro' , function(){
+  return abort(403,'Não autorizado');
+})->name('erro');

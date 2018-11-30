@@ -50,6 +50,13 @@
             <a  class="btn btn-outline-success recon"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar"><i class="fas fa-plus-circle"></i></a>
           <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
                 @csrf
+                <select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
+                        <option value="" selected>Selecione</option>
+                        <option value="nome">nome</option>
+                        <option value="id">prontuario</option>
+                        <option value="telefone">telefone</option>
+                        <option value="cpf">cpf</option>
+                    </select>
             <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -83,7 +90,7 @@
             </thead>
             <tbody>
             @php $cont = 0; @endphp
-                @foreach ($Funcionarios as $p)
+                @foreach ($funcionarios as $p)
                        @php $cont = $cont + 1; @endphp
               <tr >
                   <th scope="row">     {{$p->matricula}}        </th>
@@ -143,12 +150,12 @@
           </table>
 
           <div class="card-footer">
-             @if($cont==4)
+             @if($cont==9)
                 <p></p>
              
                 
             @endif
-            {!!$Funcionarios->links()!!}
+            {!!$funcionarios->links()!!}
           </div>
     </div>
 
@@ -160,9 +167,35 @@
     @endif
 
 
+     @if (session('NaoAutorizado'))
+   
+
+    <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Clouse</h4>
+          </div>
+          <div class="modal-body">
+           <div class="row">
+            <iframe type="text/html" width="5000rem" height="650rem" src="{{route('erro')}}" frameborder="0" allowfullscreen=""></iframe>
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+           
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+@endif
+    
+
     @endsection
     @section('scripts')
-
+ <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
           <script type="text/javascript" src="{{ asset('js/confirmacaoDeExclusao.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
     @endsection

@@ -94,7 +94,7 @@
 
     <div class="form-group col-md-4 mb-3">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="43" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        <input type="text" name="nome" id="nome"  maxlength="55" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         value =   {{old('nome')}}>
 
         @if($errors->has('nome'))

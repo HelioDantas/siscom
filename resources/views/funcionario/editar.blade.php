@@ -442,8 +442,8 @@
              <div class="col-md-3 mb-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
-                <input type="text" name="crm" id="" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
-                  @if(!empty($p)) value = "{{$p->crm}}" @else value =  {{old('crm')}}  @endif>
+                <input type="text" name="crm" id="" class="form-control {{$errors->has('crm') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
+                  @if(!empty($p->medico)) value = "{{$p->medico->crm}}" @else value =  {{old('crm')}}  @endif>
            
                       @if($errors->has('crm'))
                     <div class="invalid-feedback">
@@ -457,10 +457,10 @@
                 <div class="form-group">
                   <label for="especialidade" >Especialidade 1</label>
                   <select  id="especialidade" name="especialidade1" class="form-control"  >
-                      @if (!empty($s))
+                      @if (!empty($s[0]))
                         <option   value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
                       @endif
-                      <option value=""selected >selecione</option>
+                      <option value="">Não possui</option>
                       @foreach($especialidades as $e)
                             <option  value="{{$e->id}}">{{$e->nome}}</option>
                      @endforeach
@@ -473,13 +473,13 @@
                 <div class="form-group teste">
                   <label for="especialidade2">Especialidade 2</label>
                   <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
-                        @if (!empty($s))
+                        @if (!empty($s[1]))
                         <option   value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
                       @endif
-                      <option value=""selected ></option>
+                        <option value="">Não possui</option>
                       @foreach($especialidades as $e)
                       <option value="{{$e->id}}">{{$e->nome}}</option>
-               @endforeach
+                      @endforeach
                   </select>
                 </div>
         </div>
@@ -602,6 +602,8 @@
 
 
         </div><!-- row endereco -->
+            
+
 
     </fieldset><!--endereço-->
 
@@ -619,7 +621,7 @@
 
             <div class="form-group navegacao">
                    <div class="col">
-         <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video"   data-toggle="tooltip" data-placement="top" title="adcionar novo plano"><i class="fas fa-plus-circle"></i></a>
+         <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video"   data-toggle="tooltip" data-placement="top" title="adicionar novo plano"><i class="fas fa-plus-circle"></i></a>
 
 
               <div class="modal fade  "id="modal-video" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

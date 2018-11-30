@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Database\QueryException;
 namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use App\Models\Medico;
@@ -17,9 +17,11 @@ class FuncionarioController extends Controller
 
       public function novo(Request $request){
         //  form de um novo produto
-        PermissionController::novo( $request);
+        ;
+        if(!PermissionController::novo( $request))
+            return back()->with('NaoAutorizado', 'NaoAutorizado');
         $especi = Especialidade::all();
-       ;
+       
         $planos =  Plano::where('status', 'ATIVO')->get();
         return view('funcionario.formulario', compact('especi','planos'  ));
     }
@@ -29,9 +31,13 @@ class FuncionarioController extends Controller
 
 
     public function create(FuncionarioRequest $request){
-
+ 
           PermissionController::create( $request);
-        $Funcionario = Funcionario::create([
+
+
+          try{
+            
+               $Funcionario = Funcionario::create([
             'nome'              =>  mb_strtolower($request['nome']),
             'nacionalidade'     =>  mb_strtolower($request['nacionalidade']),
             'naturalidade'      =>  mb_strtolower($request['naturalidade']),
@@ -52,6 +58,16 @@ class FuncionarioController extends Controller
             'telefone'          => $request['telefone'],
             'cep'               => $request['cep'],
             ]);
+
+
+            }catch(\Exception $e){
+
+                  
+             return redirect()->back()->with("cpfJaCadastrdo",  $request['cpf']);
+
+            }
+   
+     
       //  return var_dump($sis_funcionario);
         if($Funcionario->profissao == "A"){
             return view('user.novo')->with('func', $Funcionario);
@@ -65,10 +81,13 @@ class FuncionarioController extends Controller
             $medico->Sis_funcionario_matricula = $Funcionario->matricula;
             $medico->save();
             $medico = Medico::find($Funcionario->matricula);
-            $especialidade1 = $request->only('especialidade1');
-            $especialidade2 = $request->only('especialidade2');
-            $medico->especialidade()->attach($especialidade2);
-            $medico->especialidade()->attach($especialidade1);
+            $especialidade[] = $request->only('especialidade1')['especialidade1'];
+            $especialidade[] = $request->only('especialidade2')['especialidade2'];
+             foreach( $especialidade as $id){
+                 if($id != null)
+                    $medico->especialidade()->attach( $id);
+             }
+
             $planos = $request->only('$p');
             foreach( $planos as $id){
             $medico->planos()->attach($id);
@@ -84,19 +103,30 @@ class FuncionarioController extends Controller
 
       public function listar(){
 
-        $Funcionarios = Funcionario::paginate(5);
-        return view('funcionario.listar' , compact('Funcionarios'));
+        $funcionarios = Funcionario::paginate(5);
+        return view('funcionario.listar' , compact('funcionarios'));
 
       }
 
 
        public function buscar(Request $request){
-        $buscar = $request->input('search');
-        $Funcionarios = Funcionario::where('nome', 'like', '%'.$buscar.'%')
-        ->orWhere('cpf', 'like', '%'.$buscar.'%')
-        ->orWhere('matricula', 'like', '%'.$buscar.'%')
-        ->paginate(5);
-        return view('funcionario.listar' , compact('Funcionarios'));
+        $tipo = $request['tipobusca'];
+        $buscar = $request->input('search'); 
+         if($tipo == null){
+               $funcionarios = Funcionario::where('nome', 'like', '%'.$buscar.'%')
+                ->orWhere('cpf', 'like', '%'.$buscar.'%')
+                ->orWhere('matricula', 'like', '%'.$buscar.'%')
+                ->paginate(10);
+             
+
+
+        }else{
+             $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+    
+
+        } 
+        
+        return view('funcionario.listar' , compact('funcionarios'));
 
       }
 
@@ -148,8 +178,17 @@ class FuncionarioController extends Controller
         PermissionController::update( $request);
 
         $Funcionario = Funcionario::find($id);
-
+         $especialidade1 = true;
+          $especialidade2 = true;
         $Funcionario->update($request->all());
+        if($Funcionario->profissao == 'M'){
+            $Funcionario->medico->update( $request->only('crm'));
+            $request->only('especialidade1')['especialidade1'] != null ?  $especialidade[] = $request->only('especialidade1')['especialidade1']:  $especialidade1 = null;
+            $request->only('especialidade2')['especialidade2'] != null ?  $especialidade[] = $request->only('especialidade2')['especialidade2']:  $especialidade2 = null;
+    
+           $especialidade1 == null && $especialidade2 == null?  $Funcionario->medico->especialidade()->detach(): $Funcionario->medico->especialidade()->sync($especialidade);
+        }
+       
         return redirect()->route('funcionario.listar');
     }
 

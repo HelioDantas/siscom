@@ -67,6 +67,31 @@
     
     {!! Form::open(['route' => 'funcionario.create','method ' => 'post',]) !!} @csrf
 
+    @if (session('cpfJaCadastrdo'))
+   
+
+    <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Clouse</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger ">
+            o cpf {{ session('cpfJaCadastrdo') }} já consta cadastrado!!
+            </div>
+
+          </div>
+          <div class="modal-footer">
+           
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+@endif
+    
+
      <div class="form-group ">
         <div class="form-group navegacao ttt">
                 <div class="col">
@@ -97,7 +122,7 @@
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
-                {{$errors->first('nome')}}
+             {$errors->first('nome')}} 
                 </div>
         @endif
     </div>
@@ -372,7 +397,7 @@
                     <div class="form-group">
                       <label for="especialidade" >Especialidade 1</label>
                       <select  id="especialidade" name="especialidade1" class="form-control" >
-                          <option value=""></option>
+                          <option value="">Não possui</option>
                           @foreach($especi as $e)
                                 <option value="{{$e->id}}">{{$e->nome}}</option>
                          @endforeach
@@ -385,7 +410,7 @@
                     <div class="form-group teste">
                       <label for="especialidade2">Especialidade 2</label>
                       <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
-                          <option value="" selected>Selecione</option>
+                          <option value="" selected>Não possui</option>
                          
                       </select>
                     </div>
@@ -572,6 +597,32 @@
 
       {!! Form::close() !!}
     </div><!-- container -->
+
+        @if (session('NaoAutorizado'))
+   
+
+    <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Clouse</h4>
+          </div>
+          <div class="modal-body">
+           <div class="row">
+            <iframe type="text/html" width="5000rem" height="650rem" src="{{route('erro')}}" frameborder="0" allowfullscreen=""></iframe>
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+           
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+@endif
+    
 
     @endsection
     @section('scripts')
