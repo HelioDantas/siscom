@@ -17,7 +17,9 @@ class FuncionarioController extends Controller
 
       public function novo(Request $request){
         //  form de um novo produto
-        PermissionController::novo( $request);
+        ;
+        if(!PermissionController::novo( $request))
+            return back()->with('NaoAutorizado', 'NaoAutorizado');
         $especi = Especialidade::all();
        
         $planos =  Plano::where('status', 'ATIVO')->get();

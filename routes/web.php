@@ -171,5 +171,5 @@ Route::get('/testeRelacionamento',function(){
 
 
 Route::get('/erro' , function(){
-  return abort(403,'Não autozizado');
+  return abort(403,'Não autorizado');
 })->name('erro');

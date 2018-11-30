@@ -66,6 +66,7 @@
 <div class="container-fluid col-lg-10 corpo-paciente">
     
     {!! Form::open(['route' => 'funcionario.create','method ' => 'post',]) !!} @csrf
+
     @if (session('cpfJaCadastrdo'))
    
 
@@ -596,6 +597,32 @@
 
       {!! Form::close() !!}
     </div><!-- container -->
+
+        @if (session('NaoAutorizado'))
+   
+
+    <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Clouse</h4>
+          </div>
+          <div class="modal-body">
+           <div class="row">
+            <iframe type="text/html" width="5000rem" height="650rem" src="{{route('erro')}}" frameborder="0" allowfullscreen=""></iframe>
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+           
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+@endif
+    
 
     @endsection
     @section('scripts')

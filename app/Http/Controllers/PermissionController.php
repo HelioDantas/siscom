@@ -46,7 +46,7 @@ class PermissionController extends Controller
             if( !$request->session()->get("user")->permission()->where('permissao_id', 3)->get()->isEmpty())
                 return true;
      
-               return 0;
+            return false;
 
     }
 
