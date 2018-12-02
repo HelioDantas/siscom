@@ -117,7 +117,7 @@
 
     <div class="form-group col-md-4 mb-3">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="43" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        <input type="text" name="nome" id="nome"  maxlength="60" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         value =   {{old('nome')}}>
 
         @if($errors->has('nome'))
@@ -148,7 +148,7 @@
    <div class="col-md-2 mb-3">
             <div class="form-group">
               <label for="cpf">RG</label>
-              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
+              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" required placeholder="identidade" aria-describedby="identidade" maxlength="13"
 
                value =   {{old('identidade')}}>
 
@@ -205,7 +205,7 @@
         <div class="form-group">
           <label for="nacionalidade">Nacionalidade</label>
           <input type="text" name="nacionalidade" maxlength="15" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro"
-          value =   {{old('orgEmissor')}}>
+          value =   {{old('nacionalidade')}}>
            @if($errors->has('nacionalidade'))
             <div class="invalid-feedback">
                 {{$errors->first('nacionalidade')}}
@@ -219,7 +219,7 @@
             <div class="form-group">
 
             <label for="naturalidade">Naturalidade</label>
-            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"value =  {{old('naturalidade')}}
+            <input type="text" name="naturalidade" maxlength="25" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"value =  {{old('naturalidade')}}
             >
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -241,7 +241,7 @@
                     <option value="Médio Incompleto">Médio Incompleto</option>
                     <option value="Médio Completo">Médio Completo</option>
                 <option value="Superior Incompleto">Superior Incompleto</option>
-                    <option value="Superior Completo">Superior Completo</option>
+                    <option selected value="Superior Completo">Superior Completo</option>
                     <option value="Superior Completo">Pós Graduado</option>
             </select>
          @if($errors->has('escolaridade'))
@@ -427,7 +427,7 @@
                     <div class="col-md-2 mb-3 ">
                          <div class="form-group">
                                <label for="cep">Cep</label>
-                               <input type="text"  required class="form-control input-md {{$errors->has('cep') ? 'is-invalid': '' }}" name="cep" id="cep"
+                               <input type="text"   class="form-control input-md {{$errors->has('cep') ? 'is-invalid': '' }}" name="cep" id="cep"
                                 placeholder="Apenas numeros" maxlength="15" value =   {{old('cep')}}>
                                       @if($errors->has('cep'))
                             <div class="invalid-feedback">
@@ -465,7 +465,7 @@
                    <div class="col-md-1 mb-3">
                     <span >Nº </span>
                     <div class="input-group">
-                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required=""  type="text"
+                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required  type="text"
                       value =   {{old('numero')}}>
 
                              @if($errors->has('numero'))

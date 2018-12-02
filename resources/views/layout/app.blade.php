@@ -64,8 +64,7 @@
                     <div class="dropdown-content">
 
                       <a href="{{route('paciente.listar')}}">Paciente</a>
-                      <a href="#">Convenios</a>
-                      <a href="{{route('medico.novo')}}">Medico</a>
+                      <a href="{{route('convenio.novo')}}">Convenios</a>
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
 
                     </div>

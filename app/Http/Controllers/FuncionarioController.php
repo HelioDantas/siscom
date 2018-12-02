@@ -22,7 +22,7 @@ class FuncionarioController extends Controller
         if (!PermissionController::novo($request)) {
             return back()->with('NaoAutorizado', 'NaoAutorizado');
         }
-        $permissao = Permission::all();
+    //    $permissao = Permission::all();
         $especi = Especialidade::all();
 
         $planos = Plano::where('status', 'ATIVO')->get();
@@ -80,21 +80,17 @@ class FuncionarioController extends Controller
                 $medico->Sis_funcionario_matricula = $Funcionario->matricula;
                 $medico->save();
                 $medico = Medico::find($Funcionario->matricula);
-                $especialidade[] = $request->only('especialidade1')['especialidade1'];
-                $especialidade[] = $request->only('especialidade2')['especialidade2'];
-                foreach ($especialidade as $id) {
-                    if ($id != null) {
-                        $medico->especialidade()->attach($id);
-                    }
-
-                }
-
+                $request->only('especialidade1')['especialidade1'] != null ? $especialidade[] = $request->only('especialidade1')['especialidade1'] : '';
+                $request->only('especialidade2')['especialidade2'] != null ? $especialidade[] = $request->only('especialidade2')['especialidade2'] : '';
+                if(!empty(  $especialidade))
+                 $medico->especialidade()->attach($especialidade);
                 $planos = $request->only('$p');
                 foreach ($planos as $id) {
-                    $medico->planos()->attach($id);
+                    $plano[] = $id[0];
 
                 }
-
+                if(!empty( $planos))
+                $medico->planos()->attach($plano);
               return redirect('funcionario/user/novo')->with('Funcionario', $Funcionario);
             }
         }
@@ -149,13 +145,15 @@ class FuncionarioController extends Controller
         PermissionController::edit($request);
         $p = Funcionario::find($id);
 
-        $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula', $p->matricula)->get();
 
+     //   $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula', $p->matricula)->get();
+        $s = $p->medico->especialidade;
+        /*
         foreach ($m as $m->Sis_especialidade_id => $espec) {
             $tt = $espec->Sis_especialidade_id;
             $s[] = Especialidade::find($tt);
 
-        }
+        }*/
 
         $especialidades = Especialidade::all();
 

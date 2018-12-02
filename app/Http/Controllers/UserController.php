@@ -5,7 +5,7 @@ use App\Models\User;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -25,11 +25,21 @@ class UserController extends Controller
          abort(403, 'Não autorizado');
     }
 
-      public function create(Request $request){
+      public function create(UserRequest $request){
+
+
+        if($request['senha'] != $request['senha2'])
+            return redirect()->back()->withInput();
 
         $request['senha'] = password_hash($request['senha'],1);
 
-        $User = User::Create($request->all());
+        $User = User::Create([
+                'Sis_funcionario_matricula' => $request['matricula'],
+                'cpf' => $request['cpf'],
+                'senha' => $request['senha'],
+                'dicaSenha' => $request['dicaSenha'],
+
+        ]);
 
         $Permissao = $request->only('$p');
         foreach($Permissao as $p){

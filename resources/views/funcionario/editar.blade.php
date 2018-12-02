@@ -134,7 +134,7 @@
         </div>
     </div>
 
-        
+
    <div class="col-md-2 mb-3">
             <div class="form-group">
               <label for="cpf">RG</label>
@@ -146,8 +146,8 @@
                     {{$errors->first('identidade')}}
                     </div>
                 @endif
- 
-              
+
+
             </div>
             </div><!--col cpf -->
 
@@ -186,7 +186,7 @@
 
 
 <div class="row"> <!--naciolidade-->
-    
+
             <div class="col-md-2 mb-3">
         <div class="form-group">
           <label for="nacionalidade">Nacionalidade</label>
@@ -201,12 +201,12 @@
         </div>
     </div><!--col nacionalidade -->
 
-        
+
          <div class="col-md-2 mb-3">
             <div class="form-group">
 
             <label for="naturalidade">Naturalidade</label>
-            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" 
+            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}"
             placeholder="naturalidade"@if(!empty($p)) value = "{{$p->naturalidade}}" @else value =  {{old('naturalidade')}} @endif>
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -219,9 +219,9 @@
 
          <div class="col-md-3 mb-3">
             <div class="form-group">
-            
+
                 <label for="selectbasic">Escolaridade </label>
-        
+
                   <select required id="escolaridade" name="escolaridade" class="form-control {{ $errors->has('escolaridade') ? 'is-invalid': ''  }}">
                         @if(!empty($p->escolaridade))
                         <option value="{{$p->escolaridade}}">{{$p->escolaridade}}</option>
@@ -242,7 +242,7 @@
             </div>
         </div>
 
-    
+
             <div class="col-md-2 mb-3">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
@@ -255,7 +255,7 @@
 
                             @php $tipo = 'Medico' ; @endphp
                             @break
-                                
+
                         @case( 'A')
 
                             @php $tipo = 'Atendente' ; @endphp
@@ -264,7 +264,7 @@
 
                             @endswitch
 
-                            <option selected value= "{{$p->profissao}}">{{$tipo}}</option>
+                            <option selected value= {{$p->profissao}}>{{$tipo}}</option>
                               @else
 
                       @endif
@@ -279,7 +279,7 @@
                 </div>
         </div><!--col profissao -->
 
-        
+
 
     <div class="col-md-2 mb-3">
             <div class="form-group">
@@ -353,7 +353,7 @@
                     @break
 
                 @endswitch
-                    <option value= "{{$p->etnia}}">{{$tipo}}</option>
+                    <option value= {{$p->etnia}}>{{$tipo}}</option>
                 @else
                     <option value=""></option>
                 @endif
@@ -371,12 +371,12 @@
         </div>
     </div><!--  etinia-->
 
-    
+
                   <div class="col-md-2 mb-3">
                 <div class="form-group">
 
                     <label for="selectbasic">Status </label>
-                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p)) 
+                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p))
                       value = "{{$p->Status}}" @else value =   {{old('status')}} @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
@@ -415,7 +415,7 @@
                         <div class="invalid-feedback">
                             {{$errors->first('celular')}}
                             </div>
-                            @endif        
+                            @endif
 
                 </div>
             </div>  <!-- col Telefone-->
@@ -424,7 +424,7 @@
                 <div class="form-group">
                        <label for="email">Email address</label>
                        <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
-                      @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif>  
+                      @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif>
 
                       @if($errors->has('email'))
                     <div class="invalid-feedback">
@@ -444,7 +444,7 @@
                 <label for="crm">CRM</label>
                 <input type="text" name="crm" id="" class="form-control {{$errors->has('crm') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
                   @if(!empty($p->medico)) value = "{{$p->medico->crm}}" @else value =  {{old('crm')}}  @endif>
-           
+
                       @if($errors->has('crm'))
                     <div class="invalid-feedback">
                         {{$errors->first('crm')}}
@@ -485,7 +485,7 @@
         </div>
 
 
-          
+
 
 
 </div><!-- row -->
@@ -510,14 +510,14 @@
                             </div>
 
                         </div><!-- col cep -->
-  
+
                                 <div class="form-group">
                                      <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
                                     <strong>pesquisar</strong></button>
                                  </div>
-                              
 
-                        
+
+
 
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
@@ -602,7 +602,7 @@
 
 
         </div><!-- row endereco -->
-            
+
 
 
     </fieldset><!--endereço-->
@@ -629,7 +629,7 @@
 
                         <div class="modal-content "   height = "5000rem">
                             <div class="modal-header">
-                             
+
                                 <button type="button" class="close"  onClick="history.go(0)"  data-dismiss="modal" aria-hidden="true">close <i class="fa fa-times"></i></button>
                             </div>
                             <div class="modal-body">

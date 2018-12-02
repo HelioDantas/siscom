@@ -107,7 +107,7 @@
     <div class="form-group navegacao ttt">
             <div class="col">
               <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
-              <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
+
               <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
             </div>
      </div>
@@ -120,7 +120,12 @@
         <div  class = "col-md-3 mb-3">
             <div class = "form-group">
             <label for="matricula">Matricula</label>
-            <input type="text" name="Sis_funcionario_matricula" id="" class="form-control"   @if(isset($Funcionario)) value = {{$Funcionario->matricula}} @else value = {{ session('Funcionario')->matricula}} @endif readonly>
+            <input type="text" name="matricula" id="" readonly class="form-control {{ $errors->has('matricula') ? 'is-invalid': ''  }}"   @if((session('Funcionario')!= null)) value = {{ session('Funcionario')->matricula}} @else value = {{ old("matricula") }} @endif >
+            @if($errors->has('matricula'))
+            <div class="invalid-feedback">
+                {{$errors->first('matricula')}}
+             </div>
+        @endif
 
 
             </div>
@@ -128,29 +133,43 @@
         <div class="col-md-3 mb-3">
             <div class="form-group">
                 <label for="cpf">Cpf</label>
-                <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf"   @if(isset($Funcionario)) value = {{$Funcionario->cpf}} @else value = {{ session('Funcionario')->cpf }} @endif readonly>
-                <small id="cpf" class="text-muted">Hl</small>
+                <input type="text" name="cpf" id="" readonly class="form-control {{ $errors->has('cpf') ? 'is-invalid': ''  }}"placeholder="Cpf"   @if((session('Funcionario')!= null)) value ={{ session('Funcionario')->cpf}} @else value = {{ old("cpf") }} @endif >
+                @if($errors->has('cpf'))
+                <div class="invalid-feedback">
+                    {{$errors->first('cpf')}}
+                 </div>
+                 @endif
             </div>
         </div><!--col -->
 
         <div class="col-md-3 mb-3">
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" name="password" id="NovaSenha" class="form-control" placeholder="senha">
+                <input type="password" name="senha" id="NovaSenha" class="form-control {{ $errors->has('senha') ? 'is-invalid': ''  }}" placeholder="senha"  value = {{ old("senha") }}>
                 <div class="invalid-feedback">
                         As senhas não conhecidem
                        </div>
+                       @if($errors->has('senha'))
+                       <div class="invalid-feedback">
+                           {{$errors->first('senha')}}
+                        </div>
+                        @endif
+                 </div>
 
-            </div>
         </div><!--col -->
 
         <div class="col-md-3 mb-3">
                 <div class="form-group">
                     <label for="senha">Confirmar senha</label>
-                    <input type="password" name="password" id="CNovaSenha" class="form-control" placeholder="senha">
+                    <input type="password" name="senha2" id="CNovaSenha" class="form-control {{ $errors->has('senha2') ? 'is-invalid': ''  }}" placeholder="senha"  value = {{ old("senha2") }}>
                     <div class="invalid-feedback">
                            As senhas não conhecidem
                     </div>
+                    @if($errors->has('senha2'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('senha2')}}
+                     </div>
+                     @endif
                 </div>
             </div><!--col -->
 
@@ -159,14 +178,18 @@
         <div class="col-md-3 mb-3">
             <div class="form-group">
                 <label for="dicaSenha">Dica</label>
-                <input type="text" name="senha" id="" class="form-control" placeholder="dica da senha">
-
+                <input type="text" name="Dicasenha" id="" class="form-control {{ $errors->has('Dicasenha') ? 'is-invalid': ''  }}" placeholder="dica da senha"  value = {{ old("Dicasenha") }}>
+                @if($errors->has('Dicasenha'))
+                <div class="invalid-feedback">
+                    {{$errors->first('Dicasenha')}}
+                 </div>
+                 @endif
             </div>
         </div><!--col -->
 </div>
 
 <div class="col-4">
-        <button  class="btn btn-secondary  "  data-toggle="collapse" type = "button" data-target="#demo"><a HREF="#fim">Permissao</button>
+        <button  class="btn btn-secondary  "  data-toggle="collapse" type = "button" data-target="#demo">Permissao</button>
 
         </div>
         <div id="demo" class="collapse">
@@ -207,20 +230,36 @@
                 <td>
                     <div class="checkbox">
 
-                            <input name = "$p[]" type="checkbox" value= {{$permissao->id }}
+                            <input  "form-control {{ $errors->has('$p') ? 'is-invalid': ''  }}" name = "$p[]" type="checkbox" value= {{$permissao->id }}>
                              </div>
-
+                             @if($errors->has('$p'))
+                             <div class="invalid-feedback">
+                                 {{$errors->first('$p')}}
+                              </div>
+                              @endif
 
                 </td>
 
               </tr>
               @endforeach
-
+              @if($errors->has('$p'))
+              <div class="invalid-feedback">
+                  {{$errors->first('$p')}}
+               </div>
+               @endif
             </tbody>
 
           </table>
 
-
+          @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         </div>
 
 {!! Form::close() !!}
