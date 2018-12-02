@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,24 +10,33 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
 
+
     public function novo(Request $request){
-      if ($request->is('funcionario/create')) {
-           return view('user.novo');
 
-        }
-        else
-        return '<h1>Acesso indevido </h1>';
+        if (array_key_exists ('referer', $request->header()))  // return dd (strpos($request->header()['referer'][0], 'funcionario/create'));
+    {
+             $Permissao = Permission::all();
+              return view('user.novo',compact('Permissao'));
 
+
+
+    }else
+
+         abort(403, 'Não autorizado');
     }
-
 
       public function create(Request $request){
 
         $request['senha'] = password_hash($request['senha'],1);
-        
+
         $User = User::Create($request->all());
+
+        $Permissao = $request->only('$p');
+        foreach($Permissao as $p){
+        $User->permission()->attach($p);
+        }
      //   return var_dump($sis_funcionario);
-        
+
        return redirect()->route('funcionario.listar')->withInput();
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
@@ -35,7 +45,7 @@ class UserController extends Controller
       }
 
       public function recoveryForm(){
-        
+
         return view('user.recovery');
       }
 

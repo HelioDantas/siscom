@@ -6,7 +6,7 @@
         text-align: center;
     }
     form{
-        
+
      float: right;
     }
     .container-fluid{
@@ -16,7 +16,7 @@
         float:right;
     }
 
-    
+
 </style>
 @endsection
 
@@ -30,14 +30,14 @@
 
 @section('navegação')
 
-     
+
 
 @endsection
 
 
 
 @section('tela')
-    
+
 
 
 <div class="container-fluid col-lg-12">
@@ -84,7 +84,7 @@
                 <th scope="col">celular         </th>
                 <th scope="col">email           </th>-->
                 <th scope="col">profissao       </th>
-                <th scope="col">status        </th>   
+                <th scope="col">status        </th>
                 <th scope="col">opções</th>
               </tr>
             </thead>
@@ -113,9 +113,9 @@
                  <td>       {{$p->celular}}             </td>
                  <td>       {{$p->email}}               </td>-->
                  <td>       {{$p->profissao}}           </td>
-                 <td>       {{$p->status}}            </td>  
+                 <td>       {{$p->status}}            </td>
                 <td>
-                
+
 
               <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-trash"></i></button>
                           <!-- Modal -->
@@ -137,10 +137,10 @@
                                         </div>
                                     </div>
                                     </div>
-                                </div>  
-                 <a class="btn btn-outline-primary" href="editar/{{$p->matricula}}"  title="editar"><i class="fas fa-edit"></i></a> 
-                  <a class="btn btn-outline-secondar" href="show/{{$p->matricula}}"  title="visualizar"> <i class="fas fa-eye "></i></a> 
-                
+                                </div>
+                 <a class="btn btn-outline-primary" href="editar/{{$p->matricula}}"  title="editar"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-outline-secondar" href="show/{{$p->matricula}}"  title="visualizar"> <i class="fas fa-eye "></i></a>
+
                 </td>
 
 
@@ -152,8 +152,8 @@
           <div class="card-footer">
              @if($cont==9)
                 <p></p>
-             
-                
+
+
             @endif
             {!!$funcionarios->links()!!}
           </div>
@@ -168,33 +168,42 @@
 
 
      @if (session('NaoAutorizado'))
-   
+
 
     <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" onclick="excluirModal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">Clouse</h4>
           </div>
           <div class="modal-body">
            <div class="row">
-            <iframe type="text/html" width="5000rem" height="650rem" src="{{route('erro')}}" frameborder="0" allowfullscreen=""></iframe>
+            <iframe type="text/html" id = "f" width="5000rem" height="650rem" src="{{route('erro')}}" frameborder="0" allowfullscreen=""></iframe>
 
             </div>
 
           </div>
           <div class="modal-footer">
-           
+
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div>
 @endif
-    
+
 
     @endsection
     @section('scripts')
+    <script>
+            $("#f").blur(function(){
+                $("#modal-mail").remove();
+            });
+        function excluirModal(){
+            $("#modal-mail").empty();
+
+        }
+    </script>
  <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
           <script type="text/javascript" src="{{ asset('js/confirmacaoDeExclusao.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
