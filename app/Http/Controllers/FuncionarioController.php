@@ -18,8 +18,8 @@ class FuncionarioController extends Controller
     public function novo(Request $request)
     {
         //  form de um novo produto
-        ;
-        if (!PermissionController::novo($request)) {
+    //    return dd($request);
+        if (!PermissionController::novo()) {
             return back()->with('NaoAutorizado', 'NaoAutorizado');
         }
     //    $permissao = Permission::all();
@@ -32,7 +32,7 @@ class FuncionarioController extends Controller
     public function create(FuncionarioRequest $request)
     {
 
-        PermissionController::create($request);
+        PermissionController::create();
 
         try {
 
@@ -132,7 +132,7 @@ class FuncionarioController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        PermissionController::destroy($request);
+        PermissionController::destroy();
         $Funcionario = Funcionario::find($id);
         $Funcionario->delete();
         return back();
@@ -142,12 +142,13 @@ class FuncionarioController extends Controller
     public function edit(Request $request, $id)
     {
         //  form para editar infos de um funcionario
-        PermissionController::edit($request);
+        PermissionController::edit();
         $p = Funcionario::find($id);
 
 
      //   $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula', $p->matricula)->get();
-        $s = $p->medico->especialidade;
+
+         $p->profissao == 'M' ? $s = $p->medico->especialidade: 's';
         /*
         foreach ($m as $m->Sis_especialidade_id => $espec) {
             $tt = $espec->Sis_especialidade_id;
@@ -156,15 +157,15 @@ class FuncionarioController extends Controller
         }*/
 
         $especialidades = Especialidade::all();
-
+        $Permissao = $p->user->permission()->get();
         //dd($m);
-        return view('funcionario.editar', compact('p', 's', 'especialidades'));
+        return view('funcionario.editar', compact('p', 's', 'especialidades', 'Permissao'));
     }
 
     public function update(FuncionarioRequest $request, $id)
     {
 
-        PermissionController::update($request);
+        PermissionController::update();
 
         $Funcionario = Funcionario::find($id);
         $especialidade1 = true;
@@ -184,7 +185,7 @@ class FuncionarioController extends Controller
     public function show(Request $request, $id)
     {
         //  form para editar infos de um paciente
-        PermissionController::show($request);
+        PermissionController::show();
         $p = Funcionario::find($id);
 
         return view('funcionario.show')->with('p', $p);

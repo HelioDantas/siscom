@@ -90,7 +90,8 @@
         <div class="form-group navegacao ttt">
                 <div class="col">
                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
-                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
+                  <a  class="btn btn-outline-secondary"   href="{{ route('funcionario.listar')}}"data-toggle="tooltip"data-placement="top"title="pesquisar"><i class="fas fa-search"></i></a>
+                  <a  class="btn btn-outline-secondary"   href="{{ route('user.permissoes',['id'=>$p->matricula]) }}"data-toggle="tooltip"data-placement="top"title="permissoes"><i class=""></i></a>
                   <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
                   <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
 
@@ -683,6 +684,81 @@
 
     </div>
       @endif
+      <hr>
+      <div class="container">
+            <div class="  form-group">
+                 <button  class="btn btn-secondary "  data-toggle="collapse" type = "button" data-target="#demo1">Permissões</button>
+             </div>
+
+            <div id="demo1" class="collapse">
+
+                    <div class="form-group navegacao">
+                 <div class="col">
+                  <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video1"   data-toggle="tooltip" data-placement="top" title="adicionar novo plano"><i class="fas fa-plus-circle"></i></a>
+
+
+                       <div class="modal fade  "id="modal-video1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                 <div class="modal-dialog modal-lg "role="document">
+
+                                 <div class="modal-content "   height = "5000rem">
+                                     <div class="modal-header">
+
+                                         <button type="button" class="close"  onClick="history.go(0)"  data-dismiss="modal" aria-hidden="true">close <i class="fa fa-times"></i></button>
+                                     </div>
+                                     <div class="modal-body">
+                                       <div class="row">
+                                         <iframe type="text/html" width="5000rem" height="650rem" src="{{route('user.permissoes', ['id'=>$p->matricula])}}" frameborder="0" allowfullscreen=""></iframe>
+
+                                             </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             </div>
+                     </div>
+
+                      </div>
+
+                    <table class="table table-hover ">
+                    <thead class="thead-dark">
+                    <tr>
+
+
+                        <th scope="col">id</th>
+                        <th scope="col">nome</th>
+                        <th scope="col">remove</th>
+
+                    </tr>
+                    </thead>
+                <tbody>
+
+                        @php $cont = 0; @endphp
+                        @foreach ($Permissao as $permissao)
+                        @php $cont = $cont + 1; @endphp
+
+                    <tr class="Filter">
+                            <td class="">{{$permissao->id}} </td>
+                        <th scope="row">{{$permissao->nome}}</th>
+
+
+
+                        <td>
+                        <a id="excluir"name = "excluir" class="btn btn-outline-danger" type="button" href=""
+                                        data-toggle="tooltip" data-placement="top" title="Desativar"><i class="fas fa-trash"></i></a>
+                        </td>
+
+                    </tr>
+                    @endforeach
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+
+            </div>
+
+    </div>
 {!! Form::close() !!}
 </div><!-- container -->
 

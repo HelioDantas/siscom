@@ -73,5 +73,20 @@ class UserController extends Controller
       }
 
 
+         public function permissoes(Request $request, $id){
+
+//            return dd($id);
+
+             $user = User::where('Sis_funcionario_matricula', $id)->first();
+             $Permissao = $user->permission()->get();
+              return view('administrador.editi',compact('Permissao'));
+
+
+
+
+
+    }
+
+
 
 }

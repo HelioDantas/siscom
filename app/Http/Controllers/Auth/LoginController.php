@@ -37,6 +37,7 @@ class LoginController extends Controller
 
         if(password_verify($credencias['password'], $user->senha)){
             $request->session()->put('user', $user);
+            $request->session()->put('permissao', $user->permission()->get());
             return redirect()->route('dashboard');
         }else{
             $mensagem =  "Senha Invalida";
