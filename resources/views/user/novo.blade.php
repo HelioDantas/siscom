@@ -71,8 +71,10 @@
 @endsection
 
 @section('tela')
+<hr>
+<div class="container-fluid col-lg-10 corpo-paciente">
 
-<div class="container corpo">
+
        <h3 class="titulocadastro">Cadastro <strong>| Usuario  </strong></h3>
 {!! Form::open(['route' => 'user.create','method ' => 'post', 'onsubmit'=>'return validarSenha();']) !!} @csrf
 
@@ -164,7 +166,7 @@
 </div>
 
 <div class="col-4">
-        <button  class="btn btn-secondary  "  data-toggle="collapse" type = "button" data-target="#demo">Permissao</button>
+        <button  class="btn btn-secondary  "  data-toggle="collapse" type = "button" data-target="#demo"><a HREF="#fim">Permissao</button>
 
         </div>
         <div id="demo" class="collapse">

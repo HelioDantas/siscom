@@ -57,18 +57,18 @@
 
 </style>
 @endsection
-      
+
 
 
 
 @section('tela')
  <hr>
 <div class="container-fluid col-lg-10 corpo-paciente">
-    
+
     {!! Form::open(['route' => 'funcionario.create','method ' => 'post',]) !!} @csrf
 
     @if (session('cpfJaCadastrdo'))
-   
+
 
     <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -79,18 +79,18 @@
           </div>
           <div class="modal-body">
             <div class="alert alert-danger ">
-            o cpf {{ session('cpfJaCadastrdo') }} já consta cadastrado!!
+                {{ session('cpfJaCadastrdo') }}
             </div>
 
           </div>
           <div class="modal-footer">
-           
+
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div>
 @endif
-    
+
 
      <div class="form-group ">
         <div class="form-group navegacao ttt">
@@ -103,7 +103,7 @@
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
             </div>
-         
+
 
            <h3 class="titulocadastro">Cadastro <strong>| Funcionario  </strong></h3>
         </div>
@@ -122,7 +122,7 @@
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
-             {$errors->first('nome')}} 
+             {$errors->first('nome')}}
                 </div>
         @endif
     </div>
@@ -149,7 +149,7 @@
             <div class="form-group">
               <label for="cpf">RG</label>
               <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
- 
+
                value =   {{old('identidade')}}>
 
                 @if($errors->has('identidade'))
@@ -157,8 +157,8 @@
                     {{$errors->first('identidade')}}
                     </div>
                 @endif
- 
-              
+
+
             </div>
             </div><!--col cpf -->
 
@@ -270,7 +270,7 @@
                     </div>
             </div><!--col nacionalidade -->
 
-  
+
 
     <div class="col-md-2 mb-3">
             <div class="form-group">
@@ -383,12 +383,12 @@
 
 
 
-              
+
                 <div class="col-md-3 mb-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
                 <input type="text" name="crm" id="" class="form-control " placeholder="crm"  maxlength="15">
-               
+
                 </div>
                 </div><!--col nome -->
 
@@ -411,7 +411,7 @@
                       <label for="especialidade2">Especialidade 2</label>
                       <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
                           <option value="" selected>Não possui</option>
-                         
+
                       </select>
                     </div>
             </div>
@@ -438,14 +438,14 @@
                             </div>
 
                         </div><!-- col cep -->
-  
+
                                 <div class="form-group">
                                      <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
                                     <strong>pesquisar</strong></button>
                                  </div>
-                              
 
-                        
+
+
 
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
@@ -544,8 +544,8 @@
 
     <div class="form-group navegacao">
            <div class="col">
- 
-     
+
+
 
 
     </div>
@@ -599,7 +599,7 @@
     </div><!-- container -->
 
         @if (session('NaoAutorizado'))
-   
+
 
     <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -616,13 +616,13 @@
 
           </div>
           <div class="modal-footer">
-           
+
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div>
 @endif
-    
+
 
     @endsection
     @section('scripts')

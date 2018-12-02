@@ -197,7 +197,7 @@
     @section('scripts')
     <script>
             $("#f").blur(function(){
-                $("#modal-mail").remove();
+                $("#modal-mail").empty();
             });
         function excluirModal(){
             $("#modal-mail").empty();
