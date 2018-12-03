@@ -69,11 +69,10 @@
                     <div class="col">
                            
                              <a  class="btn btn-outline-secondary"   href="{{route('paciente.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
-                             <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
                             <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
                     </div>
                 </div>
-             <h4 class="titulocadastro"> Dados do {{$p->nome}}</h4>
+             <h4 class="titulocadastro"> {{$p->nome}}</h4>
 
 
         <fieldset class="form-group dadosForm">

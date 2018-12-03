@@ -554,7 +554,7 @@
                                                 </div>
                   </div>  <!-- col Plano-->
 
-                  <!--  <div class="col-md-2 mb-3">
+                    <div class="col-md-2 mb-3">
                 <div class="form-group">
 
                     <label for="situacao">Situacao</label>
@@ -568,7 +568,7 @@
                         </div>
                         @endif
 
--->
+
                 <!--<div class="col-md-2 mb-3">
                     <div class="form-group">
                         <label for="validade">Validade</label>

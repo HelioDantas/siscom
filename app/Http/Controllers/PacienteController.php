@@ -53,12 +53,20 @@ class PacienteController extends Controller
         if($tipo == null){
                $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
                 ->orWhere('cpf', 'like', '%'.$buscar.'%')
-                ->orWhere('id', 'like', '%'.$buscar.'%')
+                ->orWhere('id',$buscar)
                 ->paginate(10);
 
 
 
         }else{
+            if($tipo == "id"){
+                $pacientes = Paciente::where('id',$buscar)
+                 ->paginate(10);
+ 
+ 
+ 
+         }
+            
              $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(7);
 
 
