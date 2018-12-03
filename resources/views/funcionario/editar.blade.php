@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-      <h4 class="titulocadastro">Atualizar Dados do {{$p->nome}}</h4>
+      <h4 class="titulocadastro">{{$p->nome}}</h4>
 
 
         <fieldset class="form-group dadosForm">
@@ -554,11 +554,11 @@
                   </div> <!-- col bumero-->
 
 
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-3 mb-3">
 
                    <span>Bairro</span>
                     <div class="input-group">
-                      <input id="bairro" name="bairro"  required maxlength="20" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
+                      <input id="bairro" name="bairro"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       @if(!empty($p)) value = "{{$p->bairro}}" @else value =  {{old('bairro')}}  @endif>
 
                               @if($errors->has('bairro'))
@@ -570,23 +570,6 @@
                     </div>
 
                     </div><!-- col bairro-->
-
-                <div class="col-md-2 mb-3">
-                   <span>Cidade</span>
-                    <div class="input-group">
-
-                      <input id="cidade" name="cidade"  required maxlength="20" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
-                      @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif>
-
-                               @if($errors->has('cidade'))
-                        <div class="invalid-feedback">
-                            {{$errors->first('cidade')}}
-                            </div>
-                            @endif
-
-                    </div>
-                </div><!-- col cidade -->
-
                     <div class="col-md-1 mb-3">
                     <span>Estado</span>
                     <div class="input-group">
@@ -601,6 +584,24 @@
 
                     </div>
                 </div>
+
+                <div class="col-md-3 mb-3">
+                   <span>Cidade</span>
+                    <div class="input-group">
+
+                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
+                      @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif>
+
+                               @if($errors->has('cidade'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('cidade')}}
+                            </div>
+                            @endif
+
+                    </div>
+                </div><!-- col cidade -->
+
+                    
 
 
 

@@ -479,11 +479,11 @@
                   </div> <!-- col bumero-->
 
 
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-3 mb-3">
 
                    <span>Bairro</span>
                     <div class="input-group">
-                      <input id="bairro" name="bairro"  required maxlength="20" placeholder=""   class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
+                      <input id="bairro" name="bairro"  required maxlength="30" placeholder=""   class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       value =   {{old('bairro')}}>
 
                               @if($errors->has('bairro'))
@@ -496,23 +496,7 @@
 
                     </div><!-- col bairro-->
 
-                <div class="col-md-2 mb-3">
-                   <span>Cidade</span>
-                    <div class="input-group">
-
-                      <input id="cidade" name="cidade"  required maxlength="20" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
-                      value =   {{ old('cidade') }}>
-
-                               @if($errors->has('cidade'))
-     <div class="invalid-feedback">
-         {{$errors->first('cidade')}}
-        </div>
-        @endif
-
-                    </div>
-                </div><!-- col cidade -->
-
-                    <div class="col-md-1 mb-3">
+                      <div class="col-md-1 mb-3">
                     <span>Estado</span>
                     <div class="input-group">
 
@@ -526,6 +510,24 @@
 
                     </div>
                 </div>
+
+                <div class="col-md-3 mb-3">
+                   <span>Cidade</span>
+                    <div class="input-group">
+
+                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
+                      value =   {{ old('cidade') }}>
+
+                               @if($errors->has('cidade'))
+     <div class="invalid-feedback">
+         {{$errors->first('cidade')}}
+        </div>
+        @endif
+
+                    </div>
+                </div><!-- col cidade -->
+
+                  
 
 
 

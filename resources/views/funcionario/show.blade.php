@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-      <h4 class="titulocadastro"> Dados do {{$p->nome}}</h4>
+      <h4 class="titulocadastro">{{$p->nome}}</h4>
 
 
         <fieldset class="form-group dadosForm">
@@ -499,7 +499,7 @@
                   </div> <!-- col bumero-->
 
 
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-3 mb-3">
 
                    <span>Bairro</span>
                     <div class="input-group">
@@ -516,7 +516,22 @@
 
                     </div><!-- col bairro-->
 
-                <div class="col-md-2 mb-3">
+                    <div class="col-md-1 mb-3">
+                    <span>Estado</span>
+                    <div class="input-group">
+
+                        <input id="uf" name="estado"  required maxlength="2" placeholder=""  class="form-control {{$errors->has('estado') ? 'is-invalid': '' }}" type="text"
+                         @if(!empty($p)) value = "{{$p->estado}}" @else value =  {{old('estado')}}  @endif readonly>
+                                       @if($errors->has('estado'))
+     <div class="invalid-feedback">
+         {{$errors->first('estado')}}
+        </div>
+        @endif
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
                    <span>Cidade</span>
                     <div class="input-group">
 
@@ -532,20 +547,7 @@
                     </div>
                 </div><!-- col cidade -->
 
-                    <div class="col-md-1 mb-3">
-                    <span>Estado</span>
-                    <div class="input-group">
-
-                        <input id="uf" name="estado"  required maxlength="2" placeholder=""  class="form-control {{$errors->has('estado') ? 'is-invalid': '' }}" type="text"
-                         @if(!empty($p)) value = "{{$p->estado}}" @else value =  {{old('estado')}}  @endif readonly>
-                                       @if($errors->has('estado'))
-     <div class="invalid-feedback">
-         {{$errors->first('estado')}}
-        </div>
-        @endif
-
-                    </div>
-                </div>
+                    
 
 
 
