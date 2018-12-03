@@ -13,7 +13,7 @@
         padding-right: 1.5rem;
         margin-top:1.7rem; 
     }
-    .endCentralizado > label{
+    .endCentralizado > span{
         color:blue;
         text-aling:center;
         
@@ -90,7 +90,7 @@
 
 
     <div class="form-group col-md-4 mb-3">
-        <label for="nome">Nome</label>
+        <span for="nome">Nome</span>
         <input type="text" name="nome" id="nome"  maxlength="52" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
          @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
 
@@ -105,7 +105,7 @@
 
     <div class="form-group">
 
-        <label for="cpf">Cpf</label>
+        <span for="cpf">Cpf</span>
         <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
 
             @if($errors->has('cpf'))
@@ -118,7 +118,7 @@
 
 <div class="col-md-2 mb-3">
     <div class="form-group">
-      <label for="cpf">RG</label>
+      <span for="cpf">RG</span>
       <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
 
       @if(!empty($p)) value = "{{$p->identidade}}" @else value = "" @endif >
@@ -134,7 +134,7 @@
     </div><!--col cpf -->
 
     <div class="form-group col-md-2 mb-3">
-        <label for="orgEmissor">Orgão Emissor</label>
+        <span for="orgEmissor">Orgão Emissor</span>
 
         <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
         @if(!empty($p)) value = "{{$p->org_emissor}}" @else value = "" @endif >
@@ -150,7 +150,7 @@
     
     <div class="col-md-2 mb-3">
         <div class="form-group">
-            <label for="dataDeNascimento">Data Nascimento</label>
+            <span for="dataDeNascimento">Data Nascimento</span>
             <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
             @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif >
 
@@ -170,7 +170,7 @@
 <div class="col-2">
         <div class="form-group">
         
-            <label for="selectbasic">Sexo <h11>*</h11></label>
+            <span for="selectbasic">Sexo <h11>*</h11></span>
               <select required id="sexo" name="sexo" class="form-control" >
                  @if(!empty($p->sexo))
 
@@ -207,7 +207,7 @@
 <div class="col-2">
         <div class="form-group">
         
-            <label for="selectbasic">Etnia <h11>*</h11></label>
+            <span for="selectbasic">Etnia <h11>*</h11></span>
               <select required id="etnia" name="etnia" class="form-control">
                 @if(!empty($p->etnia))
                                         
@@ -249,7 +249,7 @@
     <div class="col-3">
             <div class="form-group">
             
-                <label for="selectbasic">Escolaridade <h11>*</h11></label>
+                <span for="selectbasic">Escolaridade <h11>*</h11></span>
         
                   <select required id="escolaridade" name="escolaridade" class="form-control">
                         @if(!empty($p->escolaridade))
@@ -271,7 +271,7 @@
        
     <div class="col-md-2 mb-3">
         <div class="form-group">
-          <label for="nacionalidade">Nacionalidade</label>
+          <span for="nacionalidade">Nacionalidade</span>
           <input type="text" name="nacionalidade" maxlength="20" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro">
           <option value="{{$p->nacionalidade}}">{{$p->nacinalidade}}</option>
            @if($errors->has('nacionalidade'))
@@ -287,7 +287,7 @@
     <div class="col-md-3 mb-3">
             <div class="form-group">
     
-            <label for="naturalidade">Naturalidade</label>
+            <span for="naturalidade">Naturalidade</span>
             <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"   @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif
             >
             @if($errors->has('naturalidade'))
@@ -306,7 +306,7 @@
 
         <div class="col-3">
                 <div class="form-group">
-                  <label for="">Profissão*</label>
+                  <span for="">Profissão*</span>
                   <input type="text" maxlength="32" name="prof" id="" class="form-control"  placeholder="prof"  @if(!empty($p)) value = {{$p->profissao}} @else value = "" @endif>
                   <small id="prof" class="text-muted">informe o seu pais de origem</small>
                 </div>
@@ -315,7 +315,7 @@
         <div class="col">
                 <div class="form-group">
                 
-                    <label for="selectbasic">Status <h11>*</h11></label>
+                    <span for="selectbasic">Status <h11>*</h11></span>
                       <select required id="status_2" name="status" class="form-control"  @if(!empty($p)) value = {{$p->status}} @else value = "" @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
@@ -327,7 +327,7 @@
                 
         <div class="col-md-2 mb-3">
             <div class="form-group">
-                <label for="telefone">Telefone </label>
+                <span for="telefone">Telefone </span>
                     <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="15" 
                     @if(!empty($p)) value = "{{$p->telefone}}" @else value = "" @endif>
 
@@ -342,7 +342,7 @@
      
             <div class="col-md-2 mb-3">
                 <div class="form-group">
-                    <label for="celular">Celular </label>
+                    <span for="celular">Celular </span>
                         <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}"  type="text" maxlength="15"
                         @if(!empty($p)) value = "{{$p->celular}}" @else value = "" @endif>
 
@@ -357,7 +357,7 @@
             
             <div class="col-md-3 mb-3">
                 <div class="form-group">
-                       <label for="email">Email address</label>
+                       <span for="email">Email address</span>
                        <input type="email"maxlength="40"  class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
                        @if(!empty($p)) value = {{$p->email}} @else value = "" @endif>
 
@@ -385,7 +385,7 @@
                 <div class="row">
                     <div class="col">
                             <div class="form-group">
-                                    <label for="cep">Cep</label>
+                                    <span for="cep">Cep</span>
                                     <input type="search" class="form-control input-md" id="cep"  placeholder="Apenas numeros" maxlength="15"  pattern="\d{5}-\d{3}"  @if(!empty($p)) value = {{$p->cep}} @else value = "" @endif>
                                  </div>
                         </div><!-- col cep -->
@@ -482,7 +482,7 @@
 
     <div class="col">
     <div class="form-group">
-        <label for="convenio">Convenio</label>
+        <span for="convenio">Convenio</span>
         <select  id="convenio" name="convenio" id="" class="form-control" >
             @if (!$convenio == null)
             <option value="{{$convenio->cnpj}}" selected >{{$convenio->nome}}</option>
@@ -497,7 +497,7 @@
       <div class="form-group">
             <div class="col">
                     <div class="form-group">
-                     <label for="planos">Planos</label>
+                     <span for="planos">Planos</span>
                      <select name="plano_id" id="plano_id" class="form-control">
                          @if (!$plano == null) 
                          <option value="{{$plano->id}}" selected > {{$plano->nome}}</option>
@@ -511,14 +511,14 @@
 
     <div class="col-2">
         <div class="form-group">
-            <label for="plano">Indicação</label>
+            <span for="plano">Indicação</span>
                 <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="13" @if($phc != null) value = {{$phc->indicacao}} @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
 
     <div class="col-2">
         <div class="form-group">
-            <label for="plano">Carteira<h11>*</h11></label>
+            <span for="plano">Carteira<h11>*</h11></span>
                 <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="30" @if($phc != null)) value = {{$phc->carteira}} @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
@@ -526,7 +526,7 @@
    <div class="col-md-2 mb-3">
                 <div class="form-group">
 
-                    <label for="situacao">Situacao</label>
+                    <span for="situacao">Situacao</span>
                       <select required id="situacao" name="situacao" class="form-control {{$errors->has('situacao') ? 'is-invalid': '' }}"@if($phc != null)) value = {{$phc->situacao}} @else value = "" @endif >>
                       <option value="ATIVO">Ativo</option>
                         <option value="INATIVO">Inativo</option>
@@ -539,7 +539,7 @@
 
     <!--<div class="col">
         <div class="form-group">
-            <label for="plano">Validade<h11>*</h11></label>
+            <span for="plano">Validade<h11>*</h11></span>
                 <input id="telefone" name="telefone" class="form-control" required type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                 >
         </div>

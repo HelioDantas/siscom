@@ -94,7 +94,7 @@
 
     <div class="form-group col-md-3 mb-2">
         <span for="nome">Nome</span>
-        <input type="text" name="nome" id="nome"  maxlength="51" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        <input type="text" name="nome" id="nome"  maxlength="53" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         value =   {{old('nome')}}>
 
         @if($errors->has('nome'))
@@ -125,7 +125,7 @@
     </div>
 
 
-   <div class="col-md-2 mb-3">
+   <div class="col-md--2 mb-3">
             <div class="form-group">
               <span for="cpf">RG</span>
               <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
@@ -174,26 +174,26 @@
 
         </div>
     </div><!--col dt Nascimento-->
-
+    <div class="col-md-2 mb-3">
+            <div class="form-group">
+              <span for="nacionalidade">Nacionalidade</span>
+              <input type="text" name="nacionalidade" maxlength="15" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro"
+              value =   {{old('orgEmissor')}}>
+               @if($errors->has('nacionalidade'))
+                <div class="invalid-feedback">
+                    {{$errors->first('nacionalidade')}}
+                </div>
+              @endif
+    
+            </div>
+        </div><!--col nacionalidade -->
 </div><!-- row dados pessoas 1-->
 
 
 
 <div class="row">
 
-    <div class="col-md-2 mb-3">
-        <div class="form-group">
-          <span for="nacionalidade">Nacionalidade</span>
-          <input type="text" name="nacionalidade" maxlength="15" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro"
-          value =   {{old('orgEmissor')}}>
-           @if($errors->has('nacionalidade'))
-            <div class="invalid-feedback">
-                {{$errors->first('nacionalidade')}}
-            </div>
-          @endif
-
-        </div>
-    </div><!--col nacionalidade -->
+    
 
     <div class="col-md-2 mb-1">
             <div class="form-group">
@@ -221,7 +221,7 @@
                     <option value="Médio Incompleto">Médio Incompleto</option>
                     <option value="Médio Completo">Médio Completo</option>
                 <option value="Superior Incompleto">Superior Incompleto</option>
-                    <option value="Superior Completo">Superior Completo</option>
+                    <option value="Superior Completo" selected>Superior Completo</option>
                     <option value="Superior Completo">Pós Graduado</option>
             </select>
          @if($errors->has('escolaridade'))
@@ -249,7 +249,7 @@
 
             </div>
     </div><!--col nacionalidade -->
-    <div class="col-2 mb-1">
+    <div class="col--1 mb-1">
             <div class="form-group">
 
                 <span for="selectbasic">Sexo </span>
@@ -267,6 +267,26 @@
 
             </div>
     </div><!--col genero-->
+
+    
+    <div class="col-md-3 mb-3">
+            <div class="form-group">
+                   <span for="email">Email address</span>
+                   <input type="email" class="form-control " maxlength="30" {{$errors->has('email') ? 'is-invalid': '' }} id="email" name = "email"  placeholder="name@example.com"
+                   value =   {{old('email')}}>
+
+                       @if($errors->has('email'))
+ <div class="invalid-feedback">
+     {{$errors->first('email')}}
+    </div>
+    @endif
+    <div class="invalid-feedback">
+     Email invalido
+    </div>
+            </div>
+
+
+        </div> <!-- col Email -->
   
     
 
@@ -324,24 +344,6 @@
                 </div>
             </div>  <!-- col Telefone-->
 
-            <div class="col-md-3 mb-3">
-                <div class="form-group">
-                       <span for="email">Email address</span>
-                       <input type="email" class="form-control " maxlength="30" {{$errors->has('email') ? 'is-invalid': '' }} id="email" name = "email"  placeholder="name@example.com"
-                       value =   {{old('email')}}>
-
-                           @if($errors->has('email'))
-     <div class="invalid-feedback">
-         {{$errors->first('email')}}
-        </div>
-        @endif
-        <div class="invalid-feedback">
-         Email invalido
-        </div>
-                </div>
-
-
-            </div> <!-- col Email -->
             <div class="col--2 mb-3">
                     <div class="form-group">
     
