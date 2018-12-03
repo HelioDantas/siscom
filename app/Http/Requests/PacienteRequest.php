@@ -41,10 +41,10 @@ class PacienteRequest extends FormRequest
         'cep'                   => 'nullable|max:15',
         'cidade'                => 'required|max:15',
         'estado'                => 'required|max:15',   
-        'telefone'              => 'nullable|min:14|max:14',
-        'celular'               => 'required|min:15max:15',
+        'telefone'              =>'nullable|min:14|max:14',
+        'celular'               => 'required|min:15|max:15',
         'email'                 => 'required|email',
-        'profissao'             => 'nullable|max:14',
+        'profissao'             => 'nullable|max:30',
         'status'                => 'required',
         ];
     }

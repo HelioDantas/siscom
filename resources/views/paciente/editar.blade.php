@@ -59,11 +59,13 @@
 @section('tela')
 <hr>
 
-<div class="container-fluid col-lg-10 corpo-paciente">
+<div class="container-fluid col-lg-12 corpo-paciente">
 
         {!! Form::open(['route' => ['paciente.update', $p->id],'method ' => 'post',]) !!}
          @csrf
         {{ method_field('PUT') }}
+
+  
 
         <input type="hidden" name="paciente_id" value="{{$p->id}}">
 
@@ -77,7 +79,7 @@
                     </div>
                 </div>
               
-              <h4 class="titulocadastro">Atualizar Dados de <strong>{{$p->nome}}</strong></h4>   
+              <h4 class="titulocadastro"> <strong>{{$p->nome}}</strong></h4>   
         
         
                 <fieldset class="form-group">
@@ -87,46 +89,83 @@
 
 
 
-<div class="col-4">
-<div class="form-group">
-  <label for="nome">Nome*</label>
-  <input type="text" name="nome" id="nome" class="form-control" placeholder="nome"  @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
-  <small id="nome" >Nome Completo</small>
-</div>
-</div><!--col nome -->
+    <div class="form-group col-md-4 mb-3">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome"  maxlength="52" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+         @if(!empty($p)) value = "{{$p->nome}}" @else value = "" @endif>
 
-<div class="col-2">
-        <div class="form-group">
-          <label for="cpf">Cpf*</label>
-          <input type="text" name="cpf" id="" class="form-control" placeholder="Cpf" aria-describedby="helpId"  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
-          <small id="cpf" class="text-muted">cpf</small>
-        </div>
-        </div><!--col cpf -->
-
-        <div class="col-2">
-                <div class="form-group">
-                  <label for="cpf">RG*</label>
-                  <input type="text" name="identidade" id="identidade" class="form-control" placeholder="identidade" aria-describedby="identidade"
-                    @if(!empty($p)) value = {{$p->identidade}} @else value = "" @endif>
-                  <small id="identidade" class="text-muted">identidade</small>
+        @if($errors->has('nome'))
+            <div class="invalid-feedback">
+                {{$errors->first('nome')}}
                 </div>
-                </div><!--col cpf -->
+        @endif
+    </div>
 
-        <div class="col">
-            <div class="form-group">
-              <label for="cpf">Orgão Emissor*</label>
-              <input type="text" name="org_emissor" id="org_emissor"  required class="form-control" placeholder="ex:Detran" aria-describedby="identidade">
-              <small id="org_emissor" class="text-muted">Org.Emissor</small>
-            </div>
-            </div><!--col cpf -->
-    
-<div class="col-2">
-<div class="form-group">
-  <label for="data">Data Nascimento</label>
-  <input type="date" name="dataNascimento" id="dtNascimento"  @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif class="form-control" placeholder="" OnKeyPress="formatar('##/##/####', this)">
-  <small id="dtNascimento" class="data">Data obrigatoria</small>
+<div class = "col-md-2 mb-3">
+
+    <div class="form-group">
+
+        <label for="cpf">Cpf</label>
+        <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
+
+            @if($errors->has('cpf'))
+            <div class="invalid-feedback">
+                {{$errors->first('cpf')}}
+                </div>
+            @endif
+    </div>
 </div>
-</div><!--col dt Nascimento-->
+
+<div class="col-md-2 mb-3">
+    <div class="form-group">
+      <label for="cpf">RG</label>
+      <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
+
+      @if(!empty($p)) value = "{{$p->identidade}}" @else value = "" @endif >
+
+        @if($errors->has('identidade'))
+        <div class="invalid-feedback">
+            {{$errors->first('identidade')}}
+            </div>
+        @endif
+
+      
+    </div>
+    </div><!--col cpf -->
+
+    <div class="form-group col-md-2 mb-3">
+        <label for="orgEmissor">Orgão Emissor</label>
+
+        <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
+        @if(!empty($p)) value = "{{$p->org_emissor}}" @else value = "" @endif >
+             @if($errors->has('org_emissor'))
+        <div class="invalid-feedback">
+            {{$errors->first('org_emissor')}}
+        </div>
+            @endif
+
+
+
+    </div>
+    
+    <div class="col-md-2 mb-3">
+        <div class="form-group">
+            <label for="dataDeNascimento">Data Nascimento</label>
+            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            @if(!empty($p)) value = "{{$p->dataDeNascimento}}" @else value = "" @endif >
+
+                @if($errors->has('dataDeNascimento'))
+        <div class="invalid-feedback">
+            {{$errors->first('dataDeNascimento')}}
+            </div>
+            @endif
+
+
+        </div>
+    </div><!--col dt Nascimento-->
+</div>
+
+<div class="row">
 
 <div class="col-2">
         <div class="form-group">
@@ -223,40 +262,61 @@
                     <option value="Medio Completo">Médio Completo</option>
                     <option value="Superior Incompleto">Superior Incompleto</option>
                     <option value="Superior Completo">Superior Completo</option>
+                    <option value="Pos Graduado">Pos Graduado</option>
                   </select>
                
             </div>
         </div>
 
-        <div class="col-2">
-                <div class="form-group">
-                  <label for="">Nacionalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="nacionalidade" value="Brasileiro"  @if(!empty($p)) value = {{$p->nacionalidade}} @else value = "" @endif>
-                  <small id="nacionalidade" class="text-muted">informe o seu pais de origem</small>
-                </div>
-        </div><!--col nacionalidade -->
+       
+    <div class="col-md-2 mb-3">
+        <div class="form-group">
+          <label for="nacionalidade">Nacionalidade</label>
+          <input type="text" name="nacionalidade" maxlength="20" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro">
+          <option value="{{$p->nacionalidade}}">{{$p->nacinalidade}}</option>
+           @if($errors->has('nacionalidade'))
+            <div class="invalid-feedback">
+                {{$errors->first('nacionalidade')}}
+            </div>
+          @endif
 
-        <div class="col-3">
-                <div class="form-group">
-                  <label for="">Naturalidade*</label>
-                  <input type="text" name="nacionalidade" id=""  class="form-control" placeholder="naturalidade"  @if(!empty($p)) value = {{$p->naturalidade}} @else value = "" @endif>
-                  <small id="nacionalidade" class="text-muted">cidade ou estado de nascimento</small>
-                </div>
-        </div><!--col naturalidade -->
+        </div>
+    </div><!--col nacionalidade -->
+
+
+    <div class="col-md-3 mb-3">
+            <div class="form-group">
+    
+            <label for="naturalidade">Naturalidade</label>
+            <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"   @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif
+            >
+            @if($errors->has('naturalidade'))
+                <div class="invalid-feedback">
+                    {{$errors->first('naturalidade')}}
+                 </div>
+            @endif
+    
+            </div>
+    </div><!--col naturalidade -->
+</div>
+
+<div class="row">   
+  
+
 
         <div class="col-3">
                 <div class="form-group">
                   <label for="">Profissão*</label>
-                  <input type="text" name="prof" id="" class="form-control"  placeholder="prof" value="Brasileiro"  @if(!empty($p)) value = {{$p->profissao}} @else value = "" @endif>
+                  <input type="text" maxlength="32" name="prof" id="" class="form-control"  placeholder="prof"  @if(!empty($p)) value = {{$p->profissao}} @else value = "" @endif>
                   <small id="prof" class="text-muted">informe o seu pais de origem</small>
                 </div>
         </div><!--col nacionalidade -->
 
-        <div class="col-2">
+        <div class="col">
                 <div class="form-group">
                 
                     <label for="selectbasic">Status <h11>*</h11></label>
-                      <select required id="status_2" name="status_id" class="form-control"  @if(!empty($p)) value = {{$p->Status_2}} @else value = "" @endif>
+                      <select required id="status_2" name="status" class="form-control"  @if(!empty($p)) value = {{$p->status}} @else value = "" @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>
@@ -265,33 +325,53 @@
             </div><!--  etinia-->
 
                 
-
-
-
-    <div class="col-2">
+        <div class="col-md-2 mb-3">
             <div class="form-group">
-                    <label for="telefone">Telefone <h11>*</h11></label>
-                        <input id="telefone" name="telefone" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                        OnKeyPress="formatar('## #####-####', this)"  @if(!empty($p)) value = {{$p->telefone}} @else value = "" @endif>
-                </div>
-        </div>  <!-- col Telefone-->
+                <label for="telefone">Telefone </label>
+                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="15" 
+                    @if(!empty($p)) value = {{$p->telefone}} @else value = "" @endif>
 
-        <div class="col-2">
+                      @if($errors->has('telefone'))
+     <div class="invalid-feedback">
+         {{$errors->first('telefone')}}
+        </div>
+        @endif
+    </div>
+        </div>
+
+     
+            <div class="col-md-2 mb-3">
                 <div class="form-group">
-                        <label for="celular">Celular <h11>*</h11></label>
-                            <input id="celular" name="celular" class="form-control"  placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            OnKeyPress="formatar('## #####-####', this)"   @if(!empty($p)) value = {{$p->celular}} @else value = "" @endif>
-                    </div>
+                    <label for="celular">Celular </label>
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="15"
+                        @if(!empty($p)) value = {{$p->celular}} @else value = "" @endif>
+
+                          @if($errors->has('celular'))
+     <div class="invalid-feedback">
+         {{$errors->first('celular')}}
+        </div>
+        @endif
+
+                </div>
             </div>  <!-- col Telefone-->
             
-        
-        <div class="col-3">
+            <div class="col-md-3 mb-3">
                 <div class="form-group">
-                <label for="exampleFormControlInput2">Email address</label>
-                <input type="email" class="form-control"  id="exampleFormControlInput2" placeholder="name@example.com"  @if(!empty($p)) value = {{$p->email}} @else value = "" @endif>
-         </div>
-            
-            
+                       <label for="email">Email address</label>
+                       <input type="email"maxlength="40"  class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
+                       @if(!empty($p)) value = {{$p->email}} @else value = "" @endif>
+
+                           @if($errors->has('email'))
+     <div class="invalid-feedback">
+         {{$errors->first('email')}}
+        </div>
+        @endif
+        <div class="invalid-feedback">
+         Email invalido
+        </div>
+                </div>
+
+
             </div> <!-- col Email -->
 
 </div>
@@ -439,7 +519,7 @@
     <div class="col-2">
         <div class="form-group">
             <label for="plano">Carteira<h11>*</h11></label>
-                <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="13" @if($phc != null)) value = {{$phc->carteira}} @else value = "" @endif >
+                <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="30" @if($phc != null)) value = {{$phc->carteira}} @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
 
@@ -479,5 +559,6 @@
 
 <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/validaEmail.js') }}"></script>
 
 @endsection
