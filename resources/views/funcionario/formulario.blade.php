@@ -350,7 +350,7 @@
         <div class="col-md-2 mb-3">
                 <div class="form-group">
                     <label for="celular">Celular </label>
-                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}"  type="text" maxlength="13"
                         value =   {{old('celular')}}>
 
                           @if($errors->has('celular'))
@@ -465,7 +465,7 @@
                    <div class="col-md-1 mb-3">
                     <span >Nº </span>
                     <div class="input-group">
-                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required  type="text"
+                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder=""   type="text"
                       value =   {{old('numero')}}>
 
                              @if($errors->has('numero'))
@@ -483,7 +483,7 @@
 
                    <span>Bairro</span>
                     <div class="input-group">
-                      <input id="bairro" name="bairro"  required maxlength="20" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
+                      <input id="bairro" name="bairro"  required maxlength="20" placeholder=""   class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       value =   {{old('bairro')}}>
 
                               @if($errors->has('bairro'))

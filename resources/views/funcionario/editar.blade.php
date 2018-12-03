@@ -108,7 +108,7 @@
 
   <div class="form-group col-md-4 mb-3">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="43" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        <input type="text" name="nome" id="nome"  maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         @if(!empty($p)) value = "{{$p->nome}}" @else value = {{old('nome')}} @endif>
 
         @if($errors->has('nome'))
@@ -155,7 +155,7 @@
                 <div class="form-group col-md-2 mb-3">
             <label for="orgEmissor">Orgão Emissor</label>
 
-            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="17"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
            @if(!empty($p)) value = "{{$p->identidade}}" @else value = {{old('org_emissor')}} @endif>
                  @if($errors->has('org_emissor'))
             <div class="invalid-feedback">
@@ -207,7 +207,7 @@
             <div class="form-group">
 
             <label for="naturalidade">Naturalidade</label>
-            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}"
+            <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}"
             placeholder="naturalidade"@if(!empty($p)) value = "{{$p->naturalidade}}" @else value =  {{old('naturalidade')}} @endif>
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -393,7 +393,7 @@
             <div class="col-md-2 mb-3">
             <div class="form-group">
                 <label for="telefone">Telefone </label>
-                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}"  type="text" maxlength="13"
                      @if(!empty($p)) value = "{{$p->telefone}}" @else value = {{old('telefone')}} @endif>
 
                       @if($errors->has('telefone'))
@@ -409,7 +409,7 @@
         <div class="col-md-2 mb-3">
                 <div class="form-group">
                     <label for="celular">Celular </label>
-                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}"  type="text" maxlength="13"
                       @if(!empty($p)) value = "{{$p->celular}}" @else value = {{old('celular')}}  @endif>
 
                             @if($errors->has('celular'))
@@ -424,7 +424,7 @@
             <div class="col-md-3 mb-3">
                 <div class="form-group">
                        <label for="email">Email address</label>
-                       <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
+                       <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" maxlength="35" placeholder="name@example.com"
                       @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif>
 
                       @if($errors->has('email'))
@@ -443,7 +443,7 @@
              <div class="col-md-3 mb-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
-                <input type="text" name="crm" id="" class="form-control {{$errors->has('crm') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
+                <input type="text" name="crm" id="" class="form-control {{$errors->has('crm') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="30"
                   @if(!empty($p->medico)) value = "{{$p->medico->crm}}" @else value =  {{old('crm')}}  @endif>
 
                       @if($errors->has('crm'))
@@ -523,7 +523,7 @@
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
                           <div class="input-group">
-                              <input type="text" name="rua" maxlength="40" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
+                              <input type="text" name="rua" maxlength="35" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
                               @if(!empty($p)) value = "{{$p->rua}}" @else value =  {{old('rua')}}  @endif}>
 
                                 @if($errors->has('rua'))
@@ -538,7 +538,7 @@
                    <div class="col-md-1 mb-3">
                     <span >Nº </span>
                     <div class="input-group">
-                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required=""  type="text"
+                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder=""   type="text"
                        @if(!empty($p)) value = "{{$p->numero}}" @else value =  {{old('numero')}}  @endif>
 
                              @if($errors->has('numero'))
@@ -556,7 +556,7 @@
 
                    <span>Bairro</span>
                     <div class="input-group">
-                      <input id="bairro" name="bairro"  required maxlength="15" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
+                      <input id="bairro" name="bairro"  required maxlength="20" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       @if(!empty($p)) value = "{{$p->bairro}}" @else value =  {{old('bairro')}}  @endif>
 
                               @if($errors->has('bairro'))
@@ -573,7 +573,7 @@
                    <span>Cidade</span>
                     <div class="input-group">
 
-                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
+                      <input id="cidade" name="cidade"  required maxlength="20" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
                       @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif>
 
                                @if($errors->has('cidade'))

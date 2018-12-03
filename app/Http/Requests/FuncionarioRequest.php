@@ -39,7 +39,7 @@ class FuncionarioRequest extends FormRequest
         'cep'                   => 'nullable|max:15',
         'cidade'                => 'required|max:20',
         'estado'                => 'required|max:2',
-        'telefone'              => 'required|min:14|max:14',
+        'telefone'              => 'nullable|min:14|max:14',
         'celular'               => 'nullable|min:15|max:15',
         'email'                 => 'nullable|email|max:35',
         'profissao'             => 'nullable|max:14',

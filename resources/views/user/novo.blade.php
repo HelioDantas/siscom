@@ -189,7 +189,7 @@
 </div>
 
 <div class="col-4">
-        <button  class="btn btn-secondary  "  data-toggle="collapse" type = "button" data-target="#demo">Permissao</button>
+        <button  class="btn btn-secondary  "  data-toggle="collapse" type = "button" data-target="#demo">Permissões</button>
 
         </div>
         <div id="demo" class="collapse">
