@@ -41,7 +41,7 @@ class PacienteController extends Controller
         //  listar pacientes.
 
         //$pacientes = Paciente::where('nome', $nome)->get();
-        $pacientes = Paciente::orderBy('nome')->paginate(10);
+        $pacientes = Paciente::orderBy('nome')->paginate(7);
         return view('paciente.listar' , compact('pacientes'));
         //testando
     }
@@ -59,7 +59,7 @@ class PacienteController extends Controller
 
 
         }else{
-             $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+             $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(7);
 
 
         }
@@ -151,6 +151,7 @@ class PacienteController extends Controller
 
     public function update(PacienteRequest $request, $id)
     {
+       
 
         $tt = PermissionController::pupdate( $request);
 

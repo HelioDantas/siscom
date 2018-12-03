@@ -26,7 +26,7 @@
         .corpo{
            margin-top:3rem;
         }
-        span{
+        header > a{
           margin-right:0.5rem;
 
         }
@@ -47,9 +47,8 @@
 
               <div class="container-fluid" id="containerLogoDataHoraH3">
 
-                    <span class="logo mb-0">Siscon</span>
 
-                    <a class="logo cor mb-0" href="{{  route('dashboard')}}"><strong class="cor">Siscon</strong></a>
+                    <a class="logo cor mb-0" href="{{  route('dashboard')}}">Siscon</a>
                     <span  class="mb-0"id='real-clock'></span>
                     <span class="data mb-0"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
                     <h3>Sistema de Consultorio Medico</h3>
@@ -74,11 +73,9 @@
                     <div class="dropdown-content">
 
                       <a href="{{route('paciente.listar')}}">Paciente</a>
-<<<<<<< HEAD
-                      <a href="#">Convenios</a>
-=======
+
                       <a href="{{route('convenio.novo')}}">Convenios</a>
->>>>>>> 3bf6dc80887503897f806040b36f2afc1d6f6cc8
+
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
 
                     </div>
