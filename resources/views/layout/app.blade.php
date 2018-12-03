@@ -179,6 +179,9 @@
         <div class="container col-lg-10" style="">
                    @yield('tela')
             </div>
+            <div class="container col-lg-12" style="">
+                @yield('telalistarPaciente')
+         </div>
 
 
 

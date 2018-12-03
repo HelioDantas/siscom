@@ -40,7 +40,7 @@ header #containerLogoDataHoraH3 > .data{
     padding-right:0.5%;
     float:right;
 }
-header#containerLogoDataHoraH3 > .data, #real-clock{
+header #containerLogoDataHoraH3 > .data, #real-clock{
     float:right;
 }
 header  #containerLogoDataHoraH3 > h3{
