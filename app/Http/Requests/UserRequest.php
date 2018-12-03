@@ -13,11 +13,11 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-      
+
 
         return true;
     }
-  
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -27,9 +27,10 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'cpf'   => 'riquired|max:20|exists:Usuario,cpf',
-            'senha' => 'riquired|max:255',
-            
+            'cpf'   => 'required|max:20|exists:sis_funcionario,cpf',
+            'senha' => 'required|max:30',
+            'senha2' => 'required|max:30',
+            '$p'=> 'required|array'
         ];
     }
 
@@ -39,7 +40,7 @@ class UserRequest extends FormRequest
             'cpf.exists'    => ('Esse Usuario não existe'),
             'cpf.max'       => ('CPF Inválido.'),
             'cpf.min'       => ('CPF Inválido.'),
-           
+
         ];
     }
 

@@ -27,7 +27,35 @@
 		float: left;
 	}
 </style>
-@endsection @section('conteudo') @endsection @section('navegação') @endsection @section('tela')
+@endsection @section('conteudo') @endsection
+ @section('navegação')
+ @endsection
+  @section('tela')
+  @php $edit = $show = $destroy = $novo = false;  @endphp
+@foreach (session()->get("user")->permission()->get() as $permission )
+@if($permission->pivot->permissao_id == 7)
+    @php $edit = true @endphp
+
+@endif
+
+@if($permission->pivot->permissao_id == 11)
+    @php $show = true @endphp
+
+
+@endif
+
+@if($permission->pivot->permissao_id == 12)
+    @php $destroy = true @endphp
+
+@endif
+
+@if($permission->pivot->permissao_id == 9)
+    @php $novo = true @endphp
+
+
+@endif
+
+@endforeach
 <!--<a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>-->
 
 <div class="container-fluid col-lg-12">
@@ -51,11 +79,13 @@
 			</a>
 			<a class="btn btn-outline-danger" href="" data-toggle="tooltip" data-placement="top" title="Cancelar">
 				<i class="fas fa-times"></i>
-			</a>
+            </a>
+            @if($novo)
 			<a id="recon" class="btn btn-outline-success" href="{{route('paciente.novo')}}" data-toggle="tooltip" data-placement="top"
 			 title="cadastrar">
 				<i class="fas fa-plus-circle"></i>
-			</a>
+            </a>
+            @endif
 
 			<form class="form-inline my-2 my-lg-0" action="buscar" method="post">
 				@csrf
@@ -135,6 +165,7 @@
 							<td> {{$p->profissao}} </td> --}}
 							<td> {{$p->status}} </td>
 							<td>
+                                    @if($destroy)
 								<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
 									<i class="fas fa-trash"></i>
 								</button>
@@ -153,19 +184,22 @@
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button id="excluir" name="excluir" class="btn btn-outline-danger" type="Submit" onclick="permissaoExcluir({{$p->id}})" data-toggle="tooltip"
+												<button id="excluir" name="excluir" class="btn btn-outline-danger" type="Submit" onclick="algum({{$p->id}})" data-toggle="tooltip"
 												 data-placement="top" title="excluir">excluir</button>
 											</div>
 										</div>
 									</div>
 								</div>
-								
-								<button class="btn btn-outline-primary" id="editAjax" onclick="permissaoEditar({{$p->id}})" title="editar">	<i class="fas fa-edit"></i></button>
-								
-								</a>
-								<a class="btn btn-outline-secondar" onclick="permissaoShow({{$p->id}})" title="visualizar">
+                                @endif
+                                @if($edit)
+								<a class="btn btn-outline-primary" href="editar/{{$p->id}}" title="visualizar"><i class="fas fa-edit"></i>
+                                </a>
+                                @endif
+                                @if($show)
+								<a class="btn btn-outline-secondar" href="show/{{$p->id}}" title="visualizar">
 									<i class="fas fa-eye "></i>
-								</a>
+                                </a>
+                                @endif
 							</td>
 
 						</tr>
@@ -179,7 +213,7 @@
 
 				<p></p>
 
-				@endif {!!$pacientes->links()!!} 
+				@endif {!!$pacientes->links()!!}
 			</div>
 		</div>
 

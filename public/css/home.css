@@ -50,9 +50,9 @@ header  #containerLogoDataHoraH3 > h3{
 }
 header   > #containerSessaoEMsgBemVindo {
     margin-top: -0.5rem;
-    
+
    text-align: center;
-   
+
  }
 
   #msgBemVindo {
@@ -62,7 +62,10 @@ header   > #containerSessaoEMsgBemVindo {
     float:right;
 }
 
+.cor{
+    color: black;
 
+}
 
 header .container-fluid > .logo{
     float: left;
@@ -81,7 +84,7 @@ header .container-fluid > .logo{
     padding: 16px;
     font-size: 16px;
     border: none;
-    
+
 }
 
 .corpo{
@@ -99,7 +102,7 @@ header .container-fluid > .logo{
 .corpo-paciente{
     padding: 1rem;
     padding-top: 1rem;
-    
+
     background-color:#fafafa;
     border-radius:0.5%;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
@@ -113,7 +116,7 @@ header .container-fluid > .logo{
 .dropdown {
     position: relative;
     display: inline-block;
-    
+
 }
 
 .dropdown-content {

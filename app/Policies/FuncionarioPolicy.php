@@ -17,76 +17,78 @@ class FuncionarioPolicy
      * @param  \App\Funcionario  $funcionario
      * @return mixed
      */
-    public function view( $user, Funcionario $funcionario)
+    public static function edit()
     {
-        //
+        //  form para editar infos de um funcionario
+
+            if(!session()->get("user")->permission()->where('permissao_id', 1)->get()->isEmpty())
+                return true;
+
+               return 0;
+
+
+
+
     }
 
-    /**
-     * Determine whether the user can create funcionarios.
-     *
-     * @param  \  $user
-     * @return mixed
-     */
-    public function create( $user)
+
+   public static function update()
     {
-        //
-    }
+        //  form para editar infos de um funcionario
 
-    /**
-     * Determine whether the user can update the funcionario.
-     *
-     * @param  \  $user
-     * @param  \App\Funcionario  $funcionario
-     * @return mixed
-     */
-    public function update( $user, Funcionario $funcionario)
-    {
-        //
-    }
+            if(!session()->get("user")->permission()->where('permissao_id', 2)->get()->isEmpty())
+                return true;
 
-    /**
-     * Determine whether the user can delete the funcionario.
-     *
-     * @param  \  $user
-     * @param  \App\Funcionario  $funcionario
-     * @return mixed
-     */
-    public function delete( $user, Funcionario $funcionario)
-    {
-        //
-    }
+               return false;
 
-    /**
-     * Determine whether the user can restore the funcionario.
-     *
-     * @param  \  $user
-     * @param  \App\Funcionario  $funcionario
-     * @return mixed
-     */
-    public function restore( $user, Funcionario $funcionario)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the funcionario.
-     *
-     * @param  \  $user
-     * @param  \App\Funcionario  $funcionario
-     * @return mixed
-     */
-    public function forceDelete( $user, Funcionario $funcionario)
-    {
-        //
-    }
-
-
-    public function editir(?User $user, Funcionario $funcionario){
-        return session("user")->funcionario->Sis_funcionario_matricula === $funcionario->matricula;
-    
 
 
 
     }
+
+       public static function novo()
+        {
+        //  form para editar infos de um funcionario
+
+            if( !session()->get("user")->permission()->where('permissao_id', 3)->get()->isEmpty())
+                return true;
+
+            return false;
+
+    }
+
+     public static function create()
+        {
+        //  form para editar infos de um funcionario
+
+            if( (!session()->get("user")->permission()->where('permissao_id', 4)->get()->isEmpty()))
+                return true;
+
+               return 0;
+
+         }
+
+
+         public static function show()
+        {
+        //  form para editar infos de um funcionario
+
+            if( (!session()->get("user")->permission()->where('permissao_id', 5)->get()->isEmpty()))
+                return true;
+
+               return false;
+
+         }
+
+             public static function destroy()
+            {
+        //  form para editar infos de um funcionario
+
+            if( (!session()->get("user")->permission()->where('permissao_id', 6)->get()->isEmpty()))
+                return true;
+
+               return false;
+
+            }
+
 }
