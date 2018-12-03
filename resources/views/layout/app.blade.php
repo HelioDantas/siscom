@@ -40,24 +40,51 @@
 
           margin-right : 5px;
         }
-      
+         header{
+            padding: 10px 2%;
+            background-color: white ;
+            text-align: center;
+        }
+         header h4{
+            float: left;
+        }
+        header .logo{
+            font-size: 20px;
+        }
+
+        .real-clock{
+            padding-left : 1%;
+        }
+        nav span{
+            float:right;
+            padding-right: 2%;
+            
+        }
+          span{
+            float:right;
+            padding-left: 1rem;
+        }
 
     </style>
 </head>
 <body>
         <!-- header -->
 
-            <header > <!-- style="color:#000000;" -->
+            <header class="teste"> <!-- style="color:#000000;" -->
 
-              <div class="container-fluid" id="containerLogoDataHoraH3">
+                    <div class="logo">
+                <h4><a class="navbar-brand cor" href="{{route('dashboard')}}">SisCon</a></h4>
+            </div>
+
+            <span id="real-clock"></span>
+
+            <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
 
 
-                    <a class="logo cor mb-0" href="{{  route('dashboard')}}">Siscon</a>
-                    <span  class="mb-0"id='real-clock'></span>
-                    <span class="data mb-0"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
-                    <h3>Sistema de Consultorio Medico</h3>
+                <div class="container">
+                    <h3>Sistema de Consultorio medico</h3>
 
-                <div>
+                </div>
 
             </header>
 
