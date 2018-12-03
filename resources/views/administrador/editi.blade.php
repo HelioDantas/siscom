@@ -135,8 +135,9 @@
                 @php $cont = $cont + 1; @endphp
 
               <tr class="Filter">
+              <td class="">{{$permissao->id}} </td>
                  <th scope="row">{{$permissao->nome}}</th>
-                 <td class="">{{$permissao->id}} </td>
+                 
 
 
                 <td>

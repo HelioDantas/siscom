@@ -83,7 +83,7 @@ class PacienteController extends Controller
     }
 
     public function create(PacienteRequest $request){
-         PermissionController::pcreate( $request);
+          PermissionController::pnovo( $request);
         $paciente = Paciente::create([
         'nome'              =>  mb_strtolower($request['nome']),
         'org_emissor'       =>  mb_strtolower($request['org_emissor']),
@@ -153,7 +153,7 @@ class PacienteController extends Controller
     {
        
 
-        $tt = PermissionController::pupdate( $request);
+        $tt = PermissionController::pedit( $request);
 
         if($tt == 0){
 

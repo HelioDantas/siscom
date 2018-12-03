@@ -166,7 +166,7 @@ class FuncionarioController extends Controller
     public function update(FuncionarioRequest $request, $id)
     {
 
-        PermissionController::update();
+         PermissionController::edit();
 
         $Funcionario = Funcionario::find($id);
         $especialidade1 = true;
