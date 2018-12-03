@@ -83,7 +83,9 @@ class PacienteController extends Controller
     }
 
     public function create(PacienteRequest $request){
-        PermissionController::pnovo( $request);
+
+          PermissionController::pnovo( $request);
+
         $paciente = Paciente::create([
         'nome'              =>  mb_strtolower($request['nome']),
         'org_emissor'       =>  mb_strtolower($request['org_emissor']),
@@ -153,7 +155,9 @@ class PacienteController extends Controller
     {
        
 
+
         PermissionController::pedit( $request);
+
 
      
      $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->first();

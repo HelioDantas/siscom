@@ -105,7 +105,9 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
         Route::get('novo', 'UserController@novo')->name('user.novo');
         Route::post('create', 'UserController@create')->name('user.create');
         Route::get('permissoes/{id}', 'UserController@permissoes')->name('user.permissoes');
-
+        Route::get('new/{id}', 'UserController@newPermissoes')->name('user.newPermissoes');
+        Route::any('create/{id}&&{user_id}', 'UserController@createPermissoes')->name('user.createPermissoes');
+        Route::any('destroy/{id}&&{user_id}', 'UserController@destroyPermissoes')->name('user.destroyPermissoes');
     });
 
 });

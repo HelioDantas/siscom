@@ -79,14 +79,77 @@ class UserController extends Controller
 
              $user = User::where('Sis_funcionario_matricula', $id)->first();
              $Permissao = $user->permission()->get();
-              return view('administrador.editi',compact('Permissao'));
+              return view('administrador.editi',compact('Permissao', 'id'));
 
 
 
 
 
     }
+      public function newPermissoes(Request $request, $id){
 
+//            return dd($id);
+
+             $user = User::where('Sis_funcionario_matricula', $id)->first();
+             $ListP = Permission::join('sis_usuario_tem_permissao', 'permissao_id', "=", 'id')->where( 'usuario_id', "=", $user->id)->pluck('permissao_id');
+              $Permissao = Permission::whereNotIn('id', $ListP)->paginate(10);
+
+       
+              return view('administrador.create',compact('Permissao', 'id'));
+
+               
+            
+        
+  
+          
+          ///redirect()->route('User.createPermissoes', ['id' => $medico_id]);
+
+
+
+
+    }
+
+
+       public function createPermissoes(Request $request, $id, $user_id){
+
+//  
+
+
+       //  return dd($id);
+
+             $user = User::where('Sis_funcionario_matricula', $user_id)->first();
+             $Permissao = $user->permission()->get();
+              $dd = User::find($user->id)->permission()->attach($id);
+            
+        
+          return back();
+          
+          ///redirect()->route('User.createPermissoes', ['id' => $medico_id]);
+
+
+
+
+    }
+
+    public function destroyPermissoes(Request $request, $id, $user_id){
+
+//            return dd($id);
+
+             $user = User::where('Sis_funcionario_matricula', $user_id)->first();
+             $Permissao = $user->permission()->get();
+         
+
+                 $dd = User::find($user->id)->permission()->detach($id);
+            
+        
+          return back();
+          
+          ///redirect()->route('User.createPermissoes', ['id' => $medico_id]);
+
+
+
+
+    }
 
 
 }

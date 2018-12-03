@@ -31,29 +31,30 @@
  @section('navegação')
  @endsection
   @section('tela')
+
   @php $edit = $show = $destroy = $novo = false;  @endphp
 @foreach (session()->get("user")->permission()->get() as $permission )
-@if($permission->pivot->permissao_id == 7)
-    @php $edit = true @endphp
+	@if($permission->pivot->permissao_id == 7)
+		@php $edit = true @endphp
 
-@endif
+	@endif
 
-@if($permission->pivot->permissao_id == 11)
-    @php $show = true @endphp
-
-
-@endif
-
-@if($permission->pivot->permissao_id == 12)
-    @php $destroy = true @endphp
-
-@endif
-
-@if($permission->pivot->permissao_id == 9)
-    @php $novo = true @endphp
+	@if($permission->pivot->permissao_id == 11)
+		@php $show = true @endphp
 
 
-@endif
+	@endif
+
+	@if($permission->pivot->permissao_id == 12)
+		@php $destroy = true @endphp
+
+	@endif
+
+	@if($permission->pivot->permissao_id == 9)
+		@php $novo = true @endphp
+
+
+	@endif
 
 @endforeach
 <!--<a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>-->

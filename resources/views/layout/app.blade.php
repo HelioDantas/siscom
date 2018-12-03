@@ -36,24 +36,55 @@
         #containerLogoDataHoraH3{
           padding-top:-0.5rem;
         }
-      
+        .span{
+
+          margin-right : 5px;
+        }
+         header{
+            padding: 10px 2%;
+            background-color: white ;
+            text-align: center;
+        }
+         header h4{
+            float: left;
+        }
+        header .logo{
+            font-size: 20px;
+        }
+
+        .real-clock{
+            padding-left : 1%;
+        }
+        nav span{
+            float:right;
+            padding-right: 2%;
+            
+        }
+          span{
+            float:right;
+            padding-left: 1rem;
+        }
 
     </style>
 </head>
 <body>
         <!-- header -->
 
-            <header > <!-- style="color:#000000;" -->
+            <header class="teste"> <!-- style="color:#000000;" -->
 
-              <div class="container-fluid" id="containerLogoDataHoraH3">
+                    <div class="logo">
+                <h4><a class="navbar-brand cor" href="{{route('dashboard')}}">SisCon</a></h4>
+            </div>
+
+            <span id="real-clock"></span>
+
+            <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
 
 
-                    <a class="logo cor mb-0" href="{{  route('dashboard')}}">Siscon</a>
-                    <span  class="mb-0"id='real-clock'></span>
-                    <span class="data mb-0"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
-                    <h3>Sistema de Consultorio Medico</h3>
+                <div class="container">
+                    <h3>Sistema de Consultorio medico</h3>
 
-                <div>
+                </div>
 
             </header>
 
@@ -131,9 +162,9 @@
 
               </ul>
             </div>
-              <span class="navbar-text" id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
+              <span class="navbar-text span" id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
 
-                <span class="navbar-text" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
+                <span class="navbar-text span" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 

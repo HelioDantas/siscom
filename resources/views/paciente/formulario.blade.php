@@ -93,7 +93,7 @@
 
 
     <div class="form-group col-md-3 mb-2">
-        <label for="nome">Nome</label>
+        <span for="nome">Nome</span>
         <input type="text" name="nome" id="nome"  maxlength="51" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         value =   {{old('nome')}}>
 
@@ -109,7 +109,7 @@
 
         <div class="form-group">
 
-            <label for="cpf">Cpf</label>
+            <span for="cpf">Cpf</span>
             <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
 
             
@@ -127,7 +127,7 @@
 
    <div class="col-md-2 mb-3">
             <div class="form-group">
-              <label for="cpf">RG</label>
+              <span for="cpf">RG</span>
               <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
  
                value =   {{old('identidade')}}>
@@ -144,7 +144,7 @@
 
 
         <div class="form-group col-md-2 mb-3">
-            <label for="orgEmissor">Orgão Emissor</label>
+            <span for="orgEmissor">Orgão Emissor</span>
 
             <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
             value =   {{old('org_emissor')}}>
@@ -159,9 +159,9 @@
         </div>
 
 
-    <div class="col-md-2 mb-3">
+    <div class="col--2 mb-1">
         <div class="form-group">
-            <label for="dataDeNascimento">Data Nascimento</label>
+            <span for="dataDeNascimento">Data Nascimento</span>
             <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
             value =   {{old('dataDeNascimento')}}>
 
@@ -183,7 +183,7 @@
 
     <div class="col-md-2 mb-3">
         <div class="form-group">
-          <label for="nacionalidade">Nacionalidade</label>
+          <span for="nacionalidade">Nacionalidade</span>
           <input type="text" name="nacionalidade" maxlength="15" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro"
           value =   {{old('orgEmissor')}}>
            @if($errors->has('nacionalidade'))
@@ -198,7 +198,7 @@
     <div class="col-md-2 mb-1">
             <div class="form-group">
 
-            <label for="naturalidade">Naturalidade</label>
+            <span for="naturalidade">Naturalidade</span>
             <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"value =  {{old('naturalidade')}}
             >
             @if($errors->has('naturalidade'))
@@ -213,7 +213,7 @@
     <div class="col-md-2 mb-1">
         <div class="form-group">
 
-            <label for="escolaridade">Escolaridade </label>
+            <span for="escolaridade">Escolaridade </span>
             <select required id="escolaridade" name="escolaridade" class="form-control {{ $errors->has('escolaridade') ? 'is-invalid': ''  }}"
                     value =   {{old('escolaridade')}}>
                     <option value="Fundamental Incompleto">Fundamental Incompleto</option>
@@ -238,7 +238,7 @@
     <div class="col-md-2 mb-1">
             <div class="form-group">
 
-            <label for="">Profissão</label>
+            <span for="">Profissão</span>
             <input type="text" name="profissao" maxlength="30" id="" masL class="form-control {{$errors->has('profissao') ? 'is-invalid': '' }}" placeholder="prof" value =   {{old('profissao')}}>
                 @if($errors->has('profissao'))
         <div class="invalid-feedback">
@@ -249,12 +249,10 @@
 
             </div>
     </div><!--col nacionalidade -->
-</div><!-- row -->
-    <div class="row">
-    <div class="col mb-3">
+    <div class="col-2 mb-1">
             <div class="form-group">
 
-                <label for="selectbasic">Sexo </label>
+                <span for="selectbasic">Sexo </span>
                 <select required id="genero" name="sexo" class="form-control {{ $errors->has('sexo') ? 'is-invalid': ''  }}"value =   {{old('sexo')}}>
                 <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
@@ -272,10 +270,10 @@
   
     
 
-    <div class="col mb-3">
+    <div class="col--2 mb-1">
             <div class="form-group">
 
-                <label for="selectbasic">Etnia </label>
+                <span for="selectbasic">Etnia </span>
                 <select required id="etnia" name="etnia" class="form-control {{$errors->has('etnia') ? 'is-invalid': '' }}"
                         value =   {{old('etnia')}}>
                 <option value="B">Branco</option>
@@ -292,28 +290,13 @@
             </div>
         </div><!--  etinia-->
 
-
-        <div class="col mb-3">
-                <div class="form-group">
-
-                    <label for="selectbasic">Status </label>
-                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}"value =   {{old('status')}}>
-                      <option value="A">Ativo</option>
-                        <option value="I">Inativo</option>
-                      </select>
-                             @if($errors->has('status'))
-     <div class="invalid-feedback">
-         {{$errors->first('status')}}
-        </div>
-        @endif
-
-                </div>
-            </div><!--  etinia-->
+    </div><!-- row -->
+    <div class="row">
 
     <div class="col-md-2 mb-3">
             <div class="form-group">
-                <label for="telefone">Telefone </label>
-                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                <span for="telefone">Telefone </span>
+                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="15"
                     value =   {{old('telefone')}}>
 
                       @if($errors->has('telefone'))
@@ -328,8 +311,8 @@
 
         <div class="col-md-2 mb-3">
                 <div class="form-group">
-                    <label for="celular">Celular </label>
-                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                    <span for="celular">Celular </span>
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="15"
                         value =   {{old('celular')}}>
 
                           @if($errors->has('celular'))
@@ -343,8 +326,8 @@
 
             <div class="col-md-3 mb-3">
                 <div class="form-group">
-                       <label for="email">Email address</label>
-                       <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
+                       <span for="email">Email address</span>
+                       <input type="email" class="form-control " maxlength="30" {{$errors->has('email') ? 'is-invalid': '' }} id="email" name = "email"  placeholder="name@example.com"
                        value =   {{old('email')}}>
 
                            @if($errors->has('email'))
@@ -359,6 +342,22 @@
 
 
             </div> <!-- col Email -->
+            <div class="col--2 mb-3">
+                    <div class="form-group">
+    
+                        <span for="selectbasic">Status </span>
+                          <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}"value =   {{old('status')}}>
+                          <option value="A">Ativo</option>
+                            <option value="I">Inativo</option>
+                          </select>
+                                 @if($errors->has('status'))
+         <div class="invalid-feedback">
+             {{$errors->first('status')}}
+            </div>
+            @endif
+    
+                    </div>
+                </div><!--  etinia-->
 
 </div>
 </fieldset><!--Dados pessoas-->
@@ -371,7 +370,7 @@
                 <div class="row">
                     <div class="col-md-2 mb-3 ">
                          <div class="form-group">
-                               <label for="cep">Cep</label>
+                               <span for="cep">Cep</span>
                                <input type="text"   class="form-control input-md {{$errors->has('cep') ? 'is-invalid': '' }}" name="cep" id="cep"
                                 placeholder="Apenas numeros" maxlength="15" value =   {{old('cep')}}>
                                       @if($errors->has('cep'))
@@ -488,7 +487,7 @@
                 <div class="col-md-3 mb-3">
                 <div class="form-group">
 
-                <label for="convenio">Convenio</label>
+                <span for="convenio">Convenio</span>
                    <select name="convenio_id" id="convenio" class="form-control {{$errors->has('convenio_id') ? 'is-invalid': '' }}"
                         >
                         <option value= {{old('convenio_id')}} selected></option>
@@ -506,7 +505,7 @@
                 </div>
                 <div class="col-md-2 mb-3">
                   <div class="form-group">
-                   <label for="planos">Planos</label>
+                   <span for="planos">Planos</span>
 
                    <select name="plano_id" id="plano_id" class="form-control {{$errors->has('plano') ? 'is-invalid': '' }}"value =   {{old('plano_id')}}>
 
@@ -525,7 +524,7 @@
 
                 <div class="col-md-2 mb-3">
                     <div class="form-group">
-                        <label for="plano">Indicação</label>
+                        <span for="plano">Indicação</span>
                             <input id="indicacao" name="indicacao" class="form-control {{$errors->has('indicacao') ? 'is-invalid': '' }}"  require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                             value =   {{old('indicacao')}}>
                              @if($errors->has('indicacao'))
@@ -540,7 +539,7 @@
 
                 <div class="col-md-3 mb-3">
                     <div class="form-group">
-                        <label for="plano">Carteira</label>
+                        <span for="plano">Carteira</span>
                             <input id="carteira" name="carteira" class="form-control {{$errors->has('carteira') ? 'is-invalid': '' }}"  required type="text" maxlength="30" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                             value =   {{old('carteira')}}>
 

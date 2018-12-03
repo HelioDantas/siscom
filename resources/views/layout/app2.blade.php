@@ -37,7 +37,7 @@
         <!-- header -->
         <div class="container-fluid agoravai">
             </header>
-            <h3> Planos disponiveis</h3>
+           
             </header>
         </div>
         <!-- end header -->

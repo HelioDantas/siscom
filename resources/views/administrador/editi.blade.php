@@ -75,7 +75,7 @@
 <div class="container-fluid col-lg-10 corpo-paciente">
 
 
-       <h3 class="titulocadastro">Cadastro <strong>| Usuario  </strong></h3>
+  
 
 
 <fieldset class="form-group">
@@ -91,9 +91,9 @@
 
                 <div class="form-group navegacao">
                         <div class="col">
-                         <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video1"   data-toggle="tooltip" data-placement="top" title="adicionar novo plano"><i class="fas fa-plus-circle"></i></a>
-
-
+                         <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video1"   data-toggle="tooltip" data-placement="top" title="adicionar novas permissões"><i class="fas fa-plus-circle"></i></a>
+                          <a class="btn btn-outline-primary" href="{{route('funcionario.editar',['id' =>  $id])}}"  title="voltar para o editar funcionario"><i class="fas fa-edit"></i></a>
+                                   <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar funcionario"><i class="fas fa-search"></i></a>
                               <div class="modal fade  "id="modal-video1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg "role="document">
 
@@ -104,7 +104,7 @@
                                             </div>
                                             <div class="modal-body">
                                               <div class="row">
-                                                <iframe type="text/html" width="5000rem" height="650rem" src="{{route('user.permissoes', ['id'=>1])}}" frameborder="0" allowfullscreen=""></iframe>
+                                                <iframe type="text/html" width="5000rem" height="650rem" src="{{route('user.newPermissoes',['id' =>  $id])}}" frameborder="0" allowfullscreen=""></iframe>
 
                                                     </div>
                                             </div>
@@ -135,12 +135,13 @@
                 @php $cont = $cont + 1; @endphp
 
               <tr class="Filter">
+              <td class="">{{$permissao->id}} </td>
                  <th scope="row">{{$permissao->nome}}</th>
-                 <td class="">{{$permissao->id}} </td>
+                 
 
 
                 <td>
-                <a id="excluir"name = "excluir" class="btn btn-outline-danger" type="button" href="{{route('user.permissoes',['id' => $permissao->id])}}"
+                <a id="excluir"name = "excluir" class="btn btn-outline-danger" type="button" href="{{route('user.destroyPermissoes',['id' => $permissao->id, 'user_id' => $id])}}"
                                 data-toggle="tooltip" data-placement="top" title="Desativar"><i class="fas fa-trash"></i></a>
                 </td>
 

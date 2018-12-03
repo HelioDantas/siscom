@@ -32,7 +32,7 @@ class FuncionarioController extends Controller
     public function create(FuncionarioRequest $request)
     {
 
-        PermissionController::create();
+        PermissionController::novo();
 
         try {
 
@@ -45,6 +45,7 @@ class FuncionarioController extends Controller
                 'cidade' => mb_strtolower($request['cidade']),
                 'email' => mb_strtolower($request['email']),
                 'estado' => mb_strtolower($request['estado']),
+                 'org_emissor'               =>  mb_strtolower($request['org_emissor']),
                 'matricula' => $request['matricula'],
                 'cpf' => $request['cpf'],
                 'sexo' => $request['sexo'],
@@ -165,7 +166,7 @@ class FuncionarioController extends Controller
     public function update(FuncionarioRequest $request, $id)
     {
 
-        PermissionController::update();
+         PermissionController::edit();
 
         $Funcionario = Funcionario::find($id);
         $especialidade1 = true;
