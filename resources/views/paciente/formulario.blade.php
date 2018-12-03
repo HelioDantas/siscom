@@ -64,7 +64,7 @@
 @section('tela')
 <hr>
 
-<div class="container-fluid col-lg-10 corpo-paciente">
+<div class="container-fluid col-lg-12 corpo-paciente">
 
         {!! Form::open(['route' => 'paciente.create','method ' => 'post',]) !!}
         @csrf
@@ -92,9 +92,9 @@
 
 
 
-    <div class="form-group col-md-4 mb-3">
+    <div class="form-group col-md-3 mb-2">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="55" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        <input type="text" name="nome" id="nome"  maxlength="51" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         value =   {{old('nome')}}>
 
         @if($errors->has('nome'))
@@ -195,7 +195,7 @@
         </div>
     </div><!--col nacionalidade -->
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-2 mb-1">
             <div class="form-group">
 
             <label for="naturalidade">Naturalidade</label>
@@ -210,7 +210,7 @@
             </div>
     </div><!--col naturalidade -->
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-2 mb-1">
         <div class="form-group">
 
             <label for="escolaridade">Escolaridade </label>
@@ -235,11 +235,11 @@
 
 
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-2 mb-1">
             <div class="form-group">
 
             <label for="">Profissão</label>
-            <input type="text" name="profissao" maxlength="25" id="" masL class="form-control {{$errors->has('profissao') ? 'is-invalid': '' }}" placeholder="prof" value =   {{old('profissao')}}>
+            <input type="text" name="profissao" maxlength="30" id="" masL class="form-control {{$errors->has('profissao') ? 'is-invalid': '' }}" placeholder="prof" value =   {{old('profissao')}}>
                 @if($errors->has('profissao'))
         <div class="invalid-feedback">
             {{$errors->first('profissao')}}
@@ -424,7 +424,7 @@
                   </div> <!-- col bumero-->
 
 
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-2 mb-1">
 
                    <span>Bairro</span>
                     <div class="input-group">
@@ -457,7 +457,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-3 mb-3">
+                <div class="col-md-2 mb-1">
                         <span>Cidade</span>
                          <div class="input-group">
      
