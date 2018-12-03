@@ -62,6 +62,10 @@
     .modal-dialog{
   width: 500000px;
 }
+  .sp{
+            float:left;
+        
+        }
 
 </style>
 @endsection
@@ -483,7 +487,7 @@
                   </div><!-- col rua-->
 
                    <div class="col-md-1 mb-3">
-                    <span >Nº </span>
+                    <span class = "sp" >Nº </span>
                     <div class="input-group">
                       <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required=""  type="text"
                        @if(!empty($p)) value = "{{$p->numero}}" @else value =  {{old('numero')}}  @endif readonly>
@@ -501,7 +505,7 @@
 
                   <div class="col-md-3 mb-3">
 
-                   <span>Bairro</span>
+                   <span >Bairro</span>
                     <div class="input-group">
                       <input id="bairro" name="bairro"  required maxlength="15" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       @if(!empty($p)) value = "{{$p->bairro}}" @else value =  {{old('bairro')}}  @endif readonly>

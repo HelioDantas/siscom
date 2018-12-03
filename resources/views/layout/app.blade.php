@@ -36,10 +36,7 @@
         #containerLogoDataHoraH3{
           padding-top:-0.5rem;
         }
-        .span{
-
-          margin-right : 5px;
-        }
+     
          header{
             padding: 10px 2%;
             background-color: white ;
@@ -57,12 +54,13 @@
         }
         nav span{
             float:right;
-            padding-right: 2%;
+            padding-left: 2%;
+
             
         }
-          span{
+          .sp{
             float:right;
-            padding-left: 1rem;
+            padding-left: 1.4rem;
         }
 
     </style>
@@ -76,9 +74,9 @@
                 <h4><a class="navbar-brand cor" href="{{route('dashboard')}}">SisCon</a></h4>
             </div>
 
-            <span id="real-clock"></span>
+            <span class = "sp"id="real-clock"></span>
 
-            <span><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
+            <span class = "sp"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
 
 
                 <div class="container">
@@ -162,9 +160,9 @@
 
               </ul>
             </div>
-              <span class="navbar-text span" id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
+              <span class="navbar-text " id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
 
-                <span class="navbar-text span" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
+                <span class="navbar-text " id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 
