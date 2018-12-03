@@ -8,6 +8,9 @@
         width: 100%;
 
     }
+    #containerLogoDataHoraH3{
+          padding-top:0.5rem;
+        }
 
 </style>
 @endsection
@@ -16,6 +19,7 @@
 @section('conteudo')
 <div class="container dashboard">
 
+    <P>kk</P>
 </div>
 
 

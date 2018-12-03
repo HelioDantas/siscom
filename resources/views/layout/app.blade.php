@@ -27,9 +27,16 @@
            margin-top:3rem;
         }
         span{
-          margin-right:1rem;
+          margin-right:0.5rem;
 
         }
+        header .logo{
+            font-size: 20px;
+        }
+        #containerLogoDataHoraH3{
+          padding-top:-0.5rem;
+        }
+      
 
     </style>
 </head>
@@ -39,7 +46,7 @@
             <header > <!-- style="color:#000000;" -->
 
               <div class="container-fluid" id="containerLogoDataHoraH3">
-                    <span class="logo mb-0"><strong>Siscon</strong></span>
+                    <span class="logo mb-0">Siscon</span>
                     <span  class="mb-0"id='real-clock'></span>
                     <span class="data mb-0"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
                     <h3>Sistema de Consultorio Medico</h3>
@@ -65,7 +72,6 @@
 
                       <a href="{{route('paciente.listar')}}">Paciente</a>
                       <a href="#">Convenios</a>
-                      <a href="{{route('medico.novo')}}">Medico</a>
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
 
                     </div>
@@ -107,7 +113,7 @@
                       <a href="#">Adicionar</a>
                     </div>
                   </div>
-                </li> -->
+                </li> 
                  <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Funcionarios</button>
@@ -117,7 +123,7 @@
                       <a href="#">Adicionar</a>
                     </div>
                   </div>
-                </li>
+                </li>-->
 
               </ul>
             </div>

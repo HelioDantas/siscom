@@ -11,6 +11,12 @@ body{
 
 }
 
+header{
+    padding: 10px 2%;
+    background-color: white ;
+    text-align: center;
+}
+
 
 header .logodASH a{
     justify-content:center;
