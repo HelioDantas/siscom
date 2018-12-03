@@ -62,7 +62,7 @@
 
 
 
-	<div class="card text-center mb-3">
+	<div class="card text-center mb-6">
 
 
 		<div class="card-header">

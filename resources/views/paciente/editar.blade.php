@@ -329,7 +329,7 @@
             <div class="form-group">
                 <label for="telefone">Telefone </label>
                     <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="15" 
-                    @if(!empty($p)) value = {{$p->telefone}} @else value = "" @endif>
+                    @if(!empty($p)) value = "{{$p->telefone}}" @else value = "" @endif>
 
                       @if($errors->has('telefone'))
      <div class="invalid-feedback">
@@ -343,8 +343,8 @@
             <div class="col-md-2 mb-3">
                 <div class="form-group">
                     <label for="celular">Celular </label>
-                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="15"
-                        @if(!empty($p)) value = {{$p->celular}} @else value = "" @endif>
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}"  type="text" maxlength="15"
+                        @if(!empty($p)) value = "{{$p->celular}}" @else value = "" @endif>
 
                           @if($errors->has('celular'))
      <div class="invalid-feedback">
