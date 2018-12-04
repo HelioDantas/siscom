@@ -61,19 +61,13 @@
 
 <div class="container-fluid col-lg-12">
 
-
-
 	<div class="card text-center mb-6">
-
-
 		<div class="card-header">
 			@if(old('nome'))
 			<div class=" btm">
 				<a class="alert alert-success">Paciente cadastrado!!</a>
 			</div>
 			@endif
-
-
 			<h3 class="titulopacientes">Pacientes Cadastrados</h3>
 			<a class="btn btn-outline-secondary" onClick="history.go(-1)" data-toggle="tooltip" data-placement="top" title="Voltar">
 				<i class="fas fa-share"></i>
