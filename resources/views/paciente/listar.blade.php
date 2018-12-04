@@ -30,7 +30,7 @@
 @endsection @section('conteudo') @endsection
  @section('navegação')
  @endsection
-  @section('tela')
+  @section('telaListarPaciente')
 
   @php $edit = $show = $destroy = $novo = false;  @endphp
 @foreach (session()->get("user")->permission()->get() as $permission )

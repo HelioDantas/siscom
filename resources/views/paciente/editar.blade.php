@@ -135,7 +135,7 @@
     <div class="form-group col-md-2 mb-3">
         <span for="orgEmissor">Orgão Emissor</span>
 
-        <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
+        <input type="text" name="org_emissor" id="org_emissor" maxlength="15"   class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
         @if(!empty($p)) value = "{{$p->org_emissor}}" @else value = "" @endif >
              @if($errors->has('org_emissor'))
         <div class="invalid-feedback">
@@ -170,7 +170,7 @@
         <div class="form-group">
         
             <span for="selectbasic">Sexo <h11>*</h11></span>
-              <select required id="sexo" name="sexo" class="form-control" >
+              <select  id="sexo" name="sexo" class="form-control" >
                  @if(!empty($p->sexo))
 
                     @switch($p->sexo)
@@ -207,7 +207,7 @@
         <div class="form-group">
         
             <span for="selectbasic">Etnia <h11>*</h11></span>
-              <select required id="etnia" name="etnia" class="form-control">
+              <select  id="etnia" name="etnia" class="form-control">
                 @if(!empty($p->etnia))
                                         
                 @switch($p->etnia)
@@ -287,7 +287,7 @@
             <div class="form-group">
     
             <span for="naturalidade">Naturalidade</span>
-            <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"   @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif
+            <input type="text" name="naturalidade" maxlength="30"  id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"   @if(!empty($p)) value = "{{$p->naturalidade}}" @else value = "" @endif
             >
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -315,7 +315,7 @@
                 <div class="form-group">
                 
                     <span for="selectbasic">Status <h11>*</h11></span>
-                      <select required id="status_2" name="status" class="form-control"  @if(!empty($p)) value = {{$p->status}} @else value = "" @endif>
+                      <select required id="status" name="status" class="form-control"  @if(!empty($p)) value = {{$p->status}} @else value = "" @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
                       </select>
@@ -327,7 +327,7 @@
         <div class="col-md-2 mb-3">
             <div class="form-group">
                 <span for="telefone">Telefone </span>
-                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="15" 
+                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}"  type="text" maxlength="15" 
                     @if(!empty($p)) value = "{{$p->telefone}}" @else value = "" @endif>
 
                       @if($errors->has('telefone'))
@@ -508,17 +508,19 @@
       </div>
     </div>
 
-    <div class="col-2">
-        <div class="form-group">
-            <span for="plano">Indicação</span>
-                <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="15" @if($phc != null) value = {{$phc->indicacao}} @else value = "" @endif >
-        </div>
-    </div>  <!-- col Plano-->
+ 
 
     <div class="col-2">
         <div class="form-group">
             <span for="plano">Carteira<h11>*</h11></span>
                 <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="30" @if($phc != null)) value = {{$phc->carteira}} @else value = "" @endif >
+        </div>
+    </div>  <!-- col Plano-->
+
+    <div class="col-2">
+        <div class="form-group">
+            <span for="plano">Indicação</span>
+                <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="15" @if($phc != null) value = {{$phc->indicacao}} @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
 

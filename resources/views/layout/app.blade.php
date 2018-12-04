@@ -80,7 +80,7 @@
 
 
                 <div class="container">
-                    <h3>Sistema de Consultorio medico</h3>
+                    <h3>Sistema de Consultório médico</h3>
 
                 </div>
 
@@ -180,7 +180,7 @@
                    @yield('tela')
             </div>
             <div class="container col-lg-12" style="">
-                @yield('telalistarPaciente')
+                @yield('telaListarPaciente')
          </div>
 
 
