@@ -110,6 +110,7 @@
                     </div>
                   </div>
                 </li>
+                   <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
@@ -120,6 +121,7 @@
                     </div>
                   </div>
                 </li>
+                -->
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
@@ -128,6 +130,7 @@
                     </div>
                   </div>
                 </li>
+                <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Medicos</button>
@@ -136,6 +139,7 @@
                     </div>
                   </div>
                 </li>
+              -->
                 <!--
                 <li class="nav-item">
                   <div class="dropdown">
