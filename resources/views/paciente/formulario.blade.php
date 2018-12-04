@@ -109,7 +109,7 @@
         <div class="form-group">
 
             <span for="cpf">Cpf</span>
-            <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required
+            <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="15" required
 
             
 
@@ -127,7 +127,7 @@
    <div class="col-md--2 mb-3">
             <div class="form-group">
               <span for="cpf">RG</span>
-              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
+              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="15"
  
                value =   {{old('identidade')}}>
 
@@ -145,7 +145,7 @@
         <div class="form-group col-md-2 mb-3">
             <span for="orgEmissor">Orgão Emissor</span>
 
-            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
             value =   {{old('org_emissor')}}>
                  @if($errors->has('org_emissor'))
             <div class="invalid-feedback">
@@ -198,7 +198,7 @@
             <div class="form-group">
 
             <span for="naturalidade">Naturalidade</span>
-            <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"value =  {{old('naturalidade')}}
+            <input type="text" name="naturalidade" maxlength="30"  id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"value =  {{old('naturalidade')}}
             >
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -252,7 +252,7 @@
             <div class="form-group">
 
                 <span for="selectbasic">Sexo </span>
-                <select required id="genero" name="sexo" class="form-control {{ $errors->has('sexo') ? 'is-invalid': ''  }}"value =   {{old('sexo')}}>
+                <select id="genero" name="sexo" class="form-control {{ $errors->has('sexo') ? 'is-invalid': ''  }}"value =   {{old('sexo')}}>
                 <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
                     <option value="N">Não declarado</option>
@@ -293,7 +293,7 @@
             <div class="form-group">
 
                 <span for="selectbasic">Etnia </span>
-                <select required id="etnia" name="etnia" class="form-control {{$errors->has('etnia') ? 'is-invalid': '' }}"
+                <select  id="etnia" name="etnia" class="form-control {{$errors->has('etnia') ? 'is-invalid': '' }}"
                         value =   {{old('etnia')}}>
                 <option value="B">Branco</option>
                     <option value="P">Pardo</option>
@@ -315,7 +315,7 @@
     <div class="col-md-2 mb-3">
             <div class="form-group">
                 <span for="telefone">Telefone </span>
-                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="15"
+                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}"  type="text" maxlength="15"
                     value =   {{old('telefone')}}>
 
                       @if($errors->has('telefone'))
@@ -331,7 +331,7 @@
         <div class="col-md-2 mb-3">
                 <div class="form-group">
                     <span for="celular">Celular </span>
-                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="15"
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}"  type="text" maxlength="15"
                         value =   {{old('celular')}}>
 
                           @if($errors->has('celular'))
@@ -395,7 +395,7 @@
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
                           <div class="input-group">
-                              <input type="text" name="rua" maxlength="30" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
+                              <input type="text" name="rua" maxlength="30"  class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
                               value =   {{old('rua')}}>
 
                                 @if($errors->has('rua'))
@@ -446,7 +446,7 @@
                     <span>Estado</span>
                     <div class="input-group">
 
-                        <input id="uf" name="estado"  required maxlength="2" placeholder=""  class="form-control {{$errors->has('estado') ? 'is-invalid': '' }}" type="text"
+                        <input id="uf" name="estado"   maxlength="2" placeholder=""  class="form-control {{$errors->has('estado') ? 'is-invalid': '' }}" type="text"
                         value =   {{old('estado')}}>
                                        @if($errors->has('estado'))
      <div class="invalid-feedback">
@@ -523,25 +523,11 @@
                   </div>
                 </div>
 
-                <div class="col-md-2 mb-3">
-                    <div class="form-group">
-                        <span for="plano">Indicação</span>
-                            <input id="indicacao" name="indicacao" class="form-control {{$errors->has('indicacao') ? 'is-invalid': '' }}"  require type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-                            value =   {{old('indicacao')}}>
-                             @if($errors->has('indicacao'))
-     <div class="invalid-feedback">
-         {{$errors->first('indicacao')}}
-        </div>
-        @endif
-
-
-                    </div>
-                </div>  <!-- col Plano-->
 
                 <div class="col-md-3 mb-3">
                     <div class="form-group">
                         <span for="plano">Carteira</span>
-                            <input id="carteira" name="carteira" class="form-control {{$errors->has('carteira') ? 'is-invalid': '' }}"  required type="text" maxlength="30" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            <input id="carteira" name="carteira" class="form-control {{$errors->has('carteira') ? 'is-invalid': '' }}"   type="text" maxlength="30" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                             value =   {{old('carteira')}}>
 
                               @if($errors->has('carteira'))
@@ -552,6 +538,21 @@
 
                                                 </div>
                   </div>  <!-- col Plano-->
+                  
+                <div class="col-md-2 mb-3">
+                    <div class="form-group">
+                        <span for="plano">Indicação</span>
+                            <input id="indicacao" name="indicacao" class="form-control {{$errors->has('indicacao') ? 'is-invalid': '' }}"   type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                            value =   {{old('indicacao')}}>
+                             @if($errors->has('indicacao'))
+     <div class="invalid-feedback">
+         {{$errors->first('indicacao')}}
+        </div>
+        @endif
+
+
+                    </div>
+                </div>  <!-- col Plano-->
 
                     <div class="col-md-2 mb-3">
                 <div class="form-group">

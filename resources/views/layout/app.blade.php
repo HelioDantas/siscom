@@ -80,7 +80,7 @@
 
 
                 <div class="container">
-                    <h3>Sistema de Consultorio medico</h3>
+                    <h3>Sistema de Consultório médico</h3>
 
                 </div>
 
@@ -103,13 +103,14 @@
 
                       <a href="{{route('paciente.listar')}}">Paciente</a>
 
-                      <a href="{{route('convenio.novo')}}">Convenios</a>
+                      <a href="{{route('convenio.listar')}}">Convenios</a>
 
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
 
                     </div>
                   </div>
                 </li>
+                   <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
@@ -120,6 +121,7 @@
                     </div>
                   </div>
                 </li>
+                -->
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
@@ -128,6 +130,7 @@
                     </div>
                   </div>
                 </li>
+                <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Medicos</button>
@@ -136,6 +139,7 @@
                     </div>
                   </div>
                 </li>
+              -->
                 <!--
                 <li class="nav-item">
                   <div class="dropdown">
@@ -174,13 +178,15 @@
 
 
 
-        @yield('conteudo')
+       
         @yield('navegação')
+
+        
         <div class="container col-lg-10" style="">
                    @yield('tela')
             </div>
             <div class="container col-lg-12" style="">
-                @yield('telalistarPaciente')
+                @yield('telaListarPaciente')
          </div>
 
 

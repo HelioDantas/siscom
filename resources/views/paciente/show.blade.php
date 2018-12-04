@@ -576,14 +576,14 @@
 </fieldset><!--endereço-->
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Planos Do paciente</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Histórico de Planos</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-body">
             <div class="container-fluid">
-                <h3 class="justify-content-center"> Historico de convenios </h3>
+                <h3 class="justify-content-center"> Historico de convênios </h3>
               
                    
                     
@@ -593,7 +593,6 @@
                              <th>convenio</th>
                              <th>plano</th>
                              <th>carteira</th>
-                             <th>indicação</th>
                              <th>situação</th>
                              <th>data de Adesao</th>
                              <th>data de Encerramento</th>
@@ -607,7 +606,6 @@
                                  <td>{{ $pp->convenio->nome }}</td>
                                  <td>{{ $pp->nome }}</td>
                                  <td>{{ $pp->pivot->carteira }}</td>
-                                 <td>{{ $pp->pivot->indicacao }}</td>
                                  <td>{{ $pp->pivot->situacao }}</td>
                                  <td>{{ $pp->pivot->created_at }}</td>
                                  <td>{{ $pp->pivot->updated_at }}</td>
@@ -617,7 +615,7 @@
                              </tr>
                             @else
                             <tr>
-                            <td> Esse paciente ainda nao possui um historico de convenios e planos cadastrados </td>
+                            <td> Esse paciente ainda nao possui um historico de convênios e planos cadastrados </td>
                         </tr>
                              @endif
                          @endforeach

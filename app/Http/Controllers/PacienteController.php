@@ -41,7 +41,7 @@ class PacienteController extends Controller
         //  listar pacientes.
 
         //$pacientes = Paciente::where('nome', $nome)->get();
-        $pacientes = Paciente::orderBy('nome')->paginate(7);
+        $pacientes = Paciente::orderBy('nome')->paginate(10);
         return view('paciente.listar' , compact('pacientes'));
         //testando
     }
@@ -50,6 +50,7 @@ class PacienteController extends Controller
     public function buscar(Request $request){
          $tipo = $request['tipobusca'];
         $buscar = $request->input('search');
+
         if($tipo == null){
                $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
                 ->orWhere('cpf', 'like', '%'.$buscar.'%')
@@ -57,18 +58,24 @@ class PacienteController extends Controller
                 ->paginate(10);
 
 
+        }
 
-        }else{
-            if($tipo == "id"){
-                $pacientes = Paciente::where('id',$buscar)
-                 ->paginate(10);
- 
- 
- 
-         }
-            
-             $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(7);
+        switch($tipo){
+            case "nome":
+            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            break;
 
+            case "cpf":
+            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            break;
+
+            case "telefone":
+            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            break;
+
+            case "id":
+            $pacientes = Paciente::where($tipo,'=',$buscar)->paginate(10);
+            break;
 
         }
 
