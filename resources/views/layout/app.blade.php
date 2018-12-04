@@ -103,7 +103,7 @@
 
                       <a href="{{route('paciente.listar')}}">Paciente</a>
 
-                      <a href="{{route('convenio.novo')}}">Convenios</a>
+                      <a href="{{route('convenio.listar')}}">Convenios</a>
 
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
 
@@ -178,8 +178,10 @@
 
 
 
-        @yield('conteudo')
+       
         @yield('navegação')
+
+        
         <div class="container col-lg-10" style="">
                    @yield('tela')
             </div>

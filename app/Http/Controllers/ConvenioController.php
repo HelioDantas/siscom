@@ -9,8 +9,29 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ConvenioController extends Controller
 {
+
+
+
+    function index(){
+        $convenios = Convenio::orderBy('nome')->paginate(10);
+        return view('convenio.listar' , compact('convenios'));
+    }
+
+    function detalhe($id){
+
+        $convenio = Convenio::find($id);
+
+        $planos = $convenio->planos()->paginate(5);
+        $convenios = Convenio::all();
+
+        return view('convenio.detalhe' , compact('convenio','convenios','planos'));
+
+    }
+
+
       public function novo(){
-            return view ('convenio.formularioconvenio');
+            return view ('conve
+            nio.formularioconvenio');
         }
 
         public function create(Request $request){

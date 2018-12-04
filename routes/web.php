@@ -120,9 +120,13 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 Route::prefix('convenio')->middleware('Autorizador')->group(function () {
 
-    Route::get('listaconvenio', 'ConvenioController@listaconvenio')->name('convenio.listaconvenio');
+    Route::get('/listar', 'ConvenioController@index')->name('convenio.listar');
+    Route::get('novo', 'ConvenioController@novo')->name('convenio.novo');
+    Route::get('detalhe/{id}', 'ConvenioController@detalhe')->name('convenio.detalhe');
     Route::get('novo', 'ConvenioController@novo')->name('convenio.novo');
     Route::post('create', 'ConvenioController@create')->name('convenio.create');
+    Route::get('assoc', 'ConvenioController@assocPlano')->name('convenio.plano.assoc');
+
     #Route::get('pesquisar/{id}','ConvenioControl@alterar')->name(     'convenio.pesquisar' );
     #Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
     Route::get('alterar', 'ConvenioController@alterar')->name('convenio.alterar');
