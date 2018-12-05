@@ -129,3 +129,11 @@
             float: right;
             position: relative;
         }
+        @media(max-width: 700px ){
+
+            .sp{
+     
+                display: none;
+            }
+          
+         }
