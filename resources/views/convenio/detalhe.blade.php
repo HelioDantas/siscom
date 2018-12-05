@@ -21,7 +21,7 @@
          text-align: center;
      }
      #detalheTop{
-        
+        margin-top: 5%;
      }
    
 </style>
@@ -33,6 +33,8 @@
     <div>
 
         <h2 type="hiden"></h2>
+        
+
     </div>
         <div class="container detalheTop">
     <h2 class="aling-center">{{ $convenio->nome }}</h2>

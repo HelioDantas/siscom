@@ -30,14 +30,13 @@ class ConvenioController extends Controller
 
 
       public function novo(){
-            return view ('conve
-            nio.formularioconvenio');
+            return view ('convenio.formularioconvenio');
         }
 
         public function create(Request $request){
             $sis_convenio = Convenio::create($request->all());
           
-            return view('layout.app'); 
+            return redirect()->action('ConvenioController@index'); 
 
        }
 
