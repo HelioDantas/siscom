@@ -15,12 +15,10 @@ class Especialidade extends Model
  }
 
  function procedimentos(){
-    return $this->hasMany('App\Models\Procedimento','id','especialidade_id' );
+    return $this->hasMany('App\Models\Procedimento');
  }
 
- function procedimentoPlano(){
-    return $this->hasMany('j');
-}
+ 
 
 
  

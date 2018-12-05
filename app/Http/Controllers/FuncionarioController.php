@@ -189,7 +189,9 @@ class FuncionarioController extends Controller
         PermissionController::show();
         $p = Funcionario::find($id);
         $tt = Medico::find($id);
-        dd($tt->planos[2]->procedimentos[0]);
+
+        dd($tt->especialidade[0]->procedimentos[0]->preco);
+       // dd($tt->planos[2]->procedimentos[0]->preco);
         //$teste = $tt->planos[2]->procedimentos[0];
         //dd($teste->select('precoPlano')->where('codTuss',$teste->codTuss));
       
