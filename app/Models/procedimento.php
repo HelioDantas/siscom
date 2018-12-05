@@ -23,9 +23,8 @@ class procedimento extends Model
 
 
 
-    public function planoProcedimento(){
-
-        return  $this->belongsTo("App\Models\Plano", 'procedimento_id','plano_id');
-    } 
+   public function prodPlano(){
+       return $this->belongsToMany('App\Models\Plano' , 'sis_plano_procedimento' , 'procedimento_id','plano_id');
+   }
 
 }
