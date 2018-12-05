@@ -188,16 +188,7 @@ class FuncionarioController extends Controller
         //  form para editar infos de um paciente
         PermissionController::show();
         $p = Funcionario::find($id);
-        $tt = Medico::find($id);
-
-        dd($tt->especialidade[0]->procedimentos[0]->preco);
-       // dd($tt->planos[2]->procedimentos[0]->preco);
-        //$teste = $tt->planos[2]->procedimentos[0];
-        //dd($teste->select('precoPlano')->where('codTuss',$teste->codTuss));
-      
-       $hc = $teste->procedimentos;
-       //dd(DB::table('sis_plano_procedimento')->where('procedimento_id', $hc[0]->codTuss)->get());
-    
+        
 
         return view('funcionario.show')->with('p', $p);
     }

@@ -17,6 +17,12 @@
      form{
          margin-left: 15%;
      }
+     h2{
+         text-align: center;
+     }
+     #detalheTop{
+        
+     }
    
 </style>
 @endsection
@@ -24,14 +30,27 @@
 @section('tela')
 
 <div class="container">
-    <h3 class="aling-center">{{ $convenio->nome }}</h3>
+    <div>
+
+        <h2 type="hiden"></h2>
+    </div>
+        <div class="container detalheTop">
+    <h2 class="aling-center">{{ $convenio->nome }}</h2>
    
     {{--<p><strong> Nome:</strong> <span>{{ $evento->nome }}</span></p> --}}
-           <p> <strong> Cnpj </strong>- {{ $convenio->cnpj }} </p>
-           <p><strong>Adesao </strong> - {{ $convenio->adesao }} </p>
-           <p><strong> Banco </strong> - {{ $convenio->banco }} </p>
-           <p> <strong> Agencia </strong> - {{ $convenio->agencia}} </p> 
-           <p><strong>Conta</strong> - {{ $convenio->conta }} </p>
+    
+        <div class="row">
+            <div class="col"><span> <strong> Cnpj </strong>- {{ $convenio->cnpj }}</span></div>
+            <div class="col"><span><strong>Adesao </strong> - {{ $convenio->adesao }} </span></div>
+            <div class="col"><span><strong> Banco </strong> - {{ $convenio->banco }} </span></div>
+            <div class="col"><span> <strong> Agencia </strong> - {{ $convenio->agencia}} </span></div>
+            <div class="col"> <span><strong>Conta</strong> - {{ $convenio->conta }} </span></div>
+           
+           
+            
+          
+        </div>
+    </div>
     <hr>
 </div>
 
@@ -98,8 +117,8 @@
                     <td>{{ $plano->nome }}</td>
                     <td>{{ $plano->status }}</td>
                     <td>
-                       <!-- <a href="{{ route('convenio.plano.assoc.excluir',['evento'=> '', 'funcionario' => $plano->id ]) }}"><i
-                                class="fas fa-trash"></i></a> -->
+                      {{--  <!-- <a href="{{ route('convenio.plano.assoc.excluir',['evento'=> '', 'funcionario' => $plano->id ]) }}"><i
+                                class="fas fa-trash"></i></a> -->  --}}
                     </td>
                 </tr>
                 @endforeach
