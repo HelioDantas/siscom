@@ -18,14 +18,14 @@ class procedimento extends Model
 
     public function especialidade(){
 
-      return  $this->belongsTo("App\Models\Especialidade");
+      return  $this->belongsTo("App\Models\Especialidade" ,'id','especialidade_id');
     }
 
 
 
-    public function planos(){
+    public function planoProcedimento(){
 
-        return  $this->belongsToMany("App\Models\Plano", 'sis_plano_procedimento','plano_id', 'procedimento_id')->withPivot('codTuss');
-    }
+        return  $this->belongsTo("App\Models\Plano", 'procedimento_id','plano_id');
+    } 
 
 }
