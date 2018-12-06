@@ -12,7 +12,7 @@ class LoginController extends Controller
        return view('user.login');
    }
 
-
+   protected $redirectTo = '/';
    public function auth(Request $request)
    {
       // $credentials = $request->only('cpf', 'password');
@@ -41,5 +41,17 @@ class LoginController extends Controller
    public function cad(){
        return view('cadastro');
    }
+
+   public function logout(){
+
+    Auth::logout();
+    return redirect()->route('user.login');
+}
+
+
+protected function redirectTo()
+{
+    return redirect()->route('dashboard');
+}
 
 }

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+Auth::routes();
 
 Route::get('/', ['uses' => 'Controller@dashboard'])->middleware('Autorizador')->name('dashboard'); //
 
@@ -55,7 +56,7 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@auth']);
  * =================================================================================*
  */
 
-Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')-
+Route::prefix('pacientes')->middleware('auth')->group(function () { //->middleware('Autorizador')-
     Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name('paciente.listar');
     //Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
     Route::get('novo', 'PacienteController@novo')->name('paciente.novo');
@@ -143,3 +144,7 @@ Route::get('/testeRelacionamento', function () {
 Route::get('/erro', function () {
     return abort(403, 'Não autorizado');
 })->name('erro');
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
