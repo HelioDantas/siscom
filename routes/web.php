@@ -40,8 +40,8 @@ Route::get('/recovery', 'UserController@recoveryForm')->name('recovery_senha');
  * direcionando pro metodo login em controller.
  * =========================================================================== *
  */
-Route::get('/login', ['uses' => 'LoginController@formLogin'])->name('user.login');
-Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login']);
+Route::get('/login', ['uses' => 'LoginController@login'])->name('user.login');
+Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@auth']);
 
 //Route::get('/cad' , 'LoginController@cad');
 
@@ -120,17 +120,18 @@ Route::post('create', 'FuncionarioController@create')->name('user.create');;
 
 Route::prefix('convenio')->middleware('Autorizador')->group(function () {
 
-    Route::get('/listar', 'ConvenioController@index')->name('convenio.listar');
+    Route::get('listar', 'ConvenioController@index')->name('convenio.listar');
     Route::get('novo', 'ConvenioController@novo')->name('convenio.novo');
     Route::get('detalhe/{id}', 'ConvenioController@detalhe')->name('convenio.detalhe');
     Route::get('novo', 'ConvenioController@novo')->name('convenio.novo');
     Route::post('create', 'ConvenioController@create')->name('convenio.create');
     Route::get('assoc', 'ConvenioController@assocPlano')->name('convenio.plano.assoc');
-
+    Route::get('editar/{id}', 'ConvenioController@editar')->name('convenio.editar');
+    Route::get('editar/{id}', 'ConvenioController@editar')->name('convenio.alterar');
+    Route::put('update/{id}', 'ConvenioController@update')->name('convenio.update');
     #Route::get('pesquisar/{id}','ConvenioControl@alterar')->name(     'convenio.pesquisar' );
     #Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
-    Route::get('alterar', 'ConvenioController@alterar')->name('convenio.alterar');
-    Route::put('update/{id}', 'ConvenioController@update')->name('convenio.update');
+  
     /*Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
 Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json');*/
 });

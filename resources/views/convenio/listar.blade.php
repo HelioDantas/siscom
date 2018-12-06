@@ -125,16 +125,17 @@
                 @foreach ($convenios as $c)
                     
               <tr>  
-                 <td>       {{$c->cnpj}}                 </td>
-                <td> <a href= "{{ route('convenio.detalhe',['detalhe'=> $c->cnpj ]) }}">{{ $c->nome}}</a> </td> 
+                 <td>       {{$c->cnpj}}          </td>
+                 <td>        {{ $c->nome}}        </td> 
                  <td>       {{$c->adesao}}        </td>
                  <td>       {{$c->banco}}         </td>
                  <td>       {{$c->agencia}}       </td>
                  <td>       {{$c->conta}}         </td>
                  <td>       {{$c->status}}        </td>
                  <td>
-                    <a href="alterar/{{$c->cnpj}}"><i class="fas fa-edit"></i></a> 
-            
+                    <a  class = "btn btn-outline-primary"  href="editar/{{$c->cnpj}}"  title="editar"><i class="fas fa-edit"></i></a> 
+                    <a class = "btn btn-outline-info"     href="{{ route('convenio.detalhe',['detalhe'=> $c->cnpj ]) }}" title="Planos"><i class="fab fa-product-hunt"></i></a> 
+                    <a class = "btn btn-outline-dark"     href="{{ route('convenio.detalhe',['detalhe'=> $c->cnpj ]) }}" title="Procedimentos"><i class="fas fa-syringe"></i></a> 
                 </td>
 
               </tr>

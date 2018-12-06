@@ -110,18 +110,18 @@
                     </div>
                   </div>
                 </li>
-                   <!--
+           {{--       <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
                        <a href="{{route('convenio.novo')}}">Cadastrar</a>
                       <a href="">Pesquisar</a>
-                      <a href="{{route('convenio.alterar')}}">Alterar</a>
+                      <a href="{{route('convenio.editar')}}">Alterar</a>
                     </div>
                   </div>
                 </li>
-                -->
+           --> --}}
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
@@ -130,7 +130,7 @@
                     </div>
                   </div>
                 </li>
-                <!--
+             {{--    <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Medicos</button>
@@ -160,7 +160,7 @@
                       <a href="#">Adicionar</a>
                     </div>
                   </div>
-                </li>-->
+                </li>-->--}}
 
               </ul>
             </div>
