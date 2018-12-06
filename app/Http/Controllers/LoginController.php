@@ -17,6 +17,7 @@ class LoginController extends Controller
    {
       // $credentials = $request->only('cpf', 'password');
      // dd($request->all());
+   
 
        if (Auth::attempt([
            'cpf' => $request->cpf,
@@ -29,7 +30,10 @@ class LoginController extends Controller
 
            return redirect()->route('dashboard');
        }
-
+        return dd(Auth::attempt([
+           'cpf' => $request->cpf,
+           'password' => $request->password,
+       ]));
        return back()->withInput();
    }
 

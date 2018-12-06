@@ -26,6 +26,12 @@
 		margin-top: 0.5rem;
 		float: left;
 	}
+	   @media(max-width: 1550px ){
+        .respom{
+
+                 margin-left: 29%; 
+        }
+    }
 </style>
 @endsection @section('conteudo') @endsection
  @section('navegação')
@@ -68,7 +74,7 @@
 				<a class="alert alert-success">Paciente cadastrado!!</a>
 			</div>
 			@endif
-			<h3 class="titulopacientes">Pacientes Cadastrados</h3>
+			<h3 class="titulopacientes respom">Pacientes Cadastrados</h3>
 			<a class="btn btn-outline-secondary" onClick="history.go(-1)" data-toggle="tooltip" data-placement="top" title="Voltar">
 				<i class="fas fa-share"></i>
 			</a>

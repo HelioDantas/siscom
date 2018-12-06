@@ -5,6 +5,11 @@
         float:right;
         
     }
+    .back{
+        margin-top: 2rem;
+        float:right;
+        padding-left: 1rem;
+    }
     .ctt{
       
    -ms-flex-align: center;
@@ -42,11 +47,11 @@
     {{--<p><strong> Nome:</strong> <span>{{ $evento->nome }}</span></p> --}}
     
         <div class="row">
-            <div class="col"><span> <strong> Cnpj </strong>- {{ $convenio->cnpj }}</span></div>
-            <div class="col"><span><strong>Adesao </strong> - {{ $convenio->adesao }} </span></div>
-            <div class="col"><span><strong> Banco </strong> - {{ $convenio->banco }} </span></div>
-            <div class="col"><span> <strong> Agencia </strong> - {{ $convenio->agencia}} </span></div>
-            <div class="col"> <span><strong>Conta</strong> - {{ $convenio->conta }} </span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span> <strong> Cnpj </strong>- {{ $convenio->cnpj }}</span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span><strong>Adesao </strong> - {{ $convenio->adesao }} </span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span><strong> Banco </strong> - {{ $convenio->banco }} </span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span> <strong> Agencia </strong> - {{ $convenio->agencia}} </span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"> <span><strong>Conta</strong> - {{ $convenio->conta }} </span></div>
            
            
             
@@ -61,7 +66,7 @@
                 @csrf 
             <div class="row justify-content-md-center">
 
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4">
                             <label for="planos">Planos inativos</label>
             
                             <select name="inativo_id" id="inativo" class="form-control ">
@@ -81,7 +86,7 @@
                                 </div>
                             
             
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4">
                             <label for="nome">novo plano</label>
                             <input type="text" name="nome" id="nome" maxlength="30" class="form-control">
                         </div>
@@ -91,15 +96,17 @@
                         <button id="Salvar" class="btn btn-outline-success" type="Submit" data-toggle="tooltip" data-placement="top"
                         title="Salvar"><i class="fas fa-plus-circle"></i></button>
                         </div>
+
+                        <div class="back">
+                                <a class="btn btn-outline-secondary" href="{{ route('convenio.listar') }}" data-toggle="tooltip"
+                                    data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+                                </div>
+                                   
                     
             </div>
             
     </form>
-                <div class="save justify-content-md-center">
-                <a class="btn btn-outline-secondary" href="{{ route('convenio.listar') }}" data-toggle="tooltip"
-                    data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
-                </div>
-                   
+               
                 
             </div> 
         </div>

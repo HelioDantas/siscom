@@ -30,9 +30,20 @@ class ConvenioController extends Controller
 
     }
 
+        function editar($id){
+
+        $convenio = Convenio::find($id);
+
+    
+
+        return view('convenio.editar' , compact('convenio'));
+
+        }
+    
+
 
       public function novo(){
-            return view ('convenio.formularioconvenio');
+            return view ('convenio.novo');
         }
 
         public function create(Request $request){
@@ -45,7 +56,7 @@ class ConvenioController extends Controller
         public function update(Request $request, $id){
             $convenio = Convenio::find($id);
             $convenio->update($request->all());
-                return redirect()->route('convenio.listaconvenio');
+                return redirect()->route('convenio.listar');
 
 
         }
