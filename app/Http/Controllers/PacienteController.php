@@ -22,7 +22,7 @@ class PacienteController extends Controller
 
 
     function indexjson(){
-
+            
         return Paciente::paginate(10);
     }
 
@@ -39,7 +39,7 @@ class PacienteController extends Controller
     public function listar()
     {
         //  listar pacientes.
-
+     
         //$pacientes = Paciente::where('nome', $nome)->get();
         $pacientes = Paciente::orderBy('nome')->paginate(10);
         return view('paciente.listar' , compact('pacientes'));
@@ -86,6 +86,7 @@ class PacienteController extends Controller
 
     public function novo(Request $request)
     {
+            
         //  form de um novo paciente
          PermissionController::pnovo( $request);
 

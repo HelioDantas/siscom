@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+Auth::routes();
 
 Route::get('/', ['uses' => 'Controller@dashboard'])->middleware('Autorizador')->name('dashboard'); //
 
@@ -40,8 +41,8 @@ Route::get('/recovery', 'UserController@recoveryForm')->name('recovery_senha');
  * direcionando pro metodo login em controller.
  * =========================================================================== *
  */
-Route::get('/login', ['uses' => 'LoginController@formLogin'])->name('user.login');
-Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login']);
+Route::get('/login', ['uses' => 'LoginController@login'])->name('user.login');
+Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@auth']);
 
 //Route::get('/cad' , 'LoginController@cad');
 
@@ -55,7 +56,7 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@login'])
  * =================================================================================*
  */
 
-Route::prefix('pacientes')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')-
+Route::prefix('pacientes')->middleware('auth')->group(function () { //->middleware('Autorizador')-
     Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name('paciente.listar');
     //Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
     Route::get('novo', 'PacienteController@novo')->name('paciente.novo');
@@ -142,3 +143,7 @@ Route::get('/testeRelacionamento', function () {
 Route::get('/erro', function () {
     return abort(403, 'Não autorizado');
 })->name('erro');
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');

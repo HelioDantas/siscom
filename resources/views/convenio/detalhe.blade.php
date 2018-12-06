@@ -61,7 +61,7 @@
 <form action="{{ route('convenio.plano.assoc',['convenio/'=> $convenio->id]) }}" method="PUT">
     <div class="row justify-content-md-center">
             <div class="form-group col-md-4">
-                <label for="planos">Planos</label>
+             <!--   <label for="planos">Planos</label>
 
                 <select name="cargos" id="cargos" class="form-control ">
                     <option value="" selected>selecione</option>
@@ -87,7 +87,7 @@
                 <a class="btn btn-outline-secondary" href="{{ route('convenio.listar') }}" data-toggle="tooltip"
                     data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
 
-            </div>
+            </div> -->
         </div>
 </form>
 
@@ -99,7 +99,7 @@
 
 <div class="container lista col-lg-8">
 
-    <h3>Lista de planos </h3>
+    <h3> Planos </h3>
 
     <div class="table table-responsive ">
         <table class="table table-hover ">
@@ -108,7 +108,7 @@
                     <th s># </th>
                     <th>nome </th>
                     <th>status </th>
-                    <th> Opcoes </th>
+                    <th> Opcões </th>
                 </tr>
             </thead>
             <tbody>
