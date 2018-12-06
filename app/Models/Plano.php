@@ -16,6 +16,7 @@ class Plano extends Model
         'convenio_id',
         'carteira',
         'indicacao',
+        'nome',
         'situacao',
 
         

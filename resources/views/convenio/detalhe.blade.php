@@ -57,39 +57,53 @@
 </div>
 
 <div class="container">
-        
-<form action="{{ route('convenio.plano.assoc',['convenio/'=> $convenio->id]) }}" method="PUT">
-    <div class="row justify-content-md-center">
-            <div class="form-group col-md-4">
-             <!--   <label for="planos">Planos</label>
+    <form action="{{ route('convenio.plano.assoc') }}" method="post">
+                @csrf 
+            <div class="row justify-content-md-center">
 
-                <select name="cargos" id="cargos" class="form-control ">
-                    <option value="" selected>selecione</option>
-                    @if ($planos)
-                        @foreach ($planos as $pl)
-                        <option value="{{ $pl->id }}">{{ $pl->nome }}</option>
-                        @endforeach
-                    @endif
+                    <div class="form-group col-md-4">
+                            <label for="planos">Planos inativos</label>
+            
+                            <select name="inativo_id" id="inativo" class="form-control ">
+                                <option value="" selected>selecione</option>
+                                @if ($inativos)
+                                    @foreach ($inativos as $inativo)
+                                    <option value="{{ $inativo->id}}">{{ $inativo->nome }}</option>
+                                    @endforeach
+                                @endif
+            
+                            </select>
+                        </div>
 
-                </select>
+                        <div class="save">
+                                <button id="Salvar" class="btn btn-outline-primary" type="Submit" data-toggle="tooltip" data-placement="top"
+                                title="Salvar"><i class="far fa-save"></i></button>
+                                </div>
+                            
+            
+                        <div class="form-group col-md-5">
+                            <label for="nome">novo plano</label>
+                            <input type="text" name="nome" id="nome" maxlength="30" class="form-control">
+                        </div>
+
+                        <input type="hidden" name="convenio_id" value="{{ $convenio->cnpj }}">
+                        <div class="save">
+                        <button id="Salvar" class="btn btn-outline-success" type="Submit" data-toggle="tooltip" data-placement="top"
+                        title="Salvar"><i class="fas fa-plus-circle"></i></button>
+                        </div>
+                    
             </div>
-
-            <div class="form-group col-md-5">
-                <label for="planos">Procedimento</label>
-                <select name="cargosfuncionario" id="cargosfuncionario" class="form-control ">
-                    <option value="" selected></option>
-
-                </select>
-            </div>
-            <div class="col save">
-                <button id="Salvar" class="btn btn-outline-primary" type="Submit" data-toggle="tooltip" data-placement="top"
-                    title="Salvar"><i class="far fa-save"></i></button>
+            
+    </form>
+                <div class="save justify-content-md-center">
                 <a class="btn btn-outline-secondary" href="{{ route('convenio.listar') }}" data-toggle="tooltip"
                     data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
-
-            </div> -->
+                </div>
+                   
+                
+            </div> 
         </div>
-</form>
+
 
 </div>
 
@@ -119,8 +133,8 @@
                     <td>{{ $plano->nome }}</td>
                     <td>{{ $plano->status }}</td>
                     <td>
-                      {{--  <!-- <a href="{{ route('convenio.plano.assoc.excluir',['evento'=> '', 'funcionario' => $plano->id ]) }}"><i
-                                class="fas fa-trash"></i></a> -->  --}}
+                         <a href="{{ route('convenio.plano.assoc.delete',['delete' => $plano->id ]) }}"><i
+                                class="fas fa-trash"></i></a>
                     </td>
                 </tr>
                 @endforeach

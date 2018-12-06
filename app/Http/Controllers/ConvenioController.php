@@ -21,10 +21,12 @@ class ConvenioController extends Controller
 
         $convenio = Convenio::find($id);
 
-        $planos = $convenio->planos()->paginate(5);
-        $convenios = Convenio::all();
+        $planos = $convenio->planos()->where('status','ATIVO')->paginate(5);
+        //dd($planos);
+        
+        $inativos =  $convenio->planos()->where('status','INATIVO')->get();
 
-        return view('convenio.detalhe' , compact('convenio','convenios','planos'));
+        return view('convenio.detalhe' , compact('convenio','inativos','planos'));
 
     }
 

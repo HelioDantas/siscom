@@ -57,8 +57,8 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@auth']);
  */
 
 Route::prefix('pacientes')->middleware('auth')->group(function () { //->middleware('Autorizador')-
-    Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name('paciente.listar');
-    //Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
+    //Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name('paciente.listar');
+    Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
     Route::get('novo', 'PacienteController@novo')->name('paciente.novo');
     Route::post('create', 'PacienteController@create')->name('paciente.create');
     Route::get('editar/{id}', 'PacienteController@edit')->name('paciente.editar');
@@ -126,14 +126,16 @@ Route::prefix('convenio')->middleware('Autorizador')->group(function () {
     Route::get('detalhe/{id}', 'ConvenioController@detalhe')->name('convenio.detalhe');
     Route::get('novo', 'ConvenioController@novo')->name('convenio.novo');
     Route::post('create', 'ConvenioController@create')->name('convenio.create');
-    Route::get('assoc', 'ConvenioController@assocPlano')->name('convenio.plano.assoc');
-
     #Route::get('pesquisar/{id}','ConvenioControl@alterar')->name(     'convenio.pesquisar' );
     #Route::put('update/{id}' ,  'ConvenioControl@update')->name(      'convenio.update' );
     Route::get('alterar', 'ConvenioController@alterar')->name('convenio.alterar');
     Route::put('update/{id}', 'ConvenioController@update')->name('convenio.update');
     /*Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
 Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json');*/
+Route::post('assoc', 'PlanoController@assocPlano')->name('convenio.plano.assoc');
+Route::get('delete/{id}', 'PlanoController@assocDelete')->name('convenio.plano.assoc.delete');
+
+
 });
 
 Route::get('/testeRelacionamento', function () {
