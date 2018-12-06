@@ -12,6 +12,7 @@
 
 	.titulopacientes {
 		display: ruby-base-container;
+         margin-left: 10%;
 	}
 
 	.container-fluid {
@@ -28,6 +29,13 @@
 	}
     .card{
         margin-top: 
+    }
+
+     @media(max-width: 1550px ){
+        .respom{
+
+                 margin-left: 29%; 
+        }
     }
 </style>
 @endsection
@@ -76,7 +84,7 @@
 			@endif
 
 
-			<h3 class="titulopacientes">Convênios Cadastrados</h3>
+			<h3 class="titulopacientes respom">Convênios Cadastrados</h3>
 			<a class="btn btn-outline-secondary" onClick="history.go(-1)" data-toggle="tooltip" data-placement="top" title="Voltar">
 				<i class="fas fa-share"></i>
 			</a>
@@ -90,7 +98,7 @@
             </a>
             @endif
 
-			<form class="form-inline my-2 my-lg-0" action="buscar" method="post">
+		{{--	<form class="form-inline my-2 my-lg-0" action="buscar" method="post">
 				@csrf
 				<select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
 					<option value="" selected>Selecione</option>
@@ -102,9 +110,10 @@
 
 				<input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
 				<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-			</form>
+			</form> --}}
     </div>
     <div class="card-body">
+        <div class="table-responsive" style="overflow-x:auto;"> 
             <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
@@ -140,6 +149,7 @@
 
               </tr>
               @endforeach
+              </div>
             </tbody>
           </table>
 
