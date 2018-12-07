@@ -30,26 +30,7 @@ class ConvenioController extends Controller
 
     }
 
-    function detalheProcedimento($id){
 
-        $convenio = Convenio::find($id);
-        $procedimentos;
-        /*foreach ($convenio->planos()->get() as $plano) {
-            $procedimentos[] = $plano->procedimentos()->get();
-        }
-
-        dd($procedimentos);*/
-       // DB::table('')
-        
-
-        //$planos = $convenio->planos()->where('status','ATIVO')->paginate(5);
-        //dd($planos);
-        
-        $inativos =  $convenio->planos()->where('status','INATIVO')->get();
-
-        return view('convenio.detalhe' , compact('convenio','inativos','planos'));
-
-    }
 
         function editar($id){
 

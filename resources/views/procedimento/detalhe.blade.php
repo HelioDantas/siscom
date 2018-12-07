@@ -66,8 +66,8 @@
                 @csrf 
             <div class="row justify-content-md-center">
 
-                    <div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4">
-                            <label for="planos">Planos inativos</label>
+                    {{--<div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4">
+                            <label for="procedimentos">procedimentos inativos</label>
             
                             <select name="inativo_id" id="inativo" class="form-control ">
                                 <option value="" selected>selecione</option>
@@ -78,7 +78,7 @@
                                 @endif
             
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="save">
                                 <button id="Salvar" class="btn btn-outline-primary" type="Submit" data-toggle="tooltip" data-placement="top"
@@ -127,21 +127,24 @@
             <thead class="thead-dark">
                 <tr>
                     <th s>CodigoTuss </th>
-                    <th>nome </th>
-                    <th>status </th>
+                    <th>descrição </th>
+                    <th>preço </th>
                     <th> Opcões </th>
                 </tr>
             </thead>
             <tbody>
-                @if (!empty($planos))
-                @foreach ($planos as $plano )
+                @if (!empty($procedimentos))
+                @foreach ($procedimentos as $proced )
                 <tr>
-                    <td>{{ $plano->id }}</td>
-                    <td>{{ $plano->nome }}</td>
-                    <td>{{ $plano->status }}</td>
+                    @php
+                        dd($proced->prodPlano()->get());
+                    @endphp
+                    <td>{{ $proced->codTuss }}</td>
+                    <td>{{ $proced->descricao }}</td>
+                    <td>{{ $proced->preco }}</td>
                     <td>
-                         <a href="{{ route('convenio.plano.assoc.delete',['delete' => $plano->id ]) }}"><i
-                                class="fas fa-trash"></i></a>
+                      {{--     <a href="{{ route('convenio.proced.assoc.delete',['delete' => $proced->id ]) }}"><i
+                                class="fas fa-trash"></i></a> --}}
                     </td>
                 </tr>
                 @endforeach
@@ -150,7 +153,7 @@
 
 
         </table>
-        {!!$planos->links()!!}
+      {{--   {!!  !!}$procedimentos->links()!!}   --}}
 
     </div>
 

@@ -151,7 +151,7 @@ class PacienteController extends Controller
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
         $phc = $plano->pivot;
-        $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+        $convenio = Convenio::where('id', $plano->convenio_id)->first();
        } else {
            $plano =null; $phc =null; $convenio =null;
        }
@@ -290,7 +290,7 @@ class PacienteController extends Controller
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
         $phc = $plano->pivot;
-        $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+        $convenio = Convenio::where('id', $plano->convenio_id)->first();
        } else {
            $plano =null; $phc =null; $convenio =null;
        }

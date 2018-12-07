@@ -13,10 +13,14 @@
         .card{
             /*color: #3490dc;*/
             color:black;
+            padding: 1rem;
              background-color: transparent;
             background-image: none;
             border-color: #3490dc;
             text-decoration-color: black;
+        }
+        .card-body{
+          margin:1.25rem;
         }
 
 </style>
@@ -30,7 +34,7 @@
             <div class="card text-center" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Agendamentos</h5>
-                      <p class="card-text">Agende uma nova conuslta com </p>
+                      <p class="card-text">Consulte os horarios disponiveis e Agende uma nova conuslta </p>
                       <a href="#" class="btn btn-primary">Agendar</a>
                     </div>
                   </div>
@@ -90,9 +94,9 @@
                    
                                                     
                                      
-        </div>
         
         </div>
+    
 @endsection
 
 @section('scripts')

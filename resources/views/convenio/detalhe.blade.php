@@ -142,6 +142,55 @@
                     <td>
                          <a href="{{ route('convenio.plano.assoc.delete',['delete' => $plano->id ]) }}"><i
                                 class="fas fa-trash"></i></a>
+                                
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">procedimentos</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="container-fluid">
+                <h3 class="justify-content-center"> procedimentos </h3>
+              
+                   
+                    
+                     <table class="table table-responsive table-hover">
+                         <thead>
+                             <tr>
+                             <th></th>
+                             <th>codigo Tuss</th>
+                             <th>descrição</th>
+                             <th>preço </th>
+                           
+                           
+                            </tr>
+                         </thead>
+                         <tbody>
+                        @foreach ($plano->procedimentos()->get()  as $pp)
+                        @if (!empty($pp))
+                             <tr>
+                                 <td>{{ $pp->codTuss }}</td>
+                                 <td>{{ $pp->descricao }}</td>
+                                 <td>{{ $pp->pivot->precoPlano }}</td>
+                             </tr>
+                            @else
+                            <tr>
+                            <td> Esse paciente ainda nao possui um historico de convênios e planos cadastrados </td>
+                        </tr>
+                             @endif
+                         @endforeach
+                         </tbody>
+                     </table>
+                        
+                     
+                       
+                    
+
+                    </div>
+
+            </div>
+    </div>
+</div>
                     </td>
                 </tr>
                 @endforeach
