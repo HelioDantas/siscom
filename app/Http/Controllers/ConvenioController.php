@@ -39,7 +39,7 @@ class ConvenioController extends Controller
         }
 
         dd($procedimentos);*/
-       / DB::table('')
+       // DB::table('')
         
 
         //$planos = $convenio->planos()->where('status','ATIVO')->paginate(5);
