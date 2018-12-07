@@ -34,14 +34,15 @@ class ConvenioController extends Controller
 
         $convenio = Convenio::find($id);
         $procedimentos;
-        foreach ($convenio->planos()->get() as $plano) {
-            $procedimentos[] = $plano;
+        /*foreach ($convenio->planos()->get() as $plano) {
+            $procedimentos[] = $plano->procedimentos()->get();
         }
 
-        dd($procedimentos);
+        dd($procedimentos);*/
+       / DB::table('')
         
 
-        $planos = $convenio->planos()->where('status','ATIVO')->paginate(5);
+        //$planos = $convenio->planos()->where('status','ATIVO')->paginate(5);
         //dd($planos);
         
         $inativos =  $convenio->planos()->where('status','INATIVO')->get();
