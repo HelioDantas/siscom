@@ -36,8 +36,14 @@ class Plano extends Model
    
        }
 
-       function procedimentos(){
+       public function procedimentos(){
         return $this->belongsToMany('App\Models\Procedimento','sis_plano_procedimento','plano_id','procedimento_id')->withPivot('precoPlano');
      }
+
+     public function getProcedimentos(){
+        return $this->hasMany('App\Models\Procedimento' );
+    
+
+    }
 
 }

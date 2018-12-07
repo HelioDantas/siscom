@@ -11,10 +11,12 @@
           padding-top:0.5rem;
         }
         .card{
-            color: #3490dc;
+            /*color: #3490dc;*/
+            color:black;
              background-color: transparent;
             background-image: none;
             border-color: #3490dc;
+            text-decoration-color: black;
         }
 
 </style>
@@ -27,71 +29,66 @@
     <div class="col-sm-4">
             <div class="card text-center" style="width: 18rem;">
                     <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <h5 class="card-title">Agendamentos</h5>
+                      <p class="card-text">Agende uma nova conuslta com </p>
+                      <a href="#" class="btn btn-primary">Agendar</a>
                     </div>
                   </div>
     </div>
     <div class="col-sm-4">
-            <div class="card col-mb-3 " style="max-width: 18rem;">
-                    <div class="card-header  text-white bg-primary  text-center">Registros Clinicos</div>
-                    <div class="card-body">
-                      <h5 class="card-title">Primary card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-    
+        <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Registros Clinicos</h5>
+                  <p class="card-text">Cofira os regisros cadastrados no sistema </p>
+                  <a href="#" class="btn btn-primary">Consultar</a>
                 </div>
-        </div>
-           
-        <div class="col-sm-4">
-                <div class="card col-mb-3 " style="max-width: 18rem;">
-                        <div class="card-header  text-white bg-primary  text-center">Consultas Agendadas</div>
-                        <div class="card-body">
-                          <h5 class="card-title">Primary card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-        
-                    </div>
-            </div>                                      
-                             
+              </div>
 </div>
+<div class="col-sm-4">
+                <div class="card text-center" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Agenda</h5>
+                          <p class="card-text">historico de Agendamentos passados , e agendamentos do dia </p>
+                          <a href="#" class="btn btn-primary">Consultar</a>
+                        </div>
+                      </div>
+        </div>
+  
+      
 
 </div>
 <hr>
 <div class="container dashboard ">
         <div class="row ">
-            <div class="col-sm-4">
-                <div class="card col-mb-3 " style="max-width: 18rem;">
-                        <div class="card-header  text-white bg-primary  text-center">Pacientes</div>
-                        <div class="card-body">
-                          <h5 class="card-title">Primary card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-        
-                    </div>
-            </div>
-            <div class="col-sm-4">
-                    <div class="card col-mb-3 " style="max-width: 18rem;">
-                            <div class="card-header  text-white bg-primary  text-center">Convenios</div>
-                            <div class="card-body">
-                              <h5 class="card-title">Primary card title</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-            
-                        </div>
-                </div>
-                   
-                <div class="col-sm-4">
-                        <div class="card col-mb-3 " style="max-width: 18rem;">
-                                <div class="card-header  text-white bg-primary  text-center">Funcionarios</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Primary card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="col-sm-4">
+                                        <div class="card text-center" style="width: 18rem;">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">Pacientes</h5>
+                                                  <p class="card-text">Cadastre , vizualize , E atualize dados Dos paciente cadastrados </p>
+                                                  <a href="{{route('paciente.listar')}}"class="btn btn-primary">Pacientes</a>
+                                                </div>
+                                              </div>
                                 </div>
-                
-                            </div>
-                    </div>                                      
+                                <div class="col-sm-4">
+                                                <div class="card text-center" style="width: 18rem;">
+                                                        <div class="card-body">
+                                                          <h5 class="card-title">Convenios</h5>
+                                                          <p class="card-text">Cadastre , vizualize , E atualize Convenios cadastrados </p>
+                                                          <a href="{{route('convenio.listar')}}" class="btn btn-primary">Convenios</a>
+                                                        </div>
+                                                      </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                                        <div class="card text-center" style="width: 18rem;">
+                                                                <div class="card-body">
+                                                                  <h5 class="card-title">Funcionarios</h5>
+                                                                  <p class="card-text">Cadastre , vizualize , E atualize Funcionarios cadastrados </p>
+                                                                  <a href="{{route('funcionario.listar')}}"class="btn btn-primary">Funcionarios</a>
+                                                                </div>
+                                                              </div>
+                                                </div>
+                   
+                                                    
                                      
         </div>
         

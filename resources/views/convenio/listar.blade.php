@@ -144,7 +144,7 @@
                  <td>
                     <a  class = "btn btn-outline-primary"  href="editar/{{$c->cnpj}}"  title="editar"><i class="fas fa-edit"></i></a> 
                     <a class = "btn btn-outline-info"     href="{{ route('convenio.detalhe',['detalhe'=> $c->cnpj ]) }}" title="Planos"><i class="fab fa-product-hunt"></i></a> 
-                    <a class = "btn btn-outline-dark"     href="{{ route('convenio.detalhe',['detalhe'=> $c->cnpj ]) }}" title="Procedimentos"><i class="fas fa-syringe"></i></a> 
+                    <a class = "btn btn-outline-dark"     href="{{ route('convenio.detalhe.procedimento',['procedimento'=> $c->cnpj ]) }}" title="Procedimentos"><i class="fas fa-syringe"></i></a> 
                 </td>
 
               </tr>

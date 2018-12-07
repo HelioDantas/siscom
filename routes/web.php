@@ -124,6 +124,7 @@ Route::prefix('convenio')->middleware('Autorizador')->group(function () {
     Route::get('listar', 'ConvenioController@index')->name('convenio.listar');
     Route::get('novo', 'ConvenioController@novo')->name('convenio.novo');
     Route::get('detalhe/{id}', 'ConvenioController@detalhe')->name('convenio.detalhe');
+    Route::get('detalhe/Procedimento/{id}', 'ConvenioController@detalheProcedimento')->name('convenio.detalhe.procedimento');
     Route::get('novo', 'ConvenioController@novo')->name('convenio.novo');
     Route::post('create', 'ConvenioController@create')->name('convenio.create');
 

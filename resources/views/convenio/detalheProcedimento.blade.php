@@ -1,0 +1,168 @@
+@extends('layout.app') @section('estilos')
+<style>
+    .save{
+        margin-top: 2rem;
+        float:right;
+        
+    }
+    .back{
+        margin-top: 2rem;
+        float:right;
+        padding-left: 1rem;
+    }
+    .ctt{
+      
+   -ms-flex-align: center;
+     
+     }
+     .lista{
+         margin-top: 2rem;
+         text-align: center;
+     }
+     form{
+         margin-left: 15%;
+     }
+     h2{
+         text-align: center;
+     }
+     #detalheTop{
+        margin-top: 5%;
+     }
+   
+</style>
+@endsection
+
+@section('tela')
+
+<div class="container">
+    <div>
+
+        <h2 type="hiden"></h2>
+        
+
+    </div>
+        <div class="container detalheTop">
+    <h2 class="aling-center">{{ $convenio->nome }}</h2>
+   
+    {{--<p><strong> Nome:</strong> <span>{{ $evento->nome }}</span></p> --}}
+    
+        <div class="row">
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span> <strong> Cnpj </strong>- {{ $convenio->cnpj }}</span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span><strong>Adesao </strong> - {{ $convenio->adesao }} </span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span><strong> Banco </strong> - {{ $convenio->banco }} </span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span> <strong> Agencia </strong> - {{ $convenio->agencia}} </span></div>
+            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"> <span><strong>Conta</strong> - {{ $convenio->conta }} </span></div>
+           
+           
+            
+          
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="container">
+    <form action="{{ route('convenio.plano.assoc') }}" method="post">
+                @csrf 
+            <div class="row justify-content-md-center">
+
+                    <div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4">
+                            <label for="planos">Planos inativos</label>
+            
+                            <select name="inativo_id" id="inativo" class="form-control ">
+                                <option value="" selected>selecione</option>
+                                @if ($inativos)
+                                    @foreach ($inativos as $inativo)
+                                    <option value="{{ $inativo->id}}">{{ $inativo->nome }}</option>
+                                    @endforeach
+                                @endif
+            
+                            </select>
+                        </div>
+
+                        <div class="save">
+                                <button id="Salvar" class="btn btn-outline-primary" type="Submit" data-toggle="tooltip" data-placement="top"
+                                title="Salvar"><i class="far fa-save"></i></button>
+                                </div>
+                            
+            
+                        <div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4">
+                            <label for="nome">novo plano</label>
+                            <input type="text" name="nome" id="nome" maxlength="30" class="form-control">
+                        </div>
+
+                        <input type="hidden" name="convenio_id" value="{{ $convenio->cnpj }}">
+                        <div class="save">
+                        <button id="Salvar" class="btn btn-outline-success" type="Submit" data-toggle="tooltip" data-placement="top"
+                        title="Salvar"><i class="fas fa-plus-circle"></i></button>
+                        </div>
+
+                        <div class="back">
+                                <a class="btn btn-outline-secondary" href="{{ route('convenio.listar') }}" data-toggle="tooltip"
+                                    data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+                                </div>
+                                   
+                    
+            </div>
+            
+    </form>
+               
+                
+            </div> 
+        </div>
+
+
+</div>
+
+
+
+
+
+<div class="container lista col-lg-8">
+
+    <h3> Procedimentos </h3>
+
+    <div class="table table-responsive ">
+        <table class="table table-hover ">
+            <thead class="thead-dark">
+                <tr>
+                    <th s>CodigoTuss </th>
+                    <th>nome </th>
+                    <th>status </th>
+                    <th> Opcões </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!empty($planos))
+                @foreach ($planos as $plano )
+                <tr>
+                    <td>{{ $plano->id }}</td>
+                    <td>{{ $plano->nome }}</td>
+                    <td>{{ $plano->status }}</td>
+                    <td>
+                         <a href="{{ route('convenio.plano.assoc.delete',['delete' => $plano->id ]) }}"><i
+                                class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                @endforeach
+                @endif
+            </tbody>
+
+
+        </table>
+        {!!$planos->links()!!}
+
+    </div>
+
+
+
+
+
+    @endsection
+
+    @section('scripts')
+    <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
+
+    @endsection
