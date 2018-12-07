@@ -31,12 +31,6 @@
         margin-top: 
     }
 
-     @media(max-width: 1550px ){
-        .respom{
-
-                 margin-left: 29%; 
-        }
-    }
 </style>
 @endsection
 
@@ -103,7 +97,7 @@
 				<select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
 					<option value="" selected>Selecione</option>
 					@foreach ($convenios as $cv )
-                        <option value="{{ $cv->cnpj }}">{{ $cv->nome }}</option>
+                        <option value="{{ $cv->id }}">{{ $cv->nome }}</option>
                     @endforeach
                 </select>
                 
@@ -142,9 +136,9 @@
                  <td>       {{$c->conta}}         </td>
                  <td>       {{$c->status}}        </td>
                  <td>
-                    <a  class = "btn btn-outline-primary"  href="editar/{{$c->cnpj}}"  title="editar"><i class="fas fa-edit"></i></a> 
-                    <a class = "btn btn-outline-info"     href="{{ route('convenio.detalhe',['detalhe'=> $c->cnpj ]) }}" title="Planos"><i class="fab fa-product-hunt"></i></a> 
-                    <a class = "btn btn-outline-dark"     href="{{ route('convenio.detalhe',['detalhe'=> $c->cnpj ]) }}" title="Procedimentos"><i class="fas fa-syringe"></i></a> 
+                    <a  class = "btn btn-outline-primary"  href="editar/{{$c->id}}"  title="editar"><i class="fas fa-edit"></i></a> 
+                    <a class = "btn btn-outline-info"     href="{{ route('convenio.detalhe',['detalhe'=> $c->id ]) }}" title="Planos"><i class="fab fa-product-hunt"></i></a> 
+                    <a class = "btn btn-outline-dark"     href="{{ route('convenio.detalhe',['detalhe'=> $c->id ]) }}" title="Procedimentos"><i class="fas fa-syringe"></i></a> 
                 </td>
 
               </tr>

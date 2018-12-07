@@ -13,7 +13,7 @@ class ConvenioController extends Controller
 
 
     function index(){
-        $convenios = Convenio::orderBy('nome')->paginate(10);
+        $convenios = Convenio::where('id','!=', 4)->orderBy('nome')->paginate(10);
         return view('convenio.listar' , compact('convenios'));
     }
 

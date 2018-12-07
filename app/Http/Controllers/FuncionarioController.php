@@ -100,7 +100,7 @@ class FuncionarioController extends Controller
     public function listar()
     {
 
-        $funcionarios = Funcionario::paginate(5);
+        $funcionarios = Funcionario::orderBy('nome')->paginate(5);
         return view('funcionario.listar', compact('funcionarios'));
 
     }
