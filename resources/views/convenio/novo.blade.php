@@ -92,81 +92,110 @@
         </div>
 
         <fieldset class="form-group dadosForm">
-    <legend aling="center">Dados </legend>
+        <legend aling="center">Dados </legend>
 
-    <div class="row">
+        <div class="row">
 
-    <div class="col-2">
-        <div class="form-group">
-        <br><br>
-          <label for="nome">CNPJ</label>
-             <input type="text" name="cnpj" id="" class="form-control" placeholder="CNPJ">
-      
-    </div>
-    </div>
+        <div class="col-xl-2 col-lg-4 col-md-4   mb-3">
+            <div class="form-group">
+        
+                <label for="nome">CNPJ</label>
+                <input type="text" name="cnpj" id="cnpj" class = "form-control {{$errors->has('cnpj') ? 'is-invalid': '' }}" required maxlength="17">
+                 @if($errors->has('cnpj'))
+                        <div class="invalid-feedback">
+                            {$errors->first('cnpj')}}
+                        </div>
+                     @endif
+            </div>
+        </div>
 
-    <div class="col-4">
-    <div class="form-group">
-        <br><br>
-        <label for="nome">Nome do Convênio</label>
-      <input type="text" name="nome" id="" class="form-control" placeholder="nome de convenio">
-     
-    </div>
-    </div>
+        <div class="col-xl-3 col-lg-4 col-md-5  mb-3">
+            <div class="form-group">
+        
+                <label for="nome">Nome do Convênio</label>
+                <input type="text"maxlength="25" name="nome" id=""class =  "form-control {{$errors->has('nome') ? 'is-invalid': '' }}">
+                @if($errors->has('nome'))
+                        <div class="invalid-feedback">
+                            {$errors->first('nome')}}
+                        </div>
+                     @endif
+            </div>
+        </div>
 
-     <div class="col-2">
-    <div class="form-group">
-        <br><br>
-        <label for="nome">Adesão</label>
-      <input type="date" name="adesao" id="" class="form-control" placeholder="data adesão">
+        <div class="col-xl-2 col-lg-4 col-md-4  mb-3">
+            <div class="form-group">
+            
+                <label for="nome">Adesão</label>
+                <input type="date" name="adesao" id=""class = "form-control {{$errors->has('adesao') ? 'is-invalid': '' }}" >
+                @if($errors->has('adesao'))
+                        <div class="invalid-feedback">
+                            {$errors->first('adesao')}}
+                        </div>
+                     @endif
+            </div>
+        </div>
 
-    </div>
-    </div>
+        <div class="col-xl-3 col-lg-4 col-md-3  mb-3">
+            <div class="form-group">
+            
+                <label for="nome">Banco</label>
+                <input type="text" name="banco" maxlength="25" id=""class = "form-control {{$errors->has('banco') ? 'is-invalid': '' }}">
+                   @if($errors->has('banco'))
+                        <div class="invalid-feedback">
+                            {$errors->first('banco')}}
+                        </div>
+                     @endif
+            </div>
+        </div>
 
-     <div class="col-3">
-    <div class="form-group">
-        <br><br>
-        <label for="nome">Banco</label>
-      <input type="text" name="banco" id="" class="form-control" placeholder="nome do banco">
-
-    </div>
-    </div>
-
-     <div class="col-2">
-    <div class="form-group">
-        <br>
-        <label for="nome">Agência</label>
-      <input type="text" name="agencia" id="" class="form-control" placeholder="numero da agencia">
-
-    </div>
-    </div>
-
-    <div class="col-3">
-    <div class="form-group">
-        <br>
-        <label for="nome">Conta</label>
-      <input type="text" name="conta" id="" class="form-control" placeholder="numero conta">
-
-    </div>
-    </div>
-
-    <div class="col-2">
-        <div class="form-group">
-            <br>
-            <label for="selectbasic">Status <h11></h11></label>
-                <select required id="status" name="status" class="form-control">
-                    <option value="ATIVO">Ativo</option>
-                        <option value="INATIVO">Inativo</option>
-                          </select>
-                    </div>
-                </div>
-
+        <div class="col-xl-2 col-lg-4 col-md-3 mb-3">
+            <div class="form-group">
                 
+                <label for="nome">Agência</label>
+                <input type="text" maxlength="15" name="agencia" id=""class =  "form-control {{$errors->has('agencia') ? 'is-invalid': '' }}">
+                 @if($errors->has('noagenciame'))
+                        <div class="invalid-feedback">
+                            {$errors->first('agencia')}}
+                        </div>
+                     @endif
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-lg-4 col-md-3  mb-3">
+            <div class="form-group">
+            
+                <label for="nome">Conta</label>
+                <input type="text"maxlength="13"  name="conta" id="" class = "form-control {{$errors->has('conta') ? 'is-invalid': '' }}" >
+                    @if($errors->has('conta'))
+                        <div class="invalid-feedback">
+                            {$errors->first('conta')}}
+                        </div>
+                     @endif
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-lg-4 col-md-4  mb-3">
+            <div class="form-group">
+        
+                <label for="selectbasic">Status <h11></h11></label>
+                    <select required id="status" name="status" class = "form-control {{$errors->has('status') ? 'is-invalid': '' }}">
+                        <option value="ATIVO">Ativo</option>
+                        <option value="INATIVO">Inativo</option>
+                    </select>
+                     @if($errors->has('status'))
+                        <div class="invalid-feedback">
+                            {$errors->first('status')}}
+                        </div>
+                     @endif
+            </div>
+        </div>
+
+                    
 
     </div>
     </fieldset>
     <hr>
        {!! Form::close() !!}
-    </div><!-- container -->
+</div><!-- container -->
 
     @endsection

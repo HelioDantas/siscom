@@ -47,7 +47,7 @@
     {{--<p><strong> Nome:</strong> <span>{{ $evento->nome }}</span></p> --}}
     
         <div class="row">
-            <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span> <strong> Cnpj </strong>- {{ $convenio->cnpj }}</span></div>
+            <div class="col-xl-3 col-md-3  col-lg-5 mb-3"><span> <strong> Cnpj </strong>- {{ $convenio->cnpj }}</span></div>
             <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span><strong>Adesao </strong> - {{ $convenio->adesao }} </span></div>
             <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span><strong> Banco </strong> - {{ $convenio->banco }} </span></div>
             <div class="col-xl-2 col-md-3  col-lg-5 mb-3"><span> <strong> Agencia </strong> - {{ $convenio->agencia}} </span></div>

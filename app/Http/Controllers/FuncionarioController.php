@@ -17,14 +17,12 @@ class FuncionarioController extends Controller
 
     public function novo(Request $request)
     {
-        //  form de um novo produto
-    //    return dd($request);
+   
         if (!PermissionController::novo()) {
             return back()->with('NaoAutorizado', 'NaoAutorizado');
         }
-    //    $permissao = Permission::all();
+   
         $especi = Especialidade::all();
-
         $planos = Plano::where('status', 'ATIVO')->get();
         return view('funcionario.formulario', compact('especi', 'planos'));
     }
@@ -66,41 +64,22 @@ class FuncionarioController extends Controller
 
         }
 
-        //  return var_dump($sis_funcionario);
-        if ($Funcionario->profissao == "A") {
+        if ($Funcionario->profissao == "A")
             return redirect('funcionario/user/novo')->with('Funcionario', $Funcionario);
-       //     return redirect()->route('user.novo')->with('Funcionario', $Funcionario);
-        //    return view('user.novo', compact('permissao','Funcionario'));
-
-        } else {
-
+        else {
             if ($Funcionario->profissao == "M") {
-                $medico = new Medico();
-                $valor = $request->all('crm');
-                $medico->crm = $valor['crm'];
-                $medico->Sis_funcionario_matricula = $Funcionario->matricula;
-                $medico->save();
-                $medico = Medico::find($Funcionario->matricula);
-                $request->only('especialidade1')['especialidade1'] != null ? $especialidade[] = $request->only('especialidade1')['especialidade1'] : '';
-                $request->only('especialidade2')['especialidade2'] != null ? $especialidade[] = $request->only('especialidade2')['especialidade2'] : '';
-                if(!empty(  $especialidade))
-                 $medico->especialidade()->attach($especialidade);
-                $planos = $request->only('$p');
-                foreach ($planos as $id) {
-                    $plano[] = $id[0];
-
-                }
-                if(!empty( $planos))
-                $medico->planos()->attach($plano);
-              return redirect('funcionario/user/novo')->with('Funcionario', $Funcionario);
+                  $medico = new Medico();
+                $medico->createMedico($Funcionario->matricula, $request);
+                return redirect('funcionario/user/novo')->with('Funcionario', $Funcionario);
             }
         }
+   
     }
 
     public function listar()
     {
 
-        $funcionarios = Funcionario::paginate(5);
+        $funcionarios = Funcionario::orderBy('nome')->paginate(5);
         return view('funcionario.listar', compact('funcionarios'));
 
     }
@@ -110,16 +89,16 @@ class FuncionarioController extends Controller
         $tipo = $request['tipobusca'];
         $buscar = $request->input('search');
         if ($tipo == null) {
+            
             $funcionarios = Funcionario::where('nome', 'like', '%' . $buscar . '%')
                 ->orWhere('cpf', 'like', '%' . $buscar . '%')
                 ->orWhere('matricula', 'like', '%' . $buscar . '%')
                 ->paginate(10);
 
-        } else {
+        } else 
             $funcionarios = Funcionario::where($tipo, 'like', '%' . $buscar . '%')->paginate(10);
 
-        }
-
+        
         return view('funcionario.listar', compact('funcionarios'));
 
     }
@@ -142,54 +121,36 @@ class FuncionarioController extends Controller
 
     public function edit(Request $request, $id)
     {
-        //  form para editar infos de um funcionario
+
         PermissionController::edit();
         $p = Funcionario::find($id);
-
-
-     //   $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula', $p->matricula)->get();
-
-         $p->profissao == 'M' ? $s = $p->medico->especialidade: 's';
-        /*
-        foreach ($m as $m->Sis_especialidade_id => $espec) {
-            $tt = $espec->Sis_especialidade_id;
-            $s[] = Especialidade::find($tt);
-
-        }*/
-
+        $p->profissao == 'M' ? $s = $p->medico->especialidade: 's';
         $especialidades = Especialidade::all();
         $Permissao = $p->user->permission()->get();
-        //dd($m);
+       
         return view('funcionario.editar', compact('p', 's', 'especialidades', 'Permissao'));
     }
 
     public function update(FuncionarioRequest $request, $id)
     {
 
-         PermissionController::edit();
+        PermissionController::edit();
 
-        $Funcionario = Funcionario::find($id);
-        $especialidade1 = true;
-        $especialidade2 = true;
+        $Funcionario = Funcionario::find($id);   
         $Funcionario->update($request->all());
-        if ($Funcionario->profissao == 'M') {
-            $Funcionario->medico->update($request->only('crm'));
-            $request->only('especialidade1')['especialidade1'] != null ? $especialidade[] = $request->only('especialidade1')['especialidade1'] : $especialidade1 = null;
-            $request->only('especialidade2')['especialidade2'] != null ? $especialidade[] = $request->only('especialidade2')['especialidade2'] : $especialidade2 = null;
-
-            $especialidade1 == null && $especialidade2 == null ? $Funcionario->medico->especialidade()->detach() : $Funcionario->medico->especialidade()->sync($especialidade);
-        }
+        if ($Funcionario->profissao == 'M') 
+              $Funcionario->medico->updateMedico($Funcionario, $request);
+    
 
         return redirect()->route('funcionario.listar');
     }
 
     public function show(Request $request, $id)
     {
-        //  form para editar infos de um paciente
+    
         PermissionController::show();
         $p = Funcionario::find($id);
         
-
         return view('funcionario.show')->with('p', $p);
     }
 

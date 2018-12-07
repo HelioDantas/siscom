@@ -122,8 +122,8 @@
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
-             {$errors->first('nome')}}
-                </div>
+                {$errors->first('nome')}}
+            </div>
         @endif
     </div>
 

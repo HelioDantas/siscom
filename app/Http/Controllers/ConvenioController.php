@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TipoConvenio;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\ConvenioRequest;
+
 
 class ConvenioController extends Controller
 {
@@ -13,7 +15,7 @@ class ConvenioController extends Controller
 
 
     function index(){
-        $convenios = Convenio::orderBy('nome')->paginate(10);
+        $convenios = Convenio::where('id','!=', 4)->orderBy('nome')->paginate(10);
         return view('convenio.listar' , compact('convenios'));
     }
 
@@ -48,14 +50,14 @@ class ConvenioController extends Controller
             return view ('convenio.novo');
         }
 
-        public function create(Request $request){
+        public function create(ConvenioRequest $request){
             $sis_convenio = Convenio::create($request->all());
           
             return redirect()->action('ConvenioController@index'); 
 
        }
 
-        public function update(Request $request, $id){
+        public function update(ConvenioRequest $request, $id){
             $convenio = Convenio::find($id);
             $convenio->update($request->all());
                 return redirect()->route('convenio.listar');
