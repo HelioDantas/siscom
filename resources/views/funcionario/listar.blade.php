@@ -105,7 +105,7 @@
                 <select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
                     <option value="" selected>Selecione</option>
                     <option value="nome">nome</option>
-                    <option value="id">prontuario</option>
+                    <option value="matricula">matricula</option>
                     <option value="telefone">telefone</option>
                     <option value="cpf">cpf</option>
                 </select>
@@ -148,7 +148,7 @@
              <!--           <td>       {{$p->DataCadastro}}        </td>  -->
                             <td class="info-nome">  {{$p->nome}}   </td>
                             <td>       {{$p->cpf}}                 </td>
-                            <td>       {{$p->dataDeNascimento}}    </td>
+                            <td>       {{$p->formatDate($p->dataDeNascimento)}}    </td>
                             <td>       {{$p->sexo}}                </td>
                             <td>       {{$p->telefone}}            </td>
                             <td>       {{$p->naturalidade}}        </td>
@@ -254,6 +254,18 @@
 
         }
     </script>
+
+    <script>
+        function formatDate(data) {
+        if (formato == 'pt-br') {
+            return (data.substr(0, 10).split('-').reverse().join('/'));
+        } else {
+            return (data.substr(0, 10).split('/').reverse().join('-'));
+        }
+        }
+
+    
+    <script>
  <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
           <script type="text/javascript" src="{{ asset('js/confirmacaoDeExclusao.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>

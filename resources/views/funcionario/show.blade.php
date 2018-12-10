@@ -360,9 +360,24 @@
 
                     <label for="selectbasic">Status </label>
                       <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p))
-                      value = "{{$p->Status}}" @else value =   {{old('status')}} @endif readonly>
-                      <option value="A">Ativo</option>
-                        <option value="I">Inativo</option>
+                         value = "{{$p->status}}" @else value =   {{old('status')}} @endif readonly>
+                                  @if(!empty($p->status))
+
+                            @switch($p->status)
+                            @case('A')
+                                @php $tipo = 'ATIVO' ; @endphp
+                                @break
+
+                            @case( 'I')
+                                @php $tipo = 'INATIVO' ; @endphp
+                                @break
+
+                             @endswitch
+
+                            <option value={{$p->status}}>{{$tipo}}</option>
+                        
+                              @endif
+                  
                       </select>
                              @if($errors->has('status'))
                              <div class="invalid-feedback">
@@ -436,6 +451,29 @@
                 </div>
                 </div><!--col nome -->
 
+                
+            <div class="col-md-3 mb-3 Fill invisivel">
+                <div class="form-group">
+                  <label for="especialidade" >Especialidade 1</label>
+                  <select  id="especialidade" name="especialidade1" class="form-control"  readonly>
+                      @if (!empty($s[0]))
+                        <option   value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
+                      @endif
+                        </select>
+                </div>
+         </div>
+
+
+               <div class="col-md-3 mb-3 Fill invisivel">
+                <div class="form-group teste">
+                  <label for="especialidade2">Especialidade 2</label>
+                  <select  id="especialidade2" name="especialidade2" id="" class="form-control" readonly>
+                        @if (!empty($s[1]))
+                        <option   value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
+                      @endif
+                        </select>
+                </div>
+        </div>
 
 
 
@@ -585,7 +623,7 @@
                     <th scope="row" >Convenio</th>
                     <th scope="col">Plano</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Opção</th>
+                  
 
               </tr>
             </thead>

@@ -11,6 +11,8 @@ class Funcionario extends Model
     public $timestamps = false;
      protected $primaryKey = 'matricula';
 
+  
+
     protected $fillable = array(
         'matricula',
         'nome',
@@ -45,4 +47,7 @@ class Funcionario extends Model
         return $this->hasOne('App\Models\Medico', 'Sis_funcionario_matricula', 'matricula');
 
     }
+
+  
+   
 }

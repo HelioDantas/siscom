@@ -100,10 +100,10 @@
             <div class="form-group">
         
                 <label for="nome">CNPJ</label>
-                <input type="text" name="cnpj" id="cnpj" class = "form-control {{$errors->has('cnpj') ? 'is-invalid': '' }}" required maxlength="17">
+                <input type="text" name="cnpj" id="cnpj" class = "form-control {{$errors->has('cnpj') ? 'is-invalid': '' }}" required maxlength="17" value =   {{old('cnpj')}}>
                  @if($errors->has('cnpj'))
                         <div class="invalid-feedback">
-                            {$errors->first('cnpj')}}
+                            {{$errors->first('cnpj')}}
                         </div>
                      @endif
             </div>
@@ -113,10 +113,10 @@
             <div class="form-group">
         
                 <label for="nome">Nome do Convênio</label>
-                <input type="text"maxlength="25" name="nome" id=""class =  "form-control {{$errors->has('nome') ? 'is-invalid': '' }}">
+                <input type="text"maxlength="25" name="nome" id=""class =  "form-control {{$errors->has('nome') ? 'is-invalid': '' }}" required value =   {{old('nome')}}>
                 @if($errors->has('nome'))
                         <div class="invalid-feedback">
-                            {$errors->first('nome')}}
+                            {{$errors->first('nome')}}
                         </div>
                      @endif
             </div>
@@ -126,10 +126,10 @@
             <div class="form-group">
             
                 <label for="nome">Adesão</label>
-                <input type="date" name="adesao" id=""class = "form-control {{$errors->has('adesao') ? 'is-invalid': '' }}" >
+                <input type="date" name="adesao" id=""class = "form-control {{$errors->has('adesao') ? 'is-invalid': '' }}" required value =   {{old('adesao')}}>
                 @if($errors->has('adesao'))
                         <div class="invalid-feedback">
-                            {$errors->first('adesao')}}
+                            {{$errors->first('adesao')}}
                         </div>
                      @endif
             </div>
@@ -139,10 +139,10 @@
             <div class="form-group">
             
                 <label for="nome">Banco</label>
-                <input type="text" name="banco" maxlength="25" id=""class = "form-control {{$errors->has('banco') ? 'is-invalid': '' }}">
+                <input type="text" name="banco" maxlength="25" id=""class = "form-control {{$errors->has('banco') ? 'is-invalid': '' }}" value =   {{old('banco')}}>
                    @if($errors->has('banco'))
                         <div class="invalid-feedback">
-                            {$errors->first('banco')}}
+                            {{$errors->first('banco')}}
                         </div>
                      @endif
             </div>
@@ -152,10 +152,10 @@
             <div class="form-group">
                 
                 <label for="nome">Agência</label>
-                <input type="text" maxlength="15" name="agencia" id=""class =  "form-control {{$errors->has('agencia') ? 'is-invalid': '' }}">
+                <input type="text" maxlength="15" name="agencia" id=""class =  "form-control {{$errors->has('agencia') ? 'is-invalid': '' }}"value =   {{old('agencia')}}>
                  @if($errors->has('noagenciame'))
                         <div class="invalid-feedback">
-                            {$errors->first('agencia')}}
+                            {{$errors->first('agencia')}}
                         </div>
                      @endif
             </div>
@@ -165,10 +165,10 @@
             <div class="form-group">
             
                 <label for="nome">Conta</label>
-                <input type="text"maxlength="13"  name="conta" id="" class = "form-control {{$errors->has('conta') ? 'is-invalid': '' }}" >
+                <input type="text"maxlength="13"  name="conta" id="" class = "form-control {{$errors->has('conta') ? 'is-invalid': '' }}" value =   {{old('conta')}}>
                     @if($errors->has('conta'))
                         <div class="invalid-feedback">
-                            {$errors->first('conta')}}
+                            {{$errors->first('conta')}}
                         </div>
                      @endif
             </div>
@@ -178,13 +178,13 @@
             <div class="form-group">
         
                 <label for="selectbasic">Status <h11></h11></label>
-                    <select required id="status" name="status" class = "form-control {{$errors->has('status') ? 'is-invalid': '' }}">
+                    <select required id="status" name="status" class = "form-control {{$errors->has('status') ? 'is-invalid': '' }}"value =   {{old('status')}}>
                         <option value="ATIVO">Ativo</option>
                         <option value="INATIVO">Inativo</option>
                     </select>
                      @if($errors->has('status'))
                         <div class="invalid-feedback">
-                            {$errors->first('status')}}
+                            {{$errors->first('status')}}
                         </div>
                      @endif
             </div>

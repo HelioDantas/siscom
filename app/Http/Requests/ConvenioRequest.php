@@ -27,9 +27,9 @@ class ConvenioRequest extends FormRequest
         'nome'                  => 'required|max:25',
         'cnpj'                  => 'required|min:16|max:17',
         'adesao'                => 'required|date',
-        'banco'                 => 'required|max:25',
-        'agencia'               => 'required|max:17',
-        'conta'                 => 'required|max:17',
+        'banco'                 => 'nullable|max:25',
+        'agencia'               => 'nullable|max:17',
+        'conta'                 => 'nullable|max:17',
         'status'                => 'required',
  
    

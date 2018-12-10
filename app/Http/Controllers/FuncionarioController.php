@@ -95,8 +95,27 @@ class FuncionarioController extends Controller
                 ->orWhere('matricula', 'like', '%' . $buscar . '%')
                 ->paginate(10);
 
-        } else 
-            $funcionarios = Funcionario::where($tipo, 'like', '%' . $buscar . '%')->paginate(10);
+        }else{ 
+            switch($tipo){
+            case "nome":
+             $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            break;
+
+            case "cpf":
+            $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            break;
+
+            case "telefone":
+            $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            break;
+
+            case "matricula":
+             $funcionarios = Funcionario::where($tipo,'=',$buscar)->paginate(10);
+            break;
+
+             }
+
+        }
 
         
         return view('funcionario.listar', compact('funcionarios'));
@@ -135,7 +154,7 @@ class FuncionarioController extends Controller
     {
 
         PermissionController::edit();
-
+                
         $Funcionario = Funcionario::find($id);   
         $Funcionario->update($request->all());
         if ($Funcionario->profissao == 'M') 
@@ -150,8 +169,8 @@ class FuncionarioController extends Controller
     
         PermissionController::show();
         $p = Funcionario::find($id);
-        
-        return view('funcionario.show')->with('p', $p);
+           $p->profissao == 'M' ? $s = $p->medico->especialidade: 's';
+        return view('funcionario.show',  compact('p', 's'));
     }
 
 }

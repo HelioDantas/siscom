@@ -145,7 +145,7 @@
 							<td class="nome"> {{$p->nome}} </td>
 							<td class="cpf"> {{$p->cpf}} </td>
 							<td> {{$p->identidade}} </td>
-							<td> {{$p->dataDeNascimento}} </td>
+							  <td>       {{$p->formatDate($p->dataDeNascimento)}}    </td>
 							{{--
 							<td> {{$p->sexo}} </td>
 							<td> {{$p->etnia}} </td> --}} {{--
