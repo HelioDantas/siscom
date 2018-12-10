@@ -150,8 +150,8 @@ class FuncionarioController extends Controller
     
         PermissionController::show();
         $p = Funcionario::find($id);
-        
-        return view('funcionario.show')->with('p', $p);
+           $p->profissao == 'M' ? $s = $p->medico->especialidade: 's';
+        return view('funcionario.show',  compact('p', 's'));
     }
 
 }
