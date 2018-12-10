@@ -15,26 +15,41 @@ class LoginController extends Controller
    protected $redirectTo = '/';
    public function auth(Request $request)
    {
-      // $credentials = $request->only('cpf', 'password');
-     // dd($request->all());
-   
+    $credencias = $request->all('cpf', 'password');
+    $user = User::buscar($credencias['cpf']);
+  
+ 
+    if ($user == null){
 
-       if (Auth::attempt([
-           'cpf' => $request->cpf,
-           'password' => $request->password,
-       ])) {
-           $user = Auth::user();
-           $id = Auth::id();
+        $mensagem =  "Cpf invalido";
+        return redirect('/login')->with("mensagem",  $mensagem);
+    }
+     if($user->funcionario->status == "A"){
 
-           session()->put('user', $user);
+            if (Auth::attempt([
+                'cpf' => $request->cpf,
+                'password' => $request->password,
+            ])) {
+                    $user = Auth::user();
+                    $id = Auth::id();
 
-           return redirect()->route('dashboard');
-       }
-        return dd(Auth::attempt([
-           'cpf' => $request->cpf,
-           'password' => $request->password,
-       ]));
-       return back()->withInput();
+                    session()->put('user', $user);
+
+                    return redirect()->route('dashboard');
+                 }else{
+                    $mensagem =  "Senha Invalida";
+                    return redirect('/login')->with("mensagem",  $mensagem);
+                 }
+
+        }else{
+
+            $mensagem =  "Usuario não está ativo";
+            return redirect('/login')->with("mensagem",  $mensagem);
+
+            }
+    
+
+     
    }
 
 
