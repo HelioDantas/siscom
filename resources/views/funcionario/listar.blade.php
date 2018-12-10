@@ -105,7 +105,7 @@
                 <select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
                     <option value="" selected>Selecione</option>
                     <option value="nome">nome</option>
-                    <option value="id">prontuario</option>
+                    <option value="matricula">matricula</option>
                     <option value="telefone">telefone</option>
                     <option value="cpf">cpf</option>
                 </select>
