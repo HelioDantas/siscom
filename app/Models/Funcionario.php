@@ -11,6 +11,8 @@ class Funcionario extends Model
     public $timestamps = false;
      protected $primaryKey = 'matricula';
 
+  
+
     protected $fillable = array(
         'matricula',
         'nome',
@@ -46,5 +48,6 @@ class Funcionario extends Model
 
     }
 
- 
+  
+   
 }

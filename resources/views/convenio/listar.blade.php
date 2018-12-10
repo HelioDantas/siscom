@@ -130,7 +130,7 @@
               <tr>  
                  <td>       {{$c->cnpj}}          </td>
                  <td>        {{ $c->nome}}        </td> 
-                 <td>       {{$c->adesao}}        </td>
+                 <td>       {{$c->formatDate($c->adesao)}}        </td>
                  <td>       {{$c->banco}}         </td>
                  <td>       {{$c->agencia}}       </td>
                  <td>       {{$c->conta}}         </td>
