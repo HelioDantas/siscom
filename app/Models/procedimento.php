@@ -12,7 +12,7 @@ class procedimento extends Model
      
     protected $primaryKey = 'codTuss';
     
-    protected $fillable = array('especialidade_id','codtuss','descricao','preco');
+    protected $fillable = array('especialidade_id','codTuss','descricao','preco');
 
 
 

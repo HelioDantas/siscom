@@ -143,6 +143,15 @@ Route::get('delete/{id}', 'PlanoController@assocDelete')->name('convenio.plano.a
 
 });
 
+Route::prefix('procedimeno')->middleware('Autorizador')->group(function(){
+    Route::get('novo/{id}', 'ProcedimentoController@novo')->name('procedimento.novo');
+    Route::post('create', 'ProcedimentoController@create')->name('procedimento.create'); 
+    Route::post('plano/assoc', 'ProcedimentoController@planoAssoc')->name('procedimento.plano.assoc');
+    Route::get('delete/{id}/proced/{codtuss}', 'ProcedimentoController@assocDelete')->name('proced.plano.assoc.delete');
+
+
+});
+
 Route::get('/testeRelacionamento', function () {
     return dd(Paciente::where('id', '=', 150));
 });

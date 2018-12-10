@@ -107,6 +107,8 @@
 
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
 
+                      
+
                     </div>
                   </div>
                 </li>

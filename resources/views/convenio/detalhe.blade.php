@@ -152,15 +152,16 @@
             <div class="container-fluid">
                 <h3 class="justify-content-center"> procedimentos </h3>
               
-                   
+                <a href="{{route('procedimento.novo',[ 'novo' => $plano->id])}}" class=" btn-outline-primary">cadastrar novo</a>
                     
                      <table class="table table-responsive table-hover">
                          <thead>
                              <tr>
-                             <th></th>
                              <th>codigo Tuss</th>
                              <th>descrição</th>
                              <th>preço </th>
+                             
+
                            
                            
                             </tr>
@@ -172,6 +173,8 @@
                                  <td>{{ $pp->codTuss }}</td>
                                  <td>{{ $pp->descricao }}</td>
                                  <td>{{ $pp->pivot->precoPlano }}</td>
+                                 <td>
+                    
                              </tr>
                             @else
                             <tr>
@@ -182,7 +185,8 @@
                          </tbody>
                      </table>
                         
-                     
+                     {{--                                     <iframe type="text/html" width="5000rem" height="650rem" src="{{route('procedimento.novo',['convenio' =>  $convenio->id ])}}" frameborder="0" allowfullscreen=""></iframe>
+ --}}
                        
                     
 
@@ -190,6 +194,7 @@
 
             </div>
     </div>
+</div>
 </div>
                     </td>
                 </tr>
