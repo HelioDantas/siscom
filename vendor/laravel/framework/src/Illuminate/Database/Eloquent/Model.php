@@ -1639,4 +1639,14 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     {
         $this->bootIfNotBooted();
     }
+
+     public function formatDate($data){
+
+       $data = explode("-", $data);
+        
+        list($dia, $mes, $ano) = $data;
+        
+       return $data = "$ano-$mes-$dia";
+
+    }
 }

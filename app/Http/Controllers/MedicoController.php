@@ -33,11 +33,11 @@ class MedicoController extends Controller
              $dd = Plano::Join('sis_medico_tem_plano', 'sis_plano.id', '=', 'sis_medico_tem_plano.plano_id')->where('medico_id', '=', $id)
              ->where('sis_medico_tem_plano.status', 'ATIVO')->pluck('id');
 
-           $planos = Plano::whereNotIn('id', $dd)->paginate(10);
+           $planos = Plano::whereNotIn('id', $dd)->paginate(6);
                $medico = $id;
            return view('medico.planos', compact('medico', 'planos'));
 
-   }
+         }
 
 
     public function planoCreate(Request $request,  $id, $medico_id){

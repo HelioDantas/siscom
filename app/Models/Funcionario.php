@@ -45,4 +45,6 @@ class Funcionario extends Model
         return $this->hasOne('App\Models\Medico', 'Sis_funcionario_matricula', 'matricula');
 
     }
+
+ 
 }

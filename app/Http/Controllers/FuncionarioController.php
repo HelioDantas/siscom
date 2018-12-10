@@ -135,7 +135,7 @@ class FuncionarioController extends Controller
     {
 
         PermissionController::edit();
-
+                
         $Funcionario = Funcionario::find($id);   
         $Funcionario->update($request->all());
         if ($Funcionario->profissao == 'M') 
