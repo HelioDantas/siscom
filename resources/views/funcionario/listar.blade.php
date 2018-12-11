@@ -119,9 +119,9 @@
                         <thead class="thead-dark">
                         <tr>
                             <th scope="col">matricula      </th>
-                            <th scope="col">nome            </th>
+                            <th scope="col">nome            </th>   
                             <th scope="col">cpf             </th>
-                            <th scope="col">Nascimento      </th>
+                            <th scope="col">nascimento      </th>
                             <th scope="col">sexo            </th>
                             <th scope="col">telefone        </th>
                             <th scope="col">naturalidade    </th>
@@ -134,7 +134,7 @@
                             <th scope="col">telefone        </th>
                             <th scope="col">celular         </th>
                             <th scope="col">email           </th>-->
-                            <th scope="col">profissao       </th>
+                            <th scope="col">profissão       </th>
                             <th scope="col">status        </th>
                             <th scope="col">opções</th>
                         </tr>

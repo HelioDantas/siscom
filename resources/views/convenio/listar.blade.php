@@ -113,7 +113,7 @@
               <tr>
                 <th >cnpj     </th>
                 <th >nome     </th>
-                <th >adesao   </th>
+                <th >adesão   </th>
                 <th >banco    </th>
                 <th >agencia  </th>
                 <th >conta    </th>

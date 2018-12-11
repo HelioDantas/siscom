@@ -160,8 +160,8 @@
                 <div class="form-group">
                     
                     <label for="nome">Agência</label>
-                    <input type="text" maxlength="15" name="agencia" id="" class = "form-control {{$errors->has('agencia') ? 'is-invalid': '' }}"   @if(!empty($convenio)) value = {{$convenio->agencia}} @else value =   {{old('agencia')}}@endif>
-                     @if($errors->has('noagenciame'))
+                    <input type="text" maxlength="6" name="agencia" id="" class = "form-control {{$errors->has('agencia') ? 'is-invalid': '' }}"   @if(!empty($convenio)) value = {{$convenio->agencia}} @else value =   {{old('agencia')}}@endif>
+                     @if($errors->has('agencia'))
                         <div class="invalid-feedback">
                             {{$errors->first('agencia')}}
                         </div>
@@ -173,7 +173,7 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label for="conta">Conta</label>
-                        <input type="text" name="conta" id="conta" class = "form-control {{$errors->has('conta') ? 'is-invalid': '' }}"   @if(!empty($convenio)) value = {{$convenio->conta}} @else value =   {{old('conta')}} @endif>
+                        <input type="text" name="conta" maxlength="8"  id="conta" class = "form-control {{$errors->has('conta') ? 'is-invalid': '' }}"   @if(!empty($convenio)) value = {{$convenio->conta}} @else value =   {{old('conta')}} @endif>
                          @if($errors->has('conta'))
                             <div class="invalid-feedback">
                                 {{$errors->first('conta')}}

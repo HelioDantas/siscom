@@ -129,7 +129,7 @@
 							<th scope="col">celular </th>
 							<th scope="col">email </th>
 							{{--
-							<th scope="col">profissao </th> --}}
+							<th scope="col">profissão </th> --}}
 							<th scope="col">status </th>
 							<th scope="col">opções </th>
 						</tr>

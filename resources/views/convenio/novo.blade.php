@@ -152,8 +152,8 @@
             <div class="form-group">
                 
                 <label for="nome">Agência</label>
-                <input type="text" maxlength="15" name="agencia" id=""class =  "form-control {{$errors->has('agencia') ? 'is-invalid': '' }}"value =   {{old('agencia')}}>
-                 @if($errors->has('noagenciame'))
+                <input type="text" maxlength="6" name="agencia" id=""class =  "form-control {{$errors->has('agencia') ? 'is-invalid': '' }}"value =   {{old('agencia')}}>
+                 @if($errors->has('agencia'))
                         <div class="invalid-feedback">
                             {{$errors->first('agencia')}}
                         </div>
@@ -165,7 +165,7 @@
             <div class="form-group">
             
                 <label for="nome">Conta</label>
-                <input type="text"maxlength="13"  name="conta" id="" class = "form-control {{$errors->has('conta') ? 'is-invalid': '' }}" value =   {{old('conta')}}>
+                <input type="text"maxlength="8"  name="conta" id="" class = "form-control {{$errors->has('conta') ? 'is-invalid': '' }}" value =   {{old('conta')}}>
                     @if($errors->has('conta'))
                         <div class="invalid-feedback">
                             {{$errors->first('conta')}}
