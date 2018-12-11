@@ -28,13 +28,16 @@
      #detalheTop{
         margin-top: 5%;
      }
+     #nome{
+         position: initial;
+     }
    
 </style>
 @endsection
 
-@section('tela')
+@section('telaListarPaciente')
 
-<div class="container">
+
     <div>
 
         <h2 type="hiden"></h2>
@@ -43,21 +46,15 @@
     </div>
         <div class="container detalheTop">
    
-    {{--<p><strong> Nome:</strong> <span>{{ $evento->nome }}</span></p> --}}
-    
-        <div class="row">
-                <h3 class="aling-center">{{ $plano->nome }}</h3>
-
-        </div>
+            <h3 class="d-flex justify-content-center">{{ $plano->nome }}</h3>
     </div>
     <hr>
-</div>
 
-<div class="container">
+
     <form action="{{ route('procedimento.plano.assoc') }}" method="post">
                 @csrf 
                 <input type="hidden" name="plano_id" value="{{ $plano->id }}">
-
+            <div class="container-fluid">
             <div class="row justify-content-md-center">
 
                     <div class="form-group col-xl-5 col-md-4  col-lg-5 mb-4">
@@ -80,12 +77,12 @@
             <div class="row">
                             
             
-                        <div class="form-group col-xl-8 col-md-4  col-lg-5 mb-4">
+                        <div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4 justify-content-xl-start">
                             <label for="nome">novo procedimento</label>
-                            <input type="text" name="nomeProced" id="nome" maxlength="30" class="form-control">
+                            <input type="text" name="nomeProced" id="nome" maxlength="35" class="form-control">
                         </div>
 
-                            <div class="form-group col-xl-4 col-md-4  col-lg-5 mb-4">
+                            <div class="form-group col-xl-3 col-md-4  col-lg-5 mb-4">
                                     <label for="procedimentos">Especialidade</label>
                     
                                     <select name="especialidade_id" id="especialidade" class="form-control ">
@@ -104,9 +101,9 @@
                                     </div>
 
 
-                                    <div class="form-group col-xl-2 col-md-4  col-lg-5 mb-4">
+                                    <div class="form-group col-xl-1 col-md-4  col-lg-5 mb-4">
                                             <label for="nome">Preço</label>
-                                            <input type="text" name="ProcedPreco" id="nome" maxlength="30" class="form-control">
+                                            <input type="text" name="ProcedPreco" id="nome" maxlength="7" class="form-control">
                                         </div>
 
                        
@@ -120,15 +117,14 @@
                                 <a class="btn btn-outline-secondary" href="#" data-toggle="tooltip"
                                     data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
                                 </div>
-                                   
+            </div>      
                     
             </div>
 
     </form>
 
                
-                
-            </div> 
+          
         </div>
 
 
