@@ -32,9 +32,7 @@
 
 @section('tela')
 <div class="container dashboard">
-  <div id="adm">
-    <a href="#" class="btn btn-outline-primary">Administrador</a>
-  </div>
+ 
 <div class="row ">
     <div class="col-sm-4">
             <div class="card text-center" style="width: 18rem;">
