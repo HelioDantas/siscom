@@ -114,8 +114,8 @@
                         </div>
 
                         <div class="back">
-                                <a class="btn btn-outline-secondary" href="#" data-toggle="tooltip"
-                                    data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+                            <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+
                                 </div>
             </div>      
                     

@@ -140,10 +140,10 @@
                     <td>{{ $plano->nome }}</td>
                     <td>{{ $plano->status }}</td>
                     <td>
-                         <a href="{{ route('convenio.plano.assoc.delete',['delete' => $plano->id ]) }}"><i
-                                class="fas fa-trash"></i></a>
-                                
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">procedimentos</button>
+                         <a href="{{ route('convenio.plano.assoc.delete',['delete' => $plano->id ]) }}" class="btn btn-outline-primary" title="Inativar"><i
+                             class="fas fa-trash"></i></a>
+                              
+<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-example-modal-lg"  title="Procedimentos"><i class="fas fa-syringe"></i></button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
@@ -160,10 +160,7 @@
                              <th>codigo Tuss</th>
                              <th>descrição</th>
                              <th>preço </th>
-                             
 
-                           
-                           
                             </tr>
                          </thead>
                          <tbody>
@@ -173,8 +170,6 @@
                                  <td>{{ $pp->codTuss }}</td>
                                  <td>{{ $pp->descricao }}</td>
                                  <td>{{ $pp->pivot->precoPlano }}</td>
-                                 <td>
-                    
                              </tr>
                             @else
                             <tr>
