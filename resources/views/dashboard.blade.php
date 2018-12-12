@@ -47,7 +47,7 @@
             <div class="card text-center" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Agendamentos</h5>
-                      <p class="card-text">Consulte os horarios disponiveis e Agende uma nova conuslta </p>
+                      <p class="card-text">Consulte os horarios disponiveis e agende uma nova consulta </p>
                       <a href="#" class="btn btn-primary">Agendar</a>
                     </div>
                   </div>
@@ -56,7 +56,7 @@
         <div class="card text-center" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">Registros Clinicos</h5>
-                  <p class="card-text">Confira os regisros cadastrados no sistema </p>
+                  <p class="card-text">Confira os registros no sistema </p>
                   <a href="#" class="btn btn-primary">Consultar</a>
                 </div>
               </div>
