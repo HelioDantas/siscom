@@ -39,7 +39,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Agenda</h5>
                           <p class="card-text">histórico de agendamentos e agendamentos do dia </p>
-                          <a href="#" class="btn btn-primary">Consultar</a>
+                          <a href="{{ route('agenda.index') }}" class="btn btn-primary">Consultar</a>
                         </div>
                       </div>
         </div>
