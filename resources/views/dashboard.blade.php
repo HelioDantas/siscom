@@ -34,6 +34,15 @@
 <div class="container dashboard">
  
 <div class="row ">
+<div class="col-sm-4">
+                <div class="card text-center" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Agenda</h5>
+                          <p class="card-text">histórico de agendamentos e agendamentos do dia </p>
+                          <a href="#" class="btn btn-primary">Consultar</a>
+                        </div>
+                      </div>
+        </div>
     <div class="col-sm-4">
             <div class="card text-center" style="width: 18rem;">
                     <div class="card-body">
@@ -52,15 +61,7 @@
                 </div>
               </div>
 </div>
-<div class="col-sm-4">
-                <div class="card text-center" style="width: 18rem;">
-                        <div class="card-body">
-                          <h5 class="card-title">Agenda</h5>
-                          <p class="card-text">historico de Agendamentos passados , e agendamentos do dia </p>
-                          <a href="#" class="btn btn-primary">Consultar</a>
-                        </div>
-                      </div>
-        </div>
+
   
       
 
@@ -72,7 +73,9 @@
                                         <div class="card text-center" style="width: 18rem;">
                                                 <div class="card-body">
                                                   <h5 class="card-title">Pacientes</h5>
-                                                  <p class="card-text">Cadastre , vizualize , e atualize dados dos pacientes cadastrados </p>
+
+                                                  <p class="card-text">Cadastre, vizualize e atualize os pacientes cadastrados </p>
+
                                                   <a href="{{route('paciente.listar')}}"class="btn btn-primary">Pacientes</a>
                                                 </div>
                                               </div>
@@ -81,7 +84,8 @@
                                                 <div class="card text-center" style="width: 18rem;">
                                                         <div class="card-body">
                                                           <h5 class="card-title">Convenios</h5>
-                                                          <p class="card-text">Cadastre , vizualize , e atualize Convenios cadastrados </p>
+                                                          <p class="card-text">Cadastre, vizualize e atualize os convenios cadastrados </p>
+
                                                           <a href="{{route('convenio.listar')}}" class="btn btn-primary">Convenios</a>
                                                         </div>
                                                       </div>
@@ -90,11 +94,12 @@
                                                         <div class="card text-center" style="width: 18rem;">
                                                                 <div class="card-body">
                                                                   <h5 class="card-title">Funcionarios</h5>
-                                                                  <p class="card-text">Cadastre , vizualize , e atualize Funcionarios cadastrados </p>
+                                                                  <p class="card-text">Cadastre, vizualize e atualize funcionarios cadastrados </p>
+
                                                                   <a href="{{route('funcionario.listar')}}"class="btn btn-primary">Funcionarios</a>
                                                                 </div>
                                                               </div>
-                                                </div>
+                                            </div>
                    
                                                     
                                      
