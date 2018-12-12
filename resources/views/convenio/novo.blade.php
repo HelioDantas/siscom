@@ -123,7 +123,7 @@
         </div>
 
         <div class="col-xl-2 col-lg-4 col-md-4  mb-3">
-            <div class="form-group">
+            <div class="form-group date ">
             
                 <label for="nome">Adesão</label>
                 <input type="date" name="adesao" id=""class = "form-control {{$errors->has('adesao') ? 'is-invalid': '' }}" required value =   {{old('adesao')}}>
