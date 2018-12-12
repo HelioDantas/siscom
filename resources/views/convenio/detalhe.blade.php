@@ -91,7 +91,7 @@
                             <input type="text" name="nome" id="nome" maxlength="30" class="form-control">
                         </div>
 
-                        <input type="hidden" name="convenio_id" value="{{ $convenio->cnpj }}">
+                        <input type="hidden" name="convenio_id" value="{{ $convenio->id }}">
                         <div class="save">
                         <button id="Salvar" class="btn btn-outline-success" type="Submit" data-toggle="tooltip" data-placement="top"
                         title="Salvar"><i class="fas fa-plus-circle"></i></button>
