@@ -9,7 +9,7 @@ class AgendaController extends Controller
 {
 
     function index(){
-        return view('agenda.index');
+        return view('agenda.teste');
     }
 
 }

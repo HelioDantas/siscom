@@ -53,7 +53,7 @@ tbody {
 
 @section('tela')
     <hr>
-        <div class = 'container-fluid col-lg-10 corpo-paciente'>
+        <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
 
             <div class = '  '>
