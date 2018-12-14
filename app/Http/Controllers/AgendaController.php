@@ -28,7 +28,7 @@ class AgendaController extends Controller
     }
 
     
-    function desmarca($id){
+    function desmarcar($id){
 
             $agenda = Agenda::find($id);
             $agenda->delete();
