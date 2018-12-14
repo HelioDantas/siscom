@@ -75,6 +75,7 @@
                                 <label for="selectbasic">Medicos </label>
 
                                 <select id="medico" class = "form-control">
+                                 <option value="">selecione</option>    
                                 @foreach($especialidade as $e)
                                     <optgroup label="{{$e->nome}}">
                                         @foreach($e->Medico as $medico)
@@ -99,26 +100,13 @@
                     </div>
 
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
+
                         <table class="table table-hover">
                         <thead class="thead-dark">
                         <tr>
                             <th scope="col">horario      </th>
                             <th scope="col">paciente           </th>   
                             <th scope="col">procedimeno             </th>
-                     <!--        <th scope="col">nascimento      </th>
-                            <th scope="col">sexo            </th>
-                            <th scope="col">telefone        </th>
-                            <th scope="col">naturalidade    </th>
-                       <th scope="col">rua             </th>
-                            <th scope="col">numero          </th>
-                            <th scope="col">bairro          </th>
-                            <th scope="col">cep             </th>
-                            <th scope="col">cidade          </th>
-                            <th scope="col">estado          </th>
-                            <th scope="col">telefone        </th>
-                            <th scope="col">celular         </th>
-                            <th scope="col">email           </th>-->
-                           
                             <th scope="col">opções</th>
                         </tr>
                         </thead>
@@ -210,6 +198,7 @@
                         </tbody>
 
 
+
         </div>
       
 
@@ -225,16 +214,11 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
-<script>
-// When the user scrolls the page, execute myFunction 
-window.onscroll = function() {myFunction()};
 
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-}
+<script>
+
+ 
+
 </script>
     @endsection
 

@@ -12,6 +12,7 @@ class Agenda extends Model
     public $timestamps = false;
     protected $fillable = array('paciente','medico', );
 
+
     function getHorarios(){
         $horarios = [
             '08:00',
@@ -38,4 +39,5 @@ class Agenda extends Model
         ];
         return $horarios;
     }
+
 }
