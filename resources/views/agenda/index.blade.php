@@ -103,33 +103,36 @@
                         <table class="table table-hover ">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">matricula      </th>
-                                    <th scope="col">nome            </th>   
-                                    <th scope="col">cpf             </th>
+                                    <th scope="col">hora     </th>
+                                    <th scope="col">paciente          </th>   
+                                    <th scope="col">cpf            </th>
                                     <th scope="col">nascimento      </th>
                                     <th scope="col">sexo            </th>                                
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $cont = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 3,3,3,3,3,33) @endphp
-                                    @foreach ($cont as $p)
+                           
+                                  
                                     
                                     <tr >
-                                        <th scope="row">     {{$p}}aaaa  </th>
+                                        <th scope="row">     $cont  </th>
                         
-                                        <td scope="col" class="info-nome">  {{$p}}  aaa </td>
-                                        <td scope="col">       {{$p}} aaaa                </td>
+                                        <td scope="col" class="info-nome">  aaa </td>
+                                        <td scope="col">        aaaa                </td>
                                     
-                                        <td scope="col">       {{$p}}     aaaa           </td>
-                                        <td scope="col">       {{$p}}    aaa        </td>
-                                
+                                        <td scope="col">          aaaa           </td>
+                                        <td scope="col">           aaa        </td>
+                              
                                     </tr>
-                                @endforeach
+                           
                         </tbody>
                    
                       </table> 
                  </div>
-        
+                 <ol>
+  
+                </ol>
+        <button id="btn2">Prepend list item</button>
         </div>
 
 @endsection
@@ -139,16 +142,11 @@
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
-<script>
-// When the user scrolls the page, execute myFunction 
-window.onscroll = function() {myFunction()};
 
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-}
+<script>
+$(document).ready(function(){
+ 
+
 </script>
     @endsection
 

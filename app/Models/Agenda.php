@@ -13,4 +13,8 @@ class Agenda extends Model
     protected $fillable = array('paciente','medico', );
 
 
+
+
+
+
 }
