@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
-<<<<<<< HEAD
+
     @yield('links')
    <link rel="stylesheet" href="{{ URL::to('https://use.fontawesome.com/releases/v5.4.2/css/all.css') }}"
-=======
+
     <link rel="stylesheet" href="{{ URL::to('css/jquery.datetimepicker.min.css') }}">
 
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
->>>>>>> 208b18640b33c95b4a8bfb75f5c2d760aa9d7e72
-    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
 
     <title>SisCom</title>
     @yield('estilos')

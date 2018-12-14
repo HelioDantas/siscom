@@ -70,11 +70,11 @@ tbody {
 
                                 <label for="selectbasic">Medicos </label>
 
-                                <select class = "form-control">
+                                <select id="medico" class = "form-control">
                                 @foreach($especialidade as $e)
                                     <optgroup label="{{$e->nome}}">
                                         @foreach($e->Medico as $medico)
-                                             <option value="volvo">{{$medico->funcionario->nome}}</option>
+                                             <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
                                         @endforeach
                                     </optgroup>
                                  @endforeach
@@ -99,14 +99,14 @@ tbody {
                         <table class="table table-hover">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col">matricula      </th>
-                            <th scope="col">nome            </th>   
-                            <th scope="col">cpf             </th>
-                            <th scope="col">nascimento      </th>
+                            <th scope="col">horario      </th>
+                            <th scope="col">paciente           </th>   
+                            <th scope="col">procedimeno             </th>
+                     <!--        <th scope="col">nascimento      </th>
                             <th scope="col">sexo            </th>
                             <th scope="col">telefone        </th>
                             <th scope="col">naturalidade    </th>
-                <!--        <th scope="col">rua             </th>
+                       <th scope="col">rua             </th>
                             <th scope="col">numero          </th>
                             <th scope="col">bairro          </th>
                             <th scope="col">cep             </th>
@@ -120,39 +120,44 @@ tbody {
                         </tr>
                         </thead>
                         <tbody>
-                        @php $cont = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 3,3,3,3,3,33) @endphp
-                            @foreach ($cont as $p)
-                               
-                            <tr >
-                            <th scope="row">     {{$p}}  </th>
-            
-                            <td class="info-nome">  {{$p}}   </td>
-                            <td>       {{$p}}                 </td>
-                            <td>       </td>
-                            <td>       {{$p}}                </td>
-                            <td>       {{$p}}            </td>
-                            <td>       {{$p}}        </td>
-
                           
-                            <td>
-                            
-                         </td>
-
-
-                        </tr>
-                    @endforeach
                     </tbody>
                    
                 </table> 
                  </div>
         </div>
+      
         </div>
+        <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="container-fluid">
+                    <form>
+                       <div class="row">
+                           <div class="col">
+
+                            <input type="text" class="form-control">
+                           </div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                       </div>
+                       
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
 
 @endsection
 
     @section('scripts')
     
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 <script>
