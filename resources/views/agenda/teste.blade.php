@@ -55,8 +55,10 @@
             sideBySide: true,
             locale: 'js/pt-br'
         });
-    });
 
+        
+    });
+$('#datetimepicker').data("DateTimePicker").OPTION().enabledDates();
     
 </script>
 @endsection

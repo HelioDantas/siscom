@@ -23,7 +23,7 @@
      form{
          margin-left: 15%;
      }
-     h2{
+     .h2{
          text-align: center;
      }
      #detalheTop{
@@ -46,9 +46,16 @@ tbody {
  height: 400px;
  overflow: auto;
 }
-.crolltable { margin-top: 20px; height: 200px; overflow: auto; }
-.scrolltable th div { position: absolute; margin-top: -20px; }
-</style>
+.fixed_header tbody{
+  display:block;
+  overflow:auto;
+  height:200px;
+  width:100%;
+}
+.fixed_header thead tr{
+  display:block;
+}
+}</style>
 @endsection
 
 @section('tela')
@@ -58,27 +65,28 @@ tbody {
 
             <div class = '  '>
           
-                    <div class="col-md-4 mb-3 center">
+                        <div class="col-md-4 mb-3 center">
                             <div class="form-group ">
 
                                 <label for="selectbasic">Medicos </label>
 
-                                <select required id="escolaridade" name="escolaridade" class="form-control {{ $errors->has('escolaridade') ? 'is-invalid': ''  }}">
-                                    <option value="Fundamental Incompleto">Medico1</option>
-                                    <option value="Fundamental Incompleto">Medico2</option>
-                                    <option value="Fundamental Incompleto">Medico3</option>
-                                    <option value="Fundamental Incompleto">Medico4</option>
-                                    <option value="Fundamental Incompleto">Medico5</option>
-                                </select>
-                            
+                                <select class = "form-control">
+                                @foreach($especialidade as $e)
+                                    <optgroup label="{{$e->nome}}">
+                                        @foreach($e->Medico as $medico)
+                                             <option value="volvo">{{$medico->funcionario->nome}}</option>
+                                        @endforeach
+                                    </optgroup>
+                                 @endforeach
+                                 </select>
                             </div>
                         </div>
                
 
                
-                        <div class="form-group   col-md-3 mb-3 center">
+                        <div class="form-group  col-md-3 mb-3 center">
                             <label for="nome">Data</label>
-                            <input type="date" name="nome" id="nome"  maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+                            <input type="date" name="nome" id="nome"   value = document.querySelector('input[type="date"]') maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
                             @if(!empty($p)) value = "{{$p->nome}}" @else value = {{old('nome')}} @endif>
 
                         </div>
