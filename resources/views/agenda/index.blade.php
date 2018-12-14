@@ -123,6 +123,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                                @php $countt= 0; @endphp
                           @if (isset($horarios))
                           @php $count=0; @endphp
                               @foreach ($horarios as $h)
@@ -131,18 +132,79 @@
                                     @if (!empty($agendamentos[$count]) && $h ==  $agendamentos[$count]->hora)
                                     <td>{{ $agendamentos[$count]->paciente }}</td>
                                     <td>{{ $agendamentos[$count]->cpf }}</td>
+                                
                                     @else
                                     <td></td>
                                     <td></td>
+                                  
                                     @php $count++; @endphp
                                     @endif
-                                   
-                                      <td id="btnCad"><a class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example-modal-xl" title="cadastrar">
+                                    @php $countt++; @endphp
+                                      <td id="btnCad"><a class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example-modal-x{{ $countt }}" title="cadastrar">
                                             <i class="fas fa-plus-circle"></i></a>
                                          </td>
-                                  </tr>
+                                  
+
+                                   
+                                  <div class="modal fade bd-example-modal-x{{ $countt }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-x{{ $countt }}">
+                                          <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                <form>
+                                                    <div class="form-row">
+                                                      <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">primeiro Nome</label>
+                                                        <input type="text" class="form-control" id="inputEmail4" placeholder="nome">
+                                                      </div>
+                                                      <div class="form-group col-md-6">
+                                                        <label for="inputPassword4">cpf</label>
+                                                        <input type="text" class="form-control" id="inputPassword4" placeholder="cpf">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="inputAddress">horario</label>
+                                                      <input type="text" class="form-control" id="inputAddress" value="{{ $h }}" >
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="inputAddress2">procedimento</label>
+                                                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                                    </div>
+                                                    <div class="form-row">
+                                                      <div class="form-group col-md-6">
+                                                        <label for="inputCity">Medico</label>
+                                                        <input type="text" class="form-control" id="inputCity"  @if(isset($med)) value="{{$med->funcionario->nome}}" @else value ="n tem" @endif>
+                                                      </div>
+                                                      <div class="form-group col-md-4">
+                                                        <label for="inputState">State</label>
+                                                        <select id="inputState" class="form-control">
+                                                          <option selected>Choose...</option>
+                                                          <option>...</option>
+                                                        </select>
+                                                      </div>
+                                                      <div class="form-group col-md-2">
+                                                        <label for="inputZip">Zip</label>
+                                                        <input type="text" class="form-control" id="inputZip">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                        <label class="form-check-label" for="gridCheck">
+                                                          Check me out
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                                  </form>
+                                            </div>
+                                            </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </tr>
                               @endforeach
-                          @else
+                        
                               
                           @endif
                         </tbody>
@@ -152,63 +214,7 @@
       
 
         </div>
-        <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-body">
-                    <div class="container-fluid">
-                    <form>
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="inputEmail4">primeiro Nome</label>
-                            <input type="text" class="form-control" id="inputEmail4" placeholder="nome">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputPassword4">cpf</label>
-                            <input type="text" class="form-control" id="inputPassword4" placeholder="cpf">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress">horario</label>
-                          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress2">procedimento</label>
-                          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="inputCity">Medico</label>
-                            <input type="text" class="form-control" id="inputCity"  @if(isset($med)) value="{{$med->nome}}" @else value ="n tem" @endif>
-                          </div>
-                          <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                              <option selected>Choose...</option>
-                              <option>...</option>
-                            </select>
-                          </div>
-                          <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                              Check me out
-                            </label>
-                          </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-                      </form>
-                </div>
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
+       
 
 @endsection
 

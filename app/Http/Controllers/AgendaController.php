@@ -21,7 +21,7 @@ class AgendaController extends Controller
         return view('agenda.index', compact('especialidade'));
     }
 
-    function index2($medicoId){
+    function index2( $medicoId  = ""){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
         //return dd($especialidade);
