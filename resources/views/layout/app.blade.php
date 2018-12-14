@@ -17,7 +17,8 @@
 
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    @yield('links')
+   <link rel="stylesheet" href="{{ URL::to('https://use.fontawesome.com/releases/v5.4.2/css/all.css') }}"
     integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 
     <title>SisCom</title>
@@ -202,7 +203,6 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/mascara.js') }}"></script>
-
     <script>
 		setInterval(function() {
 			clock.innerHTML = ((new Date).toLocaleString().substr(11, 8));
