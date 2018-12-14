@@ -75,6 +75,8 @@ Route::get('editarteste/{id}', 'PacienteController@edit')->name('paciente.editar
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
 Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
+Route::get('/get/medico/{medicoId}', 'AgendaController@index2')->middleware('Autorizador');
+
 
 //Route::resource('/pacientes', 'PacienteController');
 

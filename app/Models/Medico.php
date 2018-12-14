@@ -93,6 +93,7 @@ class Medico extends Model
             '17:30',
             '18:00',
         ];
+        return $horarios;
     }
 
 }
