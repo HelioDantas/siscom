@@ -12,4 +12,5 @@ class Agenda extends Model
     public $timestamps = false;
     protected $fillable = array('paciente','medico', );
 
+
 }

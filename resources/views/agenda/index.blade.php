@@ -66,7 +66,7 @@ tbody {
             <div class = '  '>
           
                         <div class="col-md-4 mb-3 center">
-                            <div class="form-group ">
+                            <div class="">
 
                                 <label for="selectbasic">Medicos </label>
 
@@ -84,7 +84,7 @@ tbody {
                
 
                
-                        <div class="form-group  col-md-3 mb-3 center">
+                        <div class="  col-md-3 mb-3 center">
                             <label for="nome">Data</label>
                             <input type="date" name="nome" id="nome"   value = document.querySelector('input[type="date"]') maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
                             @if(!empty($p)) value = "{{$p->nome}}" @else value = {{old('nome')}} @endif>
