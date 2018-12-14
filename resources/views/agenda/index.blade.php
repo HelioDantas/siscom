@@ -31,30 +31,34 @@
      }
    .center{
         margin: auto;
-  width: 50%;
+    width: 50%;
 
-  padding: 10px;
- text-align: center;
+    padding: 10px;
+    text-align: center;
 
    }
    .row{
 
       text-align: center; 
    }
-tbody {
- width: 200px;
- height: 400px;
- overflow: auto;
-}
-.fixed_header tbody{
+
+.fixed_header {
   display:block;
   overflow:auto;
-  height:200px;
-  width:100%;
+ 
+  height:20rem;
+
+  
+ 
 }
-.fixed_header thead tr{
-  display:block;
+.fixed_header header {
+
+
+ 
 }
+
+
+
 }</style>
 @endsection
 
@@ -66,7 +70,7 @@ tbody {
             <div class = '  '>
           
                         <div class="col-md-4 mb-3 center">
-                            <div class="form-group ">
+                            <div class="">
 
                                 <label for="selectbasic">Medicos </label>
 
@@ -84,7 +88,7 @@ tbody {
                
 
                
-                        <div class="form-group  col-md-3 mb-3 center">
+                        <div class="  col-md-3 mb-3 center">
                             <label for="nome">Data</label>
                             <input type="date" name="nome" id="nome"   value = document.querySelector('input[type="date"]') maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
                             @if(!empty($p)) value = "{{$p->nome}}" @else value = {{old('nome')}} @endif>
@@ -93,9 +97,8 @@ tbody {
                     
 
                     </div>
-     
-                    <div class="card-body header">
-                    <div class="table-responsive scrolltable" style="overflow-y:auto;">  
+
+                    <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
                         <table class="table table-hover">
                         <thead class="thead-dark">
                         <tr>
@@ -121,12 +124,13 @@ tbody {
                         </thead>
                         <tbody>
                           
-                    </tbody>
-                   
-                </table> 
-                 </div>
+                        </tbody>
+
+        
+
         </div>
       
+
         </div>
         <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
