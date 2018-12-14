@@ -74,11 +74,12 @@
 
                                 <label for="selectbasic">Medicos </label>
 
-                                <select class = "form-control">
+                                <select id="medico" class = "form-control">
+                                 <option value="">selecione</option>    
                                 @foreach($especialidade as $e)
                                     <optgroup label="{{$e->nome}}">
                                         @foreach($e->Medico as $medico)
-                                             <option value="volvo">{{$medico->funcionario->nome}}</option>
+                                             <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
                                         @endforeach
                                     </optgroup>
                                  @endforeach
@@ -97,54 +98,64 @@
                     
 
                     </div>
-     
-                   
+
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
-                        <table class="table table-hover ">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">hora     </th>
-                                    <th scope="col">paciente          </th>   
-                                    <th scope="col">cpf            </th>
-                                    <th scope="col">nascimento      </th>
-                                    <th scope="col">sexo            </th>                                
-                                </tr>
-                            </thead>
-                            <tbody>
-                           
-                                  
-                                    
-                                    <tr >
-                                        <th scope="row">     $cont  </th>
-                        
-                                        <td scope="col" class="info-nome">  aaa </td>
-                                        <td scope="col">        aaaa                </td>
-                                    
-                                        <td scope="col">          aaaa           </td>
-                                        <td scope="col">           aaa        </td>
-                              
-                                    </tr>
-                           
+
+                        <table class="table table-hover">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">horario      </th>
+                            <th scope="col">paciente           </th>   
+                            <th scope="col">procedimeno             </th>
+                            <th scope="col">opções</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          
                         </tbody>
-                   
-                      </table> 
-                 </div>
-                 <ol>
-  
-                </ol>
-        <button id="btn2">Prepend list item</button>
+
+        
+
+
         </div>
+      
+
+        </div>
+        <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="container-fluid">
+                    <form>
+                       <div class="row">
+                           <div class="col">
+
+                            <input type="text" class="form-control">
+                           </div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                           <div class="col"></div>
+                       </div>
+                       
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
 
 @endsection
 
     @section('scripts')
     
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
 <script>
-$(document).ready(function(){
+
  
 
 </script>
