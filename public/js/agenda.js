@@ -19,9 +19,7 @@
   
 $('#medico').change(function(){
     var medico = this.value;
-    console.log(medico);
-
-    location.href = '/get/medico/'+ medico;
+    location.href = '/agd/medico/' + medico;
   
 });
   
