@@ -46,10 +46,10 @@ class AgendaController extends Controller
 
     
     function desmarcar(Request $request){
-        return dd($request);
+     //   return dd($request);
         $id = $request['id'];
   
-             return dd($id);
+           //  return dd($id);
             $agenda = Agenda::find($id);
             $agenda->delete();
 

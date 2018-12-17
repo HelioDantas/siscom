@@ -27,3 +27,14 @@ $('#medico').change(function(){
   
 
 
+ $('#delete').on('show.bs.modal', function(event){
+  console.log(id);
+   var button = $(event.relatedTarget);
+   var  id = button.data('catid');
+   console.log(id);
+   var modal = $(this);
+   modal.find('.modal-body #id').val(id);
+
+
+
+ });
