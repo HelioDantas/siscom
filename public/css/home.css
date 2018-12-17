@@ -161,7 +161,11 @@ ul li{
 .invisivel{
     display: none;
 }
+.pagina{
+    padding:1rem;
+    float: right;
 
+}
 
 .titulopacientes{
 	display:inline-table;

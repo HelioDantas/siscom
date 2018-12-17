@@ -168,6 +168,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::get('index', 'AgendaController@index')->name('agenda.index');
+     Route::post('desmarcar', 'AgendaController@desmarcar')->name('agenda.desmarcar');
+
 });
 
 

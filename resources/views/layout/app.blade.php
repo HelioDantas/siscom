@@ -164,9 +164,9 @@
 
               </ul>
             </div>
-              <span class="navbar-text " id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
+              <span class="navbar-text my-2 my-sm-0 pagina" id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
 
-                <span class="navbar-text " id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
+                <span class="navbar-text my-2 my-sm-0  pagina" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 

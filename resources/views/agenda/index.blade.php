@@ -23,9 +23,7 @@
      form{
          margin-left: 15%;
      }
-     .h2{
-         text-align: center;
-     }
+   
      #detalheTop{
         margin-top: 5%;
      }
@@ -106,9 +104,10 @@
                         <thead class="thead-dark">
                         <tr>
                             <th scope="col">horario      </th>
-                            <th scope="col">paciente           </th>   
-                            <th scope="col">procedimeno             </th>
-                            <th scope="col">opções</th>
+                            <th scope="col">paciente     </th>   
+                        
+                            <th scope="col">cpf          </th>
+                            <th scope="col">opções       </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -116,21 +115,50 @@
                         
                               @foreach ($agendamentos as $h)
                                   <tr>
+                                      <td>{{ $h->hora }}</td>
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
-                                      <td>{{ $h->data }}</td>
-                                      <td id="btnCad">  </td>
+                                     
+                               
                                   
                                    
-                                 
-                                    </tr>
+                                 <td>  
+                                               
+                                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
+                                    <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalCenterTitle">Exclusão</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                             Desmarcar consulta do paciente {{$h->paciente}}?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} @csrf
+                                                            
+                                                            <input type = "hidden" id = "id" name = "id" valeu = {{ $h->id }} >
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"  data-toggle="tooltip" data-placement="top" title="excluir">excluir</button>
+                                                                  {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>  
+                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
+
+                                 </td>
+                              </tr>
                               @endforeach
                         
                               
                           @endif
                         </tbody>
                         </table>
-                        <div>
+                        </div>
+
                          <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-x">
                                           <div class="modal-content">
@@ -149,7 +177,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="inputAddress">horario</label>
-                                                      <input type="text" class="form-control" id="inputAddress" value="{{ $h }}" >
+                                                      <input type="text" class="form-control" id="inputAddress" value="" >
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="inputAddress2">procedimento</label>
