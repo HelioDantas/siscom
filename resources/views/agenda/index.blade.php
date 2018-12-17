@@ -139,9 +139,12 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                 {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} @csrf
-                                                            
-                                                            <input type = "hidden" id = "id" name = "id" valeu = {{ $h->id }} >
-                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"  data-toggle="tooltip" data-placement="top" title="excluir">excluir</button>
+                                                          
+                                                                {{ method_field('DELETE') }}
+
+                                                            <input type = "hidden" id = "id" name = "_method" valeu = "{{ $h->id }}" >
+                                                              <input type = "hidden" id = "id" name = "idcc" valeu = "{{ $h->id }}" >
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"  valeu = "{{ $h->id }}" data-toggle="tooltip" data-placement="top" title="excluir">excluir</button>
                                                                   {!! Form::close() !!}
                                                         </div>
                                                     </div>
