@@ -114,7 +114,7 @@
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
-                       <a href="{{route('convenio.novo')}}">Cadastrar</a>
+                       <a href="{{ route('agenda.index') }}">Agenda</a>
                       <a href="">Pesquisar</a>
                       <a href="{{route('convenio.editar')}}">Alterar</a>
                     </div>
@@ -124,8 +124,9 @@
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
+                    
                     <div class="dropdown-content">
-
+                      <a href="{{ route('agenda.index') }}">Agendar</a>
                     </div>
                   </div>
                 </li>

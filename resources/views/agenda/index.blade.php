@@ -98,7 +98,8 @@
                     
 
                     </div>
-
+                    <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="cadastrar">
+                                            <i class="fas fa-plus-circle"></i></a>
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
 
                         <table class="table table-hover">
@@ -111,31 +112,27 @@
                         </tr>
                         </thead>
                         <tbody>
-                                @php $countt= 0; @endphp
-                          @if (isset($horarios))
-                          @php $count=0; @endphp
-                              @foreach ($horarios as $h)
+                            @if (isset($agendamentos))
+                        
+                              @foreach ($agendamentos as $h)
                                   <tr>
-                                      <td>{{ $h }}</td>
-                                    @if (!empty($agendamentos[$count]) && $h ==  $agendamentos[$count]->hora)
-                                    <td>{{ $agendamentos[$count]->paciente }}</td>
-                                    <td>{{ $agendamentos[$count]->cpf }}</td>
-                                
-                                    @else
-                                    <td></td>
-                                    <td></td>
+                                      <td>{{ $h->paciente }}</td>
+                                      <td>{{ $h->cpf }}</td>
+                                      <td>{{ $h->data }}</td>
+                                      <td id="btnCad">  </td>
                                   
-                                    @php $count++; @endphp
-                                    @endif
-                                    @php $countt++; @endphp
-                                      <td id="btnCad"><a class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example-modal-x{{ $countt }}" title="cadastrar">
-                                            <i class="fas fa-plus-circle"></i></a>
-                                         </td>
-                                  
-
                                    
-                                  <div class="modal fade bd-example-modal-x{{ $countt }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-x{{ $countt }}">
+                                 
+                                    </tr>
+                              @endforeach
+                        
+                              
+                          @endif
+                        </tbody>
+                        </table>
+                        <div>
+                         <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-x">
                                           <div class="modal-content">
                                             <div class="modal-body">
                                                 <div class="container-fluid">
@@ -189,14 +186,6 @@
                                             </div>
                                             </div>
                                           </div>
-                                        </div>
-                                    </tr>
-                              @endforeach
-                        
-                              
-                          @endif
-                        </tbody>
-
 
 
         </div>

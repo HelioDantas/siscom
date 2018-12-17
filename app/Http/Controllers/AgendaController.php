@@ -24,11 +24,12 @@ class AgendaController extends Controller
     function index2( $medicoId  = ""){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
-        //return dd($especialidade);
+        //return dd($medicoId);
         $med = Medico::find($medicoId);
      
         $horarios = $this->horarios;
-        $agendamentos = Agenda::all();
+        $agendamentos = Agenda::where('idMedico',$medicoId)->get();
+               // return dd($agendamentos);
        
         return view('agenda.index', compact('especialidade','horarios','agendamentos','med'));
     }
@@ -57,7 +58,7 @@ class AgendaController extends Controller
 
     function remarcar(Request $request , $id){
 
-        $this->desmarca($id);
+        $this->desmarcar($id);
         $this->remarcar($request, $id);
 
         return back();
