@@ -75,7 +75,6 @@ Route::get('editarteste/{id}', 'PacienteController@edit')->name('paciente.editar
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
 Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
-Route::get('/get/medico/{medicoId?}', 'AgendaController@index2')->middleware('Autorizador');
 
 
 //Route::resource('/pacientes', 'PacienteController');
@@ -168,9 +167,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::get('index', 'AgendaController@index')->name('agenda.index');
+
      Route::post('desmarcar', 'AgendaController@desmarcar')->name('agenda.desmarcar');
 
+
 });
+
+Route::get('agd/medico/{medicoId?}', 'AgendaController@index')->middleware('Autorizador');
 
 
 
