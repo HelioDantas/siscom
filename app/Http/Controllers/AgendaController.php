@@ -40,8 +40,11 @@ class AgendaController extends Controller
     }
 
     
-    function desmarcar($id){
-
+    function desmarcar(Request $request){
+        return dd($request);
+        $id = $request['id'];
+  
+             return dd($id);
             $agenda = Agenda::find($id);
             $agenda->delete();
 

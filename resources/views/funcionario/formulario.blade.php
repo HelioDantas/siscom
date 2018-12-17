@@ -573,7 +573,7 @@
         <td>
             <div class="checkbox">
 
-                    <input name = "$p[]" type="checkbox" value= {{$plano->id }}
+                    <input name = "$p[]" type="checkbox" value= {{$plano->id }}>
                      </div>
 
 
