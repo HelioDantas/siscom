@@ -104,8 +104,8 @@
                                             <i class="fas fa-plus-circle"></i></a>
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
 
-                        <table class="table table-hover">
-                        <thead class="thead-dark">
+                        <table class="table table-striped">
+                        <thead class="thead-light">
                         <tr>
                             <th scope="col">horario      </th>
                             <th scope="col">paciente     </th>   
