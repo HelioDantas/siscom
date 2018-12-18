@@ -17,11 +17,15 @@
      
      }
      .lista{
-         margin-top: 2rem;
+         margin-top: 1rem;
          text-align: center;
      }
      form{
          margin-left: 15%;
+     }
+     input{
+
+            text-align: center;
      }
    
      #detalheTop{
@@ -68,8 +72,9 @@
     <hr>
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
-
-            <div class = '  '>
+            <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
+           
+            <div class = ' lista '>
             
                         <div class="col-md-4 mb-3 center">
                            {{old('medico') }}
@@ -77,8 +82,9 @@
                                 <label for="selectbasic">Medicos </label>
 
                                 <select id="medico" name = 'medico' class = "form-control" value = {{old('medico')}}>  
-                                 <option value="">selecione</option>  
-                              
+                                    @if(empty($medicoId))
+                                    <option value="">selecione</option>  
+                                  @endif
                                 @foreach($especialidade as $e)
                                     <optgroup label="{{$e->nome}}">
                                         @foreach($e->Medico as $medico)
@@ -105,7 +111,7 @@
                     
 
                     </div>
-                    <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
+                    
 
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
 

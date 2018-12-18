@@ -24,10 +24,10 @@ class AgendaController extends Controller
      
         $horarios = $this->horarios;
         //Opção com buscar por medico e data 
-      //  $agendamentos = Agenda::where('idMedico',$medicoId)->where('data', $date)->get();
+        $agendamentos = Agenda::where('idMedico',$medicoId)->where('data', $date)->get();
 
       //Opção para teste
-        $agendamentos = Agenda::where('idMedico',$medicoId)->get();
+       // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
                // return dd($agendamentos);
        
 
