@@ -81,7 +81,7 @@
 
                                 <label for="selectbasic">Medicos </label>
 
-                                <select id="medico" name = 'medico' class = "form-control" value = {{old('medico')}}>  
+                                <select id="medico" name = 'medico' class = "form-control" value = {{old('medico')}} >  
                                     @if(empty($medicoId))
                                     <option value="">selecione</option>  
                                   @endif
@@ -122,6 +122,9 @@
                             <th scope="col">paciente     </th>   
                         
                             <th scope="col">cpf          </th>
+                             <th scope="col">telefone     </th> 
+                              <th scope="col">celular     </th>     
+                         
                             <th scope="col">opções       </th>
                         </tr>
                         </thead>
@@ -133,7 +136,8 @@
                                       <td>{{ $h->hora }}</td>
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
-                                     
+                                      <td>{{ $h->telefone }}</td>
+                                       <td>{{ $h->celular }}</td>
                                       
                                   
                                    
@@ -264,8 +268,8 @@
                             <div class="row">
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="preco">Cpf</label>
-                                          <input type="text" class="form-control" placeholder="" name="cpf" required>
+                                          <label for="preco">Cpf</label >
+                                          <input type="text" class="form-control" placeholder="" name="cpf" required autofocus>
                                       </div>
                                   </div>
                                   <div class="col-md-6">
