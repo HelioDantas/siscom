@@ -124,7 +124,7 @@
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
                                      
-                               
+                                      
                                   
                                    
                                  <td>  
@@ -132,7 +132,7 @@
                                                 <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     <!-- Modal -->
                                     
-                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
+                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a>
 
                                  </td>
                               </tr>
@@ -160,7 +160,7 @@
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                               
                                                              
-                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">excluir</button>
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Desmarcar</button>
                                                                   {!! Form::close() !!}
                                                         </div>
                                                     </div>
