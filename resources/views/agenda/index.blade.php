@@ -98,14 +98,14 @@
                
                         <div class="  col-md-3 mb-3 center">
                             <label for="data">Data</label>
-                            <input type="date" name="data" id="data"   value = {{old('data')}} maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}" placeholder="data">
+                            <input type="date" name="data" id="data"    maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}"   value="2017-06-01"  >
 
                         </div>
                     
 
                     </div>
-                    <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="cadastrar">
-                                            <i class="fas fa-plus-circle"></i></a>
+                    <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
+
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
 
                         <table class="table table-striped">
