@@ -70,20 +70,23 @@
            <h4 class="center textocenter">Agenda</h4>
 
             <div class = '  '>
-          
+            
                         <div class="col-md-4 mb-3 center">
-                           
+                           {{old('medico') }}
 
                                 <label for="selectbasic">Medicos </label>
 
-                                <select id="medico" class = "form-control">  {{old('nome')}}
+                                <select id="medico" name = 'medico' class = "form-control" value = {{old('medico')}}>  
                                  <option value="">selecione</option>  
-
-                                 <option value={{old('medico->funcionario->matricula')}}>{{old('medico->funcionario->nome')}}</option>
+                              
                                 @foreach($especialidade as $e)
                                     <optgroup label="{{$e->nome}}">
                                         @foreach($e->Medico as $medico)
-                                             <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                          @if($medicoId == $medico->funcionario->matricula)
+                                             <option selected value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                             @else
+                                                 <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                            @endif
                                         @endforeach
                                     </optgroup>
                                  @endforeach
@@ -95,7 +98,7 @@
                
                         <div class="  col-md-3 mb-3 center">
                             <label for="data">Data</label>
-                            <input type="date" name="data" id="data"  v value = {{old('data')}} maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}" placeholder="data">
+                            <input type="date" name="data" id="data"   value = {{old('data')}} maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}" placeholder="data">
 
                         </div>
                     

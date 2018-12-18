@@ -26,8 +26,10 @@ class AgendaController extends Controller
         $agendamentos = Agenda::where('idMedico',$medicoId)->get();
                // return dd($agendamentos);
        
-        return view('agenda.index', compact('especialidade','horarios','agendamentos','med'));
+        return view('agenda.index', compact('especialidade','horarios','agendamentos','med', 'medicoId'));
     }
+
+
 
 
     function agendar(Request $request){
