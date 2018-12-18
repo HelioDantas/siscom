@@ -28,11 +28,12 @@
         margin-top: 5%;
      }
    .center{
-        margin: auto;
+     margin: auto;
     width: 50%;
-
     padding: 10px;
+    padding-top: 0;
     text-align: center;
+    padding-bottom: 0;
 
    }
    .row{
@@ -44,7 +45,7 @@
   display:block;
   overflow:auto;
  
-  height:30rem;
+  height:33rem;
 
   
  
@@ -71,7 +72,7 @@
             <div class = '  '>
           
                         <div class="col-md-4 mb-3 center">
-                            <div class="">
+                           
 
                                 <label for="selectbasic">Medicos </label>
 
@@ -87,7 +88,7 @@
                                     </optgroup>
                                  @endforeach
                                  </select>
-                            </div>
+                           
                         </div>
                
 
