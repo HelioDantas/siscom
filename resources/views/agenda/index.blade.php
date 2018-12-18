@@ -172,7 +172,7 @@
 
 
                         
-                       <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                  {{--     <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-x">
                                           <div class="modal-content">
                                             <div class="modal-body">
@@ -241,7 +241,7 @@
                                           </div>
 
 
-        </div> -->
+        </div> -->--}}
 
         <form>
             <div class="modal fade bd-example-modal-x" id="create">
