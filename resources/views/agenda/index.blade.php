@@ -93,12 +93,13 @@
                                  </select>
                            
                         </div>
-               
+             
 
                
                         <div class="  col-md-3 mb-3 center">
                             <label for="data">Data</label>
-                            <input type="date" name="data" id="data"    maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}"   value="2017-06-01"  >
+                            <input type="date" name="data" id="data"    maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}"   
+                             @if(empty($date) && $date == "" ) value= '<?php echo date("Y-m-d"); ?>' @else value = {{ $date}}@endif>
 
                         </div>
                     
@@ -373,10 +374,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
-<script>
 
-
-</script>
     @endsection
 
 

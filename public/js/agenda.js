@@ -16,13 +16,22 @@
     });
 
 */
-  
+    
 $('#medico').change(function(){
     var medico = this.value;
-    location.href = '/agd/medico/' + medico;
+    
+    var date = document.getElementById('data').value;
+    
+    location.href = '/agd/medico/' + medico +'/' +date;
   
 });
   
+$("#data").change(function(){
+               var medico = document.getElementById('medico').value;
+                var date = this.value;
+
+         location.href = '/agd/medico/' + medico +'/' +date; 
+     });
 
 
  $('#delete').on('show.bs.modal', function(event){
