@@ -104,8 +104,8 @@
                                             <i class="fas fa-plus-circle"></i></a>
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
 
-                        <table class="table table-hover">
-                        <thead class="thead-dark">
+                        <table class="table table-striped">
+                        <thead class="thead-light">
                         <tr>
                             <th scope="col">horario      </th>
                             <th scope="col">paciente     </th>   
@@ -163,78 +163,7 @@
                               
                           @endif
                         </tbody>
-                        </table>
-<<<<<<< HEAD
-                        
-                       <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-x">
-                                          <div class="modal-content">
-                                            <div class="modal-body">
-                                               @component('components.formAgenda')
-                                                   
-                                               @endcomponent
-=======
-                        </div>
-
-                         <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-x">
-                                          <div class="modal-content">
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                <form>
-                                                    <div class="form-row">
-                                                      <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">primeiro Nome</label>
-                                                        <input type="text" class="form-control" id="inputEmail4" placeholder="nome">
-                                                      </div>
-                                                      <div class="form-group col-md-6">
-                                                        <label for="inputPassword4">cpf</label>
-                                                        <input type="text" class="form-control" id="inputPassword4" placeholder="cpf">
-                                                      </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                      <label for="inputAddress">horario</label>
-                                                      <input type="text" class="form-control" id="inputAddress" value="" >
-                                                    </div>
-                                                    <div class="form-group">
-                                                      <label for="inputAddress2">procedimento</label>
-                                                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                                                    </div>
-                                                    <div class="form-row">
-                                                      <div class="form-group col-md-6">
-                                                        <label for="inputCity">Medico</label>
-                                                        <input type="text" class="form-control" id="inputCity"  @if(isset($med)) value="{{$med->funcionario->nome}}" @else value ="n tem" @endif>
-                                                      </div>
-                                                      <div class="form-group col-md-4">
-                                                        <label for="inputState">State</label>
-                                                        <select id="inputState" class="form-control">
-                                                          <option selected>Choose...</option>
-                                                          <option>...</option>
-                                                        </select>
-                                                      </div>
-                                                      <div class="form-group col-md-2">
-                                                        <label for="inputZip">Zip</label>
-                                                        <input type="text" class="form-control" id="inputZip">
-                                                      </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                      <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                        <label class="form-check-label" for="gridCheck">
-                                                          Check me out
-                                                        </label>
-                                                      </div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Sign in</button>
-                                                  </form>
-                                            </div>
->>>>>>> 3ef6559e40e3e7855af5765484f58a389fca76a3
-                                            </div>
-                                            </div>
-                                          </div>
-
-
-        </div> -->
+                    </table>
 
         <form>
             <div class="modal fade bd-example-modal-x" id="create">
