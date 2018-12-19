@@ -26,6 +26,20 @@ $('#medico').change(function(){
   
 });
   
+$('#especialidade').change(function(){
+    let especialidade_id = this.value;
+    console.log(especialidade_id);
+
+    $.getJSON('get/med/' +especialidade_id , function(medicos){
+        p = medicos;
+        $('select[id=medicos]').empty();        
+        $.each(p, function(key,value){
+            $('select[id=medicos]').append('<option value=' + value.funcionario.matricula + '>' + value.funcionario.nome + '</option>')
+        })
+    })
+})
+
+
 $("#data").change(function(){
                var medico = document.getElementById('medico').value;
                 var date = this.value;
