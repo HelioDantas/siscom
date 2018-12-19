@@ -100,7 +100,7 @@
             <div class="form-group">
         
                 <label for="nome">CNPJ</label>
-                <input type="text" name="cnpj" id="cnpj" class = "form-control {{$errors->has('cnpj') ? 'is-invalid': '' }}" required maxlength="17" value =   {{old('cnpj')}}>
+                <input type="text" name="cnpj" id="cnpj" class = "form-control {{$errors->has('cnpj') ? 'is-invalid': '' }}" required maxlength="17" value =   {{old('cnpj')}} autofocus>
                  @if($errors->has('cnpj'))
                         <div class="invalid-feedback">
                             {{$errors->first('cnpj')}}

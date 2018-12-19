@@ -93,8 +93,8 @@
 
     <div class="form-group col-md-3 mb-2">
         <span for="nome">Nome</span>
-        <input type="text" name="nome" id="nome"  maxlength="53" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
-        value =   {{old('nome')}}>
+        <input type="text" name="nome" id="nome"  maxlength="53" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required autofocus
+        value =   {{old('nome')}} >
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">

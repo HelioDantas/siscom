@@ -16,18 +16,25 @@ class AgendaController extends Controller
 
   
 
-    function index( $medicoId  = ""){
+    function index( $medicoId  = "", $date = ""){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
-        //return dd($medicoId);
+        //return dd($date);
         $med = Medico::find($medicoId);
      
         $horarios = $this->horarios;
-        $agendamentos = Agenda::where('idMedico',$medicoId)->get();
+        //Opção com buscar por medico e data 
+        $agendamentos = Agenda::where('idMedico',$medicoId)->where('data', $date)->get();
+
+      //Opção para teste
+       // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
                // return dd($agendamentos);
        
-        return view('agenda.index', compact('especialidade','horarios','agendamentos','med'));
+
+        return view('agenda.index', compact('especialidade','horarios','agendamentos','med', 'medicoId', 'date'));
     }
+
+
 
 
     function agendar(Request $request){
@@ -41,10 +48,10 @@ class AgendaController extends Controller
 
     
     function desmarcar(Request $request){
-        return dd($request);
+     //   return dd($request);
         $id = $request['id'];
   
-             return dd($id);
+           //  return dd($id);
             $agenda = Agenda::find($id);
             $agenda->delete();
 

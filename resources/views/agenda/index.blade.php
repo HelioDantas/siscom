@@ -17,22 +17,27 @@
      
      }
      .lista{
-         margin-top: 2rem;
+         margin-top: 1rem;
          text-align: center;
      }
      form{
          margin-left: 15%;
+     }
+     input{
+
+            text-align: center;
      }
    
      #detalheTop{
         margin-top: 5%;
      }
    .center{
-        margin: auto;
+     margin: auto;
     width: 50%;
-
     padding: 10px;
+    padding-top: 0;
     text-align: center;
+    padding-bottom: 0;
 
    }
    .row{
@@ -44,7 +49,7 @@
   display:block;
   overflow:auto;
  
-  height:30rem;
+  height:33rem;
 
   
  
@@ -67,41 +72,47 @@
     <hr>
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
-
-            <div class = '  '>
-          
+            <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
+           
+            <div class = ' lista '>
+            
                         <div class="col-md-4 mb-3 center">
-                            <div class="">
+                           {{old('medico') }}
 
                                 <label for="selectbasic">Medicos </label>
 
-                                <select id="medico" class = "form-control">  {{old('nome')}}
-                                 <option value="">selecione</option>  
-
-                                 <option value={{old('medico->funcionario->matricula')}}>{{old('medico->funcionario->nome')}}</option>
+                                <select id="medico" name = 'medico' class = "form-control" value = {{old('medico')}} >  
+                                    @if(empty($medicoId))
+                                    <option value="">selecione</option>  
+                                  @endif
                                 @foreach($especialidade as $e)
                                     <optgroup label="{{$e->nome}}">
                                         @foreach($e->Medico as $medico)
-                                             <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                          @if($medicoId == $medico->funcionario->matricula)
+                                             <option selected value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                             @else
+                                                 <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                            @endif
                                         @endforeach
                                     </optgroup>
                                  @endforeach
                                  </select>
-                            </div>
+                           
                         </div>
-               
+             
 
                
                         <div class="  col-md-3 mb-3 center">
                             <label for="data">Data</label>
-                            <input type="date" name="data" id="data"  v value = {{old('data')}} maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}" placeholder="data">
+                            <input type="date" name="data" id="data"    maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}"   
+                             @if(empty($date) && $date == "" ) value= '<?php echo date("Y-m-d"); ?>' @else value = {{ $date}}@endif>
 
                         </div>
                     
 
                     </div>
-                    <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="cadastrar">
-                                            <i class="fas fa-plus-circle"></i></a>
+                    
+
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
 
                         <table class="table table-striped">
@@ -111,6 +122,9 @@
                             <th scope="col">paciente     </th>   
                         
                             <th scope="col">cpf          </th>
+                             <th scope="col">telefone     </th> 
+                              <th scope="col">celular     </th>     
+                         
                             <th scope="col">opções       </th>
                         </tr>
                         </thead>
@@ -122,15 +136,29 @@
                                       <td>{{ $h->hora }}</td>
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
-                                     
-                               
+                                      <td>{{ $h->telefone }}</td>
+                                       <td>{{ $h->celular }}</td>
+                                      
                                   
                                    
                                  <td>  
                                                
-                                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
+                                                <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     <!-- Modal -->
-                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    
+                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a>
+
+                                 </td>
+                              </tr>
+                              @endforeach
+                        
+                              
+                          @endif
+                        </tbody>
+                        </table>
+                        </div>
+
+                            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -138,23 +166,21 @@
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                             Desmarcar consulta do paciente {{$h->paciente}}?
+                                                             Desmarcar consulta do paciente ?
+                                                               {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} 
+                                                            <input type = "hidden" id = "id" name = "id" value = "" >
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} @csrf
-                                                          
-                                                                {{ method_field('DELETE') }}
-
-                                                            <input type = "hidden" id = "id" name = "_method" valeu = "{{ $h->id }}" >
-                                                              <input type = "hidden" id = "id" name = "idcc" valeu = "{{ $h->id }}" >
-                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"  valeu = "{{ $h->id }}" data-toggle="tooltip" data-placement="top" title="excluir">excluir</button>
+                                                              
+                                                             
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Desmarcar</button>
                                                                   {!! Form::close() !!}
                                                         </div>
                                                     </div>
                                                 </div>
                                         </div>  
-                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
+
 
                                  </td>
                               </tr>
@@ -164,6 +190,79 @@
                           @endif
                         </tbody>
                     </table>
+
+
+                        
+                  {{--     <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-x">
+                                          <div class="modal-content">
+                                            <div class="modal-body">
+                                               @component('components.formAgenda')
+                                                   
+                                               @endcomponent
+
+                        </div>
+
+
+                         <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-x">
+                                          <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                <form>
+                                                    <div class="form-row">
+                                                      <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">primeiro Nome</label>
+                                                        <input type="text" class="form-control" id="inputEmail4" placeholder="nome">
+                                                      </div>
+                                                      <div class="form-group col-md-6">
+                                                        <label for="inputPassword4">cpf</label>
+                                                        <input type="text" class="form-control" id="inputPassword4" placeholder="cpf">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="inputAddress">horario</label>
+                                                      <input type="text" class="form-control" id="inputAddress" value="" >
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="inputAddress2">procedimento</label>
+                                                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                                    </div>
+                                                    <div class="form-row">
+                                                      <div class="form-group col-md-6">
+                                                        <label for="inputCity">Medico</label>
+                                                        <input type="text" class="form-control" id="inputCity"  @if(isset($med)) value="{{$med->funcionario->nome}}" @else value ="n tem" @endif>
+                                                      </div>
+                                                      <div class="form-group col-md-4">
+                                                        <label for="inputState">State</label>
+                                                        <select id="inputState" class="form-control">
+                                                          <option selected>Choose...</option>
+                                                          <option>...</option>
+                                                        </select>
+                                                      </div>
+                                                      <div class="form-group col-md-2">
+                                                        <label for="inputZip">Zip</label>
+                                                        <input type="text" class="form-control" id="inputZip">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                        <label class="form-check-label" for="gridCheck">
+                                                          Check me out
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                                  </form>
+                                            </div>
+
+                                            </div>
+                                            </div>
+                                          </div>
+
+
+        </div> -->--}}
 
         <form>
             <div class="modal fade bd-example-modal-x" id="create">
@@ -179,8 +278,8 @@
                             <div class="row">
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="preco">Cpf</label>
-                                          <input type="text" class="form-control" placeholder="" name="cpf" required>
+                                          <label for="preco">Cpf</label >
+                                          <input type="text" class="form-control" placeholder="" name="cpf" required autofocus>
                                       </div>
                                   </div>
                                   <div class="col-md-6">
@@ -295,11 +394,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
-<script>
 
- 
-
-</script>
     @endsection
 
 

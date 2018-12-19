@@ -154,7 +154,10 @@ nav{
 ul li{
   text-align: center;
 }
+.margin{
+margin: 3px;
 
+}
 
 
 /* js lista */
