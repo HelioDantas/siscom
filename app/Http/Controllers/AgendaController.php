@@ -7,38 +7,35 @@ use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Agenda;
+use Illuminate\Http\JsonResponse;
 class AgendaController extends Controller
 {
 
-    public $horarios = [
-        '08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00',
-    ];
-
-  
 
     function index( $medicoId  = "", $date = ""){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
         //return dd($date);
         $med = Medico::find($medicoId);
-     
-        $horarios = $this->horarios;
+        if($med != null){
+        //dd($med->planos[0]->procedimentos()->get());
+    }
         //Opção com buscar por medico e data 
         $agendamentos = Agenda::where('idMedico',$medicoId)->where('data', $date)->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
                // return dd($agendamentos);
-       
+     
 
-        return view('agenda.index', compact('especialidade','horarios','agendamentos','med', 'medicoId', 'date'));
+        return view('agenda.index', compact('especialidade','agendamentos','med', 'medicoId', 'date'));
     }
 
 
 
 
     function agendar(Request $request){
-
+        dd($request);
             $agenda = Agenda::create($request->all());
 
             return back();
@@ -50,7 +47,6 @@ class AgendaController extends Controller
     function desmarcar(Request $request){
      //   return dd($request);
         $id = $request['id'];
-  
            //  return dd($id);
             $agenda = Agenda::find($id);
             $agenda->delete();
@@ -68,6 +64,15 @@ class AgendaController extends Controller
 
         return back();
 
+
+    }
+
+    function getMedicos($id){
+        $espec = Especialidade::find($id);
+        $medicos = $espec->Medicos;
+        dd($medicos);
+
+        return json_encode( $medicos);
 
     }
 

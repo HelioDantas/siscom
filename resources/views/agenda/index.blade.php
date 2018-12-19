@@ -86,13 +86,14 @@
                                     <option value="">selecione</option>  
                                   @endif
                                 @foreach($especialidade as $e)
-                                    <optgroup label="{{$e->nome}}">
+                                    <optgroup id="idEspec" label="{{$e->nome}}">
                                         @foreach($e->Medico as $medico)
                                           @if($medicoId == $medico->funcionario->matricula)
                                              <option selected value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
                                              @else
                                                  <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
                                             @endif
+                                          
                                         @endforeach
                                     </optgroup>
                                  @endforeach
@@ -115,7 +116,7 @@
 
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
 
-                        <table class="table table-striped">
+                        <table class="table table-hover">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">horario      </th>
@@ -184,10 +185,10 @@
 
                                  </td>
                               </tr>
-                              @endforeach
+                             
                         
                               
-                          @endif
+                        
                         </tbody>
                     </table>
 
@@ -264,7 +265,18 @@
 
         </div> -->--}}
 
-        <form>
+        <form action="{{ route('agenda.agendar') }}" method="POST">
+             @method('POST')
+              @csrf
+              {{-- input atendente --}}
+              <input type="hidden"value="{{ Auth::User()->funcionario->nome }}" name="atendente">
+
+              {{-- input medico
+              <input type="hidden"value="{{$medico->funcionario->nome}}" name="medico"> --}}
+
+              <input id="espec" type="hidden"  name="espec">
+
+
             <div class="modal fade bd-example-modal-x" id="create">
                   <div class="modal-dialog">
                       <div class="modal-content">
@@ -278,56 +290,59 @@
                             <div class="row">
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="preco">Cpf</label >
-                                          <input type="text" class="form-control" placeholder="" name="cpf" required autofocus>
+                                          <label for="cpf">Cpf</label >
+                                          <input type="text" class="form-control" id="cpf" placeholder="" name="cpf"  autofocus>
                                       </div>
                                   </div>
-                                  <div class="col-md-6">
+                                  <div class="col-md-4">
                                       <div class="form-group">
-                                          <label for="preco">Data de Nascimento</label>
-                                          <input type="text" class="form-control" placeholder="" name="cpf" required>
+                                          <label for="dataNascimento">Data de Nascimento</label>
+                                          <input type="text" class="form-control" id="dataa" placeholder="" name="dataNascimento" >
                                       </div>
                                   </div>
+                                  <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="pv">Primeira Vez ?</label>
+                                        <input type="checkbox" name="primeiraVez" id="pv">
+                                    </div>
                                 </div>
+                            </div>
                               <div class="row">
-                                  <div class="col-md-8">
+                                  <div class="col-12">
                                 <div class="form-group">
-                                    <label for="descricao">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" required>
-                                </div>
-                                </div>
-                                <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="descricao">telefone</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" required>
+                                    <label for="nome">Nome Paciente</label>
+                                    <input type="text" class="form-control" placeholder="" name="nome" >
                                 </div>
                                 </div>
                               </div>
                                    <div class="row">
                                      
-                                        <div class="col-md-6">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="telefone">telefone</label>
+                                            <input type="text" class="form-control" id="telefone" placeholder="" name="telefone" >
+                                        </div>
+                                        </div>
+
+                                        <div class="col-6">
                                             <div class="form-group">
-                                                <label for="qtdQuartos">Medico</label>
-                                                <input type="text" class="form-control" value="{{$medico->funcionario->nome}}" name="medico">
+                                                <label for="telefone">celular</label>
+                                                <input type="text" class="form-control" id="celular" placeholder="" name="telefone" >
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="qtdQuartos">Atendente</label>
-                                                <input type="text" class="form-control" value="{{ Auth::User()->funcionario->nome }}" name="medico">
-                                            </div>
-                                        </div>
-                                    </div>
-          
+                                   </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-12">
                                             <div class="form-group">
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento" required>
                                                     <option>selecione</option>
-                                                  @foreach ($medico as $item)
-                                                  <option>proced 2</option>
+                                                
+                                            
+                                                  @foreach ($medico as $md)
+                                                  <option value=""></option>
                                                   @endforeach
+                                             
                                                 </select>
                                             </div>
                                         </div>
@@ -348,15 +363,15 @@
                                     <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="numero">Data</label>
-                                            <input type="date" class="form-control" placeholder="Número" required name="numeroEndereco">
+                                            <label for="data">Data</label>
+                                            <input type="date" class="form-control" placeholder="Número" required name="data">
                                         </div>
                                     </div>
                                      
                                           <div class="col-md-6">
                                               <div class="form-group">
-                                                  <label for="bairroEndereco">horario</label>
-                                                  <input type="time" class="form-control" placeholder="Bairro" required name="bairroEndereco">
+                                                  <label for="horario">horario</label>
+                                                  <input type="time" class="form-control" placeholder="Bairro" required name="horario">
                                               </div>
                                           </div>
 
@@ -372,7 +387,7 @@
           
                           </div>
                           <div class="modal-footer">
-                              <input type="submit" class="btn btn-primary" value="Salvar">
+                              <input type="submit" class="btn btn-primary" value="Agendar">
                           </div>
                       </div>
                   </div>
@@ -390,6 +405,7 @@
     
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
