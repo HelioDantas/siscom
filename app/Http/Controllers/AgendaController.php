@@ -29,7 +29,7 @@ class AgendaController extends Controller
                // return dd($agendamentos);
      
 
-        return view('agenda.index', compact('especialidade','agendamentos','med', 'medicoId', 'date'));
+        return view('agenda.teste', compact('especialidade','agendamentos','med', 'medicoId', 'date'));
     }
 
 

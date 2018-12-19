@@ -93,7 +93,9 @@
                             </div>
                         </div>
                         </div>
-                        </div>
+
+
+                        
                         <div class="col-4 mb-3 center">
                         <div class="form-group">
                             <div class="col">
@@ -115,8 +117,8 @@
 
                         </div>
                     
-
                     </div>
+                    
                     
 
                     <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
@@ -196,7 +198,7 @@
                         
                         </tbody>
                     </table>
-
+                </div>
 
                         
                   {{--     <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
