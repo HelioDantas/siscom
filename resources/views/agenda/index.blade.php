@@ -282,7 +282,7 @@
                                    <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="preco">Cpf</label >
-                                          <input type="text" class="form-control" placeholder="" name="cpf" required autofocus>
+                                          <input type="text" class="form-control" placeholder="" name="cpf" id = 'cpf' required autofocus>
                                       </div>
                                   </div>
                                   <div class="col-md-6">
@@ -296,7 +296,7 @@
                                   <div class="col-md-8">
                                 <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" id = 'nome' required>
+                                    <input type="text" class="form-control" placeholder="" name="nome" id ="nome" required>
                                 </div>
                                 </div>
                                 <div class="col-md-4">
@@ -311,7 +311,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="qtdQuartos">Medico</label>
-                                                <input type="text" class="form-control" value="{{$medico->funcionario->nome}}" name="medico">
+                                                <input type="text" class="form-control" value="{{$med->funcionario->nome}}"  name="medico">
                                             </div>
                                         </div>
                                         <div class="col-md-6">

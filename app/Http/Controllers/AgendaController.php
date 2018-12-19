@@ -81,5 +81,13 @@ class AgendaController extends Controller
 
     }
 
+ function buscarCpf( Request $request){
+         $term = $request['term'];
+      $cpf = Paciente::where('cpf', 'like', '%'.$term.'%')->pluck('cpf');
+       return json_encode($cpf);
+
+  
+
+    }
 
 }

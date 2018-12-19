@@ -175,5 +175,6 @@ Route::prefix('agenda')->middleware('Autorizador')->group(function(){
 
 Route::get('agd/medico/{medicoId?}/{date?}', 'AgendaController@index')->middleware('Autorizador');
 Route::get('buscarName', 'AgendaController@buscarName')->middleware('Autorizador');
+Route::get('buscarCpf', 'AgendaController@buscarCpf')->middleware('Autorizador');
 
 
