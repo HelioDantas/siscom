@@ -1,4 +1,12 @@
+
+
 @extends('layout.app')
+
+    @section('links')   
+        <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    @endsection
  @section('estilos')
 <style>
     .save{
@@ -54,6 +62,11 @@
   
  
 }
+.ui-front {
+    z-index: 9999;
+}
+
+
 .fixed_header header {
 
 
@@ -142,9 +155,9 @@
                                       
                                   
                                    
-                                 <td>  
+                                 <td>   
                                                
-                                                <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
+                                                <button type="button" class="btn btn-outline-danger ui-front" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     <!-- Modal -->
                                     
                                                <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a>
@@ -160,7 +173,7 @@
                         </div>
 
                             <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-dialog modal-dialog-centered " role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalCenterTitle">Exclusão</h5>
@@ -265,6 +278,7 @@
 
         </div> -->--}}
 
+<<<<<<< HEAD
         <form action="{{ route('agenda.agendar') }}" method="POST">
              @method('POST')
               @csrf
@@ -275,10 +289,9 @@
               <input type="hidden"value="{{$medico->funcionario->nome}}" name="medico"> --}}
 
               <input id="espec" type="hidden"  name="espec">
+            <div class="modal fade bd-example-modal-x"  data-target = '#auto'   id="create">
+                  <div class="modal-dialog  ui-front">
 
-
-            <div class="modal fade bd-example-modal-x" id="create">
-                  <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
                             <!--<button type="button" class="close" data-dismiss="modal">
@@ -306,12 +319,12 @@
                                         <input type="checkbox" name="primeiraVez" id="pv">
                                     </div>
                                 </div>
-                            </div>
-                              <div class="row">
-                                  <div class="col-12">
-                                <div class="form-group">
+   
+                              <div class="row"> 
+                                  <div class="col-md-8">
+                                <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" >
+                                    <input type="text" class="form-control" placeholder="" name="nome" id = 'nome' required>
                                 </div>
                                 </div>
                               </div>
@@ -405,10 +418,16 @@
     
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+   
+  
 
+<<<<<<< HEAD
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
+=======
+>>>>>>> acbe6b29322d8222befa9a988a0f261d720834b9
 
 
     @endsection

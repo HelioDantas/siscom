@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Especialidade;
 use App\Models\Funcionario;
+use App\Models\Paciente;
 use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,7 +22,7 @@ class AgendaController extends Controller
         //dd($med->planos[0]->procedimentos()->get());
     }
         //Opção com buscar por medico e data 
-        $agendamentos = Agenda::where('idMedico',$medicoId)->where('data', $date)->get();
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -67,6 +68,7 @@ class AgendaController extends Controller
 
     }
 
+
     function getMedicos($id){
         $espec = Especialidade::find($id);
         $medicos = $espec->Medicos;
@@ -75,5 +77,17 @@ class AgendaController extends Controller
         return json_encode( $medicos);
 
     }
+
+
+     function buscarName( Request $request){
+         $term = $request['term'];
+      $nome = Paciente::where('nome', 'like', '%'.$term.'%')->pluck('nome');
+       return json_encode($nome);
+
+  
+
+    }
+
+
 
 }

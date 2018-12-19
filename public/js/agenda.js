@@ -59,3 +59,14 @@ $("#data").change(function(){
 
 
  });
+
+    $(function(){
+        $('#nome').autocomplete({
+            appendTo: "body", 
+            source: '/buscarName',
+     
+        });
+
+    });
+
+    
