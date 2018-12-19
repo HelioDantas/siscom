@@ -62,6 +62,11 @@
   
  
 }
+.ui-front {
+    z-index: 9999;
+}
+
+
 .fixed_header header {
 
 
@@ -263,7 +268,7 @@
         </div> -->--}}
 
         <form id="frmCriteria" >
-            <div class="modal fade bd-example-modal-x"  id="create">
+            <div class="modal fade bd-example-modal-x"  data-target = '#auto'   id="create">
                   <div class="modal-dialog  ui-front">
                       <div class="modal-content">
                           <div class="modal-header">

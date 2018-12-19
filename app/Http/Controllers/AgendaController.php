@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Especialidade;
 use App\Models\Funcionario;
+use App\Models\Paciente;
 use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -73,7 +74,7 @@ class AgendaController extends Controller
 
      function buscarName( Request $request){
          $term = $request['term'];
-      $nome = Funcionario::where('nome', 'like', '%'.$term.'%')->pluck('nome');
+      $nome = Paciente::where('nome', 'like', '%'.$term.'%')->pluck('nome');
        return json_encode($nome);
 
   

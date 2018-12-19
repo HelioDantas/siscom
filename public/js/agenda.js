@@ -48,9 +48,9 @@ $("#data").change(function(){
 
     $(function(){
         $('#nome').autocomplete({
-
-            source: '/buscarName'
-          
+            appendTo: "body", 
+            source: '/buscarName',
+     
         });
 
     });
