@@ -9,12 +9,12 @@
     
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
-
+    
     @yield('links')
    <link rel="stylesheet" href="{{ URL::to('https://use.fontawesome.com/releases/v5.4.2/css/all.css') }}"
-
+   <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/jquery.datetimepicker.min.css') }}">
-
+  
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
 
     <title>SisCom</title>
@@ -198,6 +198,7 @@
     <script type="text/javascript" src="{{ asset('js/moment.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/mascara.js') }}"></script>

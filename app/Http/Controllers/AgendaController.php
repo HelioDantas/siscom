@@ -24,7 +24,7 @@ class AgendaController extends Controller
      
         $horarios = $this->horarios;
         //Opção com buscar por medico e data 
-        $agendamentos = Agenda::where('idMedico',$medicoId)->where('data', $date)->get();
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -70,5 +70,15 @@ class AgendaController extends Controller
 
 
     }
+
+     function buscarName( Request $request){
+         $term = $request['term'];
+      $nome = Funcionario::where('nome', 'like', '%'.$term.'%')->pluck('nome');
+       return json_encode($nome);
+
+  
+
+    }
+
 
 }

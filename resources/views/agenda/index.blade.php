@@ -1,4 +1,12 @@
+
+
 @extends('layout.app')
+
+    @section('links')   
+        <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    @endsection
  @section('estilos')
 <style>
     .save{
@@ -141,9 +149,9 @@
                                       
                                   
                                    
-                                 <td>  
+                                 <td>   
                                                
-                                                <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
+                                                <button type="button" class="btn btn-outline-danger ui-front" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     <!-- Modal -->
                                     
                                                <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a>
@@ -159,7 +167,7 @@
                         </div>
 
                             <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-dialog modal-dialog-centered " role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalCenterTitle">Exclusão</h5>
@@ -254,9 +262,9 @@
 
         </div> -->--}}
 
-        <form>
-            <div class="modal fade bd-example-modal-x" id="create">
-                  <div class="modal-dialog">
+        <form id="frmCriteria" >
+            <div class="modal fade bd-example-modal-x"  id="create">
+                  <div class="modal-dialog  ui-front">
                       <div class="modal-content">
                           <div class="modal-header">
                             <!--<button type="button" class="close" data-dismiss="modal">
@@ -279,17 +287,17 @@
                                       </div>
                                   </div>
                                 </div>
-                              <div class="row">
+                              <div class="row"> 
                                   <div class="col-md-8">
-                                <div class="form-group">
-                                    <label for="descricao">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" required>
+                                <div class="form-group ">
+                                    <label for="nome">Nome Paciente</label>
+                                    <input type="text" class="form-control" placeholder="" name="nome" id = 'nome' required>
                                 </div>
                                 </div>
                                 <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="descricao">telefone</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" required>
+                                    <input type="text" class="form-control" placeholder="" name="tel" required>
                                 </div>
                                 </div>
                               </div>
@@ -380,9 +388,11 @@
     
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+   
+  
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
 
     @endsection

@@ -45,3 +45,14 @@ $("#data").change(function(){
 
 
  });
+
+    $(function(){
+        $('#nome').autocomplete({
+
+            source: '/buscarName'
+          
+        });
+
+    });
+
+    
