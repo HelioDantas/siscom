@@ -278,7 +278,6 @@
 
         </div> -->--}}
 
-<<<<<<< HEAD
         <form action="{{ route('agenda.agendar') }}" method="POST">
              @method('POST')
               @csrf
@@ -319,9 +318,9 @@
                                         <input type="checkbox" name="primeiraVez" id="pv">
                                     </div>
                                 </div>
-   
+                            </div>
                               <div class="row"> 
-                                  <div class="col-md-8">
+                                  <div class="col-12">
                                 <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
                                     <input type="text" class="form-control" placeholder="" name="nome" id = 'nome' required>
@@ -421,13 +420,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
    
-  
 
-<<<<<<< HEAD
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
-=======
->>>>>>> acbe6b29322d8222befa9a988a0f261d720834b9
 
 
     @endsection

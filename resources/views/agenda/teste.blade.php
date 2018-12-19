@@ -94,7 +94,7 @@
                         </div>
                         </div>
                         </div>
-                        <div class="co-4 mb-3 center">
+                        <div class="col-4 mb-3 center">
                         <div class="form-group">
                             <div class="col">
                                 <label for="">medicos</label>
