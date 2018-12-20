@@ -62,6 +62,11 @@ header   > #containerSessaoEMsgBemVindo {
     float:right;
 }
 
+
+.ladoDireito{
+
+    float: right;
+}
 .cor{
     color: black;
 
@@ -149,14 +154,21 @@ nav{
 ul li{
   text-align: center;
 }
+.margin{
+margin: 3px;
 
+}
 
 
 /* js lista */
 .invisivel{
     display: none;
 }
+.pagina{
+    padding:1rem;
+    float: right;
 
+}
 
 .titulopacientes{
 	display:inline-table;

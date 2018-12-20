@@ -93,8 +93,8 @@
 
     <div class="form-group col-md-3 mb-2">
         <span for="nome">Nome</span>
-        <input type="text" name="nome" id="nome"  maxlength="53" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
-        value =   {{old('nome')}}>
+        <input type="text" name="nome" id="nome"  maxlength="53" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required autofocus
+        value =   {{old('nome')}} >
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
@@ -493,7 +493,7 @@
                         >
                         <option value= {{old('convenio_id')}} selected></option>
                     @foreach ($convenios as $c)
-                   <option value="{{$c->cnpj}}">{{$c->nome  }}</option>
+                   <option value="{{$c->id}}">{{$c->nome  }}</option>
                     @endforeach
                    </select>
                                @if($errors->has('convenio_id'))

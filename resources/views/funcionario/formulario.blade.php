@@ -117,8 +117,8 @@
 
     <div class="form-group  col-xl-4 col-md-4  col-lg-5 mb-3">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
-        value =   {{old('nome')}}>
+        <input type="text" name="nome" id="nome"  maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required autofocus
+        value =   {{old('nome')}} >
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
@@ -573,7 +573,7 @@
         <td>
             <div class="checkbox">
 
-                    <input name = "$p[]" type="checkbox" value= {{$plano->id }}
+                    <input name = "$p[]" type="checkbox" value= {{$plano->id }}>
                      </div>
 
 

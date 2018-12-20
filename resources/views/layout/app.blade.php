@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
+    
+    @yield('links')
+   <link rel="stylesheet" href="{{ URL::to('https://use.fontawesome.com/releases/v5.4.2/css/all.css') }}">
+   <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/jquery.datetimepicker.min.css') }}">
-
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
 
     <title>SisCom</title>
     @yield('estilos')
@@ -111,7 +114,7 @@
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
-                       <a href="{{route('convenio.novo')}}">Cadastrar</a>
+                       <a href="{{ route('agenda.index') }}">Agenda</a>
                       <a href="">Pesquisar</a>
                       <a href="{{route('convenio.editar')}}">Alterar</a>
                     </div>
@@ -121,8 +124,9 @@
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
+                    
                     <div class="dropdown-content">
-
+                      <a href="{{ route('agenda.index') }}">Agendar</a>
                     </div>
                   </div>
                 </li>
@@ -160,9 +164,9 @@
 
               </ul>
             </div>
-              <span class="navbar-text " id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
+              <span class="navbar-text my-2 my-sm-0 pagina" id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
 
-                <span class="navbar-text " id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
+                <span class="navbar-text my-2 my-sm-0  pagina" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 
@@ -189,16 +193,15 @@
 
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
     <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/moment.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/mascara.js') }}"></script>
-
-     
 
     <script>
 		setInterval(function() {

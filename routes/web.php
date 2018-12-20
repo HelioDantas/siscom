@@ -76,8 +76,9 @@ Route::get('editarteste/{id}', 'PacienteController@edit')->name('paciente.editar
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
 Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
 
-//Route::resource('/pacientes', 'PacienteController');
 
+
+//Route::resource('/pacientes', 'PacienteController');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::View('/agoravai', 'dashboard');
 
@@ -166,7 +167,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::get('index', 'AgendaController@index')->name('agenda.index');
-});
+    Route::post('desmarcar', 'AgendaController@desmarcar')->name('agenda.desmarcar');
+    Route::post('agendar', 'AgendaController@agendar')->name('agenda.agendar');
 
+});
+Route::get('/get/med/{id}', 'AgendaController@getMedicos');
+Route::get('agd/medico/{medicoId?}/{date?}/{espec?}', 'AgendaController@index')->middleware('Autorizador');
+Route::get('buscarName', 'AgendaController@buscarName')->middleware('Autorizador');
+Route::get('buscarCpf', 'AgendaController@buscarCpf')->middleware('Autorizador');
+
+Route::get('novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
+
+
+Route::get('cpf/{cpf}', 'PacienteController@buscarCpf')->middleware('Autorizador');
+Route::get('nome/{nome}', 'PacienteController@buscarNome')->middleware('Autorizador');
 
 

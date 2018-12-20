@@ -62,4 +62,11 @@ class MedicoController extends Controller
 
     }
 
+    function getHorarios($medicoId){
+    $medico = Medico::find($medicoId);
+    $medico = $medico->getHorarios();
+    dd($medico);
+    return json_encode( $especialidades);
+    }
+
 }
