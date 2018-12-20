@@ -69,4 +69,17 @@ $("#data").change(function(){
 
     });
 
-    
+        $(function(){
+        $('#cpf').autocomplete({
+            appendTo: "body", 
+            source: '/buscarCpf',
+     
+        });
+
+    });
+$("#cpf").change(function(){
+            var nome = this.value;
+            console.log(nome);  
+        $('#2').append('value ='+nome);
+
+     });

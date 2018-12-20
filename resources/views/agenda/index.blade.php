@@ -302,8 +302,10 @@
                             <div class="row">
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="cpf">Cpf</label >
-                                          <input type="text" class="form-control" id="cpf" placeholder="" name="cpf"  autofocus>
+
+                                          <label for="preco">Cpf</label >
+                                          <input type="text" class="form-control" placeholder="" name="cpf" id = 'cpf' required autofocus>
+
                                       </div>
                                   </div>
                                   <div class="col-md-4">
@@ -317,22 +319,26 @@
                                         <label for="pv">Primeira Vez ?</label>
                                         <input type="checkbox" name="primeiraVez" id="pv">
                                     </div>
-                                </div>
+                                  </div>
                             </div>
                               <div class="row"> 
-                                  <div class="col-12">
+                                  <div class="col-md-12">
+
                                 <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" id = 'nome' required>
+                                    <input type="text" class="form-control" placeholder="" name="nome" id ="nome" required>
                                 </div>
                                 </div>
                               </div>
                                    <div class="row">
                                      
+
+                                      
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="telefone">telefone</label>
                                             <input type="text" class="form-control" id="telefone" placeholder="" name="telefone" >
+
                                         </div>
                                         </div>
 
@@ -421,7 +427,10 @@
 
    
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e69e761eae84fd4deee37eb0615104e857a19aa0
 
 
     @endsection
