@@ -54,10 +54,8 @@
   
  
 }
-.fixed_header header {
-
-
- 
+.contentBusca{
+    margin-top: 1rem;
 }
 
 
@@ -74,43 +72,55 @@
            <h4 class="center textocenter">Agenda</h4>
             <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
            
-            <div class = ' lista '>
+            <div class = 'row contentBusca'>
             
-                        <div class="col-md-4 mb-3 center">
+                        <div class="col-4 center">
                            {{old('medico') }}
-
-                        <div class="form-group">
-                            <div class="col">
                                 <label for="">especialidade</label>
-                                <select name="especialidade" id="especialidade">
-                                    <option value="">Selecione</option>
-                                    @if (isset($especialidade))
-                                    @foreach ($especialidade as $espec)
-                                    <option value="{{ $espec->id }}">{{ $espec->nome }}</option>     
-                                    @endforeach
+                                <select name="especialidade" id="especialidade" class="form-control">
+                                    @if (isset($esp) && !empty($esp))
+                                    <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option> 
+                                    @else
+                                        @if (!isset($esp))
+                                        
+                                        <option value="">Selecione</option>
+
+                                        
+                                        @endif
+
+                                    @endif
+                                    @if (!empty($especialidade))
+                                        @foreach ($especialidade as $espec)
+                                            <option value="{{ $espec->id }}">{{ $espec->nome }}</option>     
+                                        @endforeach
                                     @endif
                                 </select>
-                            </div>
                         </div>
-                        </div>
-
-
                         
-                        <div class="col-4 mb-3 center">
-                        <div class="form-group">
-                            <div class="col">
+                        <div class="col-4 center">                                                
                                 <label for="">medicos</label>
-                                <select name="medico" id="medicos">
-                                        <option value="">k</option>     
+                                <select name="medico" id="medico" class="form-control">
+                                    @if(!empty($med))
+                                    <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
+                                    @endif
+                                    @if (isset($esp))
+                                        @foreach($esp->Medico as $medico)
+                                            @if ($med->funcionario->matricula === $medico->funcionario->matricula)
+                                                @php continue; @endphp
+                                            @else
+                                                <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
 
-                                </select>
-                            </div>
-                        </div>
-                        </div>
-                
+                                            @endif
+                                        @endforeach
 
-               
-                        <div class="  col-md-3 mb-3 center">
+                                    @else
+                                      
+                                    @endif
+                               
+                                 </select>                 
+                        </div>
+                                  
+                        <div class="col-3 center">
                             <label for="data">Data</label>
                             <input type="date" name="data" id="data"    maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}"   
                              @if(empty($date) && $date == "" ) value= '<?php echo date("Y-m-d"); ?>' @else value = {{ $date}}@endif>
@@ -344,12 +354,13 @@
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento" required>
                                                     <option>selecione</option>
+                                            @if (!empty($especialidadesP))
                                                 
-                                            
-                                              
-                                                  <option value=""></option>
-                                               
                                              
+                                             @foreach ($especialidadesP as $p)
+                                             <option value="{{ $p->codTuss }}">{{ $p->descricao }}</option>  
+                                             @endforeach
+                                             @endif  
                                                 </select>
                                             </div>
                                         </div>

@@ -7,8 +7,8 @@ $('#especialidade').change(function(){
         $('select[id=especialidade2]').empty();
    
         $.each(p, function(key,value){
-            $('id').append('<tr class='"Filter"'>' +
-              '<th scope='row'>'+  +'</th> <td class>' '</td>   <td> '      '</td>'    '</tr>')
+            $('id').append('<tr class="Filter">' +
+              '<th scope="row">'+'</th> <td class>'+value.id+ '</td>   <td> '+value.nome+ '</td></tr>')
         })
     })
 })
