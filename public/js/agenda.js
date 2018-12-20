@@ -82,13 +82,42 @@ $("#data").change(function(){
         $('#cpf').autocomplete({
             appendTo: "body", 
             source: '/buscarCpf',
-     
+            
         });
-
+        
     });
-$("#cpf").change(function(){
-            var nome = this.value;
-            console.log(nome);  
-        $('#2').append('value ='+nome);
+    $(document).ready(function(){
+        $("#cpf").blur(function(){
+           $.getJSON( '/cpf/' + this.value  , function(cpf){
+               var funcionario = cpf;
+                console.log(funcionario);
+                console.log(funcionario[0]['dataDeNascimento']);
+                var nome = $('input[name = nome]'); 
+                   var telefone = $('input[name = telefone]'); 
+                  var celular = $('input[name = celular]');   
+                  var data = $('input[name = dataDeNascimento]');  
+                  nome.val(funcionario[0]['nome']);
+                  telefone.val(funcionario[0]['telefone']);
+                  celular.val(funcionario[0]['celular']);
+                data.val(funcionario[0]['dataDeNascimento']);
+           });
+         
 
      });
+         $("#nome").blur(function(){
+           $.getJSON( '/nome/' + this.value  , function(nome){
+               var funcionario = nome;
+                console.log(funcionario);
+                console.log(funcionario[0]['dataDeNascimento']);
+                var cpf = $('input[name = cpf]'); 
+                   var telefone = $('input[name = telefone]'); 
+                  var celular = $('input[name = celular]');   
+                  var data = $('input[name = dataDeNascimento]');  
+                  cpf.val(funcionario[0]['cpf']);
+                  telefone.val(funcionario[0]['telefone']);
+                  celular.val(funcionario[0]['celular']);
+                data.val(funcionario[0]['dataDeNascimento']);
+           });
+           
+            });
+});

@@ -311,7 +311,7 @@
                                   <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="dataNascimento">Data de Nascimento</label>
-                                          <input type="text" class="form-control" id="dataa" placeholder="" name="dataNascimento" >
+                                          <input type="date" class="form-control" id="data" placeholder="" name="dataDeNascimento" >
                                       </div>
                                   </div>
                                   <div class="col-md-2">
@@ -427,10 +427,7 @@
 
    
 
-<<<<<<< HEAD
 
-=======
->>>>>>> e69e761eae84fd4deee37eb0615104e857a19aa0
 
 
     @endsection

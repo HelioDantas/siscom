@@ -27,6 +27,7 @@ class AgendaController extends Controller
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
                // return dd($agendamentos);
+
      if(!empty($espec)){
          $esp = Especialidade::find($espec);
          $especialidadesP = $esp->procedimentos()->get();
@@ -34,6 +35,7 @@ class AgendaController extends Controller
         
      }
         return view('agenda.teste', compact('especialidade','esp','agendamentos','med', 'medicoId', 'date','especialidadesP'));
+
     }
 
 

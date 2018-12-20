@@ -301,4 +301,22 @@ class PacienteController extends Controller
         return view('paciente.show' , compact('p','convenio','convenios','plano','phc'));
 
     }
+
+
+
+
+    public function buscarCpf( $buscar)
+    {
+        $Funcionarios = Paciente::where('cpf', '=', $buscar)->get();
+        return json_encode($Funcionarios);
+
+    }
+      public function buscarNome( $buscar)
+    {
+        $Funcionarios = Paciente::where('nome', '=', $buscar)->get();
+        return json_encode($Funcionarios);
+
+    }
 }
+
+  
