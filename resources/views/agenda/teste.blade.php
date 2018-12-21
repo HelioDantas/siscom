@@ -148,9 +148,15 @@
                             <th scope="col">horario      </th>
                             <th scope="col">paciente     </th>   
                             <th scope="col">cpf          </th>
+
                             <th scope="col">telefone     </th> 
-                            <th scope="col">celular     </th>
-                            <th scope="col">Primeira Vez </th>          
+                      
+                            <th scope="col">celular     </th>     
+                            <th scope="col">primeiraVez     </th>  
+                            <th scope="col">compareceu     </th>  
+                            <th scope="col">pago     </th>     
+                                        
+
                             <th scope="col">opções       </th>
                         </tr>
                         </thead>
@@ -165,6 +171,10 @@
                                       <td>{{ $h->telefone }}</td>
                                       <td>{{ $h->celular }}</td>
                                       <td>{{ $h->primeiraVez }}</td>
+                                      <td>{{ $h->compareceu }}</td>
+                                      <td>{{ $h->pago }}</td>
+                                      
+                                  
 
                                  <td>  
                                                
@@ -335,7 +345,7 @@
                                   <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="pv">Primeira Vez ?</label>
-                                        <input type="checkbox" name="primeiraVez" id="pv">
+                                        <input type="checkbox" value = 'S' name="primeiraVez" id="pv">
                                     </div>
                                   </div>
                             </div>

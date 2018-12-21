@@ -13,6 +13,7 @@ class Agenda extends Model
     protected $fillable = array(
         'paciente',
         'paciente_id',
+       'primeiraVez',
         'medico', 
         'dataDeNascimento',
         'cpf',
