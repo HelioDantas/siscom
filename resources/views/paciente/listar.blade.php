@@ -75,7 +75,7 @@
 			</div>
 			@endif
 			<h3 class="titulopacientes respom">Pacientes Cadastrados</h3>
-			<a class="btn btn-outline-secondary" onClick="history.go(-1)" data-toggle="tooltip" data-placement="top" title="Voltar">
+			<a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="top" title="Voltar">
 				<i class="fas fa-share"></i>
 			</a>
 			<a class="btn btn-outline-danger" href="" data-toggle="tooltip" data-placement="top" title="Cancelar">
@@ -167,7 +167,7 @@
 							<td> {{$p->status}} </td>
 							<td>
                                     @if($destroy)
-								<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
+								<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" title="excluir">
 									<i class="fas fa-trash"></i>
 								</button>
 								<!-- Modal -->
@@ -193,7 +193,7 @@
 								</div>
                                 @endif
                                 @if($edit)
-								<a class="btn btn-outline-primary" href="editar/{{$p->id}}" title="visualizar"><i class="fas fa-edit"></i>
+								<a class="btn btn-outline-primary" href="editar/{{$p->id}}" title="editar"><i class="fas fa-edit"></i>
                                 </a>
                                 @endif
                                 @if($show)

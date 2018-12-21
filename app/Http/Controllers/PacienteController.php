@@ -70,7 +70,7 @@ class PacienteController extends Controller
             break;
 
             case "telefone":
-            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
             break;
 
             case "id":

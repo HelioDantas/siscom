@@ -43,15 +43,7 @@
                         </div>
                       </div>
         </div>
-    <div class="col-sm-4">
-            <div class="card text-center" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Agendamentos</h5>
-                      <p class="card-text">Consulte os horarios disponiveis e agende uma nova consulta </p>
-                      <a href="#" class="btn btn-primary">Agendar</a>
-                    </div>
-                  </div>
-    </div>
+
     <div class="col-sm-4">
         <div class="card text-center" style="width: 18rem;">
                 <div class="card-body">

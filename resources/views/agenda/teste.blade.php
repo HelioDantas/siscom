@@ -40,9 +40,9 @@
      margin: auto;
     width: 50%;
     padding: 10px;
-    padding-top: 0;
+   
     text-align: center;
-    padding-bottom: 0;
+ 
 
    }
    .row{
