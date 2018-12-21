@@ -42,7 +42,7 @@ class AgendaController extends Controller
 
 
     function agendar(Request $request){
-        dd($request);
+    //    dd($request);
             $agenda = Agenda::create($request->all());
 
             return back();
