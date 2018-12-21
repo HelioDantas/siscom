@@ -42,20 +42,11 @@ class AgendaController extends Controller
 
 
     function agendar(Request $request){
+        
+            $paciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
 
-        if(isset($request['primeiraVez']) && $request['primeiraVez'] == "on"){
-            $primeiraVez = "S";
-        }else{
-            $primeiraVez = "N";
-        }
-          
-                 $agenda = Agenda::create($request->all(),
-                 ['primeiraVez' => $primeiraVez] );
-
-
-            $CadParcialPaciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
-            if($CadParcialPaciente === null){
-                Paciente::create([
+            if($paciente === null){
+               $paciente = Paciente::create([
                    'nome'             => $request['paciente'],
                    'cpf'              => $request['cpf'],
                    'dataDeNascimento' => $request['dataDeNascimento'],
@@ -65,7 +56,30 @@ class AgendaController extends Controller
                 ]);
             }
          
+            if(isset($request['primeiraVez'])){
+                $primeira = "S";
+            }else{
+                $primeira = "N";
+            }
 
+    
+             Agenda::create([ 
+                 'primeiraVez'      => $primeira ,
+                 'paciente_id'      => $paciente->id, 
+                 'paciente'         => $request['paciente'],
+                 'cpf'              => $request['cpf'],
+                 'dataDeNascimento' => $request['dataDeNascimento'],
+                 'telefone'         => $request['telefone'],
+                 'celular'          => $request['celular'],
+                 'procedimento_id'  => $request['procedimento_id'],
+                 'medico'           => $request['medico'],
+                 'idMedico'         => $request['idMedico'],
+                 'atendente'        => $request['atendente'],
+                 'hora'             => $request['hora'],
+                 'data'             => $request['data'],
+
+
+                 ]);
 
             return back();
 

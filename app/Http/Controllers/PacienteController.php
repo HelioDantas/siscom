@@ -98,6 +98,8 @@ class PacienteController extends Controller
         return view('paciente.formulario' ,compact('convenios','planos'));
     }
 
+   
+
     public function create(PacienteRequest $request){
 
           PermissionController::pnovo( $request);
@@ -140,14 +142,9 @@ class PacienteController extends Controller
         //  form para editar infos de um funcionario
         $tt =PermissionController::pedit( $request);
 
-        if($tt == 0){
-
-            return json_encode(0);
-            //return 0;
-
-        }
 
        $p = Paciente::find($id);
+       
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
         $phc = $plano->pivot;

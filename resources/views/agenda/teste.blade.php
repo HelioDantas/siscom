@@ -147,11 +147,10 @@
                         <tr>
                             <th scope="col">horario      </th>
                             <th scope="col">paciente     </th>   
-                        
                             <th scope="col">cpf          </th>
-                             <th scope="col">telefone     </th> 
-                              <th scope="col">celular     </th>     
-                         
+                            <th scope="col">telefone     </th> 
+                            <th scope="col">celular     </th>
+                            <th scope="col">Primeira Vez </th>          
                             <th scope="col">opções       </th>
                         </tr>
                         </thead>
@@ -164,16 +163,18 @@
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
                                       <td>{{ $h->telefone }}</td>
-                                       <td>{{ $h->celular }}</td>
-                                      
-                                  
-                                   
+                                      <td>{{ $h->celular }}</td>
+                                      <td>{{ $h->primeiraVez }}</td>
+
                                  <td>  
                                                
                                                 <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     <!-- Modal -->
                                     
-                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a>
+                                              <!-- <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
+                                               @if ($h->primeiraVez != 'N' )
+                                               <a  class="btn btn-outline-primary"  href="{{ route('paciente.editar',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
+                                               @endif
 
                                  </td>
                               </tr>
@@ -300,6 +301,7 @@
               {{-- input medico --}}
               @if (!empty($med))
               <input type="hidden" value="{{$med->funcionario->matricula}}" name="idMedico">
+              <input type="hidden" value="{{$med->funcionario->nome}}" name="medico">
 
               @endif
 

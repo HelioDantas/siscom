@@ -67,11 +67,12 @@ Route::prefix('pacientes')->middleware('auth')->group(function () { //->middlewa
     Route::get('excluir/{id}', 'PacienteController@destroy')->name('paciente.excluir');
     Route::get('index', 'PacienteController@indexjs')->name('paciente.js');
     Route::get('json', 'PacienteController@indexjson')->name('paciente.json');
-    Route::any('buscar', 'PacienteController@buscar')->name('funcionario.buscar');
+    Route::any('buscar', 'PacienteController@buscar')->name('funcionario.buscar'); 
+   
+
 
 });
 
-Route::get('editarteste/{id}', 'PacienteController@edit')->name('paciente.editar');
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
 Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
