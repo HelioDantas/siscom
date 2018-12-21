@@ -104,7 +104,7 @@ $("#data").change(function(){
          
 
      });
-         $("#paciente").blur(function(){
+         $("#pacientee").blur(function(){
            $.getJSON( '/nome/' + this.value  , function(nome){
                var funcionario = nome;
                 
