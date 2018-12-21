@@ -40,7 +40,8 @@ $('#especialidade').change(function(){
 
     $.getJSON('/get/med/' +especialidade_id , function(meds){
         p = meds;
-        $('#medico').empty();        
+        $('#medico').empty();     
+        $('select[id=medico]').append('<option value=>Selecione</option>')
         $.each(p, function(key,value){
             $('select[id=medico]').append('<option value=' + value.id + '>' + value.nome + '</option>')
         })
@@ -70,7 +71,7 @@ $("#data").change(function(){
  });
 
     $(function(){
-        $('#nome').autocomplete({
+        $('#paciente').autocomplete({
             appendTo: "body", 
             source: '/buscarName',
      
@@ -91,7 +92,7 @@ $("#data").change(function(){
            $.getJSON( '/cpf/' + this.value  , function(cpf){
                var funcionario = cpf;
                 
-                var nome = $('input[name = nome]'); 
+                var nome = $('input[name = paciente]'); 
                    var telefone = $('input[name = telefone]'); 
                   var celular = $('input[name = celular]');   
                   var data = $('input[name = dataDeNascimento]');  
@@ -103,7 +104,7 @@ $("#data").change(function(){
          
 
      });
-         $("#nome").blur(function(){
+         $("#paciente").blur(function(){
            $.getJSON( '/nome/' + this.value  , function(nome){
                var funcionario = nome;
                 

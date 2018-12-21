@@ -95,6 +95,7 @@
 					<option value="nome">nome</option>
 					<option value="id">prontuario</option>
 					<option value="telefone">telefone</option>
+					<option value="celular">telefone</option>
 					<option value="cpf">cpf</option>
 				</select>
 				<input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
@@ -127,7 +128,7 @@
 							<th scope="col">estado          </th>-->
 							<th scope="col">telefone </th>
 							<th scope="col">celular </th>
-							<th scope="col">email </th>
+						<!--	<th scope="col">email </th> -->
 							{{--
 							<th scope="col">profissão </th> --}}
 							<th scope="col">status </th>
@@ -161,8 +162,8 @@
                  <td>       {{$p->estado}}              </td>-->
 							<td> {{$p->telefone}} </td>
 							<td> {{$p->celular}} </td>
-							<td> {{$p->email}} </td>
-							{{--
+							{{--<td> {{$p->email}} </td>
+							
 							<td> {{$p->profissao}} </td> --}}
 							<td> {{$p->status}} </td>
 							<td>

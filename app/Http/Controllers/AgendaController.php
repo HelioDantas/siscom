@@ -42,8 +42,28 @@ class AgendaController extends Controller
 
 
     function agendar(Request $request){
-    //    dd($request);
-            $agenda = Agenda::create($request->all());
+
+        if(isset($request['primeiraVez'])){
+            $primeiraVez = "S";
+        }
+           $agenda = Agenda::create($request->all(),
+           ['primeiraVez' => $request['primeiraVez']] );
+
+
+           
+            $CadParcialPaciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
+            if($CadParcialPaciente === null){
+                Paciente::ceate([
+                   'nome'             => $request['paciente'],
+                   'cpf'              => $request['cpf'],
+                   'dataDeNascimento' => $request['dataDeNascimento'],
+                   'telefone'         => $request['telefone'],
+                   'celular'          => $request['celular'],
+                   
+                ]);
+            }
+         
+
 
             return back();
 

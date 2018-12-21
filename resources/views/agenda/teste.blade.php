@@ -110,22 +110,22 @@
                                 <label for="">medicos</label>
                                 <select name="medico" id="medico" class="form-control">
                                     @if(!empty($med))
-                                    <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
+                                        <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
                                     @endif
-                                    @if (isset($esp))
-                                        @foreach($esp->Medico as $medico)
-                                            @if ($med->funcionario->matricula === $medico->funcionario->matricula)
-                                                @php continue; @endphp
-                                            @else
-                                                <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
 
-                                            @endif
-                                        @endforeach
+                              {{--      @if (!empty($esp))
+                                            @foreach($esp->Medico as $medico)
+                                                @if ($med->funcionario->matricula === $medico->funcionario->matricula)
+                                                    @continue
+                                                @else
 
+                                                    <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                                @endif
+                                            @endforeach
                                     @else
                                       
                                     @endif
-                               
+                                --}} 
                                  </select>                 
                         </div>
                                   
@@ -297,8 +297,11 @@
               {{-- input atendente --}}
               <input type="hidden"value="{{ Auth::User()->funcionario->nome }}" name="atendente">
 
-              {{-- input medico
-              <input type="hidden"value="{{$medico->funcionario->nome}}" name="medico"> --}}
+              {{-- input medico --}}
+              @if (!empty($med))
+              <input type="hidden" value="{{$med->funcionario->matricula}}" name="idMedico">
+
+              @endif
 
               <input id="espec" type="hidden"  name="espec">
             <div class="modal fade bd-example-modal-x"  data-target = '#auto'   id="create">
@@ -339,7 +342,7 @@
 
                                 <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" id ="nome" required>
+                                    <input type="text" class="form-control" placeholder="" name="paciente" id ="paciente" required>
                                 </div>
                                 </div>
                               </div>
@@ -358,7 +361,7 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="telefone">celular</label>
-                                                <input type="text" class="form-control" id="celular" placeholder="" name="telefone" >
+                                                <input type="text" class="form-control" id="celular" placeholder="" name="celular" >
                                             </div>
                                         </div>
                                    </div>
@@ -366,9 +369,9 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="tipo">procedimento</label>
-                                                <select class="form-control" name="procedimento" required>
+                                                <select class="form-control" name="procedimento_id" required>
                                                     <option>selecione</option>
-                                                    @if (!empty($especialidadesP))  
+                                                    @if(!empty($especialidadesP)) 
                                               @foreach ($especialidadesP as $p)
                                              <option value="{{ $p->codTuss }}">{{ $p->descricao }}</option>  
                                              @endforeach
@@ -395,14 +398,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="data">Data</label>
-                                            <input type="date" class="form-control" placeholder="Número" required name="data">
+                                            <input type="date" class="form-control" value="{{ $date }}" required name="data">
                                         </div>
                                     </div>
                                      
                                           <div class="col-md-6">
                                               <div class="form-group">
                                                   <label for="horario">horario</label>
-                                                  <input type="time" class="form-control" placeholder="Bairro" required name="horario">
+                                                  <input type="time" class="form-control" placeholder="Bairro" required name="hora">
                                               </div>
                                           </div>
 
