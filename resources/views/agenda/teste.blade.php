@@ -368,11 +368,11 @@
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento" required>
                                                     <option>selecione</option>
-                                                
-                                            
-                                                  
-                                                  <option value=""></option>
-                                                 
+                                                    @if (!empty($especialidadesP))  
+                                              @foreach ($especialidadesP as $p)
+                                             <option value="{{ $p->codTuss }}">{{ $p->descricao }}</option>  
+                                             @endforeach
+                                             @endif  
                                              
                                                 </select>
                                             </div>
