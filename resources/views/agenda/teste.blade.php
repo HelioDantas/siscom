@@ -1,4 +1,9 @@
 @extends('layout.app')
+   @section('links')   
+        <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    @endsection
  @section('estilos')
 <style>
     .save{
@@ -54,6 +59,10 @@
   
  
 }
+.ui-front {
+    z-index: 9999;
+}
+
 .contentBusca{
     margin-top: 1rem;
 }
@@ -282,7 +291,7 @@
 
         </div> -->--}}
 
-        <form action="{{ route('agenda.agendar') }}" method="POST">
+       <form action="{{ route('agenda.agendar') }}" method="POST">
              @method('POST')
               @csrf
               {{-- input atendente --}}
@@ -292,10 +301,9 @@
               <input type="hidden"value="{{$medico->funcionario->nome}}" name="medico"> --}}
 
               <input id="espec" type="hidden"  name="espec">
+            <div class="modal fade bd-example-modal-x"  data-target = '#auto'   id="create">
+                  <div class="modal-dialog  ui-front">
 
-
-            <div class="modal fade bd-example-modal-x" id="create">
-                  <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
                             <!--<button type="button" class="close" data-dismiss="modal">
@@ -307,14 +315,16 @@
                             <div class="row">
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="cpf">Cpf</label >
-                                          <input type="text" class="form-control" id="cpf" placeholder="" name="cpf"  autofocus>
+
+                                          <label for="preco">Cpf</label >
+                                          <input type="text" class="form-control" placeholder="" name="cpf" id = 'cpf' required autofocus>
+
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="dataNascimento">Data de Nascimento</label>
-                                          <input type="text" class="form-control" id="dataa" placeholder="" name="dataNascimento" >
+                                          <input type="date" class="form-control" id="data" placeholder="" name="dataDeNascimento" >
                                       </div>
                                   </div>
                                   <div class="col-md-2">
@@ -322,22 +332,26 @@
                                         <label for="pv">Primeira Vez ?</label>
                                         <input type="checkbox" name="primeiraVez" id="pv">
                                     </div>
-                                </div>
+                                  </div>
                             </div>
-                              <div class="row">
-                                  <div class="col-12">
-                                <div class="form-group">
+                              <div class="row"> 
+                                  <div class="col-md-12">
+
+                                <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" >
+                                    <input type="text" class="form-control" placeholder="" name="nome" id ="nome" required>
                                 </div>
                                 </div>
                               </div>
                                    <div class="row">
                                      
+
+                                      
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="telefone">telefone</label>
                                             <input type="text" class="form-control" id="telefone" placeholder="" name="telefone" >
+
                                         </div>
                                         </div>
 
@@ -354,13 +368,12 @@
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento" required>
                                                     <option>selecione</option>
-                                            @if (!empty($especialidadesP))
                                                 
+                                            
+                                                  @foreach ($medico as $md)
+                                                  <option value=""></option>
+                                                  @endforeach
                                              
-                                             @foreach ($especialidadesP as $p)
-                                             <option value="{{ $p->codTuss }}">{{ $p->descricao }}</option>  
-                                             @endforeach
-                                             @endif  
                                                 </select>
                                             </div>
                                         </div>
@@ -414,6 +427,8 @@
             </form>
       
 
+      
+
 
        
 
@@ -421,12 +436,14 @@
 
     @section('scripts')
     
-    <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+   
+
+
+
+  <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
 
     @endsection
