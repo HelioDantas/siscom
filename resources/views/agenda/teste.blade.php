@@ -370,9 +370,9 @@
                                                     <option>selecione</option>
                                                 
                                             
-                                                  @foreach ($medico as $md)
+                                                  
                                                   <option value=""></option>
-                                                  @endforeach
+                                                 
                                              
                                                 </select>
                                             </div>
