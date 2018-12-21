@@ -342,7 +342,7 @@
 
                                 <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="paciente" id ="nome" required>
+                                    <input type="text" class="form-control" placeholder="" name="paciente" id ="paciente" required>
                                 </div>
                                 </div>
                               </div>

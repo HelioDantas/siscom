@@ -42,17 +42,20 @@ class AgendaController extends Controller
 
 
     function agendar(Request $request){
+
         if(isset($request['primeiraVez']) && $request['primeiraVez'] == "on"){
             $primeiraVez = "S";
+        }else{
+            $primeiraVez = "N";
         }
-           $agenda = Agenda::create($request->all(),
-           ['primeiraVez' => $request['primeiraVez']] );
-
+          
+                 $agenda = Agenda::create($request->all(),
+                 ['primeiraVez' => $primeiraVez] );
 
 
             $CadParcialPaciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
             if($CadParcialPaciente === null){
-                Paciente::ceate([
+                Paciente::create([
                    'nome'             => $request['paciente'],
                    'cpf'              => $request['cpf'],
                    'dataDeNascimento' => $request['dataDeNascimento'],
@@ -62,6 +65,7 @@ class AgendaController extends Controller
                 ]);
             }
          
+
 
             return back();
 

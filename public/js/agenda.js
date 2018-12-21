@@ -71,7 +71,7 @@ $("#data").change(function(){
  });
 
     $(function(){
-        $('#nome').autocomplete({
+        $('#paciente').autocomplete({
             appendTo: "body", 
             source: '/buscarName',
      
@@ -92,7 +92,7 @@ $("#data").change(function(){
            $.getJSON( '/cpf/' + this.value  , function(cpf){
                var funcionario = cpf;
                 
-                var nome = $('input[name = nome]'); 
+                var nome = $('input[name = paciente]'); 
                    var telefone = $('input[name = telefone]'); 
                   var celular = $('input[name = celular]');   
                   var data = $('input[name = dataDeNascimento]');  
@@ -104,7 +104,7 @@ $("#data").change(function(){
          
 
      });
-         $("#nome").blur(function(){
+         $("#pacientee").blur(function(){
            $.getJSON( '/nome/' + this.value  , function(nome){
                var funcionario = nome;
                 
