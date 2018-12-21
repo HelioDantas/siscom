@@ -110,22 +110,22 @@
                                 <label for="">medicos</label>
                                 <select name="medico" id="medico" class="form-control">
                                     @if(!empty($med))
-                                    <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
+                                        <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
                                     @endif
-                                    @if (isset($esp))
-                                        @foreach($esp->Medico as $medico)
-                                            @if ($med->funcionario->matricula === $medico->funcionario->matricula)
-                                                @php continue; @endphp
-                                            @else
-                                                <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
 
-                                            @endif
-                                        @endforeach
+                              {{--      @if (!empty($esp))
+                                            @foreach($esp->Medico as $medico)
+                                                @if ($med->funcionario->matricula === $medico->funcionario->matricula)
+                                                    @continue
+                                                @else
 
+                                                    <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                                @endif
+                                            @endforeach
                                     @else
                                       
                                     @endif
-                               
+                                --}} 
                                  </select>                 
                         </div>
                                   
@@ -368,7 +368,7 @@
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento" required>
                                                     <option>selecione</option>
-                                                    @if (!empty($especialidadesP))  
+                                                    @if(!empty($especialidadesP)) 
                                               @foreach ($especialidadesP as $p)
                                              <option value="{{ $p->codTuss }}">{{ $p->descricao }}</option>  
                                              @endforeach

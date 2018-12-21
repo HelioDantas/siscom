@@ -40,7 +40,8 @@ $('#especialidade').change(function(){
 
     $.getJSON('/get/med/' +especialidade_id , function(meds){
         p = meds;
-        $('#medico').empty();        
+        $('#medico').empty();     
+        $('select[id=medico]').append('<option value=>Selecione</option>')
         $.each(p, function(key,value){
             $('select[id=medico]').append('<option value=' + value.id + '>' + value.nome + '</option>')
         })
