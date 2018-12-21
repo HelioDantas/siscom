@@ -36,7 +36,7 @@ $('#medico').change(function(){
 
 $('#especialidade').change(function(){
     let especialidade_id = this.value;
-    console.log(especialidade_id);
+   
 
     $.getJSON('/get/med/' +especialidade_id , function(meds){
         p = meds;
@@ -58,10 +58,10 @@ $("#data").change(function(){
 
 
  $('#delete').on('show.bs.modal', function(event){
-  console.log(id);
+  
    var button = $(event.relatedTarget);
    var  id = button.data('catid');
-   console.log(id);
+   
    var modal = $(this);
    modal.find('.modal-body #id').val(id);
 
@@ -90,8 +90,7 @@ $("#data").change(function(){
         $("#cpf").blur(function(){
            $.getJSON( '/cpf/' + this.value  , function(cpf){
                var funcionario = cpf;
-                console.log(funcionario);
-                console.log(funcionario[0]['dataDeNascimento']);
+                
                 var nome = $('input[name = nome]'); 
                    var telefone = $('input[name = telefone]'); 
                   var celular = $('input[name = celular]');   
@@ -107,8 +106,7 @@ $("#data").change(function(){
          $("#nome").blur(function(){
            $.getJSON( '/nome/' + this.value  , function(nome){
                var funcionario = nome;
-                console.log(funcionario);
-                console.log(funcionario[0]['dataDeNascimento']);
+                
                 var cpf = $('input[name = cpf]'); 
                    var telefone = $('input[name = telefone]'); 
                   var celular = $('input[name = celular]');   
