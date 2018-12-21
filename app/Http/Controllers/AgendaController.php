@@ -22,7 +22,7 @@ class AgendaController extends Controller
         //dd($med->planos[0]->procedimentos()->get());
     }
         //Opção com buscar por medico e data 
-        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->get();
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -49,7 +49,7 @@ class AgendaController extends Controller
            ['primeiraVez' => $request['primeiraVez']] );
 
 
-           
+
             $CadParcialPaciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
             if($CadParcialPaciente === null){
                 Paciente::ceate([
