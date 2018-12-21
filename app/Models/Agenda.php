@@ -10,7 +10,24 @@ class Agenda extends Model
     
     protected $table = 'sis_agenda';
     public $timestamps = false;
-    protected $fillable = array('paciente','medico', );
+    protected $fillable = array(
+        'paciente',
+        'medico', 
+        'dataDeNascimento',
+        'cpf',
+        'procedimento_id',
+        'plano',
+        'medico',
+        'atendente',
+        'data',
+        'hora',
+        'compareceu',
+        'telefone',
+        'celular',
+        'pago',
+        'idMedico',
+        'ultimaConsulta',
+    );
 
 
 }
