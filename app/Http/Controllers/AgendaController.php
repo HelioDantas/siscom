@@ -42,7 +42,7 @@ class AgendaController extends Controller
 
 
     function agendar(Request $request){
-        if(isset($request['primeiraVez'])){
+        if(isset($request['primeiraVez']) && $request['primeiraVez'] == "on"){
             $primeiraVez = "S";
         }
            $agenda = Agenda::create($request->all(),
