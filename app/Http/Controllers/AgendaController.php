@@ -22,7 +22,7 @@ class AgendaController extends Controller
         //dd($med->planos[0]->procedimentos()->get());
     }
         //Opção com buscar por medico e data 
-        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->get();
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -43,15 +43,11 @@ class AgendaController extends Controller
 
     function agendar(Request $request){
 
-        if(isset($request['primeiraVez'])){
-            $primeiraVez = "S";
-        }else{
-             $primeiraVez = "N";
-         
+    
+              $agenda = Agenda::create($request->all());
 
-        }
-              $agenda = Agenda::create($request->all(),
-                 ['primeiraVez' => $primeiraVez] );
+
+
             $CadParcialPaciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
             if($CadParcialPaciente === null){
                 Paciente::create([
