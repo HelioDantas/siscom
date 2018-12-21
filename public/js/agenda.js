@@ -16,25 +16,33 @@
     });
 
 */
-    
+$(document).ready(function(){  
+    var dtt =  document.getElementById('data').value;
+    if (dtt != '') {
+        console.log("nao ta vazio");
+    }
+
+
+});
+
 $('#medico').change(function(){
     var medico = this.value;
     
     var date = document.getElementById('data').value;
-    
-    location.href = '/agd/medico/' + medico +'/' +date;
+    var espec = document.getElementById('especialidade').value;
+    location.href = '/agd/medico/' + medico +'/' +date + '/' +espec;
   
 });
-  
+
 $('#especialidade').change(function(){
     let especialidade_id = this.value;
    
 
-    $.getJSON('get/med/' +especialidade_id , function(medicos){
-        p = medicos;
-        $('select[id=medicos]').empty();        
+    $.getJSON('/get/med/' +especialidade_id , function(meds){
+        p = meds;
+        $('#medico').empty();        
         $.each(p, function(key,value){
-            $('select[id=medicos]').append('<option value=' + value.funcionario.matricula + '>' + value.funcionario.nome + '</option>')
+            $('select[id=medico]').append('<option value=' + value.id + '>' + value.nome + '</option>')
         })
     })
 })
@@ -42,9 +50,10 @@ $('#especialidade').change(function(){
 
 $("#data").change(function(){
                var medico = document.getElementById('medico').value;
+               var espec = document.getElementById('especialidade').value;
                 var date = this.value;
 
-         location.href = '/agd/medico/' + medico +'/' +date; 
+         location.href = '/agd/medico/' + medico +'/' +date+ '/' +espec; 
      });
 
 

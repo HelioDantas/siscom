@@ -493,7 +493,7 @@
                         >
                         <option value= {{old('convenio_id')}} selected></option>
                     @foreach ($convenios as $c)
-                   <option value="{{$c->cnpj}}">{{$c->nome  }}</option>
+                   <option value="{{$c->id}}">{{$c->nome  }}</option>
                     @endforeach
                    </select>
                                @if($errors->has('convenio_id'))

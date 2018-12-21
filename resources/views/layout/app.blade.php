@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
     
     @yield('links')
-   <link rel="stylesheet" href="{{ URL::to('https://use.fontawesome.com/releases/v5.4.2/css/all.css') }}"
+   <link rel="stylesheet" href="{{ URL::to('https://use.fontawesome.com/releases/v5.4.2/css/all.css') }}">
    <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/jquery.datetimepicker.min.css') }}">
-  
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
 
     <title>SisCom</title>
@@ -193,7 +193,7 @@
 
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
     <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/moment.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
