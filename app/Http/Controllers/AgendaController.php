@@ -16,6 +16,7 @@ class AgendaController extends Controller
     function index( $medicoId  = "", $date = "",$espec = ""){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
+        $medicos = Medico::all();
         //return dd($date);
         $med = Medico::find($medicoId);
         if($med != null){
@@ -30,11 +31,13 @@ class AgendaController extends Controller
 
      if(!empty($espec)){
          $esp = Especialidade::find($espec);
+
+         
          $especialidadesP = $esp->procedimentos()->get();
          //dd($especialidadesP);
         
      }
-        return view('agenda.teste', compact('especialidade','esp','agendamentos','med', 'medicoId', 'date','especialidadesP'));
+        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','especialidadesP'));
 
     }
 
@@ -105,14 +108,10 @@ class AgendaController extends Controller
     }
 
 
-    function getMedicos($id){
-        $espec = Especialidade::find($id);
-        $medicos = $espec->Medico()->get();
-        $tt=[];
-        foreach ($medicos as $m) {
-        $tt [] = ["id" => $m->funcionario->matricula, "nome" => $m->funcionario->nome]; 
-        }
-        return json_encode($tt);
+    function getMedicosEsp($id){
+       $medico = Medico::find($id);
+        $esps = $medico->especialidade()->get(); 
+        return json_encode($esps);
 
     }
 

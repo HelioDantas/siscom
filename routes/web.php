@@ -172,7 +172,7 @@ Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::post('agendar', 'AgendaController@agendar')->name('agenda.agendar');
 
 });
-Route::get('/get/med/{id}', 'AgendaController@getMedicos');
+Route::get('/get/esp/{id}', 'AgendaController@getMedicosEsp');
 Route::get('agd/medico/{medicoId?}/{date?}/{espec?}', 'AgendaController@index')->middleware('Autorizador');
 Route::get('buscarName', 'AgendaController@buscarName')->middleware('Autorizador');
 Route::get('buscarCpf', 'AgendaController@buscarCpf')->middleware('Autorizador');

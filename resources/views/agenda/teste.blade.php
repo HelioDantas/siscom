@@ -75,7 +75,7 @@
 </style>
 @endsection
 
-@section('tela')
+@section('telaListarPaciente')
     <hr>
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
@@ -84,13 +84,13 @@
             <div class = 'row contentBusca'>
             
                         <div class="col-4 center">
-                           {{old('medico') }}
-                                <label for="">especialidade</label>
-                                <select name="especialidade" id="especialidade" class="form-control">
-                                    @if (isset($esp) && !empty($esp))
-                                    <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option> 
+                            
+                                <label for="">Medicos</label>
+                                <select name="medico" id="medico" class="form-control">
+                                    @if (isset($med) && !empty($med))
+                                    <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
                                     @else
-                                        @if (!isset($esp))
+                                        @if (!isset($med))
                                         
                                         <option value="">Selecione</option>
 
@@ -98,19 +98,19 @@
                                         @endif
 
                                     @endif
-                                    @if (!empty($especialidade))
-                                        @foreach ($especialidade as $espec)
-                                            <option value="{{ $espec->id }}">{{ $espec->nome }}</option>     
+                                    @if (!empty($medicos))
+                                        @foreach ($medicos as $meds)
+                                            <option value="{{ $meds->funcionario->matricula }}">{{ $meds->funcionario->nome }}</option>     
                                         @endforeach
                                     @endif
                                 </select>
                         </div>
                         
                         <div class="col-4 center">                                                
-                                <label for="">medicos</label>
-                                <select name="medico" id="medico" class="form-control">
-                                    @if(!empty($med))
-                                        <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
+                                <label for="">especialidades</label>
+                                <select name="especialidade" id="especialidade" class="form-control">
+                                    @if(!empty($esp))
+                                        <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option>  
                                     @endif
 
                               {{--      @if (!empty($esp))
