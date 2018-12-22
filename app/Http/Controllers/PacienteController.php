@@ -73,6 +73,10 @@ class PacienteController extends Controller
             $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
             break;
 
+            case "celular":
+            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            break;
+
             case "id":
             $pacientes = Paciente::where($tipo,'=',$buscar)->paginate(10);
             break;

@@ -153,7 +153,7 @@
 							<td> {{$p->naturalidade}} </td>
 							{{--
 							<td> {{$p->escolaridade}} </td> --}}
-							<!--         <td>       {{$p->rua}}                 </td>
+		    <!-- <td>       {{$p->rua}}                 </td>
                  <td>       {{$p->numero}}              </td>
                  <td>       {{$p->bairro}}              </td>
                  <td>       {{$p->cep}}                 </td>
