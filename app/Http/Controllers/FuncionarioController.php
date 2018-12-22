@@ -106,7 +106,7 @@ class FuncionarioController extends Controller
             break;
 
             case "telefone":
-            $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            $funcionarios = Funcionario::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
             break;
 
             case "matricula":

@@ -75,7 +75,7 @@
 			</div>
 			@endif
 			<h3 class="titulopacientes respom">Pacientes Cadastrados</h3>
-			<a class="btn btn-outline-secondary" onClick="history.go(-1)" data-toggle="tooltip" data-placement="top" title="Voltar">
+			<a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="top" title="Voltar">
 				<i class="fas fa-share"></i>
 			</a>
 			<a class="btn btn-outline-danger" href="" data-toggle="tooltip" data-placement="top" title="Cancelar">
@@ -95,6 +95,7 @@
 					<option value="nome">nome</option>
 					<option value="id">prontuario</option>
 					<option value="telefone">telefone</option>
+					<option value="celular">telefone</option>
 					<option value="cpf">cpf</option>
 				</select>
 				<input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">
@@ -127,7 +128,7 @@
 							<th scope="col">estado          </th>-->
 							<th scope="col">telefone </th>
 							<th scope="col">celular </th>
-							<th scope="col">email </th>
+						<!--	<th scope="col">email </th> -->
 							{{--
 							<th scope="col">profissão </th> --}}
 							<th scope="col">status </th>
@@ -161,13 +162,13 @@
                  <td>       {{$p->estado}}              </td>-->
 							<td> {{$p->telefone}} </td>
 							<td> {{$p->celular}} </td>
-							<td> {{$p->email}} </td>
-							{{--
+							{{--<td> {{$p->email}} </td>
+							
 							<td> {{$p->profissao}} </td> --}}
 							<td> {{$p->status}} </td>
 							<td>
                                     @if($destroy)
-								<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
+								<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" title="excluir">
 									<i class="fas fa-trash"></i>
 								</button>
 								<!-- Modal -->
@@ -193,7 +194,7 @@
 								</div>
                                 @endif
                                 @if($edit)
-								<a class="btn btn-outline-primary" href="editar/{{$p->id}}" title="visualizar"><i class="fas fa-edit"></i>
+								<a class="btn btn-outline-primary" href="editar/{{$p->id}}" title="editar"><i class="fas fa-edit"></i>
                                 </a>
                                 @endif
                                 @if($show)

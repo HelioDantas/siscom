@@ -22,7 +22,7 @@ class AgendaController extends Controller
         //dd($med->planos[0]->procedimentos()->get());
     }
         //Opção com buscar por medico e data 
-        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->get();
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -42,8 +42,38 @@ class AgendaController extends Controller
 
 
     function agendar(Request $request){
-        dd($request);
-            $agenda = Agenda::create($request->all());
+        
+
+            $paciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
+            if($paciente === null){
+                $paciente = Paciente::create([
+
+                   'nome'             => $request['paciente'],
+                   'cpf'              => $request['cpf'],
+                   'dataDeNascimento' => $request['dataDeNascimento'],
+                   'telefone'         => $request['telefone'],
+                   'celular'          => $request['celular'],
+                   
+                ]);
+            }
+
+             Agenda::create([ 
+                 'primeiraVez'      => $request['primeiraVez'] ,
+                 'paciente_id'      => $paciente->id, 
+                 'paciente'         => $request['paciente'],
+                 'cpf'              => $request['cpf'],
+                 'dataDeNascimento' => $request['dataDeNascimento'],
+                 'telefone'         => $request['telefone'],
+                 'celular'          => $request['celular'],
+                 'procedimento_id'  => $request['procedimento_id'],
+                 'medico'           => $request['medico'],
+                 'idMedico'         => $request['idMedico'],
+                 'atendente'        => $request['atendente'],
+                 'hora'             => $request['hora'],
+                 'data'             => $request['data'],
+
+
+                 ]);
 
             return back();
 

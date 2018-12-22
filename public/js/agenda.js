@@ -36,11 +36,12 @@ $('#medico').change(function(){
 
 $('#especialidade').change(function(){
     let especialidade_id = this.value;
-    console.log(especialidade_id);
+   
 
     $.getJSON('/get/med/' +especialidade_id , function(meds){
         p = meds;
-        $('#medico').empty();        
+        $('#medico').empty();     
+        $('select[id=medico]').append('<option value=>Selecione</option>')
         $.each(p, function(key,value){
             $('select[id=medico]').append('<option value=' + value.id + '>' + value.nome + '</option>')
         })
@@ -58,10 +59,10 @@ $("#data").change(function(){
 
 
  $('#delete').on('show.bs.modal', function(event){
-  console.log(id);
+  
    var button = $(event.relatedTarget);
    var  id = button.data('catid');
-   console.log(id);
+   
    var modal = $(this);
    modal.find('.modal-body #id').val(id);
 
@@ -70,7 +71,7 @@ $("#data").change(function(){
  });
 
     $(function(){
-        $('#nome').autocomplete({
+        $('#paciente').autocomplete({
             appendTo: "body", 
             source: '/buscarName',
      
@@ -90,9 +91,8 @@ $("#data").change(function(){
         $("#cpf").blur(function(){
            $.getJSON( '/cpf/' + this.value  , function(cpf){
                var funcionario = cpf;
-                console.log(funcionario);
-                console.log(funcionario[0]['dataDeNascimento']);
-                var nome = $('input[name = nome]'); 
+                
+                var nome = $('input[name = paciente]'); 
                    var telefone = $('input[name = telefone]'); 
                   var celular = $('input[name = celular]');   
                   var data = $('input[name = dataDeNascimento]');  
@@ -104,11 +104,10 @@ $("#data").change(function(){
          
 
      });
-         $("#nome").blur(function(){
+         $("#pacientee").blur(function(){
            $.getJSON( '/nome/' + this.value  , function(nome){
                var funcionario = nome;
-                console.log(funcionario);
-                console.log(funcionario[0]['dataDeNascimento']);
+                
                 var cpf = $('input[name = cpf]'); 
                    var telefone = $('input[name = telefone]'); 
                   var celular = $('input[name = celular]');   

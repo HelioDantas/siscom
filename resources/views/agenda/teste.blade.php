@@ -1,4 +1,9 @@
 @extends('layout.app')
+   @section('links')   
+        <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    @endsection
  @section('estilos')
 <style>
     .save{
@@ -35,9 +40,9 @@
      margin: auto;
     width: 50%;
     padding: 10px;
-    padding-top: 0;
+   
     text-align: center;
-    padding-bottom: 0;
+ 
 
    }
    .row{
@@ -54,6 +59,10 @@
   
  
 }
+.ui-front {
+    z-index: 9999;
+}
+
 .contentBusca{
     margin-top: 1rem;
 }
@@ -101,22 +110,22 @@
                                 <label for="">medicos</label>
                                 <select name="medico" id="medico" class="form-control">
                                     @if(!empty($med))
-                                    <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
+                                        <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
                                     @endif
-                                    @if (isset($esp))
-                                        @foreach($esp->Medico as $medico)
-                                            @if ($med->funcionario->matricula === $medico->funcionario->matricula)
-                                                @php continue; @endphp
-                                            @else
-                                                <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
 
-                                            @endif
-                                        @endforeach
+                              {{--      @if (!empty($esp))
+                                            @foreach($esp->Medico as $medico)
+                                                @if ($med->funcionario->matricula === $medico->funcionario->matricula)
+                                                    @continue
+                                                @else
 
+                                                    <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
+                                                @endif
+                                            @endforeach
                                     @else
                                       
                                     @endif
-                               
+                                --}} 
                                  </select>                 
                         </div>
                                   
@@ -138,11 +147,16 @@
                         <tr>
                             <th scope="col">horario      </th>
                             <th scope="col">paciente     </th>   
-                        
                             <th scope="col">cpf          </th>
-                             <th scope="col">telefone     </th> 
-                              <th scope="col">celular     </th>     
-                         
+
+                            <th scope="col">telefone     </th> 
+                      
+                            <th scope="col">celular     </th>     
+                            <th scope="col">primeiraVez     </th>  
+                            <th scope="col">compareceu     </th>  
+                            <th scope="col">pago     </th>     
+                                        
+
                             <th scope="col">opções       </th>
                         </tr>
                         </thead>
@@ -155,16 +169,22 @@
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
                                       <td>{{ $h->telefone }}</td>
-                                       <td>{{ $h->celular }}</td>
+                                      <td>{{ $h->celular }}</td>
+                                      <td>{{ $h->primeiraVez }}</td>
+                                      <td>{{ $h->compareceu }}</td>
+                                      <td>{{ $h->pago }}</td>
                                       
                                   
-                                   
+
                                  <td>  
                                                
                                                 <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     <!-- Modal -->
                                     
-                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a>
+                                              <!-- <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
+                                               @if ($h->primeiraVez != 'N' )
+                                               <a  class="btn btn-outline-primary"  href="{{ route('paciente.editar',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
+                                               @endif
 
                                  </td>
                               </tr>
@@ -282,20 +302,23 @@
 
         </div> -->--}}
 
-        <form action="{{ route('agenda.agendar') }}" method="POST">
+       <form action="{{ route('agenda.agendar') }}" method="POST">
              @method('POST')
               @csrf
               {{-- input atendente --}}
               <input type="hidden"value="{{ Auth::User()->funcionario->nome }}" name="atendente">
 
-              {{-- input medico
-              <input type="hidden"value="{{$medico->funcionario->nome}}" name="medico"> --}}
+              {{-- input medico --}}
+              @if (!empty($med))
+              <input type="hidden" value="{{$med->funcionario->matricula}}" name="idMedico">
+              <input type="hidden" value="{{$med->funcionario->nome}}" name="medico">
+
+              @endif
 
               <input id="espec" type="hidden"  name="espec">
+            <div class="modal fade bd-example-modal-x"  data-target = '#auto'   id="create">
+                  <div class="modal-dialog  ui-front">
 
-
-            <div class="modal fade bd-example-modal-x" id="create">
-                  <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
                             <!--<button type="button" class="close" data-dismiss="modal">
@@ -307,44 +330,50 @@
                             <div class="row">
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="cpf">Cpf</label >
-                                          <input type="text" class="form-control" id="cpf" placeholder="" name="cpf"  autofocus>
+
+                                          <label for="preco">Cpf</label >
+                                          <input type="text" class="form-control" placeholder="" name="cpf" id = 'cpf' required autofocus>
+
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="dataNascimento">Data de Nascimento</label>
-                                          <input type="text" class="form-control" id="dataa" placeholder="" name="dataNascimento" >
+                                          <input type="date" class="form-control" id="data" placeholder="" name="dataDeNascimento" >
                                       </div>
                                   </div>
                                   <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="pv">Primeira Vez ?</label>
-                                        <input type="checkbox" name="primeiraVez" id="pv">
+                                        <input type="checkbox" value = 'S' name="primeiraVez" id="pv">
                                     </div>
-                                </div>
+                                  </div>
                             </div>
-                              <div class="row">
-                                  <div class="col-12">
-                                <div class="form-group">
+                              <div class="row"> 
+                                  <div class="col-md-12">
+
+                                <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="nome" >
+                                    <input type="text" class="form-control" placeholder="" name="paciente" id ="paciente" required>
                                 </div>
                                 </div>
                               </div>
                                    <div class="row">
                                      
+
+                                      
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="telefone">telefone</label>
                                             <input type="text" class="form-control" id="telefone" placeholder="" name="telefone" >
+
                                         </div>
                                         </div>
 
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="telefone">celular</label>
-                                                <input type="text" class="form-control" id="celular" placeholder="" name="telefone" >
+                                                <input type="text" class="form-control" id="celular" placeholder="" name="celular" >
                                             </div>
                                         </div>
                                    </div>
@@ -352,15 +381,14 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="tipo">procedimento</label>
-                                                <select class="form-control" name="procedimento" required>
+                                                <select class="form-control" name="procedimento_id" required>
                                                     <option>selecione</option>
-                                            @if (!empty($especialidadesP))
-                                                
-                                             
-                                             @foreach ($especialidadesP as $p)
+                                                    @if(!empty($especialidadesP)) 
+                                              @foreach ($especialidadesP as $p)
                                              <option value="{{ $p->codTuss }}">{{ $p->descricao }}</option>  
                                              @endforeach
                                              @endif  
+                                             
                                                 </select>
                                             </div>
                                         </div>
@@ -382,14 +410,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="data">Data</label>
-                                            <input type="date" class="form-control" placeholder="Número" required name="data">
+                                            <input type="date" class="form-control" value="{{ $date }}" required name="data">
                                         </div>
                                     </div>
                                      
                                           <div class="col-md-6">
                                               <div class="form-group">
                                                   <label for="horario">horario</label>
-                                                  <input type="time" class="form-control" placeholder="Bairro" required name="horario">
+                                                  <input type="time" class="form-control" placeholder="Bairro" required name="hora">
                                               </div>
                                           </div>
 
@@ -414,6 +442,8 @@
             </form>
       
 
+      
+
 
        
 
@@ -421,12 +451,14 @@
 
     @section('scripts')
     
-    <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+   
+
+
+
+  <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
 
     @endsection

@@ -70,7 +70,7 @@ class PacienteController extends Controller
             break;
 
             case "telefone":
-            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
+            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
             break;
 
             case "celular":
@@ -101,6 +101,8 @@ class PacienteController extends Controller
 
         return view('paciente.formulario' ,compact('convenios','planos'));
     }
+
+   
 
     public function create(PacienteRequest $request){
 
@@ -144,14 +146,9 @@ class PacienteController extends Controller
         //  form para editar infos de um funcionario
         $tt =PermissionController::pedit( $request);
 
-        if($tt == 0){
-
-            return json_encode(0);
-            //return 0;
-
-        }
 
        $p = Paciente::find($id);
+       
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
         $phc = $plano->pivot;
