@@ -63,6 +63,15 @@ $("#data").change(function(){
 
 
  });
+ $('#obs').on('show.bs.modal', function(event){
+  
+    var button = $(event.relatedTarget);
+    var  obs = button.data('catid');
+    
+    var modal = $(this);
+    modal.find('.modal-body #obs').val(obs);
+ 
+  });
 
     $(function(){
         $('#paciente').autocomplete({

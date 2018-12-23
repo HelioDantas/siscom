@@ -162,7 +162,7 @@
                         </thead>
                         <tbody>
                             @if (isset($agendamentos))
-                        
+                            @php $count=0; @endphp
                               @foreach ($agendamentos as $h)
                                   <tr>
                                       <td>{{ $h->hora }}</td>
@@ -179,11 +179,18 @@
                                  <td>  
                                                
                                                 <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
-                                    <!-- Modal -->
+                                    
                                     
                                               <!-- <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
                                                @if ($h->primeiraVez != 'N' )
                                                <a  class="btn btn-outline-primary"  href="{{ route('paciente.editar',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
+                                               @endif
+
+                                               
+                                               @if ($h->obs != null) )
+                                               @php $count++ @endphp
+                                               <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
+                                                <!-- Button trigger modal -->
                                                @endif
 
                                  </td>
@@ -220,16 +227,36 @@
                                         </div>  
 
 
-                                 </td>
-                              </tr>
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="obs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title">Observação da Reserva</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    
+                                                    <p id="obs"></p>
+                                                
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                              
                         
                               
                         
-                        </tbody>
-                    </table>
-                </div>
-
+                     
                         
                   {{--     <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-x">
