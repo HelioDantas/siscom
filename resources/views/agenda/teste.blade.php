@@ -148,11 +148,11 @@
                             <th scope="col">horario      </th>
                             <th scope="col">paciente     </th>   
                             <th scope="col">cpf          </th>
-
-                            <th scope="col">telefone     </th> 
-                      
-                            <th scope="col">celular     </th>     
-                            <th scope="col">primeiraVez     </th>  
+                            <th scope="col">telefone     </th>
+                            <th scope="col">celular     </th>   
+                            <th scope="col">idade     </th>     
+                            <th scope="col">Ult.Consulta     </th>     
+                            <th scope="col">primeiraVez     </th>   
                             <th scope="col">compareceu     </th>  
                             <th scope="col">pago     </th>     
                                         
@@ -170,6 +170,8 @@
                                       <td>{{ $h->cpf }}</td>
                                       <td>{{ $h->telefone }}</td>
                                       <td>{{ $h->celular }}</td>
+                                      <td>{{ $h->dataDeNascimento}}</td>
+                                      <td>{{ $h->ultimaConsulta }}</td>
                                       <td>{{ $h->primeiraVez }}</td>
                                       <td>{{ $h->compareceu }}</td>
                                       <td>{{ $h->pago }}</td>
@@ -178,16 +180,16 @@
 
                                  <td>  
                                                
-                                                <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
+                                                  <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     
                                     
-                                              <!-- <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
+                                             <!--<a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
                                                @if ($h->primeiraVez != 'N' )
                                                <a  class="btn btn-outline-primary"  href="{{ route('paciente.editar',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
                                                @endif
 
                                                
-                                               @if ($h->obs != null) )
+                                               @if ($h->obs != null)
                                                @php $count++ @endphp
                                                <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
                                                 <!-- Button trigger modal -->
@@ -238,11 +240,10 @@
                                                             </button>
                                                     </div>
                                             <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    
-                                                    <p id="obs"></p>
+                
+                                                <div class="container-fluid" id="obss">
                                                 
-                                                   
+                                                        <p id="p" value></p>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
