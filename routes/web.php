@@ -67,11 +67,12 @@ Route::prefix('pacientes')->middleware('auth')->group(function () { //->middlewa
     Route::get('excluir/{id}', 'PacienteController@destroy')->name('paciente.excluir');
     Route::get('index', 'PacienteController@indexjs')->name('paciente.js');
     Route::get('json', 'PacienteController@indexjson')->name('paciente.json');
-    Route::any('buscar', 'PacienteController@buscar')->name('funcionario.buscar');
+    Route::any('buscar', 'PacienteController@buscar')->name('funcionario.buscar'); 
+   
+
 
 });
 
-Route::get('editarteste/{id}', 'PacienteController@edit')->name('paciente.editar');
 
 Route::get('/novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
 Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->middleware('Autorizador');
@@ -171,7 +172,7 @@ Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::post('agendar', 'AgendaController@agendar')->name('agenda.agendar');
 
 });
-Route::get('/get/med/{id}', 'AgendaController@getMedicos');
+Route::get('/get/esp/{id}', 'AgendaController@getMedicosEsp');
 Route::get('agd/medico/{medicoId?}/{date?}/{espec?}', 'AgendaController@index')->middleware('Autorizador');
 Route::get('buscarName', 'AgendaController@buscarName')->middleware('Autorizador');
 Route::get('buscarCpf', 'AgendaController@buscarCpf')->middleware('Autorizador');

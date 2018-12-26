@@ -16,34 +16,28 @@
     });
 
 */
-$(document).ready(function(){  
-    var dtt =  document.getElementById('data').value;
-    if (dtt != '') {
-        console.log("nao ta vazio");
-    }
 
 
-});
-
-$('#medico').change(function(){
+$('#especialidade').change(function(){
     var medico = this.value;
     
     var date = document.getElementById('data').value;
     var espec = document.getElementById('especialidade').value;
+    var medico = document.getElementById('medico').value;
     location.href = '/agd/medico/' + medico +'/' +date + '/' +espec;
   
 });
 
-$('#especialidade').change(function(){
-    let especialidade_id = this.value;
-   
+$('#medico').change(function(){
+    let medico_id = this.value;
+   console.log(medico_id);
 
-    $.getJSON('/get/med/' +especialidade_id , function(meds){
+    $.getJSON('/get/esp/' +medico_id , function(meds){
         p = meds;
-        $('#medico').empty();     
-        $('select[id=medico]').append('<option value=>Selecione</option>')
+        $('#especialidade').empty();     
+        $('select[id=especialidade]').append('<option value=>Selecione</option>')
         $.each(p, function(key,value){
-            $('select[id=medico]').append('<option value=' + value.id + '>' + value.nome + '</option>')
+            $('select[id=especialidade]').append('<option value=' + value.id + '>' + value.nome + '</option>')
         })
     })
 })
@@ -69,6 +63,15 @@ $("#data").change(function(){
 
 
  });
+ $('#obs').on('show.bs.modal', function(event){
+  
+    var button = $(event.relatedTarget);
+    var  obs = button.data('catid');
+    
+    var modal = $(this);
+    modal.find('.modal-body #obs').val(obs);
+ 
+  });
 
     $(function(){
         $('#paciente').autocomplete({

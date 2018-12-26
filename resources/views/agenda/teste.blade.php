@@ -75,7 +75,7 @@
 </style>
 @endsection
 
-@section('tela')
+@section('telaListarPaciente')
     <hr>
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
@@ -84,13 +84,13 @@
             <div class = 'row contentBusca'>
             
                         <div class="col-4 center">
-                           {{old('medico') }}
-                                <label for="">especialidade</label>
-                                <select name="especialidade" id="especialidade" class="form-control">
-                                    @if (isset($esp) && !empty($esp))
-                                    <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option> 
+                            
+                                <label for="">Medicos</label>
+                                <select name="medico" id="medico" class="form-control">
+                                    @if (isset($med) && !empty($med))
+                                    <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
                                     @else
-                                        @if (!isset($esp))
+                                        @if (!isset($med))
                                         
                                         <option value="">Selecione</option>
 
@@ -98,19 +98,19 @@
                                         @endif
 
                                     @endif
-                                    @if (!empty($especialidade))
-                                        @foreach ($especialidade as $espec)
-                                            <option value="{{ $espec->id }}">{{ $espec->nome }}</option>     
+                                    @if (!empty($medicos))
+                                        @foreach ($medicos as $meds)
+                                            <option value="{{ $meds->funcionario->matricula }}">{{ $meds->funcionario->nome }}</option>     
                                         @endforeach
                                     @endif
                                 </select>
                         </div>
                         
                         <div class="col-4 center">                                                
-                                <label for="">medicos</label>
-                                <select name="medico" id="medico" class="form-control">
-                                    @if(!empty($med))
-                                        <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
+                                <label for="">especialidades</label>
+                                <select name="especialidade" id="especialidade" class="form-control">
+                                    @if(!empty($esp))
+                                        <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option>  
                                     @endif
 
                               {{--      @if (!empty($esp))
@@ -147,39 +147,53 @@
                         <tr>
                             <th scope="col">horario      </th>
                             <th scope="col">paciente     </th>   
-                        
                             <th scope="col">cpf          </th>
-                      <th scope="col">telefone     </th> 
+
+                            <th scope="col">telefone     </th> 
                       
-                              <th scope="col">celular     </th>     
-                                  <th scope="col">primeira vez     </th>  
-                                  <th scope="col">compareceu     </th>  
-                                  <th scope="col">pago     </th>     
+
+                            <th scope="col">celular     </th>     
+                            <th scope="col">primeiraVez     </th>  
+                            <th scope="col">compareceu     </th>  
+                            <th scope="col">pago     </th>     
+                                        
+
+
                             <th scope="col">opções       </th>
                         </tr>
                         </thead>
                         <tbody>
                             @if (isset($agendamentos))
-                        
+                            @php $count=0; @endphp
                               @foreach ($agendamentos as $h)
                                   <tr>
                                       <td>{{ $h->hora }}</td>
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
                                       <td>{{ $h->telefone }}</td>
-                                       <td>{{ $h->celular }}</td>
-                                         <td>{{ $h->primeiraVez }}</td>
-                                           <td>{{ $h->compareceu }}</td>
-                                             <td>{{ $h->pago }}</td>
+                                      <td>{{ $h->celular }}</td>
+                                      <td>{{ $h->primeiraVez }}</td>
+                                      <td>{{ $h->compareceu }}</td>
+                                      <td>{{ $h->pago }}</td>
                                       
                                   
-                                   
+
                                  <td>  
                                                
                                                 <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
-                                    <!-- Modal -->
                                     
-                                               <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a>
+                                    
+                                              <!-- <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
+                                               @if ($h->primeiraVez != 'N' )
+                                               <a  class="btn btn-outline-primary"  href="{{ route('paciente.editar',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
+                                               @endif
+
+                                               
+                                               @if ($h->obs != null) )
+                                               @php $count++ @endphp
+                                               <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
+                                                <!-- Button trigger modal -->
+                                               @endif
 
                                  </td>
                               </tr>
@@ -215,16 +229,36 @@
                                         </div>  
 
 
-                                 </td>
-                              </tr>
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="obs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title">Observação da Reserva</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    
+                                                    <p id="obs"></p>
+                                                
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                              
                         
                               
                         
-                        </tbody>
-                    </table>
-                </div>
-
+                     
                         
                   {{--     <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-x">
@@ -306,6 +340,7 @@
               {{-- input medico --}}
               @if (!empty($med))
               <input type="hidden" value="{{$med->funcionario->matricula}}" name="idMedico">
+              <input type="hidden" value="{{$med->funcionario->nome}}" name="medico">
 
               @endif
 
