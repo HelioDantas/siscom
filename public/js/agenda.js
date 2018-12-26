@@ -48,7 +48,8 @@ $("#data").change(function(){
                var espec = document.getElementById('especialidade').value;
                 var date = this.value;
 
-         location.href = '/agd/medico/' + medico +'/' +date+ '/' +espec; 
+            if(!medico == null && !espec == null)
+                location.href = '/agd/medico/' + medico + '/' + date + '/' +espec; 
      });
 
 
