@@ -87,7 +87,10 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
     Route::get('novo/{id}', 'MedicoController@planoNovo')->name('medico.planoNovo');
     Route::any('create/{id}&&{medico_id}', 'MedicoController@planoCreate')->name('medico.planoCreate');
     Route::any('desativar_plano/{id}&&{plano_id}', 'MedicoController@desativar_plano')->name('medico.desativar_plano');
-
+    Route::get('agendar', 'MedicoController@agenda')->name('medico.agenda');
+        Route::get('agendar/{date?}', 'MedicoController@agenda');
+   
+    
 });
 Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
 
@@ -145,7 +148,7 @@ Route::get('delete/{id}', 'PlanoController@assocDelete')->name('convenio.plano.a
 
 });
 
-Route::prefix('procedimeno')->middleware('Autorizador')->group(function(){
+Route::prefix('procedimento')->middleware('Autorizador')->group(function(){
     Route::get('novo/{id}', 'ProcedimentoController@novo')->name('procedimento.novo');
     Route::post('create', 'ProcedimentoController@create')->name('procedimento.create'); 
     Route::post('plano/assoc', 'ProcedimentoController@planoAssoc')->name('procedimento.plano.assoc');
@@ -179,7 +182,7 @@ Route::get('buscarName', 'AgendaController@buscarName')->middleware('Autorizador
 Route::get('buscarCpf', 'AgendaController@buscarCpf')->middleware('Autorizador');
 
 Route::get('novo/get-planos/{convenio_id}', 'ConvenioController@getPlano')->middleware('Autorizador');
-
+Route::get('medd/{date?}', 'MedicoController@agenda')->middleware('Autorizador');
 
 Route::get('cpf/{cpf}', 'PacienteController@buscarCpf')->middleware('Autorizador');
 Route::get('nome/{nome}', 'PacienteController@buscarNome')->middleware('Autorizador');

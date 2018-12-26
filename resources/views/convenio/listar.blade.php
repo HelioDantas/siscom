@@ -79,7 +79,7 @@
 
 
 			<h3 class="titulopacientes respom">Convênios Cadastrados</h3>
-			<a class="btn btn-outline-secondary" onClick="history.go(-1)" data-toggle="tooltip" data-placement="top" title="Voltar">
+			<a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="top" title="Voltar">
 				<i class="fas fa-share"></i>
 			</a>
 			<a class="btn btn-outline-danger" href="" data-toggle="tooltip" data-placement="top" title="Cancelar">

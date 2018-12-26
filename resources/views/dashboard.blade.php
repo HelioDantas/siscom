@@ -95,13 +95,10 @@
                                             <div class="col-sm-4">
                                               <div class="card text-center" style="width: 18rem;">
                                                       <div class="card-body">
-                                                        <h5 class="card-title">Financeiro</h5>
-      
-                                                        <p class="card-text">Em desenvolvimento ... </p>
-                                                        <p class="card-text"> </p>
+                                                          <h5 class="card-title">Médico</h5>
+                                                                  <p class="card-text">Agenda, </p>
 
-      
-                                                        <a href="#"class="btn btn-primary">visualizar</a>
+                                                             <a href="{{route('medico.agenda')}}"class="btn btn-primary">Médico</a>
                                                       </div>
                                                     </div>
                                       </div>
