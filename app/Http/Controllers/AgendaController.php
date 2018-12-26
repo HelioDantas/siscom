@@ -46,6 +46,10 @@ class AgendaController extends Controller
 
     function agendar(Request $request){
         
+            $dataDaConsulta = strtotime($request['data']);
+            $date = strtotime(date("Y-m-d"));
+            if( $dataDaConsulta < $date  )
+                return back();
 
             $paciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
             if($paciente === null){
@@ -59,24 +63,38 @@ class AgendaController extends Controller
                    
                 ]);
             }
+            try{            
+                Agenda::create([ 
+                    'primeiraVez'      => $request['primeiraVez'] ,
+                    'paciente_id'      => $paciente->id, 
+                    'paciente'         => $request['paciente'],
+                    'cpf'              => $request['cpf'],
+                    'dataDeNascimento' => $request['dataDeNascimento'],
+                    'telefone'         => $request['telefone'],
+                    'celular'          => $request['celular'],
+                    'procedimento_id'  => $request['procedimento_id'],
+                    'medico'           => $request['medico'],
+                    'idMedico'         => $request['idMedico'],
+                    'atendente'        => $request['atendente'],
+                    'hora'             => $request['hora'],
+                    'data'             => $request['data'],
 
-             Agenda::create([ 
-                 'primeiraVez'      => $request['primeiraVez'] ,
-                 'paciente_id'      => $paciente->id, 
-                 'paciente'         => $request['paciente'],
-                 'cpf'              => $request['cpf'],
-                 'dataDeNascimento' => $request['dataDeNascimento'],
-                 'telefone'         => $request['telefone'],
-                 'celular'          => $request['celular'],
-                 'procedimento_id'  => $request['procedimento_id'],
-                 'medico'           => $request['medico'],
-                 'idMedico'         => $request['idMedico'],
-                 'atendente'        => $request['atendente'],
-                 'hora'             => $request['hora'],
-                 'data'             => $request['data'],
+
+                    ]);
+
+            }catch (\Exception $e){
+
+              $mensagem= $e->getMessage();
+              $buscar = ' Integrity constraint violation: 1062 Duplicate entry';
+               $pos = strpos( $mensagem, $buscar );
 
 
-                 ]);
+
+                if ($pos === false) 
+                    return back();
+               
+            }
+        
 
             return back();
 
@@ -86,10 +104,15 @@ class AgendaController extends Controller
     
     function desmarcar(Request $request){
      //   return dd($request);
+
         $id = $request['id'];
            //  return dd($id);
             $agenda = Agenda::find($id);
-            $agenda->delete();
+            $dataDaConsulta = strtotime($agenda->data);
+            $date = strtotime(date("Y-m-d"));
+            if( $dataDaConsulta == $date  )
+                $agenda->delete();
+            
 
             return back();
 
