@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Especialidade;
 use DB;
+use App\Models\Agenda;
+use Auth;
 class MedicoController extends Controller
 {
 
 
+   
     public function desativar_plano(Request $request, $id, $plano_id){
 
         Medico::find($id)->planos()->updateExistingPivot($plano_id, ['status'=>'INATIVO']);
@@ -67,6 +70,25 @@ class MedicoController extends Controller
     $medico = $medico->getHorarios();
     dd($medico);
     return json_encode( $especialidades);
+    }
+
+
+    public function agenda(  $date =""  ){
+
+        $especialidade = Especialidade::with('Medico.funcionario')->get();
+ 
+        //return dd($date);
+        $medicoId = Auth::user()->funcionario->matricula;
+        $med = Medico::find($medicoId);
+        if ($date == "")
+            $date = date("Y-m-d");
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
+
+        return view ('medico.agenda', compact('especialidade', 'agendamentos', 'medicoId', 'date', 'espec'));
+
+
+
+
     }
 
 }
