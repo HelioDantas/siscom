@@ -70,7 +70,7 @@ $("#data").change(function(){
     var  obs = button.data('catid');
     
     var modal = $(this);
-    modal.find('.modal-body #obs').val(obs);
+    modal.find('.modal-body #p').text( obs);
  
   });
 

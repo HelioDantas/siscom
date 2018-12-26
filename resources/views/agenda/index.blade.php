@@ -196,15 +196,6 @@
                                         </div>  
 
 
-                                 </td>
-                              </tr>
-                             
-                        
-                              
-                        
-                        </tbody>
-                    </table>
-
 
                         
                   {{--     <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">

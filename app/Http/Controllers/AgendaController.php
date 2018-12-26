@@ -46,10 +46,14 @@ class AgendaController extends Controller
 
     function agendar(Request $request){
         
+
             $dataDaConsulta = strtotime($request['data']);
             $date = strtotime(date("Y-m-d"));
             if( $dataDaConsulta < $date  )
                 return back();
+
+            isset($request['primeiraVez']) ? $primeira = $request['primeiraVez'] : $primeira = "N";
+
 
             $paciente = Paciente::where('cpf',$request['cpf'])->where('nome',$request['paciente'])->first();
             if($paciente === null){
@@ -62,10 +66,12 @@ class AgendaController extends Controller
                    'celular'          => $request['celular'],
                    
                 ]);
+                
+                $primeira = "S";
             }
             try{            
                 Agenda::create([ 
-                    'primeiraVez'      => $request['primeiraVez'] ,
+                    'primeiraVez'      => $primeira ,
                     'paciente_id'      => $paciente->id, 
                     'paciente'         => $request['paciente'],
                     'cpf'              => $request['cpf'],
@@ -78,6 +84,7 @@ class AgendaController extends Controller
                     'atendente'        => $request['atendente'],
                     'hora'             => $request['hora'],
                     'data'             => $request['data'],
+
 
 
                     ]);
