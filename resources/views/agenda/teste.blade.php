@@ -152,7 +152,7 @@
                       <th scope="col">telefone     </th> 
                       
                               <th scope="col">celular     </th>     
-                                  <th scope="col">primeiraVez     </th>  
+                                  <th scope="col">primeira vez     </th>  
                                   <th scope="col">compareceu     </th>  
                                   <th scope="col">pago     </th>     
                             <th scope="col">opções       </th>
