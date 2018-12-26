@@ -164,5 +164,14 @@ class AgendaController extends Controller
 
     }
 
+    public function editarPaciente($id){
+
+        session(['key' => url()->previous()]);
+     
+       // $request->session()->keep(['username', 'email']);
+
+        return redirect()->route('paciente.editar',['id' => $id]);
+    }
+
 
 }

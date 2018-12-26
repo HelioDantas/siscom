@@ -171,7 +171,7 @@ class PacienteController extends Controller
     public function update(PacienteRequest $request, $id)
     {
        
-
+  
 
         PermissionController::pedit( $request);
 
@@ -204,8 +204,11 @@ class PacienteController extends Controller
 
 
             // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+            
             $paciente = Paciente::find($id);
+            
             $paciente->update($request->all());
+         //  dd($request->all());
 
 
 
@@ -246,6 +249,12 @@ class PacienteController extends Controller
             '_token']));
 
 */
+         if ($request->session()->exists('key')) {
+             $value = session('key');
+            session()->forget('key');
+
+           return redirect($value);
+}
         return redirect()->route('paciente.listar');
     }
 
