@@ -79,8 +79,8 @@
     <hr>
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
+           <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
             <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
-           
             <div class = 'row contentBusca'>
             
                         <div class="col-4 center">
@@ -408,16 +408,34 @@
                                         </div>
                                    </div>
                                     <div class="row">
-                                        <div class="col-12">
+                                            <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="telefone">plano</label>
+                                                        <select class="form-control" name="plano" id="">
+                                                        @if (isset($medPlanos) && !empty($medPlanos))
+                                                        <option value="" selected>Particular</option>
+                                                        @foreach ($medPlanos as $p)
+                                                               {{-- <optgroup label="{{  $p->convenio->nome}}"> --}}
+                                                                    <option value="{{ $p->id }}">{{ $p->nome }}</option>
+                                                               
+                                                             <!--   <optgroup> -->
+                                                            @endforeach
+
+                                                        @endif
+                                                            
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                           
+
+                                        <div class="col">
                                             <div class="form-group">
                                                 <label for="tipo">procedimento</label>
-                                                <select class="form-control" name="procedimento_id" required>
+                                                <select class="form-control" name="procedimento_id" id="procedimentoMed" required>
                                                     <option>selecione</option>
-                                                    @if(!empty($especialidadesP)) 
-                                              @foreach ($especialidadesP as $p)
-                                             <option value="{{ $p->codTuss }}">{{ $p->descricao }}</option>  
-                                             @endforeach
-                                             @endif  
+                                                
+                                        
                                              
                                                 </select>
                                             </div>

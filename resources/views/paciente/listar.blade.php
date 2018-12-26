@@ -78,7 +78,7 @@
 			<a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="top" title="Voltar">
 				<i class="fas fa-share"></i>
 			</a>
-			<a class="btn btn-outline-danger" href="" data-toggle="tooltip" data-placement="top" title="Cancelar">
+			<a class="btn btn-outline-danger" href="" data-toggle="tooltip" id="tooltip" data-placement="top" title="Cancelar perquisa">
 				<i class="fas fa-times"></i>
             </a>
             @if($novo)
@@ -229,4 +229,6 @@
 <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('js/confirmacaoDeExclusao.js') }}"></script>
+
+
 @endsection

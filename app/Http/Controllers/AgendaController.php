@@ -19,8 +19,9 @@ class AgendaController extends Controller
         $medicos = Medico::all();
         //return dd($date);
         $med = Medico::find($medicoId);
-        if($med != null){
-        //dd($med->planos[0]->procedimentos()->get());
+        if($med != null ){
+            $medPlanos = $med->planos()->get();
+
     }
         //Opção com buscar por medico e data 
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
@@ -37,7 +38,7 @@ class AgendaController extends Controller
          //dd($especialidadesP);
         
      }
-        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','especialidadesP'));
+        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos'));
 
     }
 
