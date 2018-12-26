@@ -73,14 +73,14 @@ class MedicoController extends Controller
     }
 
 
-    public function agenda(  $date =""  ){
+    public function agenda(  $date = "five"  ){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
  
         //return dd($date);
         $medicoId = Auth::user()->funcionario->matricula;
         $med = Medico::find($medicoId);
-        if ($date == "")
+        if ($date == "five")
             $date = date("Y-m-d");
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
