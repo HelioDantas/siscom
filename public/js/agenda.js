@@ -52,6 +52,32 @@ $("#data").change(function(){
                 location.href = '/agd/medico/' + medico + '/' + date + '/' +espec; 
      });
 
+$("#plano").change(function(){
+    var plano = this.value;  
+        console.log(this.value);
+    $.getJSON('/get/proced/' +plano , function(proceds){
+        p = proceds;
+        $('#procedimentoMed').empty();     
+        $('select[id=procedimentoMed]').append('<option value=>Selecione</option>')
+        $.each(p, function(key,value){
+            $('select[id=procedimentoMed]').append('<option value=' + value.codTuss + '>' + value.descricao + '</option>')
+        })
+       
+
+    })
+});
+
+
+$("#procedimentoMed").change(function(){
+    let plano = document.getElementById('plano').value;
+    $.getJSON('/get/proced/preco/' +this.value+"/"+plano , function(valor){
+        $('#valor').empty();     
+        $('input[id=valor]').val(valor);
+    })
+
+  
+});
+
 
  $('#delete').on('show.bs.modal', function(event){
   

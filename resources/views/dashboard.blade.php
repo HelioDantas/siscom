@@ -48,7 +48,10 @@
         <div class="card text-center" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">Registros Clinicos</h5>
-                  <p class="card-text">Confira os registros no sistema </p>
+                  <p class="card-text">Confira os registros no sistema .</p>
+                  <span class="card-text"><strong>Em desenvolvimento </strong></span>
+                  
+
                   <a href="#" class="btn btn-primary">Consultar</a>
                 </div>
               </div>
@@ -95,10 +98,15 @@
                                             <div class="col-sm-4">
                                               <div class="card text-center" style="width: 18rem;">
                                                       <div class="card-body">
-                                                          <h5 class="card-title">Médico</h5>
-                                                                  <p class="card-text">Agenda, </p>
+                                                          <h5 class="card-title">Financeiro</h5>
+                                                          <p  type="hidden"class="card-text"> </p>
+                                                          <div >
+                                                                  <h6 class="card-text"><strong> Em desenvolvimento<strong> </h6>
+                                                                    </div>
 
-                                                             <a href="{{route('medico.agenda')}}"class="btn btn-primary">Médico</a>
+                                                             <a href="#"class="btn btn-primary">Financeiro</a> 
+
+                                                            <!-- <a href="{{route('medico.agenda')}}"class="btn btn-primary">Médico</a> -->
                                                       </div>
                                                     </div>
                                       </div>

@@ -79,7 +79,7 @@
     <hr>
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
-           <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+           <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="bottom" title="Voltar"><i class="fas fa-share"></i></a>
             <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
             <div class = 'row contentBusca'>
             
@@ -411,11 +411,12 @@
                                             <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="telefone">plano</label>
-                                                        <select class="form-control" name="plano" id="">
+                                                        <select class="form-control" name="plano" id="plano">
                                                         @if (isset($medPlanos) && !empty($medPlanos))
-                                                        <option value="" selected>Particular</option>
+                                                        <option value="" selected>Selecione</option>
                                                         @foreach ($medPlanos as $p)
                                                                {{-- <optgroup label="{{  $p->convenio->nome}}"> --}}
+                                                                   
                                                                     <option value="{{ $p->id }}">{{ $p->nome }}</option>
                                                                
                                                              <!--   <optgroup> -->
@@ -433,9 +434,7 @@
                                             <div class="form-group">
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento_id" id="procedimentoMed" required>
-                                                    <option>selecione</option>
-                                                
-                                        
+                                                   
                                              
                                                 </select>
                                             </div>
@@ -455,19 +454,18 @@
                                
                                     <hr>
                                     <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="data">Data</label>
-                                            <input type="date" class="form-control" value="{{ $date }}" required name="data">
-                                        </div>
-                                    </div>
-                                     
                                           <div class="col-md-6">
                                               <div class="form-group">
                                                   <label for="horario">horario</label>
-                                                  <input type="time" class="form-control" placeholder="Bairro" required name="hora">
+                                                  <input type="time" class="form-control"  required name="hora">
                                               </div>
                                           </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="data">Valor</label>
+                                                <input type="text" class="form-control"  name="valor" id="valor">
+                                            </div>
+                                        </div>
 
                                           <!--
                                           <div class="col-md-2">
@@ -505,7 +503,6 @@
 
   <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 
 
