@@ -54,7 +54,7 @@ class AgendaController extends Controller
             $dataDaConsulta = strtotime($request['data']);
             $date = strtotime(date("Y-m-d"));
             if( $dataDaConsulta < $date  )
-                return back();
+                return back()->with("metodos", 'Não pode ser agendar consultas com data anterior a vigente');;
             isset($request['primeiraVez']) ? $primeira = $request['primeiraVez'] : $primeira = "N";
 
 
@@ -101,13 +101,13 @@ class AgendaController extends Controller
             }catch (\Exception $e){
 
               $mensagem= $e->getMessage();
-              $buscar = ' Integrity constraint violation: 1062 Duplicate entry';
+              $buscar = 'Integrity constraint violation: 1062 Duplicate entry';
                $pos = strpos( $mensagem, $buscar );
 
+             
 
-
-                if ($pos === false) 
-                    return back();
+                if ($pos == true) 
+                    return back()->with("metodos", 'Já há agendamento para esse horario');
                
             }
         
@@ -118,8 +118,15 @@ class AgendaController extends Controller
     }
 
     public function update(Request $request){
+
+        
        // dd($request);
         $agenda = Agenda::find($request['Salvar']);
+        $dataDaConsulta = strtotime($agenda->data);
+        $date = strtotime(date("Y-m-d"));
+            if( $dataDaConsulta < $date  )
+                return back()->with("metodos", 'Não pode ser agendar consultas com data anterior a vigente');;
+     
              
           try{  
                  $agenda = $agenda->update(
@@ -139,7 +146,7 @@ class AgendaController extends Controller
                $pos = strpos( $mensagem, $buscar );
 
                 if ($pos === false) 
-                    return back();
+                    return back()->with("metodos", 'Já há agendamento para esse horario');
                
             }
              
@@ -159,7 +166,7 @@ class AgendaController extends Controller
                 $agenda->delete();
             
 
-            return back();
+            return back()->with("metodos", 'Não é possivel excluir um agendamento anterior a data atual');
 
 
     }

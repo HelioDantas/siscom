@@ -1,5 +1,9 @@
 @extends('layout.app')
-
+  @section('links')   
+        <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
+    @endsection
  @section('estilos')
 <style>
     .save{
@@ -179,7 +183,7 @@
 
                                  <td>  
                                                
-                                                  <button type="button" class="btn btn-outline-danger" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
+                                                  <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
                                     
                                     
                                              <!--<a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
@@ -325,8 +329,30 @@
                                 </div>
                         
                               
-                        
-                     
+                                @if (session('metodos'))
+
+
+                        <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger ">
+                                    {{ session('metodos') }}
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                        </div>
+                    @endif
+                                        
                         
                   {{--     <!--  <div class="modal fade bd-example-modal-x" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-x">
@@ -567,7 +593,7 @@
 
   <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 
     @endsection
