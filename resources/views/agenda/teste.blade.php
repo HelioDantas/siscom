@@ -153,7 +153,7 @@
                             <th scope="col">compareceu     </th>  
                             <th scope="col">pago     </th>     
                                         
-
+                        
 
                             <th scope="col">opções       </th>
                         </tr>
@@ -162,7 +162,7 @@
                             @if (isset($agendamentos))
                             @php $count=0; @endphp
                               @foreach ($agendamentos as $h)
-                                  <tr>
+                                  <tr class = "id{{$h->id}}">
                                       <td>{{ $h->hora }}</td>
                                       <td>{{ $h->paciente }}</td>
                                       <td>{{ $h->cpf }}</td>
@@ -173,6 +173,7 @@
                                       <td>{{ $h->primeiraVez }}</td>
                                       <td>{{ $h->compareceu }}</td>
                                       <td>{{ $h->pago }}</td>
+                                      <td style="display:none">{{ $h->obs }}</td>
                                       
                                   
 
@@ -192,6 +193,9 @@
                                                <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
                                                 <!-- Button trigger modal -->
                                                @endif
+
+
+                                               <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
                                  </td>
                               </tr>
@@ -252,6 +256,68 @@
                                     </div>
                                 </div>
                              
+                               <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId2" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title">Editar Agendamento </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                            <div class="modal-body">
+                
+                                                <div class="container-fluid" id="obss">
+                                                <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label for="horario">horario</label>
+                                                  <input type="time" class="form-control" placeholder="hora" required id="hora" name="hora">
+                                              </div>
+                                          </div>
+                                                
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label for="tipo">primeiraVez</label>
+                                                                <select class="form-control" name="primeiraVez" id="primeiraVez" required>
+                                                              
+                                                                    <option>S</option>
+                                                                    <option>N</option>
+                                                                </select>
+                                                            </div>
+                                                      </div>
+                                                       <div class="col">
+                                                            <div class="form-group">
+                                                                <label for="tipo">compareceu</label>
+                                                                <select class="form-control" name="compareceu" id="" required>
+                                                                    <option>S</option>
+                                                                    <option>N</option>
+                                                                </select>
+                                                            </div>
+                                                      </div>
+                                                       <div class="col">
+                                                            <div class="form-group">
+                                                                <label for="tipo">pagou</label>
+                                                                <select class="form-control" name="pagou" id="" required>
+                                                                    <option>S</option>
+                                                                    <option>N</option>
+                                                                </select>
+                                                            </div>
+                                                      </div>
+                                                       <div class="form-group ">
+                                                        <label for="inputPassword4">Obs</label>
+                                                        <textarea  type="text" class="form-control" rows="5" name="obs" placeholder="obs"></textarea>
+                                                      </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" value="Agendar">
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         
                               
                         
