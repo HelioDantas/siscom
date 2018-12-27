@@ -42,6 +42,43 @@ $('#medico').change(function(){
     })
 })
 
+$(document).on('click', '.btn-edit', function(e){
+    var id = $(this).val();
+     console.log(id);
+     var d = $('.id' +id); 
+     var k = document.getElementsByClassName('id' +id);
+    console.log(k[0].cells);
+    console.log(k[0].cells[0].innerHTML);//horario
+    console.log(k[0].cells[1].innerHTML);//paciente
+     console.log(k[0].cells[2].innerHTML);//cpf
+      console.log(k[0].cells[3].innerHTML);//telefone
+       console.log(k[0].cells[4].innerHTML);//celular
+        console.log(k[0].cells[5].innerHTML);//idade
+         console.log(k[0].cells[6].innerHTML);//Ult.Consulta
+          console.log(k[0].cells[7].innerHTML);//primeiraVez
+           console.log(k[0].cells[8].innerHTML);//compareceu
+           console.log(k[0].cells[9].innerHTML);//pago
+           //console.log(k[0].cells[10].children[2].dataset.catid);//obs
+    
+           var modal = $('#update'); 
+
+           modal.find("[name='hora']").val(k[0].cells[0].innerHTML);
+            modal.find("[name='primeiraVez']").val(k[0].cells[7].innerHTML);
+               modal.find("[name='compareceu']").val(k[0].cells[8].innerHTML);
+                  modal.find("[name='pagou']").val(k[0].cells[9].innerHTML);
+                     modal.find("[name='obs']").val(k[0].cells[10].innerHTML);
+           
+            $('#update').modal('show');
+    //data : {id:id}
+ 
+
+    
+    
+
+
+
+
+});
 
 $("#data").change(function(){
                var medico = document.getElementById('medico').value;
