@@ -68,7 +68,8 @@
 }
 
 
-.modal-content{width: 800px !important; margin-left: -30%;}
+ 
+.modal-content {width: 700px !important; margin-left:-20%;}
     .modal-body {  width:100%; } 
  
 
@@ -172,7 +173,7 @@
                                       <td>{{ $h->cpf }}</td>
                                       <td>{{ $h->telefone }}</td>
                                       <td>{{ $h->celular }}</td>
-                                      <td>{{ $h->dataDeNascimento}}</td>
+                                      <td>{{ $h->age($h->dataDeNascimento)}}</td>
                                       <td>{{ $h->ultimaConsulta }}</td>
                                       <td>{{ $h->primeiraVez }}</td>
                                       <td>{{ $h->compareceu }}</td>
@@ -200,6 +201,61 @@
 
 
                                                <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
+
+                                               @if ($h->ultimaConsulta != null  && !empty($h->ultimaConsulta))
+                                               
+                                               <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{$h}}" data-target="#historico" title="agendamentos anteriores"><i class="fas fa-align-left"></i></a>
+                                               <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"  aria-labelledby="myhistorico" aria-hidden="true" id="historico">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content " style="width: 1100px !important; margin-left:-20%;">
+                                                            <div class="modal-body">
+                                                                <div class="container-fluid">
+                                                                    <h3 class="justify-content-center"> Agendamentos </h3>                                        
+                                                                         <table class="table table-responsive table-hover">
+                                                                                <caption>{{ $h->paciente  }}</caption>
+                                                                             <thead>
+                                                                                 <tr>
+                                                                                 <th>Data</th>
+                                                                                 <th>Hora</th>
+                                                                                 <th>Medico</th>
+                                                                                 <th>preço </th>
+                                                                                 <th>primeira vez </th>
+                                                                                 <th>compareceu </th>
+                                                                                 <th>pagou </th>
+                                                                                 <th>Observação </th>
+                                                    
+                                                                                </tr>
+                                                                             </thead>
+                                                                             <tbody>
+                                                                            @foreach ($agendamentos->where('paciente',$h->paciente )->where('cpf', $h->cpf)  as $pp)
+                                                                            @if (!empty($pp))
+                                                                                 <tr>
+                                                                                     <td>{{ $pp->formatDate($pp->data) }}</td>
+                                                                                     <td>{{ $pp->hora }}</td>
+                                                                                     <td>{{ $pp->medico }}</td>
+                                                                                     <td>{{ $pp->valor }}</td>
+                                                                                     <td>{{ $pp->primairaVez }}</td>
+                                                                                     <td>{{ $pp->compareceu }}</td>
+                                                                                     <td>{{ $pp->pagou }}</td>
+                                                                                     <td>{{ $pp->obs }}</td>
+                                                                                 </tr>
+                                                                                @else
+                                                                                <tr>
+                                                                                <td> Esse paciente ainda nao possui um historico de convênios e planos cadastrados </td>
+                                                                            </tr>
+                                                                                 @endif
+                                                                             @endforeach
+                                                                             </tbody>
+                                                                         </table>
+                                        
+                                                                        </div>
+                                                    
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                <!-- Button trigger modal -->
+                                               @endif 
 
                                  </td>
                               </tr>
@@ -580,6 +636,10 @@
               </div>
           
             </form>
+
+
+
+        
       
 
       

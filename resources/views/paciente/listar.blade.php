@@ -95,7 +95,7 @@
 					<option value="nome">nome</option>
 					<option value="id">prontuario</option>
 					<option value="telefone">telefone</option>
-					<option value="celular">telefone</option>
+					<option value="celular">celular</option>
 					<option value="cpf">cpf</option>
 				</select>
 				<input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, cpf e matricula">

@@ -145,7 +145,7 @@ class AgendaController extends Controller
               $buscar = ' Integrity constraint violation: 1062 Duplicate entry';
                $pos = strpos( $mensagem, $buscar );
 
-                if ($pos === false) 
+                if ($pos == true) 
                     return back()->with("metodos", 'Já há agendamento para esse horario');
                
             }
