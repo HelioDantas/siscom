@@ -8,6 +8,8 @@ use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Agenda;
+use App\Models\plano;
+use App\Models\procedimento;
 use Illuminate\Http\JsonResponse;
 class AgendaController extends Controller
 {
@@ -20,8 +22,9 @@ class AgendaController extends Controller
         //return dd($date);
         $med = Medico::find($medicoId);
         if($med != null ){
-            $medPlanos = $med->planos()->get();
-
+          //  dd($medPlanos = $med->has('planos.procedimentos')->get());
+            
+            $medPlanos = $med->planos()->has('procedimentos')->get();
     }
         //Opção com buscar por medico e data 
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
@@ -52,7 +55,6 @@ class AgendaController extends Controller
             $date = strtotime(date("Y-m-d"));
             if( $dataDaConsulta < $date  )
                 return back();
-
             isset($request['primeiraVez']) ? $primeira = $request['primeiraVez'] : $primeira = "N";
 
 
@@ -65,9 +67,11 @@ class AgendaController extends Controller
                    'dataDeNascimento' => $request['dataDeNascimento'],
                    'telefone'         => $request['telefone'],
                    'celular'          => $request['celular'],
+                   'plano'             => $request['plano'],
+
                    
                 ]);
-                
+             
                 $primeira = "S";
             }
             try{            
@@ -85,6 +89,10 @@ class AgendaController extends Controller
                     'atendente'        => $request['atendente'],
                     'hora'             => $request['hora'],
                     'data'             => $request['data'],
+                    'valor'             => $request['valor'],
+                    'plano'             => $request['plano'],
+
+
 
 
 
@@ -173,6 +181,25 @@ class AgendaController extends Controller
         $esps = $medico->especialidade()->get(); 
         return json_encode($esps);
 
+    }
+
+    function getMedicosProced($id){
+        $plano = Plano::find($id);
+        $procedimentos = $plano->procedimentos()->get();
+        
+        if($procedimentos != null)
+        return json_encode($procedimentos);
+        else
+        return json_encode([]);
+    }
+
+    function getMedicosProcedPreco($id,$plano){
+        $plano = Plano::find($plano);
+        $value = $plano->procedimentos()->where('procedimento_id',$id)->first();
+        if($value !== null)
+        return json_encode($value->pivot->precoPlano);
+        else
+        return json_encode([]);
     }
 
 

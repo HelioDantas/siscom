@@ -179,6 +179,8 @@ Route::prefix('agenda')->middleware('Autorizador')->group(function(){
 });
 
 Route::get('/get/esp/{id}', 'AgendaController@getMedicosEsp');
+Route::get('/get/proced/{id}', 'AgendaController@getMedicosProced');
+Route::get('/get/proced/preco/{id}/{plano}', 'AgendaController@getMedicosProcedPreco');
 Route::get('agd/medico/{medicoId?}/{date?}/{espec?}', 'AgendaController@index')->middleware('Autorizador');
 Route::get('buscarName', 'AgendaController@buscarName')->middleware('Autorizador');
 Route::get('buscarCpf', 'AgendaController@buscarCpf')->middleware('Autorizador');
