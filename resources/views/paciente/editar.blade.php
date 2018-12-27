@@ -105,7 +105,7 @@
     <div class="form-group">
 
         <span for="cpf">Cpf</span>
-        <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby=""   maxlength="13" required  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
+        <input type="text" name="cpf" id="cpf"   class="form-control {{$errors->has('cpf') ? 'is-invalid': '' }}" placeholder="Cpf" aria-describedby="" required  maxlength="13"  @if(!empty($p)) value = "{{$p->cpf}}" @else value = "" @endif>
 
             @if($errors->has('cpf'))
             <div class="invalid-feedback">
@@ -250,7 +250,7 @@
             
                 <span for="selectbasic">Escolaridade <h11>*</h11></span>
         
-                  <select required id="escolaridade" name="escolaridade" class="form-control">
+                  <select id="escolaridade" name="escolaridade" class="form-control">
                         @if(!empty($p->escolaridade))
                         <option value="{{$p->escolaridade}}">{{$p->escolaridade}}</option>
                          @endif
@@ -405,7 +405,7 @@
                    <div class="col-1">
                     <span >Nº <h11>*</h11></span>
                     <div class="input-group">
-                            <input id="numero"   type="text" name="numero" class="form-control" placeholder="" required=""   @if(!empty($p)) value ="{{$p->numero}}" @else value = "" @endif >
+                            <input id="numero"   type="text" name="numero" class="form-control" placeholder=""    @if(!empty($p)) value ="{{$p->numero}}" @else value = "" @endif >
                         </div>
 
                   </div> <!-- col bumero-->
@@ -415,7 +415,7 @@
 
                    <span>Bairro</span>
                     <div class="input-group">
-                            <input id="bairro" type="text" name="bairro"  placeholder="bairro"  required="" class="form-control" @if(!empty($p)) value = "{{$p->bairro}}" @else value = "" @endif ><!--  readonly="readonly" -->
+                            <input id="bairro" type="text" name="bairro"  placeholder="bairro"   class="form-control" @if(!empty($p)) value = "{{$p->bairro}}" @else value = "" @endif ><!--  readonly="readonly" -->
                         </div>
 
                     </div><!-- col bairro-->
@@ -424,7 +424,7 @@
                    <span>Cidade</span>
                     <div class="input-group">
 
-                            <input id="cidade" type="text" name="cidade"  placeholder=""  required=""  class="form-control"   @if(!empty($p)) value = "{{$p->cidade}}" @else value = "" @endif><!--  readonly="readonly" -->
+                            <input id="cidade" type="text" name="cidade"  placeholder=""   class="form-control"   @if(!empty($p)) value = "{{$p->cidade}}" @else value = "" @endif><!--  readonly="readonly" -->
                         </div>
                 </div><!-- col cidade -->
 
@@ -432,7 +432,7 @@
                     <span>Estado</span>
                     <div class="input-group">
 
-                      <select id="estado" name="estado"  placeholder="" required   class="form-control"type="text">
+                      <select id="estado" name="estado"  placeholder=""    class="form-control"type="text">
                             <option value="RJ">Rio de Janeiro</option>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
@@ -513,14 +513,14 @@
     <div class="col-2">
         <div class="form-group">
             <span for="plano">Carteira<h11>*</h11></span>
-                <input id="carteira" name="carteira" class="form-control"  required type="text" maxlength="30" @if($phc != null)) value = "{{$phc->carteira}}" @else value = "" @endif >
+                <input id="carteira" name="carteira" class="form-control"  type="text" maxlength="30" @if($phc != null)) value = "{{$phc->carteira}}" @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
 
     <div class="col-2">
         <div class="form-group">
             <span for="plano">Indicação</span>
-                <input id="indicacao" name="indicacao" class="form-control"  require type="text" maxlength="15" @if($phc != null) value = "{{$phc->indicacao}}" @else value = "" @endif >
+                <input id="indicacao" name="indicacao" class="form-control"  type="text" maxlength="15" @if($phc != null) value = "{{$phc->indicacao}}" @else value = "" @endif >
         </div>
     </div>  <!-- col Plano-->
 

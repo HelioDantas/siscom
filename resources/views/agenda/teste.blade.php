@@ -502,7 +502,7 @@
                                             <div class="form-group">
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento_id" id="procedimentoMed" required>
-                                                   
+                                                   <option value=""></option>
                                              
                                                 </select>
                                             </div>
