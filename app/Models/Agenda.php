@@ -31,6 +31,7 @@ class Agenda extends Model
         'obs',
         'idMedico',
         'ultimaConsulta',
+        'obs',
     );
 
 

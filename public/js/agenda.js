@@ -65,8 +65,9 @@ $(document).on('click', '.btn-edit', function(e){
            modal.find("[name='hora']").val(k[0].cells[0].innerHTML);
             modal.find("[name='primeiraVez']").val(k[0].cells[7].innerHTML);
                modal.find("[name='compareceu']").val(k[0].cells[8].innerHTML);
-                  modal.find("[name='pagou']").val(k[0].cells[9].innerHTML);
+                  modal.find("[name='pago']").val(k[0].cells[9].innerHTML);
                      modal.find("[name='obs']").val(k[0].cells[10].innerHTML);
+                      modal.find("[name='Salvar']").val(id);
            
             $('#update').modal('show');
     //data : {id:id}
