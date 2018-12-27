@@ -399,8 +399,7 @@
               @csrf
               {{-- input atendente --}}
               <input type="hidden"value="{{ Auth::User()->funcionario->nome }}" name="atendente">
-              <input type="hidden"value="{{ $date }}" name="data">
-
+              <input type="hidden"  value="{{ $date }}" name="data">
 
               {{-- input medico --}}
               @if (!empty($med))
