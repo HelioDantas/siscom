@@ -31,10 +31,10 @@
 
 
 @section('tela')
-<div class="container-fluid dashboard">
+<div class="container dashboard">
 
 <div class="row ">
-<div class="col-sm-3">
+<div class="col-sm-4">
                 <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                           <h5 class="card-title">Agenda</h5>
@@ -44,7 +44,7 @@
                       </div>
         </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <div class="card text-center" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">Registros Clinicos</h5>
@@ -56,7 +56,7 @@
                 </div>
               </div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-4">
   <div class="card text-center" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Pacientes</h5>
@@ -67,23 +67,15 @@
           </div>
         </div>
 </div>
-<div class="col-sm-3">
-    <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Médico</h5>
-                <p  type="hidden"class="card-text">Agenda  </p>
-                <a href="{{route('medico.agenda')}}"class="btn btn-primary">Médico</a>
-            </div>
-          </div>
-</div>
+
       
 
 </div>
 <hr>
-<div class="container-fluid dashboard ">
+<div class="container dashboard ">
         <div class="row ">
                        
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                                 <div class="card text-center" style="width: 18rem;">
                                                         <div class="card-body">
                                                           <h5 class="card-title">Convenios</h5>
@@ -93,7 +85,7 @@
                                                         </div>
                                                       </div>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-4">
                                                         <div class="card text-center" style="width: 18rem;">
                                                                 <div class="card-body">
                                                                   <h5 class="card-title">Funcionarios</h5>
@@ -103,7 +95,18 @@
                                                                 </div>
                                                               </div>
                                             </div>
-                                            <div class="col-sm-3">
+
+                                            <div class="col-sm-4">
+                                                <div class="card text-center" style="width: 18rem;">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Médico</h5>
+                                                            <p  type="hidden"class="card-text">Agenda  </p>
+                                                            <a href="{{route('medico.agenda')}}"class="btn btn-primary">Médico</a>
+                                                        </div>
+                                                      </div>
+                                            </div>
+
+                                       {{--      <div class="col-sm-3">
                                               <div class="card text-center" style="width: 18rem;">
                                                       <div class="card-body">
                                                           <h5 class="card-title">Financeiro</h5>
@@ -117,7 +120,7 @@
                                                             <!-- <a href="{{route('medico.agenda')}}"class="btn btn-primary">Médico</a> -->
                                                       </div>
                                                     </div>
-                                      </div>
+                                      </div>  --}}
                    
                                                     
                                      
