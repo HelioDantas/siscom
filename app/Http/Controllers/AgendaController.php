@@ -55,7 +55,6 @@ class AgendaController extends Controller
             $date = strtotime(date("Y-m-d"));
             if( $dataDaConsulta < $date  )
                 return back();
-
             isset($request['primeiraVez']) ? $primeira = $request['primeiraVez'] : $primeira = "N";
 
 
@@ -72,7 +71,7 @@ class AgendaController extends Controller
 
                    
                 ]);
-                $paciente->
+             
                 $primeira = "S";
             }
             try{            

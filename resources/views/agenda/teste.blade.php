@@ -1,9 +1,5 @@
 @extends('layout.app')
-   @section('links')   
-        <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
-          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    @endsection
  @section('estilos')
 <style>
     .save{
@@ -79,7 +75,7 @@
     <hr>
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
            <h4 class="center textocenter">Agenda</h4>
-           <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" data-placement="bottom" title="Voltar"><i class="fas fa-share"></i></a>
+           <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
             <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
             <div class = 'row contentBusca'>
             
@@ -337,6 +333,8 @@
               @csrf
               {{-- input atendente --}}
               <input type="hidden"value="{{ Auth::User()->funcionario->nome }}" name="atendente">
+              <input type="hidden"value="{{ $date }}" name="data">
+
 
               {{-- input medico --}}
               @if (!empty($med))
@@ -496,10 +494,6 @@
 @endsection
 
     @section('scripts')
-    
-   
-
-
 
   <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
