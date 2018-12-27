@@ -74,13 +74,20 @@ $(document).on('click', '.btn-edit', function(e){
  
 
     
-    
 
 
 
 
 });
+$(document).ready(function () {
 
+       $('#modal-mail').modal('show');
+       $("#modal-mail").blur(function(){
+        $("#modal-mail").modal('hide');
+     //   $("#modal-mail").remove();
+     })
+    });
+    
 $("#data").change(function(){
                var medico = document.getElementById('medico').value;
                var espec = document.getElementById('especialidade').value;
@@ -155,6 +162,7 @@ $("#procedimentoMed").change(function(){
         });
         
     });
+
     $(document).ready(function(){
         $("#cpf").blur(function(){
            $.getJSON( '/cpf/' + this.value  , function(cpf){
