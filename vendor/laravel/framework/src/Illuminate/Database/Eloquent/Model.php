@@ -1646,7 +1646,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         
     }
     function age($date){
-        $dat = \Blar_DateTime(formatDate($date));
+        $dat = new \Blar_DateTime($date);
         return  $dat->getAge(); 
     }
     public function getAge($now = 'NOW') {
