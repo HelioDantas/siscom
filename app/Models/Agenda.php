@@ -29,6 +29,7 @@ class Agenda extends Model
         'pago',
         'idMedico',
         'ultimaConsulta',
+        'obs',
     );
 
 

@@ -109,6 +109,35 @@ class AgendaController extends Controller
 
     }
 
+    public function update(Request $request){
+       // dd($request);
+        $agenda = Agenda::find($request['Salvar']);
+             
+          try{  
+                 $agenda = $agenda->update(
+                     [
+                      'primeiraVez'      => $request['primeiraVez'],
+                       'hora'             => $request['hora'],
+                     'compareceu'             => $request['compareceu'],
+                        'pago'             => $request['pago'],
+                        'obs'             => $request['obs'],
+
+                     ]);
+                 //dd($request['obs']);
+            }catch (\Exception $e){
+
+              $mensagem= $e->getMessage();
+              $buscar = ' Integrity constraint violation: 1062 Duplicate entry';
+               $pos = strpos( $mensagem, $buscar );
+
+                if ($pos === false) 
+                    return back();
+               
+            }
+             
+             return back();
+
+    }
     
     function desmarcar(Request $request){
      //   return dd($request);

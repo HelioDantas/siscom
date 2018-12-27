@@ -270,7 +270,10 @@
                                                             </button>
                                                     </div>
                                             <div class="modal-body">
-                
+                                                {!! Form::open(['route' => 'agenda.update','method ' => 'post',]) !!} 
+                                                   @csrf
+                                                {{ method_field('PUT') }}
+
                                                 <div class="container-fluid" id="obss">
                                                 <div class="col-md-6">
                                               <div class="form-group">
@@ -300,8 +303,8 @@
                                                       </div>
                                                        <div class="col">
                                                             <div class="form-group">
-                                                                <label for="tipo">pagou</label>
-                                                                <select class="form-control" name="pagou" id="" required>
+                                                                <label for="tipo">pago</label>
+                                                                <select class="form-control" name="pago" id="" required>
                                                                     <option>S</option>
                                                                     <option>N</option>
                                                                 </select>
@@ -316,7 +319,9 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <input type="submit" class="btn btn-primary" value="Agendar">
+                                                  <button id="excluir"name = "Salvar" class="btn btn-primary" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Salvar</button>
+                                               
+                                                 {!! Form::close() !!}
                 
                                             </div>
                                         </div>
