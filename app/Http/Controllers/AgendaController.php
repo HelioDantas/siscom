@@ -11,6 +11,7 @@ use App\Models\Agenda;
 use App\Models\plano;
 use App\Models\procedimento;
 use App\Models\Convenio;
+use App\Http\Controllers\PacienteController;
 use Illuminate\Http\JsonResponse;
 class AgendaController extends Controller
 {
@@ -164,9 +165,11 @@ dd($e);
         $id = $request['id'];
            //  return dd($id);
             $agenda = Agenda::find($id);
+
             $dataDaConsulta = strtotime($agenda->data);
             $date = strtotime(date("Y-m-d"));
-            if( $dataDaConsulta == $date  ){
+            if( $dataDaConsulta >= $date  ){
+                $this->excluirPacientePrimeiraVez($agenda);
                  $agenda->delete();
                  return back();
             }
@@ -185,9 +188,13 @@ dd($e);
         $id = $request['id'];
            
             $agenda = Agenda::find($id);
+        
             $dataDaConsulta = strtotime($agenda->data);
             $date = strtotime(date("Y-m-d"));
-            if( $dataDaConsulta == $date  ){
+
+
+            if( $dataDaConsulta >= $date  ){
+                $this->excluirPacientePrimeiraVez($agenda);
                 $agenda = $agenda->update([
                     'status' => 'DESMARCADO' ,
                      'obs' => $request['obs'], 
@@ -274,5 +281,16 @@ dd($e);
 
          return json_encode($agendamentos);
 
+    }
+
+
+    public function excluirPacientePrimeiraVez($agenda){
+
+        if($agenda->primeiraVez == 'S'){
+            $paciente = Paciente::find($agenda->paciente_id);
+            $paciente->delete();
+
+
+        }
     }
 }
