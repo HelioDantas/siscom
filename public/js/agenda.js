@@ -122,6 +122,21 @@ $("#procedimentoMed").change(function(){
 
   
 });
+$(document).on('click', '#des',  function(event){
+  
+   var button = $(event.currentTarget);
+   
+   var  id = button.data('catid');
+   
+    var k = document.getElementsByClassName('id' +id);
+    console.log(k[0].cells[10].innerHTML);
+
+   var modal = $('#desmarcar');
+   modal.find('.modal-body #id').val(id);
+    modal.find(" .modal-body [name='obs']").val(k[0].cells[10].innerHTML);
+
+    $('#desmarcar').modal('show');
+ });
 
 
  $('#delete').on('show.bs.modal', function(event){
@@ -233,3 +248,40 @@ $("#procedimentoMed").change(function(){
       
     
  
+
+
+
+
+
+$(document).on('click', '#historico', function(e){
+    let historico_id = this.value;
+
+
+    $.getJSON('/agenda/historico/' +historico_id , function(historico){
+        h = historico;
+       // console.log(h);
+        $('.js-historico').empty();
+        $.each(h, function(key,value){
+                     
+               //var data = Date.parse(value.data) + 86400 + 86400 ;
+                      
+                    data  = new Date(value.data);
+                    data.setDate(data.getDate() + 1);
+              
+               data = data.toLocaleDateString('pt-br');
+            $('.js-historico').append(   '<tr>'+
+                      
+                '<td>' +   data + '</td>'+
+                '<td>'+value.hora            +'</td>'+
+                '<td>'+value.medico             +'</td>'+
+                '<td>'+value.compareceu      + '</td>'+
+                '<td>'+value.pago+'</td>'+
+                '<td>'+value.status+'</td>'+
+                '<td>'+value.obs+'</td>'+
+                '</tr>')
+        })
+         $('#historicoPaciente').modal('show');
+    })
+})
+
+

@@ -6,6 +6,9 @@
     @endsection
  @section('estilos')
 <style>
+  
+    .tdEspaco { display: table; float:left; margin-right:10px }
+  
     .save{
         margin-top: 2rem;
         float:right;
@@ -153,7 +156,7 @@
                             <th scope="col">telefone     </th>
                             <th scope="col">celular     </th>   
                             <th scope="col">idade     </th>     
-                            <th scope="col">Ult.Consulta     </th>     
+                            <th scope="col" style="display:none" >Ult.Consulta     </th>     
                             <th scope="col">primeiraVez     </th>   
 
                             <th scope="col">compareceu     </th>  
@@ -175,87 +178,37 @@
                                       <td>{{ $h->telefone }}</td>
                                       <td>{{ $h->celular }}</td>
                                       <td>{{ $h->age($h->dataDeNascimento)}}</td>
-                                      <td>{{ $h->ultimaConsulta }}</td>
+                                      <td style="display:none">{{ $h->ultimaConsulta }}</td>
                                       <td>{{ $h->primeiraVez }}</td>
                                       <td>{{ $h->compareceu }}</td>
                                       <td>{{ $h->pago }}</td>
                                       <td style="display:none">{{ $h->obs }}</td>
                                       
                                   
-
-                                 <td>  
-                                               
-                                                  <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
+                                      <td>
+     
+                                                <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="excluir"><i class="fas fa-trash"></i></button>
+                                                  <button type="button" id = "des" class="btn btn-outline-danger" value = "{{ $h->id }}" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
                                     
                                     
-                                             <!--<a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
                                                @if ($h->primeiraVez != 'N' )
                                                <a  class="btn btn-outline-primary"  href="{{ route('agenda.editarPaciente',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
                                                @endif
 
                                                
-                                               @if ($h->obs != null)
+                                            {{--   @if ($h->obs != null)
                                                @php $count++ @endphp
                                                <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
                                                 <!-- Button trigger modal -->
                                                @endif
-
+                                                --}}
 
                                                <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
+                                                 <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
                                                @if ($h->ultimaConsulta != null  && !empty($h->ultimaConsulta))
                                                
-                                               <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{$h}}" data-target="#historico" title="agendamentos anteriores"><i class="fas fa-align-left"></i></a>
-                                               <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"  aria-labelledby="myhistorico" aria-hidden="true" id="historico">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content " style="width: 1100px !important; margin-left:-20%;">
-                                                            <div class="modal-body">
-                                                                <div class="container-fluid">
-                                                                    <h3 class="justify-content-center"> Agendamentos </h3>                                        
-                                                                         <table class="table table-responsive table-hover">
-                                                                                <caption>{{ $h->paciente  }}</caption>
-                                                                             <thead>
-                                                                                 <tr>
-                                                                                 <th>Data</th>
-                                                                                 <th>Hora</th>
-                                                                                 <th>Medico</th>
-                                                                                 <th>preço </th>
-                                                                                 <th>primeira vez </th>
-                                                                                 <th>compareceu </th>
-                                                                                 <th>pagou </th>
-                                                                                 <th>Observação </th>
-                                                    
-                                                                                </tr>
-                                                                             </thead>
-                                                                             <tbody>
-                                                                            @foreach ($agendamentos->where('paciente',$h->paciente )->where('cpf', $h->cpf)  as $pp)
-                                                                            @if (!empty($pp))
-                                                                                 <tr>
-                                                                                     <td>{{ $pp->formatDate($pp->data) }}</td>
-                                                                                     <td>{{ $pp->hora }}</td>
-                                                                                     <td>{{ $pp->medico }}</td>
-                                                                                     <td>{{ $pp->valor }}</td>
-                                                                                     <td>{{ $pp->primairaVez }}</td>
-                                                                                     <td>{{ $pp->compareceu }}</td>
-                                                                                     <td>{{ $pp->pagou }}</td>
-                                                                                     <td>{{ $pp->obs }}</td>
-                                                                                 </tr>
-                                                                                @else
-                                                                                <tr>
-                                                                                <td> Esse paciente ainda nao possui um historico de convênios e planos cadastrados </td>
-                                                                            </tr>
-                                                                                 @endif
-                                                                             @endforeach
-                                                                             </tbody>
-                                                                         </table>
-                                        
-                                                                        </div>
-                                                    
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                <!-- Button trigger modal -->
+                                              
                                                @endif 
 
                                  </td>
@@ -276,21 +229,51 @@
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                             Desmarcar consulta do paciente ?
-                                                               {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} 
+                                                        Você deseja excluir o agendamento ?
+                                                        Não é possivel desfazer a operação. 
+                                                             
+                                                               {!! Form::open(['route' => 'agenda.destroy','method ' => 'post',]) !!} 
                                                             <input type = "hidden" id = "id" name = "id" value = "" >
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                               
                                                              
-                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Desmarcar</button>
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Excluir</button>
                                                                   {!! Form::close() !!}
                                                         </div>
                                                     </div>
                                                 </div>
                                         </div>  
 
+                                               <div class="modal fade" id="desmarcar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter1" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalCenter1">Desmarcar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        Você deseja desmarcar o agendamento ?
+                                                        
+                                                             
+                                                               {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} 
+                                                            <input type = "hidden" id = "id" name = "id" value = "" >
+                                                              <div class="form-group ">
+                                                                <label for="inputPassword4">Obs</label>
+                                                                <textarea  type="text" class="form-control" rows="5" name="obs" placeholder="obs"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                              
+                                                             
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="Desmarcar">Desmarcar</button>
+                                                                  {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div> 
 
                                   <!-- Modal -->
                                   <div class="modal fade" id="obs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -317,7 +300,7 @@
                                     </div>
                                 </div>
                              
-                               <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId2" aria-hidden="true">
+                               <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="update" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                                 <div class="modal-header">
@@ -376,7 +359,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                  <button id="excluir"name = "Salvar" class="btn btn-primary" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Salvar</button>
+                                                  <button id="excluir"name = "Salvar" class="btn btn-primary" type="submit"   data-toggle="tooltip" data-placement="top" title="Salvar">Salvar</button>
                                                
                                                  {!! Form::close() !!}
                 
@@ -385,7 +368,50 @@
                                     </div>
                                 </div>
                         
-                              
+                              <div class="modal fade" id="historicoPaciente" tabindex="-1" role="dialog" aria-labelledby="historicoPaciente" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content" style = 'width: 900px;  !important; '>
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title" >Histórico</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                </div>
+                                            <div class="modal-body" style = ' height:100%; !important; ' >
+                
+                                                <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
+                                              
+                                                 <table class="table  table-hover">
+                                                                              
+                                                                             <thead>
+                                                                                 <tr>
+                                                                                 <th>    Data     </th>
+                                                                                 <th>Hora</th>
+                                                                                 <th>Medico</th>
+                                                                             
+                                                                                 <th>compareceu </th>
+                                                                                 <th>pago </th>
+                                                                                  <th>status </th>
+                                                                                 <th>Observação </th>
+                                                    
+                                                                                </tr>
+                                                                             </thead>
+                                                                             <tbody class = 'js-historico'>
+                                                                      
+                                                                             </tbody>
+                                                                         </table>
+                                                       
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                 </div>
+
                                 @if (session('metodos'))
 
 
@@ -643,8 +669,7 @@
 
 
         
-      
-
+                   
       
 
 

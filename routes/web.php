@@ -171,10 +171,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::get('index', 'AgendaController@index')->name('agenda.index');
+    Route::post('excluir', 'AgendaController@destroy')->name('agenda.destroy');
     Route::post('desmarcar', 'AgendaController@desmarcar')->name('agenda.desmarcar');
     Route::post('agendar', 'AgendaController@agendar')->name('agenda.agendar');
     Route::get('paciente/{id}', 'AgendaController@editarPaciente')->name('agenda.editarPaciente');
      Route::put('editar', 'AgendaController@update')->name('agenda.update');
+     Route::get('historico/{id}', 'AgendaController@historico')->name('agenda.historico');
 
 });
 
