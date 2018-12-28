@@ -255,10 +255,11 @@ $(document).on('click', '#historico', function(e){
         $('.js-historico').empty();
         $.each(h, function(key,value){
                      
-             
-
+               var data = new Date(Date.parse(value.data));
+               data = data.toLocaleDateString();
             $('.js-historico').append(   '<tr>'+
-                '<td>' +value.data     + '</td>'+
+                      
+                '<td>' +   data + '</td>'+
                 '<td>'+value.hora            +'</td>'+
                 '<td>'+value.medico             +'</td>'+
                 '<td>'+value.compareceu      + '</td>'+

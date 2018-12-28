@@ -269,6 +269,8 @@ class AgendaController extends Controller
     public function historico($id){
 
          $agendamentos = Agenda::where('paciente_id', $id)->get();
+
+         
          return json_encode($agendamentos);
 
     }
