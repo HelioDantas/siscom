@@ -1641,12 +1641,15 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     }
 
     public function formatDate($data){
+       $dt =  new \DateTime($data);
+        return $dt->format('d/m/Y');
         
-        $data = explode("-", $data);
-                
-        list($dia, $mes, $ano) = $data;
-                
-        return $data = "$ano-$mes-$dia";
-        
+    }
+    function age($date){
+        $dat = new \Blar_DateTime($date);
+        return  $dat->getAge(); 
+    }
+    public function getAge($now = 'NOW') {
+        return $this->diff($now)->format('%y');
     }
 }

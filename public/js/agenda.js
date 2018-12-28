@@ -135,6 +135,7 @@ $("#procedimentoMed").change(function(){
 
 
  });
+
  $('#obs').on('show.bs.modal', function(event){
   
     var button = $(event.relatedTarget);
@@ -144,6 +145,10 @@ $("#procedimentoMed").change(function(){
     modal.find('.modal-body #p').text( obs);
  
   });
+
+ 
+  
+
 
     $(function(){
         $('#paciente').autocomplete({

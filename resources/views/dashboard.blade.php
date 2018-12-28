@@ -3,8 +3,6 @@
 <style>
     .dashboard{
         margin-top: 2rem;
-        
-       
 
     }
     #containerLogoDataHoraH3{
