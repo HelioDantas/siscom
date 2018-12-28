@@ -175,6 +175,7 @@ Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::post('agendar', 'AgendaController@agendar')->name('agenda.agendar');
     Route::get('paciente/{id}', 'AgendaController@editarPaciente')->name('agenda.editarPaciente');
      Route::put('editar', 'AgendaController@update')->name('agenda.update');
+     Route::get('historico/{id}', 'AgendaController@historico')->name('agenda.historico');
 
 });
 

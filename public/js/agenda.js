@@ -210,4 +210,32 @@ $("input[id=pv]").click(function(){
       
     }
  
+});
+
+
+
+$(document).on('click', '#historico', function(e){
+    let historico_id = this.value;
+   console.log(historico_id);
+
+    $.getJSON('/agenda/historico/' +historico_id , function(historico){
+        h = historico;
+        console.log(h);
+        $('.js-historico').empty();
+        $.each(h, function(key,value){
+                     
+             
+
+            $('.js-historico').append(   '<tr>'+
+                '<td>' +value.data     + '</td>'+
+                '<td>'+value.hora            +'</td>'+
+                '<td>'+value.medico             +'</td>'+
+                '<td>'+value.compareceu      + '</td>'+
+                '<td>'+value.pago+'</td>'+
+                '<td>'+value.obs+'</td>'+
+                '</tr>')
+        })
+         $('#historicoPaciente').modal('show');
+    })
 })
+

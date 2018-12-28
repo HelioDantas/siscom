@@ -198,63 +198,14 @@
                                                <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
                                                 <!-- Button trigger modal -->
                                                @endif
-
+                                                
 
                                                <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
+                                                 <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
                                                @if ($h->ultimaConsulta != null  && !empty($h->ultimaConsulta))
                                                
-                                               <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{$h}}" data-target="#historico" title="agendamentos anteriores"><i class="fas fa-align-left"></i></a>
-                                               <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"  aria-labelledby="myhistorico" aria-hidden="true" id="historico">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content " style="width: 1100px !important; margin-left:-20%;">
-                                                            <div class="modal-body">
-                                                                <div class="container-fluid">
-                                                                    <h3 class="justify-content-center"> Agendamentos </h3>                                        
-                                                                         <table class="table table-responsive table-hover">
-                                                                                <caption>{{ $h->paciente  }}</caption>
-                                                                             <thead>
-                                                                                 <tr>
-                                                                                 <th>Data</th>
-                                                                                 <th>Hora</th>
-                                                                                 <th>Medico</th>
-                                                                                 <th>preço </th>
-                                                                                 <th>primeira vez </th>
-                                                                                 <th>compareceu </th>
-                                                                                 <th>pagou </th>
-                                                                                 <th>Observação </th>
-                                                    
-                                                                                </tr>
-                                                                             </thead>
-                                                                             <tbody>
-                                                                            @foreach ($agendamentos->where('paciente',$h->paciente )->where('cpf', $h->cpf)  as $pp)
-                                                                            @if (!empty($pp))
-                                                                                 <tr>
-                                                                                     <td>{{ $pp->formatDate($pp->data) }}</td>
-                                                                                     <td>{{ $pp->hora }}</td>
-                                                                                     <td>{{ $pp->medico }}</td>
-                                                                                     <td>{{ $pp->valor }}</td>
-                                                                                     <td>{{ $pp->primairaVez }}</td>
-                                                                                     <td>{{ $pp->compareceu }}</td>
-                                                                                     <td>{{ $pp->pagou }}</td>
-                                                                                     <td>{{ $pp->obs }}</td>
-                                                                                 </tr>
-                                                                                @else
-                                                                                <tr>
-                                                                                <td> Esse paciente ainda nao possui um historico de convênios e planos cadastrados </td>
-                                                                            </tr>
-                                                                                 @endif
-                                                                             @endforeach
-                                                                             </tbody>
-                                                                         </table>
-                                        
-                                                                        </div>
-                                                    
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                <!-- Button trigger modal -->
+                                              
                                                @endif 
 
                                  </td>
@@ -316,7 +267,7 @@
                                     </div>
                                 </div>
                              
-                               <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId2" aria-hidden="true">
+                               <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="update" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                                 <div class="modal-header">
@@ -384,7 +335,47 @@
                                     </div>
                                 </div>
                         
-                              
+                              <div class="modal fade" id="historicoPaciente" tabindex="-1" role="dialog" aria-labelledby="historicoPaciente" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content" style = 'width: 900px !important; margin-left:-20%;'>
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title" >Histórico</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                </div>
+                                            <div class="modal-body">
+                
+                                                <div class="container-fluid">
+                                                 <table class="table table-responsive table-hover">
+                                                                              
+                                                                             <thead>
+                                                                                 <tr>
+                                                                                 <th>Data</th>
+                                                                                 <th>Hora</th>
+                                                                                 <th>Medico</th>
+                                                                             
+                                                                                 <th>compareceu </th>
+                                                                                 <th>pagou </th>
+                                                                                 <th>Observação </th>
+                                                    
+                                                                                </tr>
+                                                                             </thead>
+                                                                             <tbody class = 'js-historico'>
+                                                                      
+                                                                             </tbody>
+                                                                         </table>
+                                                       
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 @if (session('metodos'))
 
 
@@ -640,8 +631,7 @@
 
 
         
-      
-
+                   
       
 
 
