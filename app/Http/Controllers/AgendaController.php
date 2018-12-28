@@ -128,7 +128,7 @@ class AgendaController extends Controller
          $dataDaConsulta = strtotime($agenda->data);
         $date = strtotime(date("Y-m-d"));
             if( $dataDaConsulta < $date  )
-                return back()->with("metodos", 'Não pode ser agendar consultas com data anterior a vigente');;
+                return back()->with("metodos", 'Não pode ser alterar consultas com data anterior a vigente');;
      
              
           try{  
