@@ -181,13 +181,12 @@
                                       <td style="display:none">{{ $h->obs }}</td>
                                       
                                   
-
-                                 <td>  
-                                               
-                                                  <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
+                                      <td>
+     
+                                                <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="excluir"><i class="fas fa-trash"></i></button>
+                                                  <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
                                     
                                     
-                                             <!--<a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Remarcar"><i class="fas fa-redo"></i></a> -->
                                                @if ($h->primeiraVez != 'N' )
                                                <a  class="btn btn-outline-primary"  href="{{ route('agenda.editarPaciente',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
                                                @endif
@@ -226,7 +225,9 @@
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                             Desmarcar consulta do paciente ?
+                                                        Você deseja excluir o agendamento ?
+                                                        Não é possivel desfazer a operação. 
+                                                             
                                                                {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} 
                                                             <input type = "hidden" id = "id" name = "id" value = "" >
                                                         </div>
