@@ -370,14 +370,14 @@
                         
                               <div class="modal fade" id="historicoPaciente" tabindex="-1" role="dialog" aria-labelledby="historicoPaciente" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
-                                        <div class="modal-content" style = 'width: 900px;  !important; '>
+                                        <div class="modal-content" style = 'width: 300% !important; margin-left:-25rem;'>
                                                 <div class="modal-header">
                                                         <h5 class="modal-title" >Histórico</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                 </div>
-                                            <div class="modal-body" style = ' height:100%; !important; ' >
+                                            <div class="modal-body" style = ' height:100% !important; ' >
                 
                                                 <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
                                               
