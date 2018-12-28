@@ -208,7 +208,7 @@ $(document).on('click', '#des',  function(event){
          
 
      });
-         $("#pacientee").blur(function(){
+         $("#paciente").blur(function(){
            $.getJSON( '/nome/' + this.value  , function(nome){
                var funcionario = nome;
                 
