@@ -235,7 +235,7 @@
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                               
                                                              
-                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Desmarcar</button>
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Excluir</button>
                                                                   {!! Form::close() !!}
                                                         </div>
                                                     </div>
