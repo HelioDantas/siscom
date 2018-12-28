@@ -589,6 +589,7 @@
                                                     <div class="form-group">
                                                         <label for="telefone">plano</label>
                                                         <select class="form-control" name="plano" id="plano">
+                                                        
                                                         @if (isset($medPlanos) && !empty($medPlanos))
                                                         <option value=""></option>
                                                         @foreach ($convenios as $c)
