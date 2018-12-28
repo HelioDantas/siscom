@@ -376,11 +376,11 @@
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                 </div>
-                                            <div class="modal-body"  >
+                                            <div class="modal-body" style = ' height:100%; !important; ' >
                 
-                                                <div class="container-fluid">
+                                                <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
                                               
-                                                 <table class="table table-responsive table-hover">
+                                                 <table class="table  table-hover">
                                                                               
                                                                              <thead>
                                                                                  <tr>
