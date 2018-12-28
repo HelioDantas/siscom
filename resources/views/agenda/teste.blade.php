@@ -184,7 +184,7 @@
                                       <td>
      
                                                 <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="excluir"><i class="fas fa-trash"></i></button>
-                                                  <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
+                                                  <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter1" title="desmarcar"><i class="fas fa-times"></i></button>
                                     
                                     
                                                @if ($h->primeiraVez != 'N' )
