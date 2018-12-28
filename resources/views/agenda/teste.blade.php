@@ -512,7 +512,7 @@
                                       <div class="form-group">
 
                                           <label for="preco">Cpf</label >
-                                          <input type="text" class="form-control name" placeholder="" name="cpf" id = 'cpf' required autofocus>
+                                          <input type="text" class="form-control name" placeholder="" name="cpf" id ='cpf' required autofocus>
 
                                       </div>
                                   </div>
@@ -525,7 +525,7 @@
                                   <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="pv">Primeira Vez ?</label>
-                                        <input type="checkbox" value = 'S' name="primeiraVez" id="pv" class="form-control name">
+                                        <input type="checkbox" value = 'S' name="primeiraVez" id="pv" class="name">
                                     </div>
                                   </div>
                             </div>
@@ -534,7 +534,7 @@
 
                                 <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control name" placeholder="" name="paciente" id ="paciente" required>
+                                    <input type="text" class="form-control name" placeholder="" maxlength="50" name="paciente" id ="paciente" required>
                                 </div>
                                 </div>
                               </div>
@@ -564,13 +564,16 @@
                                                         <select class="form-control" name="plano" id="plano">
                                                         @if (isset($medPlanos) && !empty($medPlanos))
                                                         <option value="" selected>Selecione</option>
-                                                        @foreach ($medPlanos as $p)
-                                                               {{-- <optgroup label="{{  $p->convenio->nome}}"> --}}
-                                                                   
-                                                                    <option value="{{ $p->id }}">{{ $p->nome }}</option>
-                                                               
-                                                             <!--   <optgroup> -->
-                                                            @endforeach
+                                                        @foreach ($convenios as $c)
+                                                                <optgroup label="{{  $c->nome}}">
+                                                                    @foreach ($medPlanos as $value)
+                                                                        @if ($c->id == $value->convenio_id)
+                                                                            <option value="{{ $value->id }}">{{ $value->nome }}</option> 
+                                                                            @endif
+                                                                    @endforeach
+                                                                    
+                                                               <optgroup> 
+                                                        @endforeach
 
                                                         @endif
                                                             
@@ -613,7 +616,7 @@
                                           <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="data">Valor</label>
-                                                <input type="text" class="form-control"  name="valor" id="valor">
+                                                <input type="text" class="form-control" maxlength="8" name="valor" id="valor">
                                             </div>
                                         </div>
 

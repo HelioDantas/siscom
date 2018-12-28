@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Agenda;
 use App\Models\plano;
 use App\Models\procedimento;
+use App\Models\Convenio;
 use Illuminate\Http\JsonResponse;
 class AgendaController extends Controller
 {
@@ -25,6 +26,8 @@ class AgendaController extends Controller
           //  dd($medPlanos = $med->has('planos.procedimentos')->get());
             
             $medPlanos = $med->planos()->has('procedimentos')->get();
+        
+            $convenios = Convenio::all();
     }
         //Opção com buscar por medico e data 
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
@@ -41,7 +44,7 @@ class AgendaController extends Controller
          //dd($especialidadesP);
         
      }
-        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos'));
+        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios'));
 
     }
 
