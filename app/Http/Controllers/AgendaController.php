@@ -122,7 +122,7 @@ class AgendaController extends Controller
         
        // dd($request);
         $agenda = Agenda::find($request['Salvar']);
-        $dataDaConsulta = strtotime($agenda->data);
+         $dataDaConsulta = strtotime($genda->data);
         $date = strtotime(date("Y-m-d"));
             if( $dataDaConsulta < $date  )
                 return back()->with("metodos", 'Não pode ser agendar consultas com data anterior a vigente');;
