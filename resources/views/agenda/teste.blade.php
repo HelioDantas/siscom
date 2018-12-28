@@ -193,12 +193,12 @@
                                                @endif
 
                                                
-                                               @if ($h->obs != null)
+                                            {{--   @if ($h->obs != null)
                                                @php $count++ @endphp
                                                <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
                                                 <!-- Button trigger modal -->
                                                @endif
-                                                
+                                                --}}
 
                                                <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
@@ -337,7 +337,7 @@
                         
                               <div class="modal fade" id="historicoPaciente" tabindex="-1" role="dialog" aria-labelledby="historicoPaciente" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
-                                        <div class="modal-content" style = 'width: 900px !important; margin-left:-20%;'>
+                                        <div class="modal-content" style = 'width: 100%; !important; '>
                                                 <div class="modal-header">
                                                         <h5 class="modal-title" >Histórico</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -347,7 +347,8 @@
                                             <div class="modal-body">
                 
                                                 <div class="container-fluid">
-                                                 <table class="table table-responsive table-hover">
+                                                <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
+                                                 <table class="table table-hover">
                                                                               
                                                                              <thead>
                                                                                  <tr>
@@ -356,7 +357,7 @@
                                                                                  <th>Medico</th>
                                                                              
                                                                                  <th>compareceu </th>
-                                                                                 <th>pagou </th>
+                                                                                 <th>pago </th>
                                                                                  <th>Observação </th>
                                                     
                                                                                 </tr>
@@ -375,6 +376,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                 </div>
 
                                 @if (session('metodos'))
 
