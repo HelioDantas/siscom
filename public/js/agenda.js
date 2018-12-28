@@ -200,4 +200,14 @@ $("#procedimentoMed").change(function(){
            });
            
             });
+
 });
+$("input[id=pv]").click(function(){
+    if( $("input[id=pv]").is(":checked")){
+       console.log("deu ruim");
+    
+            $('input[class=name]').empty();
+      
+    }
+ 
+})

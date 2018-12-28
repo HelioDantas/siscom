@@ -512,20 +512,20 @@
                                       <div class="form-group">
 
                                           <label for="preco">Cpf</label >
-                                          <input type="text" class="form-control" placeholder="" name="cpf" id = 'cpf' required autofocus>
+                                          <input type="text" class="form-control name" placeholder="" name="cpf" id = 'cpf' required autofocus>
 
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="dataNascimento">Data de Nascimento</label>
-                                          <input type="date" class="form-control" id="data" placeholder="" name="dataDeNascimento" >
+                                          <input type="date" class="form-control name" id="data" placeholder="" name="dataDeNascimento" >
                                       </div>
                                   </div>
                                   <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="pv">Primeira Vez ?</label>
-                                        <input type="checkbox" value = 'S' name="primeiraVez" id="pv">
+                                        <input type="checkbox" value = 'S' name="primeiraVez" id="pv" class="form-control name">
                                     </div>
                                   </div>
                             </div>
@@ -534,7 +534,7 @@
 
                                 <div class="form-group ">
                                     <label for="nome">Nome Paciente</label>
-                                    <input type="text" class="form-control" placeholder="" name="paciente" id ="paciente" required>
+                                    <input type="text" class="form-control name" placeholder="" name="paciente" id ="paciente" required>
                                 </div>
                                 </div>
                               </div>
@@ -545,7 +545,7 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="telefone">telefone</label>
-                                            <input type="text" class="form-control" id="telefone" placeholder="" name="telefone" >
+                                            <input type="text" class="form-control name" id="telefone" placeholder="" name="telefone" >
 
                                         </div>
                                         </div>
@@ -553,7 +553,7 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="telefone">celular</label>
-                                                <input type="text" class="form-control" id="celular" placeholder="" name="celular" >
+                                                <input type="text" class="form-control name" id="celular" placeholder="" name="celular" >
                                             </div>
                                         </div>
                                    </div>
