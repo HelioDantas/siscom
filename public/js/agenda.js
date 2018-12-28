@@ -247,16 +247,20 @@ $(document).on('click', '#des',  function(event){
 
 $(document).on('click', '#historico', function(e){
     let historico_id = this.value;
-   console.log(historico_id);
+
 
     $.getJSON('/agenda/historico/' +historico_id , function(historico){
         h = historico;
-        console.log(h);
+       // console.log(h);
         $('.js-historico').empty();
         $.each(h, function(key,value){
                      
-               var data = new Date(Date.parse(value.data));
-               data = data.toLocaleDateString();
+               //var data = Date.parse(value.data) + 86400 + 86400 ;
+                      
+                    data  = new Date(value.data);
+                    data.setDate(data.getDate() + 1);
+              
+               data = data.toLocaleDateString('pt-br');
             $('.js-historico').append(   '<tr>'+
                       
                 '<td>' +   data + '</td>'+
