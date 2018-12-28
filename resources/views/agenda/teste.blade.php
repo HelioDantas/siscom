@@ -184,7 +184,7 @@
                                       <td>
      
                                                 <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="excluir"><i class="fas fa-trash"></i></button>
-                                                  <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter1" title="desmarcar"><i class="fas fa-times"></i></button>
+                                                  <button type="button" id = "des" class="btn btn-outline-danger" value = "{{ $h->id }}" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
                                     
                                     
                                                @if ($h->primeiraVez != 'N' )
@@ -228,7 +228,7 @@
                                                         Você deseja excluir o agendamento ?
                                                         Não é possivel desfazer a operação. 
                                                              
-                                                               {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} 
+                                                               {!! Form::open(['route' => 'agenda.destroy','method ' => 'post',]) !!} 
                                                             <input type = "hidden" id = "id" name = "id" value = "" >
                                                         </div>
                                                         <div class="modal-footer">
@@ -242,6 +242,34 @@
                                                 </div>
                                         </div>  
 
+                                               <div class="modal fade" id="desmarcar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter1" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalCenter1">Desmarcar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        Você deseja desmarcar o agendamento ?
+                                                        
+                                                             
+                                                               {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} 
+                                                            <input type = "hidden" id = "id" name = "id" value = "" >
+                                                              <div class="form-group ">
+                                                                <label for="inputPassword4">Obs</label>
+                                                                <textarea  type="text" class="form-control" rows="5" name="obs" placeholder="obs"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                              
+                                                             
+                                                            <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="Desmarcar">Desmarcar</button>
+                                                                  {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div> 
 
                                   <!-- Modal -->
                                   <div class="modal fade" id="obs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -359,6 +387,7 @@
                                                                              
                                                                                  <th>compareceu </th>
                                                                                  <th>pago </th>
+                                                                                  <th>status </th>
                                                                                  <th>Observação </th>
                                                     
                                                                                 </tr>

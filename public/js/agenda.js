@@ -122,6 +122,21 @@ $("#procedimentoMed").change(function(){
 
   
 });
+$(document).on('click', '#des',  function(event){
+  
+   var button = $(event.currentTarget);
+   
+   var  id = button.data('catid');
+   
+    var k = document.getElementsByClassName('id' +id);
+    console.log(k[0].cells[10].innerHTML);
+
+   var modal = $('#desmarcar');
+   modal.find('.modal-body #id').val(id);
+    modal.find(" .modal-body [name='obs']").val(k[0].cells[10].innerHTML);
+
+    $('#desmarcar').modal('show');
+ });
 
 
  $('#delete').on('show.bs.modal', function(event){
@@ -248,6 +263,7 @@ $(document).on('click', '#historico', function(e){
                 '<td>'+value.medico             +'</td>'+
                 '<td>'+value.compareceu      + '</td>'+
                 '<td>'+value.pago+'</td>'+
+                '<td>'+value.status+'</td>'+
                 '<td>'+value.obs+'</td>'+
                 '</tr>')
         })

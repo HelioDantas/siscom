@@ -30,7 +30,7 @@ class AgendaController extends Controller
             $convenios = Convenio::all();
     }
         //Opção com buscar por medico e data 
-        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->where('status', 'ATIVO')->orderBy('hora')->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -157,7 +157,7 @@ class AgendaController extends Controller
 
     }
     
-    function desmarcar(Request $request){
+    function destroy(Request $request){
      //   return dd($request);
 
         $id = $request['id'];
@@ -165,10 +165,35 @@ class AgendaController extends Controller
             $agenda = Agenda::find($id);
             $dataDaConsulta = strtotime($agenda->data);
             $date = strtotime(date("Y-m-d"));
-            if( $dataDaConsulta == $date  )
-                $agenda->delete();
+            if( $dataDaConsulta == $date  ){
+                 $agenda->delete();
+                 return back();
+            }
+               
+
             
 
+            return back()->with("metodos", 'Não é possivel excluir um agendamento anterior a data atual');
+
+
+    }
+
+        function desmarcar(Request $request){
+     //   return dd($request);
+
+        $id = $request['id'];
+           
+            $agenda = Agenda::find($id);
+            $dataDaConsulta = strtotime($agenda->data);
+            $date = strtotime(date("Y-m-d"));
+            if( $dataDaConsulta == $date  ){
+                $agenda = $agenda->update([
+                    'status' => 'DESMARCADO' ,
+                     'obs' => $request['obs'], 
+                    
+                ]);
+             return back();
+            }
             return back()->with("metodos", 'Não é possivel excluir um agendamento anterior a data atual');
 
 
