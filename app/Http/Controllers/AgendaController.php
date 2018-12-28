@@ -78,7 +78,7 @@ class AgendaController extends Controller
                 $primeira = "S";
             }
             try{            
-                Agenda::create([ 
+              $agenda =  Agenda::create([ 
                     'primeiraVez'      => $primeira ,
                     'paciente_id'      => $paciente->id, 
                     'paciente'         => $request['paciente'],
@@ -92,17 +92,18 @@ class AgendaController extends Controller
                     'atendente'        => $request['atendente'],
                     'hora'             => $request['hora'],
                     'data'             => $request['data'],
-                    'valor'             => $request['valor'],
-                    'plano'             => $request['plano'],
+                    'valor'            => $request['valor'],
+                    'plano'            => $request['plano'],
 
 
 
 
 
                     ]);
+                 
 
             }catch (\Exception $e){
-
+dd($e);
               $mensagem= $e->getMessage();
               $buscar = 'Integrity constraint violation: 1062 Duplicate entry';
                $pos = strpos( $mensagem, $buscar );
