@@ -74,6 +74,7 @@
  
 
 </style>
+
 @endsection
 
 @section('telaListarPaciente')
@@ -563,15 +564,14 @@
                                                         <label for="telefone">plano</label>
                                                         <select class="form-control" name="plano" id="plano">
                                                         @if (isset($medPlanos) && !empty($medPlanos))
-                                                        <option value="" selected>Selecione</option>
+                                                        <option value=""></option>
                                                         @foreach ($convenios as $c)
                                                                 <optgroup label="{{  $c->nome}}">
                                                                     @foreach ($medPlanos as $value)
                                                                         @if ($c->id == $value->convenio_id)
                                                                             <option value="{{ $value->id }}">{{ $value->nome }}</option> 
                                                                             @endif
-                                                                    @endforeach
-                                                                    
+                                                                    @endforeach 
                                                                <optgroup> 
                                                         @endforeach
 

@@ -170,17 +170,25 @@ $("#procedimentoMed").change(function(){
 
     $(document).ready(function(){
         $("#cpf").blur(function(){
-           $.getJSON( '/cpf/' + this.value  , function(cpf){
-               var funcionario = cpf;
+           $.getJSON( '/cpf/' + this.value  , function(data){
+               let dat = data;
+          
                 
-                var nome = $('input[name = paciente]'); 
-                   var telefone = $('input[name = telefone]'); 
-                  var celular = $('input[name = celular]');   
-                  var data = $('input[name = dataDeNascimento]');  
-                  nome.val(funcionario[0]['nome']);
-                  telefone.val(funcionario[0]['telefone']);
-                  celular.val(funcionario[0]['celular']);
-                data.val(funcionario[0]['dataDeNascimento']);
+                let nome = $('input[name = paciente]'); 
+                   let telefone = $('input[name = telefone]'); 
+                  let celular = $('input[name = celular]');   
+                  let dataa = $('input[name = dataDeNascimento]');
+                  let plano = $('select[id = plano]');
+                  nome.val(dat[0]['nome']);
+                  telefone.val(dat[0]['telefone']);
+                  celular.val(dat[0]['celular']);
+                  dataa.val(dat[0]['dataDeNascimento']);
+                  
+                    $('option[class = opt]').remove();
+                 
+                  
+                  plano.append('<option class="opt" selected value=' + dat[0]['plano_id'] + '>' +dat[0]['planoNome'] + ' - Paciente </option>')
+
            });
          
 

@@ -317,8 +317,32 @@ class PacienteController extends Controller
 
     public function buscarCpf( $buscar)
     {
-        $Funcionarios = Paciente::where('cpf', '=', $buscar)->get();
-        return json_encode($Funcionarios);
+        $paciente = Paciente::where('cpf', '=', $buscar)->first();
+
+       if( $paciente->planos()->first() != null){
+        $plano = $paciente->planos()->first();
+         $dados[] = array(
+            "nome" => $paciente->nome,
+            "celular" => $paciente->celular,
+            "telefone" => $paciente->telefone,
+            "dataDeNascimento" => $paciente->dataDeNascimento,
+            "pano_id" => $plano->id ,
+            "planoNome" => $plano->nome,
+        );
+         
+    }else{
+        $dados[] = array(
+            "nome" => $paciente->nome,
+            "celular" => $paciente->celular,
+            "telefone" => $paciente->telefone,
+            "dataDeNascimento" => $paciente->dataDeNascimento,
+            "pano_id" => "",
+            "planoNome" => "",
+        );
+    }
+           
+        return json_encode($dados);
+     
 
     }
       public function buscarNome( $buscar)
