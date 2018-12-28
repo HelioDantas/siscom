@@ -202,15 +202,31 @@ $("#procedimentoMed").change(function(){
             });
 
 });
-$("input[id=pv]").click(function(){
-    if( $("input[id=pv]").is(":checked")){
-       console.log("deu ruim");
-    
-            $('input[class=name]').empty();
+
+
+        $('#pv').on('show.bs.modal , click', function(event){
+            var modal = $(this);
+
+            if( $("input[id=pv]").is(":checked")){
+                console.log("deu ruim");
+
+               let cpf = $('input[name = cpf]'); 
+               let telefone = $('input[name = telefone]'); 
+               let celular = $('input[name = celular]');   
+               let data = $('input[name = dataDeNascimento]');  
+               cpf.empty();
+               telefone.empty();
+               celular.empty();
+              data.empty();  
+
+            }
+         
+          });
       
-    }
+    
  
-});
+
+
 
 
 
@@ -238,4 +254,5 @@ $(document).on('click', '#historico', function(e){
          $('#historicoPaciente').modal('show');
     })
 })
+
 
