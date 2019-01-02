@@ -171,48 +171,52 @@
                             @if (isset($agendamentos))
                             @php $count=0; @endphp
                               @foreach ($agendamentos as $h)
-                                  <tr class = "id{{$h->id}}">
-                                      <td>{{ $h->hora }}</td>
-                                      <td>{{ $h->paciente }}</td>
-                                      <td>{{ $h->cpf }}</td>
-                                      <td>{{ $h->telefone }}</td>
-                                      <td>{{ $h->celular }}</td>
-                                      <td>{{ $h->age($h->dataDeNascimento)}}</td>
-                                      <td style="display:none">{{ $h->ultimaConsulta }}</td>
-                                      <td>{{ $h->primeiraVez }}</td>
-                                      <td>{{ $h->compareceu }}</td>
-                                      <td>{{ $h->pago }}</td>
-                                      <td style="display:none">{{ $h->obs }}</td>
-                                      
-                                  
-                                      <td>
-     
+                                    @if( $h->compareceu  == 'N') 
+                                         <tr class = "id{{$h->id}} alert alert-danger">
+                                    @else
+                                        <tr class = "id{{$h->id}}">
+                                    @endif
+                                    <td>{{ $h->hora }}</td>
+                                    <td>{{ $h->paciente }}</td>
+                                    <td>{{ $h->cpf }}</td>
+                                    <td>{{ $h->telefone }}</td>
+                                    <td>{{ $h->celular }}</td>
+                                    <td>{{ $h->age($h->dataDeNascimento)}}</td>
+                                    <td style="display:none">{{ $h->ultimaConsulta }}</td>
+                                    <td>{{ $h->primeiraVez }}</td>
+                                    <td>{{ $h->compareceu }}</td>
+                                    <td>{{ $h->pago }}</td>
+                                    <td style="display:none">{{ $h->obs }}</td>
+                                    
+                                
+                                    <td>
+    
                                                 <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="excluir"><i class="fas fa-trash"></i></button>
-                                                  <button type="button" id = "des" class="btn btn-outline-danger" value = "{{ $h->id }}" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
+                                                <button type="button" id = "des" class="btn btn-outline-danger" value = "{{ $h->id }}" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
                                     
                                     
-                                               @if ($h->primeiraVez != 'N' )
-                                               <a  class="btn btn-outline-primary"  href="{{ route('agenda.editarPaciente',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
-                                               @endif
+                                            @if ($h->primeiraVez != 'N' )
+                                            <a  class="btn btn-outline-primary"  href="{{ route('agenda.editarPaciente',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
+                                            @endif
 
-                                               
+                                            
                                             {{--   @if ($h->obs != null)
-                                               @php $count++ @endphp
-                                               <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
+                                            @php $count++ @endphp
+                                            <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
                                                 <!-- Button trigger modal -->
-                                               @endif
+                                            @endif
                                                 --}}
 
-                                               <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
-                                                 <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
-                                               @if ($h->ultimaConsulta != null  && !empty($h->ultimaConsulta))
-                                               
-                                              
-                                               @endif 
+                                                <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
+                                            @if ($h->ultimaConsulta != null  && !empty($h->ultimaConsulta))
+                                            
+                                            
+                                            @endif 
 
-                                 </td>
-                              </tr>
+                                </td>
+                            </tr>
                               @endforeach
                         
                               

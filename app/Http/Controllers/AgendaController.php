@@ -31,7 +31,7 @@ class AgendaController extends Controller
             $convenios = Convenio::all();
     }
         //Opção com buscar por medico e data 
-        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->where('status', 'ATIVO')->orderBy('hora')->get();
+        $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -104,7 +104,7 @@ class AgendaController extends Controller
                  
 
             }catch (\Exception $e){
-dd($e);
+
               $mensagem= $e->getMessage();
               $buscar = 'Integrity constraint violation: 1062 Duplicate entry';
                $pos = strpos( $mensagem, $buscar );
@@ -196,7 +196,7 @@ dd($e);
             if( $dataDaConsulta >= $date  ){
                 $this->excluirPacientePrimeiraVez($agenda);
                 $agenda = $agenda->update([
-                    'status' => 'DESMARCADO' ,
+                    'compareceu' => 'S' ,
                      'obs' => $request['obs'], 
                     
                 ]);
