@@ -48,11 +48,7 @@
  
 
    }
-   .row{
-
-      text-align: center; 
-   }
-
+  
 .fixed_header {
   display:block;
   overflow:auto;
@@ -89,59 +85,14 @@
             <div class = 'row contentBusca'>
             
                         <div class="col-4 center">
-                            
-                                <label for="">Medicos</label>
-                                <select name="medico" id="medico" class="form-control">
-                                    @if (isset($med) && !empty($med))
-                                    <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
-                                    @else
-                                        @if (!isset($med))
-                                        
-                                        <option value="">Selecione</option>
-
-                                        
-                                        @endif
-
-                                    @endif
-                                    @if (!empty($medicos))
-                                        @foreach ($medicos as $meds)
-                                            <option value="{{ $meds->funcionario->matricula }}">{{ $meds->funcionario->nome }}</option>     
-                                        @endforeach
-                                    @endif
-                                </select>
+                                 @if(!isset($userMedico))
+                                    @include('components.VisaoDoMedicoNaAgenda')
+                                    
+                                @else
+                                     
+                                    @include('components.VisaoDaAtendenteNaAgenda')
+                                @endif
                         </div>
-                        
-                        <div class="col-4 center">                                                
-                                <label for="">especialidades</label>
-                                <select name="especialidade" id="especialidade" class="form-control">
-                                    @if(!empty($esp))
-                                        <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option>  
-                                    @endif
-
-                              {{--      @if (!empty($esp))
-                                            @foreach($esp->Medico as $medico)
-                                                @if ($med->funcionario->matricula === $medico->funcionario->matricula)
-                                                    @continue
-                                                @else
-
-                                                    <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
-                                                @endif
-                                            @endforeach
-                                    @else
-                                      
-                                    @endif
-                                --}} 
-                                 </select>                 
-                        </div>
-                                  
-                        <div class="col-3 center">
-                            <label for="data">Data</label>
-                            <input type="date" name="data" id="data"    maxlength="20" class="form-control {{$errors->has('data') ? 'is-invalid': '' }}"   
-                             @if(empty($date) && $date == "" ) value= '<?php echo date("Y-m-d"); ?>' @else value = {{ $date}}@endif>
-
-                        </div>
-                    
-                    </div>
                     
                     
 
@@ -400,7 +351,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content" style = 'width: 300% !important; margin-left:-25rem;'>
                                                 <div class="modal-header">
-                                                        <h5 class="modal-title " >Histórico</h5>
+                                                        <h5 class="modal-title NomeDoPacienteParaOHistorico" >Histórico</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -702,10 +653,14 @@
 @endsection
 
     @section('scripts')
-
-  <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
+    @if(!isset($userMedico))
+        <script type="text/javascript" src="{{ asset('js/RotasMedico.js') }}"></script>
+    @else
+        <script type="text/javascript" src="{{ asset('js/RotasAtendente.js') }}"></script>
+    @endif
+    <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 
     @endsection

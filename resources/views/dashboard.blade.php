@@ -37,7 +37,11 @@
                         <div class="card-body">
                           <h5 class="card-title">Agenda</h5>
                           <p class="card-text">histórico de agendamentos e agendamentos do dia </p>
+                          @if(Auth::user()->funcionario->medico)
+                           <a href="{{ route('medico.agenda'') }}" class="btn btn-primary">Consultar</a>
+                           @else
                           <a href="{{ route('agenda.index') }}" class="btn btn-primary">Consultar</a>
+                          @endif
                         </div>
                       </div>
         </div>

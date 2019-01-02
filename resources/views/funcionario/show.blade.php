@@ -603,7 +603,7 @@
   @if($p->medico)
             <hr>
 <div class="col-4">
-     <button  class="btn btn-secondary"  data-toggle="collapse" type = "button" data-target="#demo" @if(old('email')) aria-expanded="true" @endif >Planos</button>
+     <a  class="btn btn-secondary"   href ="#demo1" data-toggle="collapse" type = "button" data-target="#demo" @if(old('email')) aria-expanded="true" @endif >Planos</a>
 
  </div>
         <div id="demo" class="collapse">
@@ -617,7 +617,7 @@
             </div>
 
              </div>
-                <table class="table table-hover">
+                <table id ='demo1'class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="row" >Convenio</th>

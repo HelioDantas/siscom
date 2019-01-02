@@ -21,16 +21,16 @@ class AgendaController extends Controller
     function index( $medicoId  = "", $date = "",$espec = ""){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
-        $medicos = Medico::all();
+        $medicos = Medico::with('funcionario')->get();
         //return dd($date);
         $med = Medico::find($medicoId);
         if($med != null ){
           //  dd($medPlanos = $med->has('planos.procedimentos')->get());
-            
+            $DemaisEspecialidadesDoMedicoSemSerAEscolhida = $med->especialidade()->where('id', '!=', $espec)->get();
             $medPlanos = $med->planos()->has('procedimentos')->get();
         
             $convenios = Convenio::all();
-    }
+        }
         //Opção com buscar por medico e data 
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
@@ -46,7 +46,10 @@ class AgendaController extends Controller
          //dd($especialidadesP);
         
      }
-        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios'));
+
+   
+    // dd($DemaisEspecialidadesDoMedicoSemSerAEscolhida);
+        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios', 'DemaisEspecialidadesDoMedicoSemSerAEscolhida'));
 
     }
 
@@ -137,7 +140,6 @@ class AgendaController extends Controller
           try{  
                  $agenda = $agenda->update(
                      [
-                      'primeiraVez'      => $request['primeiraVez'],
                        'hora'             => $request['hora'],
                      'compareceu'             => $request['compareceu'],
                         'pago'             => $request['pago'],
