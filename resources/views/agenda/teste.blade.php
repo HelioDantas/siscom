@@ -376,7 +376,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content" style = 'width: 300% !important; margin-left:-25rem;'>
                                                 <div class="modal-header">
-                                                        <h5 class="modal-title" >Histórico</h5>
+                                                        <h5 class="modal-title " >Histórico</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>

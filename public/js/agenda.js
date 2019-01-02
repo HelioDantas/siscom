@@ -260,13 +260,18 @@ $(document).on('click', '#historico', function(e){
     $.getJSON('/agenda/historico/' +historico_id , function(historico){
         h = historico;
        // console.log(h);
+        var nomeDoPaciente = h[0].paciente;           
+        
         $('.js-historico').empty();
         $.each(h, function(key,value){
+            
                      
                //var data = Date.parse(value.data) + 86400 + 86400 ;
+
                       
                     data  = new Date(value.data);
                     data.setDate(data.getDate() + 1);
+                                   
               
                data = data.toLocaleDateString('pt-br');
             $('.js-historico').append(   '<tr>'+
@@ -280,6 +285,7 @@ $(document).on('click', '#historico', function(e){
                 '<td>'+value.obs+'</td>'+
                 '</tr>')
         })
+        $('.modal-title').text('Histórico '+ nomeDoPaciente);
          $('#historicoPaciente').modal('show');
     })
 })
