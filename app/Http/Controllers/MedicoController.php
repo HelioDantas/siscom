@@ -9,6 +9,9 @@ use App\Models\Especialidade;
 use DB;
 use App\Models\Agenda;
 use Auth;
+
+use App\Models\procedimento;
+use App\Models\Convenio;
 class MedicoController extends Controller
 {
 
@@ -73,18 +76,52 @@ class MedicoController extends Controller
     }
 
 
-    public function agenda(  $date = "five"  ){
+    public function agenda(  $date = "five", $espec = ""  ){
 
         $especialidade = Especialidade::with('Medico.funcionario')->get();
  
         //return dd($date);
         $medicoId = Auth::user()->funcionario->matricula;
         $med = Medico::find($medicoId);
+        $userMedico = $med;
+
         if ($date == "five")
             $date = date("Y-m-d");
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
-        return view ('medico.agenda', compact('especialidade', 'agendamentos', 'medicoId', 'date', 'espec'));
+       // $esp = Especialidade::with('Medico.funcionario')->get();
+      
+    
+      
+       
+          //  dd($medPlanos = $med->has('planos.procedimentos')->get());
+            $DemaisEspecialidadesDoMedicoSemSerAEscolhida = $med->especialidade()->where('id', '!=', $espec)->get();
+            $medPlanos = $med->planos()->has('procedimentos')->get();
+        
+            $convenios = Convenio::all();
+      //Opção para teste
+       // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
+               // return dd($agendamentos);
+
+
+  //dd($esp);
+     if(!empty($espec)){
+         $esp = Especialidade::find($espec);
+
+         
+         $especialidadesP = $esp->procedimentos()->get();
+         //dd($especialidadesP);
+        
+     }
+     else{
+
+           $especialidade = $med->especialidade()->get();
+     }
+  $especialidade = $med->especialidade()->get();
+
+   
+
+        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios', 'DemaisEspecialidadesDoMedicoSemSerAEscolhida', 'UserMedico'));
 
 
 

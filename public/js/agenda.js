@@ -18,15 +18,7 @@
 */
 
 
-$('#especialidade').change(function(){
-    var medico = this.value;
-    
-    var date = document.getElementById('data').value;
-    var espec = document.getElementById('especialidade').value;
-    var medico = document.getElementById('medico').value;
-    location.href = '/agd/medico/' + medico +'/' +date + '/' +espec;
-  
-});
+
 
 $('#medico').change(function(){
     let medico_id = this.value;
@@ -88,14 +80,7 @@ $(document).ready(function () {
      })
     });
     
-$("#data").change(function(){
-               var medico = document.getElementById('medico').value;
-               var espec = document.getElementById('especialidade').value;
-                var date = this.value;
 
-            if(!medico == '' && !espec == '')
-                location.href = '/agd/medico/' + medico + '/' + date + '/' +espec; 
-     });
 
 $("#plano").change(function(){
     var plano = this.value;  

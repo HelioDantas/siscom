@@ -123,7 +123,13 @@
                     <button class="dropbtn">Agenda</button>
                     
                     <div class="dropdown-content">
-                      <a href="{{ route('agenda.index') }}">Agendar</a>
+                       @if(Auth::user()->funcionario->medico)
+                       <a href="{{ route('medico.agenda') }}">Agendar</a
+                          
+                           @else
+                           <a href="{{ route('agenda.index') }}">Agendar</a>
+                          @endif
+                     
                     </div>
                   </div>
                 </li>

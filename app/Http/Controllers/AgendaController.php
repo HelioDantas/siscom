@@ -29,7 +29,7 @@ class AgendaController extends Controller
             $medPlanos = $med->planos()->has('procedimentos')->get();
         
             $convenios = Convenio::all();
-    }
+        }
         //Opção com buscar por medico e data 
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
