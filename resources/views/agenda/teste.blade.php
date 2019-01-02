@@ -392,7 +392,7 @@
                                                                                  <th>    Data     </th>
                                                                                  <th>Hora</th>
                                                                                  <th>Medico</th>
-                                                                             
+                                                            
                                                                                  <th>compareceu </th>
                                                                                  <th>pago </th>
                                                                                   <th>status </th>

@@ -271,19 +271,10 @@ class PacienteController extends Controller
     {
         //  deletar
         $tt = PermissionController::pdestroy( $request);
-
-
-            $paciente = Paciente::find($id);
-           // dd( $paciente = Paciente::find($id));
-
+        $paciente = Paciente::find($id);
         $paciente->delete();
 
-
-            //Paciente::destroy($prontuario);
-
-            // DB::delete("delete from sis_paciente where prontuario = $prontuario");
-            //Paciente::where('id', $id)->delete();
-             return redirect()->back();
+        return redirect()->back();
              //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
 
 
@@ -292,10 +283,9 @@ class PacienteController extends Controller
         public function show(Request $request, $id)
     {
         //  form para editar infos de um paciente
-       $tt = PermissionController::pshow( $request);
+       $tt = PermissionController::pshow( $request); // vai pra parte de verificação de permisao
 
-
-
+       
       $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
