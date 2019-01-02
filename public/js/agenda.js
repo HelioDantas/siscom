@@ -47,23 +47,26 @@ $('#medico').change(function(){
 $(document).on('click', '.btn-edit', function(e){
     
      console.log(this.value );
-     
+
+  
  
+
      $.getJSON('/get/data/agd/' + this.value , function(agends){
-         console.log(agends);
-        var modal = $('#update'); 
-        $(' select[id=plano]').append('<option selected value='+agends.planoID+'>'+agends.planoNome+'<option>');
-        modal.find("[name='paciente_id']").val(agends['paciente_id']);
-        $("[name=hora]").text(agends['hora']);
-        $("[name='primeiraVez']").val(agends['primeiraVez']);
-        modal.find("[name='compareceu']").val(agends['compareceu']);
-        modal.find("[name='pago']").val(agends['pago']);
-        modal.find("[name='obs']").val(agends['obs']);
+         console.log(agends[0].hora);
+        var modal = $('#update');
+        modal.find('option[id=optjs]').empty();
+        modal.find('select[id=planoModalEditar]').append('<option id="optjs" selected value='+agends[0].planoID+'>'+agends[0].planoNome+'<option>');
+        modal.find("[name='paciente_id']").text(agends['paciente_id']);
+        $("[name=hora]").val(agends[0].hora);
+        $("[name='primeiraVez']").val(agends[0].primeiraVez);
+        modal.find("[name='compareceu']").val(agends[0]['compareceu']);
+        modal.find("[name='pago']").val(agends[0]['pago']);
+        modal.find("[name='obs']").val(agends[0]['obs']);
         modal.find("[name='Salvar']").val(id);
        
     })
     
-     $('#update').modal('show');
+    $('#update').modal('show');
 
 });
 

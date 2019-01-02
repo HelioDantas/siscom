@@ -323,7 +323,7 @@
                                                         <div class="col-6">
                                                                 <div class="form-group">
                                                                     <label for="telefone">plano</label>
-                                                                    <select class="form-control" name="plano" id="plano">
+                                                                    <select class="form-control" name="plano" id="planoModalEditar">
                                                                     @if (isset($medPlanos) && !empty($medPlanos))
                                                                     @foreach ($convenios as $c)
                                                                             <optgroup label="{{  $c->nome}}">

@@ -146,9 +146,12 @@ class AgendaController extends Controller
                      ]);
                      
                     if( DB::table('sis_paciente_tem_plano')->where('paciente_id' ,$request['paciente_id'] )->exists()){
-                        Paciente::find($request['paciente_id'] )->update(['plano' => $request['plano'] ]);
+                        DB::table('sis_paciente_tem_plano')->where('paciente_id' ,$request['paciente_id'] )->update(['plano' => $request['plano'] ]);
+                        Paciente::updatePlano($request['paciente_id'] , $request['plano']);
+                      
                     }else{
-                        DB::table('sis_paciente_tem_plano')->insert(['paciente_id'=>$request['paciente_id'] , "plano_id" =>  $request['plano']]);
+                        DB::table('sis_paciente_tem_plano')->insert(['paciente_id'=>$request['paciente_id'] , "plano" =>  $request['plano']]);
+                        
                     }
                  //dd($request['obs']);
             }catch (\Exception $e){
@@ -302,11 +305,11 @@ class AgendaController extends Controller
 
     function getAgendamentos($id){
         $agendamentos = Agenda::where('id',$id)->first();
-        dd($agendamentos);
-        $plano = Plano::find($agendamentos->plano)->first();
-      
+    
+        $plano = Plano::where('id',$agendamentos->plano)->first();
+     
         $data  = array([
-             'planoID'      => $agendamentos->plano_id,
+             'planoID'      => $agendamentos->plano,
              'planoNome'    => $plano->nome,
              'primeiraVez'  => $agendamentos->primeiraVez,
              'hora'         => $agendamentos->hora,

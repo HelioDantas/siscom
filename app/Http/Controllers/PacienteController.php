@@ -190,6 +190,7 @@ class PacienteController extends Controller
 
          }else{
              if($paciente != null)
+             
                 Paciente::find($id)->planos()->updateExistingPivot($paciente->pivot['plano_id'], ['situacao'=>'INATIVO']);
 
              Paciente::find($id)->planos()->attach($request['plano_id'],
@@ -210,45 +211,6 @@ class PacienteController extends Controller
             $paciente->update($request->all());
          //  dd($request->all());
 
-
-
-
-
-/*
-        //  atualizar
-        //dd($request);
-        $paciente = Paciente::find($id);
-        $ativos = $paciente->planos()->where('situacao','ATIVO')->get();
-
-        if (!$ativos == null) { // se houver ativos
-
-            PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->orWhere('situacao','=','NULL')->update(['situacao'=>'INATIVO']);
-
-               PacienteHasConvenio::updateOrCreate([
-                'paciente_id' => $paciente->id,
-                'plano_id'   => $request['plano_id'],
-                'indicacao'  => $request['indicacao'],
-              //  'carteira'   => $request['carteira'],
-                'situacao' => 'ATIVO',
-               ]);
-        }
-
-    /* if (!$inativos == null){
-        $inativo = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)
-         ->where('plano_id','=', $request['plano_id'])
-         ->Where('carteira','=',$request['carteira'])->update(['situacao'=> 'ATIVO']);
-
-        }
-       // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
-
-        $paciente->update($request->except([
-            'convenio_id',
-            'plano_id',
-            'indicacao',
-            'carteira',
-            '_token']));
-
-*/
          if ($request->session()->exists('key')) {
              $value = session('key');
             session()->forget('key');
@@ -257,6 +219,11 @@ class PacienteController extends Controller
 }
         return redirect()->route('paciente.listar');
     }
+
+    function updatePlano($idPaciente, $plano){
+        Paciente::find($idPaciente)->planos()->updateExistingPivot($paciente->pivot['plano_id'], ['situacao'=>'INATIVO']);
+        Paciente::find($idPaciente)->planos()->attach([ $plano]); 
+     }
 
 
     public function store(Request $request)
@@ -285,7 +252,7 @@ class PacienteController extends Controller
         //  form para editar infos de um paciente
        $tt = PermissionController::pshow( $request); // vai pra parte de verificação de permisao
 
-       
+
       $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
