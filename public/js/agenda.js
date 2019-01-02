@@ -285,7 +285,7 @@ $(document).on('click', '#historico', function(e){
                 '<td>'+value.obs+'</td>'+
                 '</tr>')
         })
-        $('.modal-title').text('Histórico '+ nomeDoPaciente);
+        $('.NomeDoPacienteParaOHistorico').text('Histórico '+ nomeDoPaciente);
          $('#historicoPaciente').modal('show');
     })
 })

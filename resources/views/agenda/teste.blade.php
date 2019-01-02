@@ -94,6 +94,7 @@
                                 <select name="medico" id="medico" class="form-control">
                                     @if (isset($med) && !empty($med))
                                     <option value="{{ $med->funcionario->matricula }}" selected>{{ $med->funcionario->nome }}</option>  
+                                    
                                     @else
                                         @if (!isset($med))
                                         
@@ -105,7 +106,11 @@
                                     @endif
                                     @if (!empty($medicos))
                                         @foreach ($medicos as $meds)
-                                            <option value="{{ $meds->funcionario->matricula }}">{{ $meds->funcionario->nome }}</option>     
+                                            @if (isset($med) && !empty($med) && $meds->funcionario->matricula != $med->funcionario->matricula)
+                                                <option value="{{ $meds->funcionario->matricula }}">{{ $meds->funcionario->nome }}</option>
+                                            @elseif(!isset($med))     
+                                                <option value="{{ $meds->funcionario->matricula }}">{{ $meds->funcionario->nome }}</option>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </select>
@@ -116,21 +121,11 @@
                                 <select name="especialidade" id="especialidade" class="form-control">
                                     @if(!empty($esp))
                                         <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option>  
+                                         @foreach($DemaisEspecialidadesDoMedicoSemSerAEscolhida as $especialidade)
+                                             <option value="{{ $especialidade->id }}" selected>{{ $especialidade->nome }}</option>  
+                                        @endforeach
                                     @endif
 
-                              {{--      @if (!empty($esp))
-                                            @foreach($esp->Medico as $medico)
-                                                @if ($med->funcionario->matricula === $medico->funcionario->matricula)
-                                                    @continue
-                                                @else
-
-                                                    <option value={{$medico->funcionario->matricula}}>{{$medico->funcionario->nome}}</option>
-                                                @endif
-                                            @endforeach
-                                    @else
-                                      
-                                    @endif
-                                --}} 
                                  </select>                 
                         </div>
                                   
@@ -376,7 +371,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content" style = 'width: 300% !important; margin-left:-25rem;'>
                                                 <div class="modal-header">
-                                                        <h5 class="modal-title " >Histórico</h5>
+                                                        <h5 class="modal-title NomeDoPacienteParaOHistorico" >Histórico</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
