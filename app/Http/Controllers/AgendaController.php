@@ -13,6 +13,7 @@ use App\Models\procedimento;
 use App\Models\Convenio;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Http\JsonResponse;
+use DB;
 class AgendaController extends Controller
 {
 
@@ -125,7 +126,7 @@ class AgendaController extends Controller
     public function update(Request $request){
 
         
-       // dd($request);
+ 
         $agenda = Agenda::find($request['Salvar']);
          $dataDaConsulta = strtotime($agenda->data);
         $date = strtotime(date("Y-m-d"));
@@ -143,6 +144,12 @@ class AgendaController extends Controller
                         'obs'             => $request['obs'],
 
                      ]);
+                     
+                    if( DB::table('sis_paciente_tem_plano')->where('paciente_id' ,$request['paciente_id'] )->exists()){
+                        Paciente::find($request['paciente_id'] )->update(['plano' => $request['plano'] ]);
+                    }else{
+                        DB::table('sis_paciente_tem_plano')->insert(['paciente_id'=>$request['paciente_id'] , "plano_id" =>  $request['plano']]);
+                    }
                  //dd($request['obs']);
             }catch (\Exception $e){
 
@@ -278,7 +285,6 @@ class AgendaController extends Controller
 
          $agendamentos = Agenda::where('paciente_id', $id)->orderBy('data', 'desc')->get();
 
-
          return json_encode($agendamentos);
 
     }
@@ -292,5 +298,23 @@ class AgendaController extends Controller
 
 
         }
+    }
+
+    function getAgendamentos($id){
+        $agendamentos = Agenda::where('id',$id)->first();
+        dd($agendamentos);
+        $plano = Plano::find($agendamentos->plano)->first();
+      
+        $data  = array([
+             'planoID'      => $agendamentos->plano_id,
+             'planoNome'    => $plano->nome,
+             'primeiraVez'  => $agendamentos->primeiraVez,
+             'hora'         => $agendamentos->hora,
+             'compareceu'   => $agendamentos->compareceu,
+             'pago'         => $agendamentos->pago,
+             'obs'          => $agendamentos->obs,
+        ]);
+        return json_encode($data);
+
     }
 }

@@ -192,5 +192,6 @@ Route::get('medd/{date?}', 'MedicoController@agenda')->middleware('Autorizador')
 
 Route::get('cpf/{cpf}', 'PacienteController@buscarCpf')->middleware('Autorizador');
 Route::get('nome/{nome}', 'PacienteController@buscarNome')->middleware('Autorizador');
+Route::get('/get/data/agd/{id}', 'AgendaController@getAgendamentos');
 
 

@@ -42,43 +42,32 @@ $('#medico').change(function(){
     })
 })
 
+
+
 $(document).on('click', '.btn-edit', function(e){
-    var id = $(this).val();
-     console.log(id);
-     var d = $('.id' +id); 
-     var k = document.getElementsByClassName('id' +id);
-    console.log(k[0].cells);
-    console.log(k[0].cells[0].innerHTML);//horario
-    console.log(k[0].cells[1].innerHTML);//paciente
-     console.log(k[0].cells[2].innerHTML);//cpf
-      console.log(k[0].cells[3].innerHTML);//telefone
-       console.log(k[0].cells[4].innerHTML);//celular
-        console.log(k[0].cells[5].innerHTML);//idade
-         console.log(k[0].cells[6].innerHTML);//Ult.Consulta
-          console.log(k[0].cells[7].innerHTML);//primeiraVez
-           console.log(k[0].cells[8].innerHTML);//compareceu
-           console.log(k[0].cells[9].innerHTML);//pago
-           //console.log(k[0].cells[10].children[2].dataset.catid);//obs
     
-           var modal = $('#update'); 
-
-           modal.find("[name='hora']").val(k[0].cells[0].innerHTML);
-            modal.find("[name='primeiraVez']").val(k[0].cells[7].innerHTML);
-               modal.find("[name='compareceu']").val(k[0].cells[8].innerHTML);
-                  modal.find("[name='pago']").val(k[0].cells[9].innerHTML);
-                     modal.find("[name='obs']").val(k[0].cells[10].innerHTML);
-                      modal.find("[name='Salvar']").val(id);
-           
-            $('#update').modal('show');
-    //data : {id:id}
+     console.log(this.value );
+     
  
-
+     $.getJSON('/get/data/agd/' + this.value , function(agends){
+         console.log(agends);
+        var modal = $('#update'); 
+        $(' select[id=plano]').append('<option selected value='+agends.planoID+'>'+agends.planoNome+'<option>');
+        modal.find("[name='paciente_id']").val(agends['paciente_id']);
+        $("[name=hora]").text(agends['hora']);
+        $("[name='primeiraVez']").val(agends['primeiraVez']);
+        modal.find("[name='compareceu']").val(agends['compareceu']);
+        modal.find("[name='pago']").val(agends['pago']);
+        modal.find("[name='obs']").val(agends['obs']);
+        modal.find("[name='Salvar']").val(id);
+       
+    })
     
-
-
-
+     $('#update').modal('show');
 
 });
+
+
 $(document).ready(function () {
 
        $('#modal-mail').modal('show');

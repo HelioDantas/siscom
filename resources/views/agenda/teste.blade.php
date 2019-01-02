@@ -317,16 +317,39 @@
                                                 {!! Form::open(['route' => 'agenda.update','method ' => 'post',]) !!} 
                                                    @csrf
                                                 {{ method_field('PUT') }}
-
+                                                <input type="hidden" name="paciente_id" id="paciente_id">
                                                 <div class="container-fluid" id="obss">
-                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label for="telefone">plano</label>
+                                                                    <select class="form-control" name="plano" id="plano">
+                                                                    @if (isset($medPlanos) && !empty($medPlanos))
+                                                                    @foreach ($convenios as $c)
+                                                                            <optgroup label="{{  $c->nome}}">
+                                                                                @foreach ($medPlanos as $value)
+                                                                                    @if ($c->id == $value->convenio_id)
+                                                                                        <option value="{{ $value->id }}">{{ $value->nome }}</option> 
+                                                                                        @endif
+                                                                                @endforeach 
+                                                                           <optgroup> 
+                                                                    @endforeach
+            
+                                                                    @endif
+                                                                        
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                <div class="col-md-4">
                                               <div class="form-group">
                                                   <label for="horario">horario</label>
                                                   <input type="time" class="form-control" placeholder="hora" required id="hora" name="hora">
                                               </div>
                                           </div>
+                                        </div>
+                                        <div class="row">
                                                 
-                                                        <div class="col">
+                                                        <div class="col-3">
                                                             <div class="form-group">
                                                                 <label for="tipo">primeiraVez</label>
                                                                 <select class="form-control" name="primeiraVez" id="primeiraVez" required>
@@ -336,7 +359,7 @@
                                                                 </select>
                                                             </div>
                                                       </div>
-                                                       <div class="col">
+                                                       <div class="col-3">
                                                             <div class="form-group">
                                                                 <label for="tipo">compareceu</label>
                                                                 <select class="form-control" name="compareceu" id="" required>
@@ -345,7 +368,7 @@
                                                                 </select>
                                                             </div>
                                                       </div>
-                                                       <div class="col">
+                                                       <div class="col-3">
                                                             <div class="form-group">
                                                                 <label for="tipo">pago</label>
                                                                 <select class="form-control" name="pago" id="" required>
@@ -354,6 +377,7 @@
                                                                 </select>
                                                             </div>
                                                       </div>
+                                                    </div>
                                                        <div class="form-group ">
                                                         <label for="inputPassword4">Obs</label>
                                                         <textarea  type="text" class="form-control" rows="5" name="obs" placeholder="obs"></textarea>
@@ -389,6 +413,7 @@
                                                                               
                                                                              <thead>
                                                                                  <tr>
+                                                                               
                                                                                  <th>    Data     </th>
                                                                                  <th>Hora</th>
                                                                                  <th>Medico</th>
@@ -401,7 +426,9 @@
                                                                                 </tr>
                                                                              </thead>
                                                                              <tbody class = 'js-historico'>
-                                                                      
+                                                                                <tr  >
+                                                                                    
+                                                                                </tr>
                                                                              </tbody>
                                                                          </table>
                                                        
@@ -651,15 +678,7 @@
                                             </div>
                                         </div>
 
-                                          <!--
-                                          <div class="col-md-2">
-                                              <div class="form-group">
-                                                  <label for="numero">Número</label>
-                                                  <input type="number" class="form-control" placeholder="Número" required name="numeroEndereco">
-                                              </div>
-                                          </div>
-                                      </div>
-                                    -->
+                        
           
                           </div>
                           <div class="modal-footer">
