@@ -135,6 +135,6 @@ class MedicoController extends Controller
 
 
 
-        return view('medico.atendimento');
+        return view('medico.atendimento2');
     }
 }

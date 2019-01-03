@@ -65,9 +65,9 @@
                         
                             <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                                      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Atendimento</a>
+                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">.....</a>
+                                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
                                     </div>
                                   </nav>
                                   <div class="tab-content" id="nav-tabContent">
@@ -93,56 +93,78 @@
                                             </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                            <div class="card-deck">
-                                                    <div class="card">
-                                                      <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-                                                      <div class="card-body">
-                                                        <h5 class="card-title">Card title</h5>
-                                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                      </div>
-                                                    </div>
-                                                    <div class="card">
-                                                      <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-                                                      <div class="card-body">
-                                                        <h5 class="card-title">Card title</h5>
-                                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                      </div>
-                                                    </div>
-                                                    <div class="card">
-                                                      <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-                                                      <div class="card-body">
-                                                        <h5 class="card-title">Card title</h5>
-                                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-
+                                          em desenvolvimento
                                     </div>
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-
-                                            <div class="row">
-                                                    <div class="col-sm-6">
-                                                      <div class="card">
-                                                        <div class="card-body">
-                                                          <h5 class="card-title">Special title treatment</h5>
-                                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                      <div class="card">
-                                                        <div class="card-body">
-                                                          <h5 class="card-title">Special title treatment</h5>
-                                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                        </div>
-                                                      </div>
-                                                    </div>
+                                      
+                                        <div class="panel panel-default ls-collapse">
+                                            <div class="panel-heading">
+                                              <a data-toggle="collapse" href="#collapseOne">
+                                                <p>Ordenado por data .</p>
+                                              </a>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse">
+                                              <div class="panel-body">
+                                                <div class=" container row">
+                                                <div class="col-3">
+                                                  <label for="">Nome:</label>
+                                                  <span class="">fadfafaf</span>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="">Idade:</label>
+                                                    <span class="">dfadfafda</span>
                                                   </div>
+                                                  <div class="col-2">
+                                                      <label for="">peso:</label>
+                                                      <span class="">fafdafafd</span>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label for="">Altura:</label>
+                                                        <span class="">fadfadfdf</span>
+                                                      </div>
+                                                      <div class="col-3">
+                                                          <label for="">Sintoma:</label>
+                                                          <span class="">fgfdafafd</span>
+                                                        </div>
+                                                      </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                         
+                                        <div class="panel panel-default ls-collapse">
+                                            <div class="panel-heading">
+                                              <a data-toggle="collapse" href="#collapse2">
+                                                <p>Ordenado por data .</p>
+                                              </a>
+                                            </div>
+                                            <div id="collapse2" class="panel-collapse collapse">
+                                              <div class="panel-body">
+                                                <div class=" container row">
+                                                <div class="col-3">
+                                                  <label for="">Nome:</label>
+                                                  <span class="">fadfafaf</span>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="">Idade:</label>
+                                                    <span class="">dfadfafda</span>
+                                                  </div>
+                                                  <div class="col-2">
+                                                      <label for="">peso:</label>
+                                                      <span class="">fafdafafd</span>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label for="">Altura:</label>
+                                                        <span class="">fadfadfdf</span>
+                                                      </div>
+                                                      <div class="col-3">
+                                                          <label for="">Sintoma:</label>
+                                                          <span class="">fgfdafafd</span>
+                                                        </div>
+                                                      </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                    
                                     </div>
                                   </div>
                     </section>
