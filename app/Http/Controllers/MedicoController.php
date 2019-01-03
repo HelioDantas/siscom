@@ -78,7 +78,7 @@ class MedicoController extends Controller
 
     public function agenda(  $date = "five", $espec = ""  ){
 
-        $especialidade = Especialidade::with('Medico.funcionario')->get();
+       // $especialidade = Especialidade::with('Medico.funcionario')->get();
  
         //return dd($date);
         $medicoId = Auth::user()->funcionario->matricula;
@@ -95,7 +95,7 @@ class MedicoController extends Controller
       
        
           //  dd($medPlanos = $med->has('planos.procedimentos')->get());
-            $DemaisEspecialidadesDoMedicoSemSerAEscolhida = $med->especialidade()->where('id', '!=', $espec)->get();
+           
             $medPlanos = $med->planos()->has('procedimentos')->get();
         
             $convenios = Convenio::all();
@@ -110,18 +110,20 @@ class MedicoController extends Controller
 
          
          $especialidadesP = $esp->procedimentos()->get();
+        $DemaisEspecialidadesDoMedicoSemSerAEscolhida = $med->especialidade()->where('id', '!=', $espec)->get();
          //dd($especialidadesP);
         
      }
      else{
 
            $especialidade = $med->especialidade()->get();
+           //dd($especialidade);
      }
-  $especialidade = $med->especialidade()->get();
+  //$especialidade = $med->especialidade()->get();
 
    
 
-        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios', 'DemaisEspecialidadesDoMedicoSemSerAEscolhida', 'UserMedico'));
+        return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios', 'DemaisEspecialidadesDoMedicoSemSerAEscolhida', 'userMedico'));
 
 
 
