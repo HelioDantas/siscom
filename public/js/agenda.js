@@ -38,16 +38,17 @@ $('#medico').change(function(){
 
 $(document).on('click', '.btn-edit', function(e){
     
-     console.log(this.value );
-
+    
+    var id = this.value;
   
  
 
      $.getJSON('/get/data/agd/' + this.value , function(agends){
          console.log(agends[0].hora);
         var modal = $('#update');
-        modal.find("option[class='optjs']").remove();
-        modal.find('select[id=planoModalEditar]').append('<option class="optjs" selected value='+agends[0].planoID+'>'+agends[0].planoNome+'<option>');
+        modal.find("#optjs").empty();
+        modal.find('option[id="optjs"]').val(agends[0].planoID);
+        $("<span>"+agends[0].planoNome+"</span>").appendTo("option[id='optjs']");
         modal.find("[name='paciente_id']").text(agends['paciente_id']);
         $("[name=hora]").val(agends[0].hora);
         $("[name='primeiraVez']").val(agends[0].primeiraVez);

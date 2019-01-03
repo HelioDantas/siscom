@@ -127,7 +127,7 @@ class AgendaController extends Controller
     }
 
     public function update(Request $request){
-dd($request);
+
         
  
         $agenda = Agenda::find($request['Salvar']);
