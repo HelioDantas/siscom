@@ -39,11 +39,12 @@ $('#medico').change(function(){
 $(document).on('click', '.btn-edit', function(e){
     
      console.log(this.value );
-
+    var id = this.value;
   
  
 
      $.getJSON('/get/data/agd/' + this.value , function(agends){
+         
          console.log(agends[0].hora);
         var modal = $('#update');
         modal.find('option[id=optjs]').empty();
