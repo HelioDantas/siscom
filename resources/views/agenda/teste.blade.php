@@ -124,6 +124,8 @@
                               @foreach ($agendamentos as $h)
                                     @if( $h->compareceu  == 'N') 
                                          <tr class = "id{{$h->id}} alert alert-danger">
+                                    @elseif($h->atendido == 'S')
+                                        <tr class = "id{{$h->id}} alert alert-success">
                                     @else
                                         <tr class = "id{{$h->id}}">
                                     @endif
@@ -161,8 +163,8 @@
                                             <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
                                                 <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
-                                            @if ($h->ultimaConsulta != null  && !empty($h->ultimaConsulta))
-                                            
+                                             @if(isset($userMedico))
+                                             <a class="btn btn-outline-success" href="{{ route('medico.atendimento', ['id' => $h->id]) }}"  title="atender"><i class="fab fa-adn"></i></a>
                                             
                                             @endif 
 
