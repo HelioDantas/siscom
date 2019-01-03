@@ -19,7 +19,9 @@
     
 	background-color: #fafafa !important; 
   }
-  
+  .cardImg{
+    color: white !important;
+  }
 .modal-content {width: 700px !important; margin-left:-20%;}
     .modal-body {  width:100%; } 
  
@@ -50,11 +52,40 @@
                             </div>
                             <div class="card  text-white">
                                     <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="270" xmlns="http://www.w3.org/2000/svg"
-                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#05a7ff" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Card image</text></svg>
+                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#05a7ff" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>
                                    <!-- <img src="..." class="card-img" alt="..."> -->
+                                   
                                     <div class="card-img-overlay">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                      <div class="d-flex justify-content-start">
+                                        
+                                      </div>
+                                      <h5 class="card-title">Nome do paciente</h5>
+                                      <div class="card-body">
+                                      
+                                          <div class=" container row">
+                                              <div class="col-3">
+                                                <label for="">Nome:</label>
+                                                <span class="">Rafael</span>
+                                              </div>
+                                              <div class="col-3">
+                                                <label for="">Idade:</label>
+                                                <span class="">22 anos</span>
+                                              </div>
+                                              <div class="col-2">
+                                                  <label for="">peso:</label>
+                                                  <span class="">63</span>
+                                              </div>
+                                              <div class="col-2">
+                                                <label for="">Altura:</label>
+                                                <span class="">1,80</span>
+                                              </div>
+                                              <div class="col-3">
+                                                <label for="">Sintoma:</label>
+                                                <span class="">gripe</span>
+                                              </div>
+                                            </div>
+                                      
+                                      </div>
                                       <p class="card-text">Last updated 3 mins ago</p>
                                     </div>
                                   </div>
@@ -96,77 +127,41 @@
                                           em desenvolvimento
                                     </div>
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                      
-                                        <div class="panel panel-default ls-collapse">
-                                            <div class="panel-heading">
-                                              <a data-toggle="collapse" href="#collapseOne">
-                                                <p>Ordenado por data .</p>
-                                              </a>
-                                            </div>
-                                            <div id="collapseOne" class="panel-collapse collapse">
-                                              <div class="panel-body">
-                                                <div class=" container row">
-                                                <div class="col-3">
-                                                  <label for="">Nome:</label>
-                                                  <span class="">fadfafaf</span>
-                                                </div>
-                                                <div class="col-3">
-                                                    <label for="">Idade:</label>
-                                                    <span class="">dfadfafda</span>
-                                                  </div>
-                                                  <div class="col-2">
-                                                      <label for="">peso:</label>
-                                                      <span class="">fafdafafd</span>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <label for="">Altura:</label>
-                                                        <span class="">fadfadfdf</span>
-                                                      </div>
-                                                      <div class="col-3">
-                                                          <label for="">Sintoma:</label>
-                                                          <span class="">fgfdafafd</span>
-                                                        </div>
-                                                      </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                         
-                                        <div class="panel panel-default ls-collapse">
-                                            <div class="panel-heading">
-                                              <a data-toggle="collapse" href="#collapse2">
-                                                <p>Ordenado por data .</p>
-                                              </a>
-                                            </div>
-                                            <div id="collapse2" class="panel-collapse collapse">
-                                              <div class="panel-body">
-                                                <div class=" container row">
-                                                <div class="col-3">
-                                                  <label for="">Nome:</label>
-                                                  <span class="">fadfafaf</span>
-                                                </div>
-                                                <div class="col-3">
-                                                    <label for="">Idade:</label>
-                                                    <span class="">dfadfafda</span>
-                                                  </div>
-                                                  <div class="col-2">
-                                                      <label for="">peso:</label>
-                                                      <span class="">fafdafafd</span>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <label for="">Altura:</label>
-                                                        <span class="">fadfadfdf</span>
-                                                      </div>
-                                                      <div class="col-3">
-                                                          <label for="">Sintoma:</label>
-                                                          <span class="">fgfdafafd</span>
-                                                        </div>
-                                                      </div>
-                                              </div>
-                                            </div>
-                                          </div>
+
+                                      <!-- fazer um foreach com as infos dos registros e de algum jeio mandar pro colapse -->
                                     
+                                      <a data-toggle="collapse" id="registroCollapse" value= {{ 2 }}><p>Ordenado por data .</p></a>
+                                     
+
+                                               <!-- corpo do colapse -->
+                                    <div id="Registro" class="panel-collapse collapse">
+                                      <div class="panel-body">
+                                        <div class=" container row">
+                                            <div class="col-3">
+                                              <label for="">Nome:</label>
+                                              <span id="Rnome">fadfafaf</span>
+                                            </div>
+                                            <div class="col-3">
+                                              <label for="">Idade:</label>
+                                              <span  id="Ridade">dfadfafda</span>
+                                            </div>
+                                            <div class="col-2">
+                                                <label for="">peso:</label>
+                                                <span  id="Rpeso">fafdafafd</span>
+                                            </div>
+                                            <div class="col-2">
+                                              <label for="">Altura:</label>
+                                              <span c id="Raltura">fadfadfdf</span>
+                                            </div>
+                                            <div class="col-3">
+                                              <label for="">Sintoma:</label>
+                                              <span  id="Rsistoma">fgfdafafd</span>
+                                            </div>
+                                          </div>
+                                        </div>
                                     </div>
-                                  </div>
+                                </div><!-- nav bar lateral -->
+                            </div><!-- corpo da navbar lateral -->
                     </section>
                         
                 </div>
