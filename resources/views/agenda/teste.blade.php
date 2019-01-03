@@ -124,6 +124,8 @@
                               @foreach ($agendamentos as $h)
                                     @if( $h->compareceu  == 'N') 
                                          <tr class = "id{{$h->id}} alert alert-danger">
+                                    @elseif($h->atendido == 'S')
+                                        <tr class = "id{{$h->id}} alert alert-success">
                                     @else
                                         <tr class = "id{{$h->id}}">
                                     @endif

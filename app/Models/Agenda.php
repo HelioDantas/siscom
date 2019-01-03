@@ -33,6 +33,7 @@ class Agenda extends Model
         'ultimaConsulta',
         'obs',
         'status',
+        'atendido',
     );
 
 

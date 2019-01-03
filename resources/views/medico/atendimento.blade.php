@@ -110,8 +110,8 @@
  
             <div class="jumbotron jumbotron-fluid  ">
                     <div class="container ">
-                        <h1 class="display-4">Fluid jumbotron</h1>
-                        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                        <h1 class="display-4">Paciente</h1>
+                        <p class="lead">Em atendimento.</p>
                     </div>
             </div>
 
@@ -298,6 +298,47 @@
 @endsection
 
     @section('scripts')
+     <script>
+		setInterval(function() {
+			tempo();
+		}, 1000);
+		var clock = document.getElementById('real-clock');
+
+        var segundo = 0+"0";
+        var minuto = 0+"0";
+        var hora = 0+"0";
+        
+        function tempo(){	
+        if (segundo < 59){
+            segundo++
+            if(segundo < 10){segundo = "0"+segundo}
+        }else 
+            if(segundo == 59 && minuto < 59){
+                segundo = 0+"0";
+            minuto++;
+            if(minuto < 10){minuto = "0"+minuto}
+            }
+        if(minuto == 59 && segundo == 59 && hora < 23){
+            segundo = 0+"0";
+            minuto = 0+"0";
+            hora++;
+            if(hora < 10){hora = "0"+hora}
+        }else 
+            if(minuto == 59 && segundo == 59 && hora == 23){
+                segundo = 0+"0";
+            minuto = 0+"0";
+            hora = 0+"0";
+            }
+        form.cronometro.value = hora +":"+ minuto +":"+ segundo
+        }
+
+
+
+
+  </script>
+
+
+
  <script type="text/javascript" language="JavaScript">
 var segundo = 0+"0";
 var minuto = 0+"0";
