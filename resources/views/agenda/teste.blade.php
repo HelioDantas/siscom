@@ -85,7 +85,7 @@
             <div class = 'row contentBusca'>
             
                         <div class="col-4 center">
-                                 @if(!isset($userMedico))
+                                 @if(isset($userMedico))
                                     @include('components.VisaoDoMedicoNaAgenda')
                                     
                                 @else
@@ -634,7 +634,7 @@
 @endsection
 
     @section('scripts')
-    @if(!isset($userMedico))
+    @if(isset($userMedico))
         <script type="text/javascript" src="{{ asset('js/RotasMedico.js') }}"></script>
     @else
         <script type="text/javascript" src="{{ asset('js/RotasAtendente.js') }}"></script>

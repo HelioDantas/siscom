@@ -11,15 +11,15 @@
 <div class="col-4 center">                                                
         <label for="">especialidades</label>
         <select name="especialidade" id="especialidade" class="form-control">
-            @if (isset($esp) && !empty($esp) && $esp != "")
+            @if (isset($esp) && !empty($esp) )
                 <option value="{{ $esp->id }}" selected>{{ $esp->nome }}</option>  
-                    @foreach($DemaisEspecialidadesDoMedicoSemSerAEscolhida as $especialidade)
-                        <option value="{{ $especialidade->id }}" >{{ $especialidade->nome }}</option>  
-                @endforeach
+                    @foreach($DemaisEspecialidadesDoMedicoSemSerAEscolhida as $especi)
+                        <option value="{{ $especi->id }}" >{{ $especi->nome }}</option>  
+                     @endforeach
             @else
-                @foreach($especialidade as $especialidade)
+                @foreach($especialidade as $especi)
              
-                        <option value="{{ $especialidade->id }}" >{{ $especialidade->nome }}</option>  
+                        <option value="{{ $especi->id }}" >{{ $especi->nome }}</option>  
                 @endforeach
             @endif
 
