@@ -75,7 +75,7 @@
  .yyyyy{
     float:right;
       
-
+    display:inline;
  }
 .modal-content {width: 700px !important; margin-left:-20%;}
     .modal-body {  width:100%; } 
@@ -90,14 +90,14 @@
         <div class = 'container-fluid col-lg-12 corpo-paciente'>
                 <div class = 'd-flex flex-row bd-highlight'>
 
-                    <div class = ' p-2 bd-highlight'>
+                    <div class = ' p-2 bd-highlight opcoesDeNavegacao'>
                         <aside>
-                        <form class = 'form-group col-lg-2'name="form" method= 'get'>
-                            <input class = 'form-control'type="text" name="cronometro" value="00:00:00" />
-                        
-                            <button class="btn btn-outline-secondary  p-2 bd-highlight" type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
-                            <button class="btn btn-outline-danger  p-2 bd-highlight" type="submit" >Finalizar</button>
-                        </form>
+                            <form class = 'form-group col-lg-2'name="form" method= 'get'>
+                                <input class = 'form-control'type="text" name="cronometro" value="00:00:00" />
+                            
+                                <button class="btn btn-outline-secondary  p-2 bd-highlight" type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
+                                <button class="btn btn-outline-danger  p-2 bd-highlight" type="submit" >Finalizar</button>
+                            </form>
                         </aside>
                     <div>
 
