@@ -162,7 +162,7 @@
 
                                                 <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
                                              @if(isset($userMedico))
-                                             <a class="btn btn-outline-success" href="atender/{{$h->id}}"  title="atender"><i class="fab fa-adn"></i></a>
+                                             <a class="btn btn-outline-success" href="{{ route('medico.atendimento', ['id' => $h->id]) }}"  title="atender"><i class="fab fa-adn"></i></a>
                                             
                                             @endif 
 

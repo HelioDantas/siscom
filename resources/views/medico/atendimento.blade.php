@@ -96,7 +96,7 @@
         <div class = 'opcoesDeNavegacao '>
             
             <form class = ''name="form" method= 'get'>
-                <input class = 'form-control'type="text" name="cronometro" onload='setInterval('tempo()',983);return false' value="00:00:00" />
+                <input class = 'form-control'type="text" name="cronometro" onload="setInterval('tempo()',983);return false" value="00:00:00" />
             
                 <button class="btn btn-outline-secondary  " type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
                 <button class="btn btn-outline-danger  " type="submit" >Finalizar</button>          
@@ -176,7 +176,7 @@
                     <div class="form-group">
 
                         <label for="peso">Peso</label >
-                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="peso" id ='peso' required autofocus>
+                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="peso" id ='peso' required >
 
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                     <div class="form-group">
 
                         <label for="peso">Altura</label >
-                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Altura" id ='Altura' required autofocus>
+                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Altura" id ='Altura' required >
 
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                     <div class="form-group">
 
                         <label for="peso">Pressâo</label >
-                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pressao" id ='Pressao' required autofocus>
+                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pressao" id ='Pressao' required >
 
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                         <div class="form-group">
 
                             <label for="peso">Pulso</label >
-                            <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pulso" id ='Pulso' required autofocus>
+                            <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pulso" id ='Pulso' required >
 
                         </div>
                   </div>
@@ -212,7 +212,7 @@
                         <div class="form-group">
 
                             <label for="peso">Temperatura</label >
-                            <input type="text" class="form-control name" maxlength=3 placeholder="" name="Temperatura" id ='Temperatura' required autofocus>
+                            <input type="text" class="form-control name" maxlength=3 placeholder="" name="Temperatura" id ='Temperatura' required >
 
                         </div>
                     </div>

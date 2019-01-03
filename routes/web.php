@@ -89,7 +89,7 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
     Route::any('desativar_plano/{id}&&{plano_id}', 'MedicoController@desativar_plano')->name('medico.desativar_plano');
     Route::get('agendar', 'MedicoController@agenda')->name('medico.agenda');
     Route::get('agendar/{date?}/{espec?}', 'MedicoController@agenda');
-    Route::get('atendimento', 'MedicoController@atendimento')->name('medico.atendimento');
+    Route::get('atendimento/{id?}', 'MedicoController@atendimento')->name('medico.atendimento');
    
     
 });
