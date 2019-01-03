@@ -96,35 +96,153 @@
                         
                             <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Atendimento</a>
-                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">.....</a>
+                                      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
+                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Atendimento</a>
                                       <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
                                     </div>
                                   </nav>
                                   <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                             <div class="container-fluid">
-                                                <form action="" method="post">
-                                                    <div class="row">
-                                                        <div class="col-12 form-group">
-                                                            <div class="form-group">
-                                                                    <label for="queixa">Queixa Principal</label>
-                                                                    <input type="text" class="form-control" id="queixa">
-                                                            </div>
+                                              <div class="row">
+
+        
+                                                <div class="col-1">
+                                                    <div class="form-group">
+                                                        <label for="tipo">Bebe</label>
+                                                        <select class="form-control" name="Bebe" id="Bebe" required>
+                                                        
+                                                            <option>S</option>
+                                                            <option>N</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1">
+                                                    <div class="form-group">
+                                                        <label for="tipo">Fuma</label>
+                                                        <select class="form-control" name="Fuma" id="Fuma" required>
+                                                            <option>S</option>
+                                                            <option>N</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label for="tipo">Com qual frequencia realizar exames fisicos?</label>
+                                                        <select class="form-control" name="fisico" id="fisico" required>
+                                                            <option>nenhuma</option>
+                                                            <option>1 vez por semana</option>
+                                                            <option>3 vez por semana</option>
+                                                            <option>mais de 3 vez por semana</option>
+                                                        </select>
+                                                    </div>
+                                               
+                                                </div>
+                                            </div> 
+                                            <div class="row">
+                                
+                                                <div class="col-md-1">
+                                                    <div class="form-group">
+                                
+                                                        <label for="peso">Peso</label >
+                                                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="peso" id ='peso' required >
+                                
+                                                    </div>
+                                                </div>
+                                
+                                                    <div class="col-md-1">
+                                                    <div class="form-group">
+                                
+                                                        <label for="peso">Altura</label >
+                                                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Altura" id ='Altura' required >
+                                
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-1">
+                                                    <div class="form-group">
+                                
+                                                        <label for="peso">Pressâo</label >
+                                                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pressao" id ='Pressao' required >
+                                
+                                                    </div>
+                                                </div>
+                                
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                
+                                                            <label for="peso">Pulso</label >
+                                                            <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pulso" id ='Pulso' required >
+                                
                                                         </div>
-                                                        <div class="col-6 ">
-                                                           <div class="form-group">
-                                                                <span for="historia">historia</span>
-                                                                <textarea name="historia" id="historia" cols="60" rows="10" class="form-control"></textarea>
-                                                           </div>
+                                                  </div>
+                                
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                
+                                                            <label for="peso">Temperatura</label >
+                                                            <input type="text" class="form-control name" maxlength=3 placeholder="" name="Temperatura" id ='Temperatura' required >
+                                
                                                         </div>
                                                     </div>
-                                                    
-                                                </form>
+                                
+                                                </div>
+                                                <div class="row"> 
+                                                            
+                                                    <div class="col-md-12">
+                                                        <div class="form-group ">
+                                                            <label for="nome">Obs Pessoais</label>
+                                                            <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="Obs Pessoais" required>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="form-group col-md-12">
+                                                        <label for="exampleFormControlTextarea1">Historico familiar</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Historico familiar"></textarea>
+                                                    </div>          
+                                                  </div>
                                             </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                          em desenvolvimento
+                                      <div class="row"> 
+                
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label for="nome">Queixa principal</label>
+                                                <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="QueixaPrincipal" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">História</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="História"></textarea>
+                                        </div>
+                                         <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">Problemas</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Problemas"></textarea>
+                                        </div> 
+                        
+                                        <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">Prognóstico</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prognóstico"></textarea>
+                                        </div>                       
+                                    
+                                    
+                                       <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">Orientação</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Orientação"></textarea>
+                                        </div>     
+                                         <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">Medicamentos</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Medicamentos"></textarea>
+                                        </div>   
+                        
+                                              <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">Observações:</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Medicamentos"></textarea>
+                                        </div>   
+                                          
+                                    </div>
+                        
                                     </div>
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
