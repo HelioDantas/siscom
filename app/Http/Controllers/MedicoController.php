@@ -130,4 +130,11 @@ class MedicoController extends Controller
 
     }
 
+
+    public function atendimento(Request $request){
+
+
+
+        return view('medico.atendimento');
+    }
 }
