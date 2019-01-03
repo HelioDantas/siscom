@@ -302,7 +302,7 @@
 		setInterval(function() {
 			tempo();
 		}, 1000);
-		var clock = document.getElementById('real-clock');
+		
 
         var segundo = 0+"0";
         var minuto = 0+"0";
