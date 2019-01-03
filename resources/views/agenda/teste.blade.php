@@ -275,13 +275,16 @@
                                                                 <div class="form-group">
                                                                     <label for="telefone">plano</label>
                                                                     <select class="form-control" name="plano" id="planoModalEditar">
+
                                                                     @if (isset($medPlanos) && !empty($medPlanos))
                                                                     @foreach ($convenios as $c)
                                                                             <optgroup label="{{  $c->nome}}">
                                                                                 @foreach ($medPlanos as $value)
                                                                                     @if ($c->id == $value->convenio_id)
-                                                                                        <option value="{{ $value->id }}">{{ $value->nome }}</option> 
-                                                                                        @endif
+                                                                                        <option value="{{ $value->id }}">{{ $value->nome }}</option>
+                                                                                        @continue
+
+                                                                                    @endif
                                                                                 @endforeach 
                                                                            <optgroup> 
                                                                     @endforeach
