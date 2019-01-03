@@ -161,8 +161,8 @@
                                             <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
                                                 <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
-                                            @if ($h->ultimaConsulta != null  && !empty($h->ultimaConsulta))
-                                            
+                                             @if(isset($userMedico))
+                                             <a class="btn btn-outline-success" href="atender/{{$h->id}}"  title="atender"><i class="fab fa-adn"></i></a>
                                             
                                             @endif 
 
