@@ -271,11 +271,15 @@ $(document).on('click', '#historico', function(e){
 
 // registro clinico
 
-$("#registroCollapse").on('click', ':hover',function(){
+$("#registroCollapse").on('click',function(){
     let value = this.value;
     console.log(value);
 
-    $("span[id='rnome'").val('rafael');
+    $("#Rnome").text('rafael');
+    $("#Ridade").text('22');
+    $("#Rpeso").text('63');
+    $("#Raltura").text('1,80');
+  
     $('#Registro').collapse("toggle");
 
 })
