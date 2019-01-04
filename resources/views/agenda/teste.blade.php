@@ -160,7 +160,7 @@
                                             @endif
                                                 --}}
 
-                                            <button class="btn btn-outline-primary btn-edit" value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-outline-primary btn-edit " value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
                                                 <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
                                              @if((isset($userMedico) && $h->atendido == 'N') && $h->compareceu  != 'N'  )
