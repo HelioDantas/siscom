@@ -10,7 +10,7 @@ use DB;
 use App\Models\Agenda;
 use App\Models\Paciente;
 use Auth;
-use App\Models\RegitroClinico;
+use App\Models\RegistroClinico;
 use App\Models\procedimento;
 use App\Models\Convenio;
 class MedicoController extends Controller
@@ -150,8 +150,8 @@ class MedicoController extends Controller
     function novoRegistro(Request $request)
     {
       
-        $registro = Registro::create($request->all());
-        $registro->agenda->update([
+        $registro = RegistroClinico::create($request->all());
+        $registro->agenda()->update([
             'atendido' => 'S'
             
         ]);

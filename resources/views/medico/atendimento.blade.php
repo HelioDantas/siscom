@@ -101,7 +101,7 @@
               {!! Form::open(['route' => 'medico.registro','method ' => 'post','name'=>'form']) !!} @csrf
                  
                   
-                    <input class = 'form-control'type="text" name="cronometro" onload="setInterval('tempo()',983);return false" value="00:00:00" />
+                    <input class = 'form-control'type="text" name="tempo_atendimento" onload="setInterval('tempo()',983);return false" value="00:00:00" />
                 
                  
                  <div class="container">
@@ -320,7 +320,7 @@
                 </div>     
                  <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Medicamentos</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="medicamentos" placeholder="Medicamentos"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="medicamento" placeholder="Medicamentos"></textarea>
                 </div>   
 
                       <div class="form-group col-md-12">
@@ -382,7 +382,7 @@
             minuto = 0+"0";
             hora = 0+"0";
             }
-        form.cronometro.value = hora +":"+ minuto +":"+ segundo
+        form.tempo_atendimento.value = hora +":"+ minuto +":"+ segundo
         }
 
 
@@ -418,7 +418,7 @@ function tempo(){
 	minuto = 0+"0";
 	hora = 0+"0";
       }
-   form.cronometro.value = hora +":"+ minuto +":"+ segundo
+   form.tempo_atendimento.value = hora +":"+ minuto +":"+ segundo
 }
 
 

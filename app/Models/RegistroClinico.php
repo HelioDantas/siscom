@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class RegistroClinico extends Model
 {
    protected $table = "sis_registro_clinico";
-   public $timestamp = false;
+   public $timestamps = false;
    protected  $fillable = array(
         'agenda_id',
         'paciente_id',
-        'quexaPrincipal',
+        'queixaPrincipal',
         'historia',
         'tempo_atendimento',
         'prognostico',
@@ -30,11 +30,12 @@ class RegistroClinico extends Model
         'fisico',
         'fuma',
         'bebe',
+
    );
    
     public function agenda(){
 
-     return  $this->hasMany("App\Models\Agenda", 'agenda_id', 'id' );
+     return  $this->hasMany("App\Models\Agenda", 'id', 'agenda_id'  );
 
     }
 
