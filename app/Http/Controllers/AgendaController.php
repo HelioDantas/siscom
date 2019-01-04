@@ -209,6 +209,7 @@ class AgendaController extends Controller
                 $this->excluirPacientePrimeiraVez($agenda);
                 $agenda = $agenda->update([
                     'compareceu' => 'N' ,
+                    'atendido' =>'N',
                      'obs' => $request['obs'], 
                     
                 ]);

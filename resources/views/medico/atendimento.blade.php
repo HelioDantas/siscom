@@ -214,7 +214,7 @@
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label for="tipo">Com qual frequencia realizar exames fisicos?</label>
+                        <label for="tipo">Com qual frequencia realizar execicios fisicos?</label>
                         <select class="form-control" name="fisico" id="fisico" required>
                             <option>nenhuma</option>
                             <option>1 vez por semana</option>
