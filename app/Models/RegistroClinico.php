@@ -19,11 +19,19 @@ class RegistroClinico extends Model
         'orientacao', 
         'problemas', 
         
-
+        
 
 
 
 
    );
    
+    public function agenda(){
+
+     return  $this->hasMany("App\Models\Agenda", 'agenda_id', 'id' );
+
+    }
+
+
+
 }

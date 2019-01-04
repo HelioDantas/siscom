@@ -73,6 +73,9 @@
      margin: auto;
 
  }
+  .infosPaciente{
+      border-radius: 20px ;
+  }
  .right {
  
    margin-left: 7%;
@@ -113,8 +116,51 @@
  
             <div class="jumbotron jumbotron-fluid  ">
                     <div class="container ">
-                        <h1 class="display-4">Paciente</h1>
-                        <p class="lead">Em atendimento.</p>
+                        
+                        <p class="lead d-flex justify-content-center"> Paciente em atendimento.</p>
+                        @if (isset($paciente) && !empty($paciente))
+                                          
+                                     
+                                      <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
+                                      <div class="card-body ">
+                                      
+                                          <div class=" container-fluid row infosPaciente">
+                                              <div class="col-3">
+                                                <label for="">Idade:</label>
+                                                <span class="">{{ $paciente->age($paciente->dataDeNascimento) }}</span>
+                                              </div>
+                                              <div class="col-2">
+                                                  <label for="">Cpf:</label>
+                                                  <span class="">{{ $paciente->cpf }}</span>
+                                              </div>
+                                              <div class="col-2">
+                                                <label for="">Celular:</label>
+                                                <span class="">{{ $paciente->celular }}</span>
+                                            </div>
+                                            <div class="col-2">
+                                              <label for="">Email:</label>
+                                              <span class="">{{ $paciente->email }}</span>
+                                          </div>
+                                              <div class="col-2">
+                                                <label for="">Planos:</label>
+                                                <div>
+                                                @foreach ($paciente->planos()->where('situacao','ATIVO')->get() as $value)
+                                                <span class="">{{ $value->nome }} | </span>  
+                                                @endforeach
+                                              </div>
+                                              </div>
+                                              <div class="col-3">
+                                                <label for="">Cidade:</label>
+                                                <span class="">{{ $paciente->cidade }}</span>
+                                              </div>
+                                              <div class="col-3">
+                                                <label for="">Bairro:</label>
+                                                <span class="">{{ $paciente->bairro }}</span>
+                                              </div>
+                                            </div>
+                                           
+                                      </div>
+                                      @endif
                     </div>
             </div>
 
