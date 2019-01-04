@@ -22,6 +22,9 @@
     
 	background-color: #fafafa !important; 
   }
+ .infosPaciente{
+      border-radius: 20px ;
+  }
   .cardImg{
     color: white !important;
   }
@@ -39,35 +42,34 @@
                 <div class="row top">
                         <aside class="col-2 d-flex justify-content-center">
                             
-                            <form class = 'form-group 'name="form" method= 'get'>
+                            <form class = 'form-group ' action="{{ route('novo.registro') }}" method= 'POST'>
+                                @csrf @method('POST')
                                 <input class = 'form-control 'type="text" name="cronometro" value="00:00:00" />
                                 <button class="btn btn-outline-secondary btnTop" type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
                                 <button class="btn btn-outline-danger btnTop  " type="submit" >Finalizar</button>
-                            </form>
+                           
                         
                         </aside>
         
-                    <section class="col-10">
+                    <section class="col-10 ">
                             <div class="d-flex justify-content-end">
                         
                                     <a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
                             </div>
-                            <div class="card  text-white">
+                            <div class="card  text-white ">
                                     <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="270" xmlns="http://www.w3.org/2000/svg"
                                      preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#00BFFF" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>
                                    <!-- <img src="..." class="card-img" alt="..."> -->
                                    
-                                    <div class="card-img-overlay">
-                                      <div class="d-flex justify-content-start">
-                                        
-                                      </div>
+                                    <div class="card-img-overlay ">
+                        
                                       @if (isset($paciente) && !empty($paciente))
                                           
                                      
                                       <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
-                                      <div class="card-body">
+                                      <div class="card-body ">
                                       
-                                          <div class=" container-fluid row">
+                                          <div class=" container-fluid row infosPaciente">
                                               <div class="col-3">
                                                 <label for="">Idade:</label>
                                                 <span class="">{{ $paciente->age($paciente->dataDeNascimento) }}</span>
@@ -107,7 +109,7 @@
                                       <p class="card-text">Last updated 3 mins ago</p>
                                     </div>
                                   </div>
-                                </section>
+                        </section>
                 </div>
                     <section>
 
@@ -299,7 +301,7 @@
                                 </div><!-- nav bar lateral -->
                             </div><!-- corpo da navbar lateral -->
                     </section>
-                        
+                </form>
                 </div>
         </div>
            
