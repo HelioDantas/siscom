@@ -13,13 +13,23 @@ class RegistroClinico extends Model
         'paciente_id',
         'quexaPrincipal',
         'historia',
-        'Prognostico',
+        'prognostico',
         'medicamento',
         'observacoes',
         'orientacao', 
         'problemas', 
-        
-        
+        'historia',
+        'historicoFamiliar',
+        'obsPessoal',
+        'temperatura',
+        'pulso',
+        'pressao',
+        'altura',
+        'peso',
+        'fisico',
+        'fuma',
+        'bebe',
+
 
 
 

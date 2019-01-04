@@ -272,13 +272,13 @@
                     <div class="col-md-12">
                         <div class="form-group ">
                             <label for="nome">Obs Pessoal</label>
-                            <input type="text" class="form-control "  maxlength="100" name="ObsPessoal" id ="ObsPessoal" required>
+                            <input type="text" class="form-control "  maxlength="100" name="obsPessoal" id ="ObsPessoal" required>
                         </div>
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="exampleFormControlTextarea1">Historico familiar</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = 'historicFamiliar'placeholder="Historico familiar"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = 'historicoFamiliar'placeholder="Historico familiar"></textarea>
                     </div>          
 
                  </div> 
@@ -296,7 +296,7 @@
                 <div class="col-md-12">
                     <div class="form-group ">
                         <label for="nome">Queixa principal</label>
-                        <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="QueixaPrincipal" required>
+                        <input type="text" class="form-control "  maxlength="100" name="queixaPrincipal" id ="QueixaPrincipal" required>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
