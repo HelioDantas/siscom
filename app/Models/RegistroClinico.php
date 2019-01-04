@@ -30,6 +30,7 @@ class RegistroClinico extends Model
         'fisico',
         'fuma',
         'bebe',
+        'medico_id',
 
    );
    

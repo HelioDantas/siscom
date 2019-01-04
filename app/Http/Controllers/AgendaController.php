@@ -208,7 +208,8 @@ class AgendaController extends Controller
             if( $dataDaConsulta >= $date  ){
                 $this->excluirPacientePrimeiraVez($agenda);
                 $agenda = $agenda->update([
-                    'compareceu' => 'S' ,
+                    'compareceu' => 'N' ,
+                    'atendido' =>'N',
                      'obs' => $request['obs'], 
                     
                 ]);
