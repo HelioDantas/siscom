@@ -116,7 +116,17 @@ header .container-fluid > .logo{
     -ms-border-radius:0.5%;
     -o-border-radius:0.5%;
 }
+.corpo-paciente-clinico-infos{
+   
 
+    background-color:N/A;
+    border-radius:0.3%;
+    box-shadow: 0 5px 10px 0 rgba(255, 255, 255, 0.4), 0 5px 10px 0 rgba(255, 255, 255, 0.19);
+    -webkit-border-radius:0.3%;
+    -moz-border-radius:0.3%;
+    -ms-border-radius:0.3%;
+    -o-border-radius:0.3%;
+}
 
 .dropdown {
     position: relative;

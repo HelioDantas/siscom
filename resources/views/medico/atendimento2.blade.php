@@ -16,7 +16,7 @@
       margin-left: 0.5rem;
   }
   .top {
-    margin-top: -1.1%;
+    margin-top: 5rem;
   }
   .nav-tabs{
     
@@ -25,12 +25,18 @@
   .cardImg{
     color: white !important;
   }
+  
   label{
-    color:darkgreen;
+    color:#1b5e20;
   }
   .nav-link{
       color: black;
   }
+  .navReg{
+      margin-top: 2rem;
+      background-color:blue;
+  }
+  .nav-tabs{background-color:#f4f6f9!important;}
 .modal-content {width: 700px !important; margin-left:-20%;}
     .modal-body {  width:100%; } 
  
@@ -41,34 +47,29 @@
 
 @section('telaListarPaciente')
     <hr>
-        <div class = 'container-fluid  .d-flex'>
+        <div class = 'container-fluid corpo-paciente .d-flex'>
                 <div class="row ">
-                        <div class="col-2 align-self-start ">
+                        <div class="col-2 align-self-start top ">
                             
                             <form class = 'form-group ' action="{{ route('novo.registro') }}" name="form" method= 'POST'>
                                 @csrf
                                 @method('POST')
-                                <input class = 'form-control 'type="text" name="cronometro" value="00:00:00" />
+                                <input class = "col-8 form-control text-center"type="text" name="cronometro" value="00:00:00" />
                                 <button class="btn btn-outline-secondary btnTop" type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
                                 <button class="btn btn-outline-danger btnTop  " type="submit" >Finalizar</button>
                            
                         
                             </div>
         
-                    <section class="col-10 align-self-end">
+                    <section class="col-10 align-self-end corpo-paciente-clinico-infos">
                             <div class="d-flex justify-content-end">
                         
                                     <a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
                             </div>
-                            <div class="card  text-black ">
-                                    
-                                   
-                                
-                        
+                            <div class=" text-black ">
                                       @if (isset($paciente) && !empty($paciente))
-                                          
-                                     
-                                      <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
+
+                                      <h5 class="card-title d-flex justify-content-center"><p class="card-text" style="color:#004d40 ;"> {{ $paciente->nome }}</p></h5>
                                       <div class="card-body ">
                                       
                                           <div class=" container-fluid infosPaciente">
@@ -108,21 +109,22 @@
                                                 <label for="">Bairro:</label>
                                                 <span class=""> {{ $paciente->bairro }}</span>
                                               </div>
-                                            </div>
+                                            </div><!-- row -->
                                           </div>
-                                        </div><!-- row -->
-                                      </div>
+                                          <p class="card-text" style="color:#2200ff;">Infos do paciente</p>
+                                        </div><!-- card-body -->
+                                      </div><!-- card -->
                                       @endif
-                                      <p class="card-text" style="color:#2200ff;">Infos do paciente</p>
-                                    </div>
-                                  </div>
+                                      
+                                   
+                                  
                         </section>
                 </div><!-- row-->
 
                     <section>
 
                         
-                            <nav>
+                            <nav class="navReg">
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                       <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
                                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Atendimento</a>
@@ -213,17 +215,16 @@
                                 
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                            <div class="form-group ">
+                                                                <label for="nome">Obs Pessoais</label>
+                                                                <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="Obs Pessoais" required>
+                                                            </div>
+                                                        </div>
                                 
                                                 </div>
                                                 <div class="row"> 
-                                                            
-                                                    <div class="col-md-12">
-                                                        <div class="form-group ">
-                                                            <label for="nome">Obs Pessoais</label>
-                                                            <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="Obs Pessoais" required>
-                                                        </div>
-                                                    </div>
-                                
                                                     <div class="form-group col-md-12">
                                                         <label for="exampleFormControlTextarea1">Historico familiar</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Historico familiar"></textarea>
@@ -276,33 +277,14 @@
 
                                       <!-- fazer um foreach com as infos dos registros e de algum jeio mandar pro colapse -->
                                     
-                                      <a data-toggle="collapse" id="registroCollapse" value= {{ 2 }}><p>Ordenado por data .</p></a>
+                                      <a data-toggle="collapse" id="registroCollapse" value= {{ $paciente->id }}><p>Ordenado por data .</p></a>
                                      
 
                                                <!-- corpo do colapse -->
                                     <div id="Registro" class="panel-collapse collapse">
                                       <div class="panel-body">
-                                        <div class=" container row">
-                                            <div class="col-3">
-                                              <label for="">Nome:</label>
-                                              <span id="Rnome">fadfafaf</span>
-                                            </div>
-                                            <div class="col-3">
-                                              <label for="">Idade:</label>
-                                              <span  id="Ridade">dfadfafda</span>
-                                            </div>
-                                            <div class="col-2">
-                                                <label for="">peso:</label>
-                                                <span  id="Rpeso">fafdafafd</span>
-                                            </div>
-                                            <div class="col-2">
-                                              <label for="">Altura:</label>
-                                              <span c id="Raltura">fadfadfdf</span>
-                                            </div>
-                                            <div class="col-3">
-                                              <label for="">Sintoma:</label>
-                                              <span  id="Rsistoma">fgfdafafd</span>
-                                            </div>
+                                        <div class=" container row" id="conteudo">
+                                          //conteudo
                                           </div>
                                         </div>
                                     </div>

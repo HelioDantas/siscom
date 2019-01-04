@@ -275,6 +275,39 @@ $("#registroCollapse").on('click',function(){
     let value = this.value;
     console.log(value);
 
+    $.getJSON( "registro/get", function( data ) {
+       let r = data;
+       $.each(p,function(key,value){
+        $("#registroCollapse").append(
+
+           " <div class='col-3'>"+
+            "<label >Nome:</label>"+
+            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >Nome:</label>"+
+            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >Nome:</label>"+
+            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >Nome:</label>"+
+            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >Nome:</label>"+
+            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >Nome:</label>"+
+            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+          "</div>"
+        ) 
+       })
+      });
+
     $("#Rnome").text('rafael');
     $("#Ridade").text('22');
     $("#Rpeso").text('63');
