@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Especialidade;
 use DB;
 use App\Models\Agenda;
+use App\Models\Paciente;
 use Auth;
 
 use App\Models\procedimento;
@@ -131,10 +132,12 @@ class MedicoController extends Controller
     }
 
 
-    public function atendimento(Request $request){
+    public function atendimento(Request $request,$id = ''){
+        if($id !== ""){
+        $agenda = Agenda::find($id);
+        $paciente =  Paciente::find($agenda->paciente_id);
+        }
 
-
-
-        return view('medico.atendimento2');
+        return view('medico.atendimento2' , compact('paciente','agenda'));
     }
 }

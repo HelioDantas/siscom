@@ -15,6 +15,9 @@
       margin-top: 1rem;
       margin-left: 0.5rem;
   }
+  .top {
+    margin-top: -1.1%;
+  }
   .nav-tabs{
     
 	background-color: #fafafa !important; 
@@ -33,7 +36,7 @@
 @section('telaListarPaciente')
     <hr>
         <div class = 'container-fluid corpo-paciente .d-flex'>
-                <div class="row">
+                <div class="row top">
                         <aside class="col-2 d-flex justify-content-center">
                             
                             <form class = 'form-group 'name="form" method= 'get'>
@@ -47,45 +50,60 @@
                     <section class="col-10">
                             <div class="d-flex justify-content-end">
                         
-                                    <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
-                                    <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
+                                    <a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
                             </div>
                             <div class="card  text-white">
                                     <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="270" xmlns="http://www.w3.org/2000/svg"
-                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#05a7ff" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>
+                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#00BFFF" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>
                                    <!-- <img src="..." class="card-img" alt="..."> -->
                                    
                                     <div class="card-img-overlay">
                                       <div class="d-flex justify-content-start">
                                         
                                       </div>
-                                      <h5 class="card-title">Nome do paciente</h5>
+                                      @if (isset($paciente) && !empty($paciente))
+                                          
+                                     
+                                      <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
                                       <div class="card-body">
                                       
-                                          <div class=" container row">
-                                              <div class="col-3">
-                                                <label for="">Nome:</label>
-                                                <span class="">Rafael</span>
-                                              </div>
+                                          <div class=" container-fluid row">
                                               <div class="col-3">
                                                 <label for="">Idade:</label>
-                                                <span class="">22 anos</span>
+                                                <span class="">{{ $paciente->age($paciente->dataDeNascimento) }}</span>
                                               </div>
                                               <div class="col-2">
-                                                  <label for="">peso:</label>
-                                                  <span class="">63</span>
+                                                  <label for="">Cpf:</label>
+                                                  <span class="">{{ $paciente->cpf }}</span>
                                               </div>
                                               <div class="col-2">
-                                                <label for="">Altura:</label>
-                                                <span class="">1,80</span>
+                                                <label for="">Celular:</label>
+                                                <span class="">{{ $paciente->celular }}</span>
+                                            </div>
+                                            <div class="col-2">
+                                              <label for="">Email:</label>
+                                              <span class="">{{ $paciente->email }}</span>
+                                          </div>
+                                              <div class="col-2">
+                                                <label for="">Planos:</label>
+                                                <div>
+                                                @foreach ($paciente->planos()->where('situacao','ATIVO')->get() as $value)
+                                                <span class="">{{ $value->nome }} | </span>  
+                                                @endforeach
+                                              </div>
                                               </div>
                                               <div class="col-3">
-                                                <label for="">Sintoma:</label>
-                                                <span class="">gripe</span>
+                                                <label for="">Cidade:</label>
+                                                <span class="">{{ $paciente->cidade }}</span>
+                                              </div>
+                                              <div class="col-3">
+                                                <label for="">Bairro:</label>
+                                                <span class="">{{ $paciente->bairro }}</span>
                                               </div>
                                             </div>
-                                      
+                                           
                                       </div>
+                                      @endif
                                       <p class="card-text">Last updated 3 mins ago</p>
                                     </div>
                                   </div>
