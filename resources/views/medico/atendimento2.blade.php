@@ -128,7 +128,7 @@
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                       <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
                                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Atendimento</a>
-                                      <a class="nav-item nav-link " id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
+                                      <a class="nav-item nav-link  " id="nav-contact-tab"   value= {{ $paciente->id  }} data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
                                     </div>
                                   </nav>
                                   <div class="tab-content" id="nav-tabContent">
@@ -273,21 +273,11 @@
                                     </div>
                                 </div>
                                     </div>
-                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                    <div class="tab-pane fade " id="nav-contact"   role="tabpanel" aria-labelledby="nav-contact-tab">
 
                                       <!-- fazer um foreach com as infos dos registros e de algum jeio mandar pro colapse -->
                                     
-                                      <a data-toggle="collapse" id="registroCollapse" value= {{ $paciente->id }}><p>Ordenado por data .</p></a>
-                                     
-
-                                               <!-- corpo do colapse -->
-                                    <div id="Registro" class="panel-collapse collapse">
-                                      <div class="panel-body">
-                                        <div class=" container row" id="conteudo">
-                                          //conteudo
-                                          </div>
-                                        </div>
-                                    </div>
+                                      
                                 </div><!-- nav bar lateral -->
                             </div><!-- corpo da navbar lateral -->
                     </section>

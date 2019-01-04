@@ -271,50 +271,78 @@ $(document).on('click', '#historico', function(e){
 
 // registro clinico
 
-$("#registroCollapse").on('click',function(){
-    let value = this.value;
-    console.log(value);
+$("a[id=nav-contact-tab]").on('click',function(){
+    let paciente_id = this.value;
+   // agenda_id = $("#registroCollapse").data("calid");
+    console.log(this.value);
 
-    $.getJSON( "registro/get", function( data ) {
+
+    $.getJSON( "/registro/"+paciente_id, function( data ) {
        let r = data;
-       $.each(p,function(key,value){
-        $("#registroCollapse").append(
-
+       let contador;
+       $("#nav-contact").empty();
+       $.each(r,function(key,value){
+        $("#nav-contact").append(
+        "<a class='tete' data-toggle='collapse' ><p>"+ value.id +" ordenando os bgl </p></a>"+
+        "<div id='"+contador+"' class='panel-collapse collapse'>"+
+        "<div class='panel-body'>"+
+        "<div class=' container row' id='conteudo'>"+
            " <div class='col-3'>"+
-            "<label >Nome:</label>"+
-            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+            "<label >queixaPrincipal:</label>"+
+            "<span id=''>"+value.queixaPrincipal+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >historia:</label>"+
+            "<span id=''>"+value.historia+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >tempo_atendimento:</label>"+
+            "<span id=''>"+value.tempo_atendimento+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >prognostico:</label>"+
+            "<span id=''>"+value.prognostico+"</span>"+
+          "</div>"+
+          " <div class='col-3'>"+
+            "<label >observacoes:</label>"+
+            "<span id=''>"+value.observacoes+"</span>"+
           "</div>"+
           " <div class='col-3'>"+
             "<label >Nome:</label>"+
-            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+            "<span id=''>"+value.orientacao+"</span>"+
+          "</div>"+
           "</div>"+
           " <div class='col-3'>"+
-            "<label >Nome:</label>"+
-            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+            "<label >problemas:</label>"+
+            "<span id=''>"+value.problemas+"</span>"+
+          "</div>"+
           "</div>"+
           " <div class='col-3'>"+
-            "<label >Nome:</label>"+
-            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
+            "<label >historicoFamiliar:</label>"+
+            "<span>"+value.historicoFamiliar+"</span>"+
           "</div>"+
-          " <div class='col-3'>"+
-            "<label >Nome:</label>"+
-            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >Nome:</label>"+
-            "<span id='Rnome'>"+r[0].medico_id+"</span>"+
-          "</div>"
-        ) 
-       })
-      });
+          
 
-    $("#Rnome").text('rafael');
-    $("#Ridade").text('22');
-    $("#Rpeso").text('63');
-    $("#Raltura").text('1,80');
+          " <div class='col-3'>"+
+            "<label >obsPessoal:</label>"+
+            "<span >"+value.obsPessoal+"</span>"+
+          "</div>"+
+
+          "</div>"+
+          "</div>"+
+          "</div>"
+        )
+        contador++; 
+       })
+
+    
+      });
   
-    $('#Registro').collapse("toggle");
+   
 
 })
+$("a[class='tete'").on('click',function(){
+   console.log('foi');
+})
 
-
+$('.collapse').collapse("toggle");

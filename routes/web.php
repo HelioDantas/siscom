@@ -212,5 +212,7 @@ Route::get('medd/{date?}/{espec?}', 'MedicoController@agenda')->middleware('Auto
 Route::get('cpf/{cpf}', 'PacienteController@buscarCpf')->middleware('Autorizador');
 Route::get('nome/{nome}', 'PacienteController@buscarNome')->middleware('Autorizador');
 Route::get('/get/data/agd/{id}', 'AgendaController@getAgendamentos');
+Route::get('registro/{paciente_id}', 'RegistroClinicoController@getAjax');
+
 
 
