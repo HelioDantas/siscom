@@ -7,7 +7,7 @@
  @section('estilos')
 <style>
  
-  aside{
+  .aside{
       margin-top: 5%;
       padding: 3%;
   }
@@ -28,6 +28,9 @@
   .cardImg{
     color: white !important;
   }
+  label{
+    color:darkgreen;
+  }
 .modal-content {width: 700px !important; margin-left:-20%;}
     .modal-body {  width:100%; } 
  
@@ -40,25 +43,26 @@
     <hr>
         <div class = 'container-fluid corpo-paciente .d-flex'>
                 <div class="row top">
-                        <aside class="col-2 d-flex justify-content-center">
+                        <div class="col-2 d-flex justify-content-center aside">
                             
-                            <form class = 'form-group ' action="{{ route('novo.registro') }}" method= 'POST'>
-                                @csrf @method('POST')
+                            <form class = 'form-group ' action="{{ route('novo.registro') }}" name="form" method= 'POST'>
+                                @csrf
+                                @method('POST')
                                 <input class = 'form-control 'type="text" name="cronometro" value="00:00:00" />
                                 <button class="btn btn-outline-secondary btnTop" type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
                                 <button class="btn btn-outline-danger btnTop  " type="submit" >Finalizar</button>
                            
                         
-                        </aside>
+                            </div>
         
                     <section class="col-10 ">
                             <div class="d-flex justify-content-end">
                         
                                     <a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
                             </div>
-                            <div class="card  text-white ">
+                            <div class="card  text-black ">
                                     <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="270" xmlns="http://www.w3.org/2000/svg"
-                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#00BFFF" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>
+                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#ffffff" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>
                                    <!-- <img src="..." class="card-img" alt="..."> -->
                                    
                                     <div class="card-img-overlay ">
@@ -69,44 +73,48 @@
                                       <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
                                       <div class="card-body ">
                                       
-                                          <div class=" container-fluid row infosPaciente">
-                                              <div class="col-3">
+                                          <div class=" container-fluid infosPaciente">
+                                              <div class="row">
+                                              <div class="col">
                                                 <label for="">Idade:</label>
-                                                <span class="">{{ $paciente->age($paciente->dataDeNascimento) }}</span>
+                                                <span class=""> {{ $paciente->age($paciente->dataDeNascimento) }}</span>
                                               </div>
-                                              <div class="col-2">
+                                              <div class="col">
                                                   <label for="">Cpf:</label>
-                                                  <span class="">{{ $paciente->cpf }}</span>
+                                                  <span class=""> {{ $paciente->cpf }}</span>
                                               </div>
-                                              <div class="col-2">
+                                              <div class="col">
                                                 <label for="">Celular:</label>
-                                                <span class="">{{ $paciente->celular }}</span>
+                                                <span class=""> {{ $paciente->celular }}</span>
                                             </div>
-                                            <div class="col-2">
-                                              <label for="">Email:</label>
-                                              <span class="">{{ $paciente->email }}</span>
+                                            <div class="col">
+                                                    <label for="">Email:</label>
+                                              <span class=""> {{ $paciente->email }}</span>
                                           </div>
-                                              <div class="col-2">
+                                              <div class="col">
                                                 <label for="">Planos:</label>
                                                 <div>
                                                 @foreach ($paciente->planos()->where('situacao','ATIVO')->get() as $value)
-                                                <span class="">{{ $value->nome }} | </span>  
+                                                <span class=""> {{ $value->nome }} | </span>  
                                                 @endforeach
                                               </div>
                                               </div>
+                                            </div><!-- row -->
+                                            <hr>
+                                            <div class="row">
                                               <div class="col-3">
                                                 <label for="">Cidade:</label>
-                                                <span class="">{{ $paciente->cidade }}</span>
+                                                <span class=""> {{ $paciente->cidade }}</span>
                                               </div>
-                                              <div class="col-3">
+                                              <div class="col-2">
                                                 <label for="">Bairro:</label>
-                                                <span class="">{{ $paciente->bairro }}</span>
+                                                <span class=""> {{ $paciente->bairro }}</span>
                                               </div>
                                             </div>
-                                           
+                                        </div><!-- row -->
                                       </div>
                                       @endif
-                                      <p class="card-text">Last updated 3 mins ago</p>
+                                      <p class="card-text" style="color:#2200ff;">Infos do paciente</p>
                                     </div>
                                   </div>
                         </section>
@@ -229,7 +237,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group ">
                                                 <label for="nome">Queixa principal</label>
-                                                <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="QueixaPrincipal" required>
+                                                <input type="text" class="form-control"  maxlength="100" name="QueixaPrincipal" id ="QueixaPrincipal" >
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">

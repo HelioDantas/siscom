@@ -14,7 +14,17 @@ class RegistroClinico extends Model
         'quexaPrincipal',
         'historia',
         'Prognostico',
-        'medicamento',
+        'bebe',
+        'fuma',
+        'peso',
+        'altura',
+        'pressao',
+        'temperatura',
+        'historico_familiar',
+        'problemas',
+        'orientacao',
+        'observacoes',
+        'tempo_atendimeno',
    );
    
 }
