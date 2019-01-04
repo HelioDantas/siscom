@@ -58,7 +58,7 @@ class AgendaController extends Controller
 
     function agendar(Request $request){
         
-
+        
             $dataDaConsulta = strtotime($request['data']);
             $date = strtotime(date("Y-m-d"));
             if( $dataDaConsulta < $date  )
@@ -75,7 +75,7 @@ class AgendaController extends Controller
                    'dataDeNascimento' => $request['dataDeNascimento'],
                    'telefone'         => $request['telefone'],
                    'celular'          => $request['celular'],
-                   'plano'             => $request['plano'],
+                
 
                    
                 ]);
@@ -106,7 +106,7 @@ class AgendaController extends Controller
 
                     ]);
                  
-
+                
             }catch (\Exception $e){
 
               $mensagem= $e->getMessage();

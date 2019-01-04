@@ -22,14 +22,14 @@
     
 	background-color: #fafafa !important; 
   }
- .infosPaciente{
-      border-radius: 20px ;
-  }
   .cardImg{
     color: white !important;
   }
   label{
     color:darkgreen;
+  }
+  .nav-link{
+      color: black;
   }
 .modal-content {width: 700px !important; margin-left:-20%;}
     .modal-body {  width:100%; } 
@@ -41,9 +41,9 @@
 
 @section('telaListarPaciente')
     <hr>
-        <div class = 'container-fluid corpo-paciente .d-flex'>
-                <div class="row top">
-                        <div class="col-2 d-flex justify-content-center aside">
+        <div class = 'container-fluid  .d-flex'>
+                <div class="row ">
+                        <div class="col-2 align-self-start ">
                             
                             <form class = 'form-group ' action="{{ route('novo.registro') }}" name="form" method= 'POST'>
                                 @csrf
@@ -55,17 +55,15 @@
                         
                             </div>
         
-                    <section class="col-10 ">
+                    <section class="col-10 align-self-end">
                             <div class="d-flex justify-content-end">
                         
                                     <a class="btn btn-outline-secondary"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
                             </div>
                             <div class="card  text-black ">
-                                    <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="270" xmlns="http://www.w3.org/2000/svg"
-                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect fill="#ffffff" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>
-                                   <!-- <img src="..." class="card-img" alt="..."> -->
+                                    
                                    
-                                    <div class="card-img-overlay ">
+                                
                         
                                       @if (isset($paciente) && !empty($paciente))
                                           
@@ -111,6 +109,7 @@
                                                 <span class=""> {{ $paciente->bairro }}</span>
                                               </div>
                                             </div>
+                                          </div>
                                         </div><!-- row -->
                                       </div>
                                       @endif
@@ -118,15 +117,16 @@
                                     </div>
                                   </div>
                         </section>
-                </div>
+                </div><!-- row-->
+
                     <section>
 
                         
                             <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
+                                      <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
                                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Atendimento</a>
-                                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
+                                      <a class="nav-item nav-link " id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
                                     </div>
                                   </nav>
                                   <div class="tab-content" id="nav-tabContent">
@@ -232,45 +232,45 @@
                                             </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                        <div class="container-fluid">
                                       <div class="row"> 
-                
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group ">
                                                 <label for="nome">Queixa principal</label>
                                                 <input type="text" class="form-control"  maxlength="100" name="QueixaPrincipal" id ="QueixaPrincipal" >
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">História</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="História"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="historia" rows="3" placeholder="História"></textarea>
                                         </div>
-                                         <div class="form-group col-md-12">
+                                         <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">Problemas</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Problemas"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"name="problemas" rows="3" placeholder="Problemas"></textarea>
                                         </div> 
                         
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">Prognóstico</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prognóstico"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="prognostico" rows="3" placeholder="Prognóstico"></textarea>
                                         </div>                       
                                     
                                     
-                                       <div class="form-group col-md-12">
+                                       <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">Orientação</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Orientação"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="orientacao" rows="3" placeholder="Orientação"></textarea>
                                         </div>     
-                                         <div class="form-group col-md-12">
+                                         <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">Medicamentos</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Medicamentos"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"name="medicamento" rows="3" placeholder="Medicamentos"></textarea>
                                         </div>   
                         
                                               <div class="form-group col-md-12">
                                             <label for="exampleFormControlTextarea1">Observações:</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Medicamentos"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="observacoes"rows="3" placeholder="Medicamentos"></textarea>
                                         </div>   
                                           
                                     </div>
-                        
+                                </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 

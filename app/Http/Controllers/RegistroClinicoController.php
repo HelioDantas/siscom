@@ -10,6 +10,7 @@ class RegistroClinicoController extends Controller
     
     function novoRegistro(Request $request)
     {
-        dd($request);
+        $ver = 1;
+        dd($ver);
     }
 }

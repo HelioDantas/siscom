@@ -73,6 +73,9 @@
      margin: auto;
 
  }
+  .infosPaciente{
+      border-radius: 20px ;
+  }
  .right {
  
    margin-left: 7%;
@@ -95,23 +98,69 @@
 
         <div class = 'opcoesDeNavegacao '>
             
-            <form class = ''name="form" method= 'get'>
-                <input class = 'form-control'type="text" name="cronometro" onload="setInterval('tempo()',983);return false" value="00:00:00" />
-            
-                <button class="btn btn-outline-secondary  " type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
-                <button class="btn btn-outline-danger  " type="submit" >Finalizar</button>          
-            
+              {!! Form::open(['route' => 'medico.registro','method ' => 'post','name'=>'form']) !!} @csrf
+                 
+                  
+                    <input class = 'form-control'type="text" name="cronometro" onload="setInterval('tempo()',983);return false" value="00:00:00" />
+                
+                 
+                 <div class="container">
+                    <button class="btn btn-outline-danger  " type="submit" >Finalizar</button>          
+                </div>
         </div>
 
         <div class= 'right'>
             
             <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
-            <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
+      
  
             <div class="jumbotron jumbotron-fluid  ">
                     <div class="container ">
-                        <h1 class="display-4">Paciente</h1>
-                        <p class="lead">Em atendimento.</p>
+                        
+                        <p class="lead d-flex justify-content-center"> Paciente em atendimento.</p>
+                        @if (isset($paciente) && !empty($paciente))
+                                          
+                                     
+                                      <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
+                                      <div class="card-body ">
+                                      
+                                          <div class=" container-fluid row infosPaciente">
+                                              <div class="col-3">
+                                                <label for="">Idade:</label>
+                                                <span class="">{{ $paciente->age($paciente->dataDeNascimento) }}</span>
+                                              </div>
+                                              <div class="col-2">
+                                                  <label for="">Cpf:</label>
+                                                  <span class="">{{ $paciente->cpf }}</span>
+                                              </div>
+                                              <div class="col-2">
+                                                <label for="">Celular:</label>
+                                                <span class="">{{ $paciente->celular }}</span>
+                                            </div>
+                                            <div class="col-2">
+                                              <label for="">Email:</label>
+                                              <span class="">{{ $paciente->email }}</span>
+                                          </div>
+                                              <div class="col-2">
+                                                <label for="">Planos:</label>
+                                                <div>
+                                                @foreach ($paciente->planos()->where('situacao','ATIVO')->get() as $value)
+                                                <span class="">{{ $value->nome }} | </span>  
+                                                @endforeach
+                                              </div>
+                                              </div>
+                                              <div class="col-3">
+                                                <label for="">Cidade:</label>
+                                                <span class="">{{ $paciente->cidade }}</span>
+                                              </div>
+                                              <div class="col-3">
+                                                <label for="">Bairro:</label>
+                                                <span class="">{{ $paciente->bairro }}</span>
+                                              </div>
+                                            </div>
+                                           
+                                      </div>
+                                      @endif
                     </div>
             </div>
 
@@ -141,7 +190,7 @@
                 <div class="col-1">
                     <div class="form-group">
                         <label for="tipo">Bebe</label>
-                        <select class="form-control" name="Bebe" id="Bebe" required>
+                        <select class="form-control" name="bebe" id="bebe" required>
                         
                             <option>S</option>
                             <option>N</option>
@@ -151,7 +200,7 @@
                 <div class="col-1">
                     <div class="form-group">
                         <label for="tipo">Fuma</label>
-                        <select class="form-control" name="Fuma" id="Fuma" required>
+                        <select class="form-control" name="fuma" id="fuma" required>
                             <option>S</option>
                             <option>N</option>
                         </select>
@@ -185,7 +234,7 @@
                     <div class="form-group">
 
                         <label for="peso">Altura</label >
-                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Altura" id ='Altura' required >
+                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="altura" id ='altura' required >
 
                     </div>
                 </div>
@@ -194,7 +243,7 @@
                     <div class="form-group">
 
                         <label for="peso">Pressâo</label >
-                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pressao" id ='Pressao' required >
+                        <input type="text" class="form-control name" maxlength="3" placeholder="" name="pressao" id ='pressao' required >
 
                     </div>
                 </div>
@@ -203,7 +252,7 @@
                         <div class="form-group">
 
                             <label for="peso">Pulso</label >
-                            <input type="text" class="form-control name" maxlength="3" placeholder="" name="Pulso" id ='Pulso' required >
+                            <input type="text" class="form-control name" maxlength="3" placeholder="" name="pulso" id ='pulso' required >
 
                         </div>
                   </div>
@@ -212,7 +261,7 @@
                         <div class="form-group">
 
                             <label for="peso">Temperatura</label >
-                            <input type="text" class="form-control name" maxlength=3 placeholder="" name="Temperatura" id ='Temperatura' required >
+                            <input type="text" class="form-control name" maxlength=3 placeholder="" name="temperatura" id ='temperatura' required >
 
                         </div>
                     </div>
@@ -222,14 +271,14 @@
                             
                     <div class="col-md-12">
                         <div class="form-group ">
-                            <label for="nome">Obs Pessoais</label>
-                            <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="Obs Pessoais" required>
+                            <label for="nome">Obs Pessoal</label>
+                            <input type="text" class="form-control "  maxlength="100" name="obsPessoal" id ="ObsPessoal" required>
                         </div>
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="exampleFormControlTextarea1">Historico familiar</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Historico familiar"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = 'historicoFamiliar'placeholder="Historico familiar"></textarea>
                     </div>          
 
                  </div> 
@@ -237,42 +286,46 @@
         </div>
     
          <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-            
+
+            @if(isset($agenda) && isset($paciente))
+                <input type="hidden" value="{{$agenda->id}}" name="agenda_id">
+                <input type="hidden" value="{{$paciente->id}}" name="paciente_id">
+            @endif
             <div class="row"> 
                 
                 <div class="col-md-12">
                     <div class="form-group ">
                         <label for="nome">Queixa principal</label>
-                        <input type="text" class="form-control "  maxlength="100" name="QueixaPrincipal" id ="QueixaPrincipal" required>
+                        <input type="text" class="form-control "  maxlength="100" name="queixaPrincipal" id ="QueixaPrincipal" required>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">História</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="História"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="historia" rows="3" placeholder="História"></textarea>
                 </div>
                  <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Problemas</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Problemas"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"name="problemas" placeholder="Problemas"></textarea>
                 </div> 
 
                 <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Prognóstico</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prognóstico"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="prognostico" placeholder="Prognóstico"></textarea>
                 </div>                       
             
             
                <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Orientação</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Orientação"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="orientacao"placeholder="Orientação"></textarea>
                 </div>     
                  <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Medicamentos</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Medicamentos"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="medicamentos" placeholder="Medicamentos"></textarea>
                 </div>   
 
                       <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Observações:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Medicamentos"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observacoes" placeholder="Observações"></textarea>
                 </div>   
                   
             </div>
@@ -281,7 +334,7 @@
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Nulla est ullamco ut irure incididunt nulla Lorem Lorem minim irure officia enim reprehenderit. Magna duis labore cillum sint adipisicing exercitation ipsum. Nostrud ut anim non exercitation velit laboris fugiat cupidatat. Commodo esse dolore fugiat sint velit ullamco magna consequat voluptate minim amet aliquip ipsum aute laboris nisi. Labore labore veniam irure irure ipsum pariatur mollit magna in cupidatat dolore magna irure esse tempor ad mollit. Dolore commodo nulla minim amet ipsum officia consectetur amet ullamco voluptate nisi commodo ea sit eu.</div>
 
-         </form>   
+          {!! Form::close() !!}  
     </div>
                 
             

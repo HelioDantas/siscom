@@ -10,7 +10,7 @@ use DB;
 use App\Models\Agenda;
 use App\Models\Paciente;
 use Auth;
-
+use App\Models\RegitroClinico;
 use App\Models\procedimento;
 use App\Models\Convenio;
 class MedicoController extends Controller
@@ -72,7 +72,7 @@ class MedicoController extends Controller
     function getHorarios($medicoId){
     $medico = Medico::find($medicoId);
     $medico = $medico->getHorarios();
-    dd($medico);
+  ///  dd($medico);
     return json_encode( $especialidades);
     }
 
@@ -135,12 +135,32 @@ class MedicoController extends Controller
     public function atendimento(Request $request,$id = ''){
         if($id !== ""){
         $agenda = Agenda::find($id);
+        // if($agenda->atendido == 'S')
+          //  return back()->with("metodos", 'Paciente já ate atendido');
         $paciente =  Paciente::find($agenda->paciente_id);
+
+       
         }
 
         return view('medico.atendimento2' , compact('paciente','agenda'));
     }
 
+
     
-    
+    function novoRegistro(Request $request)
+    {
+      
+        $registro = Registro::create($request->all());
+        $registro->agenda->update([
+            'atendido' => 'S'
+            
+        ]);
+        // $agenda = Agenda::find($id);
+
+        return redirect()->route('medico.agenda');
+    }
+
+
+
+
 }

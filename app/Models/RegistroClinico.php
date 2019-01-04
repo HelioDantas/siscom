@@ -13,18 +13,31 @@ class RegistroClinico extends Model
         'paciente_id',
         'quexaPrincipal',
         'historia',
-        'Prognostico',
-        'bebe',
-        'fuma',
-        'peso',
-        'altura',
-        'pressao',
-        'temperatura',
-        'historico_familiar',
-        'problemas',
-        'orientacao',
+        'tempo_atendimento',
+        'prognostico',
+        'medicamento',
         'observacoes',
-        'tempo_atendimeno',
+        'orientacao', 
+        'problemas', 
+        'historia',
+        'historicoFamiliar',
+        'obsPessoal',
+        'temperatura',
+        'pulso',
+        'pressao',
+        'altura',
+        'peso',
+        'fisico',
+        'fuma',
+        'bebe',
    );
    
+    public function agenda(){
+
+     return  $this->hasMany("App\Models\Agenda", 'agenda_id', 'id' );
+
+    }
+
+
+
 }
