@@ -142,14 +142,14 @@ class MedicoController extends Controller
        
         }
 
-        return view('medico.atendimento2' , compact('paciente','agenda'));
+        return view('medico.atendimento' , compact('paciente','agenda'));
     }
 
 
     
     function novoRegistro(Request $request)
     {
-      
+        $request['medico_id'] = Auth::user()->funcionario->matricula;
         $registro = RegistroClinico::create($request->all());
         $registro->agenda()->update([
             'atendido' => 'S'

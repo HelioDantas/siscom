@@ -83,6 +83,10 @@
     width: 80%;
 
 }
+  .btnTop{
+      margin-top: 1rem;
+      margin-left: 0.5rem;
+  }
 .modal-content {width: 700px !important; margin-left:-20%;}
     .modal-body {  width:100%; } 
  
@@ -99,13 +103,13 @@
         <div class = 'opcoesDeNavegacao '>
             
               {!! Form::open(['route' => 'medico.registro','method ' => 'post','name'=>'form']) !!} @csrf
-                 
+                 <div class="form-group align-self-end" >
                   
                     <input class = 'form-control'type="text" name="tempo_atendimento" onload="setInterval('tempo()',983);return false" value="00:00:00" />
                 
                  
-                 <div class="container">
-                    <button class="btn btn-outline-danger  " type="submit" >Finalizar</button>          
+                 
+                    <button class="btn btn-outline-danger  btnTop" type="submit" >Finalizar</button>          
                 </div>
         </div>
 
@@ -121,46 +125,48 @@
                         @if (isset($paciente) && !empty($paciente))
                                           
                                      
-                                      <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
+                             <h5 class="card-title d-flex justify-content-center"><p class="card-text">{{ $paciente->nome }}</p></h5>
                                       <div class="card-body ">
-                                      
-                                          <div class=" container-fluid row infosPaciente">
-                                              <div class="col-3">
-                                                <label for="">Idade:</label>
-                                                <span class="">{{ $paciente->age($paciente->dataDeNascimento) }}</span>
-                                              </div>
-                                              <div class="col-2">
-                                                  <label for="">Cpf:</label>
-                                                  <span class="">{{ $paciente->cpf }}</span>
-                                              </div>
-                                              <div class="col-2">
-                                                <label for="">Celular:</label>
-                                                <span class="">{{ $paciente->celular }}</span>
-                                            </div>
-                                            <div class="col-2">
-                                              <label for="">Email:</label>
-                                              <span class="">{{ $paciente->email }}</span>
-                                          </div>
-                                              <div class="col-2">
-                                                <label for="">Planos:</label>
-                                                <div>
-                                                @foreach ($paciente->planos()->where('situacao','ATIVO')->get() as $value)
-                                                <span class="">{{ $value->nome }} | </span>  
-                                                @endforeach
-                                              </div>
-                                              </div>
-                                              <div class="col-3">
-                                                <label for="">Cidade:</label>
-                                                <span class="">{{ $paciente->cidade }}</span>
-                                              </div>
-                                              <div class="col-3">
-                                                <label for="">Bairro:</label>
-                                                <span class="">{{ $paciente->bairro }}</span>
-                                              </div>
-                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                        <label for="">Idade:</label>
+                                                        <span class=""> {{ $paciente->age($paciente->dataDeNascimento) }}</span>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="">Cpf:</label>
+                                                    <span class=""> {{ $paciente->cpf }}</span>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="">Celular:</label>
+                                                    <span class=""> {{ $paciente->celular }}</span>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="">Email:</label>
+                                                     <span class=""> {{ $paciente->email }}</span>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="">Planos:</label>
+                                                    @foreach ($paciente->planos()->where('situacao','ATIVO')->get() as $value)
+                                                    <span class=""> {{ $value->nome }} | </span>  
+                                                    @endforeach
+                                                </div>
                                            
-                                      </div>
-                                      @endif
+                                            </div><!-- row -->
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <label for="">Cidade:</label>
+                                                    <span class=""> {{ $paciente->cidade }}</span>
+                                                </div>
+                                                <div class="col-2">
+                                                    <label for="">Bairro:</label>
+                                                    <span class=""> {{ $paciente->bairro }}</span>
+                                                 </div>
+                                            </div>
+                                    </div>
+                               
+                                    
+                            @endif
                     </div>
             </div>
 
@@ -296,21 +302,21 @@
                 <div class="col-md-12">
                     <div class="form-group ">
                         <label for="nome">Queixa principal</label>
-                        <input type="text" class="form-control "  maxlength="100" name="queixaPrincipal" id ="QueixaPrincipal" required>
+                        <input type="text" class="form-control "  maxlength="100" name="queixaPrincipal" id ="QueixaPrincipal" value = "{{ old('queixaPrincipal') }}" required>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">História</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" name="historia" rows="3" placeholder="História"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="historia" rows="3" required placeholder="História"></textarea>
                 </div>
                  <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Problemas</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"name="problemas" placeholder="Problemas"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"name="problemas" required placeholder="Problemas"value = "{{ old('problemas') }}"></textarea>
                 </div> 
 
                 <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Prognóstico</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="prognostico" placeholder="Prognóstico"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="prognostico" required placeholder="Prognóstico" ></textarea>
                 </div>                       
             
             
@@ -320,7 +326,7 @@
                 </div>     
                  <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Medicamentos</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="medicamento" placeholder="Medicamentos"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="medicamento" required placeholder="Medicamentos"></textarea>
                 </div>   
 
                       <div class="form-group col-md-12">
