@@ -138,6 +138,19 @@ class MedicoController extends Controller
         $paciente =  Paciente::find($agenda->paciente_id);
         }
 
-        return view('medico.atendimento2' , compact('paciente','agenda'));
+        return view('medico.atendimento' , compact('paciente','agenda'));
     }
+
+
+    
+    function novoRegistro(Request $request)
+    {
+      
+
+
+
+
+    }
+
+
 }

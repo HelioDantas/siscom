@@ -88,7 +88,8 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
     Route::get('agendar', 'MedicoController@agenda')                                    ->name('medico.agenda');
     Route::get('agendar/{date?}/{espec?}', 'MedicoController@agenda');
     Route::get('atendimento/{id?}', 'MedicoController@atendimento')                     ->name('medico.atendimento');
-    Route::post('registro , RegistroClinicoController@novoRegistro')                    ->name('novo.registro');
+
+    Route::post('registro' , 'MedicoController@novoRegistro')                           ->name('medico.registro');
    
     
 });

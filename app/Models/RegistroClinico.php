@@ -15,6 +15,15 @@ class RegistroClinico extends Model
         'historia',
         'Prognostico',
         'medicamento',
+        'observacoes',
+        'orientacao', 
+        'problemas', 
+        
+
+
+
+
+
    );
    
 }
