@@ -160,7 +160,12 @@ class MedicoController extends Controller
         return redirect()->route('medico.agenda');
     }
 
+    function RegistrosClinicos(){
 
+
+
+            return view('medico.RegistroClinico' );
+    }
 
 
 }
