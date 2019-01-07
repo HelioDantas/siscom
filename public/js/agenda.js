@@ -296,46 +296,55 @@ function colapseRegistroClinico(valor){
         <h5 class='nameP'"><a href="${"#cont-"+contador}" name="tt" style="cursor:pointer;" data-toggle='collapse' >Agendamento do dia: <h6 class="badge badge-pill badge-primary">${data}</h6></a></h5>
         <div id="cont-${key}" class='panel-collapse collapse ${contador}'>
         <div class='panel-body'>
-        <div class=' container row' id='conteudo'>
-            <div class='col-3'>
+
+        <div class=' container-fluid' id='conteudo'>
+
+        <div class= "row">
+            <div class='col'>
             <label >queixaPrincipal:</label>
             <span id=''>${value.queixaPrincipal}</span>
           </div>
-           <div class='col-3'>
+
+           <div class='col'>
             <label >historia:</label>
             <span id=''>${value.historia}</span>
           </div>
-           <div class='col-3'>
+
+           <div class='col'>
             <label >tempo_atendimento:</label>
             <span id=''>${value.tempo_atendimento}</span>
           </div>
-           <div class='col-3'>
+          
+          <div class="row">
+           <div class='col'>
             <label >prognostico:</label>
             <span id=''>${value.prognostico}</span>
           </div>
-           <div class='col-3'>
+           <div class='col'>
             <label >observacoes:</label>
             <span id=''>${value.observacoes}</span>
           </div>
-           <div class='col-3'>
+           <div class='col'>
             <label >Nome:</label>
             <span id=''>${value.orientacao}</span>
+            </div>
           </div>
-          </div>
-           <div class='col-3'>
+          <div class = "row">
+           <div class='col'>
             <label >problemas:</label>
             <span id=''>${value.problemas}</span>
+          
           </div>
-          </div>
-           <div class='col-3'>
+           <div class='col'>
             <label >historicoFamiliar:</label>
             <span>${value.historicoFamiliar}</span>
           </div>
-           <div class='col-3'>
+           <div class='col'>
             <label >obsPessoal:</label>
             <span >${value.obsPessoal}</span>
           </div>
-
+          </div>
+         </div
           </div>
           </div>
           </div>
