@@ -54,6 +54,7 @@
                             <form class = 'form-group ' action="{{ route('novo.registro') }}" name="form" method= 'POST'>
                                 @csrf
                                 @method('POST')
+                                <input type="hidden" name="dataAgendamento" value="{{ $agenda->data }}">
                                 <input class = "col-8 form-control text-center"type="text" name="cronometro" value="00:00:00" />
                                 <button class="btn btn-outline-secondary btnTop" type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
                                 <button class="btn btn-outline-danger btnTop  " type="submit" >Finalizar</button>
@@ -128,10 +129,12 @@
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                       <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
                                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Atendimento</a>
-                                      <a class="nav-item nav-link  " id="nav-contact-tab"   value= {{ $paciente->id  }} data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
+                                      <a class="nav-item nav-link  " id="nav-contact-tab"   onClick="colapseRegistroClinico('{{ $paciente->id }}')" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
                                     </div>
                                   </nav>
+
                                   <div class="tab-content" id="nav-tabContent">
+
                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                             <div class="container-fluid">
                                               <div class="row">
@@ -273,11 +276,12 @@
                                     </div>
                                 </div>
                                     </div>
+
                                     <div class="tab-pane fade " id="nav-contact"   role="tabpanel" aria-labelledby="nav-contact-tab">
 
                                       <!-- fazer um foreach com as infos dos registros e de algum jeio mandar pro colapse -->
                                     
-                                      
+                                     
                                 </div><!-- nav bar lateral -->
                             </div><!-- corpo da navbar lateral -->
                     </section>
@@ -286,7 +290,7 @@
         </div>
            
     
-            
+           
      
   
 
@@ -297,7 +301,7 @@
 var segundo = 0+"0";
 var minuto = 0+"0";
 var hora = 0+"0";
- 
+
 function tempo(){	
    if (segundo < 59){
       segundo++
@@ -324,6 +328,7 @@ function tempo(){
 
 
 </script>
+
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

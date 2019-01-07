@@ -143,7 +143,7 @@ class MedicoController extends Controller
        
         }
 
-        return view('medico.atendimento' , compact('paciente','agenda'));
+        return view('medico.atendimento2' , compact('paciente','agenda'));
     }
 
 

@@ -53,7 +53,7 @@ Route::post("/login", ['as' => 'user.login', 'uses' => 'LoginController@auth']);
 
 Route::prefix('pacientes')->middleware('auth')->group(function () { //->middleware('Autorizador')-
     //Route::get('listar', 'PacienteController@listar', function () {return App\Models\Paciente::paginate(10);})->name('paciente.listar');
-    Route::get('listar'       , 'PacienteController@listar')->name(   'paciente.listar' );
+    Route::get('listar'       , 'PacienteController@listar')->name('paciente.listar' );
     Route::get('novo', 'PacienteController@novo')           ->name('paciente.novo');
     Route::post('create', 'PacienteController@create')      ->name('paciente.create');
     Route::get('editar/{id}', 'PacienteController@edit')    ->name('paciente.editar');
@@ -62,7 +62,7 @@ Route::prefix('pacientes')->middleware('auth')->group(function () { //->middlewa
     Route::get('excluir/{id}', 'PacienteController@destroy')->name('paciente.excluir');
     Route::get('index', 'PacienteController@indexjs')       ->name('paciente.js');
     Route::get('json', 'PacienteController@indexjson')      ->name('paciente.json');
-    Route::any('buscar', 'PacienteController@buscar')       ->name('funcionario.buscar'); 
+    Route::any('buscar', 'PacienteController@buscar')       ->name('paciente.buscar'); 
    
         /*Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
         Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json');*/

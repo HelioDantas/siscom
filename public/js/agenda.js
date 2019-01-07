@@ -270,79 +270,90 @@ $(document).on('click', '#historico', function(e){
 
 
 // registro clinico
+formateData = date => {
+    data  = new Date(date);
+    data.setDate(data.getDate() + 1);
+                   
 
-$("a[id=nav-contact-tab]").on('click',function(){
-    let paciente_id = this.value;
+data = data.toLocaleDateString('pt-br');
+return data;
+}
+
+function colapseRegistroClinico(valor){
+
+    var paciente_id = valor;
    // agenda_id = $("#registroCollapse").data("calid");
-    console.log(this.value);
-
 
     $.getJSON( "/registro/"+paciente_id, function( data ) {
        let r = data;
-       let contador;
+       var contador=0 ;
        $("#nav-contact").empty();
+
        $.each(r,function(key,value){
-        $("#nav-contact").append(
-        "<a class='tete' data-toggle='collapse' ><p>"+ value.id +" ordenando os bgl </p></a>"+
-        "<div id='"+contador+"' class='panel-collapse collapse'>"+
-        "<div class='panel-body'>"+
-        "<div class=' container row' id='conteudo'>"+
-           " <div class='col-3'>"+
-            "<label >queixaPrincipal:</label>"+
-            "<span id=''>"+value.queixaPrincipal+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >historia:</label>"+
-            "<span id=''>"+value.historia+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >tempo_atendimento:</label>"+
-            "<span id=''>"+value.tempo_atendimento+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >prognostico:</label>"+
-            "<span id=''>"+value.prognostico+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >observacoes:</label>"+
-            "<span id=''>"+value.observacoes+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >Nome:</label>"+
-            "<span id=''>"+value.orientacao+"</span>"+
-          "</div>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >problemas:</label>"+
-            "<span id=''>"+value.problemas+"</span>"+
-          "</div>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >historicoFamiliar:</label>"+
-            "<span>"+value.historicoFamiliar+"</span>"+
-          "</div>"+
-          
+        let data = formateData(value.dataAgendamento)
+        $("#nav-contact").append(`
+        <div>
+        <h5 class='nameP'"><a href="${"#cont-"+contador}" name="tt" style="cursor:pointer;" data-toggle='collapse' >Agendamento do dia: <h6 class="badge badge-pill badge-primary">${data}</h6></a></h5>
+        <div id="cont-${key}" class='panel-collapse collapse ${contador}'>
+        <div class='panel-body'>
+        <div class=' container row' id='conteudo'>
+            <div class='col-3'>
+            <label >queixaPrincipal:</label>
+            <span id=''>${value.queixaPrincipal}</span>
+          </div>
+           <div class='col-3'>
+            <label >historia:</label>
+            <span id=''>${value.historia}</span>
+          </div>
+           <div class='col-3'>
+            <label >tempo_atendimento:</label>
+            <span id=''>${value.tempo_atendimento}</span>
+          </div>
+           <div class='col-3'>
+            <label >prognostico:</label>
+            <span id=''>${value.prognostico}</span>
+          </div>
+           <div class='col-3'>
+            <label >observacoes:</label>
+            <span id=''>${value.observacoes}</span>
+          </div>
+           <div class='col-3'>
+            <label >Nome:</label>
+            <span id=''>${value.orientacao}</span>
+          </div>
+          </div>
+           <div class='col-3'>
+            <label >problemas:</label>
+            <span id=''>${value.problemas}</span>
+          </div>
+          </div>
+           <div class='col-3'>
+            <label >historicoFamiliar:</label>
+            <span>${value.historicoFamiliar}</span>
+          </div>
+           <div class='col-3'>
+            <label >obsPessoal:</label>
+            <span >${value.obsPessoal}</span>
+          </div>
 
-          " <div class='col-3'>"+
-            "<label >obsPessoal:</label>"+
-            "<span >"+value.obsPessoal+"</span>"+
-          "</div>"+
+          </div>
+          </div>
+          </div>
+          </div>
+          `);
 
-          "</div>"+
-          "</div>"+
-          "</div>"
-        )
         contador++; 
-       })
+       
+       });
 
-    
-      });
+ 
+});
   
-   
 
-})
-$("a[class='tete'").on('click',function(){
-   console.log('foi');
-})
+  
 
-$('.collapse').collapse("toggle");
+}
+
+
+
+

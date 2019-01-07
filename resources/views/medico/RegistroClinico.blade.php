@@ -228,7 +228,9 @@ display: inline;
                 <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     @include('components.RegistroClinico')
                 </div> 
+
         </div>     
+
 </div>
                      
 @endsection
