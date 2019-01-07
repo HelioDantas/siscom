@@ -62,8 +62,8 @@ Route::prefix('pacientes')->middleware('auth')->group(function () { //->middlewa
     Route::get('excluir/{id}', 'PacienteController@destroy')->name('paciente.excluir');
     Route::get('index', 'PacienteController@indexjs')       ->name('paciente.js');
     Route::get('json', 'PacienteController@indexjson')      ->name('paciente.json');
-    Route::any('buscar', 'PacienteController@buscar')       ->name('paciente.buscar'); 
-   
+    Route::any('buscar', 'PacienteController@buscar')       ->name('paciente.buscar');
+
         /*Route::get('index'       ,  'PacienteController@indexjs')->name(  'paciente.js'     );
         Route::get('json'        ,  'PacienteController@indexjson')->name('paciente.json');*/
 
@@ -78,7 +78,7 @@ Route::get('/especialidade/{espec_id}', 'MedicoController@getEspecialidade')->mi
 
 /**=============================================================
  *                      ROTAS MEDICO
- * 
+ *
  *=============================================================
  */
 Route::prefix('medico')->middleware('Autorizador')->group(function () {
@@ -91,10 +91,10 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
     Route::post('registro2' , 'RegistroClinicoController@novoRegistro')                    ->name('novo.registro');
     Route::post('registro' , 'MedicoController@novoRegistro')                           ->name('medico.registro');
     Route::get('RegistrosClinicos/{id?}', 'MedicoController@RegistrosClinicos')                     ->name('medico.RegistrosClinicos');
-    Route::any('BuscarPorRegistrosClinicos', 'MedicoController@BuscarPorRegistrosClinicos')                     ->name('medico.BuscarPorRegistrosClinicos');
+    Route::any('RegistrosClinicos', 'MedicoController@BuscarPorRegistrosClinicos')                     ->name('medico.BuscarPorRegistrosClinicos');
     Route::get('/get/Registro/{id}', 'MedicoController@getRegistros');
-   
-    
+
+
 });
 
 
@@ -102,7 +102,7 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
 
 /**=============================================================
  *                      ROTAS FUNCIONARIO
- * 
+ *
  *=============================================================
  */
 Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //->middleware('Autorizador')->
@@ -135,7 +135,7 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
 
 /**=============================================================
  *                      ROTAS CONVENIO
- * 
+ *
  *=============================================================
  */
 Route::prefix('convenio')->middleware('Autorizador')->group(function () {
@@ -156,12 +156,12 @@ Route::prefix('convenio')->middleware('Autorizador')->group(function () {
 });
 /**=============================================================
  *                      ROTAS PROCEDIMENTOS
- * 
+ *
  *=============================================================
  */
 Route::prefix('procedimento')->middleware('Autorizador')->group(function(){
     Route::get('novo/{id}', 'ProcedimentoController@novo')->name('procedimento.novo');
-    Route::post('create', 'ProcedimentoController@create')->name('procedimento.create'); 
+    Route::post('create', 'ProcedimentoController@create')->name('procedimento.create');
     Route::post('plano/assoc', 'ProcedimentoController@planoAssoc')->name('procedimento.plano.assoc');
     Route::get('delete/{id}/proced/{codtuss}', 'ProcedimentoController@assocDelete')->name('proced.plano.assoc.delete');
 
@@ -181,7 +181,7 @@ Route::get('/erro', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 /**=============================================================
  *                      ROTAS AGENDA
- * 
+ *
  *=============================================================
  */
 Route::prefix('agenda')->middleware('Autorizador')->group(function(){
@@ -200,7 +200,7 @@ Route::prefix('agenda')->middleware('Autorizador')->group(function(){
 
 /**=============================================================
  *                      ROTAS AJAX
- * 
+ *
  *=============================================================
  */
 Route::get('/get/esp/{id}', 'AgendaController@getMedicosEsp');
