@@ -54,6 +54,7 @@
                             <form class = 'form-group ' action="{{ route('novo.registro') }}" name="form" method= 'POST'>
                                 @csrf
                                 @method('POST')
+                                <input type="hidden" name="dataAgendamento" value="{{ $agenda->data }}">
                                 <input class = "col-8 form-control text-center"type="text" name="cronometro" value="00:00:00" />
                                 <button class="btn btn-outline-secondary btnTop" type="button" onclick="setInterval('tempo()',983);return false;">Iniciar</button>
                                 <button class="btn btn-outline-danger btnTop  " type="submit" >Finalizar</button>
@@ -128,7 +129,7 @@
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                       <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
                                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Atendimento</a>
-                                      <a class="nav-item nav-link  " id="nav-contact-tab"   value= "{{ $paciente->id  }}" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
+                                      <a class="nav-item nav-link  " id="nav-contact-tab"   onClick="colapseRegistroClinico('{{ $paciente->id }}')" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
                                     </div>
                                   </nav>
 

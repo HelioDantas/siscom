@@ -279,11 +279,10 @@ data = data.toLocaleDateString('pt-br');
 return data;
 }
 
-$("a[id=nav-contact-tab]").on('click',function(){
-    var paciente_id = this.value;
-   // agenda_id = $("#registroCollapse").data("calid");
-    console.log(this.value);
+function colapseRegistroClinico(valor){
 
+    var paciente_id = valor;
+   // agenda_id = $("#registroCollapse").data("calid");
 
     $.getJSON( "/registro/"+paciente_id, function( data ) {
        let r = data;
@@ -291,10 +290,10 @@ $("a[id=nav-contact-tab]").on('click',function(){
        $("#nav-contact").empty();
 
        $.each(r,function(key,value){
-        let data = formateData(value.data)
+        let data = formateData(value.dataAgendamento)
         $("#nav-contact").append(`
         <div>
-        <p class='nameP'"><a href="${"#cont-"+contador}" name="tt" style="cursor:pointer" data-toggle='collapse' > ${data}</a></p>
+        <h5 class='nameP'"><a href="${"#cont-"+contador}" name="tt" style="cursor:pointer;" data-toggle='collapse' >Agendamento do dia: <h6 class="badge badge-pill badge-primary">${data}</h6></a></h5>
         <div id="cont-${key}" class='panel-collapse collapse ${contador}'>
         <div class='panel-body'>
         <div class=' container row' id='conteudo'>
@@ -353,11 +352,8 @@ $("a[id=nav-contact-tab]").on('click',function(){
 
   
 
-})
+}
 
-$("a[name=tt]").on('click , hover',() => {
-    console.log(this.value);
-});
 
 
 
