@@ -144,28 +144,29 @@
                                 
                                     <td>
     
+                                               
                                                 <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="excluir"><i class="fas fa-trash"></i></button>
+                                             @if( $h->compareceu  == 'S')
                                                 <button type="button" id = "des" class="btn btn-outline-danger" value = "{{ $h->id }}" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
-                                    
+                                            @endif 
                                     
                                             @if ($h->primeiraVez != 'N' )
-                                            <a  class="btn btn-outline-primary"  href="{{ route('agenda.editarPaciente',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
+                                                <a  class="btn btn-outline-primary"  href="{{ route('agenda.editarPaciente',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
                                             @endif
 
                                             
                                             {{--   @if ($h->obs != null)
                                             @php $count++ @endphp
-                                            <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
+                                                <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
                                                 <!-- Button trigger modal -->
                                             @endif
                                                 --}}
 
                                             <button class="btn btn-outline-primary btn-edit " value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
-                                                <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
+                                            <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
                                              @if((isset($userMedico) && $h->atendido == 'N') && $h->compareceu  != 'N'  )
                                                  <a class="btn btn-outline-success" href="{{ route('medico.atendimento', ['id' => $h->id]) }}"  title="atender"><i class="fab fa-adn"></i></a>
-                                            
                                             @endif 
 
                                 </td>

@@ -193,7 +193,7 @@
             <div class="row">
 
         
-                <div class="col-1">
+                <div class="col-md-1 col-sm-6">
                     <div class="form-group">
                         <label for="tipo">Bebe</label>
                         <select class="form-control" name="bebe" id="bebe" required>
@@ -203,7 +203,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-1">
+                <div class="col-md-1 col-sm-6">
                     <div class="form-group">
                         <label for="tipo">Fuma</label>
                         <select class="form-control" name="fuma" id="fuma" required>
@@ -212,7 +212,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3 col-sm-10">
                     <div class="form-group">
                         <label for="tipo">Com qual frequencia realizar execicios fisicos?</label>
                         <select class="form-control" name="fisico" id="fisico" required>
@@ -224,10 +224,9 @@
                     </div>
                
                 </div>
-            </div> 
-            <div class="row">
+                
 
-                <div class="col-md-1">
+                <div class="col-md-1 col-sm-6">
                     <div class="form-group">
 
                         <label for="peso">Peso</label >
@@ -236,7 +235,7 @@
                     </div>
                 </div>
 
-                    <div class="col-md-1">
+                    <div class=" col-sm-6 col-md-1">
                     <div class="form-group">
 
                         <label for="peso">Altura</label >
@@ -245,7 +244,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-1">
+                <div class=" col-sm-5 col-md-1">
                     <div class="form-group">
 
                         <label for="peso">Pressâo</label >
@@ -254,7 +253,7 @@
                     </div>
                 </div>
 
-                    <div class="col-md-1">
+                    <div class="col-md-1 col-sm-6">
                         <div class="form-group">
 
                             <label for="peso">Pulso</label >
@@ -263,7 +262,7 @@
                         </div>
                   </div>
 
-                    <div class="col-md-1">
+                    <div class="col-md-1 col-sm-6">
                         <div class="form-group">
 
                             <label for="peso">Temperatura</label >
