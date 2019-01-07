@@ -175,49 +175,51 @@ class MedicoController extends Controller
             $tipo = $request['tipobusca'];
             $buscar = $request->input('search');
 
-                //  dd($request);
+              
 
-            if($tipo == null){
-                $agendamentos = Agenda::where('paciente', 'like', '%'.$buscar.'%')
-                    ->orWhere('cpf', 'like', '%'.$buscar.'%')
-                    ->orWhere('id',$buscar)
-                    ->paginate(4);
 
-                     
-            }
-           
             switch($tipo){
                 case "paciente":
-                $agendamentos = Agenda::where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+                
+
+                $agendamentos = Agenda::has('registro')
+               
+                ->where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
                 break;
 
                 case "cpf":
-                $agendamentos = Agenda::where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+                $agendamentos = Agenda::has('registro')
+                ->where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
                 break;
 
                 case "telefone":
-                $agendamentos = Agenda::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(4);
+                $agendamentos = Agenda::has('registro')->where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(4);
                 break;
 
                 case "data":
-                $agendamentos = Agenda::where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+                $agendamentos =Agenda::has('registro')->where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
                 break;
 
                 case "id":
-                $agendamentos = Agenda::where($tipo,'=',$buscar)->paginate(4);
+                $agendamentos = Agenda::has('registro')->where($tipo,'=',$buscar)->paginate(4);
 
                 case "medico":
-                $agendamentos = Agenda::where($tipo,'like', '%'.$buscar.'%')->paginate(4);
+                $agendamentos = Agenda::has('registro')->where($tipo,'like', '%'.$buscar.'%')->paginate(4);
                 break;
 
             }
-
-
 
 
 
             return view('medico.RegistroClinico' , compact('agendamentos'))->with('tipobusca', $tipo)
             ->with('search', $buscar);
+    }
+
+     function getRegistros($id){
+        $registros = RegistroClinico::where('agenda_id',$id)->first();
+    
+        return json_encode($registros);
+
     }
 
 }

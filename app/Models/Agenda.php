@@ -36,5 +36,11 @@ class Agenda extends Model
         'atendido',
     );
 
+        public function registro(){
+
+            return  $this->hasOne("App\Models\RegistroClinico", 'agenda_id', 'id'  );
+
+    }
+
 
 }
