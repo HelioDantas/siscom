@@ -99,7 +99,7 @@
 <hr>
 <div class = 'container-fluid col-lg-12 corpo-paciente'>
     <div class =" yyyyy">
-
+         <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
         <div class = '  opcoesDeNavegacao '>
             
               {!! Form::open(['route' => 'medico.registro','method ' => 'post','name'=>'form']) !!} @csrf
@@ -109,25 +109,23 @@
                         <label class="sr-only" for="inlineFormInput">Pesquisa</label>
                         <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Nome, prontuario">
                     </div>
+              
                     <div class="col-auto">
-                    <button type="submit" class="btn btn-secondary mb-2">Search</button>
+                        <button type="submit" class="btn btn-secondary mb-2">Search</button>
                     </div>
-                    
+                </div>
                  
 
               {!! Form::close() !!}  
             
         </div>
 
-        <div class= 'right'>
-            
-            <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
-      
- 
-            
-          
 
-        </div>
+    </div>
+
+
+    <div class = 'container-fluid'>
+
 
     </div>
 
