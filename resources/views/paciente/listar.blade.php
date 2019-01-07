@@ -215,7 +215,7 @@
 
 				<p></p>
 
-				@endif {!!$pacientes->links()!!}
+				@endif {!!$pacientes->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
 			</div>
 		</div>
 

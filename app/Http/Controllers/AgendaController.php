@@ -323,4 +323,51 @@ class AgendaController extends Controller
         return json_encode($data);
 
     }
+
+
+
+     public static function buscar(Request $request){
+         $tipo = $request['tipobusca'];
+         $buscar = $request->input('search');
+
+       //  dd($request);
+
+        if($tipo == null){
+               $pacientes = Agenda::where('paciente', 'like', '%'.$buscar.'%')
+                ->orWhere('cpf', 'like', '%'.$buscar.'%')
+                ->orWhere('id',$buscar)
+                ->paginate(10);
+
+
+        }
+
+        switch($tipo){
+            case "paciente":
+            $pacientes = Agenda::where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+            break;
+
+            case "cpf":
+            $pacientes = Agenda::where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+            break;
+
+            case "telefone":
+            $pacientes = Agenda::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
+            break;
+
+            case "data":
+            $pacientes = Agenda::where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+            break;
+
+            case "id":
+            $pacientes = Agenda::where($tipo,'=',$buscar)->paginate(4);
+
+             case "medico":
+            $pacientes = Agenda::where($tipo,'like', '%'.$buscar.'%')->paginate(4);
+            break;
+
+        }
+
+            return $pacientes;
+
+      }
 }

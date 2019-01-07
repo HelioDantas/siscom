@@ -212,7 +212,7 @@
 
 
                     @endif
-                    {!!$funcionarios->links()!!}
+                    {!!$funcionarios->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
                
 
                  </div>
