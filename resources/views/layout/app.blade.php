@@ -133,16 +133,16 @@
                     </div>
                   </div>
                 </li>
-             {{--    <!--
+            
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Medicos</button>
                     <div class="dropdown-content">
-
+                      <a href="{{ route('medico.RegistrosClinicos') }}" >Registros Clinicos</a>
                     </div>
                   </div>
                 </li>
-              -->
+               {{--    
                 <!--
                 <li class="nav-item">
                   <div class="dropdown">
