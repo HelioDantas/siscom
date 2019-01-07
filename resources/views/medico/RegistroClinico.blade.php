@@ -70,7 +70,7 @@
       
   
     
-     margin: auto;
+     margin-bottom: 2rem;
 
  }
   .infosPaciente{
@@ -78,9 +78,9 @@
   }
  .right {
  
-   margin-left: 7%;
-  display: inline-block;
-    width: 80%;
+
+  display: inline;
+   
 
 }
   .btnTop{
@@ -91,6 +91,40 @@
     .modal-body {  width:100%; } 
  
 
+	.titulopacientes {
+		display: ruby-base-container;
+	}
+
+     @media(max-width: 1350px){
+        .titulopacientes{
+
+                 margin-left: 10%; 
+        }
+    }
+       @media(max-width: 1550px ){
+        .respom{
+
+                 margin-left: 30%; 
+        }
+    }
+
+         @media(max-width: 2050px ){
+        .respom{
+
+                 margin-left: 45%; 
+        }
+    }
+
+
+    .fixed_header {
+  display:block;
+  overflow:auto;
+ 
+  height:33rem;
+
+  
+ 
+}
 </style>
 
 @endsection
@@ -98,16 +132,28 @@
 @section('telaListarPaciente')
 <hr>
 <div class = 'container-fluid col-lg-12 corpo-paciente'>
+         <h3 class="titulopacientes respom">Registros Clinicos</h3>
     <div class =" yyyyy">
          <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
         <div class = '  opcoesDeNavegacao '>
             
-              {!! Form::open(['route' => 'medico.registro','method ' => 'post','name'=>'form']) !!} @csrf
+              {!! Form::open(['route' => 'medico.BuscarPorRegistrosClinicos','method ' => 'post','name'=>'form']) !!} @csrf
               
                   <div class="form-row align-items-center">
+                  <div class="col-auto">
+                    <select name="tipobusca" id="tipobusca"class="form-control  mb-2" >
+					<option value="" selected>Selecione</option>
+					<option value="paciente">paciente</option>
+					<option value="data">data</option>
+					<option value="medico">medico</option>
+					<option value="telefone">telefone</option>
+					<option value="celular">celular</option>
+					<option value="cpf">cpf</option>
+				</select>
+                     </div>
                     <div class="col-auto">
                         <label class="sr-only" for="inlineFormInput">Pesquisa</label>
-                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Nome, prontuario">
+                        <input type="text" name = 'search'class="form-control mb-2" id="inlineFormInput" placeholder="Nome, prontuario">
                     </div>
               
                     <div class="col-auto">
@@ -124,10 +170,49 @@
     </div>
 
 
-    <div class = 'container-fluid'>
+    <div class = 'right yyyyy container table-responsive'>
+       @if (isset($agendamentos))
 
+            <table class="table table-hover ">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">horario      </th>
+                <th scope="col">paciente     </th>   
+                <th scope="col">cpf          </th>
+                <th scope="col">telefone     </th> 
+                <th scope="col">celular     </th>     
+                <th scope="col">opções       </th>
+            </tr>
+            </thead>
+            <tbody>
+        
+            
+                    @foreach ($agendamentos as $h)
+                        <tr>
+                            <td>{{ $h->hora }}</td>
+                            <td>{{ $h->paciente }}</td>
+                            <td>{{ $h->cpf }}</td>
+                            <td>{{ $h->telefone }}</td>
+                            <td>{{ $h->celular }}</td>
+                        <td>                                               
+                            <button type="button" class="btn btn-outline-danger ui-front" data-catid = {{ $h->id }} data-toggle="modal" data-target='#delete' title="desmarcar"><i class="fas fa-times"></i></button>
+                        
+                        </td>
+                    </tr>
+                        @endforeach
+            
+                    
+            
+            </tbody>
+            </table>
+                       
+                        	{!!$agendamentos->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
+                   
+                     @endif   
 
     </div>
+
+    <div class = ' right container '>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
          <li class="nav-item">
@@ -286,7 +371,7 @@
                       <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Observações:</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observacoes" placeholder="Observações"></textarea>
-                </div>   
+                    </div>   
                   
             </div>
 
@@ -296,8 +381,8 @@
 
           
     </div>
-                
-       
+           
+  </div>     
 </div>
                      
                     

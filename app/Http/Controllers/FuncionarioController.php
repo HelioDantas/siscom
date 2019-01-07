@@ -118,7 +118,8 @@ class FuncionarioController extends Controller
         }
 
         
-        return view('funcionario.listar', compact('funcionarios'));
+        return view('funcionario.listar', compact('funcionarios'))->with('tipobusca', $tipo)
+            ->with('search', $buscar);
 
     }
 

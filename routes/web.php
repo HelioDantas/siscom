@@ -91,7 +91,7 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
     Route::post('registro2' , 'RegistroClinicoController@novoRegistro')                    ->name('novo.registro');
     Route::post('registro' , 'MedicoController@novoRegistro')                           ->name('medico.registro');
     Route::get('RegistrosClinicos/{id?}', 'MedicoController@RegistrosClinicos')                     ->name('medico.RegistrosClinicos');
-
+     Route::any('BuscarPorRegistrosClinicos', 'MedicoController@BuscarPorRegistrosClinicos')                     ->name('medico.BuscarPorRegistrosClinicos');
 
    
     

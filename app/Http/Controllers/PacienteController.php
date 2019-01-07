@@ -83,7 +83,8 @@ class PacienteController extends Controller
 
         }
 
-            return view('paciente.listar' , compact('pacientes'));
+            return view('paciente.listar' , compact('pacientes'))->with('tipobusca', $tipo)
+            ->with('search', $buscar);;
 
       }
 
