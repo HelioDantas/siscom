@@ -91,8 +91,8 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
     Route::post('registro2' , 'RegistroClinicoController@novoRegistro')                    ->name('novo.registro');
     Route::post('registro' , 'MedicoController@novoRegistro')                           ->name('medico.registro');
     Route::get('RegistrosClinicos/{id?}', 'MedicoController@RegistrosClinicos')                     ->name('medico.RegistrosClinicos');
-     Route::any('BuscarPorRegistrosClinicos', 'MedicoController@BuscarPorRegistrosClinicos')                     ->name('medico.BuscarPorRegistrosClinicos');
-
+    Route::any('BuscarPorRegistrosClinicos', 'MedicoController@BuscarPorRegistrosClinicos')                     ->name('medico.BuscarPorRegistrosClinicos');
+    Route::get('/get/Registro/{id}', 'MedicoController@getRegistros');
    
     
 });
@@ -215,6 +215,7 @@ Route::get('cpf/{cpf}', 'PacienteController@buscarCpf')->middleware('Autorizador
 Route::get('nome/{nome}', 'PacienteController@buscarNome')->middleware('Autorizador');
 Route::get('/get/data/agd/{id}', 'AgendaController@getAgendamentos');
 Route::get('registro/{paciente_id}', 'RegistroClinicoController@getAjax');
+
 
 
 

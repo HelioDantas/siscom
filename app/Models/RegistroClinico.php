@@ -36,7 +36,7 @@ class RegistroClinico extends Model
    
     public function agenda(){
 
-     return  $this->hasMany("App\Models\Agenda", 'id', 'agenda_id'  );
+     return  $this->belongsTo("App\Models\Agenda", 'agenda_id', 'id');
 
     }
 
