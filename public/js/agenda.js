@@ -270,23 +270,32 @@ $(document).on('click', '#historico', function(e){
 
 
 // registro clinico
+formateData = date => {
+    data  = new Date(date);
+    data.setDate(data.getDate() + 1);
+                   
+
+data = data.toLocaleDateString('pt-br');
+return data;
+}
 
 $("a[id=nav-contact-tab]").on('click',function(){
-    let paciente_id = this.value;
+    var paciente_id = this.value;
    // agenda_id = $("#registroCollapse").data("calid");
     console.log(this.value);
 
 
     $.getJSON( "/registro/"+paciente_id, function( data ) {
        let r = data;
-       var contador;
+       var contador=0 ;
        $("#nav-contact").empty();
 
        $.each(r,function(key,value){
+        let data = formateData(value.data)
         $("#nav-contact").append(`
         <div>
-        <p class='nameP'><a href="#${contador}" class="a-cout" style="cursor:pointer" data-toggle='collapse' > ${value.id} ordenando</a></p>
-        <div id="${contador}" class='panel-collapse collapse'>
+        <p class='nameP'"><a href="${"#cont-"+contador}" name="tt" style="cursor:pointer" data-toggle='collapse' > ${data}</a></p>
+        <div id="cont-${key}" class='panel-collapse collapse ${contador}'>
         <div class='panel-body'>
         <div class=' container row' id='conteudo'>
             <div class='col-3'>
@@ -338,7 +347,7 @@ $("a[id=nav-contact-tab]").on('click',function(){
        
        });
 
-       $('.collapse').collapse("toggle");  
+ 
 });
   
 
@@ -346,9 +355,9 @@ $("a[id=nav-contact-tab]").on('click',function(){
 
 })
 
-$(".nameP").on('click',() => {
-    console.log('foi');
-    });
+$("a[name=tt]").on('click , hover',() => {
+    console.log(this.value);
+});
 
 
 

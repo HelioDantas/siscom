@@ -128,7 +128,7 @@
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                       <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sinais vitais e dados antropométricos</a>
                                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Atendimento</a>
-                                      <a class="nav-item nav-link  " id="nav-contact-tab"   value= {{ $paciente->id  }} data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
+                                      <a class="nav-item nav-link  " id="nav-contact-tab"   value= "{{ $paciente->id  }}" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Registro Clinico</a>
                                     </div>
                                   </nav>
 
@@ -280,39 +280,7 @@
 
                                       <!-- fazer um foreach com as infos dos registros e de algum jeio mandar pro colapse -->
                                     
-                                     {{--  <div id="accordianId" role="tablist" aria-multiselectable="true">
-                                            
-                                                
-                                                    <p class="mb-0">
-                                                        <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true" aria-controls="section1ContentId">
-                                                  Section 1
-                                                </a>
-                                            </p>
-                                                
-
-                                                <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
-                                                    <div class="card-body">
-                                                        Section 1 content
-                                                    </div>
-                                                </div>
-                                            
-
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="section2HeaderId">
-                                                    <h5 class="mb-0">
-                                                        <a data-toggle="collapse" data-parent="#accordianId" href="#section2ContentId" aria-expanded="true" aria-controls="section2ContentId">
-                                                  Section 2
-                                                </a>
-                                                    </h5>
-                                                </div>
-                                                <div id="section2ContentId" class="collapse in" role="tabpanel" aria-labelledby="section2HeaderId">
-                                                    <div class="card-body">
-                                                        Section 2 content
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                         --}}
+                                     
                                 </div><!-- nav bar lateral -->
                             </div><!-- corpo da navbar lateral -->
                     </section>
@@ -359,7 +327,7 @@ function tempo(){
 
 
 </script>
-<script> $('.collapse').collapse("toggle");  </script>
+
     <script type="text/javascript" src="{{ asset('js/buscaAjax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/agenda.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
