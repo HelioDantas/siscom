@@ -61,24 +61,19 @@ class PacienteController extends Controller
         }
 
         switch($tipo){
-            case "nome":
-            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
-            break;
-
-            case "cpf":
-            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
-            break;
-
+    
             case "telefone":
             $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
             break;
 
-            case "celular":
-            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
-            break;
-
             case "id":
             $pacientes = Paciente::where($tipo,'=',$buscar)->paginate(10);
+            break;
+            case "":
+            break;
+
+            default:
+            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
             break;
 
         }
@@ -302,6 +297,7 @@ class PacienteController extends Controller
      
 
     }
+
       public function buscarNome( $buscar)
     {
         $Funcionarios = Paciente::where('nome', '=', $buscar)->get();

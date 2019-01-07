@@ -279,70 +279,76 @@ $("a[id=nav-contact-tab]").on('click',function(){
 
     $.getJSON( "/registro/"+paciente_id, function( data ) {
        let r = data;
-       let contador;
+       var contador;
        $("#nav-contact").empty();
+
        $.each(r,function(key,value){
-        $("#nav-contact").append(
-        "<a class='tete' data-toggle='collapse' ><p>"+ value.id +" ordenando os bgl </p></a>"+
-        "<div id='"+contador+"' class='panel-collapse collapse'>"+
-        "<div class='panel-body'>"+
-        "<div class=' container row' id='conteudo'>"+
-           " <div class='col-3'>"+
-            "<label >queixaPrincipal:</label>"+
-            "<span id=''>"+value.queixaPrincipal+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >historia:</label>"+
-            "<span id=''>"+value.historia+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >tempo_atendimento:</label>"+
-            "<span id=''>"+value.tempo_atendimento+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >prognostico:</label>"+
-            "<span id=''>"+value.prognostico+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >observacoes:</label>"+
-            "<span id=''>"+value.observacoes+"</span>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >Nome:</label>"+
-            "<span id=''>"+value.orientacao+"</span>"+
-          "</div>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >problemas:</label>"+
-            "<span id=''>"+value.problemas+"</span>"+
-          "</div>"+
-          "</div>"+
-          " <div class='col-3'>"+
-            "<label >historicoFamiliar:</label>"+
-            "<span>"+value.historicoFamiliar+"</span>"+
-          "</div>"+
-          
+        $("#nav-contact").append(`
+        <div>
+        <p class='nameP'><a href="#${contador}" class="a-cout" style="cursor:pointer" data-toggle='collapse' > ${value.id} ordenando</a></p>
+        <div id="${contador}" class='panel-collapse collapse'>
+        <div class='panel-body'>
+        <div class=' container row' id='conteudo'>
+            <div class='col-3'>
+            <label >queixaPrincipal:</label>
+            <span id=''>${value.queixaPrincipal}</span>
+          </div>
+           <div class='col-3'>
+            <label >historia:</label>
+            <span id=''>${value.historia}</span>
+          </div>
+           <div class='col-3'>
+            <label >tempo_atendimento:</label>
+            <span id=''>${value.tempo_atendimento}</span>
+          </div>
+           <div class='col-3'>
+            <label >prognostico:</label>
+            <span id=''>${value.prognostico}</span>
+          </div>
+           <div class='col-3'>
+            <label >observacoes:</label>
+            <span id=''>${value.observacoes}</span>
+          </div>
+           <div class='col-3'>
+            <label >Nome:</label>
+            <span id=''>${value.orientacao}</span>
+          </div>
+          </div>
+           <div class='col-3'>
+            <label >problemas:</label>
+            <span id=''>${value.problemas}</span>
+          </div>
+          </div>
+           <div class='col-3'>
+            <label >historicoFamiliar:</label>
+            <span>${value.historicoFamiliar}</span>
+          </div>
+           <div class='col-3'>
+            <label >obsPessoal:</label>
+            <span >${value.obsPessoal}</span>
+          </div>
 
-          " <div class='col-3'>"+
-            "<label >obsPessoal:</label>"+
-            "<span >"+value.obsPessoal+"</span>"+
-          "</div>"+
+          </div>
+          </div>
+          </div>
+          </div>
+          `);
 
-          "</div>"+
-          "</div>"+
-          "</div>"
-        )
         contador++; 
-       })
+       
+       });
 
-    
-      });
+       $('.collapse').collapse("toggle");  
+});
   
-   
+
+  
 
 })
-$("a[class='tete'").on('click',function(){
-   console.log('foi');
-})
 
-$('.collapse').collapse("toggle");
+$(".nameP").on('click',() => {
+    console.log('foi');
+    });
+
+
+
