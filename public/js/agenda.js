@@ -75,7 +75,7 @@ $(document).ready(function () {
     
 
 
-$("#plano").change(function(){
+$("#plano").on(' show.bs.modal,blur, change',function(){
     var plano = this.value;  
         console.log(this.value);
     $.getJSON('/get/proced/' +plano , function(proceds){
@@ -180,12 +180,16 @@ $(document).on('click', '#des',  function(event){
                     $('option[class = opt]').remove();
                  
                   
-                  plano.append('<option class="opt" selected value=' + dat[0]['plano_id'] + '>' +dat[0]['planoNome'] + ' - Paciente </option>')
+                  plano.append('<option class="opt" selected value=' + dat[0]['plano_id'] + '>' +dat[0]['planoNome'] + ' - Paciente </option>');
 
            });
          
+          
+   
+       })
+         
 
-     });
+     
          $("#paciente").blur(function(){
            $.getJSON( '/nome/' + this.value  , function(nome){
                var funcionario = nome;
@@ -202,7 +206,7 @@ $(document).on('click', '#des',  function(event){
            
             });
 
-});
+
 
 
         $('#pv').on('show.bs.modal , click', function(event){
@@ -359,7 +363,4 @@ function colapseRegistroClinico(valor){
   
 
 }
-
-
-
-
+})
