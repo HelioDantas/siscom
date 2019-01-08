@@ -22,13 +22,13 @@ class PlanoController extends Controller
     }
 
     function assocPlano(Request $request){
-        
 
-        if($request['inativo_id'] == null){
+
+        if($request['inativo_id'] == null  && !empty($request['inativo_id'])){
 
             $plano = Plano::create($request->all());
 
-        }else if($request['inativo_id'] !== null){
+        }else if($request['inativo_id'] !== null  && !empty($request['inativo_id'])){
             DB::table('sis_plano')->where('id',$request['inativo_id'])->update(['status'=> 'ATIVO']);
 
         }
@@ -42,7 +42,7 @@ class PlanoController extends Controller
 
      //return dd(  $plano->update(['status' => 'INATIVO']));
         DB::table('sis_plano')->where('id',$id)->update(['status'=> 'INATIVO']);
-        
+
         return redirect()->back();
     }
 

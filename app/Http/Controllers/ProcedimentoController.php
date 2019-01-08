@@ -14,7 +14,7 @@ class ProcedimentoController extends Controller
     function detalhe($id){
 
         $convenio = Convenio::find($id);
-      
+
          dd($plano = $convenio->planos()->first());
          $procedimentos = $plano->procedimentos()->get();
 
@@ -25,13 +25,13 @@ class ProcedimentoController extends Controller
 
         dd($procedimentos);*/
        // DB::table('')
-        
+
 
         //$planos = $convenio->planos()->where('status','ATIVO')->paginate(5);
         //dd($planos);
-        
+
         $inativos =  $plano->pivot->where('status','INATIVO')->get();
-       
+
 
         return view('procedimento.detalhe' , compact('convenio','procedimentos','inativos'));
 
@@ -46,19 +46,19 @@ class ProcedimentoController extends Controller
 
     function assocDelete($plano_id,$proced_id){
         //  Plano::find($id)->update(['status'=> 'INATIVO']);
-  
+
        //return dd(  $plano->update(['status' => 'INATIVO']));
           DB::table('sis_plano_procedimento')->where('plano_id',$plano_id)->where('procedimento_id',$proced_id)->update(['status'=> 'INATIVO']);
-          
+
           return redirect()->action('ProcedimentoController@novo', ['id' => $plano_id]);
       }
 
 
       function planoAssoc(Request $request){
-          
-          
+
+
         if($request['inativo'] == null){
-dd($request);
+           // dd($request);
             $proced = procedimento::create([
             'especialidade_id' => $request['especialidade_id'],
             'codTuss' =>  $request['ProcedCodTuss'],
@@ -68,10 +68,10 @@ dd($request);
             DB::insert('insert into sis_plano_procedimento (plano_id , procedimento_id,descricao,precoPlano ) values (?, ?,?,?)',
              [$request['plano_id'], $proced->codTuss ,$proced->descricao, $request['ProcedPreco']]);
                 return redirect()->back();
-           
+
 
         }else if($request['inativo'] !== null){
-          
+
             DB::table('sis_plano_procedimento')->where('procedimento_id',$request['inativo'])->update(['status'=> 'ATIVO']);
             return redirect()->back();
 
@@ -81,7 +81,7 @@ dd($request);
 
       }
 
-     
-  
+
+
 
 }

@@ -222,9 +222,9 @@
                 @php $cont = $cont + 1; @endphp
 
               <tr class="Filter">
-              <th scope="row">{{$permissao->nome}}</th>
+              <th scope="row">{{$permissao->id}}</th>
 
-                 <td class="">{{$permissao->id}} </td>
+                 <td class="">{{ $permissao->nome }} </td>
 
 
                 <td>
