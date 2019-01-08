@@ -1,18 +1,18 @@
 @extends('layout.app')
-  @section('links')   
+  @section('links')
         <link rel="stylesheet" href="{{ URL::to('https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css') }}">
           <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- 
+
     @endsection
  @section('estilos')
 <style>
-  
+
     .tdEspaco { display: table; float:left; margin-right:10px }
-  
+
     .save{
         margin-top: 2rem;
         float:right;
-        
+
     }
     .back{
         margin-top: 2rem;
@@ -20,9 +20,9 @@
         padding-left: 1rem;
     }
     .ctt{
-      
+
    -ms-flex-align: center;
-     
+
      }
      .lista{
          margin-top: 1rem;
@@ -35,7 +35,7 @@
 
             text-align: center;
      }
-   
+
      #detalheTop{
         margin-top: 5%;
      }
@@ -43,20 +43,20 @@
      margin: auto;
     width: 50%;
     padding: 10px;
-   
+
     text-align: center;
- 
+
 
    }
-  
+
 .fixed_header {
   display:block;
   overflow:auto;
- 
+
   height:33rem;
 
-  
- 
+
+
 }
 .ui-front {
     z-index: 9999;
@@ -67,10 +67,10 @@
 }
 
 
- 
+
 .modal-content {width: 700px !important; margin-left:-20%;}
-    .modal-body {  width:100%; } 
- 
+    .modal-body {  width:100%; }
+
 
 </style>
 
@@ -83,37 +83,37 @@
            <a class="btn btn-outline-secondary ladoDireito"  href="{{route('dashboard')}}" data-toggle="tooltip" title="Voltar"><i class="fas fa-share"></i></a>
             <a class="btn btn-outline-success ladoDireito" data-toggle="modal" data-target=".bd-example-modal-x" title="Agendar"> <i class="fas fa-plus-circle"></i></a>
             <div class = 'row contentBusca'>
-            
+
                         <div class="col-4 center">
                                  @if(isset($userMedico))
                                     @include('components.VisaoDoMedicoNaAgenda')
-                                    
+
                                 @else
-                                     
+
                                     @include('components.VisaoDaAtendenteNaAgenda')
                                 @endif
                         </div>
-                    
-                    
 
-                    <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
+
+
+                    <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">
 
                         <table class="table table-hover">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">horario      </th>
-                            <th scope="col">paciente     </th>   
+                            <th scope="col">paciente     </th>
                             <th scope="col">cpf          </th>
                             <th scope="col">telefone     </th>
-                            <th scope="col">celular     </th>   
-                            <th scope="col">idade     </th>     
-                            <th scope="col" style="display:none" >Ult.Consulta     </th>     
-                            <th scope="col">primeiraVez     </th>   
+                            <th scope="col">celular     </th>
+                            <th scope="col">idade     </th>
+                            <th scope="col" style="display:none" >Ult.Consulta     </th>
+                            <th scope="col">primeiraVez     </th>
 
-                            <th scope="col">compareceu     </th>  
-                            <th scope="col">pago     </th>     
-                                        
-                        
+                            <th scope="col">compareceu     </th>
+                            <th scope="col">pago     </th>
+
+
 
                             <th scope="col">opções       </th>
                         </tr>
@@ -122,7 +122,7 @@
                             @if (isset($agendamentos))
                             @php $count=0; @endphp
                               @foreach ($agendamentos as $h)
-                                    @if( $h->compareceu  == 'N') 
+                                    @if( $h->compareceu  == 'N')
                                          <tr class = "id{{$h->id}} alert alert-danger">
                                     @elseif($h->atendido == 'S')
                                         <tr class = "id{{$h->id}} alert alert-success">
@@ -140,40 +140,32 @@
                                     <td>{{ $h->compareceu }}</td>
                                     <td>{{ $h->pago }}</td>
                                     <td style="display:none">{{ $h->obs }}</td>
-                                    
-                                
+
+
                                     <td>
-    
-                                               
+
+
                                                 <button type="button" class="btn btn-outline-danger" data-catid = "{{ $h->id }}" data-toggle="modal" data-target='#delete' title="excluir"><i class="fas fa-trash"></i></button>
                                              @if( $h->compareceu  == 'S')
                                                 <button type="button" id = "des" class="btn btn-outline-danger" value = "{{ $h->id }}" data-catid = "{{ $h->id }}" data-toggle="modal" data-target="#exampleModalCenter" title="desmarcar"><i class="fas fa-times"></i></button>
-                                            @endif 
-                                    
+                                            @endif
+
                                             @if ($h->primeiraVez != 'N' )
                                                 <a  class="btn btn-outline-primary"  href="{{ route('agenda.editarPaciente',['id' => $h->paciente_id  ]) }}" data-toggle="tooltip" data-placement="top" title="completar cadastro"><i class="fas fa-clipboard-list"></i></a>
                                             @endif
-
-                                            
-                                            {{--   @if ($h->obs != null)
-                                            @php $count++ @endphp
-                                                <a  class="btn btn-outline-primary" data-toggle="modal"  data-catid ="{{ $h->obs }}" data-target="#obs" title="observações"><i class="fas fa-align-left"></i></a>
-                                                <!-- Button trigger modal -->
-                                            @endif
-                                                --}}
 
                                             <button class="btn btn-outline-primary btn-edit " value = "{{$h->id}}" data-target="#update" title="editar"><i class="fas fa-edit"></i></button>
 
                                             <button class="btn btn-outline-primary" id =  "historico" value = "{{$h->paciente_id}}" data-target = ""  title="historico"><i class="fas fa-align-left"></i></button>
                                              @if((isset($userMedico) && $h->atendido == 'N') && $h->compareceu  != 'N'  )
                                                  <a class="btn btn-outline-success" href="{{ route('medico.atendimento', ['id' => $h->id]) }}"  title="atender"><i class="fab fa-adn"></i></a>
-                                            @endif 
+                                            @endif
 
                                 </td>
                             </tr>
                               @endforeach
-                        
-                              
+
+
                           @endif
                         </tbody>
                         </table>
@@ -188,21 +180,21 @@
                                                         </div>
                                                         <div class="modal-body">
                                                         Você deseja excluir o agendamento ?
-                                                        Não é possivel desfazer a operação. 
-                                                             
-                                                               {!! Form::open(['route' => 'agenda.destroy','method ' => 'post',]) !!} 
+                                                        Não é possivel desfazer a operação.
+
+                                                               {!! Form::open(['route' => 'agenda.destroy','method ' => 'post',]) !!}
                                                             <input type = "hidden" id = "id" name = "id" value = "" >
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                              
-                                                             
+
+
                                                             <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="excluir">Excluir</button>
                                                                   {!! Form::close() !!}
                                                         </div>
                                                     </div>
                                                 </div>
-                                        </div>  
+                                        </div>
 
                                                <div class="modal fade" id="desmarcar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter1" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -213,9 +205,9 @@
                                                         </div>
                                                         <div class="modal-body">
                                                         Você deseja desmarcar o agendamento ?
-                                                        
-                                                             
-                                                               {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!} 
+
+
+                                                               {!! Form::open(['route' => 'agenda.desmarcar','method ' => 'post',]) !!}
                                                             <input type = "hidden" id = "id" name = "id" value = "" >
                                                               <div class="form-group ">
                                                                 <label for="inputPassword4">Obs</label>
@@ -224,14 +216,14 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                              
-                                                             
+
+
                                                             <button id="excluir"name = "excluir" class="btn btn-outline-danger" type="submit"   data-toggle="tooltip" data-placement="top" title="Desmarcar">Desmarcar</button>
                                                                   {!! Form::close() !!}
                                                         </div>
                                                     </div>
                                                 </div>
-                                        </div> 
+                                        </div>
 
                                   <!-- Modal -->
                                   <div class="modal fade" id="obs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -244,20 +236,20 @@
                                                             </button>
                                                     </div>
                                             <div class="modal-body">
-                
+
                                                 <div class="container-fluid" id="obss">
-                                                
+
                                                         <p id="p" value></p>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                             
+
                                <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="update" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -268,7 +260,7 @@
                                                             </button>
                                                     </div>
                                             <div class="modal-body">
-                                                {!! Form::open(['route' => 'agenda.update','method ' => 'post',]) !!} 
+                                                {!! Form::open(['route' => 'agenda.update','method ' => 'post',]) !!}
                                                    @csrf
                                                 {{ method_field('PUT') }}
                                                 <input type="hidden" name="paciente_id" id="paciente_id">
@@ -288,12 +280,12 @@
                                                                                         @continue
 
                                                                                     @endif
-                                                                                @endforeach 
-                                                                           <optgroup> 
+                                                                                @endforeach
+                                                                           <optgroup>
                                                                     @endforeach
-            
+
                                                                     @endif
-                                                                        
+
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -305,12 +297,12 @@
                                           </div>
                                         </div>
                                         <div class="row">
-                                                
+
                                                         <div class="col-3">
                                                             <div class="form-group">
                                                                 <label for="tipo">primeiraVez</label>
                                                                 <select class="form-control" name="primeiraVez" id="primeiraVez" required>
-                                                              
+
                                                                     <option>S</option>
                                                                     <option>N</option>
                                                                 </select>
@@ -339,20 +331,20 @@
                                                         <label for="inputPassword4">Obs</label>
                                                         <textarea  type="text" class="form-control" rows="5" name="obs" placeholder="obs"></textarea>
                                                       </div>
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                   <button id="excluir"name = "Salvar" class="btn btn-primary" type="submit"   data-toggle="tooltip" data-placement="top" title="Salvar">Salvar</button>
-                                               
+
                                                  {!! Form::close() !!}
-                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                        
+
                               <div class="modal fade" id="historicoPaciente" tabindex="-1" role="dialog" aria-labelledby="historicoPaciente" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content" style = 'width: 300% !important; margin-left:-25rem;'>
@@ -363,41 +355,41 @@
                                                             </button>
                                                 </div>
                                             <div class="modal-body" style = ' height:100% !important; ' >
-                
-                                                <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">  
-                                              
+
+                                                <div class="table-responsive  fixed_header" style="overflow-x:auto, overflow-y:auto;">
+
                                                  <table class="table  table-hover">
-                                                                              
+
                                                                              <thead>
                                                                                  <tr>
-                                                                               
+
                                                                                  <th>    Data     </th>
                                                                                  <th>Hora</th>
                                                                                  <th>Medico</th>
-                                                            
+
                                                                                  <th>compareceu </th>
                                                                                  <th>pago </th>
                                                                                   <th>status </th>
                                                                                  <th>Observação </th>
-                                                    
+
                                                                                 </tr>
                                                                              </thead>
                                                                              <tbody class = 'js-historico'>
                                                                                 <tr  >
-                                                                                    
+
                                                                                 </tr>
                                                                              </tbody>
                                                                          </table>
-                                                       
+
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                
+
                                             </div>
                                         </div>
                                     </div>
-                                
+
                                  </div>
 
                                 @if (session('metodos'))
@@ -423,9 +415,9 @@
                         </div><!-- /.modal-dialog -->
                         </div>
                     @endif
-                                        
-                        
-                 
+
+
+
        <form action="{{ route('agenda.agendar') }}" method="POST">
              @method('POST')
               @csrf
@@ -447,7 +439,7 @@
                       <div class="modal-content">
                           <div class="modal-header">
                             <!--<button type="button" class="close" data-dismiss="modal">
-                               
+
                             </button> -->
                             <h4 text-center>Novo Agendamento</h4>
                           </div>
@@ -474,7 +466,7 @@
                                     </div>
                                   </div>
                             </div>
-                              <div class="row"> 
+                              <div class="row">
                                   <div class="col-md-12">
 
                                 <div class="form-group ">
@@ -484,9 +476,9 @@
                                 </div>
                               </div>
                                    <div class="row">
-                                     
 
-                                      
+
+
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="telefone">telefone</label>
@@ -507,33 +499,33 @@
                                                     <div class="form-group">
                                                         <label for="telefone">plano</label>
                                                         <select class="form-control" name="plano" id="plano">
-                                                        
+
                                                         @if (isset($medPlanos) && !empty($medPlanos))
                                                         <option value=""></option>
                                                         @foreach ($convenios as $c)
                                                                 <optgroup label="{{  $c->nome}}">
                                                                     @foreach ($medPlanos as $value)
                                                                         @if ($c->id == $value->convenio_id)
-                                                                            <option value="{{ $value->id }}">{{ $value->nome }}</option> 
+                                                                            <option value="{{ $value->id }}">{{ $value->nome }}</option>
                                                                             @endif
-                                                                    @endforeach 
-                                                               <optgroup> 
+                                                                    @endforeach
+                                                               <optgroup>
                                                         @endforeach
 
                                                         @endif
-                                                            
+
                                                         </select>
                                                     </div>
                                                 </div>
 
-                                           
+
 
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="tipo">procedimento</label>
                                                 <select class="form-control" name="procedimento_id" id="procedimentoMed" required>
                                                    <option value=""></option>
-                                             
+
                                                 </select>
                                             </div>
                                         </div>
@@ -549,7 +541,7 @@
                                     </div>
                                     <h4>Endereço</h4> -->
                                 </div>
-                               
+
                                     <hr>
                                     <div class="row">
                                           <div class="col-md-6">
@@ -565,8 +557,8 @@
                                             </div>
                                         </div>
 
-                        
-          
+
+
                           </div>
                           <div class="modal-footer">
                               <input type="submit" class="btn btn-primary" value="Agendar">
@@ -574,17 +566,17 @@
                       </div>
                   </div>
               </div>
-          
+
             </form>
 
 
 
-        
-                   
-      
 
 
-       
+
+
+
+
 
 @endsection
 

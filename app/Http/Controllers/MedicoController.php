@@ -80,54 +80,23 @@ class MedicoController extends Controller
 
     public function agenda(  $date = "five", $espec = ""  ){
 
-       // $especialidade = Especialidade::with('Medico.funcionario')->get();
-
-        //return dd($date);
         $medicoId = Auth::user()->funcionario->matricula;
         $med = Medico::find($medicoId);
         $userMedico = $med;
-
         if ($date == "five")
             $date = date("Y-m-d");
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
-
-       // $esp = Especialidade::with('Medico.funcionario')->get();
-
-
-
-
-          //  dd($medPlanos = $med->has('planos.procedimentos')->get());
-
-            $medPlanos = $med->planos()->has('procedimentos')->get();
-
-            $convenios = Convenio::all();
-      //Opção para teste
-       // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
-               // return dd($agendamentos);
-
-
-  //dd($esp);
-     if(!empty($espec)){
-         $esp = Especialidade::find($espec);
-
-
-         $especialidadesP = $esp->procedimentos()->get();
-        $DemaisEspecialidadesDoMedicoSemSerAEscolhida = $med->especialidade()->where('id', '!=', $espec)->get();
-         //dd($especialidadesP);
-
-     }
-     else{
-
-           $especialidade = $med->especialidade()->get();
-           //dd($especialidade);
-     }
-  //$especialidade = $med->especialidade()->get();
-
-
-
+        $medPlanos = $med->planos()->has('procedimentos')->get();
+        $convenios = Convenio::all();
+        if(!empty($espec)){
+            $esp = Especialidade::find($espec);
+            $especialidadesP = $esp->procedimentos()->get();
+            $DemaisEspecialidadesDoMedicoSemSerAEscolhida = $med->especialidade()->where('id', '!=', $espec)->get();
+        }
+        else{
+            $especialidade = $med->especialidade()->get();
+         }
         return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios', 'DemaisEspecialidadesDoMedicoSemSerAEscolhida', 'userMedico'));
-
-
 
 
     }
@@ -136,8 +105,11 @@ class MedicoController extends Controller
     public function atendimento(Request $request,$id = ''){
         if($id !== ""){
         $agenda = Agenda::find($id);
-        // if($agenda->atendido == 'S')
-          //  return back()->with("metodos", 'Paciente já ate atendido');
+         if($agenda->atendido == 'S')
+             return back()->with("metodos", 'Paciente já ate atendido');
+        if(AgendaController::VerficarSeAdataEInferiorAtual($agenda->data))
+            return redirect()->back()->with("metodos", 'O paciente não pode ser atendido em uma data diferente daquela marcada');
+
         $paciente =  Paciente::find($agenda->paciente_id);
 
 
@@ -171,13 +143,8 @@ class MedicoController extends Controller
 
        function BuscarPorRegistrosClinicos(Request $request){
 
-
             $tipo = $request['tipobusca'];
             $buscar = $request->input('search');
-
-
-
-
             switch($tipo){
                 case "paciente":
 
