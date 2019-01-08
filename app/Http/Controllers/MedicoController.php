@@ -184,27 +184,27 @@ class MedicoController extends Controller
 
                 $agendamentos = Agenda::has('registro')
 
-                ->where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+                ->where($tipo, 'like', '%'.$buscar.'%')->orderBy('data', 'desc')->paginate(4);
                 break;
 
                 case "cpf":
                 $agendamentos = Agenda::has('registro')
-                ->where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+                ->where($tipo, 'like', '%'.$buscar.'%')->orderBy('data', 'desc')->paginate(4);
                 break;
 
                 case "telefone":
-                $agendamentos = Agenda::has('registro')->where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(4);
+                $agendamentos = Agenda::has('registro')->where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->orderBy('data', 'desc')->paginate(4);
                 break;
 
                 case "data":
-                $agendamentos =Agenda::has('registro')->where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
+                $agendamentos =Agenda::has('registro')->where($tipo, 'like', '%'.$buscar.'%')->orderBy('data', 'desc')->paginate(4);
                 break;
 
                 case "id":
-                $agendamentos = Agenda::has('registro')->where($tipo,'=',$buscar)->paginate(4);
+                $agendamentos = Agenda::has('registro')->where($tipo,'=',$buscar)->orderBy('data', 'desc')->paginate(4);
 
                 case "medico":
-                $agendamentos = Agenda::has('registro')->where($tipo,'like', '%'.$buscar.'%')->paginate(4);
+                $agendamentos = Agenda::has('registro')->where($tipo,'like', '%'.$buscar.'%')->orderBy('data', 'desc')->paginate(4);
                 break;
 
             }
