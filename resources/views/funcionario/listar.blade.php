@@ -212,7 +212,12 @@
 
 
                     @endif
+                    @if (isset($search) && isset($tipobusca))
                     {!!$funcionarios->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
+                    @else
+                    {!!$funcionarios->links()!!}
+                    @endif
+                    
                
 
                  </div>

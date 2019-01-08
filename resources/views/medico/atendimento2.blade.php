@@ -76,7 +76,7 @@
                             </div>
                             <div class=" text-black ">
                                       @if (isset($paciente) && !empty($paciente))
-
+                                <!--      <p class="card-text" style="color:#2200ff;">Infos do paciente</p> -->
                                       <h5 class="card-title d-flex justify-content-center"><p class="card-text" style="color:#004d40 ;"> {{ $paciente->nome }}</p></h5>
                                       <div class="card-body ">
 
@@ -119,8 +119,9 @@
                                               </div>
                                             </div><!-- row -->
                                           </div>
-                                          <p class="card-text" style="color:#2200ff;">Infos do paciente</p>
+                                          
                                         </div><!-- card-body -->
+                                        
                                       </div><!-- card -->
                                       @endif
 

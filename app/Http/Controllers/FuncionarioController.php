@@ -114,11 +114,7 @@ class FuncionarioController extends Controller
         $tipo = $request['tipobusca'];
         $buscar = $request->input('search');
         if ($tipo == null) {
-            $funcionarios = Funcionario::where('nome', 'like', '%' . $buscar . '%')
-                ->orWhere('cpf', 'like', '%' . $buscar . '%')
-                ->orWhere('matricula', 'like', '%' . $buscar . '%')
-                ->paginate(10);
-
+            $funcionarios =  FuncionarioController::buscaGenerica($buscar);
         } else {
             $funcionarios = Funcionario::where($tipo, 'like', '%' . $buscar . '%')->paginate(10);
 
@@ -126,6 +122,13 @@ class FuncionarioController extends Controller
 
         return view('funcionario.listar', compact('funcionarios'));
 
+    }
+    function buscaGenerica($buscar){
+        $result = Paciente::where('nome', 'like', '%'.$buscar.'%')
+        ->orWhere('cpf', 'like', '%'.$buscar.'%')
+        ->orWhere('id',$buscar)
+        ->paginate(10);
+        return $result;
     }
 
     public function buscarCpf(Request $request, $buscar)

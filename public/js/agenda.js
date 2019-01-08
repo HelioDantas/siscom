@@ -293,10 +293,8 @@ function colapseRegistroClinico(valor){
         let data = formateData(value.dataAgendamento)
         $("#nav-contact").append(`
         <div>
-        <h5 class='nameP'"><a href="${"#cont-"+contador}" name="tt" style="cursor:pointer;" data-toggle='collapse' >Agendamento do dia: <h6 class="badge badge-pill badge-primary">${data}</h6></a></h5>
+        <h5 class='nameP'"><a href="${"#cont-"+contador}" name="tt" style="cursor:pointer;" data-toggle='collapse' >Atendimento do dia: <h6 class="badge badge-pill badge-primary">${data}</h6></a></h5>
         <div id="cont-${key}" class='panel-collapse collapse ${contador}'>
-        <div class='panel-body'>
-
         <div class=' container-fluid' id='conteudo'>
 
         <div class= "row">
@@ -314,7 +312,7 @@ function colapseRegistroClinico(valor){
             <label >tempo_atendimento:</label>
             <span id=''>${value.tempo_atendimento}</span>
           </div>
-          
+          </div>
           <div class="row">
            <div class='col'>
             <label >prognostico:</label>
@@ -345,7 +343,6 @@ function colapseRegistroClinico(valor){
           </div>
           </div>
          </div
-          </div>
           </div>
           </div>
           </div>

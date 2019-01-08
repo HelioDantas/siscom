@@ -48,34 +48,26 @@ class PacienteController extends Controller
 
     // filtro da tabela listar
     public function buscar(Request $request){
+        if($request['tipobusca'] !== null && $request->input('search') !== null){
          $tipo = $request['tipobusca'];
-        $buscar = $request->input('search');
+         $buscar = $request->input('search');
+            switch($tipo){
+                case "telefone":
+                $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
+                break;
 
-        if($tipo == null){
-               $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
-                ->orWhere('cpf', 'like', '%'.$buscar.'%')
-                ->orWhere('id',$buscar)
-                ->paginate(10);
+                case "id":
+                $pacientes = Paciente::where($tipo,'=',$buscar)->paginate(10);
+                break;
 
-
-        }
-
-        switch($tipo){
-    
-            case "telefone":
-            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
-            break;
-
-            case "id":
-            $pacientes = Paciente::where($tipo,'=',$buscar)->paginate(10);
-            break;
-            case "":
-            break;
-
-            default:
-            $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10);
-            break;
-
+                default:
+                $tipo !== null ? $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10) : $pacientes = PacienteController::buscaGenerica($buscar) ;
+                break;
+            }
+        }else{
+            $tipo = 'vazio';
+            $buscar = '*'; 
+            $pacientes =  PacienteController::buscaGenerica($buscar);
         }
 
             return view('paciente.listar' , compact('pacientes'))->with('tipobusca', $tipo)
@@ -83,6 +75,13 @@ class PacienteController extends Controller
 
       }
 
+      function buscaGenerica($buscar){
+        $result = Paciente::where('nome', 'like', '%'.$buscar.'%')
+        ->orWhere('cpf', 'like', '%'.$buscar.'%')
+        ->orWhere('id',$buscar)
+        ->paginate(10);
+        return $result;
+    }
 
     public function novo(Request $request)
     {

@@ -142,11 +142,11 @@
 							<td class="prontuario">
 								<strong> {{$p->id}} </strong>
 							</td>
-							<!--           <td>       {{$p->DataCadastro}}        </td>  -->
+			<!--           <td>       {{$p->DataCadastro}}        </td>  -->
 							<td class="nome"> {{$p->nome}} </td>
 							<td class="cpf"> {{$p->cpf}} </td>
 							<td> {{$p->identidade}} </td>
-							  <td>       {{$p->formatDate($p->dataDeNascimento)}}    </td>
+							<td>       {{$p->formatDate($p->dataDeNascimento)}}    </td>
 							{{--
 							<td> {{$p->sexo}} </td>
 							<td> {{$p->etnia}} </td> --}} {{--
@@ -215,7 +215,13 @@
 
 				<p></p>
 
-				@endif {!!$pacientes->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
+				@endif 
+				@if (isset($search) && isset($tipobusca))
+				{!!$pacientes->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
+				@else
+				{!!$pacientes->links()!!}
+				@endif
+				
 			</div>
 		</div>
 
