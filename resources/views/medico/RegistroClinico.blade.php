@@ -221,14 +221,17 @@ display: inline;
 
 
                                         </tbody>
-                                        {!!$agendamentos->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
 
                                         @endif
 
                                     </table>
-
-
-
+                                    @if (isset($agendamentos))
+                                        @if(isset($tipobusca))
+                                            {!!$agendamentos->appends(['search' => $search, 'tipobusca' => $tipobusca])->links()!!}
+                                        @else
+                                            {!!$agendamentos->links()!!}
+                                        @endif
+                                    @endif
                         </div>
 
                  </div>

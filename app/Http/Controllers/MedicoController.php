@@ -18,7 +18,7 @@ class MedicoController extends Controller
 {
 
 
-   
+
     public function desativar_plano(Request $request, $id, $plano_id){
 
         Medico::find($id)->planos()->updateExistingPivot($plano_id, ['status'=>'INATIVO']);
@@ -81,7 +81,7 @@ class MedicoController extends Controller
     public function agenda(  $date = "five", $espec = ""  ){
 
        // $especialidade = Especialidade::with('Medico.funcionario')->get();
- 
+
         //return dd($date);
         $medicoId = Auth::user()->funcionario->matricula;
         $med = Medico::find($medicoId);
@@ -92,14 +92,14 @@ class MedicoController extends Controller
         $agendamentos = Agenda::where('idMedico', $medicoId)->where('data', $date)->orderBy('hora')->get();
 
        // $esp = Especialidade::with('Medico.funcionario')->get();
-      
-    
-      
-       
+
+
+
+
           //  dd($medPlanos = $med->has('planos.procedimentos')->get());
-           
+
             $medPlanos = $med->planos()->has('procedimentos')->get();
-        
+
             $convenios = Convenio::all();
       //Opção para teste
        // $agendamentos = Agenda::where('idMedico',$medicoId)->get();
@@ -110,11 +110,11 @@ class MedicoController extends Controller
      if(!empty($espec)){
          $esp = Especialidade::find($espec);
 
-         
+
          $especialidadesP = $esp->procedimentos()->get();
         $DemaisEspecialidadesDoMedicoSemSerAEscolhida = $med->especialidade()->where('id', '!=', $espec)->get();
          //dd($especialidadesP);
-        
+
      }
      else{
 
@@ -123,7 +123,7 @@ class MedicoController extends Controller
      }
   //$especialidade = $med->especialidade()->get();
 
-   
+
 
         return view('agenda.teste', compact('especialidade','medicos','esp','agendamentos','med', 'medicoId', 'date','medPlanos','convenios', 'DemaisEspecialidadesDoMedicoSemSerAEscolhida', 'userMedico'));
 
@@ -140,21 +140,21 @@ class MedicoController extends Controller
           //  return back()->with("metodos", 'Paciente já ate atendido');
         $paciente =  Paciente::find($agenda->paciente_id);
 
-       
+
         }
 
         return view('medico.atendimento2' , compact('paciente','agenda'));
     }
 
 
-    
+
     function novoRegistro(Request $request)
     {
         $request['medico_id'] = Auth::user()->funcionario->matricula;
         $registro = RegistroClinico::create($request->all());
         $registro->agenda()->update([
             'atendido' => 'S'
-            
+
         ]);
         // $agenda = Agenda::find($id);
 
@@ -163,27 +163,27 @@ class MedicoController extends Controller
 
     function RegistrosClinicos(){
 
+            $agendamentos = Agenda::has('registro')->orderBy('data', 'desc')->paginate(4);
 
-
-            return view('medico.RegistroClinico' );
+            return view('medico.RegistroClinico' , compact('agendamentos'));
     }
 
 
        function BuscarPorRegistrosClinicos(Request $request){
-         
+
 
             $tipo = $request['tipobusca'];
             $buscar = $request->input('search');
 
-              
+
 
 
             switch($tipo){
                 case "paciente":
-                
+
 
                 $agendamentos = Agenda::has('registro')
-               
+
                 ->where($tipo, 'like', '%'.$buscar.'%')->paginate(4);
                 break;
 
@@ -217,7 +217,7 @@ class MedicoController extends Controller
 
      function getRegistros($id){
         $registros = RegistroClinico::where('agenda_id',$id)->first();
-    
+
         return json_encode($registros);
 
     }
