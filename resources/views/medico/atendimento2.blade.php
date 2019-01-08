@@ -119,9 +119,9 @@
                                               </div>
                                             </div><!-- row -->
                                           </div>
-                                          
+
                                         </div><!-- card-body -->
-                                        
+
                                       </div><!-- card -->
                                       @endif
 
@@ -247,20 +247,23 @@
                                         </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <div class="container-fluid">
+                                               @if(isset($agenda) && isset($paciente))
+                                                    <input type="hidden" value="{{$agenda->id}}" name="agenda_id">
+                                                    <input type="hidden" value="{{$paciente->id}}" name="paciente_id">
+                                               @endif
                                       <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group ">
-                                                <label for="nome">Queixa principal</label>
-                                                <input type="text" class="form-control"  maxlength="100" name="QueixaPrincipal" id ="QueixaPrincipal" >
-                                            </div>
+                                                <div class="form-group ">
+                                                        <label for="nome">Queixa principal</label>
+                                                        <input type="text" class="form-control "  maxlength="100" name="queixaPrincipal" id ="QueixaPrincipal" value = "{{ old('queixaPrincipal') }}" required>
+                                                    </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">História</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="historia" rows="3" placeholder="História"></textarea>
-                                        </div>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="historia" rows="3" required placeholder="História"></textarea>                                        </div>
                                          <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">Problemas</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1"name="problemas" rows="3" placeholder="Problemas"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"name="problemas" required placeholder="Problemas"value = "{{ old('problemas') }}"></textarea>
                                         </div>
 
                                         <div class="form-group col-md-6">
@@ -271,16 +274,16 @@
 
                                        <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">Orientação</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="orientacao" rows="3" placeholder="Orientação"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="orientacao"placeholder="Orientação"></textarea>
                                         </div>
                                          <div class="form-group col-md-6">
                                             <label for="exampleFormControlTextarea1">Medicamentos</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1"name="medicamento" rows="3" placeholder="Medicamentos"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="medicamento" required placeholder="Medicamentos"></textarea>
                                         </div>
 
                                               <div class="form-group col-md-12">
                                             <label for="exampleFormControlTextarea1">Observações:</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="observacoes"rows="3" placeholder="Medicamentos"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observacoes" placeholder="Observações"></textarea>
                                         </div>
 
                                     </div>
