@@ -32,7 +32,6 @@ class LoginController extends Controller
             ])) {
                     $user = Auth::user();
                     $id = Auth::id();
-
                     session()->put('user', $user);
 
                     return redirect()->route('dashboard');
