@@ -101,8 +101,6 @@
 
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
 
-                      
-
                     </div>
                   </div>
                 </li>
@@ -142,6 +140,17 @@
                     </div>
                   </div>
                 </li>
+
+               <li class="nav-item">
+                  <div class="dropdown">
+                    <button class="dropbtn">Análises Clínicas</button>
+                    <div class="dropdown-content">
+                      <a href="{{route('procedimentoClinico.listar') }}">Procedimento</a>
+                      <a href="{{route('laboratorio.listar') }}">Laboratorio</a>
+                    </div>
+                  </div>
+                </li>
+
                {{--    
                 <!--
                 <li class="nav-item">

@@ -184,19 +184,16 @@ Route::get('/home', 'HomeController@index')->name('home');
  *
  *=============================================================
  */
-Route::prefix('agenda')->middleware('Autorizador')->group(function(){
+    Route::prefix('agenda')->middleware('Autorizador')->group(function(){
     Route::get('index', 'AgendaController@index')->name('agenda.index');
     Route::post('excluir', 'AgendaController@destroy')->name('agenda.destroy');
     Route::post('desmarcar', 'AgendaController@desmarcar')->name('agenda.desmarcar');
     Route::post('agendar', 'AgendaController@agendar')->name('agenda.agendar');
     Route::get('paciente/{id}', 'AgendaController@editarPaciente')->name('agenda.editarPaciente');
-     Route::put('editar', 'AgendaController@update')->name('agenda.update');
-     Route::get('historico/{id}', 'AgendaController@historico')->name('agenda.historico');
+    Route::put('editar', 'AgendaController@update')->name('agenda.update');
+    Route::get('historico/{id}', 'AgendaController@historico')->name('agenda.historico');
 
 });
-
-
-
 
 /**=============================================================
  *                      ROTAS AJAX
@@ -217,5 +214,27 @@ Route::get('/get/data/agd/{id}', 'AgendaController@getAgendamentos');
 Route::get('registro/{paciente_id}', 'RegistroClinicoController@getAjax');
 
 
+/**=============================================================
+ *                      ROTAS LABORATORIO
+ *
+ *=============================================================
+ */
+    Route::prefix('Laboratorio')->middleware('Autorizador')->group(function(){
+    Route::get('listar', 'LaboratorioController@index')->name('laboratorio.listar');
+    Route::get('index', 'LaboratorioController@index')->name('laboratorio.index');
+    Route::post('excluir', 'LaboratorioController@destroy')->name('laboratorio.destroy');
+    Route::get('laboratorio/{id}', 'LaboratorioController@editarLaboratorio')->name('laboratorio.editarLaboratorio');
+    Route::put('editar', 'LaboratorioController@update')->name('laboratorio.update');
+});
 
-
+/**=============================================================
+ *                      ROTAS PROCEDIMENTO
+ *
+ *=============================================================
+ */
+    Route::prefix('procedimentoClinico')->middleware('Autorizador')->group(function(){
+    Route::get('listar', 'procedimentoClinicoController@index')->name('procedimentoClinico.listar');
+    Route::get('index', 'procedimentoClinicoController@index')->name('procedimentoClinico.index');
+    Route::post('excluir', 'ProcedimentoClinicoController@destroy')->name('procedimentoClinico.destroy');
+    Route::get('procedimentoClinico/{id}', 'procedimentoClinicoController@editarprocedimentoClinico')->name('procedimentoClinico.editarprocedimentoClinico');
+});
