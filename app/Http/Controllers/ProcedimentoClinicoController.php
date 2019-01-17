@@ -1,48 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ProcedimentoClinico;
+use App\Models\Procedimentoclinico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Proceds;
 use Symfony\Component\HttpFoundation\Response;
-use App\Http\Requests\ProcedimentoClinicoRequest;
+use App\Http\Requests\ProcedimentoclinicoRequest;
 
 
-class ProcedimentoClinicoController extends Controller
+class ProcedimentoclinicoController extends Controller
 {
 
     function index(){
-        $procedcli = Proceds::where('id','!=', 4)->orderBy('nome')->paginate(10);
-        return view('procedimentoClinico.listar' , compact('procedimentoClinico'));
+        $procedimentoclinico = Proceds::where('id','!=', 4)->orderBy('nome')->paginate(10);
+        return view('procedimentoclinico.listar' , compact('procedimentoclinico'));
     }
 
         function editar($id){
 
-        $procedcli = ProcedimentoClinico::find($id);
+        $procedimentoclinico = Procedimentoclinico::find($id);
 
     
 
-        return view('procedimentoClinico.editar' , compact('procedimentoClinico'));
+        return view('procedimentoclinico.editar' , compact('procedimentoclinico'));
 
         }
     
       public function novo(){
-            return view ('procedimentoClinico.novo');
+            return view ('procedimentoclinico.novo');
         }
 
-        public function create(ProcedimentoClinicoRequest $request){
-            $sis_proced_clinico = ProcedimentoClinico::create($request->all());
+        public function create(ProcedimentoclinicoRequest $request){
+            $sis_proced_clinico = Procedimentoclinico::create($request->all());
           
-            return redirect()->action('procedimentoClinicoController@index'); 
+            return redirect()->action('procedimentoclinicoController@index'); 
 
        }
 
-        public function update(ProcedimentoClinicoRequest $request, $id){
-            $procedcli = ProcedimentoClinico::find($id);
-            $procedcli->update($request->all());
-                return redirect()->route('procedimentoClinico.listar');
-
+        public function update(ProcedimentoclinicoRequest $request, $id){
+            $procedimentoclinico = Procedimentoclinico::find($id);
+            $procedimentoclinico->update($request->all());
+                return redirect()->route('procedimentoclinico.listar');
 
         }
+
+       
 }

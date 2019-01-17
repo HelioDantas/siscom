@@ -119,7 +119,7 @@
             <a  class="btn btn-outline-secondary"    href="{{route('dashboard')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
             <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
             @if($novo)
-                <a  class="btn btn-outline-success recon"  href="{{route('funcionario.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
+                <a  class="btn btn-outline-success recon"  href="{{route('laboratorio.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
                 <i class="fas fa-plus-circle"></i></a>
             @endif
             <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
@@ -129,9 +129,9 @@
                     <option value="nome">Nome</option>
                     <option value="id">Id</option>
                     <option value="preco">Preço</option>
-                    <option value="id_procedimento">Preço</option>
+                    <option value="id_procedimento">Código do Procedimento</option>
                 </select>
-                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar nome, preco ou id">
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder=" nome, preco ou id">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -148,7 +148,6 @@
                 <th >nome            </th>
                 <th >preço            </th>
                 <th >procedimento             </th>
-                <th scope="col">opções</th>
               </tr>
             </thead>
             <tbody>

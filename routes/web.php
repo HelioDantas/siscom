@@ -221,6 +221,8 @@ Route::get('registro/{paciente_id}', 'RegistroClinicoController@getAjax');
  */
     Route::prefix('Laboratorio')->middleware('Autorizador')->group(function(){
     Route::get('listar', 'LaboratorioController@index')->name('laboratorio.listar');
+    Route::get('novo', 'LaboratorioController@novo')->name('laboratorio.novo');
+    Route::get('novo/{id}','laboratoriocController@novo')->name('laboratorio.novo');
     Route::get('index', 'LaboratorioController@index')->name('laboratorio.index');
     Route::post('excluir', 'LaboratorioController@destroy')->name('laboratorio.destroy');
     Route::get('laboratorio/{id}', 'LaboratorioController@editarLaboratorio')->name('laboratorio.editarLaboratorio');
@@ -232,9 +234,11 @@ Route::get('registro/{paciente_id}', 'RegistroClinicoController@getAjax');
  *
  *=============================================================
  */
-    Route::prefix('procedimentoClinico')->middleware('Autorizador')->group(function(){
-    Route::get('listar', 'procedimentoClinicoController@index')->name('procedimentoClinico.listar');
-    Route::get('index', 'procedimentoClinicoController@index')->name('procedimentoClinico.index');
-    Route::post('excluir', 'ProcedimentoClinicoController@destroy')->name('procedimentoClinico.destroy');
-    Route::get('procedimentoClinico/{id}', 'procedimentoClinicoController@editarprocedimentoClinico')->name('procedimentoClinico.editarprocedimentoClinico');
+    Route::prefix('Procedimentoclinico')->middleware('Autorizador')->group(function(){
+    Route::get('listar', 'ProcedimentoclinicoController@index')->name('procedimentoclinico.listar');
+    Route::get('novo', 'ProcedimentoclinicoController@novo')->name('procedimentoclinico.novo');
+    Route::get('novo/{id}', 'procedimentoclinicoController@novo')->name('procedimentoclinico.novo');
+    Route::get('index', 'ProcedimentoclinicoController@index')->name('procedimentoclinico.index');
+    Route::post('excluir', 'ProcedimentoclinicoController@destroy')->name('procedimentoclinico.destroy');
+    Route::get('procedimentoclinico/{id}', 'procedimentoclinicoController@editarprocedimentoclinico')->name('procedimentoclinico.editarprocedimentoclinico');
 });
