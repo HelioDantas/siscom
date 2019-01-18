@@ -119,7 +119,7 @@
             <a  class="btn btn-outline-secondary"    href="{{route('dashboard')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
             <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
             @if($novo)
-                <a  class="btn btn-outline-success recon"  href="{{route('laboratorio.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
+                <a  class="btn btn-outline-success recon"  href="{{route('laboratorio.create')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
                 <i class="fas fa-plus-circle"></i></a>
             @endif
             <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
@@ -154,12 +154,12 @@
             @php $cont = 0; @endphp
                 @foreach ($laboratorio as $l)
                        @php $cont = $cont + 1; @endphp
-              <tr class="Filter-nome">
-                 <td>       {{$l->id}}          </td>
+                 <tr class="Filter-nome">
+                 <td>       {{$l->id}}     </td>
   
-                 <td class="info-nome">       {{$l->nome}}                </td>
-                 <td>       {{$l->nome}}                 </td>
-                 <td>       {{$l->id_procedimento}}          </td>
+                 <td class="info-nome">  {{$l->nome}}            </td>
+                 <td>                    {{$l->preco}}           </td>
+                 <td>                    {{$l->id_procedimento}} </td>
             
                     <a href="editar/{{$l->id}}"><i class="fas fa-edit"></i></a> 
                 
@@ -181,10 +181,8 @@
     </div>
 
 </div>
-    
 
-
-    @endsection
+ @endsection
     @section('scripts')
     <script type="text/javascript" src="{{ asset('js/filtra.js') }}"></script>
     @endsection

@@ -93,12 +93,7 @@ Route::prefix('medico')->middleware('Autorizador')->group(function () {
     Route::get('RegistrosClinicos/{id?}', 'MedicoController@RegistrosClinicos')                     ->name('medico.RegistrosClinicos');
     Route::any('RegistrosClinicos', 'MedicoController@BuscarPorRegistrosClinicos')                     ->name('medico.BuscarPorRegistrosClinicos');
     Route::get('/get/Registro/{id}', 'MedicoController@getRegistros');
-
-
 });
-
-
-
 
 /**=============================================================
  *                      ROTAS FUNCIONARIO
@@ -130,8 +125,6 @@ Route::prefix('funcionario')->middleware('Autorizador')->group(function () { //-
         });
 
 });
-
-
 
 /**=============================================================
  *                      ROTAS CONVENIO
@@ -219,14 +212,27 @@ Route::get('registro/{paciente_id}', 'RegistroClinicoController@getAjax');
  *
  *=============================================================
  */
-    Route::prefix('Laboratorio')->middleware('Autorizador')->group(function(){
+    Route::prefix('Laboratorio')->middleware('Autorizador')                   ->group(function(){
+    Route::get('index', 'LaboratorioController@index')                        ->name('laboratorio.index');
+    Route::get('listar', 'LaboratorioController@index')                       ->name('laboratorio.listar');
+    Route::post('create', 'LaboratorioController@create')                     ->name('laboratorio.create');    
+    Route::get('excluir/{id}', 'LaboratorioController@destroy')               ->name('laboratorio.excluir');
+    Route::post('excluir', 'LaboratorioController@destroy')                   ->name('laboratorio.destroy');
+    Route::put('editar', 'LaboratorioController@update')                      ->name('laboratorio.update');
+    Route::get('laboratorio/{id}', 'laboratorioController@editarlaboratorio') ->name('laboratorio.editarlaboratorio');
+/*
     Route::get('listar', 'LaboratorioController@index')->name('laboratorio.listar');
+    Route::post('create', 'ProcedimentoclinicoController@create')->name('procedimentoclinico.create');
     Route::get('novo', 'LaboratorioController@novo')->name('laboratorio.novo');
     Route::get('novo/{id}','laboratoriocController@novo')->name('laboratorio.novo');
     Route::get('index', 'LaboratorioController@index')->name('laboratorio.index');
     Route::post('excluir', 'LaboratorioController@destroy')->name('laboratorio.destroy');
     Route::get('laboratorio/{id}', 'LaboratorioController@editarLaboratorio')->name('laboratorio.editarLaboratorio');
     Route::put('editar', 'LaboratorioController@update')->name('laboratorio.update');
+    Route::get('/novo', 'LaboratorioController@index')->name('novo');
+});*/
+
+
 });
 
 /**=============================================================
@@ -234,11 +240,37 @@ Route::get('registro/{paciente_id}', 'RegistroClinicoController@getAjax');
  *
  *=============================================================
  */
-    Route::prefix('Procedimentoclinico')->middleware('Autorizador')->group(function(){
-    Route::get('listar', 'ProcedimentoclinicoController@index')->name('procedimentoclinico.listar');
-    Route::get('novo', 'ProcedimentoclinicoController@novo')->name('procedimentoclinico.novo');
+    Route::prefix('Procedimentoclinico')->middleware('Autorizador')     ->group(function(){
+    Route::get('index', 'procedimentoclinicoController@index')          ->name('procedimentoclinico.index');
+    Route::get('listar', 'procedimentoclinicoController@index')         ->name('procedimentoclinico.listar');
+    Route::post('create', 'ProcedimentoclinicoController@create')       ->name('procedimentoclinico.create');    
+    Route::get('excluir/{id}', 'ProcedimentoclinicoController@destroy') ->name('procedimentoclinico.excluir');
+    Route::post('excluir', 'procedimentoclinicoController@destroy')     ->name('procedimentoclinico.destroy');
+
+
+/*
+    Route::get('novo', 'procedimentoclinicoController@novo')->name('procedimentoclinico.novo');
     Route::get('novo/{id}', 'procedimentoclinicoController@novo')->name('procedimentoclinico.novo');
-    Route::get('index', 'ProcedimentoclinicoController@index')->name('procedimentoclinico.index');
-    Route::post('excluir', 'ProcedimentoclinicoController@destroy')->name('procedimentoclinico.destroy');
+    Route::post('excluir', 'procedimentoclinicoController@destroy')->name('procedimentoclinico.destroy');
     Route::get('procedimentoclinico/{id}', 'procedimentoclinicoController@editarprocedimentoclinico')->name('procedimentoclinico.editarprocedimentoclinico');
+    Route::get('/novo', 'ProcedimentoclinicoController@index')->name('novo');*/
 });
+
+Route::resource('laboratorio', 'LaboratorioController')->only([
+    'index', 'create','listar','destroy','update'
+]);
+
+Route::resource('procedimentoclinico', 'ProcedimentoclinicoController')->only([
+    'create', 'destroy','listar','index'
+]);
+
+Route::controller('index', 'LaboratorioController');
+Route::controller('listar', 'LaboratorioController');
+Route::controller('create', 'LaboratorioController');
+Route::controller('excluir', 'LaboratorioController');
+Route::controller('update', 'LaboratorioController');
+
+Route::controller('index', 'ProcedimentoclinicoController');
+Route::controller('listar', 'Procedimentoclinicoontroller');
+Route::controller('create', 'ProcedimentoclinicoController');
+Route::controller('excluir', 'ProcedimentoclinicoController');

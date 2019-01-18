@@ -118,7 +118,7 @@
             <a  class="btn btn-outline-secondary"    href="{{route('dashboard')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
             <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
             @if($novo)
-                <a  class="btn btn-outline-success recon"  href="{{route('laboratorio.novo')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
+                <a  class="btn btn-outline-success recon"  href="{{route('procedimentoclinico.create')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
                 <i class="fas fa-plus-circle"></i></a>
             @endif
             <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
@@ -151,12 +151,11 @@
             @php $cont = 0; @endphp
                 @foreach ($procedimentoclinico as $pc) 
                        @php $cont = $cont + 1; @endphp
-              <tr class="Filter-nome">
-                 <td>       {{$pc->id}}          </td>
+                 <tr class="Filter-nome">
+                 <td>       {{$pc->id}}       </td>
   
-                 <td class="info-nome">       {{$p->nome}}                </td>
-                 <td>       {{$pc->nome}}                 </td>
-                 <td>       {{$pc->id_lab}}          </td>
+                 <td class="info-nome">       {{$p->nome}}         </td>
+                 <td>                         {{$pc->id_lab}}      </td>
             
                     <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
                 
