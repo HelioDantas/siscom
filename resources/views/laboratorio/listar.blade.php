@@ -50,19 +50,14 @@
 @endsection
 
 
-
-
-
 @section('navegação')
-
 
 
 @endsection
 
 
-
 @section('tela')
-@php $edit = $show = $destroy = $novo = false;  @endphp
+@php $edit = $show = $destroy = $cad = false;  @endphp
 @foreach (session()->get("user")->permission()->get() as $permission )
 @if($permission->pivot->permissao_id == 1)
     @php $edit = true @endphp
@@ -119,7 +114,7 @@
             <a  class="btn btn-outline-secondary"    href="{{route('dashboard')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
             <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
             @if($novo)
-                <a  class="btn btn-outline-success recon"  href="{{route('laboratorio.create')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
+                <a  class="btn btn-outline-success recon"  href="{{route('laboratorio.cad')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
                 <i class="fas fa-plus-circle"></i></a>
             @endif
             <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
@@ -128,7 +123,7 @@
                     <option value="" selected>Selecione</option>
                     <option value="nome">Nome</option>
                     <option value="id">Id</option>
-                    <option value="preco">Preço</option>
+                  
                     <option value="id_procedimento">Código do Procedimento</option>
                 </select>
                 <input class="form-control mr-sm-2" type="text" name="search" placeholder=" nome, preco ou id">
@@ -146,19 +141,19 @@
               <tr>
                 <th>Id     </th>
                 <th >nome            </th>
-                <th >preço            </th>
+                
                 <th >procedimento             </th>
               </tr>
             </thead>
             <tbody>
             @php $cont = 0; @endphp
-                @foreach ($laboratorio as $l)
+                @foreach ($laboratorios as $l)
                        @php $cont = $cont + 1; @endphp
                  <tr class="Filter-nome">
                  <td>       {{$l->id}}     </td>
   
                  <td class="info-nome">  {{$l->nome}}            </td>
-                 <td>                    {{$l->preco}}           </td>
+               
                  <td>                    {{$l->id_procedimento}} </td>
             
                     <a href="editar/{{$l->id}}"><i class="fas fa-edit"></i></a> 
@@ -175,7 +170,7 @@
              @if($cont==4)
                 <p></p>
               @else
-                {!!$laboratorio->links()!!}
+                {!!$laboratorios->links()!!}
             @endif
           </div>
     </div>
