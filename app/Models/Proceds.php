@@ -11,6 +11,6 @@ class Proceds extends Model
     
     public $timestamps = false;
 
-    protected $fillable = array( 'id', 'nome','id_lab'); 
+    protected $fillable = array( 'id', 'nome','preco','id_lab'); 
     
 }

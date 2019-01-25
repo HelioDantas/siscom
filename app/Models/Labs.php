@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Labs extends Model
 {
     
-     protected $table = "sis_laboratorio";
+    protected $table = "sis_laboratorio";
     
     public $timestamps = false;
 
-    protected $fillable = array( 'id', 'nome', 'preco', 'id_procedimento'); 
+    protected $fillable = array('id', 'nome','id_procedimento'); 
     
 }

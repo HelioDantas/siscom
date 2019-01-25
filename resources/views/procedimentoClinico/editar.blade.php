@@ -80,7 +80,7 @@
 @section('tela')
 <hr>
 <div class="container-fluid col-lg-10 corpo-paciente">
-{!! Form::open(['route' => ['laboratorio.update', $l->id],'method ' => 'post',]) !!}
+{!! Form::open(['route' => ['laboratorio.update', $l->id],'method ' => 'get',]) !!}
 
  @csrf
 {{ method_field('PUT') }}
@@ -105,7 +105,7 @@
 
 
         <fieldset class="form-group dadosForm">
-                <legend aling="center">Dados do Procedimento</legend>
+                <legend aling="center">Dados do Laboratório</legend>
 <div class="row"><!-- dados pessoas -->
     <div class = "col-md-2 mb-3">
 
@@ -152,9 +152,9 @@
               <input type="text" name="id_lab" id="id_lab" class="form-control {{$errors->has('id_procedimento') ? 'is-invalid': '' }}" placeholder="id_lab" aria-describedby="identidade" maxlength="11"
                @if(!empty($p)) value = "{{$p->id_lab}}" @else value = {{old('id_lab')}} @endif>
 
-                @if($errors->has('identidade'))
+                @if($errors->has('id_procedimento'))
                 <div class="invalid-feedback">
-                    {{$errors->first('id')}}
+                    {{$errors->first('id_procedimento')}}
                     </div>
                 @endif
 
@@ -163,7 +163,7 @@
 
             <hr>
 <div class="col-4">
-     <button  class="btn btn-secondary"  data-toggle="collapse" type = "button" data-target="#demo" @if(old('id')) aria-expanded="true" @endif >Laboratório</button>
+     <button  class="btn btn-secondary"  data-toggle="collapse" type = "button" data-target="#demo" @if(old('id')) aria-expanded="true" @endif >Procedimento</button>
 
  </div>
         <div id="demo" class="collapse">
@@ -189,14 +189,14 @@
             <tbody>
 
               <tr class="Filter">
-              <th scope="row">{{$laboratorio->laboratorio->nome}}</th>
+              <th scope="row">{{$procedimentoclinico->procedimentoclinico->nome}}</th>
 
-                 <td class="">{{$laboratorio->nome}} </td>
+                 <td class="">{{$procedimentoclinico->nome}} </td>
                 
 
                 <td>
 
-                    <a id="excluir"name = "excluir" class="btn btn-outline-danger" type="button" href="{{route('laboratorio.desativar_laboratorio',['id' => $l->id,'laboratorio_id'=>$laboratorio->id ])}}"
+                    <a id="excluir"name = "excluir" class="btn btn-outline-danger" type="button" href="{{route('procedimentoclinico.desativar_procedimento',['id' => $l->id,'procedimentoclinico_id'=>$procedimentoclinico->id ])}}"
                       data-toggle="tooltip" data-placement="top" title="Desativar"><i class="fas fa-trash"></i></a>
 
                 </td>

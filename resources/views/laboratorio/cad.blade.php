@@ -81,7 +81,7 @@
                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
              <!--     <a  class="btn btn-outline-secondary"   href="{{route('convenio.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>-->
                   <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
-                  <a  class="btn btn-outline-secondary"   href="{{route('convenio.listar')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+                  <a  class="btn btn-outline-secondary"   href="{{route('laboratorio.listar')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
 
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
@@ -100,7 +100,7 @@
             <div class="form-group">
         
                 <label for="nome">Id</label>
-                <input type="text" name="cnpj" id="cnpj" class = "form-control {{$errors->has('id') ? 'is-invalid': '' }}" required maxlength="5" value =   {{old('id')}} autofocus>
+                <input type="text" maxlength="13" name="id" id="id" class = "form-control {{$errors->has('id') ? 'is-invalid': '' }}" required  value = {{old('id')}}>
                  @if($errors->has('id'))
                         <div class="invalid-feedback">
                             {{$errors->first('id')}}
@@ -109,11 +109,11 @@
             </div>
         </div>
 
-        <div class="col-xl-3 col-lg-4 col-md-5  mb-3">
+        <div class="col-xl-4 col-lg-4 col-md-8  mb-3">
             <div class="form-group">
         
                 <label for="nome">Nome do Laboratório</label>
-                <input type="text"maxlength="50" name="nome" id=""class =  "form-control {{$errors->has('nome') ? 'is-invalid': '' }}" required value =   {{old('nome')}}>
+                <input type="text"maxlength="50" name="nome" id="id "class = "form-control {{$errors->has('nome') ? 'is-invalid': '' }}" required value =   {{old('nome')}}>
                 @if($errors->has('nome'))
                         <div class="invalid-feedback">
                             {{$errors->first('nome')}}
@@ -122,11 +122,11 @@
             </div>
         </div>
 
-        <div class="col-xl-2 col-lg-4 col-md-4  mb-3">
+        <div class="col-xl-3 col-lg-3 col-md-3  mb-3">
             <div class="form-group">
         
                 <label for="selectbasic">Código do Procedimento <h11></h11></label>
-                    <input type="text" maxlength="11" name="id" class = "form-control {{$errors->has('id_procedimento') ? 'is-invalid': '' }}"value =   {{old('id_procedimento')}}>
+                    <input type="number" maxlength="8" name="id_procedimento" class = "form-control {{$errors->has('id_procedimento') ? 'is-invalid': '' }}"value =   {{old('id_procedimento')}}>
                     
                      @if($errors->has('id_procedimento'))
                         <div class="invalid-feedback">

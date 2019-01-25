@@ -133,9 +133,9 @@ class PacienteController extends Controller
 
 
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
-
-
     }
+
+    
     public function edit(Request $request,  $id)
     {
         //  form para editar infos de um funcionario

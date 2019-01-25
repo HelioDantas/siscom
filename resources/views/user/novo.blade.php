@@ -147,7 +147,7 @@
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" id="NovaSenha" class="form-control {{ $errors->has('senha') ? 'is-invalid': ''  }}" placeholder="senha"  value = {{ old("senha") }}>
                 <div class="invalid-feedback">
-                        As senhas não conhecidem
+                        As senhas não coicidem
                        </div>
                        @if($errors->has('senha'))
                        <div class="invalid-feedback">

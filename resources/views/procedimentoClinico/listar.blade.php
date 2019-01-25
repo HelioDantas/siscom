@@ -50,9 +50,6 @@
 @endsection
 
 
-
-
-
 @section('navegação')
 
 
@@ -94,7 +91,7 @@
      <div class="row FilterRow">
         <div class="col-3">
                 <div class="form-group">
-                        <form class="FilterRow" action="buscar" method="post">
+                        <form class="FilterRow" action="buscar" method="get">
                                 @csrf
                             <label for="basic-url">Busque por:</label>
                            <input class="btn-text-top form-control" type="text" name="search" placeholder="Buscar nome, preco, id e procedimento">
@@ -117,24 +114,25 @@
            <h3 class="titulopacientes">Lista de Procedimento</h3>
             <a  class="btn btn-outline-secondary"    href="{{route('dashboard')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
             <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
-            @if($novo)
-                <a  class="btn btn-outline-success recon"  href="{{route('procedimentoclinico.create')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
+            @if(true)
+                <a  class="btn btn-outline-success recon"  href="{{route('procedimentoclinico.cad')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
                 <i class="fas fa-plus-circle"></i></a>
             @endif
-            <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
+            <form class="form-inline my-2 my-lg-0" action="buscar" method="get">
                 @csrf
                 <select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
                     <option value="" selected>Selecione</option>
-                    <option value="nome">Nome</option>
-                    <option value="id">Id</option>
-                    <option value="id_procedimento">Código do Laboratorio</option>
+                    <option value="id">             Id</option>
+                    <option value="nome">           Nome</option>
+                    <option value="price">          Preço</option>
+                    <option value="id_lab">Código do Laboratorio</option>
                 </select>
                 <input class="form-control mr-sm-2" type="text" name="search" placeholder=" nome ou id">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     
-<div class="card text-center">
+    <div class="card text-center">
     <div class="card-header">
            
     </div>
@@ -142,20 +140,22 @@
             <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
-                <th>Id     </th>
-                <th >nome            </th>
-                <th >Laboratorio     </th>
+                <th>Id          </th>
+                <th>nome        </th>
+                <th>Preço       </th>
+                <th>Laboratorio </th>
               </tr>
             </thead>
             <tbody>
             @php $cont = 0; @endphp
-                @foreach ($procedimentoclinico as $pc) 
+                @foreach ($procedimentoclinico as $p) 
                        @php $cont = $cont + 1; @endphp
                  <tr class="Filter-nome">
-                 <td>       {{$pc->id}}       </td>
+                 <td>       {{$p->id}}       </td>
   
-                 <td class="info-nome">       {{$p->nome}}         </td>
-                 <td>                         {{$pc->id_lab}}      </td>
+                 <td class="info-nome">       {{$p->nome}}        </td>
+                 <td>                         {{$p->preco}}       </td>
+                 <td>                         {{$p->id_lab}}      </td>
             
                     <a href="editar/{{$p->id}}"><i class="fas fa-edit"></i></a> 
                 

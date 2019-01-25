@@ -8,8 +8,6 @@ use App\Http\Controllers\Controller;
 class PermissionLabController extends Controller
 {
 
-
-
    public static function edit()
     {
         //  form para editar infos de um funcionario
@@ -78,7 +76,7 @@ class PermissionLabController extends Controller
 
             }
 
-               public static function pedit(Request $request)
+               public static function ledit(Request $request)
     {
         //  form para editar infos de um funcionario
 
@@ -91,7 +89,7 @@ class PermissionLabController extends Controller
 
     }
 
-   public static function pupdate(Request $request)
+   public static function lupdate(Request $request)
     {
         //  form para editar infos de um funcionario
 
@@ -102,8 +100,7 @@ class PermissionLabController extends Controller
 
     }
 
-
-       public static function pnovo(Request $request)
+       public static function lcad(Request $request)
         {
         //  form para editar infos de um funcionario
 
@@ -114,7 +111,7 @@ class PermissionLabController extends Controller
 
     }
 
-     public static function pcreate(Request $request)
+     public static function lcreate(Request $request)
         {
         //  form para editar infos de um funcionario
 
@@ -126,7 +123,7 @@ class PermissionLabController extends Controller
          }
 
 
-         public static function pshow(Request $request)
+         public static function lshow(Request $request)
         {
         //  form para editar infos de um funcionario
 
@@ -137,7 +134,7 @@ class PermissionLabController extends Controller
 
          }
 
-             public static function pdestroy(Request $request)
+             public static function ldestroy(Request $request)
             {
         //  form para editar infos de um funcionario
 

@@ -90,7 +90,7 @@
      <div class="row FilterRow">
         <div class="col-3">
                 <div class="form-group">
-                        <form class="FilterRow" action="buscar" method="post">
+                        <form class="FilterRow" action="buscar" method="get">
                                 @csrf
                             <label for="basic-url">Busque por:</label>
                            <input class="btn-text-top form-control" type="text" name="search" placeholder="Buscar nome, preco, id e procedimento">
@@ -106,27 +106,25 @@
 
 @section('tela')
 
-
 <div class="container-fluid col-lg-12">
     <div class="card text-center mb-6">
         <div class="card-header">
            <h3 class="titulopacientes">Lista de Laboratorio</h3>
             <a  class="btn btn-outline-secondary"    href="{{route('dashboard')}}"    data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
             <a  class="btn btn-outline-danger"  href=""   data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times"></i></a>
-            @if($novo)
+            @if(true)
                 <a  class="btn btn-outline-success recon"  href="{{route('laboratorio.cad')}}"   data-toggle="tooltip" data-placement="top" title="cadastrar">
                 <i class="fas fa-plus-circle"></i></a>
             @endif
-            <form class="form-inline my-2 my-lg-0" action="buscar" method="post">
+            <form class="form-inline my-2 my-lg-0" action="buscar" method="get">
                 @csrf
                 <select name="tipobusca" id="tipobusca"class="form-control mr-sm-2" >
                     <option value="" selected>Selecione</option>
-                    <option value="nome">Nome</option>
-                    <option value="id">Id</option>
-                  
+                    <option value="id">             Id</option>
+                    <option value="nome">           Nome</option>
                     <option value="id_procedimento">Código do Procedimento</option>
                 </select>
-                <input class="form-control mr-sm-2" type="text" name="search" placeholder=" nome, preco ou id">
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder=" nome ou id">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -141,16 +139,15 @@
               <tr>
                 <th>Id     </th>
                 <th >nome            </th>
-                
                 <th >procedimento             </th>
               </tr>
             </thead>
             <tbody>
             @php $cont = 0; @endphp
-                @foreach ($laboratorios as $l)
+                @foreach ($laboratorio as $l)
                        @php $cont = $cont + 1; @endphp
                  <tr class="Filter-nome">
-                 <td>       {{$l->id}}     </td>
+                 <td>                    {{$l->id}}              </td>
   
                  <td class="info-nome">  {{$l->nome}}            </td>
                
@@ -170,7 +167,7 @@
              @if($cont==4)
                 <p></p>
               @else
-                {!!$laboratorios->links()!!}
+                {!!$laboratorio->links()!!}
             @endif
           </div>
     </div>

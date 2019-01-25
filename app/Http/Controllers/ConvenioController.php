@@ -11,9 +11,6 @@ use App\Http\Requests\ConvenioRequest;
 
 class ConvenioController extends Controller
 {
-
-
-
     function index(){
         $convenios = Convenio::where('id','!=', 4)->orderBy('nome')->paginate(10);
         return view('convenio.listar' , compact('convenios'));
@@ -32,13 +29,10 @@ class ConvenioController extends Controller
 
     }
 
-
-
         function editar($id){
 
         $convenio = Convenio::find($id);
 
-    
 
         return view('convenio.editar' , compact('convenio'));
 

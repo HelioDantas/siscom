@@ -1,17 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\PermissionProced;
 use App\Models\Procedimentoclinico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Proceds;
 use Symfony\Component\HttpFoundation\Response;
-use App\Http\Requests\ProcedimentoclinicoRequest;
-
 
 class ProcedimentoclinicoController extends Controller
-{
-    public function index(Request $request)
+{ public function listar()
     {
         //  form de um novo produto
         //    return dd($request);
@@ -20,72 +18,36 @@ class ProcedimentoclinicoController extends Controller
         }
         //    $permissao = Permission::all();
         //$especi = Especialidade::all();
+       
 
         $procedimentoclinico = Proceds::paginate(5);
-        return view('procedimentoclinico.listar', compact('especi', 'procedimentoclinico'));
+        return view('procedimentoclinico.listar', compact('procedimentoclinico'));
+    }
+    public function cad()
+    {
+        return view('procedimentoclinico.cad');
     }
 
-    public function create(ProcedimentoclinicoRequest $request)
-    {
+            public function create(Request $request){
 
-        PermissionProcedController::cad();
-
-        try {
-
-            $procedimentoclinico = Procedimento::create([
-                'id' => mb_strtolower($request['id']),
-                'nome' => mb_strtolower($request['nome']),
-                'preco' => mb_strtolower($request['preco']),
-                'id_procedimento' => mb_strtolower($request['id_procedimento']),
-              
-            ]);
-
-        } catch (\Exception $e) {
-
-            return redirect()->back()->with("idJaCadastrdo", 'o id  ' . $request['id'] . ' já consta cadastrado!!');
-
-        }
-
-        //  return var_dump($sis_funcionario);
-        if ($Procedimentoclinico->exame == "A") {
-            return redirect('procedimentoclinico/user/index')->with('Procedimentoclinico', $Procedimentoclinico);
-            //     return redirect()->route('user.novo')->with('Funcionario', $Funcionario);
-            //    return view('user.novo', compact('permissao','Funcionario'));
-
-        } else {
-
-            if ($Procedimentoclinico->exame == "E") {
-                $procedimentoclinico = new Procedimentoclinico();
-                $valor = $request->all('id');
-                $procedimentoclinico->id = $valor['id'];
-                $procedimentoclinico->sis_procedimentoclinico_id = $procedimentoclinico->id;
-                $procedimentoclinico->save();
-                $procedimentoclinico = Procedimentoclinico::find($Procedimentoclinico->id);
-                $request->only('id1')['id1'] != null ? $especialidade[] = $request->only('id1')['id1'] : '';
-                $request->only('id2')['id2'] != null ? $especialidade[] = $request->only('id2')['id2'] : '';
-                if (!empty($especialidade)) {
-                    $procedimentoclinico->especialidade()->attach($especialidade);
-                }
-
-                $procedimentoclinico = $request->only('$p');
-                foreach ($procedimentoclinico as $id) {
-                    $procedimentoclinico[] = $id[0];
-
-                }
-                if (!empty($procedimentoclinico)) {
-                    $procedimentoclinico->procedimentoclinico()->attach($procedimentoclinico);
-                }
-
-                return redirect('procedimentoclinico/user/index')->with('Procedimentoclinico', $Laboratorio);
-            }
-        }
+                PermissionProcedController::pcad( $request);
+          
+                $laboratorio = Labs::create([
+                   'id'               => $request['id'],
+                   'nome'             =>  mb_strtolower($request['nome']),
+                   'preco'               => $request['preco'],
+                   'id_procedimento'  => $request['id_procedimento'],
+                  ]);
+          
+                   return redirect()->route('procedimentoclinico.listar')->withInput();
+    
     }
 
-    public function listar()
+    public function listart()
     {
 
-        $proceds = Procedimentoclinico::paginate(5);
-        return view('procedimentoclinico.listar', compact('proceds'));
+        $procedimentoclinico = Proceds::paginate(5);
+        return view('procedimentoclinico.listar', compact('procedimentoclinico'));
 
     }
 
@@ -94,28 +56,28 @@ class ProcedimentoclinicoController extends Controller
         $tipo = $request['tipobusca'];
         $buscar = $request->input('search');
         if ($tipo == null) {
-            $proceds =  ProcedimentoclinicoController::buscaGenerica($buscar);
+            $proceds =  Proceds::buscaGenerica($buscar);
         } else {
-            $proceds = Procedimentoclinico::where($tipo, 'like', '%' . $buscar . '%')->paginate(10);
+            $proceds = Proceds::where($tipo, 'like', '%' . $buscar . '%')->paginate(10);
 
         }
 
-        return view('procedimentoclinico.listar', compact('proceds'));
+        return view('procedimentoclinico.listar', compact('procedimentoclinico'));
 
     }
 
     public function buscarId(Request $request, $buscar)
     {
-        $Proceds = Procedimentoclinico::where('id', '=', $buscar);
-        return view('procedimentoclinico.listar', compact('Proceds'));
+        $Proceds = Proceds::where('id', '=', $buscar);
+        return view('procedimentoclinico.listar', compact('procedimentoclinico'));
 
     }
 
     public function destroy(Request $request, $id)
     {
         PermissionProcedController::destroy();
-        $Proceds = Procedimentoclinico::find($id);
-        $Laboratorio->delete();
+        $Proceds = Proceds::find($id);
+        $Proceds->delete();
         return back();
 
     }
@@ -124,11 +86,11 @@ class ProcedimentoclinicoController extends Controller
     {
         //  form para editar infos de um funcionario
         PermissionProcedController::edit();
-        $p = Procedimentoclinico::find($id);
+        $p = Proced::find($id);
 
         //   $m = DB::table('sis_medico_tem_especialidade')->where('sis_medico_funcionario_matricula', $p->matricula)->get();
 
-        $p->exame == 'E' ? $s = $p->procedimentoclinico->especialidade : 's';
+        $e->exame == 'E' ? $s = $l->procedimentoclinico->especialidade : 's';
         /*
         foreach ($m as $m->Sis_especialidade_id => $espec) {
         $tt = $espec->Sis_especialidade_id;
@@ -139,24 +101,24 @@ class ProcedimentoclinicoController extends Controller
         $especialidades = Especialidade::all();
         $Permissao = $p->user->permission()->get();
         //dd($m);
-        return view('procedimentoclinico.editar', compact('p', 's', 'especialidades', 'Permissao'));
+        return view('procedimentoclinico.edit', compact('e', 'p', 'especialidades', 'Permissao'));
     }
 
-    public function update(ProcedimentoclinicoRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         PermissionProcedController::edit();
 
-        $Procedimentoclinico = Procedimento::find($id);
+        $procedimentoclinico = Proceds::find($id);
         $id1 = true;
         $id2 = true;
-        $Procedimentoclinico->update($request->all());
+        $procedimentoclinico->update($request->all());
         if ($Procedimentoclinico->exame == 'M') {
             $Procedimentoclinico->procedimentoclinico->update($request->only('id'));
             $request->only('id1')['id1'] != null ? $especialidade[] = $request->only('id1')['id1'] : $id1 = null;
             $request->only('id2')['id2'] != null ? $especialidade[] = $request->only('id2')['id2'] : $id2 = null;
 
-            $id1 == null && $id2 == null ? $Proocedimentoclinico->Procedimentoclinico->especialidade()->detach() : $Procedimentoclinico->procedimentoclinico->especialidade()->sync($especialidade);
+            $id1 == null && $id2 == null ? $Laboratorio->Laboratorio->especialidade()->detach() : $Procedimentoclinico->Procedimentoclinico->especialidade()->sync($especialidade);
         }
 
         return redirect()->route('procedimentoclinico.listar');
@@ -166,8 +128,8 @@ class ProcedimentoclinicoController extends Controller
     {
         //  form para editar infos de um paciente
         PermissionProcedController::show();
-        $p = Procedimentoclinico::find($id);
+        $p = Proceds::find($id);
 
-        return view('procedimentoclinico.show')->with('p', $l);
+        return view('procedimentoclinico.show')->with('p', $p);
     }
 }

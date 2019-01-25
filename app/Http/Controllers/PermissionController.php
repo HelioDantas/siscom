@@ -35,8 +35,6 @@ class PermissionController extends Controller
                 return abort(403, 'Não autorizado');
 
 
-
-
     }
 
        public static function novo()
@@ -108,8 +106,6 @@ class PermissionController extends Controller
                 return true;
 
                 return abort(403, 'Não autorizado');
-
-
 
 
     }

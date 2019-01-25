@@ -73,7 +73,7 @@
 @section('tela')
 
 <div class="container corpo ">
-{!! Form::open(['route' => ['laboratorio.update', $laboratorio->id],'method ' => 'post',]) !!}
+{!! Form::open(['route' => ['laboratorio.update', $laboratorio->id],'method ' => 'get',]) !!}
  @csrf
 {{ method_field('PUT') }}
      <div class="form-group ">
@@ -93,16 +93,16 @@
     </div>
 
     <fieldset class="form-group dadosForm">
-    <legend aling="center">Laboratório </legend>
+    <legend aling="center">Dados do Laboratório </legend>
     <div class="form-group ">
 
         <div class="row">
 
-            <div class="col-xl-2 col-lg-4 col-md-4   mb-3">
+            <div class="col-xl-1 col-lg-1 col-md-1 mb-1">
                 <div class="form-group">
             
                     <label for="nome">id</label>
-                    <input type="number" name="id" id="id"class =  "form-control {{$errors->has('id') ? 'is-invalid': '' }}" required maxlength="5" @if(!empty($laboratorio)) value = "{{$convenio->cnpj}}" @else  value =   {{old('id')}} @endif>
+                    <input type="number" name="id" id="id"class =  "form-control {{$errors->has('id') ? 'is-invalid': '' }}" required maxlength="5" @if(!empty($labs)) value = "{{$convenio->cnpj}}" @else  value =   {{old('id')}} @endif>
                     
                     @if($errors->has('id'))
                         <div class="invalid-feedback">
