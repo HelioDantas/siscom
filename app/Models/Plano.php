@@ -46,4 +46,16 @@ class Plano extends Model
 
     }
 
+    public function formatDate($data){
+       $dt =  new \DateTime($data);
+        return $dt->format('d/m/Y');
+        
+    }
+    function age($date){
+        $date = new \DateTime($date);
+        $now = new \DateTime();
+
+        $age = $now->diff($date);
+        return  $age->y;
+    }
 }
