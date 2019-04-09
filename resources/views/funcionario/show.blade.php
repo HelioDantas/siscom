@@ -62,6 +62,10 @@
     .modal-dialog{
   width: 500000px;
 }
+  .sp{
+            float:left;
+        
+        }
 
 </style>
 @endsection
@@ -87,16 +91,16 @@
      <div class="form-group ">
         <div class="form-group navegacao ttt">
                 <div class="col">
-                  
-                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
-                  <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
-                  <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+
+               
+              
+                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"     data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
 
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
             </div>
 
-      <h4 class="titulocadastro"> Dados do {{$p->nome}}</h4>
+      <h4 class="titulocadastro">{{$p->nome}}</h4>
 
 
         <fieldset class="form-group dadosForm">
@@ -132,7 +136,7 @@
         </div>
     </div>
 
-        
+
    <div class="col-md-2 mb-3">
             <div class="form-group">
               <label for="cpf">RG</label>
@@ -144,8 +148,8 @@
                     {{$errors->first('identidade')}}
                     </div>
                 @endif
- 
-              
+
+
             </div>
             </div><!--col cpf -->
 
@@ -184,7 +188,7 @@
 
 
 <div class="row"> <!--naciolidade-->
-    
+
             <div class="col-md-2 mb-3">
         <div class="form-group">
           <label for="nacionalidade">Nacionalidade</label>
@@ -199,12 +203,12 @@
         </div>
     </div><!--col nacionalidade -->
 
-        
+
          <div class="col-md-2 mb-3">
             <div class="form-group">
 
             <label for="naturalidade">Naturalidade</label>
-            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" 
+            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}"
             placeholder="naturalidade"@if(!empty($p)) value = "{{$p->naturalidade}}" @else value =  {{old('naturalidade')}} @endif readonly>
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -217,15 +221,15 @@
 
          <div class="col-md-3 mb-3">
             <div class="form-group">
-            
+
                 <label for="selectbasic">Escolaridade </label>
-        
+
                   <select required id="escolaridade" name="escolaridade" class="form-control {{ $errors->has('escolaridade') ? 'is-invalid': ''  }}" readonly>
                         @if(!empty($p->escolaridade))
                         <option value="{{$p->escolaridade}}">{{$p->escolaridade}}</option>
                          @endif
-              
-            
+
+
                   </select>
                 @if($errors->has('escolaridade'))
              <div class="invalid-feedback">
@@ -235,7 +239,7 @@
             </div>
         </div>
 
-    
+
             <div class="col-md-2 mb-3">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
@@ -248,7 +252,7 @@
 
                             @php $tipo = 'Medico' ; @endphp
                             @break
-                                
+
                         @case( 'A')
 
                             @php $tipo = 'Atendente' ; @endphp
@@ -272,7 +276,7 @@
                 </div>
         </div><!--col profissao -->
 
-        
+
 
     <div class="col-md-2 mb-3">
             <div class="form-group">
@@ -301,9 +305,9 @@
                     <option value = {{$p->sexo}}>{{$tipo}}</option>
                     @else
                     <option value=""></option>
-                   
+
                 @endif
-           
+
                  </select>
         </div>
 </div><!--col genero-->
@@ -341,24 +345,39 @@
                     <option value= {{$p->etnia}}>{{$tipo}}</option>
                 @else
                     <option value=""></option>
-         
+
 
                 @endif
 
             </select>
-      
+
         </div>
     </div><!--  etinia-->
 
-    
+
                   <div class="col-md-2 mb-3">
                 <div class="form-group">
 
                     <label for="selectbasic">Status </label>
-                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p)) 
-                      value = "{{$p->Status}}" @else value =   {{old('status')}} @endif readonly>
-                      <option value="A">Ativo</option>
-                        <option value="I">Inativo</option>
+                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p))
+                         value = "{{$p->status}}" @else value =   {{old('status')}} @endif readonly>
+                                  @if(!empty($p->status))
+
+                            @switch($p->status)
+                            @case('A')
+                                @php $tipo = 'ATIVO' ; @endphp
+                                @break
+
+                            @case( 'I')
+                                @php $tipo = 'INATIVO' ; @endphp
+                                @break
+
+                             @endswitch
+
+                            <option value={{$p->status}}>{{$tipo}}</option>
+                        
+                              @endif
+                  
                       </select>
                              @if($errors->has('status'))
                              <div class="invalid-feedback">
@@ -394,7 +413,7 @@
                         <div class="invalid-feedback">
                             {{$errors->first('celular')}}
                             </div>
-                            @endif        
+                            @endif
 
                 </div>
             </div>  <!-- col Telefone-->
@@ -403,7 +422,7 @@
                 <div class="form-group">
                        <label for="email">Email address</label>
                        <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
-                      @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif readonly>  
+                      @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif readonly>
 
                       @if($errors->has('email'))
                     <div class="invalid-feedback">
@@ -423,7 +442,7 @@
                 <label for="crm">CRM</label>
                 <input type="text" name="crm" id="" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
                   @if(!empty($p)) value = "{{$p->crm}}" @else value =  {{old('crm')}}  @endif readonly>
-           
+
                       @if($errors->has('crm'))
                     <div class="invalid-feedback">
                         {{$errors->first('crm')}}
@@ -432,8 +451,31 @@
                 </div>
                 </div><!--col nome -->
 
+                
+            <div class="col-md-3 mb-3 Fill invisivel">
+                <div class="form-group">
+                  <label for="especialidade" >Especialidade 1</label>
+                  <select  id="especialidade" name="especialidade1" class="form-control"  readonly>
+                      @if (!empty($s[0]))
+                        <option   value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
+                      @endif
+                        </select>
+                </div>
+         </div>
 
-          
+
+               <div class="col-md-3 mb-3 Fill invisivel">
+                <div class="form-group teste">
+                  <label for="especialidade2">Especialidade 2</label>
+                  <select  id="especialidade2" name="especialidade2" id="" class="form-control" readonly>
+                        @if (!empty($s[1]))
+                        <option   value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
+                      @endif
+                        </select>
+                </div>
+        </div>
+
+
 
 
 </div><!-- row -->
@@ -458,14 +500,14 @@
                             </div>
 
                         </div><!-- col cep -->
-  
+
                                 <div class="form-group">
                                      <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
                                     <strong>pesquisar</strong></button>
                                  </div>
-                              
 
-                        
+
+
 
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
@@ -483,7 +525,7 @@
                   </div><!-- col rua-->
 
                    <div class="col-md-1 mb-3">
-                    <span >Nº </span>
+                    <span class = "sp" >Nº </span>
                     <div class="input-group">
                       <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required=""  type="text"
                        @if(!empty($p)) value = "{{$p->numero}}" @else value =  {{old('numero')}}  @endif readonly>
@@ -499,9 +541,9 @@
                   </div> <!-- col bumero-->
 
 
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-3 mb-3">
 
-                   <span>Bairro</span>
+                   <span >Bairro</span>
                     <div class="input-group">
                       <input id="bairro" name="bairro"  required maxlength="15" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       @if(!empty($p)) value = "{{$p->bairro}}" @else value =  {{old('bairro')}}  @endif readonly>
@@ -515,22 +557,6 @@
                     </div>
 
                     </div><!-- col bairro-->
-
-                <div class="col-md-2 mb-3">
-                   <span>Cidade</span>
-                    <div class="input-group">
-
-                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
-                      @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif readonly>
-
-                               @if($errors->has('cidade'))
-                        <div class="invalid-feedback">
-                            {{$errors->first('cidade')}}
-                            </div>
-                            @endif
-
-                    </div>
-                </div><!-- col cidade -->
 
                     <div class="col-md-1 mb-3">
                     <span>Estado</span>
@@ -547,6 +573,24 @@
                     </div>
                 </div>
 
+                <div class="col-md-3 mb-3">
+                   <span>Cidade</span>
+                    <div class="input-group">
+
+                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
+                      @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif readonly>
+
+                               @if($errors->has('cidade'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('cidade')}}
+                            </div>
+                            @endif
+
+                    </div>
+                </div><!-- col cidade -->
+
+                    
+
 
 
         </div><!-- row endereco -->
@@ -559,7 +603,7 @@
   @if($p->medico)
             <hr>
 <div class="col-4">
-     <button  class="btn btn-secondary"  data-toggle="collapse" type = "button" data-target="#demo" @if(old('email')) aria-expanded="true" @endif >Planos</button>
+     <a  class="btn btn-secondary"   href ="#demo1" data-toggle="collapse" type = "button" data-target="#demo" @if(old('email')) aria-expanded="true" @endif >Planos</a>
 
  </div>
         <div id="demo" class="collapse">
@@ -567,19 +611,19 @@
 
             <div class="form-group navegacao">
                    <div class="col">
-        
+
 
 
             </div>
 
              </div>
-                <table class="table table-hover">
+                <table id ='demo1'class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="row" >Convenio</th>
                     <th scope="col">Plano</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Opção</th>
+                  
 
               </tr>
             </thead>

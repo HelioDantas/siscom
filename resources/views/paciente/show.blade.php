@@ -49,6 +49,7 @@
     legend{
         margin-top: 1rem;
     }
+  
 
 
 </style>
@@ -68,12 +69,11 @@
               <div class="form-group navegacao">
                     <div class="col">
                            
-                             <a  class="btn btn-outline-secondary"   href="{{route('paciente.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
-                             <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
-                            <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+                            
+                            <a  class="btn btn-outline-secondary"   href="{{route('paciente.listar')}}"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
                     </div>
                 </div>
-             <h4 class="titulocadastro"> Dados do {{$p->nome}}</h4>
+             <h4 class="titulocadastro"> {{$p->nome}}</h4>
 
 
         <fieldset class="form-group dadosForm">
@@ -577,6 +577,61 @@
 </fieldset><!--endereço-->
 
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Histórico de Planos</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="container-fluid">
+                <h3 class="justify-content-center"> Historico de convênios </h3>
+              
+                   
+                    
+                     <table class="table table-responsive table-hover">
+                         <thead>
+                             <tr>
+                             <th>convenio</th>
+                             <th>plano</th>
+                             <th>carteira</th>
+                             <th>situação</th>
+                             <th>data de Adesao</th>
+                             <th>data de Encerramento</th>
+                           
+                            </tr>
+                         </thead>
+                         <tbody>
+                        @foreach ($p->planos()->where('situacao','INATIVO')->get()  as $pp)
+                        @if (!empty($pp))
+                             <tr>
+                                 <td>{{ $pp->convenio->nome }}</td>
+                                 <td>{{ $pp->nome }}</td>
+                                 <td>{{ $pp->pivot->carteira }}</td>
+                                 <td>{{ $pp->pivot->situacao }}</td>
+                                 <td>{{ $pp->pivot->created_at }}</td>
+                                 <td>{{ $pp->pivot->updated_at }}</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                             </tr>
+                            @else
+                            <tr>
+                            <td> Esse paciente ainda nao possui um historico de convênios e planos cadastrados </td>
+                        </tr>
+                             @endif
+                         @endforeach
+                         </tbody>
+                     </table>
+                        
+                     
+                       
+                    
+
+                    </div>
+
+            </div>
+    </div>
+</div>
 
 </div><!-- container -->
 

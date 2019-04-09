@@ -20,13 +20,13 @@
     <body>
 
         <header class="teste">
-            <div class="logo">
-                <h4><a class="navbar-brand" href="{{route('dashboard')}}">SisCon</a></h4>
+            <div class="logo sp">
+                <h4><a class="navbar-brand sp " href="{{route('dashboard')}}">SisCon</a></h4>
             </div>
 
-            <span id="real-clock"></span>
+            <span class = "sp" id="real-clock"></span>
 
-            <span><script type="text/javascript" src="js/data.js"></script></span>
+            <span class = "sp"><script type="text/javascript" src="js/data.js"></script></span>
 
 
                 <div class="container">

@@ -11,6 +11,12 @@ body{
 
 }
 
+header{
+    padding: 10px 2%;
+    background-color: white ;
+    text-align: center;
+}
+
 
 header .logodASH a{
     justify-content:center;
@@ -27,14 +33,14 @@ header .centroName h3{
 }
 
 
-
+input {text-transform:lowercase;}
 
 
 header #containerLogoDataHoraH3 > .data{
     padding-right:0.5%;
     float:right;
 }
-header#containerLogoDataHoraH3 > .data, #real-clock{
+header #containerLogoDataHoraH3 > .data, #real-clock{
     float:right;
 }
 header  #containerLogoDataHoraH3 > h3{
@@ -44,9 +50,9 @@ header  #containerLogoDataHoraH3 > h3{
 }
 header   > #containerSessaoEMsgBemVindo {
     margin-top: -0.5rem;
-    
+
    text-align: center;
-   
+
  }
 
   #msgBemVindo {
@@ -57,6 +63,14 @@ header   > #containerSessaoEMsgBemVindo {
 }
 
 
+.ladoDireito{
+
+    float: right;
+}
+.cor{
+    color: black;
+
+}
 
 header .container-fluid > .logo{
     float: left;
@@ -75,7 +89,7 @@ header .container-fluid > .logo{
     padding: 16px;
     font-size: 16px;
     border: none;
-    
+
 }
 
 .corpo{
@@ -93,7 +107,7 @@ header .container-fluid > .logo{
 .corpo-paciente{
     padding: 1rem;
     padding-top: 1rem;
-    
+
     background-color:#fafafa;
     border-radius:0.5%;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
@@ -102,12 +116,22 @@ header .container-fluid > .logo{
     -ms-border-radius:0.5%;
     -o-border-radius:0.5%;
 }
+.corpo-paciente-clinico-infos{
+   
 
+    background-color:N/A;
+    border-radius:0.3%;
+    box-shadow: 0 5px 10px 0 rgba(255, 255, 255, 0.4), 0 5px 10px 0 rgba(255, 255, 255, 0.19);
+    -webkit-border-radius:0.3%;
+    -moz-border-radius:0.3%;
+    -ms-border-radius:0.3%;
+    -o-border-radius:0.3%;
+}
 
 .dropdown {
     position: relative;
     display: inline-block;
-    
+
 }
 
 .dropdown-content {
@@ -140,17 +164,65 @@ nav{
 ul li{
   text-align: center;
 }
+.margin{
+margin: 3px;
 
+}
 
 
 /* js lista */
 .invisivel{
     display: none;
 }
+.pagina{
+    padding:1rem;
+    float: right;
 
+}
 
 .titulopacientes{
 	display:inline-table;
-    margin-left: 15rem;
+    margin-left: 30rem;
     }
 
+@media(max-width: 700px){
+  .table-resp thead{
+    display: none;
+  }
+
+  .table-resp tr{
+      display: block;
+      border-bottom: 2px solid #dce0e0;
+  }
+
+  .table-resp tr td{
+      width: 100%;
+      display: block;
+      text-align: right;
+      border-bottom: 1px dotted #ccc;
+  }
+
+  .table-resp tr td:last-child {
+    border-bottom: 0;
+  }
+
+  .table-resp tr td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      font-size: 12px;
+  }
+}
+
+
+   @media(max-width: 700px ){
+
+       .sp{
+
+           display: none;
+       }
+      .cor{
+          display: none;
+
+      }
+    }

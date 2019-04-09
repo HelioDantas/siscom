@@ -90,15 +90,18 @@
         <div class="form-group navegacao ttt">
                 <div class="col">
                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
-                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
+              
+                  @if(!session()->get("user")->permission()->where('permissao_id', 4)->get()->isEmpty())
+                  <a  class="btn btn-outline-secondary"   href="{{ route('user.permissoes',['id'=>$p->matricula]) }}"data-toggle="tooltip"data-placement="top"title="permissoes"><i class="fab fa-expeditedssl"></i></a>
+                  @endif
                   <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
-                  <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+                  <a  class="btn btn-outline-secondary"   href="{{ route('funcionario.listar')}}" data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
 
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
             </div>
 
-      <h4 class="titulocadastro">Atualizar Dados do {{$p->nome}}</h4>
+      <h4 class="titulocadastro">{{$p->nome}}</h4>
 
 
         <fieldset class="form-group dadosForm">
@@ -107,7 +110,7 @@
 
   <div class="form-group col-md-4 mb-3">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="43" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
+        <input type="text" name="nome" id="nome"  maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
         @if(!empty($p)) value = "{{$p->nome}}" @else value = {{old('nome')}} @endif>
 
         @if($errors->has('nome'))
@@ -134,7 +137,7 @@
         </div>
     </div>
 
-        
+
    <div class="col-md-2 mb-3">
             <div class="form-group">
               <label for="cpf">RG</label>
@@ -146,15 +149,15 @@
                     {{$errors->first('identidade')}}
                     </div>
                 @endif
- 
-              
+
+
             </div>
             </div><!--col cpf -->
 
                 <div class="form-group col-md-2 mb-3">
             <label for="orgEmissor">Orgão Emissor</label>
 
-            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="17"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
            @if(!empty($p)) value = "{{$p->identidade}}" @else value = {{old('org_emissor')}} @endif>
                  @if($errors->has('org_emissor'))
             <div class="invalid-feedback">
@@ -186,7 +189,7 @@
 
 
 <div class="row"> <!--naciolidade-->
-    
+
             <div class="col-md-2 mb-3">
         <div class="form-group">
           <label for="nacionalidade">Nacionalidade</label>
@@ -201,12 +204,12 @@
         </div>
     </div><!--col nacionalidade -->
 
-        
+
          <div class="col-md-2 mb-3">
             <div class="form-group">
 
             <label for="naturalidade">Naturalidade</label>
-            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" 
+            <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}"
             placeholder="naturalidade"@if(!empty($p)) value = "{{$p->naturalidade}}" @else value =  {{old('naturalidade')}} @endif>
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -219,9 +222,9 @@
 
          <div class="col-md-3 mb-3">
             <div class="form-group">
-            
+
                 <label for="selectbasic">Escolaridade </label>
-        
+
                   <select required id="escolaridade" name="escolaridade" class="form-control {{ $errors->has('escolaridade') ? 'is-invalid': ''  }}">
                         @if(!empty($p->escolaridade))
                         <option value="{{$p->escolaridade}}">{{$p->escolaridade}}</option>
@@ -242,7 +245,7 @@
             </div>
         </div>
 
-    
+
             <div class="col-md-2 mb-3">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
@@ -255,7 +258,7 @@
 
                             @php $tipo = 'Medico' ; @endphp
                             @break
-                                
+
                         @case( 'A')
 
                             @php $tipo = 'Atendente' ; @endphp
@@ -264,7 +267,7 @@
 
                             @endswitch
 
-                            <option selected value= "{{$p->profissao}}">{{$tipo}}</option>
+                            <option selected value= {{$p->profissao}}>{{$tipo}}</option>
                               @else
 
                       @endif
@@ -279,7 +282,7 @@
                 </div>
         </div><!--col profissao -->
 
-        
+
 
     <div class="col-md-2 mb-3">
             <div class="form-group">
@@ -353,7 +356,7 @@
                     @break
 
                 @endswitch
-                    <option value= "{{$p->etnia}}">{{$tipo}}</option>
+                    <option value= {{$p->etnia}}>{{$tipo}}</option>
                 @else
                     <option value=""></option>
                 @endif
@@ -371,12 +374,12 @@
         </div>
     </div><!--  etinia-->
 
-    
+
                   <div class="col-md-2 mb-3">
                 <div class="form-group">
 
                     <label for="selectbasic">Status </label>
-                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p)) 
+                      <select required id="status" name="status" class="form-control {{$errors->has('status') ? 'is-invalid': '' }}" @if(!empty($p))
                       value = "{{$p->Status}}" @else value =   {{old('status')}} @endif>
                       <option value="A">Ativo</option>
                         <option value="I">Inativo</option>
@@ -392,11 +395,11 @@
             <div class="col-md-2 mb-3">
             <div class="form-group">
                 <label for="telefone">Telefone </label>
-                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                    <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}"  type="text" maxlength="13"
                      @if(!empty($p)) value = "{{$p->telefone}}" @else value = {{old('telefone')}} @endif>
 
                       @if($errors->has('telefone'))
-                <div class="invalid-feedback">
+                             <div class="invalid-feedback">
                     {{$errors->first('telefone')}}
                     </div>
                     @endif
@@ -408,14 +411,14 @@
         <div class="col-md-2 mb-3">
                 <div class="form-group">
                     <label for="celular">Celular </label>
-                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}"  type="text" maxlength="13"
                       @if(!empty($p)) value = "{{$p->celular}}" @else value = {{old('celular')}}  @endif>
 
                             @if($errors->has('celular'))
                         <div class="invalid-feedback">
                             {{$errors->first('celular')}}
                             </div>
-                            @endif        
+                            @endif
 
                 </div>
             </div>  <!-- col Telefone-->
@@ -423,8 +426,8 @@
             <div class="col-md-3 mb-3">
                 <div class="form-group">
                        <label for="email">Email address</label>
-                       <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
-                      @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif>  
+                       <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" maxlength="35" placeholder="name@example.com"
+                      @if(!empty($p)) value = "{{$p->email}}" @else value =  {{old('email')}}  @endif>
 
                       @if($errors->has('email'))
                     <div class="invalid-feedback">
@@ -442,19 +445,50 @@
              <div class="col-md-3 mb-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
-                <input type="text" name="crm" id="" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="15"
-                  @if(!empty($p)) value = "{{$p->crm}}" @else value =  {{old('crm')}}  @endif>
-           
+                <input type="text" name="crm" id="" class="form-control {{$errors->has('crm') ? 'is-invalid': '' }}" placeholder="crm"  maxlength="30"
+                  @if(!empty($p->medico)) value = "{{$p->medico->crm}}" @else value =  {{old('crm')}}  @endif>
+
                       @if($errors->has('crm'))
                     <div class="invalid-feedback">
                         {{$errors->first('crm')}}
                         </div>
                         @endif
                 </div>
-                </div><!--col nome -->
+            </div><!--col nome -->
+
+            <div class="col-md-3 mb-3 Fill invisivel">
+                <div class="form-group">
+                  <label for="especialidade" >Especialidade 1</label>
+                  <select  id="especialidade" name="especialidade1" class="form-control"  >
+                      @if (!empty($s[0]))
+                        <option   value="{{$s[0]->id}}" selected>{{$s[0]->nome}}</option>
+                      @endif
+                      <option value="">Não possui</option>
+                      @foreach($especialidades as $e)
+                            <option  value="{{$e->id}}">{{$e->nome}}</option>
+                     @endforeach
+                  </select>
+                </div>
+         </div>
 
 
-          
+               <div class="col-md-3 mb-3 Fill invisivel">
+                <div class="form-group teste">
+                  <label for="especialidade2">Especialidade 2</label>
+                  <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
+                        @if (!empty($s[1]))
+                        <option   value="{{$s[1]->id}}" selected>{{$s[1]->nome}}</option>
+                      @endif
+                        <option value="">Não possui</option>
+                      @foreach($especialidades as $e)
+                      <option value="{{$e->id}}">{{$e->nome}}</option>
+                      @endforeach
+                  </select>
+                </div>
+        </div>
+
+
+
 
 
 </div><!-- row -->
@@ -479,19 +513,19 @@
                             </div>
 
                         </div><!-- col cep -->
-  
+
                                 <div class="form-group">
                                      <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
                                     <strong>pesquisar</strong></button>
                                  </div>
-                              
 
-                        
+
+
 
                      <div class="col-md-3 mb-3">
                       <span>Rua</span>
                           <div class="input-group">
-                              <input type="text" name="rua" maxlength="40" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
+                              <input type="text" name="rua" maxlength="35" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
                               @if(!empty($p)) value = "{{$p->rua}}" @else value =  {{old('rua')}}  @endif}>
 
                                 @if($errors->has('rua'))
@@ -506,7 +540,7 @@
                    <div class="col-md-1 mb-3">
                     <span >Nº </span>
                     <div class="input-group">
-                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required=""  type="text"
+                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder=""   type="text"
                        @if(!empty($p)) value = "{{$p->numero}}" @else value =  {{old('numero')}}  @endif>
 
                              @if($errors->has('numero'))
@@ -520,11 +554,11 @@
                   </div> <!-- col bumero-->
 
 
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-3 mb-3">
 
                    <span>Bairro</span>
                     <div class="input-group">
-                      <input id="bairro" name="bairro"  required maxlength="15" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
+                      <input id="bairro" name="bairro"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       @if(!empty($p)) value = "{{$p->bairro}}" @else value =  {{old('bairro')}}  @endif>
 
                               @if($errors->has('bairro'))
@@ -536,23 +570,6 @@
                     </div>
 
                     </div><!-- col bairro-->
-
-                <div class="col-md-2 mb-3">
-                   <span>Cidade</span>
-                    <div class="input-group">
-
-                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
-                      @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif>
-
-                               @if($errors->has('cidade'))
-                        <div class="invalid-feedback">
-                            {{$errors->first('cidade')}}
-                            </div>
-                            @endif
-
-                    </div>
-                </div><!-- col cidade -->
-
                     <div class="col-md-1 mb-3">
                     <span>Estado</span>
                     <div class="input-group">
@@ -568,9 +585,29 @@
                     </div>
                 </div>
 
+                <div class="col-md-3 mb-3">
+                   <span>Cidade</span>
+                    <div class="input-group">
+
+                      <input id="cidade" name="cidade"  required maxlength="30" placeholder="" required=""  class="form-control {{$errors->has('cidade') ? 'is-invalid': '' }}" type="text"
+                      @if(!empty($p)) value = "{{$p->cidade}}" @else value =  {{old('cidade')}}  @endif>
+
+                               @if($errors->has('cidade'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('cidade')}}
+                            </div>
+                            @endif
+
+                    </div>
+                </div><!-- col cidade -->
+
+                    
+
 
 
         </div><!-- row endereco -->
+
+
 
     </fieldset><!--endereço-->
 
@@ -588,19 +625,20 @@
 
             <div class="form-group navegacao">
                    <div class="col">
-         <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video"   data-toggle="tooltip" data-placement="top" title="adcionar novo plano"><i class="fas fa-plus-circle"></i></a>
+         <a  class="btn btn-outline-success recon"  data-toggle="modal" href="#modal-video"   data-toggle="tooltip" data-placement="top" title="adicionar novo plano"><i class="fas fa-plus-circle"></i></a>
 
 
               <div class="modal fade  "id="modal-video" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg "role="document">
 
-                        <div class="modal-content ">
+                        <div class="modal-content "   height = "5000rem">
                             <div class="modal-header">
+
                                 <button type="button" class="close"  onClick="history.go(0)"  data-dismiss="modal" aria-hidden="true">close <i class="fa fa-times"></i></button>
                             </div>
                             <div class="modal-body">
                               <div class="row">
-                                <iframe type="text/html" width="100%" height="100%" src="{{route('medico.planoNovo', ['id'=>$p->matricula])}}" frameborder="0" allowfullscreen=""></iframe>
+                                <iframe type="text/html" width="5000rem" height="650rem" src="{{route('medico.planoNovo', ['id'=>$p->matricula])}}" frameborder="0" allowfullscreen=""></iframe>
 
                                     </div>
                             </div>
@@ -649,12 +687,17 @@
 
     </div>
       @endif
+     
 {!! Form::close() !!}
 </div><!-- container -->
 
 @endsection
 
 @section('scripts')
+
+<script type="text/javascript" src="{{ asset('js/especialidades.js') }}"></script>
+
+
     <script type="text/javascript" src="{{ asset('js/validaEmail.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>

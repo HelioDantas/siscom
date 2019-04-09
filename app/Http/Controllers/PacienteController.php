@@ -11,6 +11,8 @@ use App\Models\Convenio;
 use App\Models\PacienteHasConvenio;
 use App\Models\Plano;
 use App\Http\Requests\PacienteRequest;
+use Str;
+use App\Http\Controllers\PermissionController;
 class PacienteController extends Controller
 {
 
@@ -20,12 +22,12 @@ class PacienteController extends Controller
 
 
     function indexjson(){
-
+            
         return Paciente::paginate(10);
     }
 
 
-    public function shown($id) 
+    public function shown($id)
     {
 
     $id = Request::route('id');
@@ -33,87 +35,145 @@ class PacienteController extends Controller
     return view('detalhes')->with('paciente', $paciente);
     }
 
-    
-    public function listar()  
+
+    public function listar()
     {
         //  listar pacientes.
-
+     
         //$pacientes = Paciente::where('nome', $nome)->get();
-        $pacientes = Paciente::paginate(10);
+        $pacientes = Paciente::orderBy('nome')->paginate(10);
         return view('paciente.listar' , compact('pacientes'));
         //testando
-    } 
+    }
 
     // filtro da tabela listar
     public function buscar(Request $request){
-        $buscar = $request->input('search');
-        $pacientes = Paciente::where('nome', 'like', '%'.$buscar.'%')
-        ->orWhere('cpf', 'like', '%'.$buscar.'%')
-        ->orWhere('id', 'like', '%'.$buscar.'%')
-        ->paginate(10);
-        return view('paciente.listar' , compact('pacientes'));
-       
-      } 
+        if($request['tipobusca'] !== null && $request->input('search') !== null){
+         $tipo = $request['tipobusca'];
+         $buscar = $request->input('search');
+            switch($tipo){
+                case "telefone":
+                $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->orWhere('celular', 'like', '%'.$buscar.'%')->paginate(10);
+                break;
 
-    
-    public function novo() 
+                case "id":
+                $pacientes = Paciente::where($tipo,'=',$buscar)->paginate(10);
+                break;
+
+                default:
+                $tipo !== null ? $pacientes = Paciente::where($tipo, 'like', '%'.$buscar.'%')->paginate(10) : $pacientes = PacienteController::buscaGenerica($buscar) ;
+                break;
+            }
+        }else{
+            $tipo = 'vazio';
+            $buscar = '*'; 
+            $pacientes =  PacienteController::buscaGenerica($buscar);
+        }
+
+            return view('paciente.listar' , compact('pacientes'))->with('tipobusca', $tipo)
+            ->with('search', $buscar);;
+
+      }
+
+      function buscaGenerica($buscar){
+        $result = Paciente::where('nome', 'like', '%'.$buscar.'%')
+        ->orWhere('cpf', 'like', '%'.$buscar.'%')
+        ->orWhere('id',$buscar)
+        ->paginate(10);
+        return $result;
+    }
+
+    public function novo(Request $request)
     {
+            
         //  form de um novo paciente
+         PermissionController::pnovo( $request);
+
         $convenios = Convenio::all();
         $planos = Plano::all();
          //dd($convenio->tipoConvenios);
 
-        
+
         return view('paciente.formulario' ,compact('convenios','planos'));
     }
 
+   
+
     public function create(PacienteRequest $request){
 
-        
-        $paciente = Paciente::create($request->all());
-        $paciente->planos()->attach($request['plano_id'], 
-        [ 'indicacao'  => $request['indicacao'],
+          PermissionController::pnovo( $request);
+
+        $paciente = Paciente::create([
+        'nome'              =>  mb_strtolower($request['nome']),
+        'org_emissor'       =>  mb_strtolower($request['org_emissor']),
+        'nacionalidade'     =>  mb_strtolower($request['nacionalidade']),
+        'naturalidade'      =>  mb_strtolower($request['naturalidade']),
+        'rua'               =>  mb_strtolower($request['rua']),
+        'bairro'            =>  mb_strtolower($request['bairro']),
+        'cidade'            =>  mb_strtolower($request['cidade']),
+        'email'             =>  mb_strtolower($request['email']),
+        'profissao'         =>  mb_strtolower($request['profissao']),
+        'estado'            =>  mb_strtolower($request['estado']),
+        'cpf'               => $request['cpf'],
+        'sexo'              => $request['sexo'],
+        'etnia'             => $request['etnia'],
+        'identidade'        => $request['identidade'],
+        'dataDeNascimento'  => $request['dataDeNascimento'],
+        'escolaridade'      => $request['escolaridade'],
+        'cep'               => $request['cep'],
+        ]);
+
+        $paciente->planos()->attach($request['plano_id'],
+        [ 'indicacao'  =>  mb_strtolower($request['indicacao']),
             'carteira'  => $request['carteira']]);
 
-       
+
 
          return redirect()->route('paciente.listar')->withInput();
 
-        
+
        // return redirect()->action('UserController@novo')->with('func', $sis_funcionario);
 
 
     }
-
-    public function edit( $id) 
+    public function edit(Request $request,  $id)
     {
-        //  form para editar infos de um paciente
+        //  form para editar infos de um funcionario
+        $tt =PermissionController::pedit( $request);
+
+
        $p = Paciente::find($id);
+       
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
         $phc = $plano->pivot;
-        $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+        $convenio = Convenio::where('id', $plano->convenio_id)->first();
        } else {
-           $plano =null; $phc =null; $convenio =null; 
+           $plano =null; $phc =null; $convenio =null;
        }
-       
+
        //$phc = PacienteHasConvenio::where('paciente_id','=',$id,'and','plano_id','=',$plano->convenio_id )->first();
 
        //$convenioIsNull = (Convenio::where('cnpj', $plano->convenio_id)->first()) ?  $convenio = $convenioIsNull : $convenio = '' ;
       // $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
-      
+
        $convenios = Convenio::all();
         return view('paciente.editar' , compact('p','convenio','convenios','plano','phc'));
     }
-   
 
-    public function update(Request $request, $id)
+
+
+    public function update(PacienteRequest $request, $id)
     {
-
-
-   
-     $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->first();
        
+  
+
+        PermissionController::pedit( $request);
+
+
+     
+     $paciente = Paciente::find($id)->planos()->where('situacao', 'ATIVO')->first();
+
         if($paciente !=null && $paciente->pivot['plano_id'] == $request['plano_id']){
        Paciente::find($id)->planos()->where('situacao', 'ATIVO')->update(
                 [
@@ -122,107 +182,128 @@ class PacienteController extends Controller
                     'carteira'   => $request['carteira'],
                     'situacao'  =>  $request['situacao']
                                             ]);
-       
+
          }else{
              if($paciente != null)
+             
                 Paciente::find($id)->planos()->updateExistingPivot($paciente->pivot['plano_id'], ['situacao'=>'INATIVO']);
 
-             Paciente::find($id)->planos()->attach($request['plano_id'], 
-                [ 
+             Paciente::find($id)->planos()->attach($request['plano_id'],
+                [
                     'indicacao'  => $request['indicacao'],
                     'carteira'  => $request['carteira']
                                                             ]);
 
          }
-         
-         
+
+
 
 
             // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
+            
             $paciente = Paciente::find($id);
+            
             $paciente->update($request->all());
+         //  dd($request->all());
 
+         if ($request->session()->exists('key')) {
+             $value = session('key');
+            session()->forget('key');
 
-
-
-
-/*
-        //  atualizar
-        //dd($request);
-        $paciente = Paciente::find($id);
-        $ativos = $paciente->planos()->where('situacao','ATIVO')->get();
-       
-        if (!$ativos == null) { // se houver ativos
-            
-            PacienteHasConvenio::where('paciente_id', '=', $paciente->id)->where('situacao','=','ATIVO' )->orWhere('situacao','=','NULL')->update(['situacao'=>'INATIVO']);
-
-               PacienteHasConvenio::updateOrCreate([
-                'paciente_id' => $paciente->id,
-                'plano_id'   => $request['plano_id'],
-                'indicacao'  => $request['indicacao'],
-              //  'carteira'   => $request['carteira'],
-                'situacao' => 'ATIVO',
-               ]);
-        }
-
-    /* if (!$inativos == null){
-        $inativo = PacienteHasConvenio::where('paciente_id', '=', $paciente->id)
-         ->where('plano_id','=', $request['plano_id'])
-         ->Where('carteira','=',$request['carteira'])->update(['situacao'=> 'ATIVO']);
-            
-        } 
-       // dd($phc->where('paciente_id', '=',  $pacientePlano->id)->where('situacao','=','INATIVO' )->get());
-
-        $paciente->update($request->except([
-            'convenio_id',
-            'plano_id',
-            'indicacao',
-            'carteira',
-            '_token']));
-        
-*/
+           return redirect($value);
+}
         return redirect()->route('paciente.listar');
     }
 
-   
-    public function store(Request $request) 
+    function updatePlano($idPaciente, $plano){
+        Paciente::find($idPaciente)->planos()->updateExistingPivot($paciente->pivot['plano_id'], ['situacao'=>'INATIVO']);
+        Paciente::find($idPaciente)->planos()->attach([ $plano]); 
+     }
+
+
+    public function store(Request $request)
     {
         //  recebe request , dos dados dos formularios
 
         $req = 'dados' . $request->input('nome'); // passado no form
         return reponse($req ,201);
     }
-   
-    public function destroy($id)
+
+    public function destroy(Request $request, $id)
     {
         //  deletar
-
+        $tt = PermissionController::pdestroy( $request);
         $paciente = Paciente::find($id);
-       // $paciente = Paciente::find($prontuario);
         $paciente->delete();
-       //Paciente::destroy($prontuario);
 
-       // DB::delete("delete from sis_paciente where prontuario = $prontuario");
-        return back();
-        //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
+        return redirect()->back();
+             //retornar pra mesma pagina onde esta sendo mostrado a lista de pacientes.
+
+
     }
 
-         public function show($id)
+        public function show(Request $request, $id)
     {
-      
+        //  form para editar infos de um paciente
+       $tt = PermissionController::pshow( $request); // vai pra parte de verificação de permisao
+
+
       $p = Paciente::find($id);
       $plano = $p->planos()->where('situacao','ATIVO')->first();
        if ( !$plano == null) {
         $phc = $plano->pivot;
-        $convenio = Convenio::where('cnpj', $plano->convenio_id)->first();
+        $convenio = Convenio::where('id', $plano->convenio_id)->first();
        } else {
-           $plano =null; $phc =null; $convenio =null; 
+           $plano =null; $phc =null; $convenio =null;
        }
-       
 
-      
+
+
        $convenios = Convenio::all();
         return view('paciente.show' , compact('p','convenio','convenios','plano','phc'));
 
     }
+
+
+
+
+    public function buscarCpf( $buscar)
+    {
+        $paciente = Paciente::where('cpf', '=', $buscar)->first();
+
+       if( $paciente->planos()->first() != null){
+        $plano = $paciente->planos()->first();
+         $dados[] = array(
+            "nome" => $paciente->nome,
+            "celular" => $paciente->celular,
+            "telefone" => $paciente->telefone,
+            "dataDeNascimento" => $paciente->dataDeNascimento,
+            "pano_id" => $plano->id ,
+            "planoNome" => $plano->nome,
+        );
+         
+    }else{
+        $dados[] = array(
+            "nome" => $paciente->nome,
+            "celular" => $paciente->celular,
+            "telefone" => $paciente->telefone,
+            "dataDeNascimento" => $paciente->dataDeNascimento,
+            "pano_id" => "",
+            "planoNome" => "",
+        );
+    }
+           
+        return json_encode($dados);
+     
+
+    }
+
+      public function buscarNome( $buscar)
+    {
+        $Funcionarios = Paciente::where('nome', '=', $buscar)->get();
+        return json_encode($Funcionarios);
+
+    }
 }
+
+  

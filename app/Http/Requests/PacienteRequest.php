@@ -24,25 +24,27 @@ class PacienteRequest extends FormRequest
     public function rules()
     {
         return [
-        'nome'                  => 'required|max:10',
+
+        'nome'                  => 'required|min:3|max:54',
+
         'cpf'                   => 'required|min:14|max:15',
         'identidade'            => 'nullable|min:11|max:12',    
         'dataDeNascimento'      => 'nullable|date',
         'sexo'                  => 'nullable',
         'etnia'                 => 'nullable',
-        'nacionalidade'         => 'nullable|max:16',
-        'naturalidade'          => 'nullable|max:16',
+        'nacionalidade'         => 'nullable|max:25',
+        'naturalidade'          => 'nullable|max:35',
         'escolaridade'          => 'nullable',
         'rua'                   => 'nullable|max:40',
         'numero'                => 'nullable|max:7',
-        'bairro'                => 'nullable|max:15',
+        'bairro'                => 'nullable|max:20',
         'cep'                   => 'nullable|max:15',
         'cidade'                => 'required|max:15',
         'estado'                => 'required|max:15',   
-        'telefone'              => 'nullable|min:14|max:14',
-        'celular'               => 'required|min:15max:15',
+        'telefone'              =>'nullable|min:14|max:14',
+        'celular'               => 'required|min:15|max:15',
         'email'                 => 'required|email',
-        'profissao'             => 'nullable|max:14',
+        'profissao'             => 'nullable|max:30',
         'status'                => 'required',
         ];
     }

@@ -5,20 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!--<meta http-equiv="refresh" content="5">-->
-
-    <!--<link rel="stylesheet" href="{{ 'css/app.css'}}">
-    <link rel="stylesheet" href="{{'css/home.css'}}"> -->
-
-
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-    <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('/css/home.css') }}">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    
+    @yield('links')
+   <link rel="stylesheet" href="{{ URL::to('https://use.fontawesome.com/releases/v5.4.2/css/all.css') }}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <title>SisCom</title>
     @yield('estilos')
@@ -26,9 +20,41 @@
         .corpo{
            margin-top:3rem;
         }
-        span{
-          margin-right:1rem;
+        header > a{
+          margin-right:0.5rem;
 
+        }
+        header .logo{
+            font-size: 20px;
+        }
+        #containerLogoDataHoraH3{
+          padding-top:-0.5rem;
+        }
+     
+         header{
+            padding: 10px 2%;
+            background-color: white ;
+            text-align: center;
+        }
+         header h4{
+            float: left;
+        }
+        header .logo{
+            font-size: 20px;
+        }
+
+        .real-clock{
+            padding-left : 1%;
+        }
+        nav span{
+            float:right;
+            padding-left: 2%;
+
+            
+        }
+          .sp{
+            float:right;
+            padding-left: 1.4rem;
         }
 
     </style>
@@ -36,15 +62,21 @@
 <body>
         <!-- header -->
 
-            <header > <!-- style="color:#000000;" -->
+            <header class="teste"> <!-- style="color:#000000;" -->
 
-              <div class="container-fluid" id="containerLogoDataHoraH3">
-                    <span class="logo mb-0"><strong>Siscon</strong></span>
-                    <span  class="mb-0"id='real-clock'></span>
-                    <span class="data mb-0"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
-                    <h3>Sistema de Consultorio Medico</h3>
+                    <div class="logo">
+                <h4><a class="navbar-brand cor" href="{{route('dashboard')}}">SisCon</a></h4>
+            </div>
 
-                <div>
+            <span class = "sp"id="real-clock"></span>
+
+            <span class = "sp"><script type="text/javascript" src="{{ asset('js/data.js') }}"></script></span>
+
+
+                <div class="container">
+                    <h3>Sistema de Consultório médico</h3>
+
+                </div>
 
             </header>
 
@@ -64,39 +96,53 @@
                     <div class="dropdown-content">
 
                       <a href="{{route('paciente.listar')}}">Paciente</a>
-                      <a href="#">Convenios</a>
-                      <a href="{{route('medico.novo')}}">Medico</a>
+
+                      <a href="{{route('convenio.listar')}}">Convenios</a>
+
                       <a href="{{route('funcionario.listar')}}">Funcionario</a>
+
+                      
 
                     </div>
                   </div>
                 </li>
+           {{--       <!--
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Convenios</button>
                     <div class="dropdown-content">
-                       <a href="{{route('convenio.novo')}}">Cadastrar</a>
+                       <a href="{{ route('agenda.index') }}">Agenda</a>
                       <a href="">Pesquisar</a>
-                      <a href="{{route('convenio.alterar')}}">Alterar</a>
+                      <a href="{{route('convenio.editar')}}">Alterar</a>
                     </div>
                   </div>
                 </li>
+           --> --}}
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Agenda</button>
+                    
                     <div class="dropdown-content">
-
+                       @if(Auth::user()->funcionario->medico)
+                       <a href="{{ route('medico.agenda') }}">Agendar</a
+                          
+                           @else
+                           <a href="{{ route('agenda.index') }}">Agendar</a>
+                          @endif
+                     
                     </div>
                   </div>
                 </li>
+            
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Medicos</button>
                     <div class="dropdown-content">
-
+                      <a href="{{ route('medico.RegistrosClinicos') }}" >Registros Clinicos</a>
                     </div>
                   </div>
                 </li>
+               {{--    
                 <!--
                 <li class="nav-item">
                   <div class="dropdown">
@@ -107,7 +153,7 @@
                       <a href="#">Adicionar</a>
                     </div>
                   </div>
-                </li> -->
+                </li> 
                  <li class="nav-item">
                   <div class="dropdown">
                     <button class="dropbtn">Funcionarios</button>
@@ -117,13 +163,13 @@
                       <a href="#">Adicionar</a>
                     </div>
                   </div>
-                </li>
+                </li>-->--}}
 
               </ul>
             </div>
-              <span class="navbar-text" id="msgBemVindo">Bem vindo @php echo session("user"); @endphp </span>
+              <span class="navbar-text my-2 my-sm-0 pagina" id="msgBemVindo">Bem vindo @php echo session("user")->funcionario->nome; @endphp </span>
 
-                <span class="navbar-text" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
+                <span class="navbar-text my-2 my-sm-0  pagina" id="sessao" style="color:#000000;"><strong>sessao expira em 5 minutos</strong></span>
               <form class="form-inline my-2 my-lg-0">
                 <a class="btn btn-secondary sair "  type="button" href = "{{route('login.logout')}}"><strong>Sair</strong></a>
 
@@ -135,23 +181,33 @@
 
 
 
-        @yield('conteudo')
+       
         @yield('navegação')
+
+        
         <div class="container col-lg-10" style="">
                    @yield('tela')
             </div>
+            <div class="container col-lg-12" style="">
+                @yield('telaListarPaciente')
+         </div>
 
 
 
     <!--<script src="{{ URL::to('js/app.js') }}"></script>-->
 
-    <script  href="{{ asset('js/app.js') }}" type="text/javascript"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/mascara.js') }}"></script>
+
+    
+    <script type="text/javascript">
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+  </script>
 
     <script>
 		setInterval(function() {

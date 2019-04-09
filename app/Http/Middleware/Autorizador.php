@@ -14,7 +14,6 @@ class Autorizador
     public function handle($request, Closure $next)
 
     {
-
         if ($request->session()->exists('user') ) {
             if($request->is('/login')){
                 return redirect('dashboard');

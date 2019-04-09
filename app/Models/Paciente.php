@@ -43,4 +43,11 @@ class Paciente extends Model
     }
 
     
+    public function convenio(){
+
+        return $this->belongsTo("App\Models\Convenio");
+
+    }
+
+    
 }

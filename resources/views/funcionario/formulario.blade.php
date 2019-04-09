@@ -57,28 +57,52 @@
 
 </style>
 @endsection
-      
+
 
 
 
 @section('tela')
  <hr>
 <div class="container-fluid col-lg-10 corpo-paciente">
-    
+
     {!! Form::open(['route' => 'funcionario.create','method ' => 'post',]) !!} @csrf
+
+    @if (session('cpfJaCadastrdo'))
+
+
+    <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Clouse</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger ">
+                {{ session('cpfJaCadastrdo') }}
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+@endif
+
 
      <div class="form-group ">
         <div class="form-group navegacao ttt">
                 <div class="col">
                   <button id="Salvar"  class="btn btn-outline-primary" type="Submit"  data-toggle="tooltip" data-placement="top" title="Salvar"><i class="far fa-save"></i></button>
-                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="pesquisar"><i class="fas fa-search"></i></a>
                   <a  class="btn btn-outline-info"   onClick="history.go(0)"  data-toggle="tooltip" data-placement="top" title="Recarregar"><i class="fas fa-redo"></i></a>
-                  <a  class="btn btn-outline-secondary"   onClick="history.go(-1)"  data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
+                  <a  class="btn btn-outline-secondary"   href="{{route('funcionario.listar')}}"   data-toggle="tooltip" data-placement="top" title="Voltar"><i class="fas fa-share"></i></a>
 
                   <!--<button id="Cancelar" name="Cancelar" class="btn btn-danger" type="button">Cancelar</button>-->
                 </div>
             </div>
-         
+
 
            <h3 class="titulocadastro">Cadastro <strong>| Funcionario  </strong></h3>
         </div>
@@ -90,20 +114,20 @@
 
 
 
-    <div class="form-group col-md-4 mb-3">
+    <div class="form-group  col-xl-4 col-md-4  col-lg-5 mb-3">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome"  maxlength="43" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required
-        value =   {{old('nome')}}>
+        <input type="text" name="nome" id="nome"  maxlength="49" class="form-control {{$errors->has('nome') ? 'is-invalid': '' }}" placeholder="nome" required autofocus
+        value =   {{old('nome')}} >
 
         @if($errors->has('nome'))
             <div class="invalid-feedback">
-                {{$errors->first('nome')}}
-                </div>
+                {$errors->first('nome')}}
+            </div>
         @endif
     </div>
 
 
-    <div class = "col-md-2 mb-3">
+    <div class = " col-xl-2  col-md-6 col-lg-4">
 
         <div class="form-group">
 
@@ -120,11 +144,11 @@
     </div>
 
 
-   <div class="col-md-2 mb-3">
+   <div class=" col-xl-2  col-md-6 col-lg-3">
             <div class="form-group">
               <label for="cpf">RG</label>
-              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" placeholder="identidade" aria-describedby="identidade" maxlength="13"
- 
+              <input type="text" name="identidade" id="RG" class="form-control {{$errors->has('identidade') ? 'is-invalid': '' }}" required placeholder="identidade" aria-describedby="identidade" maxlength="13"
+
                value =   {{old('identidade')}}>
 
                 @if($errors->has('identidade'))
@@ -132,16 +156,16 @@
                     {{$errors->first('identidade')}}
                     </div>
                 @endif
- 
-              
+
+
             </div>
             </div><!--col cpf -->
 
 
-        <div class="form-group col-md-2 mb-3">
+        <div class="form-group  col-xl-2  col-md-6 col-lg-3">
             <label for="orgEmissor">Orgão Emissor</label>
 
-            <input type="text" name="org_emissor" id="org_emissor" maxlength="15"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
+            <input type="text" name="org_emissor" id="org_emissor" maxlength="17"  required class="form-control {{$errors->has('org_emissor') ? 'is-invalid': '' }}" placeholder="ex:Detran" aria-describedby=""
             value =   {{old('org_emissor')}}>
                  @if($errors->has('org_emissor'))
             <div class="invalid-feedback">
@@ -154,10 +178,10 @@
         </div>
 
 
-    <div class="col-md-2 mb-3">
+    <div class="col-xl-2  col-md-6 col-lg-3">
         <div class="form-group">
             <label for="dataDeNascimento">Data Nascimento</label>
-            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= document.querySelector('input[type="date"]' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            <input type="date" name="dataDeNascimento"  required  id="dataDeNascimento" class="form-control {{$errors->has('dataDeNascimento') ? 'is-invalid': '' }}"  min="1850-04-01" max= "2020-04-01" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
             value =   {{old('dataDeNascimento')}}>
 
                 @if($errors->has('dataDeNascimento'))
@@ -170,17 +194,12 @@
         </div>
     </div><!--col dt Nascimento-->
 
-</div><!-- row dados pessoas 1-->
 
-
-
-<div class="row"> <!--naciolidade-->
-
-    <div class="col-md-2 mb-3">
+    <div class=" col-xl-2 col-md-3 mb-3">
         <div class="form-group">
           <label for="nacionalidade">Nacionalidade</label>
           <input type="text" name="nacionalidade" maxlength="15" required id="nacionalidade" class="form-control {{$errors->has('nacionalidade') ? 'is-invalid': '' }}" placeholder="nacionalidade" value="Brasileiro"
-          value =   {{old('orgEmissor')}}>
+          value =   {{old('nacionalidade')}}>
            @if($errors->has('nacionalidade'))
             <div class="invalid-feedback">
                 {{$errors->first('nacionalidade')}}
@@ -190,11 +209,11 @@
         </div>
     </div><!--col nacionalidade -->
 
-    <div class="col-md-2 mb-3">
+    <div class="  col-xl-3 col-md-5 mb-3">
             <div class="form-group">
 
             <label for="naturalidade">Naturalidade</label>
-            <input type="text" name="naturalidade" maxlength="15" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"value =  {{old('naturalidade')}}
+            <input type="text" name="naturalidade" maxlength="30" required id="naturalidade" class="form-control {{$errors->has('naturalidade') ? 'is-invalid': '' }}" placeholder="naturalidade"value =  {{old('naturalidade')}}
             >
             @if($errors->has('naturalidade'))
                 <div class="invalid-feedback">
@@ -205,7 +224,7 @@
             </div>
     </div><!--col naturalidade -->
 
-    <div class="col-md-3 mb-3">
+    <div class=" col-xl-3 col-md-5 mb-3">
         <div class="form-group">
 
             <label for="escolaridade">Escolaridade </label>
@@ -216,7 +235,7 @@
                     <option value="Médio Incompleto">Médio Incompleto</option>
                     <option value="Médio Completo">Médio Completo</option>
                 <option value="Superior Incompleto">Superior Incompleto</option>
-                    <option value="Superior Completo">Superior Completo</option>
+                    <option selected value="Superior Completo">Superior Completo</option>
                     <option value="Superior Completo">Pós Graduado</option>
             </select>
          @if($errors->has('escolaridade'))
@@ -228,7 +247,7 @@
         </div>
     </div>
 
-        <div class="col-md-2 mb-3">
+        <div class=" col-xl-2 col-md-3 mb-3">
                     <div class="form-group">
                       <label for="profissao">Profissão</label>
                       <select required id="prof" name="profissao"  class="form-control {{$errors->has('profissao') ? 'is-invalid': '' }}"  value =   {{old('profissao')}}>
@@ -245,9 +264,9 @@
                     </div>
             </div><!--col nacionalidade -->
 
-  
 
-    <div class="col-md-2 mb-3">
+
+    <div class="col-xl-2 col-md-3 mb-3">
             <div class="form-group">
 
                 <label for="selectbasic">Sexo </label>
@@ -265,10 +284,10 @@
 
             </div>
     </div><!--col genero-->
-    </div><!-- row -->
-    <div class="row">
+   <!--/ </div> row 
+    <div class="row">-->
 
-    <div class="col-md-2 mb-3">
+    <div class="col-xl-2 col-md-3 mb-3">
             <div class="form-group">
 
                 <label for="selectbasic">Etnia </label>
@@ -289,7 +308,7 @@
         </div><!--  etinia-->
 
 
-        <div class="col-md-2 mb-3">
+        <div class="col-xl-2 col-md-3 mb-3">
                 <div class="form-group">
 
                     <label for="selectbasic">Status </label>
@@ -306,7 +325,7 @@
                 </div>
             </div><!--  etinia-->
 
-    <div class="col-md-2 mb-3">
+    <div class="col-xl-2 col-md-4 mb-3">
             <div class="form-group">
                 <label for="telefone">Telefone </label>
                     <input id="telefone" name="telefone" class="form-control {{$errors->has('telefone') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
@@ -322,10 +341,10 @@
             </div>
         </div>  <!-- col Telefone-->
 
-        <div class="col-md-2 mb-3">
+        <div class="col-xl-2 col-md-4 mb-3">
                 <div class="form-group">
                     <label for="celular">Celular </label>
-                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}" required="" type="text" maxlength="13"
+                        <input id="celular" name="celular" class="form-control {{$errors->has('celular') ? 'is-invalid': '' }}"  type="text" maxlength="13"
                         value =   {{old('celular')}}>
 
                           @if($errors->has('celular'))
@@ -337,10 +356,10 @@
                 </div>
             </div>  <!-- col Telefone-->
 
-            <div class="col-md-3 mb-3">
+            <div class="col-xl-3 col-md-4 mb-3">
                 <div class="form-group">
                        <label for="email">Email address</label>
-                       <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
+                       <input type="email" maxlength="35" class="form-control {{$errors->has('email') ? 'is-invalid': '' }}" id="email" name = "email" placeholder="name@example.com"
                        value =   {{old('email')}}>
 
                            @if($errors->has('email'))
@@ -358,21 +377,21 @@
 
 
 
-              
-                <div class="col-md-3 mb-3 Fill invisivel">
+
+                <div class="col-xl-3 col-md-5 mb-3 Fill invisivel">
                 <div class="form-group">
                 <label for="crm">CRM</label>
-                <input type="text" name="crm" id="" class="form-control " placeholder="crm"  maxlength="15">
-               
+                <input type="text" name="crm" id="" class="form-control " placeholder="crm"  maxlength="30">
+
                 </div>
                 </div><!--col nome -->
 
 
-                <div class="col-md-3 mb-3 Fill invisivel">
+                <div class="col-xl-2 col-md-3 mb-3 Fill invisivel">
                     <div class="form-group">
                       <label for="especialidade" >Especialidade 1</label>
-                      <select  id="especialidade" name="especialidade1" id="" class="form-control" >
-                          <option value=""></option>
+                      <select  id="especialidade" name="especialidade1" class="form-control" >
+                          <option value="">Não possui</option>
                           @foreach($especi as $e)
                                 <option value="{{$e->id}}">{{$e->nome}}</option>
                          @endforeach
@@ -381,14 +400,12 @@
              </div>
 
 
-                   <div class="col-md-3 mb-3 Fill invisivel">
+                   <div class="col-xl-2 col-md-4 mb-3 Fill invisivel">
                     <div class="form-group teste">
                       <label for="especialidade2">Especialidade 2</label>
                       <select  id="especialidade2" name="especialidade2" id="" class="form-control" >
-                          <option value=""></option>
-                          @foreach($especi as $e)
-                                <option value="{{$e->id}}">{{$e->nome}}</option>
-                         @endforeach
+                          <option value="" selected>Não possui</option>
+
                       </select>
                     </div>
             </div>
@@ -401,10 +418,10 @@
                     <legend class = "ttt" aling="center">Endereço</legend>
 
                 <div class="row">
-                    <div class="col-md-2 mb-3 ">
+                    <div class="col-xl-2 col-md-4 mb-3 ">
                          <div class="form-group">
                                <label for="cep">Cep</label>
-                               <input type="text"  required class="form-control input-md {{$errors->has('cep') ? 'is-invalid': '' }}" name="cep" id="cep"
+                               <input type="text"   class="form-control input-md {{$errors->has('cep') ? 'is-invalid': '' }}" name="cep" id="cep"
                                 placeholder="Apenas numeros" maxlength="15" value =   {{old('cep')}}>
                                       @if($errors->has('cep'))
                             <div class="invalid-feedback">
@@ -415,19 +432,19 @@
                             </div>
 
                         </div><!-- col cep -->
-  
+
                                 <div class="form-group">
                                      <button type="button" class="btn btn-outline-success pesquisar"  onclick="cep.value"> <!--  pesquisacep(cep.value)-->
                                     <strong>pesquisar</strong></button>
                                  </div>
-                              
 
-                        
 
-                     <div class="col-md-3 mb-3">
+
+
+                     <div class="col-xl-3 col-md-4 mb-3">
                       <span>Rua</span>
                           <div class="input-group">
-                              <input type="text" name="rua" maxlength="40" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
+                              <input type="text" name="rua" maxlength="35" required class="form-control {{$errors->has('rua') ? 'is-invalid': '' }}" id="rua"
                               value =   {{old('rua')}}>
 
                                 @if($errors->has('rua'))
@@ -439,10 +456,10 @@
                       </div>
                   </div><!-- col rua-->
 
-                   <div class="col-md-1 mb-3">
+                   <div class="col-xl-1 col-md-2 mb-3">
                     <span >Nº </span>
                     <div class="input-group">
-                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder="" required=""  type="text"
+                      <input id="numero" name="numero" maxlength = '6' class="form-control {{$errors->has('numero') ? 'is-invalid': '' }}"placeholder=""   type="text"
                       value =   {{old('numero')}}>
 
                              @if($errors->has('numero'))
@@ -456,11 +473,11 @@
                   </div> <!-- col bumero-->
 
 
-                  <div class="col-md-2 mb-3">
+                  <div class="col-xl-3 col-md-4 mb-3">
 
                    <span>Bairro</span>
                     <div class="input-group">
-                      <input id="bairro" name="bairro"  required maxlength="15" placeholder="" required=""  class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
+                      <input id="bairro" name="bairro"  required maxlength="30" placeholder=""   class="form-control {{$errors->has('bairro') ? 'is-invalid': '' }}"type="text"
                       value =   {{old('bairro')}}>
 
                               @if($errors->has('bairro'))
@@ -473,7 +490,22 @@
 
                     </div><!-- col bairro-->
 
-                <div class="col-md-2 mb-3">
+                      <div class="col-xl-1 col-md-2 mb-3">
+                    <span>Estado</span>
+                    <div class="input-group">
+
+                        <input id="uf" name="estado"  required maxlength="2" placeholder=""  class="form-control {{$errors->has('estado') ? 'is-invalid': '' }}" type="text"
+                        value =   {{old('estado')}}>
+                                       @if($errors->has('estado'))
+     <div class="invalid-feedback">
+         {{$errors->first('estado')}}
+        </div>
+        @endif
+
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-4 mb-3">
                    <span>Cidade</span>
                     <div class="input-group">
 
@@ -489,24 +521,11 @@
                     </div>
                 </div><!-- col cidade -->
 
-                    <div class="col-md-1 mb-3">
-                    <span>Estado</span>
-                    <div class="input-group">
-
-                        <input id="uf" name="estado"  required maxlength="2" placeholder=""  class="form-control {{$errors->has('estado') ? 'is-invalid': '' }}" type="text"
-                        value =   {{old('estado')}}>
-                                       @if($errors->has('estado'))
-     <div class="invalid-feedback">
-         {{$errors->first('estado')}}
-        </div>
-        @endif
-
-                    </div>
-                </div>
+                  
 
 
 
-        </div><!-- row endereco -->
+         </div><!-- row endereco -->
 
     </fieldset><!--endereço-->
 
@@ -521,8 +540,8 @@
 
     <div class="form-group navegacao">
            <div class="col">
- 
-     
+
+
 
 
     </div>
@@ -553,7 +572,7 @@
         <td>
             <div class="checkbox">
 
-                    <input name = "$p[]" type="checkbox" value= {{$plano->id }}
+                    <input name = "$p[]" type="checkbox" value= {{$plano->id }}>
                      </div>
 
 
@@ -575,9 +594,37 @@
       {!! Form::close() !!}
     </div><!-- container -->
 
+        @if (session('NaoAutorizado'))
+
+
+    <div class="modal fade" id="modal-mail" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Clouse</h4>
+          </div>
+          <div class="modal-body">
+           <div class="row">
+            <iframe type="text/html" width="5000rem" height="650rem" src="{{route('erro')}}" frameborder="0" allowfullscreen=""></iframe>
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+@endif
+
+
     @endsection
     @section('scripts')
 <script type="text/javascript" src="{{ asset('js/validaEmail.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/cep.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/medi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/especialidades.js') }}"></script>
+
     @endsection
